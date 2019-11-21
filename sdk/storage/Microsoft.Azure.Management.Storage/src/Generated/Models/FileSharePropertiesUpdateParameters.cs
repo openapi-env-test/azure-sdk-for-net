@@ -11,56 +11,38 @@
 namespace Microsoft.Azure.Management.Storage.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Properties of the file share, including Id, resource name, resource
-    /// type, Etag.
-    /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class FileShare : AzureEntityResource
+    public partial class FileSharePropertiesUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the FileShare class.
+        /// Initializes a new instance of the
+        /// FileSharePropertiesUpdateParameters class.
         /// </summary>
-        public FileShare()
+        public FileSharePropertiesUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FileShare class.
+        /// Initializes a new instance of the
+        /// FileSharePropertiesUpdateParameters class.
         /// </summary>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
-        /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
-        /// <param name="etag">Resource Etag.</param>
-        /// <param name="lastModifiedTime">Returns the date and time the share
-        /// was last modified.</param>
         /// <param name="metadata">A name-value pair to associate with the
         /// share as metadata.</param>
         /// <param name="shareQuota">The maximum size of the share, in
         /// gigabytes. Must be greater than 0, and less than or equal to 5TB
         /// (5120).</param>
-        /// <param name="enabledProtocols">Protocols for file shares. Possible
-        /// values include: 'SMB', 'NFS'</param>
         /// <param name="rootSquash">Reduction of the access rights for the
         /// remote superuser. Possible values include: 'NoRootSquash',
         /// 'RootSquash', 'AllSquash'</param>
-        public FileShare(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string enabledProtocols = default(string), string rootSquash = default(string))
-            : base(id, name, type, etag)
+        public FileSharePropertiesUpdateParameters(IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string rootSquash = default(string))
         {
-            LastModifiedTime = lastModifiedTime;
             Metadata = metadata;
             ShareQuota = shareQuota;
-            EnabledProtocols = enabledProtocols;
             RootSquash = rootSquash;
             CustomInit();
         }
@@ -71,38 +53,25 @@ namespace Microsoft.Azure.Management.Storage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets returns the date and time the share was last modified.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTime? LastModifiedTime { get; private set; }
-
-        /// <summary>
         /// Gets or sets a name-value pair to associate with the share as
         /// metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.metadata")]
+        [JsonProperty(PropertyName = "metadata")]
         public IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum size of the share, in gigabytes. Must be
         /// greater than 0, and less than or equal to 5TB (5120).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.shareQuota")]
+        [JsonProperty(PropertyName = "shareQuota")]
         public int? ShareQuota { get; set; }
-
-        /// <summary>
-        /// Gets or sets protocols for file shares. Possible values include:
-        /// 'SMB', 'NFS'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enabledProtocols")]
-        public string EnabledProtocols { get; set; }
 
         /// <summary>
         /// Gets or sets reduction of the access rights for the remote
         /// superuser. Possible values include: 'NoRootSquash', 'RootSquash',
         /// 'AllSquash'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.rootSquash")]
+        [JsonProperty(PropertyName = "rootSquash")]
         public string RootSquash { get; set; }
 
         /// <summary>

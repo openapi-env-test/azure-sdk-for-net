@@ -81,12 +81,8 @@ namespace Microsoft.Azure.Management.Storage
         /// character must be immediately preceded and followed by a letter or
         /// number.
         /// </param>
-        /// <param name='metadata'>
-        /// A name-value pair to associate with the share as metadata.
-        /// </param>
-        /// <param name='shareQuota'>
-        /// The maximum size of the share, in gigabytes. Must be greater than
-        /// 0, and less than or equal to 5TB (5120).
+        /// <param name='properties'>
+        /// Properties of the file share to create the file share.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -103,7 +99,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FileShare>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FileShare>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileSharePropertiesCreateParameters properties = default(FileSharePropertiesCreateParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates share properties as specified in request body. Properties
         /// not mentioned in the request will not be changed. Update fails if
@@ -125,12 +121,8 @@ namespace Microsoft.Azure.Management.Storage
         /// character must be immediately preceded and followed by a letter or
         /// number.
         /// </param>
-        /// <param name='metadata'>
-        /// A name-value pair to associate with the share as metadata.
-        /// </param>
-        /// <param name='shareQuota'>
-        /// The maximum size of the share, in gigabytes. Must be greater than
-        /// 0, and less than or equal to 5TB (5120).
+        /// <param name='properties'>
+        /// Properties of the file share to update the file share.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -147,7 +139,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileSharePropertiesUpdateParameters properties = default(FileSharePropertiesUpdateParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets properties of a specified share.
         /// </summary>
