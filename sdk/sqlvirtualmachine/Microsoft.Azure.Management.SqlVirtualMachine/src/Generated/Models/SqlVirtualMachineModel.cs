@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
         /// <param name="sqlImageOffer">SQL image offer. Examples include
         /// SQL2016-WS2016, SQL2017-WS2016.</param>
         /// <param name="sqlServerLicenseType">SQL Server license type.
-        /// Possible values include: 'PAYG', 'AHUB'</param>
+        /// Possible values include: 'PAYG', 'AHUB', 'DR'</param>
         /// <param name="sqlManagement">SQL Server Management type. Possible
         /// values include: 'Full', 'LightWeight', 'NoAgent'</param>
         /// <param name="sqlImageSku">SQL Server edition type. Possible values
@@ -69,7 +69,9 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
         /// settings.</param>
         /// <param name="serverConfigurationsManagementSettings">SQL Server
         /// configuration management settings.</param>
-        public SqlVirtualMachineModel(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string virtualMachineResourceId = default(string), string provisioningState = default(string), string sqlImageOffer = default(string), string sqlServerLicenseType = default(string), string sqlManagement = default(string), string sqlImageSku = default(string), string sqlVirtualMachineGroupResourceId = default(string), WsfcDomainCredentials wsfcDomainCredentials = default(WsfcDomainCredentials), AutoPatchingSettings autoPatchingSettings = default(AutoPatchingSettings), AutoBackupSettings autoBackupSettings = default(AutoBackupSettings), KeyVaultCredentialSettings keyVaultCredentialSettings = default(KeyVaultCredentialSettings), ServerConfigurationsManagementSettings serverConfigurationsManagementSettings = default(ServerConfigurationsManagementSettings))
+        /// <param name="storageConfigurationSettings">Storage Configuration
+        /// Settings.</param>
+        public SqlVirtualMachineModel(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string virtualMachineResourceId = default(string), string provisioningState = default(string), string sqlImageOffer = default(string), string sqlServerLicenseType = default(string), string sqlManagement = default(string), string sqlImageSku = default(string), string sqlVirtualMachineGroupResourceId = default(string), WsfcDomainCredentials wsfcDomainCredentials = default(WsfcDomainCredentials), AutoPatchingSettings autoPatchingSettings = default(AutoPatchingSettings), AutoBackupSettings autoBackupSettings = default(AutoBackupSettings), KeyVaultCredentialSettings keyVaultCredentialSettings = default(KeyVaultCredentialSettings), ServerConfigurationsManagementSettings serverConfigurationsManagementSettings = default(ServerConfigurationsManagementSettings), StorageConfigurationSettings storageConfigurationSettings = default(StorageConfigurationSettings))
             : base(location, id, name, type, tags)
         {
             Identity = identity;
@@ -85,6 +87,7 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
             AutoBackupSettings = autoBackupSettings;
             KeyVaultCredentialSettings = keyVaultCredentialSettings;
             ServerConfigurationsManagementSettings = serverConfigurationsManagementSettings;
+            StorageConfigurationSettings = storageConfigurationSettings;
             CustomInit();
         }
 
@@ -121,7 +124,7 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
 
         /// <summary>
         /// Gets or sets SQL Server license type. Possible values include:
-        /// 'PAYG', 'AHUB'
+        /// 'PAYG', 'AHUB', 'DR'
         /// </summary>
         [JsonProperty(PropertyName = "properties.sqlServerLicenseType")]
         public string SqlServerLicenseType { get; set; }
@@ -178,6 +181,12 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.serverConfigurationsManagementSettings")]
         public ServerConfigurationsManagementSettings ServerConfigurationsManagementSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets storage Configuration Settings.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.storageConfigurationSettings")]
+        public StorageConfigurationSettings StorageConfigurationSettings { get; set; }
 
         /// <summary>
         /// Validate the object.

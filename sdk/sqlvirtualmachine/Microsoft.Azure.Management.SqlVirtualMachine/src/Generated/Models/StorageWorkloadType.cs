@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.SqlVirtualMachine.Models
 {
 
     /// <summary>
-    /// Defines values for SqlServerLicenseType.
+    /// Defines values for StorageWorkloadType.
     /// </summary>
-    public static class SqlServerLicenseType
+    public static class StorageWorkloadType
     {
-        public const string PAYG = "PAYG";
-        public const string AHUB = "AHUB";
-        public const string DR = "DR";
+        public const string GENERAL = "GENERAL";
+        public const string OLTP = "OLTP";
+        public const string DW = "DW";
     }
 }
