@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -143,116 +148,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Gets the IOperationOperations.
         /// </summary>
         IOperationOperations Operation { get; }
-
-        /// <summary>
-        /// Gets the IProtectionIntentOperations.
-        /// </summary>
-        IProtectionIntentOperations ProtectionIntent { get; }
-
-        /// <summary>
-        /// Gets the IBackupStatusOperations.
-        /// </summary>
-        IBackupStatusOperations BackupStatus { get; }
-
-        /// <summary>
-        /// Gets the IFeatureSupportOperations.
-        /// </summary>
-        IFeatureSupportOperations FeatureSupport { get; }
-
-        /// <summary>
-        /// Gets the IBackupProtectionIntentOperations.
-        /// </summary>
-        IBackupProtectionIntentOperations BackupProtectionIntent { get; }
-
-        /// <summary>
-        /// Gets the IBackupUsageSummariesOperations.
-        /// </summary>
-        IBackupUsageSummariesOperations BackupUsageSummaries { get; }
-
-        /// <summary>
-        /// Gets the IBackupEnginesOperations.
-        /// </summary>
-        IBackupEnginesOperations BackupEngines { get; }
-
-        /// <summary>
-        /// Gets the IProtectionContainerRefreshOperationResultsOperations.
-        /// </summary>
-        IProtectionContainerRefreshOperationResultsOperations ProtectionContainerRefreshOperationResults { get; }
-
-        /// <summary>
-        /// Gets the IProtectableContainersOperations.
-        /// </summary>
-        IProtectableContainersOperations ProtectableContainers { get; }
-
-        /// <summary>
-        /// Gets the IProtectionContainersOperations.
-        /// </summary>
-        IProtectionContainersOperations ProtectionContainers { get; }
-
-        /// <summary>
-        /// Gets the IBackupWorkloadItemsOperations.
-        /// </summary>
-        IBackupWorkloadItemsOperations BackupWorkloadItems { get; }
-
-        /// <summary>
-        /// Gets the IProtectionContainerOperationResultsOperations.
-        /// </summary>
-        IProtectionContainerOperationResultsOperations ProtectionContainerOperationResults { get; }
-
-        /// <summary>
-        /// Gets the IBackupsOperations.
-        /// </summary>
-        IBackupsOperations Backups { get; }
-
-        /// <summary>
-        /// Gets the IProtectedItemOperationStatusesOperations.
-        /// </summary>
-        IProtectedItemOperationStatusesOperations ProtectedItemOperationStatuses { get; }
-
-        /// <summary>
-        /// Gets the IItemLevelRecoveryConnectionsOperations.
-        /// </summary>
-        IItemLevelRecoveryConnectionsOperations ItemLevelRecoveryConnections { get; }
-
-        /// <summary>
-        /// Gets the IBackupOperationResultsOperations.
-        /// </summary>
-        IBackupOperationResultsOperations BackupOperationResults { get; }
-
-        /// <summary>
-        /// Gets the IBackupOperationStatusesOperations.
-        /// </summary>
-        IBackupOperationStatusesOperations BackupOperationStatuses { get; }
-
-        /// <summary>
-        /// Gets the IProtectionPolicyOperationStatusesOperations.
-        /// </summary>
-        IProtectionPolicyOperationStatusesOperations ProtectionPolicyOperationStatuses { get; }
-
-        /// <summary>
-        /// Gets the IBackupProtectableItemsOperations.
-        /// </summary>
-        IBackupProtectableItemsOperations BackupProtectableItems { get; }
-
-        /// <summary>
-        /// Gets the IBackupProtectionContainersOperations.
-        /// </summary>
-        IBackupProtectionContainersOperations BackupProtectionContainers { get; }
-
-        /// <summary>
-        /// Gets the ISecurityPINsOperations.
-        /// </summary>
-        ISecurityPINsOperations SecurityPINs { get; }
-
-        /// <summary>
-        /// Gets the IBackupResourceStorageConfigsOperations.
-        /// </summary>
-        IBackupResourceStorageConfigsOperations BackupResourceStorageConfigs { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
 
     }
 }

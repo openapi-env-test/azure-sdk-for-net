@@ -97,6 +97,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </return>
         public async Task<AzureOperationResponse> TriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (vaultName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
@@ -129,7 +133,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2019-05-13";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -137,7 +140,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("fabricName", fabricName);
@@ -159,9 +161,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             _url = _url.Replace("{protectedItemName}", System.Uri.EscapeDataString(protectedItemName));
             _url = _url.Replace("{recoveryPointId}", System.Uri.EscapeDataString(recoveryPointId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

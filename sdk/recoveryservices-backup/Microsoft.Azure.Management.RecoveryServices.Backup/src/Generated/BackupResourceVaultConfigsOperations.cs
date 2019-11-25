@@ -83,6 +83,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </return>
         public async Task<AzureOperationResponse<BackupResourceVaultConfigResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (vaultName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
@@ -95,7 +99,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-05-13";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -103,7 +106,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -116,9 +118,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -281,6 +283,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </return>
         public async Task<AzureOperationResponse<BackupResourceVaultConfigResource>> UpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (vaultName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
@@ -297,7 +303,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2019-05-13";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -305,7 +310,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("parameters", parameters);
@@ -319,9 +323,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

@@ -90,6 +90,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </return>
         public async Task<AzureOperationResponse<IPage<JobResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, ODataQuery<JobQueryObject> odataQuery = default(ODataQuery<JobQueryObject>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (vaultName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vaultName");
@@ -102,7 +106,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2019-05-13";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -111,7 +114,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("odataQuery", odataQuery);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("skipToken", skipToken);
@@ -133,9 +135,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                     _queryParameters.Add(_odataFilter);
                 }
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (skipToken != null)
             {
