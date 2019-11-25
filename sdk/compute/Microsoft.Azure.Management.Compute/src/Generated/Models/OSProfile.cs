@@ -40,16 +40,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// implementation
         /// guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).</param>
         /// <param name="adminUsername">Specifies the name of the administrator
-        /// account. &lt;br&gt;&lt;br&gt; **Windows-only restriction:** Cannot
-        /// end in "." &lt;br&gt;&lt;br&gt; **Disallowed values:**
-        /// "administrator", "admin", "user", "user1", "test", "user2",
-        /// "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm",
-        /// "admin2", "aspnet", "backup", "console", "david", "guest", "john",
-        /// "owner", "root", "server", "sql", "support", "support_388945a0",
-        /// "sys", "test2", "test3", "user4", "user5". &lt;br&gt;&lt;br&gt;
-        /// **Minimum-length (Linux):** 1  character &lt;br&gt;&lt;br&gt;
-        /// **Max-length (Linux):** 64 characters &lt;br&gt;&lt;br&gt;
-        /// **Max-length (Windows):** 20 characters
+        /// account. &lt;br&gt;&lt;br&gt; This property cannot be updated after
+        /// the VM is created. &lt;br&gt;&lt;br&gt; **Windows-only
+        /// restriction:** Cannot end in "." &lt;br&gt;&lt;br&gt; **Disallowed
+        /// values:** "administrator", "admin", "user", "user1", "test",
+        /// "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser",
+        /// "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+        /// "john", "owner", "root", "server", "sql", "support",
+        /// "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+        /// &lt;br&gt;&lt;br&gt; **Minimum-length (Linux):** 1  character
+        /// &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters
+        /// &lt;br&gt;&lt;br&gt; **Max-length (Windows):** 20 characters
         /// &lt;br&gt;&lt;br&gt;&lt;li&gt; For root access to the Linux VM, see
         /// [Using root privileges on Linux virtual machines in
         /// Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)&lt;br&gt;&lt;li&gt;
@@ -78,9 +79,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="customData">Specifies a base-64 encoded string of
         /// custom data. The base-64 encoded string is decoded to a binary
         /// array that is saved as a file on the Virtual Machine. The maximum
-        /// length of the binary array is 65535 bytes. &lt;br&gt;&lt;br&gt; For
-        /// using cloud-init for your VM, see [Using cloud-init to customize a
-        /// Linux VM during
+        /// length of the binary array is 65535 bytes. &lt;br&gt;&lt;br&gt;
+        /// This property cannot be updated after the VM is created.
+        /// &lt;br&gt;&lt;br&gt; For using cloud-init for your VM, see [Using
+        /// cloud-init to customize a Linux VM during
         /// creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</param>
         /// <param name="windowsConfiguration">Specifies Windows operating
         /// system settings on the virtual machine.</param>
@@ -135,6 +137,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the name of the administrator account.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; This property cannot be
+        /// updated after the VM is created.
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Windows-only restriction:**
         /// Cannot end in "." &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Disallowed
         /// values:** "administrator", "admin", "user", "user1", "test",
@@ -188,9 +192,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies a base-64 encoded string of custom data. The
         /// base-64 encoded string is decoded to a binary array that is saved
         /// as a file on the Virtual Machine. The maximum length of the binary
-        /// array is 65535 bytes. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For
-        /// using cloud-init for your VM, see [Using cloud-init to customize a
-        /// Linux VM during
+        /// array is 65535 bytes. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; This
+        /// property cannot be updated after the VM is created.
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For using cloud-init for your
+        /// VM, see [Using cloud-init to customize a Linux VM during
         /// creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
         /// </summary>
         [JsonProperty(PropertyName = "customData")]

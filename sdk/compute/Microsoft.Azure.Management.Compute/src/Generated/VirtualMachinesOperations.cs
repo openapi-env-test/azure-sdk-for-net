@@ -270,7 +270,8 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// The operation to create or update a virtual machine.
+        /// The operation to create or update a virtual machine. Some properties can be
+        /// set only during provisioning the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -786,7 +787,8 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// Sets the state of the virtual machine to generalized.
+        /// Sets the OS state of the virtual machine to generalized. It is recommended
+        /// to sysprep the virtual machine before performing this operation
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1932,7 +1934,8 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// The operation to create or update a virtual machine.
+        /// The operation to create or update a virtual machine. Some properties can be
+        /// set only during provisioning the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
