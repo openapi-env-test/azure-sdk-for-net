@@ -259,14 +259,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new ValidationException(ValidationRules.Pattern, "FileSystemId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
-            if (UsageThreshold > 109951162777600)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "UsageThreshold", 109951162777600);
-            }
-            if (UsageThreshold < 107374182400)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "UsageThreshold", 107374182400);
-            }
             if (SnapshotId != null)
             {
                 if (SnapshotId.Length > 36)

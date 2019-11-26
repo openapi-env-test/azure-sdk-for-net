@@ -159,14 +159,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new ValidationException(ValidationRules.Pattern, "PoolId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
-            if (Size > 549755813888000)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Size", 549755813888000);
-            }
-            if (Size < 4398046511104)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Size", 4398046511104);
-            }
         }
     }
 }
