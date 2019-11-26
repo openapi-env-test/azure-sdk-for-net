@@ -259,7 +259,11 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string vmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Sets the state of the virtual machine to generalized.
+        /// Sets the OS state of the virtual machine to generalized. It is
+        /// recommended to sysprep the virtual machine before performing this
+        /// operation. For more details, please refer to [Create a managed
+        /// image of a generalized VM in
+        /// Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
