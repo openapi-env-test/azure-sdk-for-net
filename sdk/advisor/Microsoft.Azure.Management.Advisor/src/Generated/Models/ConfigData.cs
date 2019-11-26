@@ -10,12 +10,17 @@
 
 namespace Microsoft.Azure.Management.Advisor.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The Advisor configuration data structure.
     /// </summary>
+    [Rest.Serialization.JsonTransformation]
     public partial class ConfigData
     {
         /// <summary>
@@ -29,18 +34,25 @@ namespace Microsoft.Azure.Management.Advisor.Models
         /// <summary>
         /// Initializes a new instance of the ConfigData class.
         /// </summary>
+        /// <param name="exclude">Exclude the resource from Advisor
+        /// evaluations. Valid values: False (default) or True.</param>
+        /// <param name="lowCpuThreshold">Minimum percentage threshold for
+        /// Advisor low CPU utilization evaluation. Valid only for
+        /// subscriptions. Valid values: 5 (default), 10, 15 or 20.</param>
+        /// <param name="digests">Advisor digest configuration. Valid only for
+        /// subscriptions</param>
         /// <param name="id">The resource Id of the configuration
         /// resource.</param>
         /// <param name="type">The type of the configuration resource.</param>
         /// <param name="name">The name of the configuration resource.</param>
-        /// <param name="properties">The list of property name/value
-        /// pairs.</param>
-        public ConfigData(string id = default(string), string type = default(string), string name = default(string), ConfigDataProperties properties = default(ConfigDataProperties))
+        public ConfigData(bool? exclude = default(bool?), string lowCpuThreshold = default(string), IList<DigestConfig> digests = default(IList<DigestConfig>), string id = default(string), string type = default(string), string name = default(string))
         {
+            Exclude = exclude;
+            LowCpuThreshold = lowCpuThreshold;
+            Digests = digests;
             Id = id;
             Type = type;
             Name = name;
-            Properties = properties;
             CustomInit();
         }
 
@@ -48,6 +60,28 @@ namespace Microsoft.Azure.Management.Advisor.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets exclude the resource from Advisor evaluations. Valid
+        /// values: False (default) or True.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.exclude")]
+        public bool? Exclude { get; set; }
+
+        /// <summary>
+        /// Gets or sets minimum percentage threshold for Advisor low CPU
+        /// utilization evaluation. Valid only for subscriptions. Valid values:
+        /// 5 (default), 10, 15 or 20.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.low_cpu_threshold")]
+        public string LowCpuThreshold { get; set; }
+
+        /// <summary>
+        /// Gets or sets advisor digest configuration. Valid only for
+        /// subscriptions
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.digests")]
+        public IList<DigestConfig> Digests { get; set; }
 
         /// <summary>
         /// Gets or sets the resource Id of the configuration resource.
@@ -66,12 +100,6 @@ namespace Microsoft.Azure.Management.Advisor.Models
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of property name/value pairs.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public ConfigDataProperties Properties { get; set; }
 
     }
 }
