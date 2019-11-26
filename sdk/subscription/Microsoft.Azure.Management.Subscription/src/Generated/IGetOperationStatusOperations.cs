@@ -19,14 +19,19 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubscriptionOperations operations.
+    /// GetOperationStatusOperations operations.
     /// </summary>
-    public partial interface ISubscriptionOperations
+    public partial interface IGetOperationStatusOperations
     {
         /// <summary>
-        /// Lists all of the available pending Microsoft.Subscription API
-        /// operations.
+        /// The operation to find out the purchase Operation status
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// Subscription Id.
+        /// </param>
+        /// <param name='id'>
+        /// Id.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -42,6 +47,6 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SubscriptionOperationListResult>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OperationStatusResponseResult,GetOperationStatusGetHeaders>> GetWithHttpMessagesAsync(string subscriptionId, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

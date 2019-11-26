@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubscriptionOperations operations.
+    /// PurchaseSupportPlanOperations operations.
     /// </summary>
-    internal partial class SubscriptionOperations : IServiceOperations<SubscriptionClient>, ISubscriptionOperations
+    internal partial class PurchaseSupportPlanOperations : IServiceOperations<SubscriptionClient>, IPurchaseSupportPlanOperations
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperations class.
+        /// Initializes a new instance of the PurchaseSupportPlanOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal SubscriptionOperations(SubscriptionClient client)
+        internal PurchaseSupportPlanOperations(SubscriptionClient client)
         {
             if (client == null)
             {
@@ -51,8 +51,36 @@ namespace Microsoft.Azure.Management.Subscription
         public SubscriptionClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available pending Microsoft.Subscription API operations.
+        /// The operation to purchase/convert/cancel support plan.
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// Subscription Id.
+        /// </param>
+        /// <param name='body'>
+        /// SupportPlan Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders>> PostWithHttpMessagesAsync(string subscriptionId, SupportPlanName body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders> _response = await BeginPostWithHttpMessagesAsync(subscriptionId, body, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// The operation to purchase/convert/cancel support plan.
+        /// </summary>
+        /// <param name='subscriptionId'>
+        /// Subscription Id.
+        /// </param>
+        /// <param name='body'>
+        /// SupportPlan Name
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -65,12 +93,29 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SubscriptionOperationListResult>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders>> BeginPostWithHttpMessagesAsync(string subscriptionId, SupportPlanName body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string apiVersion = "2018-03-01-preview";
+            if (subscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "subscriptionId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (body == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "body");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -78,17 +123,19 @@ namespace Microsoft.Azure.Management.Subscription
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("subscriptionId", subscriptionId);
+                tracingParameters.Add("body", body);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "BeginPost", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscription/subscriptionOperations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscription/PurchaseSupport").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(subscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -97,7 +144,7 @@ namespace Microsoft.Azure.Management.Subscription
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.Method = new HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -128,6 +175,12 @@ namespace Microsoft.Azure.Management.Subscription
 
             // Serialize Request
             string _requestContent = null;
+            if(body != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(body, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -148,7 +201,7 @@ namespace Microsoft.Azure.Management.Subscription
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -178,7 +231,7 @@ namespace Microsoft.Azure.Management.Subscription
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<SubscriptionOperationListResult>();
+            var _result = new AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -191,7 +244,7 @@ namespace Microsoft.Azure.Management.Subscription
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SubscriptionOperationListResult>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PurchaseSupportResponseResult>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -202,6 +255,19 @@ namespace Microsoft.Azure.Management.Subscription
                     }
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<PurchaseSupportPlanPostHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+            }
+            catch (JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {

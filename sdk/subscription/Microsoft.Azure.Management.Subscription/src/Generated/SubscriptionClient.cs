@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Net.Http;
 
     /// <summary>
-    /// The subscription client
+    /// Subscription client provides an interface to create and manage Azure
+    /// subscriptions programmatically.
     /// </summary>
     public partial class SubscriptionClient : ServiceClient<SubscriptionClient>, ISubscriptionClient, IAzureClient
     {
@@ -47,6 +48,12 @@ namespace Microsoft.Azure.Management.Subscription
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// Version of the API to be used with the client request. Current version is
+        /// 2019-10-01-preview
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -65,34 +72,24 @@ namespace Microsoft.Azure.Management.Subscription
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the ISubscriptionsOperations.
+        /// Gets the IGetOperationStatusOperations.
         /// </summary>
-        public virtual ISubscriptionsOperations Subscriptions { get; private set; }
+        public virtual IGetOperationStatusOperations GetOperationStatus { get; private set; }
 
         /// <summary>
-        /// Gets the ISubscriptionOperationOperations.
+        /// Gets the ISupportPlanOperations.
         /// </summary>
-        public virtual ISubscriptionOperationOperations SubscriptionOperation { get; private set; }
+        public virtual ISupportPlanOperations SupportPlan { get; private set; }
 
         /// <summary>
-        /// Gets the ISubscriptionFactoryOperations.
+        /// Gets the ISupportPlanDefaultOperations.
         /// </summary>
-        public virtual ISubscriptionFactoryOperations SubscriptionFactory { get; private set; }
+        public virtual ISupportPlanDefaultOperations SupportPlanDefault { get; private set; }
 
         /// <summary>
-        /// Gets the ISubscriptionOperations.
+        /// Gets the IPurchaseSupportPlanOperations.
         /// </summary>
-        public virtual ISubscriptionOperations SubscriptionOperations { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the ITenantsOperations.
-        /// </summary>
-        public virtual ITenantsOperations Tenants { get; private set; }
+        public virtual IPurchaseSupportPlanOperations PurchaseSupportPlan { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
@@ -335,13 +332,12 @@ namespace Microsoft.Azure.Management.Subscription
         /// </summary>
         private void Initialize()
         {
-            Subscriptions = new SubscriptionsOperations(this);
-            SubscriptionOperation = new SubscriptionOperationOperations(this);
-            SubscriptionFactory = new SubscriptionFactoryOperations(this);
-            SubscriptionOperations = new SubscriptionOperations(this);
-            Operations = new Operations(this);
-            Tenants = new TenantsOperations(this);
+            GetOperationStatus = new GetOperationStatusOperations(this);
+            SupportPlan = new SupportPlanOperations(this);
+            SupportPlanDefault = new SupportPlanDefaultOperations(this);
+            PurchaseSupportPlan = new PurchaseSupportPlanOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-10-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -358,6 +354,7 @@ namespace Microsoft.Azure.Management.Subscription
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -371,6 +368,7 @@ namespace Microsoft.Azure.Management.Subscription
                     }
             };
             CustomInitialize();
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }

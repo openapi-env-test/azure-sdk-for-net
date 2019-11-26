@@ -17,33 +17,39 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Operations.
+    /// Extension methods for SupportPlanOperations.
     /// </summary>
-    public static partial class OperationsExtensions
+    public static partial class SupportPlanOperationsExtensions
     {
             /// <summary>
-            /// Lists all of the available Microsoft.Subscription API operations.
+            /// The operation to find out support plan list
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static OperationListResult List(this IOperations operations)
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            public static SupportPlanResponseResult Get(this ISupportPlanOperations operations, string subscriptionId)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists all of the available Microsoft.Subscription API operations.
+            /// The operation to find out support plan list
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationListResult> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SupportPlanResponseResult> GetAsync(this ISupportPlanOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

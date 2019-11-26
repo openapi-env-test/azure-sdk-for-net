@@ -14,24 +14,23 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// The ID of the subscriptions that is being renamed
+    /// The operation Name parameter.
     /// </summary>
-    public partial class RenamedSubscriptionId
+    public partial class OperationName
     {
         /// <summary>
-        /// Initializes a new instance of the RenamedSubscriptionId class.
+        /// Initializes a new instance of the OperationName class.
         /// </summary>
-        public RenamedSubscriptionId()
+        public OperationName()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RenamedSubscriptionId class.
+        /// Initializes a new instance of the OperationName class.
         /// </summary>
-        /// <param name="value">The ID of the subscriptions that is being
-        /// renamed</param>
-        public RenamedSubscriptionId(string value = default(string))
+        /// <param name="value">The operation Name</param>
+        public OperationName(string value = default(string))
         {
             Value = value;
             CustomInit();
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ID of the subscriptions that is being renamed
+        /// Gets the operation Name
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; private set; }

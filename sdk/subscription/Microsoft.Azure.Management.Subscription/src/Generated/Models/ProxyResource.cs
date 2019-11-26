@@ -10,34 +10,35 @@
 
 namespace Microsoft.Azure.Management.Subscription.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// status of the subscription POST operation.
+    /// The Resource model definition.
     /// </summary>
-    public partial class SubscriptionOperation
+    public partial class ProxyResource : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperation class.
+        /// Initializes a new instance of the ProxyResource class.
         /// </summary>
-        public SubscriptionOperation()
+        public ProxyResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperation class.
+        /// Initializes a new instance of the ProxyResource class.
         /// </summary>
-        /// <param name="id">The operation Id.</param>
-        /// <param name="status">Status of the pending subscription</param>
-        /// <param name="statusDetail">Status Detail of the pending
-        /// subscription</param>
-        public SubscriptionOperation(string id = default(string), string status = default(string), string statusDetail = default(string))
+        /// <param name="id">Resource Id.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
-            Status = status;
-            StatusDetail = statusDetail;
+            Name = name;
+            Type = type;
             CustomInit();
         }
 
@@ -47,22 +48,22 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the operation Id.
+        /// Gets resource Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets or sets status of the pending subscription
+        /// Gets resource name.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or sets status Detail of the pending subscription
+        /// Gets resource type.
         /// </summary>
-        [JsonProperty(PropertyName = "statusDetail")]
-        public string StatusDetail { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

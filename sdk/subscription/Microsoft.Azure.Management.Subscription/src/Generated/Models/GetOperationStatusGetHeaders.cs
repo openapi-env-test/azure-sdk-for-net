@@ -14,23 +14,21 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CreateSubscriptionInEnrollmentAccount operation.
+    /// Defines headers for Get operation.
     /// </summary>
-    public partial class SubscriptionFactoryCreateSubscriptionInEnrollmentAccountHeaders
+    public partial class GetOperationStatusGetHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// SubscriptionFactoryCreateSubscriptionInEnrollmentAccountHeaders
+        /// Initializes a new instance of the GetOperationStatusGetHeaders
         /// class.
         /// </summary>
-        public SubscriptionFactoryCreateSubscriptionInEnrollmentAccountHeaders()
+        public GetOperationStatusGetHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// SubscriptionFactoryCreateSubscriptionInEnrollmentAccountHeaders
+        /// Initializes a new instance of the GetOperationStatusGetHeaders
         /// class.
         /// </summary>
         /// <param name="location">GET this URL to retrieve the status of the
@@ -38,7 +36,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// <param name="retryAfter">The amount of delay to use while the
         /// status of the operation is checked. The value is expressed in
         /// seconds.</param>
-        public SubscriptionFactoryCreateSubscriptionInEnrollmentAccountHeaders(string location = default(string), string retryAfter = default(string))
+        public GetOperationStatusGetHeaders(string location = default(string), string retryAfter = default(string))
         {
             Location = location;
             RetryAfter = retryAfter;

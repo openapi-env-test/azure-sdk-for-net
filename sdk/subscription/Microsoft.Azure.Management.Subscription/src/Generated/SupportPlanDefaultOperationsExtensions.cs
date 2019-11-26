@@ -17,33 +17,39 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for SubscriptionOperations.
+    /// Extension methods for SupportPlanDefaultOperations.
     /// </summary>
-    public static partial class SubscriptionOperationsExtensions
+    public static partial class SupportPlanDefaultOperationsExtensions
     {
             /// <summary>
-            /// Lists all of the available pending Microsoft.Subscription API operations.
+            /// The operation to find out the support plan
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static SubscriptionOperationListResult List(this ISubscriptionOperations operations)
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            public static DefaultSupportPlanResponseResult Get(this ISupportPlanDefaultOperations operations, string subscriptionId)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists all of the available pending Microsoft.Subscription API operations.
+            /// The operation to find out the support plan
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SubscriptionOperationListResult> ListAsync(this ISubscriptionOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DefaultSupportPlanResponseResult> GetAsync(this ISupportPlanDefaultOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

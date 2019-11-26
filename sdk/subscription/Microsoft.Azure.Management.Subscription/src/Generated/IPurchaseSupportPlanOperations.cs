@@ -19,20 +19,26 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// TenantsOperations operations.
+    /// PurchaseSupportPlanOperations operations.
     /// </summary>
-    public partial interface ITenantsOperations
+    public partial interface IPurchaseSupportPlanOperations
     {
         /// <summary>
-        /// Gets the tenants for your account.
+        /// The operation to purchase/convert/cancel support plan.
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// Subscription Id.
+        /// </param>
+        /// <param name='body'>
+        /// SupportPlan Name
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -41,12 +47,15 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TenantIdDescription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders>> PostWithHttpMessagesAsync(string subscriptionId, SupportPlanName body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the tenants for your account.
+        /// The operation to purchase/convert/cancel support plan.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='subscriptionId'>
+        /// Subscription Id.
+        /// </param>
+        /// <param name='body'>
+        /// SupportPlan Name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -54,7 +63,7 @@ namespace Microsoft.Azure.Management.Subscription
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -63,6 +72,6 @@ namespace Microsoft.Azure.Management.Subscription
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<TenantIdDescription>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PurchaseSupportResponseResult,PurchaseSupportPlanPostHeaders>> BeginPostWithHttpMessagesAsync(string subscriptionId, SupportPlanName body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

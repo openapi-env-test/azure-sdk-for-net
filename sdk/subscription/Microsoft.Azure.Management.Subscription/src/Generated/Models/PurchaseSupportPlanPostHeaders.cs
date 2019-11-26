@@ -14,29 +14,29 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Get operation.
+    /// Defines headers for Post operation.
     /// </summary>
-    public partial class SubscriptionOperationGetHeaders
+    public partial class PurchaseSupportPlanPostHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationGetHeaders
+        /// Initializes a new instance of the PurchaseSupportPlanPostHeaders
         /// class.
         /// </summary>
-        public SubscriptionOperationGetHeaders()
+        public PurchaseSupportPlanPostHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationGetHeaders
+        /// Initializes a new instance of the PurchaseSupportPlanPostHeaders
         /// class.
         /// </summary>
-        /// <param name="location">The URL where the status of the asynchronous
-        /// operation can be checked.</param>
+        /// <param name="location">GET this URL to retrieve the status of the
+        /// asynchronous operation.</param>
         /// <param name="retryAfter">The amount of delay to use while the
         /// status of the operation is checked. The value is expressed in
         /// seconds.</param>
-        public SubscriptionOperationGetHeaders(string location = default(string), int? retryAfter = default(int?))
+        public PurchaseSupportPlanPostHeaders(string location = default(string), string retryAfter = default(string))
         {
             Location = location;
             RetryAfter = retryAfter;
@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the URL where the status of the asynchronous operation
-        /// can be checked.
+        /// Gets or sets GET this URL to retrieve the status of the
+        /// asynchronous operation.
         /// </summary>
         [JsonProperty(PropertyName = "Location")]
         public string Location { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// operation is checked. The value is expressed in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter { get; set; }
+        public string RetryAfter { get; set; }
 
     }
 }

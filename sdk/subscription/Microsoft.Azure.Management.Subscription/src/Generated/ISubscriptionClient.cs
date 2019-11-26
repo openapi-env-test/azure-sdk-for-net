@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.Subscription
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The subscription client
+    /// Subscription client provides an interface to create and manage Azure
+    /// subscriptions programmatically.
     /// </summary>
     public partial interface ISubscriptionClient : System.IDisposable
     {
@@ -41,6 +42,12 @@ namespace Microsoft.Azure.Management.Subscription
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
+        /// Version of the API to be used with the client request. Current
+        /// version is 2019-10-01-preview
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -60,34 +67,24 @@ namespace Microsoft.Azure.Management.Subscription
 
 
         /// <summary>
-        /// Gets the ISubscriptionsOperations.
+        /// Gets the IGetOperationStatusOperations.
         /// </summary>
-        ISubscriptionsOperations Subscriptions { get; }
+        IGetOperationStatusOperations GetOperationStatus { get; }
 
         /// <summary>
-        /// Gets the ISubscriptionOperationOperations.
+        /// Gets the ISupportPlanOperations.
         /// </summary>
-        ISubscriptionOperationOperations SubscriptionOperation { get; }
+        ISupportPlanOperations SupportPlan { get; }
 
         /// <summary>
-        /// Gets the ISubscriptionFactoryOperations.
+        /// Gets the ISupportPlanDefaultOperations.
         /// </summary>
-        ISubscriptionFactoryOperations SubscriptionFactory { get; }
+        ISupportPlanDefaultOperations SupportPlanDefault { get; }
 
         /// <summary>
-        /// Gets the ISubscriptionOperations.
+        /// Gets the IPurchaseSupportPlanOperations.
         /// </summary>
-        ISubscriptionOperations SubscriptionOperations { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the ITenantsOperations.
-        /// </summary>
-        ITenantsOperations Tenants { get; }
+        IPurchaseSupportPlanOperations PurchaseSupportPlan { get; }
 
     }
 }

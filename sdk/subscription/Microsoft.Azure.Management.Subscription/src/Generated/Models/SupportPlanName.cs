@@ -11,33 +11,30 @@
 namespace Microsoft.Azure.Management.Subscription.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A list of pending subscription operations.
+    /// The supportPlan Name.
     /// </summary>
-    public partial class SubscriptionOperationListResult
+    public partial class SupportPlanName
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationListResult
-        /// class.
+        /// Initializes a new instance of the SupportPlanName class.
         /// </summary>
-        public SubscriptionOperationListResult()
+        public SupportPlanName()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationListResult
-        /// class.
+        /// Initializes a new instance of the SupportPlanName class.
         /// </summary>
-        /// <param name="value">A list of pending
-        /// SubscriptionOperations</param>
-        public SubscriptionOperationListResult(IList<SubscriptionOperation> value = default(IList<SubscriptionOperation>))
+        /// <param name="planType">Possible values include: 'basic_support',
+        /// 'developer_support', 'standard_support',
+        /// 'prodirect_support'</param>
+        public SupportPlanName(string planType = default(string))
         {
-            Value = value;
+            PlanType = planType;
             CustomInit();
         }
 
@@ -47,10 +44,11 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of pending SubscriptionOperations
+        /// Gets or sets possible values include: 'basic_support',
+        /// 'developer_support', 'standard_support', 'prodirect_support'
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<SubscriptionOperation> Value { get; set; }
+        [JsonProperty(PropertyName = "planType")]
+        public string PlanType { get; set; }
 
     }
 }

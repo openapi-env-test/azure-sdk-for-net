@@ -17,41 +17,45 @@ namespace Microsoft.Azure.Management.Subscription
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for SubscriptionOperationOperations.
+    /// Extension methods for GetOperationStatusOperations.
     /// </summary>
-    public static partial class SubscriptionOperationOperationsExtensions
+    public static partial class GetOperationStatusOperationsExtensions
     {
             /// <summary>
-            /// Get the status of the pending Microsoft.Subscription API operations.
+            /// The operation to find out the purchase Operation status
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationId'>
-            /// The operation ID, which can be found from the Location field in the
-            /// generate recommendation response header.
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
             /// </param>
-            public static SubscriptionCreationResult Get(this ISubscriptionOperationOperations operations, string operationId)
+            /// <param name='id'>
+            /// Id.
+            /// </param>
+            public static OperationStatusResponseResult Get(this IGetOperationStatusOperations operations, string subscriptionId, string id)
             {
-                return operations.GetAsync(operationId).GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId, id).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the status of the pending Microsoft.Subscription API operations.
+            /// The operation to find out the purchase Operation status
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationId'>
-            /// The operation ID, which can be found from the Location field in the
-            /// generate recommendation response header.
+            /// <param name='subscriptionId'>
+            /// Subscription Id.
+            /// </param>
+            /// <param name='id'>
+            /// Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SubscriptionCreationResult> GetAsync(this ISubscriptionOperationOperations operations, string operationId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OperationStatusResponseResult> GetAsync(this IGetOperationStatusOperations operations, string subscriptionId, string id, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(operationId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, id, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
