@@ -194,36 +194,6 @@ namespace Microsoft.Azure.Management.DataBox
         /// </exception>
         Task<AzureOperationResponse<JobResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string jobName, JobResourceUpdateParameter jobResourceUpdateParameter, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Book shipment pick up.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The Resource Group Name
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job Resource within the specified resource group.
-        /// job names must be between 3 and 24 characters in length and use any
-        /// alphanumeric and underscore only
-        /// </param>
-        /// <param name='shipmentPickUpRequest'>
-        /// Details of shipment pick up request.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<ShipmentPickUpResponse>> BookShipmentPickUpWithHttpMessagesAsync(string resourceGroupName, string jobName, ShipmentPickUpRequest shipmentPickUpRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// CancelJob.
         /// </summary>
         /// <param name='resourceGroupName'>
