@@ -307,56 +307,6 @@ namespace Microsoft.Azure.Management.DataBox
             }
 
             /// <summary>
-            /// Book shipment pick up.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job Resource within the specified resource group. job names
-            /// must be between 3 and 24 characters in length and use any alphanumeric and
-            /// underscore only
-            /// </param>
-            /// <param name='shipmentPickUpRequest'>
-            /// Details of shipment pick up request.
-            /// </param>
-            public static ShipmentPickUpResponse BookShipmentPickUp(this IJobsOperations operations, string resourceGroupName, string jobName, ShipmentPickUpRequest shipmentPickUpRequest)
-            {
-                return operations.BookShipmentPickUpAsync(resourceGroupName, jobName, shipmentPickUpRequest).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Book shipment pick up.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job Resource within the specified resource group. job names
-            /// must be between 3 and 24 characters in length and use any alphanumeric and
-            /// underscore only
-            /// </param>
-            /// <param name='shipmentPickUpRequest'>
-            /// Details of shipment pick up request.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ShipmentPickUpResponse> BookShipmentPickUpAsync(this IJobsOperations operations, string resourceGroupName, string jobName, ShipmentPickUpRequest shipmentPickUpRequest, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BookShipmentPickUpWithHttpMessagesAsync(resourceGroupName, jobName, shipmentPickUpRequest, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// CancelJob.
             /// </summary>
             /// <param name='operations'>

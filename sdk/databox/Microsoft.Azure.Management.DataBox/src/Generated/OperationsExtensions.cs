@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Management.DataBox
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<Operation> List(this IOperations operations)
+            public static IPage<Operation> Get(this IOperations operations)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Management.DataBox
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Operation>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Operation>> GetAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Management.DataBox
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
+            public static IPage<Operation> GetNext(this IOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.DataBox
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Operation>> GetNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
