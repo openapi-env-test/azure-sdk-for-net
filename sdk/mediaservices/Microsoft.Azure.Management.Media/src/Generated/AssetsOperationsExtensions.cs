@@ -314,12 +314,9 @@ namespace Microsoft.Azure.Management.Media
             /// The Asset name.
             /// </param>
             /// <param name='permissions'>
-            /// The permissions to set on the SAS URL. Possible values include: 'Read',
-            /// 'ReadWrite', 'ReadWriteDelete'
+            /// Possible values include: 'Read', 'ReadWrite', 'ReadWriteDelete'
             /// </param>
             /// <param name='expiryTime'>
-            /// The SAS URL expiration time.  This must be less than 24 hours from the
-            /// current time.
             /// </param>
             public static AssetContainerSas ListContainerSas(this IAssetsOperations operations, string resourceGroupName, string accountName, string assetName, AssetContainerPermission? permissions = default(AssetContainerPermission?), System.DateTime? expiryTime = default(System.DateTime?))
             {
@@ -347,12 +344,9 @@ namespace Microsoft.Azure.Management.Media
             /// The Asset name.
             /// </param>
             /// <param name='permissions'>
-            /// The permissions to set on the SAS URL. Possible values include: 'Read',
-            /// 'ReadWrite', 'ReadWriteDelete'
+            /// Possible values include: 'Read', 'ReadWrite', 'ReadWriteDelete'
             /// </param>
             /// <param name='expiryTime'>
-            /// The SAS URL expiration time.  This must be less than 24 hours from the
-            /// current time.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

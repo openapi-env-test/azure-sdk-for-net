@@ -201,12 +201,9 @@ namespace Microsoft.Azure.Management.Media
         /// The Asset name.
         /// </param>
         /// <param name='permissions'>
-        /// The permissions to set on the SAS URL. Possible values include:
-        /// 'Read', 'ReadWrite', 'ReadWriteDelete'
+        /// Possible values include: 'Read', 'ReadWrite', 'ReadWriteDelete'
         /// </param>
         /// <param name='expiryTime'>
-        /// The SAS URL expiration time.  This must be less than 24 hours from
-        /// the current time.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

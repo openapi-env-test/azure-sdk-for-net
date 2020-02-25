@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Media.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The parameters to the list SAS request.
-    /// </summary>
     public partial class ListContainerSasInput
     {
         /// <summary>
@@ -29,11 +26,8 @@ namespace Microsoft.Azure.Management.Media.Models
         /// <summary>
         /// Initializes a new instance of the ListContainerSasInput class.
         /// </summary>
-        /// <param name="permissions">The permissions to set on the SAS URL.
-        /// Possible values include: 'Read', 'ReadWrite',
-        /// 'ReadWriteDelete'</param>
-        /// <param name="expiryTime">The SAS URL expiration time.  This must be
-        /// less than 24 hours from the current time.</param>
+        /// <param name="permissions">Possible values include: 'Read',
+        /// 'ReadWrite', 'ReadWriteDelete'</param>
         public ListContainerSasInput(AssetContainerPermission? permissions = default(AssetContainerPermission?), System.DateTime? expiryTime = default(System.DateTime?))
         {
             Permissions = permissions;
@@ -47,15 +41,13 @@ namespace Microsoft.Azure.Management.Media.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the permissions to set on the SAS URL. Possible values
-        /// include: 'Read', 'ReadWrite', 'ReadWriteDelete'
+        /// Gets or sets possible values include: 'Read', 'ReadWrite',
+        /// 'ReadWriteDelete'
         /// </summary>
         [JsonProperty(PropertyName = "permissions")]
         public AssetContainerPermission? Permissions { get; set; }
 
         /// <summary>
-        /// Gets or sets the SAS URL expiration time.  This must be less than
-        /// 24 hours from the current time.
         /// </summary>
         [JsonProperty(PropertyName = "expiryTime")]
         public System.DateTime? ExpiryTime { get; set; }

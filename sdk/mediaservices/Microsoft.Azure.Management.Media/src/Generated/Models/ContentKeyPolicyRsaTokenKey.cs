@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Media.Models
     using System.Linq;
 
     /// <summary>
-    /// Specifies a RSA key for token validation
+    /// Specifies a RSA key for token validation.
     /// </summary>
     [Newtonsoft.Json.JsonObject("#Microsoft.Media.ContentKeyPolicyRsaTokenKey")]
     public partial class ContentKeyPolicyRsaTokenKey : ContentKeyPolicyRestrictionTokenKey
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.Media.Models
         /// Initializes a new instance of the ContentKeyPolicyRsaTokenKey
         /// class.
         /// </summary>
-        /// <param name="exponent">The RSA Parameter exponent</param>
-        /// <param name="modulus">The RSA Parameter modulus</param>
+        /// <param name="exponent">The RSA Parameter exponent.</param>
+        /// <param name="modulus">The RSA Parameter modulus.</param>
         public ContentKeyPolicyRsaTokenKey(byte[] exponent, byte[] modulus)
         {
             Exponent = exponent;
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Media.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the RSA Parameter exponent
+        /// Gets or sets the RSA Parameter exponent.
         /// </summary>
         [JsonProperty(PropertyName = "exponent")]
         public byte[] Exponent { get; set; }
 
         /// <summary>
-        /// Gets or sets the RSA Parameter modulus
+        /// Gets or sets the RSA Parameter modulus.
         /// </summary>
         [JsonProperty(PropertyName = "modulus")]
         public byte[] Modulus { get; set; }
