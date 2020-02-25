@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="applicationGatewayBackendAddressPools">Specifies an
         /// array of references to backend address pools of application
         /// gateways. A scale set can reference backend address pools of
-        /// multiple application gateways. Multiple scale sets cannot use the
-        /// same application gateway.</param>
+        /// multiple application gateways. Multiple scale sets can use the same
+        /// application gateway.</param>
         /// <param name="applicationSecurityGroups">Specifies an array of
         /// references to application security group.</param>
         /// <param name="loadBalancerBackendAddressPools">Specifies an array of
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies an array of references to backend address
         /// pools of application gateways. A scale set can reference backend
         /// address pools of multiple application gateways. Multiple scale sets
-        /// cannot use the same application gateway.
+        /// can use the same application gateway.
         /// </summary>
         [JsonProperty(PropertyName = "properties.applicationGatewayBackendAddressPools")]
         public IList<SubResource> ApplicationGatewayBackendAddressPools { get; set; }
