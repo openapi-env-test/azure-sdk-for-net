@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Storage
     using System.Threading.Tasks;
 
     /// <summary>
-    /// FileSharesOperations operations.
+    /// EncryptionScopesOperations operations.
     /// </summary>
-    internal partial class FileSharesOperations : IServiceOperations<StorageManagementClient>, IFileSharesOperations
+    internal partial class EncryptionScopesOperations : IServiceOperations<StorageManagementClient>, IEncryptionScopesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the FileSharesOperations class.
+        /// Initializes a new instance of the EncryptionScopesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal FileSharesOperations(StorageManagementClient client)
+        internal EncryptionScopesOperations(StorageManagementClient client)
         {
             if (client == null)
             {
@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Management.Storage
         public StorageManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all shares.
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -62,17 +65,14 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
-        /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of shares that can be included in the
-        /// list.
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='filter'>
-        /// Optional. When specified, only share names starting with the filter will be
-        /// listed.
-        /// </param>
-        /// <param name='expand'>
-        /// Optional, used to expand the properties within share's properties. Possible
-        /// values include: 'deleted'
+        /// <param name='encryptionScope'>
+        /// Encryption scope properties to be used for the create or update.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<FileShareItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string maxpagesize = default(string), string filter = default(string), ListSharesExpand? expand = default(ListSharesExpand?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EncryptionScope>> PutWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -153,293 +153,24 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
+            if (encryptionScopeName == null)
             {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("maxpagesize", maxpagesize);
-                tracingParameters.Add("filter", filter);
-                tracingParameters.Add("expand", expand);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                throw new ValidationException(ValidationRules.CannotBeNull, "encryptionScopeName");
             }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (encryptionScopeName != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (maxpagesize != null)
-            {
-                _queryParameters.Add(string.Format("$maxpagesize={0}", System.Uri.EscapeDataString(maxpagesize)));
-            }
-            if (filter != null)
-            {
-                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
-            }
-            if (expand != null)
-            {
-                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(expand, Client.SerializationSettings).Trim('"'))));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
+                if (encryptionScopeName.Length > 63)
                 {
-                    _httpRequest.Headers.Remove("accept-language");
+                    throw new ValidationException(ValidationRules.MaxLength, "encryptionScopeName", 63);
                 }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
+                if (encryptionScopeName.Length < 3)
                 {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                    throw new ValidationException(ValidationRules.MinLength, "encryptionScopeName", 3);
                 }
             }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
+            if (encryptionScope == null)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<FileShareItem>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<FileShareItem>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Creates a new share under the specified account as described by request
-        /// body. The share resource includes metadata and properties for that share.
-        /// It does not include a list of the files contained by the share.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='fileShare'>
-        /// Properties of the file share to create.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<FileShare>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileShare fileShare, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
-                }
-            }
-            if (shareName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "shareName");
-            }
-            if (shareName != null)
-            {
-                if (shareName.Length > 63)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "shareName", 63);
-                }
-                if (shareName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
-                }
-            }
-            if (fileShare == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "fileShare");
-            }
-            if (fileShare != null)
-            {
-                fileShare.Validate();
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.ApiVersion != null)
-            {
-                if (Client.ApiVersion.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
-                }
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "encryptionScope");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -450,18 +181,18 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("shareName", shareName);
-                tracingParameters.Add("fileShare", fileShare);
+                tracingParameters.Add("encryptionScopeName", encryptionScopeName);
+                tracingParameters.Add("encryptionScope", encryptionScope);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Put", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{shareName}", System.Uri.EscapeDataString(shareName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{encryptionScopeName}", System.Uri.EscapeDataString(encryptionScopeName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -505,9 +236,9 @@ namespace Microsoft.Azure.Management.Storage
 
             // Serialize Request
             string _requestContent = null;
-            if(fileShare != null)
+            if(encryptionScope != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(fileShare, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(encryptionScope, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -533,14 +264,13 @@ namespace Microsoft.Azure.Management.Storage
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -550,10 +280,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -566,7 +292,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<FileShare>();
+            var _result = new AzureOperationResponse<EncryptionScope>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -579,7 +305,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<FileShare>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EncryptionScope>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -597,7 +323,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<FileShare>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EncryptionScope>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -617,9 +343,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Updates share properties as specified in request body. Properties not
-        /// mentioned in the request will not be changed. Update fails if the specified
-        /// share does not already exist.
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -630,14 +355,14 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='fileShare'>
-        /// Properties to update for the file share.
+        /// <param name='encryptionScope'>
+        /// Encryption scope properties to be used for the update.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -645,7 +370,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -660,7 +385,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileShare fileShare, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EncryptionScope>> PatchWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -696,25 +421,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
             }
-            if (shareName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "shareName");
-            }
-            if (shareName != null)
-            {
-                if (shareName.Length > 63)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "shareName", 63);
-                }
-                if (shareName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
-                }
-            }
-            if (fileShare == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "fileShare");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -737,6 +443,25 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
+            if (encryptionScopeName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "encryptionScopeName");
+            }
+            if (encryptionScopeName != null)
+            {
+                if (encryptionScopeName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "encryptionScopeName", 63);
+                }
+                if (encryptionScopeName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "encryptionScopeName", 3);
+                }
+            }
+            if (encryptionScope == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "encryptionScope");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -746,18 +471,18 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("shareName", shareName);
-                tracingParameters.Add("fileShare", fileShare);
+                tracingParameters.Add("encryptionScopeName", encryptionScopeName);
+                tracingParameters.Add("encryptionScope", encryptionScope);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Patch", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{shareName}", System.Uri.EscapeDataString(shareName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{encryptionScopeName}", System.Uri.EscapeDataString(encryptionScopeName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -801,9 +526,9 @@ namespace Microsoft.Azure.Management.Storage
 
             // Serialize Request
             string _requestContent = null;
-            if(fileShare != null)
+            if(encryptionScope != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(fileShare, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(encryptionScope, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -829,14 +554,13 @@ namespace Microsoft.Azure.Management.Storage
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -846,10 +570,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -862,7 +582,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<FileShare>();
+            var _result = new AzureOperationResponse<EncryptionScope>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -875,7 +595,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<FileShare>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EncryptionScope>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -895,7 +615,7 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Gets properties of a specified share.
+        /// Returns the properties for the specified encryption scope.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -906,11 +626,11 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -918,7 +638,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -933,7 +653,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<FileShare>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EncryptionScope>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -969,19 +689,256 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
             }
-            if (shareName == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "shareName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (shareName != null)
+            if (Client.ApiVersion != null)
             {
-                if (shareName.Length > 63)
+                if (Client.ApiVersion.Length < 1)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "shareName", 63);
+                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
                 }
-                if (shareName.Length < 3)
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
+            if (encryptionScopeName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "encryptionScopeName");
+            }
+            if (encryptionScopeName != null)
+            {
+                if (encryptionScopeName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "encryptionScopeName", 63);
+                }
+                if (encryptionScopeName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "encryptionScopeName", 3);
+                }
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("encryptionScopeName", encryptionScopeName);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{encryptionScopeName}", System.Uri.EscapeDataString(encryptionScopeName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<EncryptionScope>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EncryptionScope>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
+                }
+            }
+            if (accountName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 24);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
             }
             if (Client.ApiVersion == null)
@@ -1015,16 +972,14 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("shareName", shareName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{shareName}", System.Uri.EscapeDataString(shareName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -1124,7 +1079,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<FileShare>();
+            var _result = new AzureOperationResponse<IPage<EncryptionScope>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1137,7 +1092,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<FileShare>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<EncryptionScope>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1157,509 +1112,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Deletes specified share under its account.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
-                }
-            }
-            if (shareName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "shareName");
-            }
-            if (shareName != null)
-            {
-                if (shareName.Length > 63)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "shareName", 63);
-                }
-                if (shareName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
-                }
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.ApiVersion != null)
-            {
-                if (Client.ApiVersion.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
-                }
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("shareName", shareName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{shareName}", System.Uri.EscapeDataString(shareName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("DELETE");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 204)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is
-        /// enabled
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='deletedShareName'>
-        /// Required. Identify the name of the deleted share that will be restored.
-        /// </param>
-        /// <param name='deletedShareVersion'>
-        /// Required. Identify the version of the deleted share that will be restored.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string deletedShareName = default(string), string deletedShareVersion = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
-                }
-            }
-            if (shareName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "shareName");
-            }
-            if (shareName != null)
-            {
-                if (shareName.Length > 63)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "shareName", 63);
-                }
-                if (shareName.Length < 3)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "shareName", 3);
-                }
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.ApiVersion != null)
-            {
-                if (Client.ApiVersion.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
-                }
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-            DeletedShare deletedShare = new DeletedShare();
-            if (deletedShareName != null || deletedShareVersion != null)
-            {
-                deletedShare.DeletedShareName = deletedShareName;
-                deletedShare.DeletedShareVersion = deletedShareVersion;
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("shareName", shareName);
-                tracingParameters.Add("deletedShare", deletedShare);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Restore", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{shareName}", System.Uri.EscapeDataString(shareName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            if(deletedShare != null)
-            {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(deletedShare, Client.SerializationSettings);
-                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Lists all shares.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1685,7 +1139,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<FileShareItem>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<EncryptionScope>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1799,7 +1253,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<FileShareItem>>();
+            var _result = new AzureOperationResponse<IPage<EncryptionScope>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1812,7 +1266,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<FileShareItem>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<EncryptionScope>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
