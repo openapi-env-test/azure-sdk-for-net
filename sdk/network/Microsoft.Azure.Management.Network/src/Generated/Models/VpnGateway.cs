@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualHub = default(SubResource), IList<VpnConnection> connections = default(IList<VpnConnection>), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), string etag = default(string))
+        public VpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualHub = default(SubResource), IList<VpnConnection> connections = default(IList<VpnConnection>), VpnGatewayBgpSettings bgpSettings = default(VpnGatewayBgpSettings), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             VirtualHub = virtualHub;
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets local network gateway's BGP speaker settings.
         /// </summary>
         [JsonProperty(PropertyName = "properties.bgpSettings")]
-        public BgpSettings BgpSettings { get; set; }
+        public VpnGatewayBgpSettings BgpSettings { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the VPN gateway resource. Possible
