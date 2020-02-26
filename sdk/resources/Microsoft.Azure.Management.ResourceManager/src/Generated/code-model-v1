@@ -1,0 +1,6546 @@
+{
+ "$id": "1",
+ "modelTypes": [
+  {
+   "$id": "2",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "3",
+     "isReadOnly": false,
+     "realPath": [
+      "principalId"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "4",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "5",
+      "fixed": false,
+      "raw": "Azure Active Directory principal ID associated with this identity."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "6",
+      "fixed": false,
+      "raw": "principalId"
+     },
+     "serializedName": "principalId",
+     "modelType": {
+      "$id": "7",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "8",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "9",
+     "isReadOnly": false,
+     "realPath": [
+      "clientId"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "10",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "11",
+      "fixed": false,
+      "raw": "Client App Id associated with this identity."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "12",
+      "fixed": false,
+      "raw": "clientId"
+     },
+     "serializedName": "clientId",
+     "modelType": {
+      "$id": "13",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "14",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "UserAssignedIdentity",
+   "documentation": "User-assigned managed identity.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "15",
+    "fixed": false,
+    "raw": "UserAssignedIdentity"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "UserAssignedIdentity",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/UserAssignedIdentity"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "16",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "17",
+     "isReadOnly": false,
+     "realPath": [
+      "type"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "18",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "19",
+      "fixed": false,
+      "raw": "Type of the managed identity."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "ManagedServiceIdentityType",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ManagedServiceIdentity-type"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "ManagedServiceIdentityType",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "20",
+      "fixed": false,
+      "raw": "type"
+     },
+     "serializedName": "type",
+     "modelType": {
+      "$id": "21",
+      "$type": "EnumType",
+      "values": [
+       {
+        "$id": "22",
+        "name": "UserAssigned",
+        "serializedName": "UserAssigned"
+       }
+      ],
+      "oldModelAsString": true,
+      "modelAsString": true,
+      "underlyingType": {
+       "$id": "23",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "24",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "25",
+       "fixed": false,
+       "raw": "ManagedServiceIdentityType"
+      }
+     }
+    },
+    {
+     "$id": "26",
+     "isReadOnly": false,
+     "realPath": [
+      "userAssignedIdentities"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "27",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "28",
+      "fixed": false,
+      "raw": "The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "29",
+      "fixed": false,
+      "raw": "userAssignedIdentities"
+     },
+     "serializedName": "userAssignedIdentities",
+     "modelType": {
+      "$id": "30",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$ref": "2"
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "31",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "ManagedServiceIdentity",
+   "documentation": "Managed identity generic object.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "32",
+    "fixed": false,
+    "raw": "ManagedServiceIdentity"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ManagedServiceIdentity",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ManagedServiceIdentity"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "33",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "34",
+     "isReadOnly": false,
+     "realPath": [
+      "identity"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "35",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "36",
+      "fixed": false,
+      "raw": "Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "37",
+      "fixed": false,
+      "raw": "identity"
+     },
+     "serializedName": "identity",
+     "modelType": {
+      "$ref": "16"
+     }
+    },
+    {
+     "$id": "38",
+     "isReadOnly": false,
+     "realPath": [
+      "location"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "39",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "40",
+      "fixed": false,
+      "raw": "The location of the ACI and the storage account for the deployment script."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "41",
+      "fixed": false,
+      "raw": "location"
+     },
+     "serializedName": "location",
+     "modelType": {
+      "$id": "42",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "43",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "44",
+     "isReadOnly": false,
+     "realPath": [
+      "tags"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "45",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "46",
+      "fixed": false,
+      "raw": "Resource tags."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "47",
+      "fixed": false,
+      "raw": "tags"
+     },
+     "serializedName": "tags",
+     "modelType": {
+      "$id": "48",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$id": "49",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "50",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "51",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "DeploymentScript",
+   "baseModelType": {
+    "$id": "52",
+    "$type": "CompositeType",
+    "properties": [
+     {
+      "$id": "53",
+      "isReadOnly": true,
+      "realPath": [
+       "id"
+      ],
+      "deprecated": false,
+      "collectionFormat": "none",
+      "defaultValue": {
+       "$id": "54",
+       "fixed": false
+      },
+      "documentation": {
+       "$id": "55",
+       "fixed": false,
+       "raw": "String Id used to locate any resource on Azure."
+      },
+      "isRequired": false,
+      "isConstant": false,
+      "name": {
+       "$id": "56",
+       "fixed": false,
+       "raw": "id"
+      },
+      "serializedName": "id",
+      "modelType": {
+       "$id": "57",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "58",
+        "fixed": false,
+        "raw": "String"
+       }
+      }
+     },
+     {
+      "$id": "59",
+      "isReadOnly": true,
+      "realPath": [
+       "name"
+      ],
+      "deprecated": false,
+      "collectionFormat": "none",
+      "defaultValue": {
+       "$id": "60",
+       "fixed": false
+      },
+      "documentation": {
+       "$id": "61",
+       "fixed": false,
+       "raw": "Name of this resource."
+      },
+      "isRequired": false,
+      "isConstant": false,
+      "name": {
+       "$id": "62",
+       "fixed": false,
+       "raw": "name"
+      },
+      "serializedName": "name",
+      "modelType": {
+       "$id": "63",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "64",
+        "fixed": false,
+        "raw": "String"
+       }
+      }
+     },
+     {
+      "$id": "65",
+      "isReadOnly": true,
+      "realPath": [
+       "type"
+      ],
+      "deprecated": false,
+      "collectionFormat": "none",
+      "defaultValue": {
+       "$id": "66",
+       "fixed": false
+      },
+      "documentation": {
+       "$id": "67",
+       "fixed": false,
+       "raw": "Type of this resource."
+      },
+      "isRequired": false,
+      "isConstant": false,
+      "name": {
+       "$id": "68",
+       "fixed": false,
+       "raw": "type"
+      },
+      "serializedName": "type",
+      "modelType": {
+       "$id": "69",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "70",
+        "fixed": false,
+        "raw": "String"
+       }
+      }
+     }
+    ],
+    "serializedName": "AzureResourceBase",
+    "documentation": "Common properties for all Azure resources.",
+    "containsConstantProperties": false,
+    "deprecated": false,
+    "name": {
+     "$id": "71",
+     "fixed": false,
+     "raw": "AzureResourceBase"
+    },
+    "extensions": {
+     "x-ms-metadata": {
+      "apiVersions": [
+       "2019-10-01-preview"
+      ],
+      "filename": [
+       "mem:///340?oai3.shaken.json"
+      ],
+      "name": "AzureResourceBase",
+      "originalLocations": [
+       "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/AzureResourceBase"
+      ]
+     },
+     "x-ms-azure-resource": true
+    }
+   },
+   "polymorphicDiscriminator": "kind",
+   "documentation": "Deployment script object.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "72",
+    "fixed": false,
+    "raw": "DeploymentScript"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "DeploymentScript",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScript"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "73",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "74",
+     "isReadOnly": false,
+     "realPath": [
+      "tags"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "75",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "76",
+      "fixed": false,
+      "raw": "Resource tags to be updated."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "77",
+      "fixed": false,
+      "raw": "tags"
+     },
+     "serializedName": "tags",
+     "modelType": {
+      "$id": "78",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$id": "79",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "80",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "81",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "DeploymentScriptUpdateParameter",
+   "baseModelType": {
+    "$ref": "52"
+   },
+   "documentation": "Deployment script parameters to be updated. ",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "82",
+    "fixed": false,
+    "raw": "DeploymentScriptUpdateParameter"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "DeploymentScriptUpdateParameter",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptUpdateParameter"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "83",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "84",
+     "isReadOnly": true,
+     "realPath": [
+      "type"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "85",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "86",
+      "fixed": false,
+      "raw": "The additional info type."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "87",
+      "fixed": false,
+      "raw": "type"
+     },
+     "serializedName": "type",
+     "modelType": {
+      "$id": "88",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "89",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "90",
+     "isReadOnly": true,
+     "realPath": [
+      "info"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "91",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "92",
+      "fixed": false,
+      "raw": "The additional info."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "93",
+      "fixed": false,
+      "raw": "info"
+     },
+     "serializedName": "info",
+     "modelType": {
+      "$id": "94",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "object",
+      "deprecated": false,
+      "name": {
+       "$id": "95",
+       "fixed": false,
+       "raw": "Object"
+      }
+     }
+    }
+   ],
+   "serializedName": "ErrorAdditionalInfo",
+   "documentation": "The resource management error additional info.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "96",
+    "fixed": false,
+    "raw": "ErrorAdditionalInfo"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "1.0"
+     ],
+     "filename": [
+      "mem:///341?oai3.shaken.json"
+     ],
+     "name": "ErrorAdditionalInfo",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/common-types/resource-management/v1/types.json#/components/schemas/ErrorAdditionalInfo"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "97",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "98",
+     "isReadOnly": true,
+     "realPath": [
+      "code"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "99",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "100",
+      "fixed": false,
+      "raw": "The error code."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "101",
+      "fixed": false,
+      "raw": "code"
+     },
+     "serializedName": "code",
+     "modelType": {
+      "$id": "102",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "103",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "104",
+     "isReadOnly": true,
+     "realPath": [
+      "message"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "105",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "106",
+      "fixed": false,
+      "raw": "The error message."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "107",
+      "fixed": false,
+      "raw": "message"
+     },
+     "serializedName": "message",
+     "modelType": {
+      "$id": "108",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "109",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "110",
+     "isReadOnly": true,
+     "realPath": [
+      "target"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "111",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "112",
+      "fixed": false,
+      "raw": "The error target."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "113",
+      "fixed": false,
+      "raw": "target"
+     },
+     "serializedName": "target",
+     "modelType": {
+      "$id": "114",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "115",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "116",
+     "isReadOnly": true,
+     "realPath": [
+      "details"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "117",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "118",
+      "fixed": false,
+      "raw": "The error details."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "119",
+      "fixed": false,
+      "raw": "details"
+     },
+     "serializedName": "details",
+     "modelType": {
+      "$id": "120",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "97"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "121",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "122",
+     "isReadOnly": true,
+     "realPath": [
+      "additionalInfo"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "123",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "124",
+      "fixed": false,
+      "raw": "The error additional info."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "125",
+      "fixed": false,
+      "raw": "additionalInfo"
+     },
+     "serializedName": "additionalInfo",
+     "modelType": {
+      "$id": "126",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "83"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "127",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "ErrorResponse",
+   "documentation": "The resource management error response.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "128",
+    "fixed": false,
+    "raw": "ErrorResponse"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "1.0"
+     ],
+     "filename": [
+      "mem:///341?oai3.shaken.json"
+     ],
+     "name": "ErrorResponse",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/common-types/resource-management/v1/types.json#/components/schemas/ErrorResponse"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "129",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "130",
+     "isReadOnly": true,
+     "realPath": [
+      "containerInstanceId"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "131",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "132",
+      "fixed": false,
+      "raw": "ACI resource Id."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "133",
+      "fixed": false,
+      "raw": "containerInstanceId"
+     },
+     "serializedName": "containerInstanceId",
+     "modelType": {
+      "$id": "134",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "135",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "136",
+     "isReadOnly": true,
+     "realPath": [
+      "storageAccountId"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "137",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "138",
+      "fixed": false,
+      "raw": "Storage account resource Id."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "139",
+      "fixed": false,
+      "raw": "storageAccountId"
+     },
+     "serializedName": "storageAccountId",
+     "modelType": {
+      "$id": "140",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "141",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "142",
+     "isReadOnly": true,
+     "realPath": [
+      "startTime"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "143",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "144",
+      "fixed": false,
+      "raw": "Start time of the script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "145",
+      "fixed": false,
+      "raw": "startTime"
+     },
+     "serializedName": "startTime",
+     "modelType": {
+      "$id": "146",
+      "$type": "PrimaryType",
+      "format": "date-time",
+      "knownPrimaryType": "dateTime",
+      "deprecated": false,
+      "name": {
+       "$id": "147",
+       "fixed": false,
+       "raw": "DateTime"
+      }
+     }
+    },
+    {
+     "$id": "148",
+     "isReadOnly": true,
+     "realPath": [
+      "endTime"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "149",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "150",
+      "fixed": false,
+      "raw": "End time of the script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "151",
+      "fixed": false,
+      "raw": "endTime"
+     },
+     "serializedName": "endTime",
+     "modelType": {
+      "$id": "152",
+      "$type": "PrimaryType",
+      "format": "date-time",
+      "knownPrimaryType": "dateTime",
+      "deprecated": false,
+      "name": {
+       "$id": "153",
+       "fixed": false,
+       "raw": "DateTime"
+      }
+     }
+    },
+    {
+     "$id": "154",
+     "isReadOnly": true,
+     "realPath": [
+      "expirationTime"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "155",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "156",
+      "fixed": false,
+      "raw": "Time the deployment script resource will expire."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "157",
+      "fixed": false,
+      "raw": "expirationTime"
+     },
+     "serializedName": "expirationTime",
+     "modelType": {
+      "$id": "158",
+      "$type": "PrimaryType",
+      "format": "date-time",
+      "knownPrimaryType": "dateTime",
+      "deprecated": false,
+      "name": {
+       "$id": "159",
+       "fixed": false,
+       "raw": "DateTime"
+      }
+     }
+    },
+    {
+     "$id": "160",
+     "isReadOnly": false,
+     "realPath": [
+      "error"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "161",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "162",
+      "fixed": false,
+      "raw": "Error that is relayed from the script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "163",
+      "fixed": false,
+      "raw": "error"
+     },
+     "serializedName": "error",
+     "modelType": {
+      "$ref": "97"
+     }
+    }
+   ],
+   "serializedName": "ScriptStatus",
+   "documentation": "Generic object modeling results of script execution.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "164",
+    "fixed": false,
+    "raw": "ScriptStatus"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ScriptStatus",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ScriptStatus"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "165",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "166",
+     "isReadOnly": false,
+     "realPath": [
+      "name"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "167",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "168",
+      "fixed": false,
+      "raw": "The name of the environment variable."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "169",
+      "fixed": false,
+      "raw": "name"
+     },
+     "serializedName": "name",
+     "modelType": {
+      "$id": "170",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "171",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "172",
+     "isReadOnly": false,
+     "realPath": [
+      "value"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "173",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "174",
+      "fixed": false,
+      "raw": "The value of the environment variable."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "175",
+      "fixed": false,
+      "raw": "value"
+     },
+     "serializedName": "value",
+     "modelType": {
+      "$id": "176",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "177",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "178",
+     "isReadOnly": false,
+     "realPath": [
+      "secureValue"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "179",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "180",
+      "fixed": false,
+      "raw": "The value of the secure environment variable."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "181",
+      "fixed": false,
+      "raw": "secureValue"
+     },
+     "serializedName": "secureValue",
+     "modelType": {
+      "$id": "182",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "183",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "EnvironmentVariable",
+   "documentation": "The environment variable to pass to the script in the container instance.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "184",
+    "fixed": false,
+    "raw": "EnvironmentVariable"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "EnvironmentVariable",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/EnvironmentVariable"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "185",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "186",
+     "isReadOnly": false,
+     "realPath": [
+      "cleanupPreference"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "187",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "188",
+      "fixed": false,
+      "raw": "The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "cleanupOptions",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-cleanupPreference"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "cleanupOptions",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "189",
+      "fixed": false,
+      "raw": "cleanupPreference"
+     },
+     "serializedName": "cleanupPreference",
+     "modelType": {
+      "$id": "190",
+      "$type": "EnumType",
+      "values": [
+       {
+        "$id": "191",
+        "name": "Always",
+        "serializedName": "Always"
+       },
+       {
+        "$id": "192",
+        "name": "OnSuccess",
+        "serializedName": "OnSuccess"
+       },
+       {
+        "$id": "193",
+        "name": "OnExpiration",
+        "serializedName": "OnExpiration"
+       }
+      ],
+      "oldModelAsString": true,
+      "modelAsString": true,
+      "underlyingType": {
+       "$id": "194",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "195",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "196",
+       "fixed": false,
+       "raw": "cleanupOptions"
+      }
+     }
+    },
+    {
+     "$id": "197",
+     "isReadOnly": true,
+     "realPath": [
+      "provisioningState"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "198",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "199",
+      "fixed": false,
+      "raw": "State of the script execution. This only appears in the response."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "ScriptProvisioningState",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-provisioningState"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "ScriptProvisioningState",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "200",
+      "fixed": false,
+      "raw": "provisioningState"
+     },
+     "serializedName": "provisioningState",
+     "modelType": {
+      "$id": "201",
+      "$type": "EnumType",
+      "values": [
+       {
+        "$id": "202",
+        "name": "Creating",
+        "serializedName": "Creating"
+       },
+       {
+        "$id": "203",
+        "name": "ProvisioningResources",
+        "serializedName": "ProvisioningResources"
+       },
+       {
+        "$id": "204",
+        "name": "Running",
+        "serializedName": "Running"
+       },
+       {
+        "$id": "205",
+        "name": "Succeeded",
+        "serializedName": "Succeeded"
+       },
+       {
+        "$id": "206",
+        "name": "Failed",
+        "serializedName": "Failed"
+       },
+       {
+        "$id": "207",
+        "name": "Canceled",
+        "serializedName": "Canceled"
+       }
+      ],
+      "oldModelAsString": true,
+      "modelAsString": true,
+      "underlyingType": {
+       "$id": "208",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "209",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "210",
+       "fixed": false,
+       "raw": "ScriptProvisioningState"
+      }
+     }
+    },
+    {
+     "$id": "211",
+     "isReadOnly": true,
+     "realPath": [
+      "status"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "212",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "213",
+      "fixed": false,
+      "raw": "Contains the results of script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "214",
+      "fixed": false,
+      "raw": "status"
+     },
+     "serializedName": "status",
+     "modelType": {
+      "$ref": "129"
+     }
+    },
+    {
+     "$id": "215",
+     "isReadOnly": true,
+     "realPath": [
+      "outputs"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "216",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "217",
+      "fixed": false,
+      "raw": "List of script outputs."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "218",
+      "fixed": false,
+      "raw": "outputs"
+     },
+     "serializedName": "outputs",
+     "modelType": {
+      "$id": "219",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$id": "220",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "object",
+       "deprecated": false,
+       "name": {
+        "$id": "221",
+        "fixed": false,
+        "raw": "Object"
+       }
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "222",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "223",
+     "isReadOnly": false,
+     "realPath": [
+      "primaryScriptUri"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "224",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "225",
+      "fixed": false,
+      "raw": "Uri for the script. This is the entry point for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "226",
+      "fixed": false,
+      "raw": "primaryScriptUri"
+     },
+     "serializedName": "primaryScriptUri",
+     "modelType": {
+      "$id": "227",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "228",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "229",
+     "isReadOnly": false,
+     "realPath": [
+      "supportingScriptUris"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "230",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "231",
+      "fixed": false,
+      "raw": "Supporting files for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "232",
+      "fixed": false,
+      "raw": "supportingScriptUris"
+     },
+     "serializedName": "supportingScriptUris",
+     "modelType": {
+      "$id": "233",
+      "$type": "SequenceType",
+      "elementType": {
+       "$id": "234",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "235",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "236",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "237",
+     "isReadOnly": false,
+     "realPath": [
+      "scriptContent"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "238",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "239",
+      "fixed": false,
+      "raw": "Script body."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "240",
+      "fixed": false,
+      "raw": "scriptContent"
+     },
+     "serializedName": "scriptContent",
+     "modelType": {
+      "$id": "241",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "242",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "243",
+     "isReadOnly": false,
+     "realPath": [
+      "arguments"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "244",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "245",
+      "fixed": false,
+      "raw": "Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2' "
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "246",
+      "fixed": false,
+      "raw": "arguments"
+     },
+     "serializedName": "arguments",
+     "modelType": {
+      "$id": "247",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "248",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "249",
+     "isReadOnly": false,
+     "realPath": [
+      "environmentVariables"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "250",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "251",
+      "fixed": false,
+      "raw": "The environment variables to pass over to the script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "252",
+      "fixed": false,
+      "raw": "environmentVariables"
+     },
+     "serializedName": "environmentVariables",
+     "modelType": {
+      "$id": "253",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "165"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "254",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "255",
+     "isReadOnly": false,
+     "realPath": [
+      "forceUpdateTag"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "256",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "257",
+      "fixed": false,
+      "raw": "Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "258",
+      "fixed": false,
+      "raw": "forceUpdateTag"
+     },
+     "serializedName": "forceUpdateTag",
+     "modelType": {
+      "$id": "259",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "260",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "261",
+     "isReadOnly": false,
+     "realPath": [
+      "retentionInterval"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "262",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "263",
+      "fixed": false,
+      "raw": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P7D means one week)."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "264",
+      "fixed": false,
+      "raw": "retentionInterval"
+     },
+     "serializedName": "retentionInterval",
+     "modelType": {
+      "$id": "265",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "266",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    },
+    {
+     "$id": "267",
+     "isReadOnly": false,
+     "realPath": [
+      "timeout"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "268",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "269",
+      "fixed": false,
+      "raw": "Maximum allowed script execution time specified in ISO 8601 format. Default value is PT1H"
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "270",
+      "fixed": false,
+      "raw": "timeout"
+     },
+     "serializedName": "timeout",
+     "modelType": {
+      "$id": "271",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "272",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    },
+    {
+     "$id": "273",
+     "isReadOnly": false,
+     "realPath": [
+      "azPowerShellVersion"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "274",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "275",
+      "fixed": false,
+      "raw": "Azure PowerShell module version to be used."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "276",
+      "fixed": false,
+      "raw": "azPowerShellVersion"
+     },
+     "serializedName": "azPowerShellVersion",
+     "modelType": {
+      "$id": "277",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "278",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "AzurePowerShellScriptProperties",
+   "documentation": "Properties of the Azure PowerShell script object.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "279",
+    "fixed": false,
+    "raw": "AzurePowerShellScriptProperties"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "AzurePowerShellScriptProperties",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/AzurePowerShellScriptProperties"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "280",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "281",
+     "isReadOnly": false,
+     "realPath": [
+      "properties"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "282",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "283",
+      "fixed": false,
+      "raw": "Properties of the Azure PowerShell script object."
+     },
+     "extensions": {
+      "x-ms-client-flatten": true
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "284",
+      "fixed": false,
+      "raw": "properties"
+     },
+     "serializedName": "properties",
+     "modelType": {
+      "$ref": "185"
+     }
+    }
+   ],
+   "serializedName": "AzurePowerShell",
+   "baseModelType": {
+    "$ref": "33"
+   },
+   "documentation": "Object model for the Azure PowerShell script.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "285",
+    "fixed": false,
+    "raw": "AzurePowerShellScript"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "AzurePowerShellScript",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/AzurePowerShellScript"
+     ]
+    },
+    "x-ms-discriminator-value": "AzurePowerShell"
+   }
+  },
+  {
+   "$id": "286",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "287",
+     "isReadOnly": false,
+     "realPath": [
+      "cleanupPreference"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "288",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "289",
+      "fixed": false,
+      "raw": "The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "cleanupOptions",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-cleanupPreference"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "cleanupOptions",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "290",
+      "fixed": false,
+      "raw": "cleanupPreference"
+     },
+     "serializedName": "cleanupPreference",
+     "modelType": {
+      "$ref": "190"
+     }
+    },
+    {
+     "$id": "291",
+     "isReadOnly": true,
+     "realPath": [
+      "provisioningState"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "292",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "293",
+      "fixed": false,
+      "raw": "State of the script execution. This only appears in the response."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "ScriptProvisioningState",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-provisioningState"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "ScriptProvisioningState",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "294",
+      "fixed": false,
+      "raw": "provisioningState"
+     },
+     "serializedName": "provisioningState",
+     "modelType": {
+      "$ref": "201"
+     }
+    },
+    {
+     "$id": "295",
+     "isReadOnly": true,
+     "realPath": [
+      "status"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "296",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "297",
+      "fixed": false,
+      "raw": "Contains the results of script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "298",
+      "fixed": false,
+      "raw": "status"
+     },
+     "serializedName": "status",
+     "modelType": {
+      "$ref": "129"
+     }
+    },
+    {
+     "$id": "299",
+     "isReadOnly": true,
+     "realPath": [
+      "outputs"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "300",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "301",
+      "fixed": false,
+      "raw": "List of script outputs."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "302",
+      "fixed": false,
+      "raw": "outputs"
+     },
+     "serializedName": "outputs",
+     "modelType": {
+      "$id": "303",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$id": "304",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "object",
+       "deprecated": false,
+       "name": {
+        "$id": "305",
+        "fixed": false,
+        "raw": "Object"
+       }
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "306",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "307",
+     "isReadOnly": false,
+     "realPath": [
+      "primaryScriptUri"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "308",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "309",
+      "fixed": false,
+      "raw": "Uri for the script. This is the entry point for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "310",
+      "fixed": false,
+      "raw": "primaryScriptUri"
+     },
+     "serializedName": "primaryScriptUri",
+     "modelType": {
+      "$id": "311",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "312",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "313",
+     "isReadOnly": false,
+     "realPath": [
+      "supportingScriptUris"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "314",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "315",
+      "fixed": false,
+      "raw": "Supporting files for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "316",
+      "fixed": false,
+      "raw": "supportingScriptUris"
+     },
+     "serializedName": "supportingScriptUris",
+     "modelType": {
+      "$id": "317",
+      "$type": "SequenceType",
+      "elementType": {
+       "$id": "318",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "319",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "320",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "321",
+     "isReadOnly": false,
+     "realPath": [
+      "scriptContent"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "322",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "323",
+      "fixed": false,
+      "raw": "Script body."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "324",
+      "fixed": false,
+      "raw": "scriptContent"
+     },
+     "serializedName": "scriptContent",
+     "modelType": {
+      "$id": "325",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "326",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "327",
+     "isReadOnly": false,
+     "realPath": [
+      "arguments"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "328",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "329",
+      "fixed": false,
+      "raw": "Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2' "
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "330",
+      "fixed": false,
+      "raw": "arguments"
+     },
+     "serializedName": "arguments",
+     "modelType": {
+      "$id": "331",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "332",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "333",
+     "isReadOnly": false,
+     "realPath": [
+      "environmentVariables"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "334",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "335",
+      "fixed": false,
+      "raw": "The environment variables to pass over to the script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "336",
+      "fixed": false,
+      "raw": "environmentVariables"
+     },
+     "serializedName": "environmentVariables",
+     "modelType": {
+      "$id": "337",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "165"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "338",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "339",
+     "isReadOnly": false,
+     "realPath": [
+      "forceUpdateTag"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "340",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "341",
+      "fixed": false,
+      "raw": "Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "342",
+      "fixed": false,
+      "raw": "forceUpdateTag"
+     },
+     "serializedName": "forceUpdateTag",
+     "modelType": {
+      "$id": "343",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "344",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "345",
+     "isReadOnly": false,
+     "realPath": [
+      "retentionInterval"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "346",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "347",
+      "fixed": false,
+      "raw": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P7D means one week)."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "348",
+      "fixed": false,
+      "raw": "retentionInterval"
+     },
+     "serializedName": "retentionInterval",
+     "modelType": {
+      "$id": "349",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "350",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    },
+    {
+     "$id": "351",
+     "isReadOnly": false,
+     "realPath": [
+      "timeout"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "352",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "353",
+      "fixed": false,
+      "raw": "Maximum allowed script execution time specified in ISO 8601 format. Default value is PT1H"
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "354",
+      "fixed": false,
+      "raw": "timeout"
+     },
+     "serializedName": "timeout",
+     "modelType": {
+      "$id": "355",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "356",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    },
+    {
+     "$id": "357",
+     "isReadOnly": false,
+     "realPath": [
+      "azCliVersion"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "358",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "359",
+      "fixed": false,
+      "raw": "Azure CLI module version to be used."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "360",
+      "fixed": false,
+      "raw": "azCliVersion"
+     },
+     "serializedName": "azCliVersion",
+     "modelType": {
+      "$id": "361",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "362",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "AzureCliScriptProperties",
+   "documentation": "Properties of the Azure CLI script object.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "363",
+    "fixed": false,
+    "raw": "AzureCliScriptProperties"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "AzureCliScriptProperties",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/AzureCliScriptProperties"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "364",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "365",
+     "isReadOnly": false,
+     "realPath": [
+      "properties"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "366",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "367",
+      "fixed": false,
+      "raw": "Properties of the Azure CLI script object."
+     },
+     "extensions": {
+      "x-ms-client-flatten": true
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "368",
+      "fixed": false,
+      "raw": "properties"
+     },
+     "serializedName": "properties",
+     "modelType": {
+      "$ref": "286"
+     }
+    }
+   ],
+   "serializedName": "AzureCLI",
+   "baseModelType": {
+    "$ref": "33"
+   },
+   "documentation": "Object model for the Azure CLI script.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "369",
+    "fixed": false,
+    "raw": "AzureCliScript"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "AzureCliScript",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/AzureCliScript"
+     ]
+    },
+    "x-ms-discriminator-value": "AzureCLI"
+   }
+  },
+  {
+   "$id": "370",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "371",
+     "isReadOnly": false,
+     "realPath": [
+      "primaryScriptUri"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "372",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "373",
+      "fixed": false,
+      "raw": "Uri for the script. This is the entry point for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "374",
+      "fixed": false,
+      "raw": "primaryScriptUri"
+     },
+     "serializedName": "primaryScriptUri",
+     "modelType": {
+      "$id": "375",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "376",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "377",
+     "isReadOnly": false,
+     "realPath": [
+      "supportingScriptUris"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "378",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "379",
+      "fixed": false,
+      "raw": "Supporting files for the external script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "380",
+      "fixed": false,
+      "raw": "supportingScriptUris"
+     },
+     "serializedName": "supportingScriptUris",
+     "modelType": {
+      "$id": "381",
+      "$type": "SequenceType",
+      "elementType": {
+       "$id": "382",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "string",
+       "deprecated": false,
+       "name": {
+        "$id": "383",
+        "fixed": false,
+        "raw": "String"
+       }
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "384",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "385",
+     "isReadOnly": false,
+     "realPath": [
+      "scriptContent"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "386",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "387",
+      "fixed": false,
+      "raw": "Script body."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "388",
+      "fixed": false,
+      "raw": "scriptContent"
+     },
+     "serializedName": "scriptContent",
+     "modelType": {
+      "$id": "389",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "390",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "391",
+     "isReadOnly": false,
+     "realPath": [
+      "arguments"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "392",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "393",
+      "fixed": false,
+      "raw": "Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2' "
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "394",
+      "fixed": false,
+      "raw": "arguments"
+     },
+     "serializedName": "arguments",
+     "modelType": {
+      "$id": "395",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "396",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "397",
+     "isReadOnly": false,
+     "realPath": [
+      "environmentVariables"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "398",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "399",
+      "fixed": false,
+      "raw": "The environment variables to pass over to the script."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "400",
+      "fixed": false,
+      "raw": "environmentVariables"
+     },
+     "serializedName": "environmentVariables",
+     "modelType": {
+      "$id": "401",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "165"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "402",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "403",
+     "isReadOnly": false,
+     "realPath": [
+      "forceUpdateTag"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "404",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "405",
+      "fixed": false,
+      "raw": "Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "406",
+      "fixed": false,
+      "raw": "forceUpdateTag"
+     },
+     "serializedName": "forceUpdateTag",
+     "modelType": {
+      "$id": "407",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "408",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    },
+    {
+     "$id": "409",
+     "isReadOnly": false,
+     "realPath": [
+      "retentionInterval"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "410",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "411",
+      "fixed": false,
+      "raw": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P7D means one week)."
+     },
+     "isRequired": true,
+     "isConstant": false,
+     "name": {
+      "$id": "412",
+      "fixed": false,
+      "raw": "retentionInterval"
+     },
+     "serializedName": "retentionInterval",
+     "modelType": {
+      "$id": "413",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "414",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    },
+    {
+     "$id": "415",
+     "isReadOnly": false,
+     "realPath": [
+      "timeout"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "416",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "417",
+      "fixed": false,
+      "raw": "Maximum allowed script execution time specified in ISO 8601 format. Default value is PT1H"
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "418",
+      "fixed": false,
+      "raw": "timeout"
+     },
+     "serializedName": "timeout",
+     "modelType": {
+      "$id": "419",
+      "$type": "PrimaryType",
+      "format": "duration",
+      "knownPrimaryType": "timeSpan",
+      "deprecated": false,
+      "name": {
+       "$id": "420",
+       "fixed": false,
+       "raw": "TimeSpan"
+      }
+     }
+    }
+   ],
+   "serializedName": "ScriptConfigurationBase",
+   "documentation": "Common configuration settings for both Azure PowerShell and Azure CLI scripts.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "421",
+    "fixed": false,
+    "raw": "ScriptConfigurationBase"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ScriptConfigurationBase",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ScriptConfigurationBase"
+     ]
+    },
+    "x-ms-external": true
+   }
+  },
+  {
+   "$id": "422",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "423",
+     "isReadOnly": false,
+     "realPath": [
+      "cleanupPreference"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "424",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "425",
+      "fixed": false,
+      "raw": "The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "cleanupOptions",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-cleanupPreference"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "cleanupOptions",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "426",
+      "fixed": false,
+      "raw": "cleanupPreference"
+     },
+     "serializedName": "cleanupPreference",
+     "modelType": {
+      "$ref": "190"
+     }
+    },
+    {
+     "$id": "427",
+     "isReadOnly": true,
+     "realPath": [
+      "provisioningState"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "428",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "429",
+      "fixed": false,
+      "raw": "State of the script execution. This only appears in the response."
+     },
+     "extensions": {
+      "x-ms-metadata": {
+       "apiVersions": [
+        "2019-10-01-preview"
+       ],
+       "filename": [
+        "mem:///340?oai3.shaken.json"
+       ],
+       "name": "ScriptProvisioningState",
+       "originalLocations": [
+        "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase-provisioningState"
+       ]
+      },
+      "x-ms-enum": {
+       "name": "ScriptProvisioningState",
+       "modelAsString": true,
+       "oldModelAsString": true
+      }
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "430",
+      "fixed": false,
+      "raw": "provisioningState"
+     },
+     "serializedName": "provisioningState",
+     "modelType": {
+      "$ref": "201"
+     }
+    },
+    {
+     "$id": "431",
+     "isReadOnly": true,
+     "realPath": [
+      "status"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "432",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "433",
+      "fixed": false,
+      "raw": "Contains the results of script execution."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "434",
+      "fixed": false,
+      "raw": "status"
+     },
+     "serializedName": "status",
+     "modelType": {
+      "$ref": "129"
+     }
+    },
+    {
+     "$id": "435",
+     "isReadOnly": true,
+     "realPath": [
+      "outputs"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "436",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "437",
+      "fixed": false,
+      "raw": "List of script outputs."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "438",
+      "fixed": false,
+      "raw": "outputs"
+     },
+     "serializedName": "outputs",
+     "modelType": {
+      "$id": "439",
+      "$type": "DictionaryType",
+      "valueType": {
+       "$id": "440",
+       "$type": "PrimaryType",
+       "knownPrimaryType": "object",
+       "deprecated": false,
+       "name": {
+        "$id": "441",
+        "fixed": false,
+        "raw": "Object"
+       }
+      },
+      "supportsAdditionalProperties": false,
+      "deprecated": false,
+      "name": {
+       "$id": "442",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "DeploymentScriptPropertiesBase",
+   "documentation": "Common properties for the deployment script.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "443",
+    "fixed": false,
+    "raw": "DeploymentScriptPropertiesBase"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "DeploymentScriptPropertiesBase",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptPropertiesBase"
+     ]
+    },
+    "x-ms-external": true
+   }
+  },
+  {
+   "$id": "444",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "445",
+     "isReadOnly": false,
+     "realPath": [
+      "value"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "446",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "447",
+      "fixed": false,
+      "raw": "An array of deployment scripts."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "448",
+      "fixed": false,
+      "raw": "value"
+     },
+     "serializedName": "value",
+     "modelType": {
+      "$id": "449",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "33"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "450",
+       "fixed": false
+      }
+     }
+    },
+    {
+     "$id": "451",
+     "isReadOnly": true,
+     "realPath": [
+      "nextLink"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "452",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "453",
+      "fixed": false,
+      "raw": "The URL to use for getting the next set of results."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "454",
+      "fixed": false,
+      "raw": "nextLink"
+     },
+     "serializedName": "nextLink",
+     "modelType": {
+      "$id": "455",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "456",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "DeploymentScriptListResult",
+   "documentation": "List of deployment scripts.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "457",
+    "fixed": false,
+    "raw": "DeploymentScriptListResult"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "DeploymentScriptListResult",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptListResult"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "458",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "459",
+     "isReadOnly": true,
+     "realPath": [
+      "log"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "460",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "461",
+      "fixed": false,
+      "raw": "Script execution logs in text format."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "462",
+      "fixed": false,
+      "raw": "log"
+     },
+     "serializedName": "log",
+     "modelType": {
+      "$id": "463",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "deprecated": false,
+      "name": {
+       "$id": "464",
+       "fixed": false,
+       "raw": "String"
+      }
+     }
+    }
+   ],
+   "serializedName": "LogProperties",
+   "documentation": "Script log properties.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "465",
+    "fixed": false,
+    "raw": "LogProperties"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "LogProperties",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/LogProperties"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "466",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "467",
+     "isReadOnly": false,
+     "realPath": [
+      "properties"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "468",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "469",
+      "fixed": false
+     },
+     "extensions": {
+      "x-ms-client-flatten": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "470",
+      "fixed": false,
+      "raw": "properties"
+     },
+     "serializedName": "properties",
+     "modelType": {
+      "$ref": "458"
+     }
+    }
+   ],
+   "serializedName": "ScriptLog",
+   "baseModelType": {
+    "$ref": "52"
+   },
+   "documentation": "Script execution log object.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "471",
+    "fixed": false,
+    "raw": "ScriptLog"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ScriptLog",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ScriptLog"
+     ]
+    }
+   }
+  },
+  {
+   "$id": "472",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "473",
+     "isReadOnly": false,
+     "realPath": [
+      "value"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "474",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "475",
+      "fixed": false,
+      "raw": "Deployment scripts logs."
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "476",
+      "fixed": false,
+      "raw": "value"
+     },
+     "serializedName": "value",
+     "modelType": {
+      "$id": "477",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "466"
+      },
+      "deprecated": false,
+      "name": {
+       "$id": "478",
+       "fixed": false
+      }
+     }
+    }
+   ],
+   "serializedName": "ScriptLogsList",
+   "documentation": "Deployment script execution logs.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "479",
+    "fixed": false,
+    "raw": "ScriptLogsList"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ScriptLogsList",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/ScriptLogsList"
+     ]
+    }
+   }
+  },
+  {
+   "$ref": "52"
+  },
+  {
+   "$id": "480",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "481",
+     "isReadOnly": false,
+     "realPath": [
+      "error"
+     ],
+     "deprecated": false,
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "482",
+      "fixed": false
+     },
+     "documentation": {
+      "$id": "483",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "484",
+      "fixed": false,
+      "raw": "error"
+     },
+     "serializedName": "error",
+     "modelType": {
+      "$ref": "97"
+     }
+    }
+   ],
+   "serializedName": "DeploymentScriptsError",
+   "documentation": "Deployment scripts error response.",
+   "containsConstantProperties": false,
+   "deprecated": false,
+   "name": {
+    "$id": "485",
+    "fixed": false,
+    "raw": "DeploymentScriptsError"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "DeploymentScriptsError",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/schemas/DeploymentScriptsError"
+     ]
+    }
+   }
+  }
+ ],
+ "errorTypes": [
+  {
+   "$ref": "480"
+  }
+ ],
+ "enumTypes": [
+  {
+   "$ref": "21"
+  },
+  {
+   "$id": "486",
+   "$type": "EnumType",
+   "values": [
+    {
+     "$id": "487",
+     "name": "AzurePowerShell",
+     "serializedName": "AzurePowerShell"
+    },
+    {
+     "$id": "488",
+     "name": "AzureCLI",
+     "serializedName": "AzureCLI"
+    }
+   ],
+   "oldModelAsString": true,
+   "modelAsString": true,
+   "underlyingType": {
+    "$id": "489",
+    "$type": "PrimaryType",
+    "knownPrimaryType": "string",
+    "deprecated": false,
+    "name": {
+     "$id": "490",
+     "fixed": false,
+     "raw": "String"
+    }
+   },
+   "deprecated": false,
+   "name": {
+    "$id": "491",
+    "fixed": false,
+    "raw": "ScriptType"
+   }
+  },
+  {
+   "$ref": "190"
+  },
+  {
+   "$ref": "201"
+  }
+ ],
+ "name": "DeploymentScriptsClient",
+ "namespace": "Microsoft.Azure.Management.ResourceManager",
+ "modelsName": "Models",
+ "apiVersion": "2019-10-01-preview",
+ "baseUrl": "https://management.azure.com",
+ "documentation": "The APIs listed in this specification can be used to manage Deployment Scripts resource through the Azure Resource Manager.",
+ "extensions": {
+  "security": [
+   {
+    "azure_auth": [
+     "user_impersonation"
+    ]
+   }
+  ]
+ },
+ "properties": [
+  {
+   "$id": "492",
+   "isReadOnly": false,
+   "realPath": [
+    "subscriptionId"
+   ],
+   "deprecated": false,
+   "collectionFormat": "none",
+   "defaultValue": {
+    "$id": "493",
+    "fixed": false
+   },
+   "documentation": {
+    "$id": "494",
+    "fixed": false,
+    "raw": "Subscription Id which forms part of the URI for every service call."
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "SubscriptionIdParameter",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+     ]
+    },
+    "x-ms-parameter-location": "client"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "495",
+    "fixed": false,
+    "raw": "subscriptionId"
+   },
+   "serializedName": "subscriptionId",
+   "modelType": {
+    "$id": "496",
+    "$type": "PrimaryType",
+    "knownPrimaryType": "string",
+    "deprecated": false,
+    "name": {
+     "$id": "497",
+     "fixed": false,
+     "raw": "String"
+    }
+   }
+  },
+  {
+   "$id": "498",
+   "isReadOnly": false,
+   "realPath": [
+    "scriptName"
+   ],
+   "deprecated": false,
+   "collectionFormat": "none",
+   "constraints": {
+    "MaxLength": "90",
+    "MinLength": "1"
+   },
+   "defaultValue": {
+    "$id": "499",
+    "fixed": false
+   },
+   "documentation": {
+    "$id": "500",
+    "fixed": false,
+    "raw": "Name of the deployment script."
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ScriptNameParameter",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+     ]
+    },
+    "x-ms-parameter-location": "method"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "501",
+    "fixed": false,
+    "raw": "scriptName"
+   },
+   "serializedName": "scriptName",
+   "modelType": {
+    "$id": "502",
+    "$type": "PrimaryType",
+    "knownPrimaryType": "string",
+    "deprecated": false,
+    "name": {
+     "$id": "503",
+     "fixed": false,
+     "raw": "String"
+    }
+   }
+  },
+  {
+   "$id": "504",
+   "isReadOnly": false,
+   "realPath": [
+    "resourceGroupName"
+   ],
+   "deprecated": false,
+   "collectionFormat": "none",
+   "constraints": {
+    "MaxLength": "90",
+    "MinLength": "1",
+    "Pattern": "^[-\\w\\._\\(\\)]+$"
+   },
+   "defaultValue": {
+    "$id": "505",
+    "fixed": false
+   },
+   "documentation": {
+    "$id": "506",
+    "fixed": false,
+    "raw": "The name of the resource group. The name is case insensitive."
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ResourceGroupNameParameter",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+     ]
+    },
+    "x-ms-parameter-location": "method"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "507",
+    "fixed": false,
+    "raw": "resourceGroupName"
+   },
+   "serializedName": "resourceGroupName",
+   "modelType": {
+    "$id": "508",
+    "$type": "PrimaryType",
+    "knownPrimaryType": "string",
+    "deprecated": false,
+    "name": {
+     "$id": "509",
+     "fixed": false,
+     "raw": "String"
+    }
+   }
+  },
+  {
+   "$id": "510",
+   "isReadOnly": false,
+   "realPath": [
+    "api-version"
+   ],
+   "deprecated": false,
+   "collectionFormat": "none",
+   "defaultValue": {
+    "$id": "511",
+    "fixed": false
+   },
+   "documentation": {
+    "$id": "512",
+    "fixed": false,
+    "raw": "Client Api version."
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "2019-10-01-preview"
+     ],
+     "filename": [
+      "mem:///340?oai3.shaken.json"
+     ],
+     "name": "ApiVersionParameter",
+     "originalLocations": [
+      "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ApiVersionParameter"
+     ]
+    },
+    "x-ms-parameter-location": "client"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "513",
+    "fixed": false,
+    "raw": "api-version"
+   },
+   "serializedName": "api-version",
+   "modelType": {
+    "$id": "514",
+    "$type": "PrimaryType",
+    "knownPrimaryType": "string",
+    "deprecated": false,
+    "name": {
+     "$id": "515",
+     "fixed": false,
+     "raw": "String"
+    }
+   }
+  }
+ ],
+ "operations": [
+  {
+   "$id": "516",
+   "methods": [
+    {
+     "$id": "517",
+     "parameters": [
+      {
+       "$id": "518",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "519",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "520",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "521",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "522",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "523",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "524",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "525",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "526",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "527",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "528",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "529",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "530",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "531",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "532",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "533",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "534",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "535",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "536",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "537",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "538",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "539",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "540",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "541",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "542",
+       "location": "body",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "543",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "544",
+        "fixed": false,
+        "raw": "Deployment script supplied to the operation."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·requestbody",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/requestBodies/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·requestbody"
+         ]
+        },
+        "x-ms-requestBody-name": "deploymentScript"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "545",
+        "fixed": false,
+        "raw": "deploymentScript"
+       },
+       "serializedName": "deploymentScript",
+       "modelType": {
+        "$ref": "33"
+       }
+      }
+     ],
+     "name": {
+      "$id": "546",
+      "fixed": false,
+      "raw": "Create"
+     },
+     "group": {
+      "$id": "547",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_Create",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "put",
+     "responses": {
+      "OK": {
+       "$id": "548",
+       "body": {
+        "$ref": "33"
+       },
+       "extensions": {
+        "$id": "549",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·200",
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·201"
+         ]
+        }
+       },
+       "isNullable": true
+      },
+      "Created": {
+       "$id": "550",
+       "body": {
+        "$ref": "33"
+       },
+       "extensions": {
+        "$id": "551",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·200",
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·201"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "552",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "553",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·put·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "554",
+      "body": {
+       "$ref": "33"
+      },
+      "isNullable": true
+     },
+     "description": "Creates a deployment script.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-long-running-operation": true,
+      "x-ms-examples": {
+       "DeploymentScriptsCreate": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript",
+         "deploymentScript": {
+          "kind": "AzurePowerShell",
+          "location": "westus",
+          "identity": {
+           "type": "UserAssigned",
+           "userAssignedIdentities": {
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+           }
+          },
+          "properties": {
+           "azPowerShellVersion": "1.7.0",
+           "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+           "arguments": "-Location 'westus' -Name \"*rg2\"",
+           "supportingScriptUris": [
+            "https://uri1.to.supporting.script",
+            "https://uri2.to.supporting.script"
+           ],
+           "retentionInterval": "PT7D",
+           "timeout": "PT1H",
+           "cleanupPreference": "Always"
+          }
+         }
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "properties": {
+            "provisioningState": "Succeeded",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "supportingScriptUris": [
+             "https://uri1.to.supporting.script",
+             "https://uri2.to.supporting.script"
+            ],
+            "retentionInterval": "P7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            },
+            "outputs": {
+             "output1": "value1"
+            }
+           }
+          }
+         },
+         "201": {
+          "body": {
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "properties": {
+            "provisioningState": "Creating",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "supportingScriptUris": [
+             "https://uri1.to.supporting.script",
+             "https://uri2.to.supporting.script"
+            ],
+            "retentionInterval": "P7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            }
+           }
+          }
+         }
+        }
+       },
+       "DeploymentScriptsCreate_MinCreate": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript",
+         "deploymentScript": {
+          "kind": "AzurePowerShell",
+          "location": "westus",
+          "identity": {
+           "type": "UserAssigned",
+           "userAssignedIdentities": {
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+           }
+          },
+          "properties": {
+           "azPowerShellVersion": "1.7.0",
+           "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+           "arguments": "-Location 'westus' -Name \"*rg2\"",
+           "retentionInterval": "P7D"
+          }
+         }
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "properties": {
+            "provisioningState": "Succeeded",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "retentionInterval": "P7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            },
+            "outputs": {
+             "output1": "value1"
+            }
+           }
+          }
+         },
+         "201": {
+          "body": {
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "properties": {
+            "provisioningState": "Creating",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "retentionInterval": "P7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "x-ms-requestBody-index": "4"
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "555",
+     "parameters": [
+      {
+       "$id": "556",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "557",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "558",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "559",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "560",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "561",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "562",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "563",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "564",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "565",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "566",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "567",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "568",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "569",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "570",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "571",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "572",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "573",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "574",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "575",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "576",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "577",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "578",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "579",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "580",
+       "location": "body",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "581",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "582",
+        "fixed": false,
+        "raw": "Deployment script resource with the tags to be updated."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·requestbody",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/requestBodies/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·requestbody"
+         ]
+        },
+        "x-ms-requestBody-name": "deploymentScript"
+       },
+       "isRequired": false,
+       "isConstant": false,
+       "name": {
+        "$id": "583",
+        "fixed": false,
+        "raw": "deploymentScript"
+       },
+       "serializedName": "deploymentScript",
+       "modelType": {
+        "$ref": "73"
+       }
+      }
+     ],
+     "name": {
+      "$id": "584",
+      "fixed": false,
+      "raw": "Update"
+     },
+     "group": {
+      "$id": "585",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_Update",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "patch",
+     "responses": {
+      "OK": {
+       "$id": "586",
+       "body": {
+        "$ref": "33"
+       },
+       "extensions": {
+        "$id": "587",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "588",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "589",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·patch·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "590",
+      "body": {
+       "$ref": "33"
+      },
+      "isNullable": true
+     },
+     "description": "Updates deployment script tags with specified values.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsUpdate": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript",
+         "deploymentScript": {
+          "tags": {}
+         }
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "properties": {
+            "provisioningState": "Succeeded",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "supportingScriptUris": [
+             "https://uri1.to.supporting.script",
+             "https://uri2.to.supporting.script"
+            ],
+            "retentionInterval": "P7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            },
+            "outputs": {
+             "output1": "value1"
+            }
+           },
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "tags": {}
+          }
+         }
+        }
+       }
+      },
+      "x-ms-requestBody-index": "4"
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "591",
+     "parameters": [
+      {
+       "$id": "592",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "593",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "594",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "595",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "596",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "597",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "598",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "599",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "600",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "601",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "602",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "603",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "604",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "605",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "606",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "607",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "608",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "609",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "610",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "611",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "612",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "613",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "614",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "615",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "616",
+      "fixed": false,
+      "raw": "Get"
+     },
+     "group": {
+      "$id": "617",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_Get",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "618",
+       "body": {
+        "$ref": "33"
+       },
+       "extensions": {
+        "$id": "619",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·get·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "620",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "621",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·get·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·get·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "622",
+      "body": {
+       "$ref": "33"
+      },
+      "isNullable": true
+     },
+     "description": "Gets a deployment script with a given name.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsGet": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript"
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "kind": "AzurePowerShell",
+           "location": "westus",
+           "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+            }
+           },
+           "properties": {
+            "provisioningState": "Succeeded",
+            "azPowerShellVersion": "1.7.0",
+            "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+            "arguments": "-Location 'westus' -Name \"*rg2\"",
+            "retentionInterval": "PT7D",
+            "timeout": "PT1H",
+            "cleanupPreference": "Always",
+            "status": {
+             "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+             "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+             "startTime": "2018-11-13T23:19:45+00:00",
+             "endTime": "2018-11-13T23:19:45+00:00",
+             "expirationTime": "2018-11-13T23:19:45+00:00"
+            },
+            "outputs": {
+             "output1": "value1"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "623",
+     "parameters": [
+      {
+       "$id": "624",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "625",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "626",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "627",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "628",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "629",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "630",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "631",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "632",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "633",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "634",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "635",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "636",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "637",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "638",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "639",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "640",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "641",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "642",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "643",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "644",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "645",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "646",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "647",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "648",
+      "fixed": false,
+      "raw": "Delete"
+     },
+     "group": {
+      "$id": "649",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_Delete",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "delete",
+     "responses": {
+      "OK": {
+       "$id": "650",
+       "extensions": {
+        "$id": "651",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·200",
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·204"
+         ]
+        }
+       },
+       "isNullable": true
+      },
+      "NoContent": {
+       "$id": "652",
+       "extensions": {
+        "$id": "653",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·200",
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·204"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "654",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "655",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname·delete·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "656",
+      "isNullable": true
+     },
+     "description": "Deletes a deployment script. When operation completes, status code 200 returned without content.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsDelete": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript",
+         "deploymentScript": {
+          "kind": "AzurePowerShell",
+          "location": "westus",
+          "identity": {
+           "type": "UserAssigned",
+           "userAssignedIdentities": {
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+           }
+          },
+          "properties": {
+           "provisioningState": "Succeeded",
+           "azPowerShellVersion": "1.7.0",
+           "scriptContent": "user script body",
+           "arguments": "user script arguments",
+           "supportingScriptUris": [
+            "https://uri1.to.supporting.script",
+            "https://uri2.to.supporting.script"
+           ],
+           "retentionInterval": "PT7D",
+           "timeout": "PT1H",
+           "cleanupPreference": "Always",
+           "results": {
+            "aciId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+            "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+            "startTime": "2018-11-13T23:19:45+00:00",
+            "endTime": "2018-11-13T23:19:45+00:00",
+            "expirationTime": "2018-11-13T23:19:45+00:00"
+           },
+           "outputs": {
+            "output1": "value1"
+           }
+          }
+         }
+        },
+        "responses": {
+         "200": {},
+         "204": {}
+        }
+       }
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "657",
+     "parameters": [
+      {
+       "$id": "658",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "659",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "660",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "661",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "662",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "663",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "664",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "665",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "666",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "667",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "668",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "669",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "670",
+      "fixed": false,
+      "raw": "ListBySubscription"
+     },
+     "group": {
+      "$id": "671",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_ListBySubscription",
+     "url": "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentScripts",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "672",
+       "body": {
+        "$ref": "444"
+       },
+       "extensions": {
+        "$id": "673",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-providers-microsoft-resources-deploymentscripts·get·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-providers-microsoft-resources-deploymentscripts·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "674",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "675",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-providers-microsoft-resources-deploymentscripts·get·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-providers-microsoft-resources-deploymentscripts·get·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "676",
+      "body": {
+       "$ref": "444"
+      },
+      "isNullable": true
+     },
+     "description": "Lists all deployment scripts for a given subscription.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsListBySubscription": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000"
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "value": [
+            {
+             "kind": "AzurePowerShell",
+             "location": "westus",
+             "identity": {
+              "type": "UserAssigned",
+              "userAssignedIdentities": {
+               "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+              }
+             },
+             "properties": {
+              "provisioningState": "Succeeded",
+              "azPowerShellVersion": "1.7.0",
+              "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+              "arguments": "-Location 'westus' -Name \"*rg2\"",
+              "retentionInterval": "PT7D",
+              "timeout": "PT1H",
+              "cleanupPreference": "Always",
+              "status": {
+               "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+               "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+               "startTime": "2018-11-13T23:19:45+00:00",
+               "endTime": "2018-11-13T23:19:45+00:00",
+               "expirationTime": "2018-11-13T23:19:45+00:00"
+              },
+              "outputs": {
+               "output1": "value1"
+              }
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      },
+      "x-ms-pageable": {
+       "nextLinkName": "nextLink"
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "677",
+     "parameters": [
+      {
+       "$id": "678",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "679",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "680",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "681",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "682",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "683",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "684",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "685",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "686",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "687",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "688",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "689",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "690",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "691",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "692",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "693",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "694",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "695",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "696",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "697",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "698",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "699",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "700",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "701",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "702",
+      "fixed": false,
+      "raw": "GetLogs"
+     },
+     "group": {
+      "$id": "703",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_GetLogs",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}/logs",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "704",
+       "body": {
+        "$ref": "472"
+       },
+       "extensions": {
+        "$id": "705",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs·get·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "706",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "707",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs·get·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs·get·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "708",
+      "body": {
+       "$ref": "472"
+      },
+      "isNullable": true
+     },
+     "description": "Gets deployment script logs for a given deployment script name.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsGetLogs": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript"
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "value": [
+            {
+             "properties": {
+              "log": "script execution stdout/stderr logs"
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "709",
+     "parameters": [
+      {
+       "$id": "710",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "711",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "712",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "713",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "714",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "715",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "716",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "717",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "718",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "719",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "720",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "721",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "722",
+       "clientProperty": {
+        "$ref": "498"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1"
+       },
+       "defaultValue": {
+        "$id": "723",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "724",
+        "fixed": false,
+        "raw": "Name of the deployment script."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ScriptNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ScriptNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "725",
+        "fixed": false,
+        "raw": "scriptName"
+       },
+       "serializedName": "scriptName",
+       "modelType": {
+        "$id": "726",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "727",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "728",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "729",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "730",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "731",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "732",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "733",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "734",
+      "fixed": false,
+      "raw": "GetLogsDefault"
+     },
+     "group": {
+      "$id": "735",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_GetLogsDefault",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}/logs/default",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "736",
+       "body": {
+        "$ref": "466"
+       },
+       "extensions": {
+        "$id": "737",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs-default·get·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs-default·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "738",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "739",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs-default·get·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts-scriptname-logs-default·get·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "740",
+      "body": {
+       "$ref": "466"
+      },
+      "isNullable": true
+     },
+     "description": "Gets deployment script logs for a given deployment script name.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsGetLogs": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript"
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "properties": {
+            "log": "script execution stdout/stderr logs"
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "741",
+     "parameters": [
+      {
+       "$id": "742",
+       "clientProperty": {
+        "$ref": "492"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "743",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "744",
+        "fixed": false,
+        "raw": "Subscription Id which forms part of the URI for every service call."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "SubscriptionIdParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/SubscriptionIdParameter"
+         ]
+        },
+        "x-ms-parameter-location": "client"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "745",
+        "fixed": false,
+        "raw": "subscriptionId"
+       },
+       "serializedName": "subscriptionId",
+       "modelType": {
+        "$id": "746",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "747",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "748",
+       "clientProperty": {
+        "$ref": "504"
+       },
+       "location": "path",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "constraints": {
+        "MaxLength": "90",
+        "MinLength": "1",
+        "Pattern": "^[-\\w\\._\\(\\)]+$"
+       },
+       "defaultValue": {
+        "$id": "749",
+        "fixed": false
+       },
+       "documentation": {
+        "$id": "750",
+        "fixed": false,
+        "raw": "The name of the resource group. The name is case insensitive."
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "ResourceGroupNameParameter",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/parameters/ResourceGroupNameParameter"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "751",
+        "fixed": false,
+        "raw": "resourceGroupName"
+       },
+       "serializedName": "resourceGroupName",
+       "modelType": {
+        "$id": "752",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "753",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      },
+      {
+       "$id": "754",
+       "location": "query",
+       "deprecated": false,
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "755",
+        "fixed": false,
+        "raw": "2019-10-01-preview"
+       },
+       "documentation": {
+        "$id": "756",
+        "fixed": false,
+        "raw": "The API version to use for the request."
+       },
+       "isRequired": true,
+       "isConstant": true,
+       "name": {
+        "$id": "757",
+        "fixed": false,
+        "raw": "api-version"
+       },
+       "serializedName": "api-version",
+       "modelType": {
+        "$id": "758",
+        "$type": "PrimaryType",
+        "knownPrimaryType": "string",
+        "deprecated": false,
+        "name": {
+         "$id": "759",
+         "fixed": false,
+         "raw": "String"
+        }
+       }
+      }
+     ],
+     "name": {
+      "$id": "760",
+      "fixed": false,
+      "raw": "ListByResourceGroup"
+     },
+     "group": {
+      "$id": "761",
+      "fixed": false,
+      "raw": "DeploymentScripts"
+     },
+     "serializedName": "DeploymentScripts_ListByResourceGroup",
+     "url": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "762",
+       "body": {
+        "$ref": "444"
+       },
+       "extensions": {
+        "$id": "763",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "2019-10-01-preview"
+         ],
+         "filename": [
+          "mem:///340?oai3.shaken.json"
+         ],
+         "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts·get·responses·200",
+         "originalLocations": [
+          "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "764",
+      "body": {
+       "$ref": "480"
+      },
+      "extensions": {
+       "$id": "765",
+       "x-ms-metadata": {
+        "apiVersions": [
+         "2019-10-01-preview"
+        ],
+        "filename": [
+         "mem:///340?oai3.shaken.json"
+        ],
+        "name": "paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts·get·responses·default",
+        "originalLocations": [
+         "file:///z/work/azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Resources/preview/2019-10-01-preview/deploymentScripts.json#/components/responses/paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-resources-deploymentscripts·get·responses·default"
+        ]
+       }
+      },
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "766",
+      "body": {
+       "$ref": "444"
+      },
+      "isNullable": true
+     },
+     "description": "Lists deployments scripts.",
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": [
+       {
+        "url": "https://management.azure.com/"
+       }
+      ],
+      "x-ms-examples": {
+       "DeploymentScriptsList": {
+        "parameters": {
+         "api-version": "2019-10-01-preview",
+         "subscriptionId": "00000000-0000-0000-0000-000000000000",
+         "resourceGroupName": "script-rg",
+         "scriptName": "MyDeploymentScript"
+        },
+        "responses": {
+         "200": {
+          "body": {
+           "value": [
+            {
+             "kind": "AzurePowerShell",
+             "location": "westus",
+             "identity": {
+              "type": "UserAssigned",
+              "userAssignedIdentities": {
+               "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {}
+              }
+             },
+             "properties": {
+              "provisioningState": "Succeeded",
+              "azPowerShellVersion": "1.7.0",
+              "scriptContent": "Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name",
+              "arguments": "-Location 'westus' -Name \"*rg2\"",
+              "supportingScriptUris": [
+               "https://uri1.to.supporting.script",
+               "https://uri2.to.supporting.script"
+              ],
+              "retentionInterval": "P7D",
+              "timeout": "PT1H",
+              "cleanupPreference": "Always",
+              "status": {
+               "containerInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer",
+               "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage",
+               "startTime": "2018-11-13T23:19:45+00:00",
+               "endTime": "2018-11-13T23:19:45+00:00",
+               "expirationTime": "2018-11-13T23:19:45+00:00"
+              },
+              "outputs": {
+               "output1": "value1"
+              }
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      },
+      "x-ms-pageable": {
+       "nextLinkName": "nextLink"
+      }
+     },
+     "deprecated": false,
+     "hidden": false
+    }
+   ],
+   "name": {
+    "$id": "767",
+    "fixed": false,
+    "raw": "DeploymentScripts"
+   },
+   "typeName": {
+    "$id": "768",
+    "fixed": false
+   },
+   "nameForProperty": "DeploymentScripts"
+  }
+ ]
+}
