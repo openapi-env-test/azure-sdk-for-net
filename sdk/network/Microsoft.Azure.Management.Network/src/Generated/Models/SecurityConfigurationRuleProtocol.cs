@@ -12,11 +12,15 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for Topology.
+    /// Defines values for SecurityConfigurationRuleProtocol.
     /// </summary>
-    public static class Topology
+    public static class SecurityConfigurationRuleProtocol
     {
-        public const string HubAndSpokeTopology = "HubAndSpokeTopology";
-        public const string MeshTopology = "MeshTopology";
+        public const string Tcp = "Tcp";
+        public const string Udp = "Udp";
+        public const string Icmp = "Icmp";
+        public const string Esp = "Esp";
+        public const string Asterisk = "*";
+        public const string Ah = "Ah";
     }
 }

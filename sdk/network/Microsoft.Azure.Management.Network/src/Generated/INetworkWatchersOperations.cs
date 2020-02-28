@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Topology>> GetTopologyWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TopologyParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Topology1>> GetTopologyWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TopologyParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Verify IP flow from the specified VM to a location given the
         /// currently configured NSG rules.

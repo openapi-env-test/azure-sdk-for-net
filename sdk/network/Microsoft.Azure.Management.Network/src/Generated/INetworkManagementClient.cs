@@ -251,6 +251,41 @@ namespace Microsoft.Azure.Management.Network
         ILoadBalancerProbesOperations LoadBalancerProbes { get; }
 
         /// <summary>
+        /// Gets the IConnectivityConfigurationsOperations.
+        /// </summary>
+        IConnectivityConfigurationsOperations ConnectivityConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationsOperations.
+        /// </summary>
+        ISecurityConfigurationsOperations SecurityConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationRulesOperations.
+        /// </summary>
+        ISecurityConfigurationRulesOperations SecurityConfigurationRules { get; }
+
+        /// <summary>
+        /// Gets the ICommitsOperations.
+        /// </summary>
+        ICommitsOperations Commits { get; }
+
+        /// <summary>
+        /// Gets the INetworkGroupsOperations.
+        /// </summary>
+        INetworkGroupsOperations NetworkGroups { get; }
+
+        /// <summary>
+        /// Gets the IActiveConfigurationsOperations.
+        /// </summary>
+        IActiveConfigurationsOperations ActiveConfigurations { get; }
+
+        /// <summary>
+        /// Gets the INetworkManagersOperations.
+        /// </summary>
+        INetworkManagersOperations NetworkManagers { get; }
+
+        /// <summary>
         /// Gets the INatGatewaysOperations.
         /// </summary>
         INatGatewaysOperations NatGateways { get; }

@@ -254,6 +254,41 @@ namespace Microsoft.Azure.Management.Network
         public virtual ILoadBalancerProbesOperations LoadBalancerProbes { get; private set; }
 
         /// <summary>
+        /// Gets the IConnectivityConfigurationsOperations.
+        /// </summary>
+        public virtual IConnectivityConfigurationsOperations ConnectivityConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationsOperations.
+        /// </summary>
+        public virtual ISecurityConfigurationsOperations SecurityConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecurityConfigurationRulesOperations.
+        /// </summary>
+        public virtual ISecurityConfigurationRulesOperations SecurityConfigurationRules { get; private set; }
+
+        /// <summary>
+        /// Gets the ICommitsOperations.
+        /// </summary>
+        public virtual ICommitsOperations Commits { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkGroupsOperations.
+        /// </summary>
+        public virtual INetworkGroupsOperations NetworkGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IActiveConfigurationsOperations.
+        /// </summary>
+        public virtual IActiveConfigurationsOperations ActiveConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkManagersOperations.
+        /// </summary>
+        public virtual INetworkManagersOperations NetworkManagers { get; private set; }
+
+        /// <summary>
         /// Gets the INatGatewaysOperations.
         /// </summary>
         public virtual INatGatewaysOperations NatGateways { get; private set; }
@@ -799,6 +834,13 @@ namespace Microsoft.Azure.Management.Network
             LoadBalancerOutboundRules = new LoadBalancerOutboundRulesOperations(this);
             LoadBalancerNetworkInterfaces = new LoadBalancerNetworkInterfacesOperations(this);
             LoadBalancerProbes = new LoadBalancerProbesOperations(this);
+            ConnectivityConfigurations = new ConnectivityConfigurationsOperations(this);
+            SecurityConfigurations = new SecurityConfigurationsOperations(this);
+            SecurityConfigurationRules = new SecurityConfigurationRulesOperations(this);
+            Commits = new CommitsOperations(this);
+            NetworkGroups = new NetworkGroupsOperations(this);
+            ActiveConfigurations = new ActiveConfigurationsOperations(this);
+            NetworkManagers = new NetworkManagersOperations(this);
             NatGateways = new NatGatewaysOperations(this);
             NetworkInterfaces = new NetworkInterfacesOperations(this);
             NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);

@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for Topology.
+    /// Defines values for SecurityConfigurationRuleAccess.
     /// </summary>
-    public static class Topology
+    public static class SecurityConfigurationRuleAccess
     {
-        public const string HubAndSpokeTopology = "HubAndSpokeTopology";
-        public const string MeshTopology = "MeshTopology";
+        public const string Allow = "Allow";
+        public const string Deny = "Deny";
+        public const string AlwaysAllow = "AlwaysAllow";
     }
 }

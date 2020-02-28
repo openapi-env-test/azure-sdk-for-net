@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='parameters'>
             /// Parameters that define the representation of topology.
             /// </param>
-            public static Topology GetTopology(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TopologyParameters parameters)
+            public static Topology1 GetTopology(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TopologyParameters parameters)
             {
                 return operations.GetTopologyAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Topology> GetTopologyAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TopologyParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Topology1> GetTopologyAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TopologyParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetTopologyWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

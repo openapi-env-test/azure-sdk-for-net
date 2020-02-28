@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for Topology.
+    /// Defines values for GroupConnectivity.
     /// </summary>
-    public static class Topology
+    public static class GroupConnectivity
     {
-        public const string HubAndSpokeTopology = "HubAndSpokeTopology";
-        public const string MeshTopology = "MeshTopology";
+        public const string Transitive = "Transitive";
+        public const string NonTransitive = "NonTransitive";
     }
 }
