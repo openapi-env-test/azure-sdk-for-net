@@ -127,16 +127,6 @@ namespace Microsoft.Azure.Management.Security
         IAllowedConnectionsOperations AllowedConnections { get; }
 
         /// <summary>
-        /// Gets the IDiscoveredSecuritySolutionsOperations.
-        /// </summary>
-        IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; }
-
-        /// <summary>
-        /// Gets the IExternalSecuritySolutionsOperations.
-        /// </summary>
-        IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; }
-
-        /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
         /// </summary>
         IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; }
@@ -230,6 +220,16 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IAssessmentsOperations.
         /// </summary>
         IAssessmentsOperations Assessments { get; }
+
+        /// <summary>
+        /// Gets the IDiscoveredSecuritySolutionsOperations.
+        /// </summary>
+        IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; }
+
+        /// <summary>
+        /// Gets the IExternalSecuritySolutionsOperations.
+        /// </summary>
+        IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; }
 
     }
 }

@@ -132,16 +132,6 @@ namespace Microsoft.Azure.Management.Security
         public virtual IAllowedConnectionsOperations AllowedConnections { get; private set; }
 
         /// <summary>
-        /// Gets the IDiscoveredSecuritySolutionsOperations.
-        /// </summary>
-        public virtual IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; private set; }
-
-        /// <summary>
-        /// Gets the IExternalSecuritySolutionsOperations.
-        /// </summary>
-        public virtual IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; private set; }
-
-        /// <summary>
         /// Gets the IJitNetworkAccessPoliciesOperations.
         /// </summary>
         public virtual IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; private set; }
@@ -235,6 +225,16 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the IAssessmentsOperations.
         /// </summary>
         public virtual IAssessmentsOperations Assessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IDiscoveredSecuritySolutionsOperations.
+        /// </summary>
+        public virtual IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; private set; }
+
+        /// <summary>
+        /// Gets the IExternalSecuritySolutionsOperations.
+        /// </summary>
+        public virtual IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
@@ -488,8 +488,6 @@ namespace Microsoft.Azure.Management.Security
             IotSecuritySolutionsAnalyticsAggregatedAlert = new IotSecuritySolutionsAnalyticsAggregatedAlertOperations(this);
             IotSecuritySolutionsAnalyticsRecommendation = new IotSecuritySolutionsAnalyticsRecommendationOperations(this);
             AllowedConnections = new AllowedConnectionsOperations(this);
-            DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
-            ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
             JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             AdaptiveApplicationControls = new AdaptiveApplicationControlsOperations(this);
             Locations = new LocationsOperations(this);
@@ -509,6 +507,8 @@ namespace Microsoft.Azure.Management.Security
             Automations = new AutomationsOperations(this);
             AssessmentsMetadata = new AssessmentsMetadataOperations(this);
             Assessments = new AssessmentsOperations(this);
+            DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
+            ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -539,14 +539,14 @@ namespace Microsoft.Azure.Management.Security
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ResourceDetails>("source"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ResourceDetails>("source"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AdditionalData>("assessedResourceType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AdditionalData>("assessedResourceType"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AutomationAction>("actionType"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
