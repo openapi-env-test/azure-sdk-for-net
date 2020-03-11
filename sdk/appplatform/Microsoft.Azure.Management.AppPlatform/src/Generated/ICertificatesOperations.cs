@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// BindingsOperations operations.
+    /// CertificatesOperations operations.
     /// </summary>
-    public partial interface IBindingsOperations
+    public partial interface ICertificatesOperations
     {
         /// <summary>
-        /// Get a Binding and its properties.
+        /// Get the certificate resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -34,11 +34,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
+        /// <param name='certificateName'>
+        /// The name of the certificate resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -55,11 +52,11 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BindingResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create a new Binding or update an exiting Binding.
+        /// Create or update certificate resource.
         /// </summary>
-        /// <param name='bindingResource'>
+        /// <param name='certificateResource'>
         /// Parameters for the create or update operation
         /// </param>
         /// <param name='resourceGroupName'>
@@ -70,11 +67,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
+        /// <param name='certificateName'>
+        /// The name of the certificate resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -91,9 +85,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BindingResource>> CreateOrUpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateResource>> CreateOrUpdateWithHttpMessagesAsync(CertificateResource certificateResource, string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Operation to delete a Binding.
+        /// Delete the certificate resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -103,44 +97,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Operation to update an exiting Binding.
-        /// </summary>
-        /// <param name='bindingResource'>
-        /// Parameters for the update operation
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can
-        /// obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='serviceName'>
-        /// The name of the Service resource.
-        /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
-        /// </param>
-        /// <param name='bindingName'>
-        /// The name of the Binding resource.
+        /// <param name='certificateName'>
+        /// The name of the certificate resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,9 +115,9 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BindingResource>> UpdateWithHttpMessagesAsync(BindingResource bindingResource, string resourceGroupName, string serviceName, string appName, string bindingName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateResource>> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Handles requests to list all resources in an App.
+        /// List all the certificates of one user.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -169,8 +127,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='appName'>
-        /// The name of the App resource.
+        /// <param name='certificateName'>
+        /// The name of the certificate resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -187,12 +145,23 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<BindingResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, string appName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateResourceCollection>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Handles requests to list all resources in an App.
+        /// Create or update certificate resource.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='certificateResource'>
+        /// Parameters for the create or update operation
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the Service resource.
+        /// </param>
+        /// <param name='certificateName'>
+        /// The name of the certificate resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -209,6 +178,6 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<BindingResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CertificateResource>> BeginCreateOrUpdateWithHttpMessagesAsync(CertificateResource certificateResource, string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
