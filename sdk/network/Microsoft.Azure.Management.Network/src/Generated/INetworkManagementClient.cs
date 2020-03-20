@@ -371,6 +371,11 @@ namespace Microsoft.Azure.Management.Network
         IRoutesOperations Routes { get; }
 
         /// <summary>
+        /// Gets the ISecurityPartnerProvidersOperations.
+        /// </summary>
+        ISecurityPartnerProvidersOperations SecurityPartnerProviders { get; }
+
+        /// <summary>
         /// Gets the IBgpServiceCommunitiesOperations.
         /// </summary>
         IBgpServiceCommunitiesOperations BgpServiceCommunities { get; }
