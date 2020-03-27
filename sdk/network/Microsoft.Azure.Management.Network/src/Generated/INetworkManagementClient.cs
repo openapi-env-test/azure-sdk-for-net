@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyRuleGroupsOperations FirewallPolicyRuleGroups { get; }
 
         /// <summary>
+        /// Gets the IIpAllocationsOperations.
+        /// </summary>
+        IIpAllocationsOperations IpAllocations { get; }
+
+        /// <summary>
         /// Gets the IIpGroupsOperations.
         /// </summary>
         IIpGroupsOperations IpGroups { get; }
