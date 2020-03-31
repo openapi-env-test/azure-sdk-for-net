@@ -336,6 +336,11 @@ namespace Microsoft.Azure.Management.Network
         IAvailablePrivateEndpointTypesOperations AvailablePrivateEndpointTypes { get; }
 
         /// <summary>
+        /// Gets the IPrivateDnsZoneGroupsOperations.
+        /// </summary>
+        IPrivateDnsZoneGroupsOperations PrivateDnsZoneGroups { get; }
+
+        /// <summary>
         /// Gets the IPrivateLinkServicesOperations.
         /// </summary>
         IPrivateLinkServicesOperations PrivateLinkServices { get; }
