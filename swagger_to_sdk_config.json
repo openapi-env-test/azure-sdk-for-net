@@ -6,6 +6,7 @@
       "csharp": "",
       "reflect-api-versions": "",
       "license-header": "MICROSOFT_MIT_NO_VERSION",
+      "use": "@microsoft.azure/autorest.csharp@2.3.84",
       "sdkrel:csharp-sdks-folder": "./sdk"
     },
     "advanced_options": {
