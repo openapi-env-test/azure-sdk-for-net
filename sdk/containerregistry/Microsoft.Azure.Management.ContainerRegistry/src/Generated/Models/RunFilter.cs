@@ -45,9 +45,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// archiving is enabled or not.</param>
         /// <param name="taskName">The name of the task that the run
         /// corresponds to.</param>
-        /// <param name="agentPoolName">The name of the agent pool that the run
-        /// corresponds to.</param>
-        public RunFilter(string runId = default(string), string runType = default(string), string status = default(string), System.DateTime? createTime = default(System.DateTime?), System.DateTime? finishTime = default(System.DateTime?), string outputImageManifests = default(string), bool? isArchiveEnabled = default(bool?), string taskName = default(string), string agentPoolName = default(string))
+        public RunFilter(string runId = default(string), string runType = default(string), string status = default(string), System.DateTime? createTime = default(System.DateTime?), System.DateTime? finishTime = default(System.DateTime?), string outputImageManifests = default(string), bool? isArchiveEnabled = default(bool?), string taskName = default(string))
         {
             RunId = runId;
             RunType = runType;
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
             OutputImageManifests = outputImageManifests;
             IsArchiveEnabled = isArchiveEnabled;
             TaskName = taskName;
-            AgentPoolName = agentPoolName;
             CustomInit();
         }
 
@@ -119,13 +116,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// </summary>
         [JsonProperty(PropertyName = "taskName")]
         public string TaskName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the agent pool that the run corresponds
-        /// to.
-        /// </summary>
-        [JsonProperty(PropertyName = "agentPoolName")]
-        public string AgentPoolName { get; set; }
 
     }
 }
