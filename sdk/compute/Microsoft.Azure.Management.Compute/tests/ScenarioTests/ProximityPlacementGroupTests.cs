@@ -26,10 +26,12 @@ namespace Compute.Tests
         [Trait("Name", "TestProximityPlacementGroupsOperations")]
         public void TestProximityPlacementGroupsOperations()
         {
+            string originalTestLocation = Environment.GetEnvironmentVariable("AZURE_VM_TEST_LOCATION");
             using (MockContext context = MockContext.Start(this.GetType()))
             {
                 try
                 {
+                    Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "eastus2euap");
                     EnsureClientsInitialized(context);
                     Initialize(context);
 
@@ -48,6 +50,7 @@ namespace Compute.Tests
                 }
                 finally
                 {
+                    Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", originalTestLocation);
                     m_ResourcesClient.ResourceGroups.Delete(m_resourceGroup1Name);
                 }
             }
