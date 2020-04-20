@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "servicefabric/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "servicefabric/resource-manager" -AutoRestVersion "latest"
