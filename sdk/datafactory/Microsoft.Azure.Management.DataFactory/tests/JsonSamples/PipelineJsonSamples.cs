@@ -2436,8 +2436,7 @@ namespace DataFactory.Tests.JsonSamples
                     source:
                     {
                         type: ""SapCloudForCustomerSource"",
-                        query: ""$select=Column0"",
-                        httpRequestTimeout: ""00:05:00""
+                        query: ""$select=Column0""
                     },
                     sink:
                     {
@@ -3403,8 +3402,7 @@ namespace DataFactory.Tests.JsonSamples
                   sink: {
                     type: ""SapCloudForCustomerSink"",
                     writeBehavior: ""Insert"",
-                    writeBatchSize: 50,
-                    httpRequestTimeout: ""00:05:00""
+                    writeBatchSize: 50
                   },
                   enableSkipIncompatibleRow: true,
                   parallelCopies: 32,
@@ -3453,8 +3451,7 @@ namespace DataFactory.Tests.JsonSamples
                     source:
                     {
                         type: ""SapEccSource"",
-                        query: ""$top=1"",
-                        httpRequestTimeout: ""00:05:00""
+                        query: ""$top=1""
                     },
                     sink:
                     {
@@ -3485,58 +3482,6 @@ namespace DataFactory.Tests.JsonSamples
     }
 }
 ";
-
-        [JsonSample(version: "Copy")]
-        public const string CopyDynamicsAXToAdls = @"
-{
-    name: ""MyPipelineName"",
-    properties: 
-    {
-        description : ""Copy from DynamicsAX to Azure Data Lake Store"",
-        activities:
-        [
-            {
-                type: ""Copy"",
-                name: ""TestActivity"",
-                description: ""Test activity description"", 
-                typeProperties:
-                {
-                    source:
-                    {
-                        type: ""DynamicsAXSource"",
-                        query: ""$top=1"",
-                        httpRequestTimeout: ""00:05:00""
-                    },
-                    sink:
-                    {
-                        type: ""AzureDataLakeStoreSink"",
-                        copyBehavior: ""FlattenHierarchy""
-                    }
-                },
-                inputs: 
-                [ 
-                    {
-                        referenceName: ""InputDynamicsAX"", type: ""DatasetReference""
-                    }
-                ],
-                outputs: 
-                [ 
-                    {
-                        referenceName: ""OutputAdlsDA"", type: ""DatasetReference""
-                    }
-                ],
-                linkedServiceName: { referenceName: ""MyLinkedServiceName"", type: ""LinkedServiceReference"" },
-                policy:
-                {
-                    retry: 3,
-                    timeout: ""00:00:05"",
-                }
-            }
-        ]
-    }
-}
-";
-
         [JsonSample(version: "Copy")]
         public const string CopyNetezzaToBlob = @"
 {
@@ -5443,8 +5388,7 @@ namespace DataFactory.Tests.JsonSamples
                     source:
                     {                               
                         type: ""ODataSource"",
-                        query: ""$top=1"",
-                        httpRequestTimeout: ""00:05:00""
+                        query: ""$top=1""
                     },
                     sink:
                     {
@@ -6139,45 +6083,6 @@ namespace DataFactory.Tests.JsonSamples
                   ],
                   ""name"": ""ExampleCopyActivity""
                 }
-        ]
-    }
-}
-";
-
-        [JsonSample(version: "Copy")]
-        public const string SharePointOnlineListPipeline = @"
-{
-    name: ""DataPipeline_SharePointOnlineListSample"",
-    properties:
-    {
-        activities:
-        [
-            {
-                name: ""SharePointOnlineListToblobCopyActivity"",
-                inputs: [ {referenceName: ""DA_Input"", type: ""DatasetReference""} ],
-                outputs: [ {referenceName: ""DA_Output"", type: ""DatasetReference""} ],
-                type: ""Copy"",
-                typeProperties:
-                {
-                    source:
-                    {                               
-                        type: ""SharePointOnlineListSource"",
-                        query: ""$top=1"",
-                        httpRequestTimeout: ""00:05:00""
-                    },
-                    sink:
-                    {
-                        type: ""BlobSink"",
-                        writeBatchSize: 1000000,
-                        writeBatchTimeout: ""01:00:00""
-                    }
-                },
-                policy:
-                {
-                    retry: 2,
-                    timeout: ""01:00:00""
-                }
-            }
         ]
     }
 }
