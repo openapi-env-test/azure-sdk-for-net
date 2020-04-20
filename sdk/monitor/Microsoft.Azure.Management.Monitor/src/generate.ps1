@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "monitor/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "monitor/resource-manager" -AutoRestVersion "latest"
