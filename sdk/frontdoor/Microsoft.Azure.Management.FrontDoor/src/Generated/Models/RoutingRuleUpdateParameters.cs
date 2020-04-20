@@ -44,16 +44,13 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// include: 'Enabled', 'Disabled'</param>
         /// <param name="routeConfiguration">A reference to the routing
         /// configuration.</param>
-        /// <param name="rulesEngine">A reference to a specific Rules Engine
-        /// Configuration to apply to this route.</param>
-        public RoutingRuleUpdateParameters(IList<SubResource> frontendEndpoints = default(IList<SubResource>), IList<string> acceptedProtocols = default(IList<string>), IList<string> patternsToMatch = default(IList<string>), string enabledState = default(string), RouteConfiguration routeConfiguration = default(RouteConfiguration), SubResource rulesEngine = default(SubResource))
+        public RoutingRuleUpdateParameters(IList<SubResource> frontendEndpoints = default(IList<SubResource>), IList<string> acceptedProtocols = default(IList<string>), IList<string> patternsToMatch = default(IList<string>), string enabledState = default(string), RouteConfiguration routeConfiguration = default(RouteConfiguration))
         {
             FrontendEndpoints = frontendEndpoints;
             AcceptedProtocols = acceptedProtocols;
             PatternsToMatch = patternsToMatch;
             EnabledState = enabledState;
             RouteConfiguration = routeConfiguration;
-            RulesEngine = rulesEngine;
             CustomInit();
         }
 
@@ -93,13 +90,6 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// </summary>
         [JsonProperty(PropertyName = "routeConfiguration")]
         public RouteConfiguration RouteConfiguration { get; set; }
-
-        /// <summary>
-        /// Gets or sets a reference to a specific Rules Engine Configuration
-        /// to apply to this route.
-        /// </summary>
-        [JsonProperty(PropertyName = "rulesEngine")]
-        public SubResource RulesEngine { get; set; }
 
     }
 }
