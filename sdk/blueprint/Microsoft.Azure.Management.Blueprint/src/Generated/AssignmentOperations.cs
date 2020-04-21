@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Management.Blueprint
         public BlueprintManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List operations for given blueprint assignment within a subscription or a
-        /// management group.
+        /// List operations for given blueprint assignment within a subscription.
         /// </summary>
-        /// <param name='resourceScope'>
+        /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
         /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-        /// subscription (format: '/subscriptions/{subscriptionId}').
+        /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+        /// assignments management group scope is reserved for future use.
         /// </param>
         /// <param name='assignmentName'>
         /// Name of the blueprint assignment.
@@ -83,15 +83,15 @@ namespace Microsoft.Azure.Management.Blueprint
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<AssignmentOperation>>> ListWithHttpMessagesAsync(string resourceScope, string assignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<AssignmentOperation>>> ListWithHttpMessagesAsync(string scope, string assignmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (resourceScope == null)
+            if (scope == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceScope");
+                throw new ValidationException(ValidationRules.CannotBeNull, "scope");
             }
             if (assignmentName == null)
             {
@@ -104,15 +104,15 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceScope", resourceScope);
+                tracingParameters.Add("scope", scope);
                 tracingParameters.Add("assignmentName", assignmentName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations").ToString();
-            _url = _url.Replace("{resourceScope}", resourceScope);
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations").ToString();
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assignmentName}", System.Uri.EscapeDataString(assignmentName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -247,10 +247,11 @@ namespace Microsoft.Azure.Management.Blueprint
         /// <summary>
         /// Get a blueprint assignment operation.
         /// </summary>
-        /// <param name='resourceScope'>
+        /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
         /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-        /// subscription (format: '/subscriptions/{subscriptionId}').
+        /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+        /// assignments management group scope is reserved for future use.
         /// </param>
         /// <param name='assignmentName'>
         /// Name of the blueprint assignment.
@@ -279,15 +280,15 @@ namespace Microsoft.Azure.Management.Blueprint
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AssignmentOperation>> GetWithHttpMessagesAsync(string resourceScope, string assignmentName, string assignmentOperationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AssignmentOperation>> GetWithHttpMessagesAsync(string scope, string assignmentName, string assignmentOperationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (resourceScope == null)
+            if (scope == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceScope");
+                throw new ValidationException(ValidationRules.CannotBeNull, "scope");
             }
             if (assignmentName == null)
             {
@@ -304,7 +305,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceScope", resourceScope);
+                tracingParameters.Add("scope", scope);
                 tracingParameters.Add("assignmentName", assignmentName);
                 tracingParameters.Add("assignmentOperationName", assignmentOperationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -312,8 +313,8 @@ namespace Microsoft.Azure.Management.Blueprint
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations/{assignmentOperationName}").ToString();
-            _url = _url.Replace("{resourceScope}", resourceScope);
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/assignmentOperations/{assignmentOperationName}").ToString();
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assignmentName}", System.Uri.EscapeDataString(assignmentName));
             _url = _url.Replace("{assignmentOperationName}", System.Uri.EscapeDataString(assignmentOperationName));
             List<string> _queryParameters = new List<string>();
@@ -447,8 +448,7 @@ namespace Microsoft.Azure.Management.Blueprint
         }
 
         /// <summary>
-        /// List operations for given blueprint assignment within a subscription or a
-        /// management group.
+        /// List operations for given blueprint assignment within a subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
