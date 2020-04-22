@@ -29,7 +29,6 @@ namespace ApiManagement.Tests.ManagementApiTests
                 var tagsResources = await testBase.client.Tag.ListByServiceAsync(
                     testBase.rgName,
                     testBase.serviceName);
-
                 Assert.Empty(tagsResources);
 
                 // list all the APIs
@@ -37,7 +36,6 @@ namespace ApiManagement.Tests.ManagementApiTests
                     testBase.rgName,
                     testBase.serviceName,
                     null);
-
                 Assert.NotNull(listResponse);
                 Assert.Single(listResponse);
                 Assert.Null(listResponse.NextPageLink);

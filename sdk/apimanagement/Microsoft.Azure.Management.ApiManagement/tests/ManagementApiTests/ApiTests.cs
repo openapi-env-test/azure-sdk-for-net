@@ -382,7 +382,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                             apiCreateOrUpdate);
 
                     Assert.NotNull(swaggerApiResponse);
-                    Assert.True(swaggerApiResponse.SubscriptionRequired);
+                    Assert.Null(swaggerApiResponse.SubscriptionRequired);
                     Assert.Equal(path, swaggerApiResponse.Path);
 
                     var swagerApiOperations = await testBase.client.ApiOperation.ListByApiAsync(

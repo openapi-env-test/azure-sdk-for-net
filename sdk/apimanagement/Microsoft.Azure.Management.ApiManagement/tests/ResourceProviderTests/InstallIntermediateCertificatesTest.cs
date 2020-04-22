@@ -65,7 +65,7 @@ namespace ApiManagement.Tests.ResourceProviderTests
                     resourceGroupName: testBase.rgName,
                     serviceName: testBase.serviceName);
 
-                Assert.Throws<ErrorResponseException>(() =>
+                Assert.Throws<CloudException>(() =>
                 {
                     testBase.client.ApiManagementService.Get(
                         resourceGroupName: testBase.rgName,
