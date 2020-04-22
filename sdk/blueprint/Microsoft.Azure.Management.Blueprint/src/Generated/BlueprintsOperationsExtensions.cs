@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='blueprint'>
             /// Blueprint definition.
             /// </param>
-            public static BlueprintModel CreateOrUpdate(this IBlueprintsOperations operations, string resourceScope, string blueprintName, BlueprintModel blueprint)
+            public static BlueprintModel CreateOrUpdate(this IBlueprintsOperations operations, string scope, string blueprintName, BlueprintModel blueprint)
             {
-                return operations.CreateOrUpdateAsync(resourceScope, blueprintName, blueprint).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(scope, blueprintName, blueprint).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -49,10 +50,11 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
@@ -63,9 +65,9 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BlueprintModel> CreateOrUpdateAsync(this IBlueprintsOperations operations, string resourceScope, string blueprintName, BlueprintModel blueprint, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BlueprintModel> CreateOrUpdateAsync(this IBlueprintsOperations operations, string scope, string blueprintName, BlueprintModel blueprint, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceScope, blueprintName, blueprint, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(scope, blueprintName, blueprint, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -77,17 +79,18 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
             /// </param>
-            public static BlueprintModel Get(this IBlueprintsOperations operations, string resourceScope, string blueprintName)
+            public static BlueprintModel Get(this IBlueprintsOperations operations, string scope, string blueprintName)
             {
-                return operations.GetAsync(resourceScope, blueprintName).GetAwaiter().GetResult();
+                return operations.GetAsync(scope, blueprintName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,10 +99,11 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
@@ -107,9 +111,9 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BlueprintModel> GetAsync(this IBlueprintsOperations operations, string resourceScope, string blueprintName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BlueprintModel> GetAsync(this IBlueprintsOperations operations, string scope, string blueprintName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceScope, blueprintName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(scope, blueprintName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -121,17 +125,18 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
             /// </param>
-            public static BlueprintModel Delete(this IBlueprintsOperations operations, string resourceScope, string blueprintName)
+            public static BlueprintModel Delete(this IBlueprintsOperations operations, string scope, string blueprintName)
             {
-                return operations.DeleteAsync(resourceScope, blueprintName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(scope, blueprintName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -140,10 +145,11 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='blueprintName'>
             /// Name of the blueprint definition.
@@ -151,9 +157,9 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BlueprintModel> DeleteAsync(this IBlueprintsOperations operations, string resourceScope, string blueprintName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BlueprintModel> DeleteAsync(this IBlueprintsOperations operations, string scope, string blueprintName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceScope, blueprintName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(scope, blueprintName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -165,14 +171,15 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
-            public static IPage<BlueprintModel> List(this IBlueprintsOperations operations, string resourceScope)
+            public static IPage<BlueprintModel> List(this IBlueprintsOperations operations, string scope)
             {
-                return operations.ListAsync(resourceScope).GetAwaiter().GetResult();
+                return operations.ListAsync(scope).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -181,17 +188,18 @@ namespace Microsoft.Azure.Management.Blueprint
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceScope'>
+            /// <param name='scope'>
             /// The scope of the resource. Valid scopes are: management group (format:
             /// '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
-            /// subscription (format: '/subscriptions/{subscriptionId}').
+            /// subscription (format: '/subscriptions/{subscriptionId}'). For blueprint
+            /// assignments management group scope is reserved for future use.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BlueprintModel>> ListAsync(this IBlueprintsOperations operations, string resourceScope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BlueprintModel>> ListAsync(this IBlueprintsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceScope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
