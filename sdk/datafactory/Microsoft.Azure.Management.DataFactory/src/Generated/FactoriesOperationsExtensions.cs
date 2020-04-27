@@ -50,6 +50,46 @@ namespace Microsoft.Azure.Management.DataFactory
             }
 
             /// <summary>
+            /// Reset a factory's repo information.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationId'>
+            /// The location identifier.
+            /// </param>
+            /// <param name='factoryRepoUpdate'>
+            /// Update factory repo request definition.
+            /// </param>
+            public static Factory ResetFactoryRepo(this IFactoriesOperations operations, string locationId, FactoryRepoUpdate factoryRepoUpdate)
+            {
+                return operations.ResetFactoryRepoAsync(locationId, factoryRepoUpdate).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Reset a factory's repo information.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationId'>
+            /// The location identifier.
+            /// </param>
+            /// <param name='factoryRepoUpdate'>
+            /// Update factory repo request definition.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Factory> ResetFactoryRepoAsync(this IFactoriesOperations operations, string locationId, FactoryRepoUpdate factoryRepoUpdate, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ResetFactoryRepoWithHttpMessagesAsync(locationId, factoryRepoUpdate, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Updates a factory's repo information.
             /// </summary>
             /// <param name='operations'>
