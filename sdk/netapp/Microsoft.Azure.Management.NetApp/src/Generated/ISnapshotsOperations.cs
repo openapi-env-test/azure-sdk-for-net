@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(SnapshotPatch body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(object body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete a snapshot
         /// </summary>

@@ -122,9 +122,39 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "poolName");
             }
+            if (poolName != null)
+            {
+                if (poolName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "poolName", 64);
+                }
+                if (poolName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "poolName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                }
+            }
             if (volumeName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "volumeName");
+            }
+            if (volumeName != null)
+            {
+                if (volumeName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "volumeName", 64);
+                }
+                if (volumeName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "volumeName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(volumeName, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "volumeName", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -357,9 +387,39 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "poolName");
             }
+            if (poolName != null)
+            {
+                if (poolName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "poolName", 64);
+                }
+                if (poolName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "poolName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                }
+            }
             if (volumeName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "volumeName");
+            }
+            if (volumeName != null)
+            {
+                if (volumeName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "volumeName", 64);
+                }
+                if (volumeName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "volumeName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(volumeName, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "volumeName", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$");
+                }
             }
             if (snapshotName == null)
             {
@@ -605,7 +665,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(SnapshotPatch body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(object body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -642,9 +702,39 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "poolName");
             }
+            if (poolName != null)
+            {
+                if (poolName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "poolName", 64);
+                }
+                if (poolName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "poolName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                }
+            }
             if (volumeName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "volumeName");
+            }
+            if (volumeName != null)
+            {
+                if (volumeName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "volumeName", 64);
+                }
+                if (volumeName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "volumeName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(volumeName, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "volumeName", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$");
+                }
             }
             if (snapshotName == null)
             {
@@ -935,9 +1025,39 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "poolName");
             }
+            if (poolName != null)
+            {
+                if (poolName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "poolName", 64);
+                }
+                if (poolName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "poolName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                }
+            }
             if (volumeName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "volumeName");
+            }
+            if (volumeName != null)
+            {
+                if (volumeName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "volumeName", 64);
+                }
+                if (volumeName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "volumeName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(volumeName, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "volumeName", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$");
+                }
             }
             if (snapshotName == null)
             {
@@ -1180,9 +1300,39 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "poolName");
             }
+            if (poolName != null)
+            {
+                if (poolName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "poolName", 64);
+                }
+                if (poolName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "poolName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                }
+            }
             if (volumeName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "volumeName");
+            }
+            if (volumeName != null)
+            {
+                if (volumeName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "volumeName", 64);
+                }
+                if (volumeName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "volumeName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(volumeName, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "volumeName", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,63}$");
+                }
             }
             if (snapshotName == null)
             {

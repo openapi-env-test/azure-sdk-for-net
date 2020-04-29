@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Management.NetApp
         IVolumesOperations Volumes { get; }
 
         /// <summary>
-        /// Gets the IMountTargetsOperations.
-        /// </summary>
-        IMountTargetsOperations MountTargets { get; }
-
-        /// <summary>
         /// Gets the ISnapshotsOperations.
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
+
+        /// <summary>
+        /// Gets the ISnapshotPoliciesOperations.
+        /// </summary>
+        ISnapshotPoliciesOperations SnapshotPolicies { get; }
 
     }
 }

@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <param name='snapshotName'>
             /// The name of the mount target
             /// </param>
-            public static Snapshot Update(this ISnapshotsOperations operations, SnapshotPatch body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
+            public static Snapshot Update(this ISnapshotsOperations operations, object body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
             {
                 return operations.UpdateAsync(body, resourceGroupName, accountName, poolName, volumeName, snapshotName).GetAwaiter().GetResult();
             }
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Snapshot> UpdateAsync(this ISnapshotsOperations operations, SnapshotPatch body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Snapshot> UpdateAsync(this ISnapshotsOperations operations, object body, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(body, resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false))
                 {
