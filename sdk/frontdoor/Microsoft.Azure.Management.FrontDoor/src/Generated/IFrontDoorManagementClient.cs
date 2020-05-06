@@ -106,11 +106,6 @@ namespace Microsoft.Azure.Management.FrontDoor
         IEndpointsOperations Endpoints { get; }
 
         /// <summary>
-        /// Gets the IRulesEnginesOperations.
-        /// </summary>
-        IRulesEnginesOperations RulesEngines { get; }
-
-        /// <summary>
         /// Gets the IPoliciesOperations.
         /// </summary>
         IPoliciesOperations Policies { get; }
