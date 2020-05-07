@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Management.Attestation.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Attestation service response message.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AttestationProvider : TrackedResource
+    public partial class AttestationProvider : Resource
     {
         /// <summary>
         /// Initializes a new instance of the AttestationProvider class.
@@ -34,8 +32,6 @@ namespace Microsoft.Azure.Management.Attestation.Models
         /// <summary>
         /// Initializes a new instance of the AttestationProvider class.
         /// </summary>
-        /// <param name="location">The geo-location where the resource
-        /// lives</param>
         /// <param name="status">Status of attestation service. Possible values
         /// include: 'Ready', 'NotReady', 'Error'</param>
         /// <param name="id">Fully qualified resource Id for the resource. Ex -
@@ -44,14 +40,10 @@ namespace Microsoft.Azure.Management.Attestation.Models
         /// <param name="type">The type of the resource. Ex-
         /// Microsoft.Compute/virtualMachines or
         /// Microsoft.Storage/storageAccounts.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="trustModel">Trust model for the attestation service
-        /// instance.</param>
         /// <param name="attestUri">Gets the uri of attestation service</param>
-        public AttestationProvider(string location, string status, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string trustModel = default(string), string attestUri = default(string))
-            : base(location, id, name, type, tags)
+        public AttestationProvider(string status, string id = default(string), string name = default(string), string type = default(string), string attestUri = default(string))
+            : base(id, name, type)
         {
-            TrustModel = trustModel;
             Status = status;
             AttestUri = attestUri;
             CustomInit();
@@ -61,12 +53,6 @@ namespace Microsoft.Azure.Management.Attestation.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets trust model for the attestation service instance.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.trustModel")]
-        public string TrustModel { get; set; }
 
         /// <summary>
         /// Gets or sets status of attestation service. Possible values
@@ -87,9 +73,8 @@ namespace Microsoft.Azure.Management.Attestation.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (Status == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Status");

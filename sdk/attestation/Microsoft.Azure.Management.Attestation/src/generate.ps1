@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "attestation/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "attestation/resource-manager" -AutoRestVersion "latest"
