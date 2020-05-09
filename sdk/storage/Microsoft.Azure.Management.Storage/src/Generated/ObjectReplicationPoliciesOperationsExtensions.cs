@@ -19,13 +19,12 @@ namespace Microsoft.Azure.Management.Storage
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for PrivateEndpointConnectionsOperations.
+    /// Extension methods for ObjectReplicationPoliciesOperations.
     /// </summary>
-    public static partial class PrivateEndpointConnectionsOperationsExtensions
+    public static partial class ObjectReplicationPoliciesOperationsExtensions
     {
             /// <summary>
-            /// List all the private endpoint connections associated with the storage
-            /// account.
+            /// List the object replication policies associated with the storage account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -39,14 +38,13 @@ namespace Microsoft.Azure.Management.Storage
             /// Storage account names must be between 3 and 24 characters in length and use
             /// numbers and lower-case letters only.
             /// </param>
-            public static IEnumerable<PrivateEndpointConnection> List(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName)
+            public static IEnumerable<ObjectReplicationPolicy> List(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName)
             {
                 return operations.ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// List all the private endpoint connections associated with the storage
-            /// account.
+            /// List the object replication policies associated with the storage account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.Management.Storage
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<PrivateEndpointConnection>> ListAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<ObjectReplicationPolicy>> ListAsync(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -72,7 +70,123 @@ namespace Microsoft.Azure.Management.Storage
             }
 
             /// <summary>
-            /// Gets the specified private endpoint connection associated with the storage
+            /// Get the object replication policy of the storage account by policy ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
+            /// </param>
+            public static ObjectReplicationPolicy Get(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId)
+            {
+                return operations.GetAsync(resourceGroupName, accountName, objectReplicationPolicyId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get the object replication policy of the storage account by policy ID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ObjectReplicationPolicy> GetAsync(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, objectReplicationPolicyId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Create or update the object replication policy of the storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
+            /// </param>
+            /// <param name='properties'>
+            /// The object replication policy set to a storage account. A unique policy ID
+            /// will be created if absent.
+            /// </param>
+            public static ObjectReplicationPolicy CreateOrUpdate(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId, ObjectReplicationPolicy properties)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, accountName, objectReplicationPolicyId, properties).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create or update the object replication policy of the storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
+            /// </param>
+            /// <param name='properties'>
+            /// The object replication policy set to a storage account. A unique policy ID
+            /// will be created if absent.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ObjectReplicationPolicy> CreateOrUpdateAsync(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId, ObjectReplicationPolicy properties, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, objectReplicationPolicyId, properties, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes the object replication policy associated with the specified storage
             /// account.
             /// </summary>
             /// <param name='operations'>
@@ -87,17 +201,17 @@ namespace Microsoft.Azure.Management.Storage
             /// Storage account names must be between 3 and 24 characters in length and use
             /// numbers and lower-case letters only.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
             /// </param>
-            public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
+            public static void Delete(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId)
             {
-                return operations.GetAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, accountName, objectReplicationPolicyId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the specified private endpoint connection associated with the storage
+            /// Deletes the object replication policy associated with the specified storage
             /// account.
             /// </summary>
             /// <param name='operations'>
@@ -112,134 +226,16 @@ namespace Microsoft.Azure.Management.Storage
             /// Storage account names must be between 3 and 24 characters in length and use
             /// numbers and lower-case letters only.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
+            /// <param name='objectReplicationPolicyId'>
+            /// The ID of object replication policy or 'default' if the policy ID is
+            /// unknown.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> GetAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IObjectReplicationPoliciesOperations operations, string resourceGroupName, string accountName, string objectReplicationPolicyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update the state of specified private endpoint connection associated with
-            /// the storage account.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription. The name is
-            /// case insensitive.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the storage account within the specified resource group.
-            /// Storage account names must be between 3 and 24 characters in length and use
-            /// numbers and lower-case letters only.
-            /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
-            /// </param>
-            /// <param name='properties'>
-            /// The private endpoint connection properties.
-            /// </param>
-            public static PrivateEndpointConnection Put(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection properties)
-            {
-                return operations.PutAsync(resourceGroupName, accountName, privateEndpointConnectionName, properties).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update the state of specified private endpoint connection associated with
-            /// the storage account.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription. The name is
-            /// case insensitive.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the storage account within the specified resource group.
-            /// Storage account names must be between 3 and 24 characters in length and use
-            /// numbers and lower-case letters only.
-            /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
-            /// </param>
-            /// <param name='properties'>
-            /// The private endpoint connection properties.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<PrivateEndpointConnection> PutAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection properties, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, properties, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes the specified private endpoint connection associated with the
-            /// storage account.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription. The name is
-            /// case insensitive.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the storage account within the specified resource group.
-            /// Storage account names must be between 3 and 24 characters in length and use
-            /// numbers and lower-case letters only.
-            /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
-            /// </param>
-            public static void Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
-            {
-                operations.DeleteAsync(resourceGroupName, accountName, privateEndpointConnectionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified private endpoint connection associated with the
-            /// storage account.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the user's subscription. The name is
-            /// case insensitive.
-            /// </param>
-            /// <param name='accountName'>
-            /// The name of the storage account within the specified resource group.
-            /// Storage account names must be between 3 and 24 characters in length and use
-            /// numbers and lower-case letters only.
-            /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection associated with the Storage
-            /// Account
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, objectReplicationPolicyId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

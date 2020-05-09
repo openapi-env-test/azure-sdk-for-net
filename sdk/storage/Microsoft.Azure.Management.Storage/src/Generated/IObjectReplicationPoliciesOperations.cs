@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.Storage
     using System.Threading.Tasks;
 
     /// <summary>
-    /// PrivateEndpointConnectionsOperations operations.
+    /// ObjectReplicationPoliciesOperations operations.
     /// </summary>
-    public partial interface IPrivateEndpointConnectionsOperations
+    public partial interface IObjectReplicationPoliciesOperations
     {
         /// <summary>
-        /// List all the private endpoint connections associated with the
-        /// storage account.
+        /// List the object replication policies associated with the storage
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -35,39 +35,6 @@ namespace Microsoft.Azure.Management.Storage
         /// The name of the storage account within the specified resource
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IEnumerable<PrivateEndpointConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the specified private endpoint connection associated with the
-        /// storage account.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource
-        /// group. Storage account names must be between 3 and 24 characters in
-        /// length and use numbers and lower-case letters only.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Storage Account
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -84,10 +51,10 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<ObjectReplicationPolicy>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update the state of specified private endpoint connection
-        /// associated with the storage account.
+        /// Get the object replication policy of the storage account by policy
+        /// ID.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -98,12 +65,46 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Storage Account
+        /// <param name='objectReplicationPolicyId'>
+        /// The ID of object replication policy or 'default' if the policy ID
+        /// is unknown.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ObjectReplicationPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string objectReplicationPolicyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create or update the object replication policy of the storage
+        /// account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user's subscription. The
+        /// name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource
+        /// group. Storage account names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='objectReplicationPolicyId'>
+        /// The ID of object replication policy or 'default' if the policy ID
+        /// is unknown.
         /// </param>
         /// <param name='properties'>
-        /// The private endpoint connection properties.
+        /// The object replication policy set to a storage account. A unique
+        /// policy ID will be created if absent.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -120,10 +121,10 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> PutWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ObjectReplicationPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string objectReplicationPolicyId, ObjectReplicationPolicy properties, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with
-        /// the storage account.
+        /// Deletes the object replication policy associated with the specified
+        /// storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
@@ -134,9 +135,9 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the
-        /// Storage Account
+        /// <param name='objectReplicationPolicyId'>
+        /// The ID of object replication policy or 'default' if the policy ID
+        /// is unknown.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -150,6 +151,6 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string objectReplicationPolicyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
