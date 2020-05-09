@@ -57,10 +57,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// feed events.</param>
         /// <param name="restorePolicy">The blob service properties for blob
         /// restore policy.</param>
-        /// <param name="containerDeleteRetentionPolicy">The blob service
-        /// properties for container soft delete.</param>
         /// <param name="sku">Sku name and tier.</param>
-        public BlobServiceProperties(string id = default(string), string name = default(string), string type = default(string), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), ChangeFeed changeFeed = default(ChangeFeed), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), DeleteRetentionPolicy containerDeleteRetentionPolicy = default(DeleteRetentionPolicy), Sku sku = default(Sku))
+        public BlobServiceProperties(string id = default(string), string name = default(string), string type = default(string), CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), ChangeFeed changeFeed = default(ChangeFeed), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), Sku sku = default(Sku))
             : base(id, name, type)
         {
             Cors = cors;
@@ -70,7 +68,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             AutomaticSnapshotPolicyEnabled = automaticSnapshotPolicyEnabled;
             ChangeFeed = changeFeed;
             RestorePolicy = restorePolicy;
-            ContainerDeleteRetentionPolicy = containerDeleteRetentionPolicy;
             Sku = sku;
             CustomInit();
         }
@@ -129,12 +126,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         public RestorePolicyProperties RestorePolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the blob service properties for container soft delete.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.containerDeleteRetentionPolicy")]
-        public DeleteRetentionPolicy ContainerDeleteRetentionPolicy { get; set; }
-
-        /// <summary>
         /// Gets sku name and tier.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
@@ -155,10 +146,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (RestorePolicy != null)
             {
                 RestorePolicy.Validate();
-            }
-            if (ContainerDeleteRetentionPolicy != null)
-            {
-                ContainerDeleteRetentionPolicy.Validate();
             }
             if (Sku != null)
             {

@@ -329,8 +329,12 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='blobContainer'>
-        /// Properties of the blob container to create.
+        /// <param name='publicAccess'>
+        /// Specifies whether data in the container may be accessed publicly and the
+        /// level of access. Possible values include: 'Container', 'Blob', 'None'
+        /// </param>
+        /// <param name='metadata'>
+        /// A name-value pair to associate with the container as metadata.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -353,7 +357,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BlobContainer>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BlobContainer>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, PublicAccess? publicAccess = default(PublicAccess?), IDictionary<string, string> metadata = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -404,10 +408,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (blobContainer == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "blobContainer");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -429,6 +429,12 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
+            }
+            BlobContainer blobContainer = new BlobContainer();
+            if (publicAccess != null || metadata != null)
+            {
+                blobContainer.PublicAccess = publicAccess;
+                blobContainer.Metadata = metadata;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -625,8 +631,12 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='blobContainer'>
-        /// Properties to update for the blob container.
+        /// <param name='publicAccess'>
+        /// Specifies whether data in the container may be accessed publicly and the
+        /// level of access. Possible values include: 'Container', 'Blob', 'None'
+        /// </param>
+        /// <param name='metadata'>
+        /// A name-value pair to associate with the container as metadata.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -649,7 +659,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BlobContainer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BlobContainer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, PublicAccess? publicAccess = default(PublicAccess?), IDictionary<string, string> metadata = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -700,10 +710,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (blobContainer == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "blobContainer");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -725,6 +731,12 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
+            }
+            BlobContainer blobContainer = new BlobContainer();
+            if (publicAccess != null || metadata != null)
+            {
+                blobContainer.PublicAccess = publicAccess;
+                blobContainer.Metadata = metadata;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
