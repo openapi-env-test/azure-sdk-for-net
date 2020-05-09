@@ -1,10 +1,9 @@
 ﻿using System.Net;
 using ContainerService.Tests;
-using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
-namespace ContainerService.Tests
+namespace Microsoft.Azure.Management.ContainerService.Tests
 {
     public partial class ContainerServiceTests
     {
