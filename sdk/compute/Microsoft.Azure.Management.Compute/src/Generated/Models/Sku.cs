@@ -14,9 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes a virtual machine scale set sku. NOTE: If the new VM SKU is
-    /// not supported on the hardware the scale set is currently on, you need
-    /// to deallocate the VMs in the scale set before you modify the SKU name.
+    /// Describes a virtual machine scale set sku.
     /// </summary>
     public partial class Sku
     {
