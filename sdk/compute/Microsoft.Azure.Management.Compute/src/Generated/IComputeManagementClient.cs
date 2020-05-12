@@ -92,11 +92,6 @@ namespace Microsoft.Azure.Management.Compute
         IDedicatedHostsOperations DedicatedHosts { get; }
 
         /// <summary>
-        /// Gets the ISshPublicKeysOperations.
-        /// </summary>
-        ISshPublicKeysOperations SshPublicKeys { get; }
-
-        /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
         /// </summary>
         IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; }
