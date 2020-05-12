@@ -38,13 +38,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// blockBlob is supported.</param>
         /// <param name="prefixMatch">An array of strings for prefixes to be
         /// match.</param>
-        /// <param name="blobIndexMatch">An array of blob index tag based
-        /// filters, there can be at most 10 tag filters</param>
-        public ManagementPolicyFilter(IList<string> blobTypes, IList<string> prefixMatch = default(IList<string>), IList<TagFilter> blobIndexMatch = default(IList<TagFilter>))
+        public ManagementPolicyFilter(IList<string> blobTypes, IList<string> prefixMatch = default(IList<string>))
         {
             PrefixMatch = prefixMatch;
             BlobTypes = blobTypes;
-            BlobIndexMatch = blobIndexMatch;
             CustomInit();
         }
 
@@ -67,13 +64,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         public IList<string> BlobTypes { get; set; }
 
         /// <summary>
-        /// Gets or sets an array of blob index tag based filters, there can be
-        /// at most 10 tag filters
-        /// </summary>
-        [JsonProperty(PropertyName = "blobIndexMatch")]
-        public IList<TagFilter> BlobIndexMatch { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -84,16 +74,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (BlobTypes == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "BlobTypes");
-            }
-            if (BlobIndexMatch != null)
-            {
-                foreach (var element in BlobIndexMatch)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }
