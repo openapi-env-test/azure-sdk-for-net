@@ -104,30 +104,30 @@ namespace Microsoft.Azure.Management.Security.Models
         public ProtectionMode ProtectionMode { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Configured', 'NotConfigured',
-        /// 'InProgress', 'Failed', 'NoStatus'
+        /// Gets or sets possible values include: 'Configured',
+        /// 'NotConfigured', 'InProgress', 'Failed', 'NoStatus'
         /// </summary>
         [JsonProperty(PropertyName = "properties.configurationStatus")]
-        public string ConfigurationStatus { get; private set; }
+        public string ConfigurationStatus { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Recommended', 'NotRecommended',
-        /// 'NotAvailable', 'NoStatus'
+        /// Gets or sets possible values include: 'Recommended',
+        /// 'NotRecommended', 'NotAvailable', 'NoStatus'
         /// </summary>
         [JsonProperty(PropertyName = "properties.recommendationStatus")]
-        public string RecommendationStatus { get; private set; }
+        public string RecommendationStatus { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties.issues")]
-        public IList<AppWhitelistingIssueSummary> Issues { get; private set; }
+        public IList<AppWhitelistingIssueSummary> Issues { get; set; }
 
         /// <summary>
-        /// Gets possible values include: 'Azure_AppLocker', 'Azure_AuditD',
-        /// 'NonAzure_AppLocker', 'NonAzure_AuditD', 'None'
+        /// Gets or sets possible values include: 'Azure_AppLocker',
+        /// 'Azure_AuditD', 'NonAzure_AppLocker', 'NonAzure_AuditD', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceSystem")]
-        public string SourceSystem { get; private set; }
+        public string SourceSystem { get; set; }
 
         /// <summary>
         /// </summary>
