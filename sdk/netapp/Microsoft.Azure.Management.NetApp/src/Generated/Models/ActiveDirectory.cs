@@ -43,9 +43,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// mount volumes</param>
         /// <param name="organizationalUnit">The Organizational Unit (OU)
         /// within the Windows Active Directory</param>
-        /// <param name="site">The Active Directory site the service will limit
-        /// Domain Controller discovery to</param>
-        public ActiveDirectory(string activeDirectoryId = default(string), string username = default(string), string password = default(string), string domain = default(string), string dns = default(string), string status = default(string), string smbServerName = default(string), string organizationalUnit = default(string), string site = default(string))
+        public ActiveDirectory(string activeDirectoryId = default(string), string username = default(string), string password = default(string), string domain = default(string), string dns = default(string), string status = default(string), string smbServerName = default(string), string organizationalUnit = default(string))
         {
             ActiveDirectoryId = activeDirectoryId;
             Username = username;
@@ -55,7 +53,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             Status = status;
             SmbServerName = smbServerName;
             OrganizationalUnit = organizationalUnit;
-            Site = site;
             CustomInit();
         }
 
@@ -116,13 +113,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "organizationalUnit")]
         public string OrganizationalUnit { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Active Directory site the service will limit
-        /// Domain Controller discovery to
-        /// </summary>
-        [JsonProperty(PropertyName = "site")]
-        public string Site { get; set; }
 
     }
 }

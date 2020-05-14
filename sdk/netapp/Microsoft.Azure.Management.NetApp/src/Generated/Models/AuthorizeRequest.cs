@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Initializes a new instance of the AuthorizeRequest class.
         /// </summary>
-        /// <param name="remoteVolumeResourceId">Resource id of the remote
-        /// volume</param>
+        /// <param name="remoteVolumeResourceId">Resource id</param>
         public AuthorizeRequest(string remoteVolumeResourceId = default(string))
         {
             RemoteVolumeResourceId = remoteVolumeResourceId;
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource id of the remote volume
+        /// Gets or sets resource id
         /// </summary>
         [JsonProperty(PropertyName = "remoteVolumeResourceId")]
         public string RemoteVolumeResourceId { get; set; }

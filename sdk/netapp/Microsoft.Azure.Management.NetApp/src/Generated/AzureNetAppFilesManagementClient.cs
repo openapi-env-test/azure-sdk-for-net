@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Management.NetApp
         public virtual IVolumesOperations Volumes { get; private set; }
 
         /// <summary>
+        /// Gets the IMountTargetsOperations.
+        /// </summary>
+        public virtual IMountTargetsOperations MountTargets { get; private set; }
+
+        /// <summary>
         /// Gets the ISnapshotsOperations.
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
@@ -352,9 +357,10 @@ namespace Microsoft.Azure.Management.NetApp
             Accounts = new AccountsOperations(this);
             Pools = new PoolsOperations(this);
             Volumes = new VolumesOperations(this);
+            MountTargets = new MountTargetsOperations(this);
             Snapshots = new SnapshotsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-11-01";
+            ApiVersion = "2019-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

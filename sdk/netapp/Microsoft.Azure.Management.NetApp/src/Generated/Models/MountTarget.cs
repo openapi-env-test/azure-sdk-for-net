@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="gateway">gateway</param>
         /// <param name="netmask">netmask</param>
         /// <param name="smbServerFqdn">smbServerFQDN</param>
-        public MountTarget(string location, string fileSystemId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string mountTargetId = default(string), string ipAddress = default(string), string subnet = default(string), string startIp = default(string), string endIp = default(string), string gateway = default(string), string netmask = default(string), string smbServerFqdn = default(string))
+        /// <param name="provisioningState">Azure lifecycle management</param>
+        public MountTarget(string location, string fileSystemId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string mountTargetId = default(string), string ipAddress = default(string), string subnet = default(string), string startIp = default(string), string endIp = default(string), string gateway = default(string), string netmask = default(string), string smbServerFqdn = default(string), string provisioningState = default(string))
         {
             Location = location;
             Id = id;
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             Gateway = gateway;
             Netmask = netmask;
             SmbServerFqdn = smbServerFqdn;
+            ProvisioningState = provisioningState;
             CustomInit();
         }
 
@@ -186,6 +188,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.smbServerFqdn")]
         public string SmbServerFqdn { get; set; }
+
+        /// <summary>
+        /// Gets azure lifecycle management
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Validate the object.
