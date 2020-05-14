@@ -18,38 +18,38 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     using System.Linq;
 
     /// <summary>
-    /// Resource information with extended details.
+    /// Managed HSM resource
     /// </summary>
-    public partial class Vault : IResource
+    public partial class ManagedHsmResource : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the Vault class.
+        /// Initializes a new instance of the ManagedHsmResource class.
         /// </summary>
-        public Vault()
+        public ManagedHsmResource()
         {
-            Properties = new VaultProperties();
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Vault class.
+        /// Initializes a new instance of the ManagedHsmResource class.
         /// </summary>
-        /// <param name="properties">Properties of the vault</param>
-        /// <param name="id">Fully qualified identifier of the key vault
-        /// resource.</param>
-        /// <param name="name">Name of the key vault resource.</param>
-        /// <param name="type">Resource type of the key vault resource.</param>
-        /// <param name="location">Azure location of the key vault
-        /// resource.</param>
-        /// <param name="tags">Tags assigned to the key vault resource.</param>
-        public Vault(VaultProperties properties, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        /// <param name="id">The Azure Resource Manager resource ID for the
+        /// managed HSM Pool.</param>
+        /// <param name="name">The name of the managed HSM Pool.</param>
+        /// <param name="type">The resource type of the managed HSM
+        /// Pool.</param>
+        /// <param name="location">The supported Azure location where the
+        /// managed HSM Pool should be created.</param>
+        /// <param name="sku">SKU details</param>
+        /// <param name="tags">Resource tags</param>
+        public ManagedHsmResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Id = id;
             Name = name;
             Type = type;
             Location = location;
+            Sku = sku;
             Tags = tags;
-            Properties = properties;
             CustomInit();
         }
 
@@ -59,40 +59,42 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets fully qualified identifier of the key vault resource.
+        /// Gets the Azure Resource Manager resource ID for the managed HSM
+        /// Pool.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets name of the key vault resource.
+        /// Gets the name of the managed HSM Pool.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource type of the key vault resource.
+        /// Gets the resource type of the managed HSM Pool.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets azure location of the key vault resource.
+        /// Gets or sets the supported Azure location where the managed HSM
+        /// Pool should be created.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets tags assigned to the key vault resource.
+        /// Gets or sets SKU details
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public ManagedHsmSku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or sets properties of the vault
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public VaultProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -102,13 +104,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Properties == null)
+            if (Sku != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
-            }
-            if (Properties != null)
-            {
-                Properties.Validate();
+                Sku.Validate();
             }
         }
     }
