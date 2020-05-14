@@ -47,7 +47,7 @@ namespace KeyVault.Management.Tests
                     true,
                     true,
                     true,
-                    true, // enableSoftDelete defaults to true
+                    null,
                     new[] { testBase.accPol },
                     testBase.vaultProperties.NetworkAcls,
                     testBase.tags);
@@ -82,7 +82,7 @@ namespace KeyVault.Management.Tests
                     true,
                     true,
                     true,
-                    true,
+                    null,
                     new[] { testBase.accPol },
                     testBase.vaultProperties.NetworkAcls,
                     testBase.tags);
@@ -102,7 +102,7 @@ namespace KeyVault.Management.Tests
                     true,
                     true,
                     true,
-                    true,
+                    null,
                     new[] { testBase.accPol },
                     testBase.vaultProperties.NetworkAcls,
                     testBase.tags);
@@ -118,35 +118,6 @@ namespace KeyVault.Management.Tests
                         resourceGroupName: testBase.rgName,
                         vaultName: testBase.vaultName);
                 });
-            }
-        }
-
-        [Fact]
-        public void CreateKeyVaultDisableSoftDelete()
-        {
-            using (MockContext context = MockContext.Start(this.GetType()))
-            {
-                var testBase = new KeyVaultTestBase(context);
-                testBase.accPol.ApplicationId = Guid.Parse(testBase.applicationId);
-                testBase.vaultProperties.EnableSoftDelete = false; // <-- disable soft delete
-
-                var vault = testBase.client.Vaults.CreateOrUpdate(
-                    resourceGroupName: testBase.rgName,
-                    vaultName: testBase.vaultName,
-                    parameters: new VaultCreateOrUpdateParameters
-                    {
-                        Location = testBase.location,
-                        Tags = testBase.tags,
-                        Properties = testBase.vaultProperties
-                    }
-                    );
-
-                Assert.False(vault.Properties.EnableSoftDelete);
-
-                // Delete
-                testBase.client.Vaults.Delete(
-                    resourceGroupName: testBase.rgName,
-                    vaultName: testBase.vaultName);
             }
         }
 
@@ -181,7 +152,7 @@ namespace KeyVault.Management.Tests
                     true,
                     true,
                     true,
-                    true,
+                    null,
                     new[] { testBase.accPol },
                     testBase.tags);
 
@@ -201,7 +172,7 @@ namespace KeyVault.Management.Tests
                     true,
                     true,
                     true,
-                    true,
+                    null,
                     new[] { testBase.accPol },
                     testBase.tags);
 
