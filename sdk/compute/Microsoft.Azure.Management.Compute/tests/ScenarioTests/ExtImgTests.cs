@@ -65,8 +65,6 @@ namespace Compute.Tests
             public string FilterExpression = "";
         }
 
-        private static readonly string existingVersion = "2.4.5";
-
         private static readonly VirtualMachineExtensionImageGetParameters parameters =
             new VirtualMachineExtensionImageGetParameters();
 
@@ -83,9 +81,9 @@ namespace Compute.Tests
                     parameters.Location,
                     parameters.PublisherName,
                     parameters.Type,
-                    existingVersion);
+                    "2.0");
 
-                Assert.True(vmimageext.Name == existingVersion);
+                Assert.True(vmimageext.Name == "2.0");
                 Assert.True(vmimageext.Location == "westus");
 
                 Assert.True(vmimageext.OperatingSystem == "Windows");
@@ -129,15 +127,13 @@ namespace Compute.Tests
                     parameters.Type);
 
                 Assert.True(vmextimg.Count > 0);
-                Assert.True(vmextimg.Count(vmi => vmi.Name == existingVersion) != 0);
+                Assert.True(vmextimg.Count(vmi => vmi.Name == "2.0") != 0);
             }
         }
 
         [Fact]
         public void TestExtImgListVersionsFilters()
         {
-            string existingVersionPrefix = existingVersion.Substring(0, existingVersion.LastIndexOf('.'));
-
             using (MockContext context = MockContext.Start(this.GetType()))
             {
                 ComputeManagementClient _pirClient =
@@ -163,18 +159,18 @@ namespace Compute.Tests
                     parameters.Type,
                     query);
                 Assert.True(vmextimg.Count > 0);
-                Assert.True(vmextimg.Count(vmi => vmi.Name != existingVersionPrefix) != 0);
+                Assert.True(vmextimg.Count(vmi => vmi.Name != "1.0") != 0);
 
                 // Filter: startswith - Negative Test
-                query.SetFilter(f => f.Name.StartsWith(existingVersionPrefix));
-                parameters.FilterExpression = string.Format("$filter=startswith(name,'{0}')", existingVersionPrefix);
+                query.SetFilter(f => f.Name.StartsWith("1.0"));
+                parameters.FilterExpression = "$filter=startswith(name,'1.0')";
                 vmextimg = _pirClient.VirtualMachineExtensionImages.ListVersions(
                     parameters.Location,
                     parameters.PublisherName,
                     parameters.Type,
                     query);
                 Assert.True(vmextimg.Count > 0);
-                Assert.True(vmextimg.Count(vmi => vmi.Name == existingVersionPrefix) == 0);
+                Assert.True(vmextimg.Count(vmi => vmi.Name == "2.0") == 0);
 
                 // Filter: top - Positive Test
                 query.Filter = null;
@@ -186,7 +182,7 @@ namespace Compute.Tests
                     parameters.Type,
                     query);
                 Assert.True(vmextimg.Count == 1);
-                Assert.True(vmextimg.Count(vmi => vmi.Name == existingVersion) != 0);
+                Assert.True(vmextimg.Count(vmi => vmi.Name == "1.0") != 0);
 
                 // Filter: top - Negative Test
                 query.Top = 0;

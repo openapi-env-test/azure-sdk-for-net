@@ -13,7 +13,6 @@ using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Rest.Azure;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Newtonsoft.Json.Linq;
 using Xunit;
@@ -110,8 +109,7 @@ namespace Compute.Tests
             int? osDiskSizeInGB = null,
             string machineSizeType = null,
             bool? enableUltraSSD = false,
-            string diskEncryptionSetId = null,
-            AutomaticRepairsPolicy automaticRepairsPolicy = null)
+            string diskEncryptionSetId = null)
         {
             // Generate Container name to hold disk VHds
             string containerName = TestUtilities.GenerateName(TestPrefix);
@@ -214,8 +212,7 @@ namespace Compute.Tests
                         }
                     },
                     ExtensionProfile = new VirtualMachineScaleSetExtensionProfile(),
-                },
-                AutomaticRepairsPolicy = automaticRepairsPolicy
+                }
             };
 
             if (enableUltraSSD == true)
@@ -257,8 +254,7 @@ namespace Compute.Tests
             string ppgId = null,
             string machineSizeType = null,
             bool? enableUltraSSD = false,
-            string diskEncryptionSetId = null,
-            AutomaticRepairsPolicy automaticRepairsPolicy = null)
+            string diskEncryptionSetId = null)
         {
             try
             {
@@ -279,8 +275,7 @@ namespace Compute.Tests
                                                                                      ppgId: ppgId,
                                                                                      machineSizeType: machineSizeType,
                                                                                      enableUltraSSD: enableUltraSSD,
-                                                                                     diskEncryptionSetId: diskEncryptionSetId,
-                                                                                     automaticRepairsPolicy: automaticRepairsPolicy);
+                                                                                     diskEncryptionSetId: diskEncryptionSetId);
 
                 var getResponse = m_CrpClient.VirtualMachineScaleSets.Get(rgName, vmssName);
 
@@ -361,8 +356,7 @@ namespace Compute.Tests
             string ppgId = null,
             string machineSizeType = null,
             bool? enableUltraSSD = false,
-            string diskEncryptionSetId = null,
-            AutomaticRepairsPolicy automaticRepairsPolicy = null)
+            string diskEncryptionSetId = null)
         {
             // Create the resource Group, it might have been already created during StorageAccount creation.
             var resourceGroup = m_ResourcesClient.ResourceGroups.CreateOrUpdate(
@@ -388,7 +382,7 @@ namespace Compute.Tests
             inputVMScaleSet = CreateDefaultVMScaleSetInput(rgName, storageAccount?.Name, imageRef, subnetResponse.Id, hasManagedDisks:createWithManagedDisks,
                 healthProbeId: loadBalancer?.Probes?.FirstOrDefault()?.Id,
                 loadBalancerBackendPoolId: loadBalancer?.BackendAddressPools?.FirstOrDefault()?.Id, zones: zones, osDiskSizeInGB: osDiskSizeInGB,
-                machineSizeType: machineSizeType, enableUltraSSD: enableUltraSSD, diskEncryptionSetId: diskEncryptionSetId, automaticRepairsPolicy: automaticRepairsPolicy);
+                machineSizeType: machineSizeType, enableUltraSSD: enableUltraSSD, diskEncryptionSetId: diskEncryptionSetId);
             if (vmScaleSetCustomizer != null)
             {
                 vmScaleSetCustomizer(inputVMScaleSet);
@@ -399,10 +393,7 @@ namespace Compute.Tests
                 VirtualMachineScaleSetOSDisk osDisk = new VirtualMachineScaleSetOSDisk();
                 osDisk.Caching = CachingTypes.ReadOnly;
                 osDisk.CreateOption = DiskCreateOptionTypes.FromImage;
-                osDisk.DiffDiskSettings = new DiffDiskSettings {
-                    Option = DiffDiskOptions.Local,
-                    Placement = DiffDiskPlacement.CacheDisk
-                    };
+                osDisk.DiffDiskSettings = new DiffDiskSettings { Option = DiffDiskOptions.Local };
                 inputVMScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = osDisk;
             }
 
@@ -413,26 +404,10 @@ namespace Compute.Tests
                 inputVMScaleSet.ProximityPlacementGroup = new Microsoft.Azure.Management.Compute.Models.SubResource() { Id = ppgId };
             }
 
-            VirtualMachineScaleSet createOrUpdateResponse = null;
+            var createOrUpdateResponse = m_CrpClient.VirtualMachineScaleSets.CreateOrUpdate(rgName, vmssName, inputVMScaleSet);
 
-            try
-            {
-                createOrUpdateResponse = m_CrpClient.VirtualMachineScaleSets.CreateOrUpdate(rgName, vmssName, inputVMScaleSet);
-
-                Assert.True(createOrUpdateResponse.Name == vmssName);
-                Assert.True(createOrUpdateResponse.Location.ToLower() == inputVMScaleSet.Location.ToLower().Replace(" ", ""));
-            }
-            catch (CloudException e)
-            {
-                if (e.Message.Contains("the allotted time"))
-                {
-                    createOrUpdateResponse = m_CrpClient.VirtualMachineScaleSets.Get(rgName, vmssName);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            Assert.True(createOrUpdateResponse.Name == vmssName);
+            Assert.True(createOrUpdateResponse.Location.ToLower() == inputVMScaleSet.Location.ToLower().Replace(" ", ""));
 
             ValidateVMScaleSet(inputVMScaleSet, createOrUpdateResponse, createWithManagedDisks, ppgId: ppgId);
 
