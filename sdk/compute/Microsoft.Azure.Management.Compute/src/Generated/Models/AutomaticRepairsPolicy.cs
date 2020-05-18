@@ -38,8 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// starts after the state change has completed. This helps avoid
         /// premature or accidental repairs. The time duration should be
         /// specified in ISO 8601 format. The minimum allowed grace period is
-        /// 30 minutes (PT30M), which is also the default value. The maximum
-        /// allowed grace period is 90 minutes (PT90M).</param>
+        /// 30 minutes (PT30M), which is also the default value.</param>
         public AutomaticRepairsPolicy(bool? enabled = default(bool?), string gracePeriod = default(string))
         {
             Enabled = enabled;
@@ -65,8 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the state change has completed. This helps avoid premature or
         /// accidental repairs. The time duration should be specified in ISO
         /// 8601 format. The minimum allowed grace period is 30 minutes
-        /// (PT30M), which is also the default value. The maximum allowed grace
-        /// period is 90 minutes (PT90M).
+        /// (PT30M), which is also the default value.
         /// </summary>
         [JsonProperty(PropertyName = "gracePeriod")]
         public string GracePeriod { get; set; }

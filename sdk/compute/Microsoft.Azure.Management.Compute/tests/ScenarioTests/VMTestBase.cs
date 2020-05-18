@@ -68,9 +68,11 @@ namespace Compute.Tests
 
         protected ImageReference FindVMImage(string publisher, string offer, string sku)
         {
+            var query = new Microsoft.Rest.Azure.OData.ODataQuery<VirtualMachineImageResource>();
+            query.Top = 1;
             var images = m_CrpClient.VirtualMachineImages.List(
                 location: m_location, publisherName: publisher, offer: offer, skus: sku,
-                top: 1);
+                odataQuery: query);
             var image = images.First();
             return new ImageReference
             {
@@ -257,10 +259,7 @@ namespace Compute.Tests
                 {
                     OSDisk osDisk = inputVM.StorageProfile.OsDisk;
                     osDisk.Caching = CachingTypes.ReadOnly;
-                    osDisk.DiffDiskSettings = new DiffDiskSettings {
-                        Option = DiffDiskOptions.Local,
-                        Placement = DiffDiskPlacement.ResourceDisk
-                    };
+                    osDisk.DiffDiskSettings = new DiffDiskSettings { Option = DiffDiskOptions.Local };
                 }
 
                 if (zones != null)
@@ -298,12 +297,11 @@ namespace Compute.Tests
                 Assert.True(createOrUpdateResponse.Location == inputVM.Location.ToLower().Replace(" ", "") ||
                     createOrUpdateResponse.Location.ToLower() == inputVM.Location.ToLower());
 
-                bool hasUserDefinedAvSet = zones == null && !(VirtualMachinePriorityTypes.Spot.Equals(inputVM.Priority) || VirtualMachinePriorityTypes.Low.Equals(inputVM.Priority));
-                if (hasUserDefinedAvSet)
+                if (zones == null)
                 {
                     Assert.True(createOrUpdateResponse.AvailabilitySet.Id.ToLowerInvariant() == asetId.ToLowerInvariant());
                 }
-                else if (zones != null)
+                else
                 {
                     Assert.True(createOrUpdateResponse.Zones.Count == 1);
                     Assert.True(createOrUpdateResponse.Zones.FirstOrDefault() == zones.FirstOrDefault());
@@ -311,7 +309,7 @@ namespace Compute.Tests
 
                 // The intent here is to validate that the GET response is as expected.
                 var getResponse = m_CrpClient.VirtualMachines.Get(rgName, inputVM.Name);
-                ValidateVM(inputVM, getResponse, expectedVMReferenceId, hasManagedDisks, writeAcceleratorEnabled: writeAcceleratorEnabled, hasDiffDisks: hasDiffDisks, hasUserDefinedAS: hasUserDefinedAvSet, expectedPpgReferenceId: ppgId);
+                ValidateVM(inputVM, getResponse, expectedVMReferenceId, hasManagedDisks, writeAcceleratorEnabled: writeAcceleratorEnabled, hasDiffDisks: hasDiffDisks, hasUserDefinedAS: zones == null, expectedPpgReferenceId: ppgId);
 
                 return getResponse;
             }

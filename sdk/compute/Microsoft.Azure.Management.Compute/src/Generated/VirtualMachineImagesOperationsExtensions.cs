@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -100,16 +101,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='skus'>
             /// A valid image SKU.
             /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
             /// </param>
-            /// <param name='top'>
-            /// </param>
-            /// <param name='orderby'>
-            /// </param>
-            public static IList<VirtualMachineImageResource> List(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string expand = default(string), int? top = default(int?), string orderby = default(string))
+            public static IList<VirtualMachineImageResource> List(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, ODataQuery<VirtualMachineImageResource> odataQuery = default(ODataQuery<VirtualMachineImageResource>))
             {
-                return operations.ListAsync(location, publisherName, offer, skus, expand, top, orderby).GetAwaiter().GetResult();
+                return operations.ListAsync(location, publisherName, offer, skus, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -131,19 +128,15 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='skus'>
             /// A valid image SKU.
             /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='top'>
-            /// </param>
-            /// <param name='orderby'>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VirtualMachineImageResource>> ListAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string expand = default(string), int? top = default(int?), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VirtualMachineImageResource>> ListAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, ODataQuery<VirtualMachineImageResource> odataQuery = default(ODataQuery<VirtualMachineImageResource>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, publisherName, offer, skus, expand, top, orderby, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(location, publisherName, offer, skus, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
