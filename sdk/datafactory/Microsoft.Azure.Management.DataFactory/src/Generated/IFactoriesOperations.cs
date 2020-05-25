@@ -90,6 +90,39 @@ namespace Microsoft.Azure.Management.DataFactory
         /// </exception>
         Task<AzureOperationResponse<IPage<Factory>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Creates or updates a factory.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name.
+        /// </param>
+        /// <param name='factoryName'>
+        /// The factory name.
+        /// </param>
+        /// <param name='factory'>
+        /// Factory resource definition.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the factory entity. Should only be specified for update,
+        /// for which it should match existing entity or can be * for
+        /// unconditional update.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Factory>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string factoryName, Factory factory, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get GitHub Access Token.
         /// </summary>
         /// <param name='resourceGroupName'>

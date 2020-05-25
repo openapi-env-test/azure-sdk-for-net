@@ -124,6 +124,60 @@ namespace Microsoft.Azure.Management.DataFactory
             }
 
             /// <summary>
+            /// Creates or updates a factory.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='factoryName'>
+            /// The factory name.
+            /// </param>
+            /// <param name='factory'>
+            /// Factory resource definition.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// ETag of the factory entity. Should only be specified for update, for which
+            /// it should match existing entity or can be * for unconditional update.
+            /// </param>
+            public static Factory CreateOrUpdate(this IFactoriesOperations operations, string resourceGroupName, string factoryName, Factory factory, string ifMatch = default(string))
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, factoryName, factory, ifMatch).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a factory.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name.
+            /// </param>
+            /// <param name='factoryName'>
+            /// The factory name.
+            /// </param>
+            /// <param name='factory'>
+            /// Factory resource definition.
+            /// </param>
+            /// <param name='ifMatch'>
+            /// ETag of the factory entity. Should only be specified for update, for which
+            /// it should match existing entity or can be * for unconditional update.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Factory> CreateOrUpdateAsync(this IFactoriesOperations operations, string resourceGroupName, string factoryName, Factory factory, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, factoryName, factory, ifMatch, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get GitHub Access Token.
             /// </summary>
             /// <param name='operations'>
