@@ -51,9 +51,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="version">Version of the factory.</param>
         /// <param name="repoConfiguration">Git repo information of the
         /// factory.</param>
-        /// <param name="globalParameters">List of parameters for
-        /// factory.</param>
-        public Factory(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string eTag = default(string), IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), FactoryIdentity identity = default(FactoryIdentity), string provisioningState = default(string), System.DateTime? createTime = default(System.DateTime?), string version = default(string), FactoryRepoConfiguration repoConfiguration = default(FactoryRepoConfiguration), IDictionary<string, GlobalParameterSpecification> globalParameters = default(IDictionary<string, GlobalParameterSpecification>))
+        public Factory(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string eTag = default(string), IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), FactoryIdentity identity = default(FactoryIdentity), string provisioningState = default(string), System.DateTime? createTime = default(System.DateTime?), string version = default(string), FactoryRepoConfiguration repoConfiguration = default(FactoryRepoConfiguration))
             : base(id, name, type, location, tags, eTag)
         {
             AdditionalProperties = additionalProperties;
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             CreateTime = createTime;
             Version = version;
             RepoConfiguration = repoConfiguration;
-            GlobalParameters = globalParameters;
             CustomInit();
         }
 
@@ -109,12 +106,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public FactoryRepoConfiguration RepoConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets list of parameters for factory.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.globalParameters")]
-        public IDictionary<string, GlobalParameterSpecification> GlobalParameters { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -125,16 +116,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             if (RepoConfiguration != null)
             {
                 RepoConfiguration.Validate();
-            }
-            if (GlobalParameters != null)
-            {
-                foreach (var valueElement in GlobalParameters.Values)
-                {
-                    if (valueElement != null)
-                    {
-                        valueElement.Validate();
-                    }
-                }
             }
         }
     }
