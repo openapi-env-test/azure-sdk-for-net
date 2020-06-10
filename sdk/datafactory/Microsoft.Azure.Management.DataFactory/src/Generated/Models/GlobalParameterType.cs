@@ -12,11 +12,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for DatasetCompressionLevel.
+    /// Defines values for GlobalParameterType.
     /// </summary>
-    public static class DatasetCompressionLevel
+    public static class GlobalParameterType
     {
-        public const string Optimal = "Optimal";
-        public const string Fastest = "Fastest";
+        public const string Object = "Object";
+        public const string String = "String";
+        public const string Int = "Int";
+        public const string Float = "Float";
+        public const string Bool = "Bool";
+        public const string Array = "Array";
     }
 }

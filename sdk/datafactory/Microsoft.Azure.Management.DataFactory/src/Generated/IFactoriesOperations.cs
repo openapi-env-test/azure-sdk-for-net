@@ -66,6 +66,31 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
+        Task<AzureOperationResponse<Factory>> ConfigureFactoryRepoForDemoWithHttpMessagesAsync(string locationId, FactoryRepoUpdate factoryRepoUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates a factory's repo information.
+        /// </summary>
+        /// <param name='locationId'>
+        /// The location identifier.
+        /// </param>
+        /// <param name='factoryRepoUpdate'>
+        /// Update factory repo request definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         Task<AzureOperationResponse<Factory>> ConfigureFactoryRepoWithHttpMessagesAsync(string locationId, FactoryRepoUpdate factoryRepoUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists factories.
@@ -89,6 +114,119 @@ namespace Microsoft.Azure.Management.DataFactory
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Factory>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates a factory.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name.
+        /// </param>
+        /// <param name='factoryName'>
+        /// The factory name.
+        /// </param>
+        /// <param name='factory'>
+        /// Factory resource definition.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag of the factory entity. Should only be specified for update,
+        /// for which it should match existing entity or can be * for
+        /// unconditional update.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Factory>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string factoryName, Factory factory, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates a factory.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name.
+        /// </param>
+        /// <param name='factoryName'>
+        /// The factory name.
+        /// </param>
+        /// <param name='factoryUpdateParameters'>
+        /// The parameters for updating a factory.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Factory>> UpdateWithHttpMessagesAsync(string resourceGroupName, string factoryName, FactoryUpdateParameters factoryUpdateParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a factory.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name.
+        /// </param>
+        /// <param name='factoryName'>
+        /// The factory name.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// ETag of the factory entity. Should only be specified for get. If
+        /// the ETag matches the existing entity tag, or if * was provided,
+        /// then no content will be returned.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Factory>> GetWithHttpMessagesAsync(string resourceGroupName, string factoryName, string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a factory.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name.
+        /// </param>
+        /// <param name='factoryName'>
+        /// The factory name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string factoryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get GitHub Access Token.
         /// </summary>

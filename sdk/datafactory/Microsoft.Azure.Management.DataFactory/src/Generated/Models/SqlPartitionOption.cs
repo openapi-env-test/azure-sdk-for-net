@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for HdiNodeTypes.
+    /// Defines values for SqlPartitionOption.
     /// </summary>
-    public static class HdiNodeTypes
+    public static class SqlPartitionOption
     {
-        public const string Headnode = "Headnode";
-        public const string Workernode = "Workernode";
-        public const string Zookeeper = "Zookeeper";
+        public const string None = "None";
+        public const string PhysicalPartitionsOfTable = "PhysicalPartitionsOfTable";
+        public const string DynamicRange = "DynamicRange";
     }
 }

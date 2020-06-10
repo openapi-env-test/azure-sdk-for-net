@@ -34,11 +34,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// action.</param>
         /// <param name="uri">The URI for the script action.</param>
         /// <param name="roles">The node types on which the script action
-        /// should be executed. Possible values include: 'Headnode',
-        /// 'Workernode', 'Zookeeper'</param>
+        /// should be executed.</param>
         /// <param name="parameters">The parameters for the script
         /// action.</param>
-        public ScriptAction(string name, string uri, string roles, string parameters = default(string))
+        public ScriptAction(string name, string uri, object roles, string parameters = default(string))
         {
             Name = name;
             Uri = uri;
@@ -66,11 +65,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the node types on which the script action should be
-        /// executed. Possible values include: 'Headnode', 'Workernode',
-        /// 'Zookeeper'
+        /// executed.
         /// </summary>
         [JsonProperty(PropertyName = "roles")]
-        public string Roles { get; set; }
+        public object Roles { get; set; }
 
         /// <summary>
         /// Gets or sets the parameters for the script action.
