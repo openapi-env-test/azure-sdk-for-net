@@ -20,22 +20,15 @@ namespace Compute.Tests
         public void TestCreateImage_with_DiskEncryptionSet()
         {
             string originalTestLocation = Environment.GetEnvironmentVariable("AZURE_VM_TEST_LOCATION");
-            try
+            using (MockContext context = MockContext.Start(this.GetType()))
             {
-                using (MockContext context = MockContext.Start(this.GetType()))
-                {
-                    Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "centraluseuap");
-                    EnsureClientsInitialized(context);
+                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "centraluseuap");
+                EnsureClientsInitialized(context);
+              
+                string diskEncryptionSetId = getDefaultDiskEncryptionSetId();
 
-                    string diskEncryptionSetId = getDefaultDiskEncryptionSetId();
+                CreateImageTestHelper(originalTestLocation, diskEncryptionSetId);
 
-                    CreateImageTestHelper(originalTestLocation, diskEncryptionSetId);
-
-                }
-            }
-            finally
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", originalTestLocation);
             }
         }
         
@@ -44,18 +37,11 @@ namespace Compute.Tests
         public void TestCreateImage_without_DiskEncryptionSet()
         {
             string originalTestLocation = Environment.GetEnvironmentVariable("AZURE_VM_TEST_LOCATION");
-            try
+            using (MockContext context = MockContext.Start(this.GetType()))
             {
-                using (MockContext context = MockContext.Start(this.GetType()))
-                {
-                    Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "FranceCentral");
-                    EnsureClientsInitialized(context);
-                    CreateImageTestHelper(originalTestLocation, diskEncryptionSetId: null);
-                }
-            }
-            finally
-            {
-                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", originalTestLocation);
+                Environment.SetEnvironmentVariable("AZURE_VM_TEST_LOCATION", "FranceCentral");
+                EnsureClientsInitialized(context);
+                CreateImageTestHelper(originalTestLocation, diskEncryptionSetId: null);
             }
         }
 
