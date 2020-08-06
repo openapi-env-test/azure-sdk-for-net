@@ -177,6 +177,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual ICertificateOperations Certificate { get; private set; }
 
         /// <summary>
+        /// Gets the IContentTypeOperations.
+        /// </summary>
+        public virtual IContentTypeOperations ContentType { get; private set; }
+
+        /// <summary>
+        /// Gets the IContentTypesOperations.
+        /// </summary>
+        public virtual IContentTypesOperations ContentTypes { get; private set; }
+
+        /// <summary>
+        /// Gets the IContentItemOperations.
+        /// </summary>
+        public virtual IContentItemOperations ContentItem { get; private set; }
+
+        /// <summary>
         /// Gets the IApiManagementOperations.
         /// </summary>
         public virtual IApiManagementOperations ApiManagementOperations { get; private set; }
@@ -202,6 +217,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IEmailTemplateOperations EmailTemplate { get; private set; }
 
         /// <summary>
+        /// Gets the IGatewayOperations.
+        /// </summary>
+        public virtual IGatewayOperations Gateway { get; private set; }
+
+        /// <summary>
+        /// Gets the IGatewayHostnameConfigurationOperations.
+        /// </summary>
+        public virtual IGatewayHostnameConfigurationOperations GatewayHostnameConfiguration { get; private set; }
+
+        /// <summary>
+        /// Gets the IGatewayApiOperations.
+        /// </summary>
+        public virtual IGatewayApiOperations GatewayApi { get; private set; }
+
+        /// <summary>
         /// Gets the IGroupOperations.
         /// </summary>
         public virtual IGroupOperations Group { get; private set; }
@@ -225,6 +255,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the ILoggerOperations.
         /// </summary>
         public virtual ILoggerOperations Logger { get; private set; }
+
+        /// <summary>
+        /// Gets the INamedValueOperations.
+        /// </summary>
+        public virtual INamedValueOperations NamedValue { get; private set; }
 
         /// <summary>
         /// Gets the INetworkStatusOperations.
@@ -257,9 +292,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         public virtual IPolicyOperations Policy { get; private set; }
 
         /// <summary>
-        /// Gets the IPolicySnippetOperations.
+        /// Gets the IPolicyDescriptionOperations.
         /// </summary>
-        public virtual IPolicySnippetOperations PolicySnippet { get; private set; }
+        public virtual IPolicyDescriptionOperations PolicyDescription { get; private set; }
 
         /// <summary>
         /// Gets the ISignInSettingsOperations.
@@ -300,11 +335,6 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IProductPolicyOperations.
         /// </summary>
         public virtual IProductPolicyOperations ProductPolicy { get; private set; }
-
-        /// <summary>
-        /// Gets the IPropertyOperations.
-        /// </summary>
-        public virtual IPropertyOperations Property { get; private set; }
 
         /// <summary>
         /// Gets the IQuotaByCounterKeysOperations.
@@ -642,23 +672,30 @@ namespace Microsoft.Azure.Management.ApiManagement
             Backend = new BackendOperations(this);
             Cache = new CacheOperations(this);
             Certificate = new CertificateOperations(this);
+            ContentType = new ContentTypeOperations(this);
+            ContentTypes = new ContentTypesOperations(this);
+            ContentItem = new ContentItemOperations(this);
             ApiManagementOperations = new ApiManagementOperations(this);
             ApiManagementServiceSkus = new ApiManagementServiceSkusOperations(this);
             ApiManagementService = new ApiManagementServiceOperations(this);
             Diagnostic = new DiagnosticOperations(this);
             EmailTemplate = new EmailTemplateOperations(this);
+            Gateway = new GatewayOperations(this);
+            GatewayHostnameConfiguration = new GatewayHostnameConfigurationOperations(this);
+            GatewayApi = new GatewayApiOperations(this);
             Group = new GroupOperations(this);
             GroupUser = new GroupUserOperations(this);
             IdentityProvider = new IdentityProviderOperations(this);
             Issue = new IssueOperations(this);
             Logger = new LoggerOperations(this);
+            NamedValue = new NamedValueOperations(this);
             NetworkStatus = new NetworkStatusOperations(this);
             Notification = new NotificationOperations(this);
             NotificationRecipientUser = new NotificationRecipientUserOperations(this);
             NotificationRecipientEmail = new NotificationRecipientEmailOperations(this);
             OpenIdConnectProvider = new OpenIdConnectProviderOperations(this);
             Policy = new PolicyOperations(this);
-            PolicySnippet = new PolicySnippetOperations(this);
+            PolicyDescription = new PolicyDescriptionOperations(this);
             SignInSettings = new SignInSettingsOperations(this);
             SignUpSettings = new SignUpSettingsOperations(this);
             DelegationSettings = new DelegationSettingsOperations(this);
@@ -667,7 +704,6 @@ namespace Microsoft.Azure.Management.ApiManagement
             ProductGroup = new ProductGroupOperations(this);
             ProductSubscriptions = new ProductSubscriptionsOperations(this);
             ProductPolicy = new ProductPolicyOperations(this);
-            Property = new PropertyOperations(this);
             QuotaByCounterKeys = new QuotaByCounterKeysOperations(this);
             QuotaByPeriodKeys = new QuotaByPeriodKeysOperations(this);
             Region = new RegionOperations(this);
@@ -684,7 +720,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
             ApiExport = new ApiExportOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-01-01";
+            ApiVersion = "2020-06-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

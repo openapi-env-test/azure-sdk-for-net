@@ -172,6 +172,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         ICertificateOperations Certificate { get; }
 
         /// <summary>
+        /// Gets the IContentTypeOperations.
+        /// </summary>
+        IContentTypeOperations ContentType { get; }
+
+        /// <summary>
+        /// Gets the IContentTypesOperations.
+        /// </summary>
+        IContentTypesOperations ContentTypes { get; }
+
+        /// <summary>
+        /// Gets the IContentItemOperations.
+        /// </summary>
+        IContentItemOperations ContentItem { get; }
+
+        /// <summary>
         /// Gets the IApiManagementOperations.
         /// </summary>
         IApiManagementOperations ApiManagementOperations { get; }
@@ -197,6 +212,21 @@ namespace Microsoft.Azure.Management.ApiManagement
         IEmailTemplateOperations EmailTemplate { get; }
 
         /// <summary>
+        /// Gets the IGatewayOperations.
+        /// </summary>
+        IGatewayOperations Gateway { get; }
+
+        /// <summary>
+        /// Gets the IGatewayHostnameConfigurationOperations.
+        /// </summary>
+        IGatewayHostnameConfigurationOperations GatewayHostnameConfiguration { get; }
+
+        /// <summary>
+        /// Gets the IGatewayApiOperations.
+        /// </summary>
+        IGatewayApiOperations GatewayApi { get; }
+
+        /// <summary>
         /// Gets the IGroupOperations.
         /// </summary>
         IGroupOperations Group { get; }
@@ -220,6 +250,11 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the ILoggerOperations.
         /// </summary>
         ILoggerOperations Logger { get; }
+
+        /// <summary>
+        /// Gets the INamedValueOperations.
+        /// </summary>
+        INamedValueOperations NamedValue { get; }
 
         /// <summary>
         /// Gets the INetworkStatusOperations.
@@ -252,9 +287,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         IPolicyOperations Policy { get; }
 
         /// <summary>
-        /// Gets the IPolicySnippetOperations.
+        /// Gets the IPolicyDescriptionOperations.
         /// </summary>
-        IPolicySnippetOperations PolicySnippet { get; }
+        IPolicyDescriptionOperations PolicyDescription { get; }
 
         /// <summary>
         /// Gets the ISignInSettingsOperations.
@@ -295,11 +330,6 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IProductPolicyOperations.
         /// </summary>
         IProductPolicyOperations ProductPolicy { get; }
-
-        /// <summary>
-        /// Gets the IPropertyOperations.
-        /// </summary>
-        IPropertyOperations Property { get; }
 
         /// <summary>
         /// Gets the IQuotaByCounterKeysOperations.
