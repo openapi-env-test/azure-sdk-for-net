@@ -14,29 +14,29 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for CreateSubscriptionInEnrollmentAccount operation.
+    /// Defines headers for CreateSubscription operation.
     /// </summary>
-    public partial class SubscriptionCreateSubscriptionInEnrollmentAccountHeaders
+    public partial class SubscriptionFactoryCreateSubscriptionHeaders
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// SubscriptionCreateSubscriptionInEnrollmentAccountHeaders class.
+        /// SubscriptionFactoryCreateSubscriptionHeaders class.
         /// </summary>
-        public SubscriptionCreateSubscriptionInEnrollmentAccountHeaders()
+        public SubscriptionFactoryCreateSubscriptionHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// SubscriptionCreateSubscriptionInEnrollmentAccountHeaders class.
+        /// SubscriptionFactoryCreateSubscriptionHeaders class.
         /// </summary>
         /// <param name="location">GET this URL to retrieve the status of the
         /// asynchronous operation.</param>
         /// <param name="retryAfter">The amount of delay to use while the
         /// status of the operation is checked. The value is expressed in
         /// seconds.</param>
-        public SubscriptionCreateSubscriptionInEnrollmentAccountHeaders(string location = default(string), string retryAfter = default(string))
+        public SubscriptionFactoryCreateSubscriptionHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Subscription.Models
         /// operation is checked. The value is expressed in seconds.
         /// </summary>
         [JsonProperty(PropertyName = "Retry-After")]
-        public string RetryAfter { get; set; }
+        public int? RetryAfter { get; set; }
 
     }
 }

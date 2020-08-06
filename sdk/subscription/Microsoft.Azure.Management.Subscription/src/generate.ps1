@@ -1,1 +1,1 @@
-Start-AutoRestCodeGeneration -ResourceProvider "subscription/resource-manager" -AutoRestVersion "v2"
+Start-AutoRestCodeGeneration -ResourceProvider "subscription/resource-manager" -AutoRestVersion "latest"
