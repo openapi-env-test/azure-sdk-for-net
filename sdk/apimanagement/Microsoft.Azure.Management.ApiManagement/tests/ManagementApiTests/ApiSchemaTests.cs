@@ -100,55 +100,6 @@ namespace ApiManagement.Tests.ManagementApiTests
             }
         }";
 
-        public static string JsonSchemaStringWithDefinitions = @"{""definitions"":{
-            ""pet"": {
-                ""required"": [""id"",
-                ""name""],
-                ""externalDocs"": {
-                    ""description"": ""findmoreinfohere"",
-                    ""url"": ""https: //helloreverb.com/about""
-                },
-                ""properties"": {
-                    ""id"": {
-                        ""type"": ""integer"",
-                        ""format"": ""int64""
-                    },
-                    ""name"": {
-                        ""type"": ""string""
-                    },
-                    ""tag"": {
-                        ""type"": ""string""
-                    }
-                }
-            },
-            ""newPet"": {
-                ""allOf"": [{
-                    ""$ref"": ""pet""
-                },
-                {
-                    ""required"": [""name""],
-                    ""id"": {
-                        ""properties"": {
-                            ""type"": ""integer"",
-                            ""format"": ""int64""
-                        }
-                    }
-                }]
-            },
-            ""errorModel"": {
-                ""required"": [""code"",
-                ""message""],
-                ""properties"": {
-                    ""code"": {
-                        ""type"": ""integer"",
-                        ""format"": ""int32""
-                    },
-                    ""message"": {
-                        ""type"": ""string""
-                    }
-                }
-            }
-        }}";
 
         [Fact]
         [Trait("owner", "vifedo")]
@@ -206,7 +157,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                     Assert.True(apiGetResponse.Protocols.Contains(Protocol.Http));
                     Assert.True(apiGetResponse.Protocols.Contains(Protocol.Https));
 
-                    var schemaContractParams = new SchemaContract()
+                    var schemaContractParams = new SchemaCreateOrUpdateContract()
                     {
                         ContentType = "application/vnd.ms-azure-apim.swagger.definitions+json",
                         Value = JsonSchemaString1
@@ -220,8 +171,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                         schemaContractParams);
                     Assert.NotNull(schemaContract);
                     Assert.Equal(schemaContractParams.ContentType, schemaContract.ContentType);
-                    Assert.NotNull(schemaContract.Definitions);
-                    Assert.Null(schemaContract.Value);
+                    Assert.NotNull(schemaContract.Document);
 
                     // list the schemas attached to the api
                     var schemasList = await testBase.client.ApiSchema.ListByApiAsync(
@@ -349,11 +299,10 @@ namespace ApiManagement.Tests.ManagementApiTests
                     Assert.True(apiGetResponse.Protocols.Contains(Protocol.Http));
                     Assert.True(apiGetResponse.Protocols.Contains(Protocol.Https));
 
-                    //check schema containig definitions
-                    var schemaContractParams = new SchemaContract()
+                    var schemaContractParams = new SchemaCreateOrUpdateContract()
                     {
-                        ContentType = "application/vnd.ms-azure-apim.swagger.definitions+json",
-                        Value = JsonSchemaStringWithDefinitions
+                        ContentType = "application/vnd.oai.openapi.components+json",
+                        Value = JsonSchemaString1
                     };
 
                     var schemaContract = await testBase.client.ApiSchema.CreateOrUpdateAsync(
@@ -364,26 +313,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                         schemaContractParams);
                     Assert.NotNull(schemaContract);
                     Assert.Equal(schemaContractParams.ContentType, schemaContract.ContentType);
-                    Assert.NotNull(schemaContract.Definitions);
-                    Assert.Null(schemaContract.Value);
-
-                    //check schema without definitions
-                    schemaContractParams = new SchemaContract()
-                    {
-                        ContentType = "application/vnd.oai.openapi.components+json",
-                        Value = JsonSchemaString1
-                    };
-
-                    schemaContract = await testBase.client.ApiSchema.CreateOrUpdateAsync(
-                        testBase.rgName,
-                        testBase.serviceName,
-                        newApiId,
-                        newSchemaId,
-                        schemaContractParams);
-                    Assert.NotNull(schemaContract);
-                    Assert.Equal(schemaContractParams.ContentType, schemaContract.ContentType);
-                    Assert.Null(schemaContract.Definitions);
-                    Assert.NotNull(schemaContract.Value);
+                    Assert.NotNull(schemaContract.Document);
 
                     // list the schemas attached to the api
                     var schemasList = await testBase.client.ApiSchema.ListByApiAsync(
@@ -512,7 +442,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                     Assert.True(apiGetResponse.Protocols.Contains(Protocol.Https));
 
                     XDocument schemaXDoc = XDocument.Parse(XmlSchemaString2);
-                    var schemaContractParams = new SchemaContract()
+                    var schemaContractParams = new SchemaCreateOrUpdateContract()
                     {
                         ContentType = "application/vnd.ms-azure-apim.xsd+xml",
                         Value = schemaXDoc.ToString()
@@ -526,8 +456,7 @@ namespace ApiManagement.Tests.ManagementApiTests
                         schemaContractParams);
                     Assert.NotNull(schemaContract);
                     Assert.Equal(schemaContractParams.ContentType, schemaContract.ContentType);
-                    Assert.NotNull(schemaContract.Value);
-                    Assert.Null(schemaContract.Definitions);
+                    Assert.NotNull(schemaContract.Document);
                     Assert.NotNull(schemaContract.WsdlSchema);
 
                     // list the schemas attached to the api

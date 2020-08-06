@@ -19,9 +19,21 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                 if (!string.IsNullOrWhiteSpace(this.ContentType) &&
                     this.ContentType.Equals("application/vnd.ms-azure-apim.xsd+xml", StringComparison.OrdinalIgnoreCase))
                 {
-
-                    return this.Value;
+                    if (this.Document != null)
+                    {
+                        try
+                        {
+                            var documentObject = JObject.Parse(this.Document.ToString());
+                            var result = documentObject["value"];
+                            return result.ToString();
+                        }
+                        catch(Exception)
+                        {
+                            return "Unable to parse the Schema";
+                        }
+                    }
                 }
+
                 return null;
             }
         }

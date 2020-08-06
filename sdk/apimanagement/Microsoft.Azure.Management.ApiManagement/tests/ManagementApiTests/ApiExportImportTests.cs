@@ -71,20 +71,8 @@ namespace ApiManagement.Tests.ManagementApiTests
                 {
                     // remove the API
                     testBase.client.Api.Delete(testBase.rgName, testBase.serviceName, swaggerApi, "*");
-
-                    // clean up all tags
-                    var listOfTags = testBase.client.Tag.ListByService(
-                        testBase.rgName,
-                        testBase.serviceName);
-                    foreach (var tag in listOfTags)
-                    {
-                        testBase.client.Tag.Delete(
-                            testBase.rgName,
-                            testBase.serviceName,
-                            tag.Name,
-                            "*");
-                    }
                 }
+
             }
         }
 
@@ -148,19 +136,6 @@ namespace ApiManagement.Tests.ManagementApiTests
                 {
                     // remove the API
                     testBase.client.Api.Delete(testBase.rgName, testBase.serviceName, wadlApi, "*");
-
-                    // clean up all tags
-                    var listOfTags = testBase.client.Tag.ListByService(
-                        testBase.rgName,
-                        testBase.serviceName);
-                    foreach (var tag in listOfTags)
-                    {
-                        testBase.client.NamedValue.Delete(
-                            testBase.rgName,
-                            testBase.serviceName,
-                            tag.Name,
-                            "*");
-                    }
                 }
             }
         }
@@ -308,20 +283,8 @@ namespace ApiManagement.Tests.ManagementApiTests
                 {
                     // remove the API
                     testBase.client.Api.Delete(testBase.rgName, testBase.serviceName, openApiId, "*");
-
-                    // clean up all tags
-                    var listOfTags = testBase.client.Tag.ListByService(
-                        testBase.rgName,
-                        testBase.serviceName);
-                    foreach (var tag in listOfTags)
-                    {
-                        testBase.client.Tag.Delete(
-                            testBase.rgName,
-                            testBase.serviceName,
-                            tag.Name,
-                            "*");
-                    }
                 }
+
             }
         }
 
@@ -381,20 +344,8 @@ namespace ApiManagement.Tests.ManagementApiTests
                 {
                     // remove the API
                     testBase.client.Api.Delete(testBase.rgName, testBase.serviceName, openApiId, "*");
-
-                    // clean up all tags
-                    var listOfTags = testBase.client.Tag.ListByService(
-                        testBase.rgName,
-                        testBase.serviceName);
-                    foreach (var tag in listOfTags)
-                    {
-                        testBase.client.Tag.Delete(
-                            testBase.rgName,
-                            testBase.serviceName,
-                            tag.Name,
-                            "*");
-                    }
                 }
+
             }
         }
     }
