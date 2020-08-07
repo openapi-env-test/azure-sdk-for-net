@@ -109,11 +109,6 @@ namespace Microsoft.Azure.Management.Peering
         IPeeringsOperations Peerings { get; }
 
         /// <summary>
-        /// Gets the IReceivedRoutesOperations.
-        /// </summary>
-        IReceivedRoutesOperations ReceivedRoutes { get; }
-
-        /// <summary>
         /// Gets the IPeeringServiceCountriesOperations.
         /// </summary>
         IPeeringServiceCountriesOperations PeeringServiceCountries { get; }

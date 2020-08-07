@@ -29,11 +29,12 @@ namespace Microsoft.Azure.Management.Peering.Models
         /// <summary>
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="error">The error detail that describes why an
-        /// operation has failed.</param>
-        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
+        /// <param name="code">The error code.</param>
+        /// <param name="message">The error message.</param>
+        public ErrorResponse(string code = default(string), string message = default(string))
         {
-            Error = error;
+            Code = code;
+            Message = message;
             CustomInit();
         }
 
@@ -43,11 +44,16 @@ namespace Microsoft.Azure.Management.Peering.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error detail that describes why an operation has
-        /// failed.
+        /// Gets the error code.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorDetail Error { get; set; }
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; private set; }
+
+        /// <summary>
+        /// Gets the error message.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
 
     }
 }
