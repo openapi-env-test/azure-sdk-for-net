@@ -16,28 +16,28 @@ namespace Microsoft.Azure.Management.Subscription.Models
     using System.Linq;
 
     /// <summary>
-    /// A list of pending subscription operations.
+    /// The list of aliases.
     /// </summary>
-    public partial class SubscriptionOperationListResult
+    public partial class PutAliasListResult
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationListResult
-        /// class.
+        /// Initializes a new instance of the PutAliasListResult class.
         /// </summary>
-        public SubscriptionOperationListResult()
+        public PutAliasListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionOperationListResult
-        /// class.
+        /// Initializes a new instance of the PutAliasListResult class.
         /// </summary>
-        /// <param name="value">A list of pending
-        /// SubscriptionOperations</param>
-        public SubscriptionOperationListResult(IList<SubscriptionOperation> value = default(IList<SubscriptionOperation>))
+        /// <param name="value">The list of alias.</param>
+        /// <param name="nextLink">The link (url) to the next page of
+        /// results.</param>
+        public PutAliasListResult(IList<PutAliasResponse> value = default(IList<PutAliasResponse>), string nextLink = default(string))
         {
             Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -47,10 +47,16 @@ namespace Microsoft.Azure.Management.Subscription.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of pending SubscriptionOperations
+        /// Gets the list of alias.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<SubscriptionOperation> Value { get; set; }
+        public IList<PutAliasResponse> Value { get; private set; }
+
+        /// <summary>
+        /// Gets the link (url) to the next page of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; private set; }
 
     }
 }
