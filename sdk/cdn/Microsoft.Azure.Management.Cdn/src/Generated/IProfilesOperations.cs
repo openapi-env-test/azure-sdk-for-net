@@ -120,35 +120,6 @@ namespace Microsoft.Azure.Management.Cdn
         /// </exception>
         Task<AzureOperationResponse<Profile>> CreateWithHttpMessagesAsync(string resourceGroupName, string profileName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates an existing CDN profile with the specified profile name
-        /// under the specified subscription and resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the Resource group within the Azure subscription.
-        /// </param>
-        /// <param name='profileName'>
-        /// Name of the CDN profile which is unique within the resource group.
-        /// </param>
-        /// <param name='tags'>
-        /// Profile tags
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<Profile>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Deletes an existing CDN profile with the specified parameters.
         /// Deleting a profile will result in the deletion of all of the
         /// sub-resources including endpoints, origins and custom domains.
@@ -284,35 +255,6 @@ namespace Microsoft.Azure.Management.Cdn
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<Profile>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string profileName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates an existing CDN profile with the specified profile name
-        /// under the specified subscription and resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the Resource group within the Azure subscription.
-        /// </param>
-        /// <param name='profileName'>
-        /// Name of the CDN profile which is unique within the resource group.
-        /// </param>
-        /// <param name='tags'>
-        /// Profile tags
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<Profile>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an existing CDN profile with the specified parameters.
         /// Deleting a profile will result in the deletion of all of the
