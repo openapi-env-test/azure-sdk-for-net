@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Cdn
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -170,54 +168,6 @@ namespace Microsoft.Azure.Management.Cdn
             public static async Task<Profile> CreateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, profileName, profile, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates an existing CDN profile with the specified profile name under the
-            /// specified subscription and resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
-            /// <param name='tags'>
-            /// Profile tags
-            /// </param>
-            public static Profile Update(this IProfilesOperations operations, string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.UpdateAsync(resourceGroupName, profileName, tags).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates an existing CDN profile with the specified profile name under the
-            /// specified subscription and resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
-            /// <param name='tags'>
-            /// Profile tags
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Profile> UpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -439,54 +389,6 @@ namespace Microsoft.Azure.Management.Cdn
             public static async Task<Profile> BeginCreateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, profileName, profile, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates an existing CDN profile with the specified profile name under the
-            /// specified subscription and resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
-            /// <param name='tags'>
-            /// Profile tags
-            /// </param>
-            public static Profile BeginUpdate(this IProfilesOperations operations, string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, profileName, tags).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates an existing CDN profile with the specified profile name under the
-            /// specified subscription and resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the Resource group within the Azure subscription.
-            /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
-            /// <param name='tags'>
-            /// Profile tags
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Profile> BeginUpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, profileName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
