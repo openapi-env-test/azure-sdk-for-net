@@ -15,32 +15,33 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the rule collection.
+    /// ExtendedLocation complex type.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("FirewallPolicyRuleCollection")]
-    public partial class FirewallPolicyRuleCollection
+    public partial class ExtendedLocation
     {
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyRuleCollection
-        /// class.
+        /// Initializes a new instance of the ExtendedLocation class.
         /// </summary>
-        public FirewallPolicyRuleCollection()
+        public ExtendedLocation()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FirewallPolicyRuleCollection
-        /// class.
+        /// Initializes a new instance of the ExtendedLocation class.
         /// </summary>
-        /// <param name="name">The name of the rule collection.</param>
-        /// <param name="priority">Priority of the Firewall Policy Rule
-        /// Collection resource.</param>
-        public FirewallPolicyRuleCollection(string name = default(string), int? priority = default(int?))
+        /// <param name="name">The name of the extended location.</param>
+        public ExtendedLocation(string name)
         {
             Name = name;
-            Priority = priority;
             CustomInit();
+        }
+        /// <summary>
+        /// Static constructor for ExtendedLocation class.
+        /// </summary>
+        static ExtendedLocation()
+        {
+            Type = "EdgeZone";
         }
 
         /// <summary>
@@ -49,17 +50,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the rule collection.
+        /// Gets or sets the name of the extended location.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets priority of the Firewall Policy Rule Collection
-        /// resource.
+        /// The type of the extended location.
         /// </summary>
-        [JsonProperty(PropertyName = "priority")]
-        public int? Priority { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public static string Type { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -69,13 +69,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Priority > 65000)
+            if (Name == null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Priority", 65000);
-            }
-            if (Priority < 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Priority", 100);
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
             }
         }
     }
