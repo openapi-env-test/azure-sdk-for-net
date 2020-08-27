@@ -12,11 +12,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ScaleSetPriority.
+    /// Defines values for Expander.
     /// </summary>
-    public static class ScaleSetPriority
+    public static class Expander
     {
-        public const string Spot = "Spot";
-        public const string Regular = "Regular";
+        public const string LeastWaste = "least-waste";
+        public const string MostPods = "most-pods";
+        public const string Random = "random";
     }
 }

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ScaleSetPriority.
+    /// Defines values for Code.
     /// </summary>
-    public static class ScaleSetPriority
+    public static class Code
     {
-        public const string Spot = "Spot";
-        public const string Regular = "Regular";
+        public const string Running = "Running";
+        public const string Stopped = "Stopped";
     }
 }
