@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ScaleSetPriority.
+    /// Defines values for OSDiskType.
     /// </summary>
-    public static class ScaleSetPriority
+    public static class OSDiskType
     {
-        public const string Spot = "Spot";
-        public const string Regular = "Regular";
+        public const string Managed = "Managed";
+        public const string Ephemeral = "Ephemeral";
     }
 }
