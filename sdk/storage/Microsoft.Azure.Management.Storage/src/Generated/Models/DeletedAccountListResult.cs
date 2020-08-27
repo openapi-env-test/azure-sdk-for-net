@@ -11,29 +11,31 @@
 namespace Microsoft.Azure.Management.Storage.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// An error response from the storage resource provider.
+    /// The response from the List Deleted Accounts operation.
     /// </summary>
-    public partial class ErrorResponse
+    public partial class DeletedAccountListResult
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the DeletedAccountListResult class.
         /// </summary>
-        public ErrorResponse()
+        public DeletedAccountListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorResponse class.
+        /// Initializes a new instance of the DeletedAccountListResult class.
         /// </summary>
-        /// <param name="error">Azure Storage Resource Provider error response
-        /// body.</param>
-        public ErrorResponse(ErrorResponseBody error = default(ErrorResponseBody))
+        /// <param name="value">Gets the list of deleted accounts and their
+        /// properties.</param>
+        public DeletedAccountListResult(IList<DeletedAccount> value = default(IList<DeletedAccount>))
         {
-            Error = error;
+            Value = value;
             CustomInit();
         }
 
@@ -43,10 +45,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets azure Storage Resource Provider error response body.
+        /// Gets the list of deleted accounts and their properties.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public ErrorResponseBody Error { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<DeletedAccount> Value { get; private set; }
 
     }
 }
