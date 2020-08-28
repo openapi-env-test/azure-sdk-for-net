@@ -22,40 +22,38 @@ namespace Microsoft.Azure.Management.Billing
     public static partial class BillingPermissionsOperationsExtensions
     {
             /// <summary>
-            /// Lists the billing permissions the caller has for a customer.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions the caller has for a customer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
-            public static IPage<BillingPermissionsProperties> ListByCustomer(this IBillingPermissionsOperations operations, string billingAccountName, string customerName)
+            public static BillingPermissionsListResult ListByCustomer(this IBillingPermissionsOperations operations, string billingAccountName, string customerName)
             {
                 return operations.ListByCustomerAsync(billingAccountName, customerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has for a customer.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions the caller has for a customer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByCustomerAsync(this IBillingPermissionsOperations operations, string billingAccountName, string customerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingPermissionsListResult> ListByCustomerAsync(this IBillingPermissionsOperations operations, string billingAccountName, string customerName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByCustomerWithHttpMessagesAsync(billingAccountName, customerName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -64,34 +62,32 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on a billing account.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions for the caller under a billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
-            public static IPage<BillingPermissionsProperties> ListByBillingAccount(this IBillingPermissionsOperations operations, string billingAccountName)
+            public static BillingPermissionsListResult ListByBillingAccount(this IBillingPermissionsOperations operations, string billingAccountName)
             {
                 return operations.ListByBillingAccountAsync(billingAccountName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on a billing account.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions for the caller under a billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByBillingAccountAsync(this IBillingPermissionsOperations operations, string billingAccountName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingPermissionsListResult> ListByBillingAccountAsync(this IBillingPermissionsOperations operations, string billingAccountName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingAccountWithHttpMessagesAsync(billingAccountName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -100,46 +96,44 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on an invoice section.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions for the caller under invoice section.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='invoiceSectionName'>
-            /// The ID that uniquely identifies an invoice section.
+            /// InvoiceSection Id.
             /// </param>
-            public static IPage<BillingPermissionsProperties> ListByInvoiceSections(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName)
+            public static BillingPermissionsListResult ListByInvoiceSections(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName)
             {
                 return operations.ListByInvoiceSectionsAsync(billingAccountName, billingProfileName, invoiceSectionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on an invoice section.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions for the caller under invoice section.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='invoiceSectionName'>
-            /// The ID that uniquely identifies an invoice section.
+            /// InvoiceSection Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByInvoiceSectionsAsync(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingPermissionsListResult> ListByInvoiceSectionsAsync(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByInvoiceSectionsWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -148,186 +142,40 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on a billing profile.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions the caller has for a billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
-            public static IPage<BillingPermissionsProperties> ListByBillingProfile(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName)
+            public static BillingPermissionsListResult ListByBillingProfile(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName)
             {
                 return operations.ListByBillingProfileAsync(billingAccountName, billingProfileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the billing permissions the caller has on a billing profile.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing permissions the caller has for a billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByBillingProfileAsync(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingPermissionsListResult> ListByBillingProfileAsync(this IBillingPermissionsOperations operations, string billingAccountName, string billingProfileName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingProfileWithHttpMessagesAsync(billingAccountName, billingProfileName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has for a customer.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingPermissionsProperties> ListByCustomerNext(this IBillingPermissionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByCustomerNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has for a customer.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByCustomerNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByCustomerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on a billing account.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingPermissionsProperties> ListByBillingAccountNext(this IBillingPermissionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByBillingAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on a billing account.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByBillingAccountNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByBillingAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on an invoice section.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingPermissionsProperties> ListByInvoiceSectionsNext(this IBillingPermissionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByInvoiceSectionsNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on an invoice section.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByInvoiceSectionsNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByInvoiceSectionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on a billing profile.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingPermissionsProperties> ListByBillingProfileNext(this IBillingPermissionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByBillingProfileNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the billing permissions the caller has on a billing profile.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingPermissionsProperties>> ListByBillingProfileNextAsync(this IBillingPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByBillingProfileNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -22,18 +22,17 @@ namespace Microsoft.Azure.Management.Billing
     public static partial class BillingSubscriptionsOperationsExtensions
     {
             /// <summary>
-            /// Lists the subscriptions for a customer. The operation is supported only for
-            /// billing accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists billing subscription by customer id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
             public static IPage<BillingSubscription> ListByCustomer(this IBillingSubscriptionsOperations operations, string billingAccountName, string customerName)
             {
@@ -41,18 +40,17 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a customer. The operation is supported only for
-            /// billing accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists billing subscription by customer id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -66,16 +64,62 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a billing account. The operation is supported
-            /// for billing accounts with agreement type Microsoft Customer Agreement or
-            /// Microsoft Partner Agreement.
+            /// Get a single billing subscription by id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// billing Account Id.
+            /// </param>
+            /// <param name='customerName'>
+            /// Customer name.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
+            /// </param>
+            public static BillingSubscription GetByCustomer(this IBillingSubscriptionsOperations operations, string billingAccountName, string customerName, string billingSubscriptionName)
+            {
+                return operations.GetByCustomerAsync(billingAccountName, customerName, billingSubscriptionName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get a single billing subscription by id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='billingAccountName'>
+            /// billing Account Id.
+            /// </param>
+            /// <param name='customerName'>
+            /// Customer name.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BillingSubscription> GetByCustomerAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string customerName, string billingSubscriptionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByCustomerWithHttpMessagesAsync(billingAccountName, customerName, billingSubscriptionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists billing subscriptions by billing account name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             public static IPage<BillingSubscription> ListByBillingAccount(this IBillingSubscriptionsOperations operations, string billingAccountName)
             {
@@ -83,16 +127,14 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a billing account. The operation is supported
-            /// for billing accounts with agreement type Microsoft Customer Agreement or
-            /// Microsoft Partner Agreement.
+            /// Lists billing subscriptions by billing account name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -106,44 +148,40 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions that are billed to a billing profile. The operation
-            /// is supported for billing accounts with agreement type Microsoft Customer
-            /// Agreement or Microsoft Partner Agreement.
+            /// Lists billing subscriptions by billing profile name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
-            public static IPage<BillingSubscription> ListByBillingProfile(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName)
+            public static BillingSubscriptionsListResult ListByBillingProfile(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName)
             {
                 return operations.ListByBillingProfileAsync(billingAccountName, billingProfileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the subscriptions that are billed to a billing profile. The operation
-            /// is supported for billing accounts with agreement type Microsoft Customer
-            /// Agreement or Microsoft Partner Agreement.
+            /// Lists billing subscriptions by billing profile name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingSubscription>> ListByBillingProfileAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingSubscriptionsListResult> ListByBillingProfileAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingProfileWithHttpMessagesAsync(billingAccountName, billingProfileName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -152,50 +190,46 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions that are billed to an invoice section. The
-            /// operation is supported only for billing accounts with agreement type
-            /// Microsoft Customer Agreement.
+            /// Lists billing subscription by invoice section name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='invoiceSectionName'>
-            /// The ID that uniquely identifies an invoice section.
+            /// InvoiceSection Id.
             /// </param>
-            public static IPage<BillingSubscription> ListByInvoiceSection(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName)
+            public static BillingSubscriptionsListResult ListByInvoiceSection(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName)
             {
                 return operations.ListByInvoiceSectionAsync(billingAccountName, billingProfileName, invoiceSectionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the subscriptions that are billed to an invoice section. The
-            /// operation is supported only for billing accounts with agreement type
-            /// Microsoft Customer Agreement.
+            /// Lists billing subscription by invoice section name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
+            /// Billing Profile Id.
             /// </param>
             /// <param name='invoiceSectionName'>
-            /// The ID that uniquely identifies an invoice section.
+            /// InvoiceSection Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingSubscription>> ListByInvoiceSectionAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingSubscriptionsListResult> ListByInvoiceSectionAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByInvoiceSectionWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -204,239 +238,240 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Gets a subscription by its ID. The operation is supported for billing
-            /// accounts with agreement type Microsoft Customer Agreement and Microsoft
-            /// Partner Agreement.
+            /// Get a single billing subscription by name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
-            public static BillingSubscription Get(this IBillingSubscriptionsOperations operations, string billingAccountName)
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
+            /// </param>
+            public static BillingSubscription Get(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName)
             {
-                return operations.GetAsync(billingAccountName).GetAwaiter().GetResult();
+                return operations.GetAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a subscription by its ID. The operation is supported for billing
-            /// accounts with agreement type Microsoft Customer Agreement and Microsoft
-            /// Partner Agreement.
+            /// Get a single billing subscription by name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingSubscription> GetAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingSubscription> GetAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(billingAccountName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Updates the properties of a billing subscription. Currently, cost center
-            /// can be updated. The operation is supported only for billing accounts with
-            /// agreement type Microsoft Customer Agreement.
+            /// Transfers the subscription from one invoice section to another within a
+            /// billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing subscription
-            /// operation.
+            /// Request parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
-            public static BillingSubscription Update(this IBillingSubscriptionsOperations operations, string billingAccountName, BillingSubscription parameters)
+            public static TransferBillingSubscriptionResult Transfer(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters)
             {
-                return operations.UpdateAsync(billingAccountName, parameters).GetAwaiter().GetResult();
+                return operations.TransferAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Updates the properties of a billing subscription. Currently, cost center
-            /// can be updated. The operation is supported only for billing accounts with
-            /// agreement type Microsoft Customer Agreement.
+            /// Transfers the subscription from one invoice section to another within a
+            /// billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing subscription
-            /// operation.
+            /// Request parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingSubscription> UpdateAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, BillingSubscription parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TransferBillingSubscriptionResult> TransferAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.TransferWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Moves a subscription's charges to a new invoice section. The new invoice
-            /// section must belong to the same billing profile as the existing invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Validates the transfer of billing subscriptions across invoice sections.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the move subscription operation.
+            /// Parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
-            public static BillingSubscription Move(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
+            public static ValidateSubscriptionTransferEligibilityResult ValidateTransfer(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters)
             {
-                return operations.MoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
+                return operations.ValidateTransferAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Moves a subscription's charges to a new invoice section. The new invoice
-            /// section must belong to the same billing profile as the existing invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Validates the transfer of billing subscriptions across invoice sections.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the move subscription operation.
+            /// Parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BillingSubscription> MoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ValidateSubscriptionTransferEligibilityResult> ValidateTransferAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.MoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ValidateTransferWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Validates if a subscription's charges can be moved to a new invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Transfers the subscription from one invoice section to another within a
+            /// billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the validate move eligibility
-            /// operation.
+            /// Request parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
-            public static ValidateSubscriptionTransferEligibilityResult ValidateMove(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
+            public static TransferBillingSubscriptionResult BeginTransfer(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters)
             {
-                return operations.ValidateMoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
+                return operations.BeginTransferAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Validates if a subscription's charges can be moved to a new invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Transfers the subscription from one invoice section to another within a
+            /// billing account.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
+            /// </param>
+            /// <param name='billingProfileName'>
+            /// Billing Profile Id.
+            /// </param>
+            /// <param name='invoiceSectionName'>
+            /// InvoiceSection Id.
+            /// </param>
+            /// <param name='billingSubscriptionName'>
+            /// Billing Subscription Id.
             /// </param>
             /// <param name='parameters'>
-            /// Request parameters that are provided to the validate move eligibility
-            /// operation.
+            /// Request parameters supplied to the Transfer Billing Subscription operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ValidateSubscriptionTransferEligibilityResult> ValidateMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TransferBillingSubscriptionResult> BeginTransferAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string billingSubscriptionName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ValidateMoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginTransferWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, billingSubscriptionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Moves a subscription's charges to a new invoice section. The new invoice
-            /// section must belong to the same billing profile as the existing invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the move subscription operation.
-            /// </param>
-            public static BillingSubscription BeginMove(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
-            {
-                return operations.BeginMoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Moves a subscription's charges to a new invoice section. The new invoice
-            /// section must belong to the same billing profile as the existing invoice
-            /// section. This operation is supported for billing accounts with agreement
-            /// type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the move subscription operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BillingSubscription> BeginMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginMoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the subscriptions for a customer. The operation is supported only for
-            /// billing accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists billing subscription by customer id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -450,9 +485,8 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a customer. The operation is supported only for
-            /// billing accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists billing subscription by customer id.
+            /// <see href="https://docs.microsoft.com/en-us/rest/api/consumption/" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -472,9 +506,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a billing account. The operation is supported
-            /// for billing accounts with agreement type Microsoft Customer Agreement or
-            /// Microsoft Partner Agreement.
+            /// Lists billing subscriptions by billing account name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -489,9 +521,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the subscriptions for a billing account. The operation is supported
-            /// for billing accounts with agreement type Microsoft Customer Agreement or
-            /// Microsoft Partner Agreement.
+            /// Lists billing subscriptions by billing account name.
             /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
             /// </summary>
             /// <param name='operations'>
@@ -506,86 +536,6 @@ namespace Microsoft.Azure.Management.Billing
             public static async Task<IPage<BillingSubscription>> ListByBillingAccountNextAsync(this IBillingSubscriptionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByBillingAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the subscriptions that are billed to a billing profile. The operation
-            /// is supported for billing accounts with agreement type Microsoft Customer
-            /// Agreement or Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingSubscription> ListByBillingProfileNext(this IBillingSubscriptionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByBillingProfileNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the subscriptions that are billed to a billing profile. The operation
-            /// is supported for billing accounts with agreement type Microsoft Customer
-            /// Agreement or Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingSubscription>> ListByBillingProfileNextAsync(this IBillingSubscriptionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByBillingProfileNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the subscriptions that are billed to an invoice section. The
-            /// operation is supported only for billing accounts with agreement type
-            /// Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingSubscription> ListByInvoiceSectionNext(this IBillingSubscriptionsOperations operations, string nextPageLink)
-            {
-                return operations.ListByInvoiceSectionNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the subscriptions that are billed to an invoice section. The
-            /// operation is supported only for billing accounts with agreement type
-            /// Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingSubscription>> ListByInvoiceSectionNextAsync(this IBillingSubscriptionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByInvoiceSectionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

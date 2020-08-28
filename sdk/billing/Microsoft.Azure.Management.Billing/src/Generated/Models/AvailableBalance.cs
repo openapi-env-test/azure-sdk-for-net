@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// The latest Azure credit balance. This is the balance available for pay
-    /// now.
+    /// Latest available balance on Monetary Credit PI.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class AvailableBalance : Resource
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="amount">Balance amount.</param>
+        /// <param name="amount">Balance Amount.</param>
         public AvailableBalance(string id = default(string), string name = default(string), string type = default(string), Amount amount = default(Amount))
             : base(id, name, type)
         {
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets balance amount.
+        /// Gets balance Amount.
         /// </summary>
         [JsonProperty(PropertyName = "properties.amount")]
         public Amount Amount { get; private set; }

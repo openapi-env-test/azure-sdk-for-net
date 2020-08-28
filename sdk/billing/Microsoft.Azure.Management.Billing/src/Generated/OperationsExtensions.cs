@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Management.Billing
     public static partial class OperationsExtensions
     {
             /// <summary>
-            /// Lists the available billing REST API operations.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all of the available billing REST API operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -34,8 +33,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the available billing REST API operations.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all of the available billing REST API operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -52,8 +50,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the available billing REST API operations.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all of the available billing REST API operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -67,8 +64,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the available billing REST API operations.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all of the available billing REST API operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

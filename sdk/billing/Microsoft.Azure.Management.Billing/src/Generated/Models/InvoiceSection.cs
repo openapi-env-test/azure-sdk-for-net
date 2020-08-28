@@ -13,12 +13,10 @@ namespace Microsoft.Azure.Management.Billing.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// An invoice section.
+    /// An InvoiceSection resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class InvoiceSection : Resource
@@ -37,17 +35,11 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="displayName">The name of the invoice section.</param>
-        /// <param name="labels">Dictionary of metadata associated with the
-        /// invoice section.</param>
-        /// <param name="systemId">The system generated unique identifier for
-        /// an invoice section.</param>
-        public InvoiceSection(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), IDictionary<string, string> labels = default(IDictionary<string, string>), string systemId = default(string))
+        /// <param name="displayName">The name of the InvoiceSection.</param>
+        public InvoiceSection(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string))
             : base(id, name, type)
         {
             DisplayName = displayName;
-            Labels = labels;
-            SystemId = systemId;
             CustomInit();
         }
 
@@ -57,23 +49,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the invoice section.
+        /// Gets or sets the name of the InvoiceSection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or sets dictionary of metadata associated with the invoice
-        /// section.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.labels")]
-        public IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Gets the system generated unique identifier for an invoice section.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.systemId")]
-        public string SystemId { get; private set; }
 
     }
 }

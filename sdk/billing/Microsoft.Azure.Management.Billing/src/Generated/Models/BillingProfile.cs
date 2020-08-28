@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// A billing profile.
+    /// A billing profile resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class BillingProfile : Resource
@@ -37,48 +37,29 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="displayName">The name of the billing profile.</param>
-        /// <param name="poNumber">The purchase order name that will appear on
-        /// the invoices generated for the billing profile.</param>
-        /// <param name="billTo">Billing address.</param>
-        /// <param name="invoiceEmailOptIn">Flag controlling whether the
-        /// invoices for the billing profile are sent through email.</param>
-        /// <param name="invoiceDay">The day of the month when the invoice for
-        /// the billing profile is generated.</param>
-        /// <param name="currency">The currency in which the charges for the
-        /// billing profile are billed.</param>
+        /// <param name="displayName">The billing profile name.</param>
+        /// <param name="poNumber">Purchase order number.</param>
+        /// <param name="address">Billing address.</param>
+        /// <param name="invoiceEmailOptIn">If the billing profile is opted in
+        /// to receive invoices via email.</param>
+        /// <param name="invoiceDay">Invoice day.</param>
+        /// <param name="currency">The currency associated with the billing
+        /// profile.</param>
         /// <param name="enabledAzurePlans">Information about the enabled azure
         /// plans.</param>
         /// <param name="invoiceSections">The invoice sections associated to
-        /// the billing profile. By default this is not populated, unless it's
-        /// specified in $expand.</param>
-        /// <param name="hasReadAccess">Indicates whether user has read access
-        /// to the billing profile.</param>
-        /// <param name="systemId">The system generated unique identifier for a
-        /// billing profile.</param>
-        /// <param name="status">The status of the billing profile. Possible
-        /// values include: 'Active', 'Disabled', 'Warned'</param>
-        /// <param name="statusReasonCode">Reason for the specified billing
-        /// profile status. Possible values include: 'PastDue',
-        /// 'SpendingLimitReached', 'SpendingLimitExpired'</param>
-        /// <param name="spendingLimit">The billing profile spending limit.
-        /// Possible values include: 'Off', 'On'</param>
-        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails billTo = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), InvoiceSectionsOnExpand invoiceSections = default(InvoiceSectionsOnExpand), bool? hasReadAccess = default(bool?), string systemId = default(string), string status = default(string), string statusReasonCode = default(string), string spendingLimit = default(string))
+        /// the billing profile.</param>
+        public BillingProfile(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string poNumber = default(string), AddressDetails address = default(AddressDetails), bool? invoiceEmailOptIn = default(bool?), int? invoiceDay = default(int?), string currency = default(string), IList<AzurePlan> enabledAzurePlans = default(IList<AzurePlan>), IList<InvoiceSection> invoiceSections = default(IList<InvoiceSection>))
             : base(id, name, type)
         {
             DisplayName = displayName;
             PoNumber = poNumber;
-            BillTo = billTo;
+            Address = address;
             InvoiceEmailOptIn = invoiceEmailOptIn;
             InvoiceDay = invoiceDay;
             Currency = currency;
             EnabledAzurePlans = enabledAzurePlans;
             InvoiceSections = invoiceSections;
-            HasReadAccess = hasReadAccess;
-            SystemId = systemId;
-            Status = status;
-            StatusReasonCode = statusReasonCode;
-            SpendingLimit = spendingLimit;
             CustomInit();
         }
 
@@ -88,14 +69,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the billing profile.
+        /// Gets or sets the billing profile name.
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the purchase order name that will appear on the
-        /// invoices generated for the billing profile.
+        /// Gets or sets purchase order number.
         /// </summary>
         [JsonProperty(PropertyName = "properties.poNumber")]
         public string PoNumber { get; set; }
@@ -103,26 +83,24 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <summary>
         /// Gets or sets billing address.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.billTo")]
-        public AddressDetails BillTo { get; set; }
+        [JsonProperty(PropertyName = "properties.address")]
+        public AddressDetails Address { get; set; }
 
         /// <summary>
-        /// Gets or sets flag controlling whether the invoices for the billing
-        /// profile are sent through email.
+        /// Gets or sets if the billing profile is opted in to receive invoices
+        /// via email.
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceEmailOptIn")]
         public bool? InvoiceEmailOptIn { get; set; }
 
         /// <summary>
-        /// Gets the day of the month when the invoice for the billing profile
-        /// is generated.
+        /// Gets invoice day.
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceDay")]
         public int? InvoiceDay { get; private set; }
 
         /// <summary>
-        /// Gets the currency in which the charges for the billing profile are
-        /// billed.
+        /// Gets the currency associated with the billing profile.
         /// </summary>
         [JsonProperty(PropertyName = "properties.currency")]
         public string Currency { get; private set; }
@@ -135,58 +113,10 @@ namespace Microsoft.Azure.Management.Billing.Models
 
         /// <summary>
         /// Gets or sets the invoice sections associated to the billing
-        /// profile. By default this is not populated, unless it's specified in
-        /// $expand.
+        /// profile.
         /// </summary>
         [JsonProperty(PropertyName = "properties.invoiceSections")]
-        public InvoiceSectionsOnExpand InvoiceSections { get; set; }
+        public IList<InvoiceSection> InvoiceSections { get; set; }
 
-        /// <summary>
-        /// Gets indicates whether user has read access to the billing profile.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.hasReadAccess")]
-        public bool? HasReadAccess { get; private set; }
-
-        /// <summary>
-        /// Gets the system generated unique identifier for a billing profile.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.systemId")]
-        public string SystemId { get; private set; }
-
-        /// <summary>
-        /// Gets the status of the billing profile. Possible values include:
-        /// 'Active', 'Disabled', 'Warned'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.status")]
-        public string Status { get; private set; }
-
-        /// <summary>
-        /// Gets reason for the specified billing profile status. Possible
-        /// values include: 'PastDue', 'SpendingLimitReached',
-        /// 'SpendingLimitExpired'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.statusReasonCode")]
-        public string StatusReasonCode { get; private set; }
-
-        /// <summary>
-        /// Gets the billing profile spending limit. Possible values include:
-        /// 'Off', 'On'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.spendingLimit")]
-        public string SpendingLimit { get; private set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (BillTo != null)
-            {
-                BillTo.Validate();
-            }
-        }
     }
 }

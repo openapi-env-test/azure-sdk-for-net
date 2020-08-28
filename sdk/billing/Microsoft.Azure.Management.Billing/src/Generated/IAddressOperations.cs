@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Management.Billing
     public partial interface IAddressOperations
     {
         /// <summary>
-        /// Validates an address. Use the operation to validate an address
-        /// before using it as soldTo or a billTo address.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Validates the address.
         /// </summary>
         /// <param name='address'>
         /// </param>

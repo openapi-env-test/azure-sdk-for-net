@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// The properties of an enrollment.
+    /// Current entity level details
     /// </summary>
     public partial class Enrollment
     {
@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <summary>
         /// Initializes a new instance of the Enrollment class.
         /// </summary>
-        /// <param name="startDate">The start date of the enrollment.</param>
-        /// <param name="endDate">The end date of the enrollment.</param>
-        /// <param name="currency">The billing currency for the
+        /// <param name="startDate">Enrollment Start Date</param>
+        /// <param name="endDate">Enrollment End Date</param>
+        /// <param name="currency">The currency associated with
+        /// enrollment</param>
+        /// <param name="channel">The channel for Enrollment</param>
+        /// <param name="policies">The attributes associated with legacy
         /// enrollment.</param>
-        /// <param name="channel">The channel type of the enrollment.</param>
-        /// <param name="policies">The policies for Enterprise Agreement
-        /// enrollments.</param>
-        /// <param name="language">The language for the enrollment.</param>
-        /// <param name="countryCode">The country code of the
-        /// enrollment.</param>
-        /// <param name="status">The current status of the enrollment.</param>
-        /// <param name="billingCycle">The billing cycle for the
-        /// enrollment.</param>
+        /// <param name="language">The language for Enrollment</param>
+        /// <param name="countryCode">The countryCode for Enrollment</param>
+        /// <param name="status">Enrollment status</param>
+        /// <param name="billingCycle">Enrollment billing cycle</param>
         public Enrollment(System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string currency = default(string), string channel = default(string), EnrollmentPolicies policies = default(EnrollmentPolicies), string language = default(string), string countryCode = default(string), string status = default(string), string billingCycle = default(string))
         {
             StartDate = startDate;
@@ -62,55 +60,55 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the start date of the enrollment.
+        /// Gets or sets enrollment Start Date
         /// </summary>
         [JsonProperty(PropertyName = "startDate")]
         public System.DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the end date of the enrollment.
+        /// Gets or sets enrollment End Date
         /// </summary>
         [JsonProperty(PropertyName = "endDate")]
         public System.DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Gets the billing currency for the enrollment.
+        /// Gets the currency associated with enrollment
         /// </summary>
         [JsonProperty(PropertyName = "currency")]
         public string Currency { get; private set; }
 
         /// <summary>
-        /// Gets the channel type of the enrollment.
+        /// Gets the channel for Enrollment
         /// </summary>
         [JsonProperty(PropertyName = "channel")]
         public string Channel { get; private set; }
 
         /// <summary>
-        /// Gets the policies for Enterprise Agreement enrollments.
+        /// Gets the attributes associated with legacy enrollment.
         /// </summary>
         [JsonProperty(PropertyName = "policies")]
         public EnrollmentPolicies Policies { get; private set; }
 
         /// <summary>
-        /// Gets the language for the enrollment.
+        /// Gets the language for Enrollment
         /// </summary>
         [JsonProperty(PropertyName = "language")]
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets the country code of the enrollment.
+        /// Gets the countryCode for Enrollment
         /// </summary>
         [JsonProperty(PropertyName = "countryCode")]
         public string CountryCode { get; private set; }
 
         /// <summary>
-        /// Gets the current status of the enrollment.
+        /// Gets enrollment status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
         /// <summary>
-        /// Gets the billing cycle for the enrollment.
+        /// Gets enrollment billing cycle
         /// </summary>
         [JsonProperty(PropertyName = "billingCycle")]
         public string BillingCycle { get; private set; }

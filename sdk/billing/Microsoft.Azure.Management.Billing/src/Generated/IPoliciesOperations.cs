@@ -24,16 +24,15 @@ namespace Microsoft.Azure.Management.Billing
     public partial interface IPoliciesOperations
     {
         /// <summary>
-        /// Lists the policies for a billing profile. This operation is
-        /// supported only for billing accounts with agreement type Microsoft
-        /// Customer Agreement.
+        /// The policy for a given billing account name and billing profile
+        /// name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
+        /// Billing Profile Id.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,19 +51,16 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<Policy>> GetByBillingProfileWithHttpMessagesAsync(string billingAccountName, string billingProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates the policies for a billing profile. This operation is
-        /// supported only for billing accounts with agreement type Microsoft
-        /// Customer Agreement.
+        /// The operation to update a policy.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
+        /// Billing Profile Id.
         /// </param>
         /// <param name='parameters'>
-        /// Request parameters that are provided to the update policies
-        /// operation.
+        /// Parameters supplied to the update policy operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -83,16 +79,14 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<Policy>> UpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, Policy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists the policies for a customer. This operation is supported only
-        /// for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
+        /// The policy for a given billing account name and customer name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='customerName'>
-        /// The ID that uniquely identifies a customer.
+        /// Customer name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -111,19 +105,16 @@ namespace Microsoft.Azure.Management.Billing
         /// </exception>
         Task<AzureOperationResponse<CustomerPolicy>> GetByCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates the policies for a customer. This operation is supported
-        /// only for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
+        /// The operation to update a Customer policy.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='customerName'>
-        /// The ID that uniquely identifies a customer.
+        /// Customer name.
         /// </param>
         /// <param name='parameters'>
-        /// Request parameters that are provided to the update policies
-        /// operation.
+        /// Parameters supplied to the update customer policy operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// The details about a participant.
+    /// Details about the participant or signer.
     /// </summary>
     public partial class Participants
     {
@@ -29,11 +29,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <summary>
         /// Initializes a new instance of the Participants class.
         /// </summary>
-        /// <param name="status">The acceptance status of the
-        /// participant.</param>
-        /// <param name="statusDate">The date when the status got
-        /// changed.</param>
-        /// <param name="email">The email address of the participant.</param>
+        /// <param name="status">The signing status</param>
+        /// <param name="statusDate">The date when status got changed.</param>
+        /// <param name="email">The email address of the participant or
+        /// signer.</param>
         public Participants(string status = default(string), System.DateTime? statusDate = default(System.DateTime?), string email = default(string))
         {
             Status = status;
@@ -48,19 +47,19 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the acceptance status of the participant.
+        /// Gets the signing status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
         /// <summary>
-        /// Gets the date when the status got changed.
+        /// Gets the date when status got changed.
         /// </summary>
         [JsonProperty(PropertyName = "statusDate")]
         public System.DateTime? StatusDate { get; private set; }
 
         /// <summary>
-        /// Gets the email address of the participant.
+        /// Gets the email address of the participant or signer.
         /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; private set; }

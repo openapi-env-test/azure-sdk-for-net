@@ -51,23 +51,23 @@ namespace Microsoft.Azure.Management.Billing
         public BillingManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists the customers that are billed to a billing profile. The operation is
-        /// supported only for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Lists customers by billing profile which the current user can work with
+        /// on-behalf of a partner.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
-        /// </param>
-        /// <param name='search'>
-        /// Used for searching customers by their name. Any customer with name
-        /// containing the search text will be included in the response
+        /// Billing Profile Id.
         /// </param>
         /// <param name='filter'>
         /// May be used to filter the list of customers.
+        /// </param>
+        /// <param name='skiptoken'>
+        /// Skiptoken is only used if a previous operation returned a partial result.
+        /// If a previous response contains a nextLink element, the value of the
+        /// nextLink element will include a skiptoken parameter that specifies a
+        /// starting point to use for subsequent calls.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -90,8 +90,12 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<Customer>>> ListByBillingProfileWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string search = default(string), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Customer>>> ListByBillingProfileWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string filter = default(string), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
@@ -100,7 +104,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingProfileName");
             }
-            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -108,11 +111,10 @@ namespace Microsoft.Azure.Management.Billing
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("billingProfileName", billingProfileName);
-                tracingParameters.Add("search", search);
                 tracingParameters.Add("filter", filter);
+                tracingParameters.Add("skiptoken", skiptoken);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByBillingProfile", tracingParameters);
             }
@@ -122,17 +124,17 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{billingProfileName}", System.Uri.EscapeDataString(billingProfileName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (search != null)
-            {
-                _queryParameters.Add(string.Format("$search={0}", System.Uri.EscapeDataString(search)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (filter != null)
             {
                 _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
+            }
+            if (skiptoken != null)
+            {
+                _queryParameters.Add(string.Format("$skiptoken={0}", System.Uri.EscapeDataString(skiptoken)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -255,20 +257,20 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists the customers that are billed to a billing account. The operation is
-        /// supported only for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Lists customers which the current user can work with on-behalf of a
+        /// partner.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
-        /// </param>
-        /// <param name='search'>
-        /// Used for searching customers by their name. Any customer with name
-        /// containing the search text will be included in the response
+        /// billing Account Id.
         /// </param>
         /// <param name='filter'>
         /// May be used to filter the list of customers.
+        /// </param>
+        /// <param name='skiptoken'>
+        /// Skiptoken is only used if a previous operation returned a partial result.
+        /// If a previous response contains a nextLink element, the value of the
+        /// nextLink element will include a skiptoken parameter that specifies a
+        /// starting point to use for subsequent calls.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -291,13 +293,16 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<Customer>>> ListByBillingAccountWithHttpMessagesAsync(string billingAccountName, string search = default(string), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Customer>>> ListByBillingAccountWithHttpMessagesAsync(string billingAccountName, string filter = default(string), string skiptoken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
             }
-            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -305,10 +310,9 @@ namespace Microsoft.Azure.Management.Billing
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("billingAccountName", billingAccountName);
-                tracingParameters.Add("search", search);
                 tracingParameters.Add("filter", filter);
+                tracingParameters.Add("skiptoken", skiptoken);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByBillingAccount", tracingParameters);
             }
@@ -317,17 +321,17 @@ namespace Microsoft.Azure.Management.Billing
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers").ToString();
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (search != null)
-            {
-                _queryParameters.Add(string.Format("$search={0}", System.Uri.EscapeDataString(search)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (filter != null)
             {
                 _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
+            }
+            if (skiptoken != null)
+            {
+                _queryParameters.Add(string.Format("$skiptoken={0}", System.Uri.EscapeDataString(skiptoken)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -450,18 +454,16 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Gets a customer by its ID. The operation is supported only for billing
-        /// accounts with agreement type Microsoft Partner Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Gets a customer by its id.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='customerName'>
-        /// The ID that uniquely identifies a customer.
+        /// Customer name.
         /// </param>
         /// <param name='expand'>
-        /// May be used to expand enabledAzurePlans and resellers
+        /// May be used to expand enabledAzurePlans, resellers.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -486,6 +488,10 @@ namespace Microsoft.Azure.Management.Billing
         /// </return>
         public async Task<AzureOperationResponse<Customer>> GetWithHttpMessagesAsync(string billingAccountName, string customerName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
@@ -494,7 +500,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "customerName");
             }
-            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -502,7 +507,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("customerName", customerName);
                 tracingParameters.Add("expand", expand);
@@ -515,9 +519,9 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{customerName}", System.Uri.EscapeDataString(customerName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (expand != null)
             {
@@ -644,10 +648,8 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists the customers that are billed to a billing profile. The operation is
-        /// supported only for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Lists customers by billing profile which the current user can work with
+        /// on-behalf of a partner.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -815,10 +817,8 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists the customers that are billed to a billing account. The operation is
-        /// supported only for billing accounts with agreement type Microsoft Partner
-        /// Agreement.
-        /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+        /// Lists customers which the current user can work with on-behalf of a
+        /// partner.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

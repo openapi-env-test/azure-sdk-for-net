@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
         /// <param name="provider">Service provider: Microsoft.Billing.</param>
-        /// <param name="resource">Resource on which the operation is performed
-        /// such as invoice and billing subscription.</param>
-        /// <param name="operation">Operation type such as read, write and
-        /// delete.</param>
+        /// <param name="resource">Resource on which the operation is
+        /// performed: Invoice, etc.</param>
+        /// <param name="operation">Operation type: Read, write, delete,
+        /// etc.</param>
         public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
@@ -54,14 +54,13 @@ namespace Microsoft.Azure.Management.Billing.Models
         public string Provider { get; private set; }
 
         /// <summary>
-        /// Gets resource on which the operation is performed such as invoice
-        /// and billing subscription.
+        /// Gets resource on which the operation is performed: Invoice, etc.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; private set; }
 
         /// <summary>
-        /// Gets operation type such as read, write and delete.
+        /// Gets operation type: Read, write, delete, etc.
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; private set; }

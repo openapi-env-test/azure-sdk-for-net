@@ -51,15 +51,14 @@ namespace Microsoft.Azure.Management.Billing
         public BillingManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists the policies for a billing profile. This operation is supported only
-        /// for billing accounts with agreement type Microsoft Customer Agreement.
+        /// The policy for a given billing account name and billing profile name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
+        /// Billing Profile Id.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -92,7 +91,10 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingProfileName");
             }
-            string apiVersion = "2020-05-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -102,7 +104,6 @@ namespace Microsoft.Azure.Management.Billing
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("billingProfileName", billingProfileName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetByBillingProfile", tracingParameters);
             }
@@ -112,9 +113,9 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{billingProfileName}", System.Uri.EscapeDataString(billingProfileName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -237,17 +238,16 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Updates the policies for a billing profile. This operation is supported
-        /// only for billing accounts with agreement type Microsoft Customer Agreement.
+        /// The operation to update a policy.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='billingProfileName'>
-        /// The ID that uniquely identifies a billing profile.
+        /// Billing Profile Id.
         /// </param>
         /// <param name='parameters'>
-        /// Request parameters that are provided to the update policies operation.
+        /// Parameters supplied to the update policy operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -272,6 +272,10 @@ namespace Microsoft.Azure.Management.Billing
         /// </return>
         public async Task<AzureOperationResponse<Policy>> UpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, Policy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
@@ -284,7 +288,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -292,7 +295,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("billingProfileName", billingProfileName);
                 tracingParameters.Add("parameters", parameters);
@@ -305,9 +307,9 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{billingProfileName}", System.Uri.EscapeDataString(billingProfileName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -436,15 +438,14 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Lists the policies for a customer. This operation is supported only for
-        /// billing accounts with agreement type Microsoft Partner Agreement.
+        /// The policy for a given billing account name and customer name.
         /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='customerName'>
-        /// The ID that uniquely identifies a customer.
+        /// Customer name.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -477,7 +478,10 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "customerName");
             }
-            string apiVersion = "2020-05-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -487,7 +491,6 @@ namespace Microsoft.Azure.Management.Billing
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("customerName", customerName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "GetByCustomer", tracingParameters);
             }
@@ -497,9 +500,9 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{customerName}", System.Uri.EscapeDataString(customerName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -622,17 +625,16 @@ namespace Microsoft.Azure.Management.Billing
         }
 
         /// <summary>
-        /// Updates the policies for a customer. This operation is supported only for
-        /// billing accounts with agreement type Microsoft Partner Agreement.
+        /// The operation to update a Customer policy.
         /// </summary>
         /// <param name='billingAccountName'>
-        /// The ID that uniquely identifies a billing account.
+        /// billing Account Id.
         /// </param>
         /// <param name='customerName'>
-        /// The ID that uniquely identifies a customer.
+        /// Customer name.
         /// </param>
         /// <param name='parameters'>
-        /// Request parameters that are provided to the update policies operation.
+        /// Parameters supplied to the update customer policy operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -657,6 +659,10 @@ namespace Microsoft.Azure.Management.Billing
         /// </return>
         public async Task<AzureOperationResponse<CustomerPolicy>> UpdateCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, CustomerPolicy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (billingAccountName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "billingAccountName");
@@ -669,7 +675,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2020-05-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -677,7 +682,6 @@ namespace Microsoft.Azure.Management.Billing
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("billingAccountName", billingAccountName);
                 tracingParameters.Add("customerName", customerName);
                 tracingParameters.Add("parameters", parameters);
@@ -690,9 +694,9 @@ namespace Microsoft.Azure.Management.Billing
             _url = _url.Replace("{billingAccountName}", System.Uri.EscapeDataString(billingAccountName));
             _url = _url.Replace("{customerName}", System.Uri.EscapeDataString(customerName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

@@ -22,135 +22,133 @@ namespace Microsoft.Azure.Management.Billing
     public static partial class CustomersOperationsExtensions
     {
             /// <summary>
-            /// Lists the customers that are billed to a billing profile. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers by billing profile which the current user can work with
+            /// on-behalf of a partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='search'>
-            /// Used for searching customers by their name. Any customer with name
-            /// containing the search text will be included in the response
+            /// Billing Profile Id.
             /// </param>
             /// <param name='filter'>
             /// May be used to filter the list of customers.
             /// </param>
-            public static IPage<Customer> ListByBillingProfile(this ICustomersOperations operations, string billingAccountName, string billingProfileName, string search = default(string), string filter = default(string))
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
+            /// </param>
+            public static IPage<Customer> ListByBillingProfile(this ICustomersOperations operations, string billingAccountName, string billingProfileName, string filter = default(string), string skiptoken = default(string))
             {
-                return operations.ListByBillingProfileAsync(billingAccountName, billingProfileName, search, filter).GetAwaiter().GetResult();
+                return operations.ListByBillingProfileAsync(billingAccountName, billingProfileName, filter, skiptoken).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing profile. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers by billing profile which the current user can work with
+            /// on-behalf of a partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='billingProfileName'>
-            /// The ID that uniquely identifies a billing profile.
-            /// </param>
-            /// <param name='search'>
-            /// Used for searching customers by their name. Any customer with name
-            /// containing the search text will be included in the response
+            /// Billing Profile Id.
             /// </param>
             /// <param name='filter'>
             /// May be used to filter the list of customers.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Customer>> ListByBillingProfileAsync(this ICustomersOperations operations, string billingAccountName, string billingProfileName, string search = default(string), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Customer>> ListByBillingProfileAsync(this ICustomersOperations operations, string billingAccountName, string billingProfileName, string filter = default(string), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByBillingProfileWithHttpMessagesAsync(billingAccountName, billingProfileName, search, filter, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByBillingProfileWithHttpMessagesAsync(billingAccountName, billingProfileName, filter, skiptoken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing account. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers which the current user can work with on-behalf of a
+            /// partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='search'>
-            /// Used for searching customers by their name. Any customer with name
-            /// containing the search text will be included in the response
+            /// billing Account Id.
             /// </param>
             /// <param name='filter'>
             /// May be used to filter the list of customers.
             /// </param>
-            public static IPage<Customer> ListByBillingAccount(this ICustomersOperations operations, string billingAccountName, string search = default(string), string filter = default(string))
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
+            /// </param>
+            public static IPage<Customer> ListByBillingAccount(this ICustomersOperations operations, string billingAccountName, string filter = default(string), string skiptoken = default(string))
             {
-                return operations.ListByBillingAccountAsync(billingAccountName, search, filter).GetAwaiter().GetResult();
+                return operations.ListByBillingAccountAsync(billingAccountName, filter, skiptoken).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing account. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers which the current user can work with on-behalf of a
+            /// partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='search'>
-            /// Used for searching customers by their name. Any customer with name
-            /// containing the search text will be included in the response
+            /// billing Account Id.
             /// </param>
             /// <param name='filter'>
             /// May be used to filter the list of customers.
+            /// </param>
+            /// <param name='skiptoken'>
+            /// Skiptoken is only used if a previous operation returned a partial result.
+            /// If a previous response contains a nextLink element, the value of the
+            /// nextLink element will include a skiptoken parameter that specifies a
+            /// starting point to use for subsequent calls.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Customer>> ListByBillingAccountAsync(this ICustomersOperations operations, string billingAccountName, string search = default(string), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Customer>> ListByBillingAccountAsync(this ICustomersOperations operations, string billingAccountName, string filter = default(string), string skiptoken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByBillingAccountWithHttpMessagesAsync(billingAccountName, search, filter, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByBillingAccountWithHttpMessagesAsync(billingAccountName, filter, skiptoken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets a customer by its ID. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Gets a customer by its id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand enabledAzurePlans and resellers
+            /// May be used to expand enabledAzurePlans, resellers.
             /// </param>
             public static Customer Get(this ICustomersOperations operations, string billingAccountName, string customerName, string expand = default(string))
             {
@@ -158,21 +156,19 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Gets a customer by its ID. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Partner Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Gets a customer by its id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='customerName'>
-            /// The ID that uniquely identifies a customer.
+            /// Customer name.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand enabledAzurePlans and resellers
+            /// May be used to expand enabledAzurePlans, resellers.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -186,10 +182,8 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing profile. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers by billing profile which the current user can work with
+            /// on-behalf of a partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -203,10 +197,8 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing profile. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers by billing profile which the current user can work with
+            /// on-behalf of a partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -226,10 +218,8 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing account. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers which the current user can work with on-behalf of a
+            /// partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -243,10 +233,8 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the customers that are billed to a billing account. The operation is
-            /// supported only for billing accounts with agreement type Microsoft Partner
-            /// Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists customers which the current user can work with on-behalf of a
+            /// partner.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

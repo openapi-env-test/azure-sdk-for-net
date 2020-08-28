@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Billing.Models
     using System.Linq;
 
     /// <summary>
-    /// An agreement.
+    /// An agreement resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class Agreement : Resource
@@ -37,27 +37,16 @@ namespace Microsoft.Azure.Management.Billing.Models
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="agreementLink">The URL to download the
+        /// <param name="agreementLink">The link to the agreement.</param>
+        /// <param name="effectiveDate">Effective date.</param>
+        /// <param name="expirationDate">Expiration date.</param>
+        /// <param name="participants">Participants or signer of the
         /// agreement.</param>
-        /// <param name="category">The category of the agreement signed by a
-        /// customer. Possible values include: 'MicrosoftCustomerAgreement',
-        /// 'AffiliatePurchaseTerms', 'Other'</param>
-        /// <param name="acceptanceMode">The mode of acceptance for an
-        /// agreement. Possible values include: 'ClickToAccept',
-        /// 'ESignEmbedded', 'ESignOffline'</param>
-        /// <param name="effectiveDate">The date from which the agreement is
-        /// effective.</param>
-        /// <param name="expirationDate">The date when the agreement
-        /// expires.</param>
-        /// <param name="participants">The list of participants that
-        /// participates in acceptance of an agreement.</param>
-        /// <param name="status">The current status of the agreement.</param>
-        public Agreement(string id = default(string), string name = default(string), string type = default(string), string agreementLink = default(string), string category = default(string), string acceptanceMode = default(string), System.DateTime? effectiveDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), IList<Participants> participants = default(IList<Participants>), string status = default(string))
+        /// <param name="status">The agreement status</param>
+        public Agreement(string id = default(string), string name = default(string), string type = default(string), string agreementLink = default(string), System.DateTime? effectiveDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), IList<Participants> participants = default(IList<Participants>), string status = default(string))
             : base(id, name, type)
         {
             AgreementLink = agreementLink;
-            Category = category;
-            AcceptanceMode = acceptanceMode;
             EffectiveDate = effectiveDate;
             ExpirationDate = expirationDate;
             Participants = participants;
@@ -71,47 +60,31 @@ namespace Microsoft.Azure.Management.Billing.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the URL to download the agreement.
+        /// Gets the link to the agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.agreementLink")]
         public string AgreementLink { get; private set; }
 
         /// <summary>
-        /// Gets the category of the agreement signed by a customer. Possible
-        /// values include: 'MicrosoftCustomerAgreement',
-        /// 'AffiliatePurchaseTerms', 'Other'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.category")]
-        public string Category { get; private set; }
-
-        /// <summary>
-        /// Gets the mode of acceptance for an agreement. Possible values
-        /// include: 'ClickToAccept', 'ESignEmbedded', 'ESignOffline'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.acceptanceMode")]
-        public string AcceptanceMode { get; private set; }
-
-        /// <summary>
-        /// Gets the date from which the agreement is effective.
+        /// Gets effective date.
         /// </summary>
         [JsonProperty(PropertyName = "properties.effectiveDate")]
         public System.DateTime? EffectiveDate { get; private set; }
 
         /// <summary>
-        /// Gets the date when the agreement expires.
+        /// Gets expiration date.
         /// </summary>
         [JsonProperty(PropertyName = "properties.expirationDate")]
         public System.DateTime? ExpirationDate { get; private set; }
 
         /// <summary>
-        /// Gets or sets the list of participants that participates in
-        /// acceptance of an agreement.
+        /// Gets or sets participants or signer of the agreement.
         /// </summary>
         [JsonProperty(PropertyName = "properties.participants")]
         public IList<Participants> Participants { get; set; }
 
         /// <summary>
-        /// Gets the current status of the agreement.
+        /// Gets the agreement status
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }

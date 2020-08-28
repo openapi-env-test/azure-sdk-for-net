@@ -16,8 +16,9 @@ namespace Microsoft.Azure.Management.Billing.Models
     /// </summary>
     public static class InvoiceStatus
     {
+        public const string PastDue = "PastDue";
         public const string Due = "Due";
-        public const string OverDue = "OverDue";
         public const string Paid = "Paid";
+        public const string Void = "Void";
     }
 }

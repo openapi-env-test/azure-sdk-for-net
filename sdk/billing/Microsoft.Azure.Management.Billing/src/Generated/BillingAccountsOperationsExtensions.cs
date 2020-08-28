@@ -22,34 +22,32 @@ namespace Microsoft.Azure.Management.Billing
     public static partial class BillingAccountsOperationsExtensions
     {
             /// <summary>
-            /// Lists the billing accounts that a user has access to.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing accounts for a user which he has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the soldTo, invoice sections and billing profiles.
+            /// May be used to expand the address, invoiceSections and billingProfiles.
             /// </param>
-            public static IPage<BillingAccount> List(this IBillingAccountsOperations operations, string expand = default(string))
+            public static BillingAccountListResult List(this IBillingAccountsOperations operations, string expand = default(string))
             {
                 return operations.ListAsync(expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists the billing accounts that a user has access to.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all billing accounts for a user which he has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the soldTo, invoice sections and billing profiles.
+            /// May be used to expand the address, invoiceSections and billingProfiles.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BillingAccount>> ListAsync(this IBillingAccountsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BillingAccountListResult> ListAsync(this IBillingAccountsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -58,17 +56,16 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Gets a billing account by its ID.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Get the billing account by id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the soldTo, invoice sections and billing profiles.
+            /// May be used to expand the address, invoiceSections and billingProfiles.
             /// </param>
             public static BillingAccount Get(this IBillingAccountsOperations operations, string billingAccountName, string expand = default(string))
             {
@@ -76,17 +73,16 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Gets a billing account by its ID.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Get the billing account by id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='expand'>
-            /// May be used to expand the soldTo, invoice sections and billing profiles.
+            /// May be used to expand the address, invoiceSections and billingProfiles.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -98,64 +94,15 @@ namespace Microsoft.Azure.Management.Billing
                     return _result.Body;
                 }
             }
-
+        
             /// <summary>
-            /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
+            /// Lists all invoice sections with create subscription permission for a user.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing account
-            /// operation.
-            /// </param>
-            public static BillingAccount Update(this IBillingAccountsOperations operations, string billingAccountName, BillingAccountUpdateRequest parameters)
-            {
-                return operations.UpdateAsync(billingAccountName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing account
-            /// operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BillingAccount> UpdateAsync(this IBillingAccountsOperations operations, string billingAccountName, BillingAccountUpdateRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             public static IPage<InvoiceSectionWithCreateSubPermission> ListInvoiceSectionsByCreateSubscriptionPermission(this IBillingAccountsOperations operations, string billingAccountName)
             {
@@ -163,16 +110,13 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all invoice sections with create subscription permission for a user.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
+            /// billing Account Id.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -186,92 +130,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing account
-            /// operation.
-            /// </param>
-            public static BillingAccount BeginUpdate(this IBillingAccountsOperations operations, string billingAccountName, BillingAccountUpdateRequest parameters)
-            {
-                return operations.BeginUpdateAsync(billingAccountName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates the properties of a billing account. Currently, displayName and
-            /// address can be updated. The operation is supported only for billing
-            /// accounts with agreement type Microsoft Customer Agreement.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='billingAccountName'>
-            /// The ID that uniquely identifies a billing account.
-            /// </param>
-            /// <param name='parameters'>
-            /// Request parameters that are provided to the update billing account
-            /// operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BillingAccount> BeginUpdateAsync(this IBillingAccountsOperations operations, string billingAccountName, BillingAccountUpdateRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the billing accounts that a user has access to.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<BillingAccount> ListNext(this IBillingAccountsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the billing accounts that a user has access to.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BillingAccount>> ListNextAsync(this IBillingAccountsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all invoice sections with create subscription permission for a user.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -285,10 +144,7 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             /// <summary>
-            /// Lists the invoice sections for which the user has permission to create
-            /// Azure subscriptions. The operation is supported only for billing accounts
-            /// with agreement type Microsoft Customer Agreement.
-            /// <see href="https://docs.microsoft.com/en-us/rest/api/billing/" />
+            /// Lists all invoice sections with create subscription permission for a user.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
