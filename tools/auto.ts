@@ -4,6 +4,7 @@ const { spawnSync } = require( 'child_process' );
 const input: GenerateInput = readInput();
 Log('There is a property in input: ' + input.repoHttpsUrl);
 let flag: boolean = false;
+let output: GenerateOutput;
 
 input.relatedReadmeMdFiles.map(
     item => {
@@ -15,7 +16,8 @@ input.relatedReadmeMdFiles.map(
 )
 if(flag) {
     input.changedFiles.filter(item => item.includes('resource-manager'));
-    let output: GenerateOutput = managementGeneration(input);
+    output = managementGeneration(input);
+    fs.writeFileSync('./generateOutput.json', JSON.stringify(output), 'utf8');
 }
 
 function managementGeneration(input: GenerateInput): GenerateOutput {
