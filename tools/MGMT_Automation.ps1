@@ -2,48 +2,103 @@ function Get-RPs {
     param (
         [string[]]$changedFiles
     )
-    $output = {@()}.Invoke()
+    $output = @()
     $rpMapping = Get-Content -Path './tools/RPMapping.json' | ConvertFrom-Json
-    $rpName = $rpMapping."$rpName"
+    
     $changedFiles | ForEach-Object { 
         $rpName = $_.Substring(14)
         $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
         $rpName = $rpMapping."$rpName"
         If ($output -notcontains $rpName){
-            $output.Add($rpName)
+            $output += $rpName
         }
     }
     Write-Output $output
 }
 
-function Create-Project {
+function New-Project {
     param (
-        $path, $rpName
+        [string]$path, 
+        [string]$rpName
     )
     
     $newCommand = 'dotnet new -i ./eng/templates/Azure.ResourceManager.Template'
     Invoke-Expression $newCommand
     New-Item -Path $path -Name ('Azure.ResourceManager.'+$rpName) -ItemType "directory"
-    Start-Process 'dotnet' ['new', 'azuremgmt', '--provider', $rpName] -WorkingDirectory $path+'/Azure.ResourceManager.'+$rpName
+    Set-Location -Path ($path+'/Azure.ResourceManager.'+$rpName)
+    $createCommand = 'dotnet new azuremgmt --provider '+ $rpName
+    Invoke-Expression $createCommand
+    Set-Location -Path '../../../'
 }
 
-$input = Get-Content -Path './tools/generateInput.json' | ConvertFrom-Json
+function GenerateCode-WithBuild {
+    param (
+        [string]$path, 
+        [string]$commit
+    )
+    $autorestFile = $path + '/src/autorest.md'
+    $content = Get-Content -Path $autorestFile | ForEach-Object {
+        $_ -replace 'azure-rest-api-specs/[\S]*/specification',('azure-rest-api-specs/'+$commit+'/specification')
+    } 
+    Set-Content -Path $autorestFile -Value $content
 
-$input.changedFiles = @($input.changedFiles) -match 'resource-manager'
+    Set-Location -Path $path
+    $generateCommand = 'dotnet build /t:GenerateCode'
+    Invoke-Expression $generateCommand
+    $buildCommand = 'dotnet build'
+    Invoke-Expression $buildCommand
+}
 
-Write-Output $input.changedFiles
-
-$rpIndex = Get-RPs($input.changedFiles)
-$rpIndex.GetEnumerator() | ForEach-Object {
-    # Path not working
-    $path = '../sdk/'+$_.Key+'/Azure.ResourceManager.'+$_.Value
-    $rpName = $_.value
-    if (-not (Test-Path $path)) {
-        Create-Project('../sdk/'+$_.key, $rpName)
+function Generate-Output {
+    param (
+        [string]$rpName
+    )
+    $package = @"
+    {
+        "packageName": "Azure.ResourceManager.$rpName",
+        "path": [
+            "sdk/$rpName"
+        ],
+        "readmeMd": [
+            "specification/$rpName/resource-manager/readme.md"
+        ],
+        "changelog": {
+            "content": "Feature: something \n Breaking Changes: something\n",
+            "hasBreakingChange": "true"
+        },
+        "artifacts": [
+            "sdk/cdn/cdn.nuget",
+            "sdk/cdn/cdn.snuget"
+        ],
+        "installInstructions": {
+            "full": "To install something...",
+            "lite": "dotnet something"
+        },
+        "result": "success"
     }
+"@
+    Write-Output $package
 }
 
-Write-Output $rpIndex
+$inputConfig = Get-Content -Path './tools/generateInput.json' | ConvertFrom-Json
+$outputConfig = @{
+    packages = @()
+}
 
+$inputConfig.changedFiles = @($inputConfig.changedFiles) -match 'resource-manager'
 
+$rpIndex = Get-RPs($inputConfig.changedFiles)
 
+$rpIndex | ForEach-Object {
+    $path = './sdk/'+$_.PSObject.Properties.Name+'/Azure.ResourceManager.'+$_.PSObject.Properties.Value
+    $rpName = $_.PSObject.Properties.Value
+    if (-not (Test-Path $path)) {
+        New-Project -path ('./sdk/'+$_.PSObject.Properties.Name) -rpName $rpName
+    }
+    GenerateCode-WithBuild -path $path -commit $inputConfig.headSha
+    $outputPackage = Generate-Output -rpName $rpName | ConvertFrom-Json
+    $outputConfig.packages += ($outputPackage)
+}
+
+Set-Location -Path '../../../'
+Set-Content -Path './tools/generateOutput.json' -Value ($outputConfig | ConvertTo-Json)
