@@ -16,18 +16,33 @@ function Get-RPs {
     Write-Output $output
 }
 
+function Error-Report {
+    param (
+        [string]$result
+    )
+
+    if($result.Contains('Error')){
+        $stderr =+ $result
+    }
+}
+
 function New-Project {
     param (
         [string]$path, 
         [string]$rpName
     )
     
+    # Only need to to once, consider to move to initScript
     $newCommand = 'dotnet new -i ./eng/templates/Azure.ResourceManager.Template'
-    Invoke-Expression $newCommand
+    $result = Invoke-Expression $newCommand
+    Error-Report -result $result
+
     New-Item -Path $path -Name ('Azure.ResourceManager.'+$rpName) -ItemType "directory"
+
     Set-Location -Path ($path+'/Azure.ResourceManager.'+$rpName)
     $createCommand = 'dotnet new azuremgmt --provider '+ $rpName
-    Invoke-Expression $createCommand
+    $result = Invoke-Expression $createCommand
+    Error-Report -result $result
     Set-Location -Path '../../../'
 }
 
