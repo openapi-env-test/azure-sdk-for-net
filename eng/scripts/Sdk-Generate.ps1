@@ -1,3 +1,5 @@
+param($GenerateInput)
+
 # input: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
 function Get-RPs($changedFiles) {
     $swaggerDefinitions = @{};
@@ -33,7 +35,7 @@ function isCognitiveService ($value)
 
 # Get the list of changed swaggers
 # Output: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
-$input = Get-Content -Path './../generateInput.json' | ConvertFrom-Json
+$input = Get-Content $GenerateInput | ConvertFrom-Json
 Write-Output "List Of changed swaggers" $input.changedFiles
 $headSha = $input.headSha
 Write-Host
@@ -79,15 +81,3 @@ foreach ($key in $rpCollection.Keys)
 }
 
 dotnet msbuild /restore /t:GenerateCode "../service.proj"
-
-# Test below sdks
-
-# digital twins 
- # data plane
- # management plane
-# sql
- # management plane
-# keyvault
- # dataplane
-# search 
- # dataplane both
