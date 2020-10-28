@@ -1,0 +1,24 @@
+{
+    "dryRun": false,
+    "specFolder": "w/azure-rest-api-specs",
+    "headSha": "690247897c50af09cd75b36bb32d1d22ef90db17",
+    "headRef": "refs/pull/836/merge",
+    "repoHttpsUrl": "https://github.com/openapi-env-test/azure-rest-api-specs.git",
+    "trigger": "pullRequest",
+    "changedFiles": [
+      "specification/keyvault/resource-manager/readme.md",
+      "specification/sql/resource-manager/readme.md",
+      "specification/cognitiveservices/data-plane/AnomalyDetector/preview/v1.0/AnomalyDetector.json",
+      "specification/digitaltwins/data-plane/Microsoft.DigitalTwins/stable/2020-10-31/digitaltwins.json",
+      "specification/digitaltwins/resource-manager/readme.md"
+    ],
+    "relatedReadmeMdFiles": [
+      "specification/keyvault/resource-manager/readme.md"
+    ],
+    "installInstructionInput": {
+      "isPublic": true,
+      "downloadUrlPrefix": "https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/836/azure-sdk-for-js/",
+      "downloadCommandTemplate": "az rest --resource 82f31851-081f-475f-804e-88d4e3d6632a -u {URL} --output-file {FILENAME}",
+      "trigger": "pullRequest"
+    }
+  } 
