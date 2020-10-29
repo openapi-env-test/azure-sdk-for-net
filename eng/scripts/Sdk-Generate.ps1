@@ -1,81 +1,25 @@
 param($GenerateInput)
 
-# input: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
-function Get-RPs($changedFiles) {
-    $swaggerDefinitions = @{};
-    $rpMapping = Get-Content -Path 'eng/RPMapping.json' | ConvertFrom-Json
-    foreach($changedFile in $changedFiles)
-    {
-        $rpNameArr = $changedFile.Split("/")
-        $rpName = $rpNameArr[1]
-        if (isCognitiveService($rpName) -eq $true)
-        {
-         $rpName = $rpNameArr[3]
-        }
-        # keyvault
-        $rpName = $rpMapping.$rpName.psobject.properties
-        $rpName = $rpName.Name
-        if (!$swaggerDefinitions.ContainsKey($rpName)) 
-        {
-            $swaggerDefinitions.$rpName = @()
-        }
-        $swaggerDefinitions.$rpName += "$changedFile"
-    }
-    Write-Output $swaggerDefinitions
-}
-
-function isCognitiveService ($value)
-{
-	$isCognitiveService = $false
-	if($value -match "cognitiveservices"){
-		$isCognitiveService = $true
-	}
-	return $isCognitiveService
-}
-
-# Get the list of changed swaggers
-# Example: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
-$input = Get-Content $GenerateInput | ConvertFrom-Json
-Write-Output "List Of changed swaggers" $input.changedFiles
-$headSha = $input.headSha
+# Get the list of changed swaggers
+$input = Get-Content $GenerateInput | ConvertFrom-Json
+$inputFiles = $input.changedFiles;
+$inputFiles += $input.relatedReadmeMdFiles;
+Write-Output "List Of changed swagger files and related readmes" $inputFiles
+$headSha = $input.headSha
 Write-Host
 
-# Get the list of changed sdk names with the swagger urls
-# Example- sdk name(key): "keyvault" url(value): "specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json"
-$rpCollection = Get-RPs $input.changedFiles
-foreach ($key in $rpCollection.Keys) 
-{ 
-    Write-Host "sdk: $key" 
-    $num = 1
-    foreach ($value in $rpCollection[$key]) 
-    { 
-    Write-Host "ulr-$num" $value
-    $num++ 
-    }
-}
+$autorestFilesPath = Get-ChildItem -Path "./sdk"  -Filter autorest.md -Recurse
 
-Write-Host
-
-foreach ($key in $rpCollection.Keys)
+Write-Host "Updating autorest.md for the changed swaggers..."
+foreach ($inputFile in $inputFiles)
 {
-    $sdkPath = Get-ChildItem -Path "sdk" | Where-Object {$_.Name -match $key}
-    $track2SdksPath = Get-ChildItem $sdkPath -Recurse | Where-Object { $_.PSIsContainer -and $_.Name.StartsWith("Azure.")}
-    $autorestFilePath = Get-Childitem $track2SdksPath -include *autorest.md -depth 2
-    foreach ($path in $autorestFilePath)
-    {
-        # printing all the autorest mds
-        Write-Host "autorest path" $path
-    }
-
-    foreach ($swaggerUrl in $rpCollection[$key])
-    {
-        foreach ($path in $autorestFilePath)
-        {
-        (Get-Content -Raw $path) -replace "[\/][0-9a-f]{4,40}[\/]$swaggerUrl", "/$headSha/$swaggerUrl" | `
+    foreach ($path in $autorestFilesPath)
+    {
+        (Get-Content -Raw $path) -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile" | `
          Set-Content $path -NoNewline
-        }
-    }
-     Write-Host
+    }
 }
+Write-Host "autorest.md files updated"
 
-dotnet msbuild /restore /t:GenerateCode "../service.proj"
+dotnet msbuild /restore /t:GenerateCode "./eng/service.proj"
+
