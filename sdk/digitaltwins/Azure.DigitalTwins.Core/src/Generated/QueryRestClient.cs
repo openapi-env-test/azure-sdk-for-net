@@ -51,14 +51,6 @@ namespace Azure.DigitalTwins.Core
             uri.AppendPath("/query", false);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
-            if (queryTwinsOptions?.Traceparent != null)
-            {
-                request.Headers.Add("traceparent", queryTwinsOptions.Traceparent);
-            }
-            if (queryTwinsOptions?.Tracestate != null)
-            {
-                request.Headers.Add("tracestate", queryTwinsOptions.Tracestate);
-            }
             if (queryTwinsOptions?.MaxItemsPerPage != null)
             {
                 request.Headers.Add("max-items-per-page", queryTwinsOptions.MaxItemsPerPage.Value);
