@@ -18,7 +18,10 @@
   },
   "generateOptions": {
     "generateScript": {
-      "path": "pwsh ./eng/scripts/Sdk-Generate.ps1"
+      "path": "pwsh ./eng/scripts/Sdk-Generate.ps1",
+      "stdout": {
+        "scriptError": " error "
+      }
     }
   }
 }
