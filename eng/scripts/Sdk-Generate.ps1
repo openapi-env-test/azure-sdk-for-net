@@ -3,7 +3,7 @@ param($GenerateInput)
 # input: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
 function Get-RPs($changedFiles) {
     $swaggerDefinitions = @{};
-    $rpMapping = Get-Content -Path './../RPMapping.json' | ConvertFrom-Json
+    $rpMapping = Get-Content -Path 'eng/RPMapping.json' | ConvertFrom-Json
     foreach($changedFile in $changedFiles)
     {
         $rpNameArr = $changedFile.Split("/")
