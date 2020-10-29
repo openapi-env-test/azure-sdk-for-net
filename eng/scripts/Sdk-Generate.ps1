@@ -58,7 +58,7 @@ Write-Host
 
 foreach ($key in $rpCollection.Keys)
 {
-    $sdkPath = Get-ChildItem -Path "../../sdk" | Where-Object {$_.Name -match $key}
+    $sdkPath = Get-ChildItem -Path "sdk" | Where-Object {$_.Name -match $key}
     $track2SdksPath = Get-ChildItem $sdkPath -Recurse | Where-Object { $_.PSIsContainer -and $_.Name.StartsWith("Azure.")}
     $autorestFilePath = Get-Childitem $track2SdksPath -include *autorest.md -depth 2
     foreach ($path in $autorestFilePath)
