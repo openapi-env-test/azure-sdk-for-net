@@ -34,18 +34,17 @@ function isCognitiveService ($value)
 }
 
 # Get the list of changed swaggers
-# Output: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
+# Example: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
 $input = Get-Content $GenerateInput | ConvertFrom-Json
 Write-Output "List Of changed swaggers" $input.changedFiles
 $headSha = $input.headSha
 Write-Host
 
-# Get the list of sdk folder names with swagger urls
-# sdk: keyvault url: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json
+# Get the list of changed sdk names with the swagger urls
+# Example- sdk name(key): "keyvault" url(value): "specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2016-10-01/keyvault.json"
 $rpCollection = Get-RPs $input.changedFiles
 foreach ($key in $rpCollection.Keys) 
 { 
-    # Write-Host "sdk: $key    url: $($rpCollection[$key])" 
     Write-Host "sdk: $key" 
     $num = 1
     foreach ($value in $rpCollection[$key]) 
@@ -72,7 +71,6 @@ foreach ($key in $rpCollection.Keys)
     {
         foreach ($path in $autorestFilePath)
         {
-        # Write-Host "autorest path" $path
         (Get-Content -Raw $path) -replace "[\/][0-9a-f]{4,40}[\/]$swaggerUrl", "/$headSha/$swaggerUrl" | `
          Set-Content $path -NoNewline
         }
