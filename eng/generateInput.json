@@ -1,23 +1,21 @@
 {
       "dryRun": false,
       "specFolder": "w/azure-rest-api-specs",
-      "headSha": "690247897c50af09cd75b36bb32d1d22ef90db17",
+      "headSha": "140c08aec9be989a151f0c16eb3d6e6b230fbfed",
       "headRef": "refs/pull/836/merge",
       "repoHttpsUrl": "https://github.com/openapi-env-test/azure-rest-api-specs.git",
       "trigger": "pullRequest",
       "changedFiles": [
-        "specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2019-09-01/secrets.json",
-        "specification/sql/resource-manager/Microsoft.Sql/stable/2015-05-01/capabilities.json",
-        "specification/cognitiveservices/data-plane/AnomalyDetector/preview/v1.0/AnomalyDetector.json",
         "specification/digitaltwins/data-plane/Microsoft.DigitalTwins/stable/2020-10-31/digitaltwins.json",
-        "specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json"
+        "specification/sql/resource-manager/Microsoft.Sql/stable/2015-05-01/capabilities.json",
+        "specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2019-09-01/secrets.json",
+        "specification/keyvault/data-plane/Microsoft.KeyVault/stable/7.1/secrets.json"
       ],
       "relatedReadmeMdFiles": [
-        "specification/keyvault/resource-manager/readme.md",
-        "specification/sql/resource-manager/readme.md",
-        "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",
         "specification/digitaltwins/data-plane/readme.md",
-        "specification/digitaltwins/resource-manager/readme.md"
+        "specification/sql/resource-manager/readme.md",
+        "specification/keyvault/resource-manager/readme.md",
+        "specification/keyvault/data-plane/readme.md"  
       ],
       "installInstructionInput": {
         "isPublic": true,
