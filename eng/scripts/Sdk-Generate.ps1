@@ -7,7 +7,7 @@ $inputFiles += $input.relatedReadmeMdFiles;
 Write-Output "List Of changed swagger files and related readmes" $inputFiles "`n"
 $headSha = $input.headSha
 
-$autorestFilesPath = Get-ChildItem -Path "./sdk"  -Filter autorest.md -Recurse
+$autorestFilesPath = Get-ChildItem -Path "sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
 Write-Host "Updating autorest.md for the changed swaggers..."
 $sdkPaths = @()
@@ -23,7 +23,7 @@ foreach ($inputFile in $inputFiles)
        $fileContent -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile" | `
          Set-Content $path -NoNewline
 
-       $sdkPath = (get-item $path).Directory.Parent.FullName
+       $sdkPath = (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
        $packageName = Split-Path $sdkPath -Leaf
        Write-Host "Generating code for " $packageName
        $srcPath = Join-Path $sdkPath 'src'
@@ -40,8 +40,8 @@ foreach ($sdkPath in $sdkPaths)
 {
     $srcPath = Join-Path $sdkPath 'src'
     $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
-    # $artifactsPath = "./artifacts/packages"
-    $artifactsPath = Join-Path $sdkPath 'packages'
+    $artifactsPath = "artifacts/packages"
+    # $artifactsPath = Join-Path $sdkPath 'packages'
     If(!(test-path $artifactsPath))
     {
       New-Item -ItemType Directory -Force -Path $artifactsPath
@@ -54,7 +54,7 @@ foreach ($sdkPath in $sdkPaths)
     $packageName = Split-Path $sdkPath -Leaf
     $path += $sdkPath
     $readmeMd += Join-Path $sdkPath 'readme.md'
-    $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName
+    $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
     $packageInfo = [PSCustomObject]@{
         packageName = $packageName
         path = $path
