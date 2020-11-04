@@ -23,13 +23,17 @@ foreach ($inputFile in $inputFiles)
        $fileContent -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile" | `
          Set-Content $path -NoNewline
 
-       $sdkPaths += (get-item $path).Directory.Parent.FullName
+       $sdkPath = (get-item $path).Directory.Parent.FullName
+       $packageName = Split-Path $sdkPath -Leaf
+       Write-Host "Generating code for " $packageName
+       $srcPath = Join-Path $sdkPath 'src'
+       dotnet msbuild /restore /t:GenerateCode $srcPath
+       Write-Host "Generated code for " $packageName
+
+       $sdkPaths += $sdkPath
      }
     }
 }
-Write-Host "autorest.md files are updated. `n"
-
-dotnet msbuild /restore /t:GenerateCode "./eng/service.proj"
 
 $packages = @()
 foreach ($sdkPath in $sdkPaths)
