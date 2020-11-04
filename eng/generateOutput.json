@@ -9,8 +9,8 @@
         "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\digitaltwins\\Azure.DigitalTwins.Core\\readme.md"
       ],
       "artifacts": [
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.DigitalTwins.Core.1.0.0-alpha.20201103.1.nupkg",
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.DigitalTwins.Core.1.0.0-alpha.20201103.1.symbols.nupkg"
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\digitaltwins\\Azure.DigitalTwins.Core\\packages\\Azure.DigitalTwins.Core.1.0.0-alpha.20201103.1.nupkg",
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\digitaltwins\\Azure.DigitalTwins.Core\\packages\\Azure.DigitalTwins.Core.1.0.0-alpha.20201103.1.symbols.nupkg"
       ]
     },
     {
@@ -22,8 +22,8 @@
         "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\sqlmanagement\\Azure.ResourceManager.Sql\\readme.md"
       ],
       "artifacts": [
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.ResourceManager.Sql.1.0.0-alpha.20201103.1.nupkg",
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.ResourceManager.Sql.1.0.0-alpha.20201103.1.symbols.nupkg"
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\sqlmanagement\\Azure.ResourceManager.Sql\\packages\\Azure.ResourceManager.Sql.1.0.0-alpha.20201103.1.nupkg",
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\sqlmanagement\\Azure.ResourceManager.Sql\\packages\\Azure.ResourceManager.Sql.1.0.0-alpha.20201103.1.symbols.nupkg"
       ]
     },
     {
@@ -35,8 +35,8 @@
         "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\keyvault\\Azure.ResourceManager.KeyVault\\readme.md"
       ],
       "artifacts": [
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.ResourceManager.KeyVault.1.0.0-alpha.20201103.1.nupkg",
-        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\artifacts\\packages\\Azure.ResourceManager.KeyVault.1.0.0-alpha.20201103.1.symbols.nupkg"
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\keyvault\\Azure.ResourceManager.KeyVault\\packages\\Azure.ResourceManager.KeyVault.1.0.0-alpha.20201103.1.nupkg",
+        "C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\keyvault\\Azure.ResourceManager.KeyVault\\packages\\Azure.ResourceManager.KeyVault.1.0.0-alpha.20201103.1.symbols.nupkg"
       ]
     }
   ]

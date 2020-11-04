@@ -40,7 +40,8 @@ foreach ($sdkPath in $sdkPaths)
 {
     $srcPath = Join-Path $sdkPath 'src'
     $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
-    $artifactsPath = "./artifacts/packages"
+    # $artifactsPath = "./artifacts/packages"
+    $artifactsPath = Join-Path $sdkPath 'packages'
     If(!(test-path $artifactsPath))
     {
       New-Item -ItemType Directory -Force -Path $artifactsPath
