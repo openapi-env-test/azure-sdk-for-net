@@ -46,6 +46,7 @@ foreach ($sdkPath in $sdkPaths)
     {
       New-Item -ItemType Directory -Force -Path $artifactsPath
     }
+    Write-Host "Testing artifacts package folder path:" $artifactsPath
     dotnet pack $csprojPath --output $artifactsPath
 
     $artifacts = @()
@@ -55,6 +56,10 @@ foreach ($sdkPath in $sdkPaths)
     $path += $sdkPath
     $readmeMd += Join-Path $sdkPath 'readme.md'
     $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
+    foreach($artipath in $artifacts)
+    {
+      Write-Host "Testing artifacts path:" $artipath
+    }
     $packageInfo = [PSCustomObject]@{
         packageName = $packageName
         path = $path
