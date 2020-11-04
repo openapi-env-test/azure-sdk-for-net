@@ -18,10 +18,7 @@
   },
   "generateOptions": {
     "generateScript": {
-      "path": "pwsh ./eng/scripts/Sdk-Generate.ps1",
-      "stdout": {
-        "scriptError": " error "
-      }
+      "path": "pwsh ./eng/scripts/Sdk-Generate.ps1"
     }
   }
 }

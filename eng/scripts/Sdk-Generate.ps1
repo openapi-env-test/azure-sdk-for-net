@@ -43,14 +43,17 @@ foreach ($sdkPath in $sdkPaths)
     }
     dotnet pack $csprojPath --output $artifactsPath
 
-    $packageName = Split-Path $sdkPath -Leaf
-    $readmePath = Join-Path $sdkPath 'readme.md'
     $artifacts = @()
+    $path = @()
+    $readmeMd = @()
+    $packageName = Split-Path $sdkPath -Leaf
+    $path += $sdkPath
+    $readmeMd += Join-Path $sdkPath 'readme.md'
     $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName
     $packageInfo = [PSCustomObject]@{
         packageName = $packageName
-        path = $sdkPath
-        readmeMd = $readmePath
+        path = $path
+        readmeMd = $readmeMd
         artifacts = $artifacts
     }
 
