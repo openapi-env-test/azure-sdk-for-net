@@ -9,6 +9,34 @@ $headSha = $input.headSha
 
 $autorestFilesPath = Get-ChildItem -Path "sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
+Write-Host "Find new project"
+$rpIndex = @()
+$rpMapping = Get-Content -Path './eng/scripts/RPMapping.json' | ConvertFrom-Json
+$input.changedFiles | ForEach-Object {
+  if ($inputFile -contains 'resource-manager') {
+    $rpName = $_.Substring(14)
+    $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
+    $rpName = $rpMapping."$rpName"
+    If ($rpIndex -notcontains $rpName){
+      $rpIndex += $rpName
+    }
+  }
+  $rpIndex | ForEach-Object {
+    $path = './sdk/'+$_.PSObject.Properties.Name+'/Azure.ResourceManager.'+$_.PSObject.Properties.Value
+    $folderName = $_.PSObject.Properties.Name
+    $rpName = $_.PSObject.Properties.Value
+    if (-not (Test-Path $path)) {
+      dotnet new -i ./eng/templates/Azure.ResourceManager.Template
+      New-Item -Path ('./sdk/'+$folderName) -Name ('Azure.ResourceManager.'+$rpName) -ItemType "directory"
+      Set-Location -Path ('./sdk/'+$folderName+'/Azure.ResourceManager.'+$rpName)
+      $createCommand = 'dotnet new azuremgmt --provider '+ $rpName
+      $result = Invoke-Expression $createCommand
+      Error-Report -result $result
+      Set-Location -Path '../../../'
+    }
+  }
+}
+
 Write-Host "Updating autorest.md for the changed swaggers..."
 $sdkPaths = @()
 foreach ($inputFile in $inputFiles)
