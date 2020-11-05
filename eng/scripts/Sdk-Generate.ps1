@@ -50,7 +50,7 @@ foreach ($sdkPath in $sdkPaths)
     } 
     else 
     {
-      Write-Host "Error occuered while generating code for" $packageName "`n"
+      Write-Host "Error occurred while generating code for" $packageName "`n"
       $result = "error"
     }
 
