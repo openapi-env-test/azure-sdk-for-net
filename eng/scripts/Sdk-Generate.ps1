@@ -1,6 +1,5 @@
 param($GenerateInput, $GenerateOutput)
 
-# Get the list of changed swaggers
 $input = Get-Content $GenerateInput | ConvertFrom-Json
 $inputFiles = $input.changedFiles;
 $inputFiles += $input.relatedReadmeMdFiles;
@@ -9,7 +8,7 @@ $headSha = $input.headSha
 
 $autorestFilesPath = Get-ChildItem -Path "sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
-Write-Host "Updating autorest.md for the changed swaggers..."
+Write-Host "Updating autorest.md files for all the changed swaggers..."
 $sdkPaths = @()
 foreach ($inputFile in $inputFiles)
 {
@@ -23,48 +22,54 @@ foreach ($inputFile in $inputFiles)
        $fileContent -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile" | `
          Set-Content $path -NoNewline
 
-       $sdkPath = (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
-       $packageName = Split-Path $sdkPath -Leaf
-       Write-Host "Generating code for " $packageName
-       $srcPath = Join-Path $sdkPath 'src'
-       dotnet msbuild /restore /t:GenerateCode $srcPath
-       Write-Host "Generated code for " $packageName
-
-       $sdkPaths += $sdkPath
+       $sdkPaths += (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
      }
     }
 }
+Write-Host "Updated autorest.md files for all the changed swaggers. `n"
 
 $packages = @()
+$artifactsPath = "artifacts/packages"
+If(!(test-path $artifactsPath))
+{
+  New-Item -ItemType Directory -Force -Path $artifactsPath
+}
 foreach ($sdkPath in $sdkPaths)
 {
+    $packageName = Split-Path $sdkPath -Leaf
     $srcPath = Join-Path $sdkPath 'src'
-    $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
-    $artifactsPath = "artifacts/packages"
-    # $artifactsPath = Join-Path $sdkPath 'packages'
-    If(!(test-path $artifactsPath))
+
+    Write-Host "Generating code for " $packageName
+    dotnet msbuild /restore /t:GenerateCode $srcPath
+
+    $result = $null
+    if($LASTEXITCODE -eq 0)
     {
-      New-Item -ItemType Directory -Force -Path $artifactsPath
+      Write-Host "Successfully generated code for" $packageName "`n"
+      $result = "success"
+    } 
+    else 
+    {
+      Write-Host "Error occuered while generating code for" $packageName "`n"
+      $result = "error"
     }
-    Write-Host "Testing artifacts package folder path:" $artifactsPath
+
+    $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
     dotnet pack $csprojPath --output $artifactsPath
 
-    $artifacts = @()
     $path = @()
-    $readmeMd = @()
-    $packageName = Split-Path $sdkPath -Leaf
     $path += $sdkPath
+    $readmeMd = @()
     $readmeMd += Join-Path $sdkPath 'readme.md'
+    $artifacts = @()
     $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
-    foreach($artipath in $artifacts)
-    {
-      Write-Host "Testing artifacts path:" $artipath
-    }
+    
     $packageInfo = [PSCustomObject]@{
         packageName = $packageName
         path = $path
         readmeMd = $readmeMd
         artifacts = $artifacts
+        result = $result
     }
 
     $packages += $packageInfo
