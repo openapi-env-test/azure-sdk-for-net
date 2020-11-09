@@ -82,35 +82,6 @@ namespace Microsoft.Azure.Management.DataBox
         Task<AzureOperationResponse<AddressValidationOutput>> ValidateAddressMethodWithHttpMessagesAsync(string location, ValidateAddress validateAddress, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// This method does all necessary pre-job creation validation under
-        /// resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The Resource Group Name
-        /// </param>
-        /// <param name='location'>
-        /// The location of the resource
-        /// </param>
-        /// <param name='validationRequest'>
-        /// Inputs of the customer.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ApiErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<ValidationResponse>> ValidateInputsByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string location, ValidationRequest validationRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// This method does all necessary pre-job creation validation under
         /// subscription.
         /// </summary>
         /// <param name='location'>

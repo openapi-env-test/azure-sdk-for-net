@@ -116,54 +116,6 @@ namespace Microsoft.Azure.Management.DataBox
             }
 
             /// <summary>
-            /// This method does all necessary pre-job creation validation under resource
-            /// group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='location'>
-            /// The location of the resource
-            /// </param>
-            /// <param name='validationRequest'>
-            /// Inputs of the customer.
-            /// </param>
-            public static ValidationResponse ValidateInputsByResourceGroup(this IServiceOperations operations, string resourceGroupName, string location, ValidationRequest validationRequest)
-            {
-                return operations.ValidateInputsByResourceGroupAsync(resourceGroupName, location, validationRequest).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// This method does all necessary pre-job creation validation under resource
-            /// group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The Resource Group Name
-            /// </param>
-            /// <param name='location'>
-            /// The location of the resource
-            /// </param>
-            /// <param name='validationRequest'>
-            /// Inputs of the customer.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ValidationResponse> ValidateInputsByResourceGroupAsync(this IServiceOperations operations, string resourceGroupName, string location, ValidationRequest validationRequest, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ValidateInputsByResourceGroupWithHttpMessagesAsync(resourceGroupName, location, validationRequest, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// This method does all necessary pre-job creation validation under
             /// subscription.
             /// </summary>
