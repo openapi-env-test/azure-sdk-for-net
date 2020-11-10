@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='profileName'>
             /// Name of the CDN profile which is unique within the resource group.
             /// </param>
-            public static Profile Get(this IProfilesOperations operations, string resourceGroupName, string profileName)
+            public static Profile GetX(this IProfilesOperations operations, string resourceGroupName, string profileName)
             {
-                return operations.GetAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+                return operations.GetXAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> GetAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Profile> GetXAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetXWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
