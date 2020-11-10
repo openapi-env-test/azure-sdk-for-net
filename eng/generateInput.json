@@ -1,7 +1,7 @@
 {
       "dryRun": false,
       "specFolder": "w/azure-rest-api-specs",
-      "headSha": "e15049176e76dfeaee3de3ef5de3ed29fb74760b",
+      "headSha": "45e3923db8ba463beb850baabd7c17d4f4b3c641",
       "headRef": "refs/pull/836/merge",
       "repoHttpsUrl": "https://github.com/openapi-env-test/azure-rest-api-specs.git",
       "trigger": "pullRequest",
@@ -17,5 +17,5 @@
         "downloadCommandTemplate": "az rest --resource 82f31851-081f-475f-804e-88d4e3d6632a -u {URL} --output-file {FILENAME}",
         "trigger": "pullRequest"
       }
-    } 
+    }
   
