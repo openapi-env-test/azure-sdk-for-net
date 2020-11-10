@@ -89,16 +89,13 @@ namespace Microsoft.Azure.Management.Cdn
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Profile>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Profile>> GetXXXWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a new CDN profile with a profile name under the specified
         /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the Resource group within the Azure subscription.
-        /// </param>
-        /// <param name='profileName'>
-        /// Name of the CDN profile which is unique within the resource group.
         /// </param>
         /// <param name='profile'>
         /// Profile properties needed to create a new profile.
@@ -118,7 +115,7 @@ namespace Microsoft.Azure.Management.Cdn
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Profile>> CreateWithHttpMessagesAsync(string resourceGroupName, string profileName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Profile>> CreateWithHttpMessagesAsync(string resourceGroupName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates an existing CDN profile with the specified profile name
         /// under the specified subscription and resource group.
@@ -262,9 +259,6 @@ namespace Microsoft.Azure.Management.Cdn
         /// <param name='resourceGroupName'>
         /// Name of the Resource group within the Azure subscription.
         /// </param>
-        /// <param name='profileName'>
-        /// Name of the CDN profile which is unique within the resource group.
-        /// </param>
         /// <param name='profile'>
         /// Profile properties needed to create a new profile.
         /// </param>
@@ -283,7 +277,7 @@ namespace Microsoft.Azure.Management.Cdn
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Profile>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string profileName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Profile>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, Profile profile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates an existing CDN profile with the specified profile name
         /// under the specified subscription and resource group.
