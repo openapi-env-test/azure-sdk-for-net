@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='profileName'>
             /// Name of the CDN profile which is unique within the resource group.
             /// </param>
-            public static Profile Get(this IProfilesOperations operations, string resourceGroupName, string profileName)
+            public static Profile GetXXX(this IProfilesOperations operations, string resourceGroupName, string profileName)
             {
-                return operations.GetAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+                return operations.GetXXXAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> GetAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Profile> GetXXXAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetXXXWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -137,15 +137,12 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='resourceGroupName'>
             /// Name of the Resource group within the Azure subscription.
             /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
             /// <param name='profile'>
             /// Profile properties needed to create a new profile.
             /// </param>
-            public static Profile Create(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile)
+            public static Profile Create(this IProfilesOperations operations, string resourceGroupName, Profile profile)
             {
-                return operations.CreateAsync(resourceGroupName, profileName, profile).GetAwaiter().GetResult();
+                return operations.CreateAsync(resourceGroupName, profile).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -158,18 +155,15 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='resourceGroupName'>
             /// Name of the Resource group within the Azure subscription.
             /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
             /// <param name='profile'>
             /// Profile properties needed to create a new profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> CreateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Profile> CreateAsync(this IProfilesOperations operations, string resourceGroupName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, profileName, profile, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, profile, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -406,15 +400,12 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='resourceGroupName'>
             /// Name of the Resource group within the Azure subscription.
             /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
             /// <param name='profile'>
             /// Profile properties needed to create a new profile.
             /// </param>
-            public static Profile BeginCreate(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile)
+            public static Profile BeginCreate(this IProfilesOperations operations, string resourceGroupName, Profile profile)
             {
-                return operations.BeginCreateAsync(resourceGroupName, profileName, profile).GetAwaiter().GetResult();
+                return operations.BeginCreateAsync(resourceGroupName, profile).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -427,18 +418,15 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='resourceGroupName'>
             /// Name of the Resource group within the Azure subscription.
             /// </param>
-            /// <param name='profileName'>
-            /// Name of the CDN profile which is unique within the resource group.
-            /// </param>
             /// <param name='profile'>
             /// Profile properties needed to create a new profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Profile> BeginCreateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Profile> BeginCreateAsync(this IProfilesOperations operations, string resourceGroupName, Profile profile, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, profileName, profile, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, profile, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
