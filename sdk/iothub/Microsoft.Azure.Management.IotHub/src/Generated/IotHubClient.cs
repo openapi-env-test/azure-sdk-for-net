@@ -80,6 +80,11 @@ namespace Microsoft.Azure.Management.IotHub
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
+        /// Gets the IIotHubDeviceResourceOperations.
+        /// </summary>
+        public virtual IIotHubDeviceResourceOperations IotHubDeviceResource { get; private set; }
+
+        /// <summary>
         /// Gets the IIotHubResourceOperations.
         /// </summary>
         public virtual IIotHubResourceOperations IotHubResource { get; private set; }
@@ -98,6 +103,16 @@ namespace Microsoft.Azure.Management.IotHub
         /// Gets the IIotHubOperations.
         /// </summary>
         public virtual IIotHubOperations IotHub { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the IotHubClient class.
@@ -341,12 +356,15 @@ namespace Microsoft.Azure.Management.IotHub
         private void Initialize()
         {
             Operations = new Operations(this);
+            IotHubDeviceResource = new IotHubDeviceResourceOperations(this);
             IotHubResource = new IotHubResourceOperations(this);
             ResourceProviderCommon = new ResourceProviderCommonOperations(this);
             Certificates = new CertificatesOperations(this);
             IotHub = new IotHubOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-07-01-preview";
+            ApiVersion = "2020-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

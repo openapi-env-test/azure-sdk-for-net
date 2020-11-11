@@ -51,200 +51,6 @@ namespace Microsoft.Azure.Management.IotHub
         public IotHubClient Client { get; private set; }
 
         /// <summary>
-        /// Get the non-security related metadata of an IoT hub
-        /// </summary>
-        /// <remarks>
-        /// Get the non-security related metadata of an IoT hub.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the IoT hub.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the IoT hub.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ErrorDetailsException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IotHubDescription>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("resourceName", resourceName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new ErrorDetailsException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorDetails _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorDetails>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IotHubDescription>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<IotHubDescription>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
         /// Create or update the metadata of an IoT hub.
         /// </summary>
         /// <remarks>
@@ -292,8 +98,8 @@ namespace Microsoft.Azure.Management.IotHub
         /// <param name='resourceName'>
         /// Name of iot hub to update.
         /// </param>
-        /// <param name='iotHubTags'>
-        /// Updated tag information to set into the iot hub instance.
+        /// <param name='tags'>
+        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -301,10 +107,10 @@ namespace Microsoft.Azure.Management.IotHub
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<IotHubDescription>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, TagsResource iotHubTags, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotHubDescription>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<IotHubDescription> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, iotHubTags, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<IotHubDescription> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, tags, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1519,6 +1325,8 @@ namespace Microsoft.Azure.Management.IotHub
         /// <param name='name'>
         /// The name of the consumer group to add.
         /// </param>
+        /// <param name='properties'>
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1540,7 +1348,7 @@ namespace Microsoft.Azure.Management.IotHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EventHubConsumerGroupInfo>> CreateEventHubConsumerGroupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string eventHubEndpointName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EventHubConsumerGroupInfo>> CreateEventHubConsumerGroupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string eventHubEndpointName, string name, EventHubConsumerGroupName properties = default(EventHubConsumerGroupName), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -1566,6 +1374,11 @@ namespace Microsoft.Azure.Management.IotHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
+            EventHubConsumerGroupBodyDescription consumerGroupBody = new EventHubConsumerGroupBodyDescription();
+            if (properties != null)
+            {
+                consumerGroupBody.Properties = properties;
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1577,6 +1390,7 @@ namespace Microsoft.Azure.Management.IotHub
                 tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("eventHubEndpointName", eventHubEndpointName);
                 tracingParameters.Add("name", name);
+                tracingParameters.Add("consumerGroupBody", consumerGroupBody);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateEventHubConsumerGroup", tracingParameters);
             }
@@ -1631,6 +1445,12 @@ namespace Microsoft.Azure.Management.IotHub
 
             // Serialize Request
             string _requestContent = null;
+            if(consumerGroupBody != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(consumerGroupBody, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -2698,9 +2518,8 @@ namespace Microsoft.Azure.Management.IotHub
         /// <remarks>
         /// Check if an IoT hub name is available.
         /// </remarks>
-        /// <param name='operationInputs'>
-        /// Set the name parameter in the OperationInputs structure to the name of the
-        /// IoT hub to check.
+        /// <param name='name'>
+        /// The name of the IoT hub to check.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2723,7 +2542,7 @@ namespace Microsoft.Azure.Management.IotHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IotHubNameAvailabilityInfo>> CheckNameAvailabilityWithHttpMessagesAsync(OperationInputs operationInputs, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotHubNameAvailabilityInfo>> CheckNameAvailabilityWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -2733,13 +2552,14 @@ namespace Microsoft.Azure.Management.IotHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (operationInputs == null)
+            if (name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "operationInputs");
+                throw new ValidationException(ValidationRules.CannotBeNull, "name");
             }
-            if (operationInputs != null)
+            OperationInputs operationInputs = new OperationInputs();
+            if (name != null)
             {
-                operationInputs.Validate();
+                operationInputs.Name = name;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -4399,8 +4219,8 @@ namespace Microsoft.Azure.Management.IotHub
         /// <param name='resourceName'>
         /// Name of iot hub to update.
         /// </param>
-        /// <param name='iotHubTags'>
-        /// Updated tag information to set into the iot hub instance.
+        /// <param name='tags'>
+        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4423,7 +4243,7 @@ namespace Microsoft.Azure.Management.IotHub
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IotHubDescription>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, TagsResource iotHubTags, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IotHubDescription>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -4437,13 +4257,14 @@ namespace Microsoft.Azure.Management.IotHub
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
             }
-            if (iotHubTags == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "iotHubTags");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            TagsResource iotHubTags = new TagsResource();
+            if (tags != null)
+            {
+                iotHubTags.Tags = tags;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;

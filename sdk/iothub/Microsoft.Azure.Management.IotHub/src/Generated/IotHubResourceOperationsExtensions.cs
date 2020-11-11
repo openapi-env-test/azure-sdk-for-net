@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.IotHub
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,52 +23,6 @@ namespace Microsoft.Azure.Management.IotHub
     /// </summary>
     public static partial class IotHubResourceOperationsExtensions
     {
-            /// <summary>
-            /// Get the non-security related metadata of an IoT hub
-            /// </summary>
-            /// <remarks>
-            /// Get the non-security related metadata of an IoT hub.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the IoT hub.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the IoT hub.
-            /// </param>
-            public static IotHubDescription Get(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName)
-            {
-                return operations.GetAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the non-security related metadata of an IoT hub
-            /// </summary>
-            /// <remarks>
-            /// Get the non-security related metadata of an IoT hub.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the IoT hub.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the IoT hub.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IotHubDescription> GetAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
             /// <summary>
             /// Create or update the metadata of an IoT hub.
             /// </summary>
@@ -149,12 +105,12 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='resourceName'>
             /// Name of iot hub to update.
             /// </param>
-            /// <param name='iotHubTags'>
-            /// Updated tag information to set into the iot hub instance.
+            /// <param name='tags'>
+            /// Resource tags
             /// </param>
-            public static IotHubDescription Update(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, TagsResource iotHubTags)
+            public static IotHubDescription Update(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
-                return operations.UpdateAsync(resourceGroupName, resourceName, iotHubTags).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, resourceName, tags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -173,15 +129,15 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='resourceName'>
             /// Name of iot hub to update.
             /// </param>
-            /// <param name='iotHubTags'>
-            /// Updated tag information to set into the iot hub instance.
+            /// <param name='tags'>
+            /// Resource tags
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotHubDescription> UpdateAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, TagsResource iotHubTags, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotHubDescription> UpdateAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, iotHubTags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -538,9 +494,11 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='name'>
             /// The name of the consumer group to add.
             /// </param>
-            public static EventHubConsumerGroupInfo CreateEventHubConsumerGroup(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name)
+            /// <param name='properties'>
+            /// </param>
+            public static EventHubConsumerGroupInfo CreateEventHubConsumerGroup(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, EventHubConsumerGroupName properties = default(EventHubConsumerGroupName))
             {
-                return operations.CreateEventHubConsumerGroupAsync(resourceGroupName, resourceName, eventHubEndpointName, name).GetAwaiter().GetResult();
+                return operations.CreateEventHubConsumerGroupAsync(resourceGroupName, resourceName, eventHubEndpointName, name, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -564,12 +522,14 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='name'>
             /// The name of the consumer group to add.
             /// </param>
+            /// <param name='properties'>
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EventHubConsumerGroupInfo> CreateEventHubConsumerGroupAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EventHubConsumerGroupInfo> CreateEventHubConsumerGroupAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, string eventHubEndpointName, string name, EventHubConsumerGroupName properties = default(EventHubConsumerGroupName), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateEventHubConsumerGroupWithHttpMessagesAsync(resourceGroupName, resourceName, eventHubEndpointName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateEventHubConsumerGroupWithHttpMessagesAsync(resourceGroupName, resourceName, eventHubEndpointName, name, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -835,13 +795,12 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationInputs'>
-            /// Set the name parameter in the OperationInputs structure to the name of the
-            /// IoT hub to check.
+            /// <param name='name'>
+            /// The name of the IoT hub to check.
             /// </param>
-            public static IotHubNameAvailabilityInfo CheckNameAvailability(this IIotHubResourceOperations operations, OperationInputs operationInputs)
+            public static IotHubNameAvailabilityInfo CheckNameAvailability(this IIotHubResourceOperations operations, string name)
             {
-                return operations.CheckNameAvailabilityAsync(operationInputs).GetAwaiter().GetResult();
+                return operations.CheckNameAvailabilityAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -853,16 +812,15 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='operationInputs'>
-            /// Set the name parameter in the OperationInputs structure to the name of the
-            /// IoT hub to check.
+            /// <param name='name'>
+            /// The name of the IoT hub to check.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotHubNameAvailabilityInfo> CheckNameAvailabilityAsync(this IIotHubResourceOperations operations, OperationInputs operationInputs, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotHubNameAvailabilityInfo> CheckNameAvailabilityAsync(this IIotHubResourceOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(operationInputs, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1280,12 +1238,12 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='resourceName'>
             /// Name of iot hub to update.
             /// </param>
-            /// <param name='iotHubTags'>
-            /// Updated tag information to set into the iot hub instance.
+            /// <param name='tags'>
+            /// Resource tags
             /// </param>
-            public static IotHubDescription BeginUpdate(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, TagsResource iotHubTags)
+            public static IotHubDescription BeginUpdate(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
-                return operations.BeginUpdateAsync(resourceGroupName, resourceName, iotHubTags).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(resourceGroupName, resourceName, tags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1304,15 +1262,15 @@ namespace Microsoft.Azure.Management.IotHub
             /// <param name='resourceName'>
             /// Name of iot hub to update.
             /// </param>
-            /// <param name='iotHubTags'>
-            /// Updated tag information to set into the iot hub instance.
+            /// <param name='tags'>
+            /// Resource tags
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IotHubDescription> BeginUpdateAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, TagsResource iotHubTags, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IotHubDescription> BeginUpdateAsync(this IIotHubResourceOperations operations, string resourceGroupName, string resourceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, iotHubTags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
