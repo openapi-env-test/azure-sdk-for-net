@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='parameters'>
             /// Additional parameters for account update.
             /// </param>
-            public static BatchAccount Update(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters)
+            public static BatchAccount UpdateXX(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters)
             {
-                return operations.UpdateAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+                return operations.UpdateXXAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BatchAccount> UpdateAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BatchAccount> UpdateXXAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateXXWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

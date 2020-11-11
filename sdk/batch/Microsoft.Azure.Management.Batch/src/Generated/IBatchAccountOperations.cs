@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BatchAccount>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BatchAccount>> UpdateXXWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountUpdateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified Batch account.
         /// </summary>
