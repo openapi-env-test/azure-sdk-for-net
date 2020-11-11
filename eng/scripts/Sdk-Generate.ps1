@@ -41,18 +41,27 @@ if(!(Test-Path $artifactsPath))
 foreach ($sdkPath in $sdkPaths)
 {
     $packageName = Split-Path $sdkPath -Leaf
-    $srcPath = Join-Path $sdkPath 'src'
-
-    Write-Host "Generating code for " $packageName
-    dotnet msbuild /restore /t:GenerateCode $srcPath
-
     $path = @()
     $path += $sdkPath
     $readmeMd = @()
-    $readmeMd += Join-Path $sdkPath 'readme.md'
     $artifacts = @()
     $changelog = $null
     $result = $null
+
+   $packageNameArr = $packageName.Split(".")
+   $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
+   if($packageName -match "Azure.ResourceManager")
+   {
+    $readmeMd += $name -match "resource-plane"
+   }
+   elseif($packageName -match "Azure.")
+   {
+    $readmeMd += $name -match "data-plane"
+   }
+
+    $srcPath = Join-Path $sdkPath 'src'
+    Write-Host "Generating code for " $packageName
+    dotnet msbuild /restore /t:GenerateCode $srcPath
 
     if($LASTEXITCODE -eq 0)
     {
@@ -93,7 +102,6 @@ foreach ($sdkPath in $sdkPaths)
         $hasBreakingChange = $true
       }
 
-      Write-Host "test content $content"
       $changelog = [PSCustomObject]@{
         content = $content
         hasBreakingChange = $hasBreakingChange
@@ -102,6 +110,11 @@ foreach ($sdkPath in $sdkPaths)
       if (Test-Path $logFilePath) 
       {
         Remove-Item $logFilePath
+      }
+
+      $installInstructions = [PSCustomObject]@{
+        full = "To install something..."
+        lite = "dotnet something"
       }
     } 
     else 
@@ -117,6 +130,7 @@ foreach ($sdkPath in $sdkPaths)
         readmeMd = $readmeMd
         changelog = $changelog
         artifacts = $artifacts
+        installInstructions = $installInstructions
         result = $result
     }
 
