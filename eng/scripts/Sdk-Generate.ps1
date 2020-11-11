@@ -1,9 +1,10 @@
 param(
 $GenerateInput, 
 $GenerateOutput,
-$RepoRoot = "${PSScriptRoot}"
+$RepoRoot = "${PSScriptRoot}/../.."
 )
 
+Write-Host "Testing root Path $RepoRoot"
 $input = Get-Content $GenerateInput | ConvertFrom-Json
 $inputFiles = $input.changedFiles;
 $inputFiles += $input.relatedReadmeMdFiles;
