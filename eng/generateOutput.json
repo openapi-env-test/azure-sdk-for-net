@@ -13,14 +13,27 @@
         "hasBreakingChange": true
       },
       "artifacts": [
-        "..\\..\\artifacts\\packages\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201110.1.nupkg",
-        "..\\..\\artifacts\\packages\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201110.1.symbols.nupkg"
+        "..\\..\\artifacts\\packages\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201117.1.nupkg",
+        "..\\..\\artifacts\\packages\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201117.1.symbols.nupkg"
       ],
       "installInstructions": {
-        "full": "To install something...",
-        "lite": "dotnet something"
+        "full": "Download the Azure.AI.AnomalyDetector from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)",
+        "lite": "Download the Azure.AI.AnomalyDetector from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)"
       },
       "result": "succeeded"
+    },
+    {
+      "packageName": "Azure.AI.FormRecognizer",
+      "path": [
+        "..\\..\\sdk\\formrecognizer\\Azure.AI.FormRecognizer"
+      ],
+      "readmeMd": [
+        "specification/cognitiveservices/data-plane/FormRecognizer/readme.md"
+      ],
+      "changelog": null,
+      "artifacts": [],
+      "installInstructions": null,
+      "result": "failed"
     }
   ]
 }

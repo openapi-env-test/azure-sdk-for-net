@@ -4,35 +4,68 @@ $GenerateOutput,
 $RepoRoot = "${PSScriptRoot}/../.."
 )
 
-Write-Host "Testing root Path $RepoRoot"
 $input = Get-Content $GenerateInput | ConvertFrom-Json
 $inputFiles = $input.changedFiles;
 $inputFiles += $input.relatedReadmeMdFiles;
+$inputFiles = $inputFiles | select -Unique
 Write-Output "List Of changed swagger files and related readmes" $inputFiles "`n"
-$headSha = $input.headSha
 
 $autorestFilesPath = Get-ChildItem -Path "$RepoRoot/sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
 Write-Host "Updating autorest.md files for all the changed swaggers..."
 $sdkPaths = @()
+$headSha = $input.headSha
 foreach ($inputFile in $inputFiles)
 {
-    foreach ($path in $autorestFilesPath)
-    {
-     $fileContent = Get-Content -Raw $path
-     $containsUrl = $fileContent | %{$_ -match "[\/][0-9a-f]{4,40}[\/]$inputFile"}
-     if ($containsUrl -contains $true)
-     {
-       Write-Host "Updating " $path
-       $fileContent -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile" | `
-         Set-Content $path -NoNewline
+  foreach ($path in $autorestFilesPath)
+  {
+    $fileContent = Get-Content $path
+    $isUpdatedLines = $false
+    $updatedLines = foreach($line in $fileContent)
+    {
+      if($line -match "[\/][0-9a-f]{4,40}[\/]$inputFile")
+      {
+        $repoHttpsUrl = $input.repoHttpsUrl
+        $repoHttpsUrl = "$repoHttpsUrl/blob"
+       
+        # replacing sha
+        $line = $line -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile"
+        # replacing repo path
+        $line -replace "https:\/\/[^`"]+?$headSha", "$repoHttpsUrl/$headSha"
 
-       $sdkPaths += (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
-     }
-    }
+        $isUpdatedLines = $true
+        $sdkPaths += (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
+      }
+      else
+      {
+        $line
+      }
+    }
+
+    if($isUpdatedLines)
+    {
+      $updatedLines | Out-File -FilePath $path
+    }
+  }
 }
+
 Write-Host "Updated autorest.md files for all the changed swaggers. `n"
 
+function Test-PreviousScript() 
+{
+  $result = $null
+  if($LASTEXITCODE -eq 0)
+  {
+    $result = "succeeded"
+  }
+  else 
+  {
+    $result = "failed"
+  }
+  Write-Output $result
+}
+
+$sdkPaths = $sdkPaths | select -Unique
 $packages = @()
 $artifactsPath = "$RepoRoot/artifacts/packages"
 if(!(Test-Path $artifactsPath))
@@ -41,37 +74,39 @@ if(!(Test-Path $artifactsPath))
 }
 foreach ($sdkPath in $sdkPaths)
 {
-    $packageName = Split-Path $sdkPath -Leaf
-    $path = @()
-    $path += $sdkPath
-    $readmeMd = @()
-    $artifacts = @()
-    $changelog = $null
-    $result = $null
+  $packageName = Split-Path $sdkPath -Leaf
+  $path = @()
+  $path += $sdkPath
+  $readmeMd = @()
+  $artifacts = @()
+  $changelog = $null
+  $installInstructions = $null
+  $result = $null
 
-   $packageNameArr = $packageName.Split(".")
-   $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
-   if($packageName -match "Azure.ResourceManager")
-   {
+  $packageNameArr = $packageName.Split(".")
+  $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
+  if($packageName -match "Azure.ResourceManager")
+  {
     $readmeMd += $name -match "resource-plane"
-   }
-   elseif($packageName -match "Azure.")
-   {
+  }
+  elseif($packageName -match "Azure.")
+  {
     $readmeMd += $name -match "data-plane"
-   }
+  }
 
-    $srcPath = Join-Path $sdkPath 'src'
-    Write-Host "Generating code for " $packageName
-    dotnet msbuild /restore /t:GenerateCode $srcPath
-
-    if($LASTEXITCODE -eq 0)
+  $srcPath = Join-Path $sdkPath 'src'
+  Write-Host "Generating code for " $packageName
+  dotnet msbuild /restore /t:GenerateCode $srcPath
+  $result = Test-PreviousScript
+  if($result -eq "succeeded")
+  {
+    Write-Host "Successfully generated code for" $packageName "`n"
+    
+    $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
+    dotnet pack $csprojPath --output $artifactsPath /p:RunApiCompat=$false
+    $result = Test-PreviousScript
+    if($result -eq "succeeded")
     {
-      Write-Host "Successfully generated code for" $packageName "`n"
-      $result = "succeeded"
-
-      $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
-      dotnet pack $csprojPath --output $artifactsPath /p:RunApiCompat=$false
-
       $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
 
       $logFilePath = Join-Path "$srcPath" 'log.txt'
@@ -79,13 +114,12 @@ foreach ($sdkPath in $sdkPaths)
       {
         New-Item $logFilePath
       }
-
-      # run this only if previous step passed and check with digital twin data plane sdk if it is creating PR then do this otherwise talk to wes
       dotnet build $csprojPath /t:RunApiCompat /p:TargetFramework=netstandard2.0 /flp:v=m`;LogFile=$logFilePath
       
       $hasBreakingChange = $null
       $content = $null
-      if($LASTEXITCODE -eq 0)
+      $result = Test-PreviousScript
+      if($result -eq "succeeded")
       {
         $content = ""
         $hasBreakingChange = $false
@@ -93,14 +127,15 @@ foreach ($sdkPath in $sdkPaths)
       else
       {
         $logFile = Get-Content -Path $logFilePath | select-object -skip 2
-        $collate = foreach($Obj in $logFile) 
+        $breakingChanges = foreach($Obj in $logFile) 
         {       
           $begin = ""
           $end = ",`n"
           $begin + $Obj + $end
-          }
-        $content = "Breaking Changes: $collate"
+        }
+        $content = "Breaking Changes: $breakingChanges"
         $hasBreakingChange = $true
+        $result = "succeeded"
       }
 
       $changelog = [PSCustomObject]@{
@@ -113,28 +148,27 @@ foreach ($sdkPath in $sdkPaths)
         Remove-Item $logFilePath
       }
 
+      $downloadUrlPrefix = $input.installInstructionInput.downloadUrlPrefix
       $installInstructions = [PSCustomObject]@{
-        full = "To install something..."
-        lite = "dotnet something"
+        full = "Download the $packageName from [here]($downloadUrlPrefix)"
+        lite = "Download the $packagename from [here]($downloadUrlPrefix)"
       }
-    } 
-    else 
-    {
-      Write-Host "Error occurred while generating code for" $packageName "`n"
-      $result = "failed"
     }
+  } 
+  else 
+  {
+    Write-Host "Error occurred while generating code for" $packageName "`n"
+  }
 
-   # check exit code if success then only write content otherwise empty
-    $packageInfo = [PSCustomObject]@{
-        packageName = $packageName
-        path = $path
-        readmeMd = $readmeMd
-        changelog = $changelog
-        artifacts = $artifacts
-        installInstructions = $installInstructions
-        result = $result
-    }
-
+  $packageInfo = [PSCustomObject]@{
+    packageName = $packageName
+      path = $path
+      readmeMd = $readmeMd
+      changelog = $changelog
+      artifacts = $artifacts
+      installInstructions = $installInstructions
+      result = $result
+      }
     $packages += $packageInfo
 }
 
