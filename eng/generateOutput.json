@@ -30,9 +30,15 @@
       "readmeMd": [
         "specification/cognitiveservices/data-plane/FormRecognizer/readme.md"
       ],
-      "changelog": null,
+      "changelog": {
+        "content": null,
+        "hasBreakingChange": null
+      },
       "artifacts": [],
-      "installInstructions": null,
+      "installInstructions": {
+        "full": "Download the Azure.AI.FormRecognizer from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)",
+        "lite": "Download the Azure.AI.FormRecognizer from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)"
+      },
       "result": "failed"
     }
   ]

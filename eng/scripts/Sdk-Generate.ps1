@@ -75,28 +75,13 @@ if(!(Test-Path $artifactsPath))
 foreach ($sdkPath in $sdkPaths)
 {
   $packageName = Split-Path $sdkPath -Leaf
-  $path = @()
-  $path += $sdkPath
-  $readmeMd = @()
-  $artifacts = @()
-  $changelog = $null
-  $installInstructions = $null
-  $result = $null
-
-  $packageNameArr = $packageName.Split(".")
-  $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
-  if($packageName -match "Azure.ResourceManager")
-  {
-    $readmeMd += $name -match "resource-plane"
-  }
-  elseif($packageName -match "Azure.")
-  {
-    $readmeMd += $name -match "data-plane"
-  }
-
-  $srcPath = Join-Path $sdkPath 'src'
   Write-Host "Generating code for " $packageName
+  $srcPath = Join-Path $sdkPath 'src'
   dotnet msbuild /restore /t:GenerateCode $srcPath
+
+  $artifacts = @()
+  $hasBreakingChange = $null
+  $content = $null
   $result = Test-PreviousScript
   if($result -eq "succeeded")
   {
@@ -116,8 +101,6 @@ foreach ($sdkPath in $sdkPaths)
       }
       dotnet build $csprojPath /t:RunApiCompat /p:TargetFramework=netstandard2.0 /flp:v=m`;LogFile=$logFilePath
       
-      $hasBreakingChange = $null
-      $content = $null
       $result = Test-PreviousScript
       if($result -eq "succeeded")
       {
@@ -137,21 +120,9 @@ foreach ($sdkPath in $sdkPaths)
         $hasBreakingChange = $true
         $result = "succeeded"
       }
-
-      $changelog = [PSCustomObject]@{
-        content = $content
-        hasBreakingChange = $hasBreakingChange
-      }
-
       if (Test-Path $logFilePath) 
       {
         Remove-Item $logFilePath
-      }
-
-      $downloadUrlPrefix = $input.installInstructionInput.downloadUrlPrefix
-      $installInstructions = [PSCustomObject]@{
-        full = "Download the $packageName from [here]($downloadUrlPrefix)"
-        lite = "Download the $packagename from [here]($downloadUrlPrefix)"
       }
     }
   } 
@@ -159,6 +130,32 @@ foreach ($sdkPath in $sdkPaths)
   {
     Write-Host "Error occurred while generating code for" $packageName "`n"
   }
+
+  $path = @()
+  $path += $sdkPath
+
+  $packageNameArr = $packageName.Split(".")
+  $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
+  $readmeMd = @()
+  if($packageName -match "Azure.ResourceManager")
+  {
+    $readmeMd += $name -match "resource-plane"
+  }
+  elseif($packageName -match "Azure.")
+  {
+    $readmeMd += $name -match "data-plane"
+  }
+
+  $changelog = [PSCustomObject]@{
+    content = $content
+    hasBreakingChange = $hasBreakingChange
+    }
+
+  $downloadUrlPrefix = $input.installInstructionInput.downloadUrlPrefix
+  $installInstructions = [PSCustomObject]@{
+    full = "Download the $packageName from [here]($downloadUrlPrefix)"
+    lite = "Download the $packagename from [here]($downloadUrlPrefix)"
+    }
 
   $packageInfo = [PSCustomObject]@{
     packageName = $packageName
