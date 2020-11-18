@@ -12,9 +12,10 @@ Write-Output "List Of changed swagger files and related readmes" $inputFile
 
 $autorestFilesPath = Get-ChildItem -Path "$RepoRoot/sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
-Write-Host "Updating autorest.md files for all the changed swaggers..."
+Write-Host "Updating autorest.md files for all the changed swaggers."
 $sdkPaths = @()
 $headSha = $input.headSha
+$repoHttpsUrl = $input.repoHttpsUrl
 foreach ($inputFile in $inputFiles)
 {
   foreach ($path in $autorestFilesPath)
@@ -25,13 +26,10 @@ foreach ($inputFile in $inputFiles)
     {
       if($line -match "[\/][0-9a-f]{4,40}[\/]$inputFile")
       {
-        $repoHttpsUrl = $input.repoHttpsUrl
-        $repoHttpsUrl = "$repoHttpsUrl/blob"
-       
         # replacing sha
         $line = $line -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile"
         # replacing repo path
-        $line -replace "https:\/\/[^`"]+?$headSha", "$repoHttpsUrl/$headSha"
+        $line -replace "https:\/\/[^`"]+?$headSha", "$repoHttpsUrl/blob/$headSha"
 
         $isUpdatedLines = $true
         $sdkPaths += (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
@@ -41,7 +39,6 @@ foreach ($inputFile in $inputFiles)
         $line
       }
     }
-
     if($isUpdatedLines)
     {
       $updatedLines | Out-File -FilePath $path
@@ -104,7 +101,6 @@ foreach ($sdkPath in $sdkPaths)
       $result = Test-PreviousScript
       if($result -eq "succeeded")
       {
-        $content = ""
         $hasBreakingChange = $false
       }
       else
