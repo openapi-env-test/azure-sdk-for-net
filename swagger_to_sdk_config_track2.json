@@ -14,5 +14,15 @@
       "main_branch": "master"
     },
     "version": "0.2.0"
+  },
+  "generateOptions": {
+    "generateScript": {
+      "path": "pwsh ./eng/scripts/Sdk-Generate.ps1"
+    }
+  },
+  "initOptions": {
+    "initScript": {
+      "path": "pwsh ./eng/scripts/Sdk-init.ps1"
+    }
   }
 }
