@@ -20,5 +20,10 @@
     "generateScript": {
       "path": "pwsh ./eng/scripts/Sdk-Generate.ps1"
     }
+  },
+  "initOptions": {
+    "initScript": {
+      "path": "pwsh ./eng/scripts/Sdk-Init.ps1"
+    }
   }
 }
