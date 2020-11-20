@@ -23,7 +23,7 @@
   },
   "initOptions": {
     "initScript": {
-      "path": "pwsh ./eng/scripts/Sdk-init.ps1"
+      "path": "pwsh ./eng/scripts/Sdk-Init.ps1"
     }
   }
 }
