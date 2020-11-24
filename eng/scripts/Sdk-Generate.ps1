@@ -5,11 +5,11 @@ param(
 )
 
 $input = Get-Content $InputJsonPath | ConvertFrom-Json
-$inputFiles = $input.changedFiles;
-$inputFiles += $input.relatedReadmeMdFiles;
-$inputFiles = $inputFiles | select -Unique
-$changedFiles = $inputFiles -join "`n";
-Write-Host "List Of changed swagger files and related readmes`n $changedFiles `n"
+$inputFilePaths = $input.changedFiles;
+$inputFilePaths += $input.relatedReadmeMdFiles;
+$inputFilePaths = $inputFilePaths | select -Unique
+$changedFilePaths = $inputFilePaths -join "`n";
+Write-Host "List Of changed swagger files and related readmes`n $changedFilePaths `n"
 
 $autorestFilesPath = Get-ChildItem -Path "$RepoRoot/sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
@@ -17,7 +17,7 @@ Write-Host "Updating autorest.md files for all the changed swaggers."
 $sdksInfo = @{}
 $headSha = $input.headSha
 $repoHttpsUrl = $input.repoHttpsUrl
-foreach ($inputFile in $inputFiles)
+foreach ($inputFilePath in $inputFilePaths)
 {
   foreach ($path in $autorestFilesPath)
   {
@@ -25,17 +25,18 @@ foreach ($inputFile in $inputFiles)
     $isUpdatedLines = $false
     $updatedLines = foreach($line in $fileContent)
     {
-      if($line -match "[\/][0-9a-f]{4,40}[\/]$inputFile")
+      $regexForMatchingShaAndPath = "[\/][0-9a-f]{4,40}[\/]$inputFilePath"
+      if($line -match $regexForMatchingShaAndPath)
       {
-        # replacing sha
-        $line = $line -replace "[\/][0-9a-f]{4,40}[\/]$inputFile", "/$headSha/$inputFile"
-        # replacing repo path
-        $line -replace "https:\/\/[^`"]+?$headSha", "$repoHttpsUrl/blob/$headSha"
+        $line -replace "https:\/\/[^`"]*$regexForMatchingShaAndPath", "$repoHttpsUrl/blob/$headSha/$inputFilePath"
 
         $isUpdatedLines = $true
         $sdkpath = (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
-        $specReadmePath = $input.relatedReadmeMdFiles -match $inputFile
-        $sdksInfo.Add($sdkpath, $specReadmePath)
+        if (!$sdksInfo.ContainsKey($sdkpath))
+        {
+          $specReadmePath = $input.relatedReadmeMdFiles -match $inputFilePath
+          $sdksInfo.Add($sdkpath, $specReadmePath)
+        }
       }
       else
       {
