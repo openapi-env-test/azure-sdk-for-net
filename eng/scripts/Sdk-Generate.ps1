@@ -1,14 +1,14 @@
 param(
-$GenerateInput, 
-$GenerateOutput,
-$RepoRoot = "${PSScriptRoot}/../.."
+  [string] $InputJsonPath = $GenerateInput,
+  [string] $OutputJsonPath = $GenerateOutput,
+  [string] $RepoRoot = "${PSScriptRoot}/../.."
 )
 
-$input = Get-Content $GenerateInput | ConvertFrom-Json
+$input = Get-Content $InputJsonPath | ConvertFrom-Json
 $inputFiles = $input.changedFiles;
 $inputFiles += $input.relatedReadmeMdFiles;
 $inputFiles = $inputFiles | select -Unique
-Write-Output "List Of changed swagger files and related readmes" $inputFiles "`n"
+Write-Host "List Of changed swagger files and related readmes" $inputFiles "`n"
 
 $autorestFilesPath = Get-ChildItem -Path "$RepoRoot/sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
@@ -59,16 +59,13 @@ function Test-PreviousScript() 
   {
     $result = "failed"
   }
-  Write-Output $result
+  
+  Write-Host "Result: $result"
+  return $result
 }
 
 $sdkPaths = $sdkPaths | select -Unique
 $packages = @()
-$artifactsPath = "$RepoRoot/artifacts/packages"
-if(!(Test-Path $artifactsPath))
-{
-  New-Item -ItemType Directory -Force -Path $artifactsPath
-}
 foreach ($sdkPath in $sdkPaths)
 {
   $packageName = Split-Path $sdkPath -Leaf
@@ -85,11 +82,12 @@ foreach ($sdkPath in $sdkPaths)
     Write-Host "Successfully generated code for" $packageName "`n"
     
     $csprojPath = Get-ChildItem $srcPath -Filter *.csproj -Recurse
-    dotnet pack $csprojPath --output $artifactsPath /p:RunApiCompat=$false
+    dotnet pack $csprojPath /p:RunApiCompat=$false
     $result = Test-PreviousScript
     if($result -eq "succeeded")
     {
-      $artifacts +=  Get-ChildItem $artifactsPath -Filter *$packageName* -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
+      $artifactsPath = "$RepoRoot/artifacts/packages/Debug/$packageName"
+      $artifacts +=  Get-ChildItem $artifactsPath -Filter *.nupkg -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
 
       $logFilePath = Join-Path "$srcPath" 'log.txt'
       if(!(Test-Path $logFilePath))
@@ -165,9 +163,9 @@ foreach ($sdkPath in $sdkPaths)
     $packages += $packageInfo
 }
 
-if ($GenerateOutput) {
+if ($OutputJsonPath) {
     Write-Host "`nGenerating output JSON..."
     ConvertTo-Json @{
       packages         = $packages
-    } -depth 5 | Out-File -FilePath $GenerateOutput
+    } -depth 5 | Out-File -FilePath $OutputJsonPath
 }
