@@ -1,7 +1,7 @@
 {
   "dryRun": false,
   "specFolder": "../azure-rest-api-specs",
-  "headSha": "a403f0135325b0ebbd5d34fa7846212ddb4fba63",
+  "headSha": "c65d200020197be40c845aeb0ac8bf4d72507fde",
   "headRef": "refs/pull/855/merge",
   "repoHttpsUrl": "https://github.com/openapi-env-test/azure-rest-api-specs",
   "trigger": "pullRequest",
