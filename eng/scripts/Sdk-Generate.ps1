@@ -59,7 +59,6 @@ function Test-PreviousScript() 
   {
     $result = "failed"
   }
-  
   Write-Host "Result: $result"
   return $result
 }
@@ -104,16 +103,12 @@ foreach ($sdkPath in $sdkPaths)
       else
       {
         $logFile = Get-Content -Path $logFilePath | select-object -skip 2
-        $breakingChanges = foreach($Obj in $logFile) 
-        {       
-          $begin = ""
-          $end = ",`n"
-          $begin + $Obj + $end
-        }
+        $breakingChanges = $logFile -join ",`n"
         $content = "Breaking Changes: $breakingChanges"
         $hasBreakingChange = $true
         $result = "succeeded"
       }
+
       if (Test-Path $logFilePath) 
       {
         Remove-Item $logFilePath
