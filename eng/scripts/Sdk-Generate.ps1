@@ -8,12 +8,13 @@ $input = Get-Content $InputJsonPath | ConvertFrom-Json
 $inputFiles = $input.changedFiles;
 $inputFiles += $input.relatedReadmeMdFiles;
 $inputFiles = $inputFiles | select -Unique
-Write-Host "List Of changed swagger files and related readmes" $inputFiles "`n"
+$changedFiles = $inputFiles -join "`n";
+Write-Host "List Of changed swagger files and related readmes`n $changedFiles `n"
 
 $autorestFilesPath = Get-ChildItem -Path "$RepoRoot/sdk"  -Filter autorest.md -Recurse | Resolve-Path -Relative
 
 Write-Host "Updating autorest.md files for all the changed swaggers."
-$sdkPaths = @()
+$sdksInfo = @{}
 $headSha = $input.headSha
 $repoHttpsUrl = $input.repoHttpsUrl
 foreach ($inputFile in $inputFiles)
@@ -32,7 +33,9 @@ foreach ($inputFile in $inputFiles)
         $line -replace "https:\/\/[^`"]+?$headSha", "$repoHttpsUrl/blob/$headSha"
 
         $isUpdatedLines = $true
-        $sdkPaths += (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
+        $sdkpath = (get-item $path).Directory.Parent.FullName | Resolve-Path -Relative
+        $specReadmePath = $input.relatedReadmeMdFiles -match $inputFile
+        $sdksInfo.Add($sdkpath, $specReadmePath)
       }
       else
       {
@@ -63,9 +66,8 @@ function Test-PreviousScript() 
   return $result
 }
 
-$sdkPaths = $sdkPaths | select -Unique
 $packages = @()
-foreach ($sdkPath in $sdkPaths)
+foreach ($sdkPath in $sdksInfo.Keys)
 {
   $packageName = Split-Path $sdkPath -Leaf
   Write-Host "Generating code for " $packageName
@@ -123,17 +125,8 @@ foreach ($sdkPath in $sdkPaths)
   $path = @()
   $path += $sdkPath
 
-  $packageNameArr = $packageName.Split(".")
-  $name = $input.relatedReadmeMdFiles -match $packageNameArr[2]
   $readmeMd = @()
-  if($packageName -match "Azure.ResourceManager")
-  {
-    $readmeMd += $name -match "resource-plane"
-  }
-  elseif($packageName -match "Azure.")
-  {
-    $readmeMd += $name -match "data-plane"
-  }
+  $readmeMd += $sdksInfo[$sdkPath]
 
   $changelog = [PSCustomObject]@{
     content = $content
