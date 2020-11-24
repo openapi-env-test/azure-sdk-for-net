@@ -135,9 +135,10 @@ foreach ($sdkPath in $sdksInfo.Keys)
     }
 
   $downloadUrlPrefix = $input.installInstructionInput.downloadUrlPrefix
+  $fileName = Split-Path $artifacts[0] -Leaf
   $installInstructions = [PSCustomObject]@{
-    full = "Download the $packageName from [here]($downloadUrlPrefix)"
-    lite = "Download the $packagename from [here]($downloadUrlPrefix)"
+    full = "Download the $packageName package from [here]($downloadUrlPrefix/$fileName)"
+    lite = "Download the $packagename package from [here]($downloadUrlPrefix/$fileName)"
     }
 
   $packageInfo = [PSCustomObject]@{

@@ -39,7 +39,7 @@
         "..\\..\\artifacts\\packages\\Debug\\Azure.AI.FormRecognizer\\Azure.AI.FormRecognizer.3.1.0-alpha.20201123.1.symbols.nupkg"
       ],
       "installInstructions": {
-        "full": "Download the Azure.AI.FormRecognizer from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)",
+        "full": "Download the Azure.AI.FormRecognizer from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/Azure.AI.AnomalyDetector.3.0.0-alpha.20201123.1.nupkg)",
         "lite": "Download the Azure.AI.FormRecognizer from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi/)"
       },
       "result": "succeeded"
