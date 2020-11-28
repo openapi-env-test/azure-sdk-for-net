@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Batch
     public static partial class BatchAccountOperationsExtensions
     {
             /// <summary>
-            /// Creates a new Batch account with the specified parameters. Existing
+            /// Creates a new Batch account with the specifiedxx parameters. Existing
             /// accounts cannot be updated with this API and should instead be updated with
             /// the Update Batch Account API.
             /// </summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Batch
             }
 
             /// <summary>
-            /// Creates a new Batch account with the specified parameters. Existing
+            /// Creates a new Batch account with the specifiedxx parameters. Existing
             /// accounts cannot be updated with this API and should instead be updated with
             /// the Update Batch Account API.
             /// </summary>
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Management.Batch
             }
 
             /// <summary>
-            /// Creates a new Batch account with the specified parameters. Existing
+            /// Creates a new Batch account with the specifiedxx parameters. Existing
             /// accounts cannot be updated with this API and should instead be updated with
             /// the Update Batch Account API.
             /// </summary>
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Management.Batch
             }
 
             /// <summary>
-            /// Creates a new Batch account with the specified parameters. Existing
+            /// Creates a new Batch account with the specifiedxx parameters. Existing
             /// accounts cannot be updated with this API and should instead be updated with
             /// the Update Batch Account API.
             /// </summary>
