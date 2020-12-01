@@ -1,7 +1,7 @@
 {
   "dryRun": false,
   "specFolder": "../azure-rest-api-specs",
-  "headSha": "c65d200020197be40c845aeb0ac8bf4d72507fde",
+  "headSha": "b04a58a2bbf3a494d9c86f117646416f1ad0592b",
   "headRef": "refs/pull/855/merge",
   "repoHttpsUrl": "https://github.com/openapi-env-test/azure-rest-api-specs",
   "trigger": "pullRequest",
@@ -10,17 +10,12 @@
     "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",
     "specification/cognitiveservices/data-plane/FormRecognizer/preview/v2.1-preview.1/FormRecognizer.json",
     "specification/cognitiveservices/data-plane/FormRecognizer/readme.md",
-    "specification/cognitiveservices/resource-plane/AnomalyDetector/readme.md",
-    "specification/cognitiveservices/resource-plane/FormRecognizer/readme.md",
-    "specification/digitaltwins/resource-manager/readme.md",
-    "specification/digitaltwins/data-plane/Microsoft.DigitalTwins/stable/2020-10-31/digitaltwins.json"
+    "specification/digitaltwins/data-plane/Microsoft.DigitalTwins/stable/2020-10-31/digitaltwins.json",
+    "specification/digitaltwins/data-plane/readme.md"
   ],
   "relatedReadmeMdFiles": [
     "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",
     "specification/cognitiveservices/data-plane/FormRecognizer/readme.md",
-    "specification/cognitiveservices/resource-plane/AnomalyDetector/readme.md",
-    "specification/cognitiveservices/resource-plane/FormRecognizer/readme.md",
-    "specification/digitaltwins/resource-manager/readme.md",
     "specification/digitaltwins/data-plane/readme.md"
   ],
   "installInstructionInput": {
