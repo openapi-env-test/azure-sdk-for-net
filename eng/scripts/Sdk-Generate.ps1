@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-  [Parameter(Mandatory = $True)]
+  [Parameter()]
+  [ValidateNotNullOrEmpty()]
   [string] $InputJsonPath = $GenerateInput,
 
   [Parameter()]
@@ -11,7 +12,7 @@ param(
 )
 
 $inputFileContent = Get-Content $InputJsonPath | ConvertFrom-Json
-$inputFilePaths = $inputFileContent.changedFiles;
+[string[]] $inputFilePaths = $inputFileContent.changedFiles;
 $inputFilePaths += $inputFileContent.relatedReadmeMdFiles;
 $inputFilePaths = $inputFilePaths | Select-Object -Unique
 
