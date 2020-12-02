@@ -39,7 +39,7 @@ $dotnetSdkVersion = $GlobalJson.sdk.version
 $installScript = GetDotNetInstallScript
 
 Write-Host "installing.....!!!!"
-curl -sSL $installScript --version $dotnetSdkVersion
+& bash $installScript --version $dotnetSdkVersion
 Write-Host "installed.....!!!!"
 
 if (Test-Path $installScript) {
