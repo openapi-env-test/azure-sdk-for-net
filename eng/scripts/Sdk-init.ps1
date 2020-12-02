@@ -41,3 +41,7 @@ $installScript = GetDotNetInstallScript
 Write-Host "installing.....!!!!"
 & sh $installScript --version $dotnetSdkVersion
 Write-Host "installed.....!!!!"
+
+if (Test-Path $installScript) {
+    Remove-Item $installScript
+}
