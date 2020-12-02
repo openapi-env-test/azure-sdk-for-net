@@ -2,13 +2,13 @@
 [string] $dotnetInstallScriptVersion = "v1"
 
 function GetDotNetInstallScript() {
-    $installScript = Join-Path $RepoRoot 'dotnet-install.sh'
+    $installScript = Join-Path $RepoRoot 'dotnet-install.ps1'
     if (!(Test-Path $installScript)) {
         New-Item -Path $RepoRoot -Force -ItemType 'Directory' | Out-Null
         $maxRetries = 5
         $retries = 1
        
-        $uri = "https://dot.net/v1/dotnet-install.sh"
+        $uri = "https://dot.net/$dotnetInstallScriptVersion/dotnet-install.ps1"
         while ($true) {
             try {
                 Write-Host "GET $uri"
@@ -37,10 +37,7 @@ $GlobalJson = Get-Content -Raw -Path (Join-Path $RepoRoot 'global.json') | Conve
 $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
-
-Write-Host "installing.....!!!!"
-& $installScript --version $dotnetSdkVersion
-Write-Host "installed.....!!!!"
+& $installScript -Version $dotnetSdkVersion
 
 if (Test-Path $installScript) {
     Remove-Item $installScript
