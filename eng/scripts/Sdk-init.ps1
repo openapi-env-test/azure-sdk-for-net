@@ -37,7 +37,10 @@ $GlobalJson = Get-Content -Raw -Path (Join-Path $RepoRoot 'global.json') | Conve
 $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
+
+Write-Host "installing.....!!!!"
 & $installScript -Version $dotnetSdkVersion
+Write-Host "installed.....!!!!"
 
 if (Test-Path $installScript) {
     Remove-Item $installScript
