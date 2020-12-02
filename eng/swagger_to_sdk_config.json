@@ -1,8 +1,13 @@
 {
-  "$schema": "https://raw.githubusercontent.com/lmazuel/swagger-to-sdk/master/swagger_to_sdk_config.schema.json",
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/documentation/sdkautomation/SwaggerToSdkConfigSchema.json",
   "generateOptions": {
     "generateScript": {
       "path": "pwsh ./eng/scripts/Sdk-Generate.ps1"
+    }
+  },
+  "initOptions": {
+    "initScript": {
+      "path": "pwsh ./eng/scripts/Sdk-init.ps1"
     }
   }
 }
