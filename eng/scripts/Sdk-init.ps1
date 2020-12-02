@@ -8,7 +8,7 @@ function GetDotNetInstallScript() {
         $maxRetries = 5
         $retries = 1
        
-        $uri = "https://dot.net/$dotnetInstallScriptVersion/dotnet-install.sh"
+        $uri = "https://dot.net/v1/dotnet-install.sh"
         while ($true) {
             try {
                 Write-Host "GET $uri"
@@ -37,7 +37,10 @@ $GlobalJson = Get-Content -Raw -Path (Join-Path $RepoRoot 'global.json') | Conve
 $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
+
+Write-Host "installing.....!!!!"
 & $installScript --version $dotnetSdkVersion
+Write-Host "installed.....!!!!"
 
 if (Test-Path $installScript) {
     Remove-Item $installScript
