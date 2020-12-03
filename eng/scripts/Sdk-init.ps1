@@ -39,7 +39,7 @@ $dotnetSdkVersion = $GlobalJson.sdk.version
 $installScript = GetDotNetInstallScript
     
 Write-Host "installing.....!!!!"
-$installDir = "${PSScriptRoot}/.dotnet"
+$installDir = "$RepoRoot/.dotnet"
 & bash $installScript --install-dir $installDir --version $dotnetSdkVersion 
 Write-Host "installed.....!!!!"
 
