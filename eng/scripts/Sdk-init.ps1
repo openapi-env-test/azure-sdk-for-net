@@ -43,7 +43,8 @@ $installDir = "$RepoRoot/.dotnet"
 & bash $installScript --install-dir $installDir --version $dotnetSdkVersion 
 Write-Host "installed.....!!!!"
 
-Write-Host "##vso[task.setvariable variable=PATH;]$installDir;${​​​​​env:PATH}​​​​​";
+# Write-Host "##vso[task.setvariable variable=PATH;]$installDir;${​​​​​env:PATH}​​​​​";
+& - script: echo "##vso[task.setvariable variable=PATH]${PATH}:$installDir"
 
 if (Test-Path $installScript) {
     Remove-Item $installScript
