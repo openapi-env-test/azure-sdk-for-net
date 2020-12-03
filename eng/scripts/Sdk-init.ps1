@@ -38,13 +38,11 @@ $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
     
-Write-Host "installing.....!!!!"
 $dotnet = Join-Path $RepoRoot ".dotnet"
+
 & bash $installScript --install-dir $dotnet --version $dotnetSdkVersion 
-Write-Host "installed.....!!!!"
 
-
-Write-Host "##vso[task.setvariable variable=PATH;]$dotnet`:${env:PATH}";
+$env:PATH = "$dotnet`:" + $env:PATH
 
 if (Test-Path $installScript) {
     Remove-Item $installScript
