@@ -15,10 +15,5 @@
       "main_branch": "master"
     },
     "version": "0.2.0"
-  },
-  "generateOptions": {
-    "genearteScript": {
-      "path": "autorest"
-    }
   }
 }
