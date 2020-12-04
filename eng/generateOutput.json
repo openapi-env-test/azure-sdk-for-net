@@ -1,0 +1,26 @@
+{
+  "packages": [
+    {
+      "packageName": "Azure.AI.AnomalyDetector",
+      "path": [
+        "..\\..\\sdk\\anomalydetector\\Azure.AI.AnomalyDetector"
+      ],
+      "readmeMd": [],
+      "changelog": {
+        "content": "Breaking Changes: C:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\anomalydetector\\Azure.AI.AnomalyDetector\\src\\Azure.AI.AnomalyDetector.csproj : error MSB4057: The target \"RunApiCompat\" does not exist in the project.,\n,\nBuild FAILED.,\n,\nC:\\Users\\shreja\\Test\\azure-sdk-for-net\\sdk\\anomalydetector\\Azure.AI.AnomalyDetector\\src\\Azure.AI.AnomalyDetector.csproj : error MSB4057: The target \"RunApiCompat\" does not exist in the project.,\n    0 Warning(s),\n    1 Error(s),\n,\nTime Elapsed 00:00:00.99",
+        "hasBreakingChange": true
+      },
+      "artifacts": [
+        "..\\..\\artifacts\\packages\\Debug\\Azure.AI.AnomalyDetector\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201201.1.nupkg",
+        "..\\..\\artifacts\\packages\\Debug\\Azure.AI.AnomalyDetector\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201201.1.symbols.nupkg",
+        "..\\..\\artifacts\\packages\\Debug\\Azure.AI.AnomalyDetector\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201203.1.nupkg",
+        "..\\..\\artifacts\\packages\\Debug\\Azure.AI.AnomalyDetector\\Azure.AI.AnomalyDetector.3.0.0-alpha.20201203.1.symbols.nupkg"
+      ],
+      "installInstructions": {
+        "full": "Download the Azure.AI.AnomalyDetector package from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi//Azure.AI.AnomalyDetector.3.0.0-alpha.20201201.1.nupkg)",
+        "lite": "Download the Azure.AI.AnomalyDetector package from [here](https://openapihub.test.azure-devex-tools.com/api/sdk-dl-pub?p=openapi-env-test/855/azure-sdk-for-net-shivangi//Azure.AI.AnomalyDetector.3.0.0-alpha.20201201.1.nupkg)"
+      },
+      "result": "succeeded"
+    }
+  ]
+}
