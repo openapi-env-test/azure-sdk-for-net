@@ -7,10 +7,10 @@
   "trigger": "pullRequest",
   "changedFiles": [
     "specification/cognitiveservices/data-plane/AnomalyDetector/preview/v1.0/AnomalyDetector.json",
-    "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",
+    "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md"
   ],
   "relatedReadmeMdFiles": [
-    "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md",
+    "specification/cognitiveservices/data-plane/AnomalyDetector/readme.md"
   ],
   "installInstructionInput": {
     "isPublic": false,
