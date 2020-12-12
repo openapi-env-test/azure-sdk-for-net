@@ -281,9 +281,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='profileName'>
             /// Name of the CDN profile which is unique within the resource group.
             /// </param>
-            public static SsoUri GenerateSsoUri(this IProfilesOperations operations, string resourceGroupName, string profileName)
+            public static SsoUri GenerateSsoUriX(this IProfilesOperations operations, string resourceGroupName, string profileName)
             {
-                return operations.GenerateSsoUriAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+                return operations.GenerateSsoUriXAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Management.Cdn
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SsoUri> GenerateSsoUriAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SsoUri> GenerateSsoUriXAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GenerateSsoUriWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GenerateSsoUriXWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
