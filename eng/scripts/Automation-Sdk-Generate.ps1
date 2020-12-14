@@ -11,6 +11,26 @@ param(
   [string] $RepoRoot = "${PSScriptRoot}/../.."
 )
 
+function Find-Mapping([string]$path) {
+  $fileContent = Get-Content $path
+  $name = ''
+  $proName = ''
+  foreach ($item in $fileContent) {
+    if (($item -match '\$\(csharp-sdks-folder\)')) {
+      $matchResult = $item -match "\/([^/]+)\/"
+      $name = $matches[0].Substring(1, $matches[0].Length - 2)
+      if (($name -ne '') -and ($name -notmatch "\$")) {
+        $matchResult = $item -match "Microsoft.Azure.Management.[^/]+"
+        $proName = $matches[0].Substring(27)
+        if ($name -ne '') {
+          break
+        } 
+      }
+    }
+  }
+  return @{ $name = "$proName" }
+}
+
 $inputFileContent = Get-Content $InputJsonPath | ConvertFrom-Json
 [string[]] $inputFilePaths = $inputFileContent.changedFiles;
 $inputFilePaths += $inputFileContent.relatedReadmeMdFiles;
@@ -20,21 +40,41 @@ $changedFilePaths = $inputFilePaths -join "`n";
 Write-Host "List of changed swagger files and related readmes:`n$changedFilePaths`n"
 
 Write-Output "Find RP which need to create new project"
-$rpIndex = @()
-$rpMapping = Get-Content -Path "$RepoRoot/eng/scripts/RPMapping.json" | ConvertFrom-Json
+# Get RP Mapping
+$RPMapping = [ordered]@{ }
+$readmePath = ''
+git clone https://github.com/Azure/azure-rest-api-specs.git ../azure-rest-api-specs
+$folderNames = Get-ChildItem ../azure-rest-api-specs/specification
+$folderNames | ForEach-Object {
+  $folderName = @{'' = "" }
+  $readmePath = "../azure-rest-api-specs/specification/$($_.Name)/resource-manager/readme.csharp.md"
+  if (Test-Path $readmePath) {
+    $folderName = Find-Mapping $readmePath
+  }
+  if (([string]$folderName.keys[0] -eq "") -or ([string]$folderName.keys[0] -match "\$")) {
+    $readmePath = "../azure-rest-api-specs/specification/$($_.Name)/resource-manager/readme.md"
+    if (Test-Path $readmePath) {
+      $folderName = Find-Mapping $readmePath
+    }
+  }
+  if (([string]$folderName.keys[0] -notmatch "\$") -and (!$RPMapping.Contains($_.Name)) -and ([string]$folderName.keys[0] -ne "")) {
+    $RPMapping += @{ $_.Name = $folderName }
+  }
+}
+$rpIndex = [ordered]@{ }
 $inputFilePaths | ForEach-Object {
   if ($_ -Match 'resource-manager') {
     $rpName = $_.Substring(14)
     $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
-    $rpName = $rpMapping."$rpName"
+    $rpName = $RPMapping."$rpName"
     If ($rpIndex -notcontains $rpName) {
       $rpIndex += $rpName
     }
   }
 }
 $rpIndex | ForEach-Object {
-  $folderName = $_.PSObject.Properties.Name
-  $rpName = $_.PSObject.Properties.Value
+  $folderName = [string]$_.keys[0]
+  $rpName = [string]$_.values[0]
   $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
   if (-not (Test-Path $folderPath)) {
     dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
