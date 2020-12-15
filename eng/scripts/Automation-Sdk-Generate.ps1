@@ -21,10 +21,12 @@ function Find-Mapping([string]$path) {
       $name = $matches[0].Substring(1, $matches[0].Length - 2)
       if (($name -ne '') -and ($name -notmatch "\$")) {
         $matchResult = $item -match "Microsoft.Azure.Management.[^/]+"
-        $proName = $matches[0].Substring(27)
-        if ($name -ne '') {
-          break
-        } 
+        if ($matchResult) {
+          $proName = $matches[0].Substring(27)
+          if ($proName -ne '') {
+            break
+          } 
+        }
       }
     }
   }
@@ -51,13 +53,13 @@ $folderNames | ForEach-Object {
   if (Test-Path $readmePath) {
     $folderName = Find-Mapping $readmePath
   }
-  if (([string]$folderName.keys[0] -eq "") -or ([string]$folderName.keys[0] -match "\$")) {
+  if (([string]$folderName.Keys[0] -eq "") -or ([string]$folderName.Keys[0] -match "\$")) {
     $readmePath = "../azure-rest-api-specs/specification/$($_.Name)/resource-manager/readme.md"
     if (Test-Path $readmePath) {
       $folderName = Find-Mapping $readmePath
     }
   }
-  if (([string]$folderName.keys[0] -notmatch "\$") -and (!$RPMapping.Contains($_.Name)) -and ([string]$folderName.keys[0] -ne "")) {
+  if (([string]$folderName.Keys[0] -notmatch "\$") -and (!$RPMapping.Contains($_.Name)) -and ([string]$folderName.Keys[0] -ne "")) {
     $RPMapping += @{ $_.Name = $folderName }
   }
 }
@@ -67,14 +69,14 @@ $inputFilePaths | ForEach-Object {
     $rpName = $_.Substring(14)
     $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
     $rpName = $RPMapping."$rpName"
-    If ($rpIndex -notcontains $rpName) {
+    If (!$rpIndex.Contains([string]$rpName.Keys[0])) {
       $rpIndex += $rpName
     }
   }
 }
 $rpIndex | ForEach-Object {
-  $folderName = [string]$_.keys[0]
-  $rpName = [string]$_.values[0]
+  $folderName = [string]$_.Keys[0]
+  $rpName = [string]$_.Values[0]
   $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
   if (-not (Test-Path $folderPath)) {
     dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
