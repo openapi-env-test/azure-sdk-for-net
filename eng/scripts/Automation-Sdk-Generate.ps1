@@ -80,6 +80,7 @@ $inputFilePaths | ForEach-Object {
   }
 }
 if ($rpIndex.Count -ne 0) {
+  Write-Host "Install .NET template project"
   dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
   New-Item -Path $RepoRoot/sdk/$folderName -Name Azure.ResourceManager.$rpName -ItemType directory
   $rpIndex | ForEach-Object {
@@ -88,6 +89,7 @@ if ($rpIndex.Count -ne 0) {
     $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
     if (-not (Test-Path $folderPath)) {
       Set-Location -Path $folderPath
+      Write-Host "Create project for $rpName"
       dotnet new azuremgmt --provider $rpName
       Set-Location -Path $RepoRoot
     }
