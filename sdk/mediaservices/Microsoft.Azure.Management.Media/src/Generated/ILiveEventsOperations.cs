@@ -24,34 +24,6 @@ namespace Microsoft.Azure.Management.Media
     public partial interface ILiveEventsOperations
     {
         /// <summary>
-        /// List live events
-        /// </summary>
-        /// <remarks>
-        /// Lists all the live events in the account.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the Azure subscription.
-        /// </param>
-        /// <param name='accountName'>
-        /// The Media Services account name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ApiErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<LiveEvent>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get Live Event
         /// </summary>
         /// <remarks>
@@ -520,30 +492,5 @@ namespace Microsoft.Azure.Management.Media
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginResetWithHttpMessagesAsync(string resourceGroupName, string accountName, string liveEventName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List live events
-        /// </summary>
-        /// <remarks>
-        /// Lists all the live events in the account.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="ApiErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<LiveEvent>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

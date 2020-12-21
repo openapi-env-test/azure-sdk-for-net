@@ -137,6 +137,11 @@ namespace Microsoft.Azure.Management.Media
         public virtual IStreamingLocatorsOperations StreamingLocators { get; private set; }
 
         /// <summary>
+        /// Gets the ILiveEventsTestOperations.
+        /// </summary>
+        public virtual ILiveEventsTestOperations LiveEventsTest { get; private set; }
+
+        /// <summary>
         /// Gets the ILiveEventsOperations.
         /// </summary>
         public virtual ILiveEventsOperations LiveEvents { get; private set; }
@@ -405,6 +410,7 @@ namespace Microsoft.Azure.Management.Media
             Jobs = new JobsOperations(this);
             StreamingPolicies = new StreamingPoliciesOperations(this);
             StreamingLocators = new StreamingLocatorsOperations(this);
+            LiveEventsTest = new LiveEventsTestOperations(this);
             LiveEvents = new LiveEventsOperations(this);
             LiveOutputs = new LiveOutputsOperations(this);
             StreamingEndpoints = new StreamingEndpointsOperations(this);
