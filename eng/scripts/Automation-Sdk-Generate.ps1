@@ -68,13 +68,13 @@ $inputFilePaths | ForEach-Object {
   if ($_ -Match 'resource-manager') {
     $rpName = $_.Substring(14)
     $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
-    $rpName = $RPMapping."$rpName"
-    if ($rpName -eq $null) {
-      Write-Error "Can't find proper service folder name or project name.`nPlease check related readme file."
+    $mapName = $RPMapping."$rpName"
+    if ($mapName -eq $null) {
+      Write-Error "Can't find proper sdk folder name or project name for $rpName.`nPlease check related readme file."
     }
     else {
-      If (!$rpIndex.Contains([string]$rpName.Keys[0])) {
-        $rpIndex += $rpName
+      If (!$rpIndex.Contains([string]$mapName.Keys[0])) {
+        $rpIndex += $mapName
       }
     }
   }
