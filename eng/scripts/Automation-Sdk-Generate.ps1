@@ -80,13 +80,13 @@ $inputFilePaths | ForEach-Object {
   }
 }
 if ($rpIndex.Count -ne 0) {
+  dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
+  New-Item -Path $RepoRoot/sdk/$folderName -Name Azure.ResourceManager.$rpName -ItemType directory
   $rpIndex | ForEach-Object {
     $folderName = [string]$_.Keys[0]
     $rpName = [string]$_.Values[0]
     $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
     if (-not (Test-Path $folderPath)) {
-      dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
-      New-Item -Path $RepoRoot/sdk/$folderName -Name Azure.ResourceManager.$rpName -ItemType directory
       Set-Location -Path $folderPath
       dotnet new azuremgmt --provider $rpName
       Set-Location -Path $RepoRoot
