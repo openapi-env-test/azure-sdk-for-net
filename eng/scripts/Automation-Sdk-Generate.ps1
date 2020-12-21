@@ -69,23 +69,28 @@ $inputFilePaths | ForEach-Object {
     $rpName = $_.Substring(14)
     $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
     $rpName = $RPMapping."$rpName"
-    if ($rpName -ne $null) {
+    if ($rpName -eq $null) {
+      Write-Error "Can't find proper service folder name or project name.`nPlease check related readme file."
+    }
+    else {
       If (!$rpIndex.Contains([string]$rpName.Keys[0])) {
         $rpIndex += $rpName
       }
     }
   }
 }
-$rpIndex | ForEach-Object {
-  $folderName = [string]$_.Keys[0]
-  $rpName = [string]$_.Values[0]
-  $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
-  if (-not (Test-Path $folderPath)) {
-    dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
-    New-Item -Path $RepoRoot/sdk/$folderName -Name Azure.ResourceManager.$rpName -ItemType directory
-    Set-Location -Path $folderPath
-    dotnet new azuremgmt --provider $rpName
-    Set-Location -Path $RepoRoot
+if ($rpIndex.Count -ne 0) {
+  $rpIndex | ForEach-Object {
+    $folderName = [string]$_.Keys[0]
+    $rpName = [string]$_.Values[0]
+    $folderPath = "$RepoRoot/sdk/$folderName/Azure.ResourceManager.$rpName"
+    if (-not (Test-Path $folderPath)) {
+      dotnet new -i $RepoRoot/eng/templates/Azure.ResourceManager.Template
+      New-Item -Path $RepoRoot/sdk/$folderName -Name Azure.ResourceManager.$rpName -ItemType directory
+      Set-Location -Path $folderPath
+      dotnet new azuremgmt --provider $rpName
+      Set-Location -Path $RepoRoot
+    }
   }
 }
 
