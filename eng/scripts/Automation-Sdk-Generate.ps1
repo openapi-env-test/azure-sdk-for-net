@@ -69,8 +69,10 @@ $inputFilePaths | ForEach-Object {
     $rpName = $_.Substring(14)
     $rpName = $rpName.Substring(0, $rpName.IndexOf('/'));
     $rpName = $RPMapping."$rpName"
-    If (!$rpIndex.Contains([string]$rpName.Keys[0])) {
-      $rpIndex += $rpName
+    if ($rpName -ne $null) {
+      If (!$rpIndex.Contains([string]$rpName.Keys[0])) {
+        $rpIndex += $rpName
+      }
     }
   }
 }
