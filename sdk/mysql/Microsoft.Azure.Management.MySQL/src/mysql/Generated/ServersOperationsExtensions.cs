@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Management.MySQL
             }
 
             /// <summary>
-            /// Stops a running server.
+            /// Test Stops a running server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -344,13 +344,13 @@ namespace Microsoft.Azure.Management.MySQL
             /// <param name='serverName'>
             /// The name of the server.
             /// </param>
-            public static void Stop(this IServersOperations operations, string resourceGroupName, string serverName)
+            public static void Test(this IServersOperations operations, string resourceGroupName, string serverName)
             {
-                operations.StopAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+                operations.TestAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Stops a running server.
+            /// Test Stops a running server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -364,9 +364,9 @@ namespace Microsoft.Azure.Management.MySQL
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StopAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task TestAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StopWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.TestWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Management.MySQL
             }
 
             /// <summary>
-            /// Stops a running server.
+            /// Test Stops a running server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -631,13 +631,13 @@ namespace Microsoft.Azure.Management.MySQL
             /// <param name='serverName'>
             /// The name of the server.
             /// </param>
-            public static void BeginStop(this IServersOperations operations, string resourceGroupName, string serverName)
+            public static void BeginTest(this IServersOperations operations, string resourceGroupName, string serverName)
             {
-                operations.BeginStopAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+                operations.BeginTestAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Stops a running server.
+            /// Test Stops a running server.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -651,9 +651,9 @@ namespace Microsoft.Azure.Management.MySQL
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginStopAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginTestAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginTestWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
