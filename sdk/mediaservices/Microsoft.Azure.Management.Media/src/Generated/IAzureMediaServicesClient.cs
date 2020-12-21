@@ -134,6 +134,11 @@ namespace Microsoft.Azure.Management.Media
         IStreamingLocatorsOperations StreamingLocators { get; }
 
         /// <summary>
+        /// Gets the ILiveEventsTestOperations.
+        /// </summary>
+        ILiveEventsTestOperations LiveEventsTest { get; }
+
+        /// <summary>
         /// Gets the ILiveEventsOperations.
         /// </summary>
         ILiveEventsOperations LiveEvents { get; }

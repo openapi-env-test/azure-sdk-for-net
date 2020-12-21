@@ -22,52 +22,6 @@ namespace Microsoft.Azure.Management.Media
     public static partial class LiveEventsOperationsExtensions
     {
             /// <summary>
-            /// List live events
-            /// </summary>
-            /// <remarks>
-            /// Lists all the live events in the account.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the Azure subscription.
-            /// </param>
-            /// <param name='accountName'>
-            /// The Media Services account name.
-            /// </param>
-            public static IPage<LiveEvent> List(this ILiveEventsOperations operations, string resourceGroupName, string accountName)
-            {
-                return operations.ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List live events
-            /// </summary>
-            /// <remarks>
-            /// Lists all the live events in the account.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group within the Azure subscription.
-            /// </param>
-            /// <param name='accountName'>
-            /// The Media Services account name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LiveEvent>> ListAsync(this ILiveEventsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Get Live Event
             /// </summary>
             /// <remarks>
@@ -883,46 +837,6 @@ namespace Microsoft.Azure.Management.Media
             public static async Task BeginResetAsync(this ILiveEventsOperations operations, string resourceGroupName, string accountName, string liveEventName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginResetWithHttpMessagesAsync(resourceGroupName, accountName, liveEventName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// List live events
-            /// </summary>
-            /// <remarks>
-            /// Lists all the live events in the account.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<LiveEvent> ListNext(this ILiveEventsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List live events
-            /// </summary>
-            /// <remarks>
-            /// Lists all the live events in the account.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LiveEvent>> ListNextAsync(this ILiveEventsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
     }
