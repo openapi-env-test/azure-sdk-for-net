@@ -52,11 +52,6 @@ namespace Microsoft.Azure.Management.AlertsManagement
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// client API version
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -90,9 +85,9 @@ namespace Microsoft.Azure.Management.AlertsManagement
         public virtual ISmartGroupsOperations SmartGroups { get; private set; }
 
         /// <summary>
-        /// Gets the IActionRulesOperations.
+        /// Gets the ISmartDetectorAlertRulesOperations.
         /// </summary>
-        public virtual IActionRulesOperations ActionRules { get; private set; }
+        public virtual ISmartDetectorAlertRulesOperations SmartDetectorAlertRules { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AlertsManagementClient class.
@@ -338,9 +333,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
             Operations = new Operations(this);
             Alerts = new AlertsOperations(this);
             SmartGroups = new SmartGroupsOperations(this);
-            ActionRules = new ActionRulesOperations(this);
+            SmartDetectorAlertRules = new SmartDetectorAlertRulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2019-05-05-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -370,8 +364,6 @@ namespace Microsoft.Azure.Management.AlertsManagement
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ActionRuleProperties>("type"));
-            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ActionRuleProperties>("type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AlertsMetaDataProperties>("metadataIdentifier"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AlertsMetaDataProperties>("metadataIdentifier"));
             CustomInitialize();
