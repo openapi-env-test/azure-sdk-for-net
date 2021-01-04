@@ -41,7 +41,7 @@ $inputFilePaths = $inputFilePaths | Select-Object -Unique
 $changedFilePaths = $inputFilePaths -join "`n";
 Write-Host "List of changed swagger files and related readmes:`n$changedFilePaths`n"
 
-Write-Output "Find RP which need to create new project"
+Write-Host "Find RP which need to create new project"
 # Get RP Mapping
 $RPMapping = [ordered]@{ }
 $readmePath = ''
