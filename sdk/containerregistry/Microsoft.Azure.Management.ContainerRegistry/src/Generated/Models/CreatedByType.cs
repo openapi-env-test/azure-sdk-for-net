@@ -12,11 +12,13 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
 {
 
     /// <summary>
-    /// Defines values for TaskStatus.
+    /// Defines values for CreatedByType.
     /// </summary>
-    public static class TaskStatus
+    public static class CreatedByType
     {
-        public const string Disabled = "Disabled";
-        public const string Enabled = "Enabled";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }
