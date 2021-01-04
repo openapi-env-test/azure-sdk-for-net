@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The client API version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -102,36 +107,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// Gets the IWebhooksOperations.
         /// </summary>
         IWebhooksOperations Webhooks { get; }
-
-        /// <summary>
-        /// Gets the IAgentPoolsOperations.
-        /// </summary>
-        IAgentPoolsOperations AgentPools { get; }
-
-        /// <summary>
-        /// Gets the IRunsOperations.
-        /// </summary>
-        IRunsOperations Runs { get; }
-
-        /// <summary>
-        /// Gets the ITaskRunsOperations.
-        /// </summary>
-        ITaskRunsOperations TaskRuns { get; }
-
-        /// <summary>
-        /// Gets the ITasksOperations.
-        /// </summary>
-        ITasksOperations Tasks { get; }
-
-        /// <summary>
-        /// Gets the IScopeMapsOperations.
-        /// </summary>
-        IScopeMapsOperations ScopeMaps { get; }
-
-        /// <summary>
-        /// Gets the ITokensOperations.
-        /// </summary>
-        ITokensOperations Tokens { get; }
 
     }
 }

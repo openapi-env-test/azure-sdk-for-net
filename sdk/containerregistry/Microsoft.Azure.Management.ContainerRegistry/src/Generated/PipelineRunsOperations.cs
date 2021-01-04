@@ -84,6 +84,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// </return>
         public async System.Threading.Tasks.Task<AzureOperationResponse<PipelineRun>> GetWithHttpMessagesAsync(string resourceGroupName, string registryName, string pipelineRunName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -137,7 +141,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
                     throw new ValidationException(ValidationRules.Pattern, "pipelineRunName", "^[a-zA-Z0-9]*$");
                 }
             }
-            string apiVersion = "2019-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -145,7 +148,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("registryName", registryName);
                 tracingParameters.Add("pipelineRunName", pipelineRunName);
@@ -160,9 +162,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             _url = _url.Replace("{registryName}", System.Uri.EscapeDataString(registryName));
             _url = _url.Replace("{pipelineRunName}", System.Uri.EscapeDataString(pipelineRunName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -379,6 +381,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// </return>
         public async System.Threading.Tasks.Task<AzureOperationResponse<IPage<PipelineRun>>> ListWithHttpMessagesAsync(string resourceGroupName, string registryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -413,7 +419,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
                     throw new ValidationException(ValidationRules.Pattern, "registryName", "^[a-zA-Z0-9]*$");
                 }
             }
-            string apiVersion = "2019-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -421,7 +426,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("registryName", registryName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -434,9 +438,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{registryName}", System.Uri.EscapeDataString(registryName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -606,6 +610,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// </return>
         public async System.Threading.Tasks.Task<AzureOperationResponse<PipelineRun>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string registryName, string pipelineRunName, PipelineRunRequest request = default(PipelineRunRequest), string forceUpdateTag = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -659,7 +667,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
                     throw new ValidationException(ValidationRules.Pattern, "pipelineRunName", "^[a-zA-Z0-9]*$");
                 }
             }
-            string apiVersion = "2019-12-01-preview";
             PipelineRun pipelineRunCreateParameters = new PipelineRun();
             if (request != null || forceUpdateTag != null)
             {
@@ -673,7 +680,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("registryName", registryName);
                 tracingParameters.Add("pipelineRunName", pipelineRunName);
@@ -689,9 +695,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             _url = _url.Replace("{registryName}", System.Uri.EscapeDataString(registryName));
             _url = _url.Replace("{pipelineRunName}", System.Uri.EscapeDataString(pipelineRunName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -874,6 +880,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry
         /// </return>
         public async System.Threading.Tasks.Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string registryName, string pipelineRunName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -927,7 +937,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
                     throw new ValidationException(ValidationRules.Pattern, "pipelineRunName", "^[a-zA-Z0-9]*$");
                 }
             }
-            string apiVersion = "2019-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -935,7 +944,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("registryName", registryName);
                 tracingParameters.Add("pipelineRunName", pipelineRunName);
@@ -950,9 +958,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry
             _url = _url.Replace("{registryName}", System.Uri.EscapeDataString(registryName));
             _url = _url.Replace("{pipelineRunName}", System.Uri.EscapeDataString(pipelineRunName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

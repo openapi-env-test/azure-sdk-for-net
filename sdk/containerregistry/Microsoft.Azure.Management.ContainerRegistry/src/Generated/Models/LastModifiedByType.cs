@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
 {
 
     /// <summary>
-    /// Defines values for RunType.
+    /// Defines values for LastModifiedByType.
     /// </summary>
-    public static class RunType
+    public static class LastModifiedByType
     {
-        public const string QuickBuild = "QuickBuild";
-        public const string QuickRun = "QuickRun";
-        public const string AutoBuild = "AutoBuild";
-        public const string AutoRun = "AutoRun";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }
