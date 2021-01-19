@@ -35,42 +35,6 @@ namespace Azure.AI.AnomalyDetector
             _pipeline = pipeline;
         }
 
-        /// <summary> This operation generates a model using an entire series, each point is detected with the same model. With this method, points before and after a certain point are used to determine whether it is an anomaly. The entire detection can give user an overall status of the time series. </summary>
-        /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<EntireDetectResponse>> DetectEntireSeriesAsync(DetectRequest body, CancellationToken cancellationToken = default)
-        {
-            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.DetectEntireSeries");
-            scope.Start();
-            try
-            {
-                return await RestClient.DetectEntireSeriesAsync(body, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception e)
-            {
-                scope.Failed(e);
-                throw;
-            }
-        }
-
-        /// <summary> This operation generates a model using an entire series, each point is detected with the same model. With this method, points before and after a certain point are used to determine whether it is an anomaly. The entire detection can give user an overall status of the time series. </summary>
-        /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<EntireDetectResponse> DetectEntireSeries(DetectRequest body, CancellationToken cancellationToken = default)
-        {
-            using var scope = _clientDiagnostics.CreateScope("AnomalyDetectorClient.DetectEntireSeries");
-            scope.Start();
-            try
-            {
-                return RestClient.DetectEntireSeries(body, cancellationToken);
-            }
-            catch (Exception e)
-            {
-                scope.Failed(e);
-                throw;
-            }
-        }
-
         /// <summary> This operation generates a model using points before the latest one. With this method, only historical points are used to determine whether the target point is an anomaly. The latest point detecting operation matches the scenario of real-time monitoring of business metrics. </summary>
         /// <param name="body"> Time series points and period if needed. Advanced model parameters can also be set in the request. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
