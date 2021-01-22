@@ -14,27 +14,26 @@ namespace Microsoft.Azure.Management.BotService.Models
     using System.Linq;
 
     /// <summary>
-    /// Direct Line channel definition
+    /// The display name of a connection Item Setting registered with the Bot
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DirectLineChannel")]
-    public partial class DirectLineChannel : Channel
+    public partial class ConnectionItemName
     {
         /// <summary>
-        /// Initializes a new instance of the DirectLineChannel class.
+        /// Initializes a new instance of the ConnectionItemName class.
         /// </summary>
-        public DirectLineChannel()
+        public ConnectionItemName()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DirectLineChannel class.
+        /// Initializes a new instance of the ConnectionItemName class.
         /// </summary>
-        /// <param name="properties">The set of properties specific to Direct
-        /// Line channel resource</param>
-        public DirectLineChannel(DirectLineChannelProperties properties = default(DirectLineChannelProperties))
+        /// <param name="name">Connection Item name that has been added in the
+        /// API</param>
+        public ConnectionItemName(string name = default(string))
         {
-            Properties = properties;
+            Name = name;
             CustomInit();
         }
 
@@ -44,11 +43,10 @@ namespace Microsoft.Azure.Management.BotService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the set of properties specific to Direct Line channel
-        /// resource
+        /// Gets connection Item name that has been added in the API
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public DirectLineChannelProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
 
     }
 }

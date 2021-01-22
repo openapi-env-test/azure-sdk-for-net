@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.BotService.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Channel")]
     public partial class Channel
     {
         /// <summary>

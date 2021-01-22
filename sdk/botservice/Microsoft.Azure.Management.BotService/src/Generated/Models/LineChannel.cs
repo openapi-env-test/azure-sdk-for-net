@@ -14,25 +14,25 @@ namespace Microsoft.Azure.Management.BotService.Models
     using System.Linq;
 
     /// <summary>
-    /// Skype channel definition
+    /// Line channel definition
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SkypeChannel")]
-    public partial class SkypeChannel : Channel
+    [Newtonsoft.Json.JsonObject("LineChannel")]
+    public partial class LineChannel : Channel
     {
         /// <summary>
-        /// Initializes a new instance of the SkypeChannel class.
+        /// Initializes a new instance of the LineChannel class.
         /// </summary>
-        public SkypeChannel()
+        public LineChannel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SkypeChannel class.
+        /// Initializes a new instance of the LineChannel class.
         /// </summary>
-        /// <param name="properties">The set of properties specific to Skype
+        /// <param name="properties">The set of properties specific to line
         /// channel resource</param>
-        public SkypeChannel(SkypeChannelProperties properties = default(SkypeChannelProperties))
+        public LineChannel(LineChannelProperties properties = default(LineChannelProperties))
         {
             Properties = properties;
             CustomInit();
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Management.BotService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the set of properties specific to Skype channel
+        /// Gets or sets the set of properties specific to line channel
         /// resource
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public SkypeChannelProperties Properties { get; set; }
+        public LineChannelProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.

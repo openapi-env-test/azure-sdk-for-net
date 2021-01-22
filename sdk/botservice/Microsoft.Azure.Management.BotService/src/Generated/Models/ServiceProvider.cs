@@ -14,25 +14,24 @@ namespace Microsoft.Azure.Management.BotService.Models
     using System.Linq;
 
     /// <summary>
-    /// Kik channel definition
+    /// Service Provider Definition
     /// </summary>
-    [Newtonsoft.Json.JsonObject("KikChannel")]
-    public partial class KikChannel : Channel
+    public partial class ServiceProvider
     {
         /// <summary>
-        /// Initializes a new instance of the KikChannel class.
+        /// Initializes a new instance of the ServiceProvider class.
         /// </summary>
-        public KikChannel()
+        public ServiceProvider()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the KikChannel class.
+        /// Initializes a new instance of the ServiceProvider class.
         /// </summary>
-        /// <param name="properties">The set of properties specific to Kik
-        /// channel resource</param>
-        public KikChannel(KikChannelProperties properties = default(KikChannelProperties))
+        /// <param name="properties">The Properties of a Service Provider
+        /// Object</param>
+        public ServiceProvider(ServiceProviderProperties properties = default(ServiceProviderProperties))
         {
             Properties = properties;
             CustomInit();
@@ -44,23 +43,10 @@ namespace Microsoft.Azure.Management.BotService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the set of properties specific to Kik channel resource
+        /// Gets or sets the Properties of a Service Provider Object
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public KikChannelProperties Properties { get; set; }
+        public ServiceProviderProperties Properties { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Properties != null)
-            {
-                Properties.Validate();
-            }
-        }
     }
 }

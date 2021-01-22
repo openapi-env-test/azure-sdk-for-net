@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Facebook channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("FacebookChannel")]
     public partial class FacebookChannel : Channel
     {
         /// <summary>

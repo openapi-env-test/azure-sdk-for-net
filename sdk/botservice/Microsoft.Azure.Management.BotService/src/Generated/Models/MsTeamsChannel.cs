@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Microsoft Teams channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("MsTeamsChannel")]
     public partial class MsTeamsChannel : Channel
     {
         /// <summary>
