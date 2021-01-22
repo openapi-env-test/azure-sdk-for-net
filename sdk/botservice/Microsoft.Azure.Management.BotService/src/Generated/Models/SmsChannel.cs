@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Sms channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("SmsChannel")]
     public partial class SmsChannel : Channel
     {
         /// <summary>
