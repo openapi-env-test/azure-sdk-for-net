@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -31,6 +31,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
@@ -49,9 +53,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// nextLink element will include a skiptoken parameter that specifies a
             /// starting point to use for subsequent calls. Optional.
             /// </param>
-            public static IPage<Incident> List(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string filter = default(string), string orderby = default(string), int? top = default(int?), string skipToken = default(string))
+            public static IPage<Incident> List(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string filter = default(string), string orderby = default(string), int? top = default(int?), string skipToken = default(string))
             {
-                return operations.ListAsync(resourceGroupName, workspaceName, filter, orderby, top, skipToken).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, filter, orderby, top, skipToken).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -64,6 +68,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
@@ -85,9 +93,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Incident>> ListAsync(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string filter = default(string), string orderby = default(string), int? top = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Incident>> ListAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string filter = default(string), string orderby = default(string), int? top = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, workspaceName, filter, orderby, top, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, filter, orderby, top, skipToken, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -103,15 +111,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
             /// <param name='incidentId'>
             /// Incident ID
             /// </param>
-            public static Incident Get(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId)
+            public static Incident Get(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId)
             {
-                return operations.GetAsync(resourceGroupName, workspaceName, incidentId).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -124,6 +136,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
@@ -133,9 +149,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Incident> GetAsync(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Incident> GetAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -151,6 +167,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
@@ -160,9 +180,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='incident'>
             /// The incident
             /// </param>
-            public static Incident CreateOrUpdate(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId, Incident incident)
+            public static Incident CreateOrUpdate(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, Incident incident)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, workspaceName, incidentId, incident).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, incident).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -174,6 +194,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='resourceGroupName'>
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
             /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
@@ -187,9 +211,9 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Incident> CreateOrUpdateAsync(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId, Incident incident, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Incident> CreateOrUpdateAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, Incident incident, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, incidentId, incident, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, incident, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -205,15 +229,19 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
             /// <param name='incidentId'>
             /// Incident ID
             /// </param>
-            public static void Delete(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId)
+            public static void Delete(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId)
             {
-                operations.DeleteAsync(resourceGroupName, workspaceName, incidentId).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -226,6 +254,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// The name of the resource group within the user's subscription. The name is
             /// case insensitive.
             /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace.
             /// </param>
@@ -235,9 +267,177 @@ namespace Microsoft.Azure.Management.SecurityInsights
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IIncidentsOperations operations, string resourceGroupName, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets all incident alerts.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            public static IncidentAlertList ListOfAlerts(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId)
+            {
+                return operations.ListOfAlertsAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets all incident alerts.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IncidentAlertList> ListOfAlertsAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOfAlertsWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets all incident bookmarks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            public static IncidentBookmarkList ListOfBookmarks(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId)
+            {
+                return operations.ListOfBookmarksAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets all incident bookmarks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IncidentBookmarkList> ListOfBookmarksAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOfBookmarksWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets all incident related entities.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            public static IncidentEntitiesResponse ListOfEntities(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId)
+            {
+                return operations.ListOfEntitiesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets all incident related entities.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='operationalInsightsResourceProvider'>
+            /// The namespace of workspaces resource provider-
+            /// Microsoft.OperationalInsights.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace.
+            /// </param>
+            /// <param name='incidentId'>
+            /// Incident ID
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IncidentEntitiesResponse> ListOfEntitiesAsync(this IIncidentsOperations operations, string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string incidentId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOfEntitiesWithHttpMessagesAsync(resourceGroupName, operationalInsightsResourceProvider, workspaceName, incidentId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>

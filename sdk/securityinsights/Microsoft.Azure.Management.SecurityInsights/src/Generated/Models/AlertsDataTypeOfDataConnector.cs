@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// class.
         /// </summary>
         /// <param name="alerts">Alerts data type connection.</param>
-        public AlertsDataTypeOfDataConnector(DataConnectorDataTypeCommon alerts = default(DataConnectorDataTypeCommon))
+        public AlertsDataTypeOfDataConnector(AlertsDataTypeOfDataConnectorAlerts alerts = default(AlertsDataTypeOfDataConnectorAlerts))
         {
             Alerts = alerts;
             CustomInit();
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Gets or sets alerts data type connection.
         /// </summary>
         [JsonProperty(PropertyName = "alerts")]
-        public DataConnectorDataTypeCommon Alerts { get; set; }
+        public AlertsDataTypeOfDataConnectorAlerts Alerts { get; set; }
 
     }
 }

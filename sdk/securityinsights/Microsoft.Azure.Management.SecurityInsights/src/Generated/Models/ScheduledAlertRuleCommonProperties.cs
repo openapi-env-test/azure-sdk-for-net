@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// 'LessThan', 'Equal', 'NotEqual'</param>
         /// <param name="triggerThreshold">The threshold triggers this alert
         /// rule.</param>
-        public ScheduledAlertRuleCommonProperties(string query = default(string), System.TimeSpan? queryFrequency = default(System.TimeSpan?), System.TimeSpan? queryPeriod = default(System.TimeSpan?), string severity = default(string), TriggerOperator? triggerOperator = default(TriggerOperator?), int? triggerThreshold = default(int?))
+        /// <param name="eventGroupingSettings">The event grouping
+        /// settings.</param>
+        public ScheduledAlertRuleCommonProperties(string query = default(string), System.TimeSpan? queryFrequency = default(System.TimeSpan?), System.TimeSpan? queryPeriod = default(System.TimeSpan?), string severity = default(string), TriggerOperator? triggerOperator = default(TriggerOperator?), int? triggerThreshold = default(int?), EventGroupingSettings eventGroupingSettings = default(EventGroupingSettings))
         {
             Query = query;
             QueryFrequency = queryFrequency;
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
             Severity = severity;
             TriggerOperator = triggerOperator;
             TriggerThreshold = triggerThreshold;
+            EventGroupingSettings = eventGroupingSettings;
             CustomInit();
         }
 
@@ -101,6 +104,12 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "triggerThreshold")]
         public int? TriggerThreshold { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event grouping settings.
+        /// </summary>
+        [JsonProperty(PropertyName = "eventGroupingSettings")]
+        public EventGroupingSettings EventGroupingSettings { get; set; }
 
     }
 }

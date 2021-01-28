@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents threat intelligence data connector.
+    /// Data connector to pull threat intelligence data from TIP products.
     /// </summary>
     [Newtonsoft.Json.JsonObject("ThreatIntelligence")]
     [Rest.Serialization.JsonTransformation]

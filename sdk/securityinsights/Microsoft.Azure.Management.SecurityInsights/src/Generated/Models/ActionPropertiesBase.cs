@@ -8,9 +8,8 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// </summary>
         /// <param name="logicAppResourceId">Logic App Resource Id,
         /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
-        public ActionPropertiesBase(string logicAppResourceId)
+        public ActionPropertiesBase(string logicAppResourceId = default(string))
         {
             LogicAppResourceId = logicAppResourceId;
             CustomInit();
@@ -50,18 +49,5 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "logicAppResourceId")]
         public string LogicAppResourceId { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (LogicAppResourceId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LogicAppResourceId");
-            }
-        }
     }
 }

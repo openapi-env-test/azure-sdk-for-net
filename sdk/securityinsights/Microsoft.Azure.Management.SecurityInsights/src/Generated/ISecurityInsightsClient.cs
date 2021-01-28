@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -91,14 +91,89 @@ namespace Microsoft.Azure.Management.SecurityInsights
         IAlertRuleTemplatesOperations AlertRuleTemplates { get; }
 
         /// <summary>
+        /// Gets the ICasesOperations.
+        /// </summary>
+        ICasesOperations Cases { get; }
+
+        /// <summary>
+        /// Gets the ICommentsOperations.
+        /// </summary>
+        ICommentsOperations Comments { get; }
+
+        /// <summary>
+        /// Gets the ICaseCommentsOperations.
+        /// </summary>
+        ICaseCommentsOperations CaseComments { get; }
+
+        /// <summary>
         /// Gets the IBookmarksOperations.
         /// </summary>
         IBookmarksOperations Bookmarks { get; }
 
         /// <summary>
+        /// Gets the ICaseRelationsOperations.
+        /// </summary>
+        ICaseRelationsOperations CaseRelations { get; }
+
+        /// <summary>
+        /// Gets the IBookmarkRelationsOperations.
+        /// </summary>
+        IBookmarkRelationsOperations BookmarkRelations { get; }
+
+        /// <summary>
+        /// Gets the IBookmarkOperations.
+        /// </summary>
+        IBookmarkOperations Bookmark { get; }
+
+        /// <summary>
         /// Gets the IDataConnectorsOperations.
         /// </summary>
         IDataConnectorsOperations DataConnectors { get; }
+
+        /// <summary>
+        /// Gets the IDataConnectorsCheckRequirementsOperations.
+        /// </summary>
+        IDataConnectorsCheckRequirementsOperations DataConnectorsCheckRequirements { get; }
+
+        /// <summary>
+        /// Gets the IEntitiesOperations.
+        /// </summary>
+        IEntitiesOperations Entities { get; }
+
+        /// <summary>
+        /// Gets the IEntitiesGetTimelineOperations.
+        /// </summary>
+        IEntitiesGetTimelineOperations EntitiesGetTimeline { get; }
+
+        /// <summary>
+        /// Gets the IEntitiesRelationsOperations.
+        /// </summary>
+        IEntitiesRelationsOperations EntitiesRelations { get; }
+
+        /// <summary>
+        /// Gets the IEntityRelationsOperations.
+        /// </summary>
+        IEntityRelationsOperations EntityRelations { get; }
+
+        /// <summary>
+        /// Gets the IOfficeConsentsOperations.
+        /// </summary>
+        IOfficeConsentsOperations OfficeConsents { get; }
+
+        /// <summary>
+        /// Gets the IProductSettingsOperations.
+        /// </summary>
+        IProductSettingsOperations ProductSettings { get; }
+
+        /// <summary>
+        /// Gets the ICasesAggregationsOperations.
+        /// </summary>
+        ICasesAggregationsOperations CasesAggregations { get; }
+
+        /// <summary>
+        /// Gets the IEntityQueriesOperations.
+        /// </summary>
+        IEntityQueriesOperations EntityQueries { get; }
 
         /// <summary>
         /// Gets the IIncidentsOperations.
@@ -109,6 +184,36 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// Gets the IIncidentCommentsOperations.
         /// </summary>
         IIncidentCommentsOperations IncidentComments { get; }
+
+        /// <summary>
+        /// Gets the IIncidentRelationsOperations.
+        /// </summary>
+        IIncidentRelationsOperations IncidentRelations { get; }
+
+        /// <summary>
+        /// Gets the IWatchlistsOperations.
+        /// </summary>
+        IWatchlistsOperations Watchlists { get; }
+
+        /// <summary>
+        /// Gets the IWatchlistItemOperations.
+        /// </summary>
+        IWatchlistItemOperations WatchlistItem { get; }
+
+        /// <summary>
+        /// Gets the IThreatIntelligenceIndicatorOperations.
+        /// </summary>
+        IThreatIntelligenceIndicatorOperations ThreatIntelligenceIndicator { get; }
+
+        /// <summary>
+        /// Gets the IThreatIntelligenceIndicatorsOperations.
+        /// </summary>
+        IThreatIntelligenceIndicatorsOperations ThreatIntelligenceIndicators { get; }
+
+        /// <summary>
+        /// Gets the IThreatIntelligenceIndicatorMetricsOperations.
+        /// </summary>
+        IThreatIntelligenceIndicatorMetricsOperations ThreatIntelligenceIndicatorMetrics { get; }
 
     }
 }

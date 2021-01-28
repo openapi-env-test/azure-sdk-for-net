@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
 
     /// <summary>
@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         public const string AzureAdvancedThreatProtection = "Azure Advanced Threat Protection";
         public const string AzureActiveDirectoryIdentityProtection = "Azure Active Directory Identity Protection";
         public const string AzureSecurityCenterforIoT = "Azure Security Center for IoT";
+        public const string Office365AdvancedThreatProtection = "Office 365 Advanced Threat Protection";
+        public const string MicrosoftDefenderAdvancedThreatProtection = "Microsoft Defender Advanced Threat Protection";
     }
 }

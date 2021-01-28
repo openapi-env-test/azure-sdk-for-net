@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the ActionRequest class.
         /// </summary>
-        /// <param name="logicAppResourceId">Logic App Resource Id,
-        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
         /// <param name="id">Azure resource Id</param>
         /// <param name="name">Azure resource name</param>
         /// <param name="type">Azure resource type</param>
         /// <param name="etag">Etag of the azure resource</param>
+        /// <param name="logicAppResourceId">Logic App Resource Id,
+        /// /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.</param>
         /// <param name="triggerUri">Logic App Callback URL for this specific
         /// workflow.</param>
-        public ActionRequest(string logicAppResourceId, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string triggerUri = default(string))
+        public ActionRequest(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string logicAppResourceId = default(string), string triggerUri = default(string))
             : base(id, name, type, etag)
         {
             LogicAppResourceId = logicAppResourceId;
@@ -66,18 +66,5 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         [JsonProperty(PropertyName = "properties.triggerUri")]
         public string TriggerUri { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (LogicAppResourceId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LogicAppResourceId");
-            }
-        }
     }
 }
