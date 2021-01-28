@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <param name="alerts">Alerts data type connection.</param>
         /// <param name="discoveryLogs">Discovery log data type
         /// connection.</param>
-        public MCASDataConnectorDataTypes(DataConnectorDataTypeCommon alerts = default(DataConnectorDataTypeCommon), DataConnectorDataTypeCommon discoveryLogs = default(DataConnectorDataTypeCommon))
+        public MCASDataConnectorDataTypes(AlertsDataTypeOfDataConnectorAlerts alerts = default(AlertsDataTypeOfDataConnectorAlerts), MCASDataConnectorDataTypesDiscoveryLogs discoveryLogs = default(MCASDataConnectorDataTypesDiscoveryLogs))
             : base(alerts)
         {
             DiscoveryLogs = discoveryLogs;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// Gets or sets discovery log data type connection.
         /// </summary>
         [JsonProperty(PropertyName = "discoveryLogs")]
-        public DataConnectorDataTypeCommon DiscoveryLogs { get; set; }
+        public MCASDataConnectorDataTypesDiscoveryLogs DiscoveryLogs { get; set; }
 
     }
 }

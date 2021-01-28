@@ -8,12 +8,12 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using System.Linq;
 
     /// <summary>
-    /// Data type for indicators connection.
+    /// Data type for Threat Intelligence Platforms data connector.
     /// </summary>
     public partial class TIDataConnectorDataTypesIndicators : DataConnectorDataTypeCommon
     {

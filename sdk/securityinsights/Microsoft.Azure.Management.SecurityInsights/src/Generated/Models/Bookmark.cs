@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -149,14 +149,6 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
             if (Query == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Query");
-            }
-            if (CreatedBy != null)
-            {
-                CreatedBy.Validate();
-            }
-            if (UpdatedBy != null)
-            {
-                UpdatedBy.Validate();
             }
             if (IncidentInfo != null)
             {

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
         /// </param>
+        /// <param name='operationalInsightsResourceProvider'>
+        /// The namespace of workspaces resource provider-
+        /// Microsoft.OperationalInsights.
+        /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace.
         /// </param>
@@ -48,13 +52,17 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DataConnector>>> ListWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DataConnector>>> ListWithHttpMessagesAsync(string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a data connector.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
+        /// </param>
+        /// <param name='operationalInsightsResourceProvider'>
+        /// The namespace of workspaces resource provider-
+        /// Microsoft.OperationalInsights.
         /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace.
@@ -77,13 +85,17 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DataConnector>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string dataConnectorId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DataConnector>> GetWithHttpMessagesAsync(string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string dataConnectorId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates the data connector.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
+        /// </param>
+        /// <param name='operationalInsightsResourceProvider'>
+        /// The namespace of workspaces resource provider-
+        /// Microsoft.OperationalInsights.
         /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace.
@@ -109,13 +121,17 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DataConnector>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string dataConnectorId, DataConnector dataConnector, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DataConnector>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string dataConnectorId, DataConnector dataConnector, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete the data connector.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
+        /// </param>
+        /// <param name='operationalInsightsResourceProvider'>
+        /// The namespace of workspaces resource provider-
+        /// Microsoft.OperationalInsights.
         /// </param>
         /// <param name='workspaceName'>
         /// The name of the workspace.
@@ -135,7 +151,7 @@ namespace Microsoft.Azure.Management.SecurityInsights
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string dataConnectorId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string operationalInsightsResourceProvider, string workspaceName, string dataConnectorId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all data connectors.
         /// </summary>

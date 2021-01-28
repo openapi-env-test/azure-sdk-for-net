@@ -5,7 +5,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights
 {
   using System;
   using System.Collections.Generic;
@@ -19,27 +19,37 @@ namespace Microsoft.Azure.Management.SecurityInsights
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("OperationalInsights", "Actions", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "AlertRuleTemplates", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "AlertRules", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "Bookmarks", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "DataConnectors", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "IncidentComments", "2020-01-01"),
-                new Tuple<string, string, string>("OperationalInsights", "Incidents", "2020-01-01"),
-                new Tuple<string, string, string>("SecurityInsights", "Operations", "2020-01-01"),
+                new Tuple<string, string, string>("SecurityInsights", "Actions", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "AlertRuleTemplates", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "AlertRules", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Bookmark", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "BookmarkRelations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Bookmarks", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "CaseComments", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "CaseRelations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Cases", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "CasesAggregations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Comments", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "DataConnectors", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "DataConnectorsCheckRequirements", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Entities", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "EntitiesGetTimeline", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "EntitiesRelations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "EntityQueries", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "EntityRelations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "IncidentComments", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "IncidentRelations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Incidents", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "OfficeConsents", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Operations", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "ProductSettings", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "ThreatIntelligenceIndicator", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "ThreatIntelligenceIndicatorMetrics", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "ThreatIntelligenceIndicators", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "WatchlistItem", "2019-01-01-preview"),
+                new Tuple<string, string, string>("SecurityInsights", "Watchlists", "2019-01-01-preview"),
               }.AsEnumerable();
           }
       }
-      // BEGIN: Code Generation Metadata Section
-      public static readonly String AutoRestVersion = "v2";
-      public static readonly String AutoRestBootStrapperVersion = "autorest@2.0.4413";
-      public static readonly String AutoRestCmdExecuted = "cmd.exe /c autorest.cmd https://github.com/Azure/azure-rest-api-specs/blob/master/specification/securityinsights/resource-manager/readme.md --csharp --version=v2 --reflect-api-versions --csharp-sdks-folder=E:\\azure-sdk-for-net\\sdk";
-      public static readonly String GithubForkName = "Azure";
-      public static readonly String GithubBranchName = "master";
-      public static readonly String GithubCommidId = "772c440159d9ab5775c80e304f7e803cae84aa7d";
-      public static readonly String CodeGenerationErrors = "";
-      public static readonly String GithubRepoName = "azure-rest-api-specs";
-      // END: Code Generation Metadata Section
   }
 }
-

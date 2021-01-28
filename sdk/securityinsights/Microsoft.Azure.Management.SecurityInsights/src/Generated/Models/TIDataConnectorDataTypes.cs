@@ -8,13 +8,14 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// The available data types for TI (Threat Intelligence) data connector.
+    /// The available data types for Threat Intelligence Platforms data
+    /// connector.
     /// </summary>
     public partial class TIDataConnectorDataTypes
     {
@@ -29,8 +30,8 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         /// <summary>
         /// Initializes a new instance of the TIDataConnectorDataTypes class.
         /// </summary>
-        /// <param name="indicators">Data type for indicators
-        /// connection.</param>
+        /// <param name="indicators">Data type for Threat Intelligence
+        /// Platforms data connector.</param>
         public TIDataConnectorDataTypes(TIDataConnectorDataTypesIndicators indicators = default(TIDataConnectorDataTypesIndicators))
         {
             Indicators = indicators;
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets data type for indicators connection.
+        /// Gets or sets data type for Threat Intelligence Platforms data
+        /// connector.
         /// </summary>
         [JsonProperty(PropertyName = "indicators")]
         public TIDataConnectorDataTypesIndicators Indicators { get; set; }

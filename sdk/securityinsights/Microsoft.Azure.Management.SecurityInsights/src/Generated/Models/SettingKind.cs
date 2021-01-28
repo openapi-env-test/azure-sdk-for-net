@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
 
     /// <summary>
@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
     /// </summary>
     public static class SettingKind
     {
-        public const string UebaSettings = "UebaSettings";
-        public const string ToggleSettings = "ToggleSettings";
+        public const string EyesOn = "EyesOn";
+        public const string EntityAnalytics = "EntityAnalytics";
+        public const string Ueba = "Ueba";
     }
 }

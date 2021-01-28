@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.SecurityInsights.Models
+namespace Microsoft.Azure.Contoso.Management.SecurityInsights.Models
 {
 
     /// <summary>
@@ -20,9 +20,12 @@ namespace Microsoft.Azure.Management.SecurityInsights.Models
         public const string AzureSecurityCenter = "AzureSecurityCenter";
         public const string MicrosoftCloudAppSecurity = "MicrosoftCloudAppSecurity";
         public const string ThreatIntelligence = "ThreatIntelligence";
+        public const string ThreatIntelligenceTaxii = "ThreatIntelligenceTaxii";
         public const string Office365 = "Office365";
+        public const string OfficeATP = "OfficeATP";
         public const string AmazonWebServicesCloudTrail = "AmazonWebServicesCloudTrail";
         public const string AzureAdvancedThreatProtection = "AzureAdvancedThreatProtection";
         public const string MicrosoftDefenderAdvancedThreatProtection = "MicrosoftDefenderAdvancedThreatProtection";
+        public const string Dynamics365 = "Dynamics365";
     }
 }
