@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Cdn
         public CdnManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the CDN profiles within an Azure subscription.
+        /// Lists all of the CDN proiles teh eth witin an Azure subscription.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Management.Cdn
         }
 
         /// <summary>
-        /// Creates a new CDN profile with a profile name under the specified
+        /// Creates a new CDN profile with a profil name under the specified
         /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -1328,7 +1328,7 @@ namespace Microsoft.Azure.Management.Cdn
         }
 
         /// <summary>
-        /// Creates a new CDN profile with a profile name under the specified
+        /// Creates a new CDN profile with a profil name under the specified
         /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -2016,7 +2016,7 @@ namespace Microsoft.Azure.Management.Cdn
         }
 
         /// <summary>
-        /// Lists all of the CDN profiles within an Azure subscription.
+        /// Lists all of the CDN proiles teh eth witin an Azure subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

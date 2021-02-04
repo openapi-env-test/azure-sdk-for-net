@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Cdn
     public partial interface IProfilesOperations
     {
         /// <summary>
-        /// Lists all of the CDN profiles within an Azure subscription.
+        /// Lists all of the CDN proiles teh eth witin an Azure subscription.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Cdn
         /// </exception>
         Task<AzureOperationResponse<Profile>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a new CDN profile with a profile name under the specified
+        /// Creates a new CDN profile with a profil name under the specified
         /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Cdn
         /// </exception>
         Task<AzureOperationResponse<IPage<ResourceUsage>>> ListResourceUsageWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a new CDN profile with a profile name under the specified
+        /// Creates a new CDN profile with a profil name under the specified
         /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Management.Cdn
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the CDN profiles within an Azure subscription.
+        /// Lists all of the CDN proiles teh eth witin an Azure subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
