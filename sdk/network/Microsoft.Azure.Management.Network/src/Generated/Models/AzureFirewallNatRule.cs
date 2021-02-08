@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="sourceAddresses">List of source IP addresses for this
         /// rule.</param>
         /// <param name="destinationAddresses">List of destination IP addresses
-        /// for this rule. Supports IP ranges, prefixes, and service
-        /// tags.</param>
+        /// for this rule.</param>
         /// <param name="destinationPorts">List of destination ports.</param>
         /// <param name="protocols">Array of AzureFirewallNetworkRuleProtocols
         /// applicable to this NAT rule.</param>
@@ -45,11 +44,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// rule.</param>
         /// <param name="translatedPort">The translated port for this NAT
         /// rule.</param>
-        /// <param name="translatedFqdn">The translated FQDN for this NAT
-        /// rule.</param>
-        /// <param name="sourceIpGroups">List of source IpGroups for this
-        /// rule.</param>
-        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> protocols = default(IList<string>), string translatedAddress = default(string), string translatedPort = default(string), string translatedFqdn = default(string), IList<string> sourceIpGroups = default(IList<string>))
+        public AzureFirewallNatRule(string name = default(string), string description = default(string), IList<string> sourceAddresses = default(IList<string>), IList<string> destinationAddresses = default(IList<string>), IList<string> destinationPorts = default(IList<string>), IList<string> protocols = default(IList<string>), string translatedAddress = default(string), string translatedPort = default(string))
         {
             Name = name;
             Description = description;
@@ -59,8 +54,6 @@ namespace Microsoft.Azure.Management.Network.Models
             Protocols = protocols;
             TranslatedAddress = translatedAddress;
             TranslatedPort = translatedPort;
-            TranslatedFqdn = translatedFqdn;
-            SourceIpGroups = sourceIpGroups;
             CustomInit();
         }
 
@@ -89,7 +82,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets list of destination IP addresses for this rule.
-        /// Supports IP ranges, prefixes, and service tags.
         /// </summary>
         [JsonProperty(PropertyName = "destinationAddresses")]
         public IList<string> DestinationAddresses { get; set; }
@@ -118,18 +110,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "translatedPort")]
         public string TranslatedPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets the translated FQDN for this NAT rule.
-        /// </summary>
-        [JsonProperty(PropertyName = "translatedFqdn")]
-        public string TranslatedFqdn { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of source IpGroups for this rule.
-        /// </summary>
-        [JsonProperty(PropertyName = "sourceIpGroups")]
-        public IList<string> SourceIpGroups { get; set; }
 
     }
 }

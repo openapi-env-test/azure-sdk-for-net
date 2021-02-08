@@ -48,14 +48,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="adminState">Administrative state of the physical port.
         /// Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// express route link resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="macSecConfig">MacSec configuration.</param>
+        /// ExpressRouteLink resource. Possible values are: 'Succeeded',
+        /// 'Updating', 'Deleting', and 'Failed'.</param>
         /// <param name="name">Name of child port resource that is unique among
         /// child port resources of the parent.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteLink(string id = default(string), string routerName = default(string), string interfaceName = default(string), string patchPanelId = default(string), string rackId = default(string), string connectorType = default(string), string adminState = default(string), string provisioningState = default(string), ExpressRouteLinkMacSecConfig macSecConfig = default(ExpressRouteLinkMacSecConfig), string name = default(string), string etag = default(string))
+        public ExpressRouteLink(string id = default(string), string routerName = default(string), string interfaceName = default(string), string patchPanelId = default(string), string rackId = default(string), string connectorType = default(string), string adminState = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             RouterName = routerName;
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ConnectorType = connectorType;
             AdminState = adminState;
             ProvisioningState = provisioningState;
-            MacSecConfig = macSecConfig;
             Name = name;
             Etag = etag;
             CustomInit();
@@ -114,18 +112,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string AdminState { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the express route link resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets the provisioning state of the ExpressRouteLink resource.
+        /// Possible values are: 'Succeeded', 'Updating', 'Deleting', and
+        /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets macSec configuration.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.macSecConfig")]
-        public ExpressRouteLinkMacSecConfig MacSecConfig { get; set; }
 
         /// <summary>
         /// Gets or sets name of child port resource that is unique among child

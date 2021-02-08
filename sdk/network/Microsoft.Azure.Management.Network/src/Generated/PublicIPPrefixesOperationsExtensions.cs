@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='publicIpPrefixName'>
-            /// The name of the public IP prefix.
+            /// The name of the PublicIPPrefix.
             /// </param>
             /// <param name='expand'>
             /// Expands referenced resources.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='publicIpPrefixName'>
-            /// The name of the public IP prefix.
+            /// The name of the PublicIPPrefix.
             /// </param>
             /// <param name='expand'>
             /// Expands referenced resources.
@@ -336,6 +336,52 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<PublicIPPrefix> BeginCreateOrUpdateAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, PublicIPPrefix parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates public IP prefix tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='publicIpPrefixName'>
+            /// The name of the public IP prefix.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to update public IP prefix tags.
+            /// </param>
+            public static PublicIPPrefix BeginUpdateTags(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, TagsObject parameters)
+            {
+                return operations.BeginUpdateTagsAsync(resourceGroupName, publicIpPrefixName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates public IP prefix tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='publicIpPrefixName'>
+            /// The name of the public IP prefix.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to update public IP prefix tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PublicIPPrefix> BeginUpdateTagsAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
