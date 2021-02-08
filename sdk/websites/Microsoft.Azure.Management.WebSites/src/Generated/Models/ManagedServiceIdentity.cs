@@ -11,8 +11,6 @@
 namespace Microsoft.Azure.Management.WebSites.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -32,21 +30,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ManagedServiceIdentity class.
         /// </summary>
         /// <param name="type">Type of managed service identity. Possible
-        /// values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
-        /// UserAssigned', 'None'</param>
+        /// values include: 'SystemAssigned'</param>
         /// <param name="tenantId">Tenant of managed service identity.</param>
         /// <param name="principalId">Principal Id of managed service
         /// identity.</param>
-        /// <param name="userAssignedIdentities">The list of user assigned
-        /// identities associated with the resource. The user identity
-        /// dictionary key references will be ARM resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}</param>
-        public ManagedServiceIdentity(ManagedServiceIdentityType? type = default(ManagedServiceIdentityType?), string tenantId = default(string), string principalId = default(string), IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>))
+        public ManagedServiceIdentity(string type = default(string), string tenantId = default(string), string principalId = default(string))
         {
             Type = type;
             TenantId = tenantId;
             PrincipalId = principalId;
-            UserAssignedIdentities = userAssignedIdentities;
             CustomInit();
         }
 
@@ -57,11 +49,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets type of managed service identity. Possible values
-        /// include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
-        /// UserAssigned', 'None'
+        /// include: 'SystemAssigned'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public ManagedServiceIdentityType? Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets tenant of managed service identity.
@@ -74,15 +65,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the list of user assigned identities associated with
-        /// the resource. The user identity dictionary key references will be
-        /// ARM resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-        /// </summary>
-        [JsonProperty(PropertyName = "userAssignedIdentities")]
-        public IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
 
     }
 }

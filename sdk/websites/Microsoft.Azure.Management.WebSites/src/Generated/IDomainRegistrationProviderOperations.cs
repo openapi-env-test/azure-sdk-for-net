@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Apis under the resource provider
         /// </summary>
         /// <remarks>
-        /// Description for Implements Csm operations Api to exposes the list
-        /// of available Csm Apis under the resource provider
+        /// Implements Csm operations Api to exposes the list of available Csm
+        /// Apis under the resource provider
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Apis under the resource provider
         /// </summary>
         /// <remarks>
-        /// Description for Implements Csm operations Api to exposes the list
-        /// of available Csm Apis under the resource provider
+        /// Implements Csm operations Api to exposes the list of available Csm
+        /// Apis under the resource provider
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">

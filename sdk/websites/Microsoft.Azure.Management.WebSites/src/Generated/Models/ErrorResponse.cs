@@ -11,30 +11,31 @@
 namespace Microsoft.Azure.Management.WebSites.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Resource metrics service provided by Microsoft.Insights resource
-    /// provider.
+    /// Error Response.
     /// </summary>
-    public partial class ServiceSpecification
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the ServiceSpecification class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public ServiceSpecification()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ServiceSpecification class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public ServiceSpecification(IList<MetricSpecification> metricSpecifications = default(IList<MetricSpecification>))
+        /// <param name="code">Error code.</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
+        public ErrorResponse(string code = default(string), string message = default(string))
         {
-            MetricSpecifications = metricSpecifications;
+            Code = code;
+            Message = message;
             CustomInit();
         }
 
@@ -44,9 +45,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets error code.
         /// </summary>
-        [JsonProperty(PropertyName = "metricSpecifications")]
-        public IList<MetricSpecification> MetricSpecifications { get; set; }
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message indicating why the operation failed.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; set; }
 
     }
 }

@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Description for Get all top-level domains supported for
-        /// registration.
+        /// Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get details of a top-level domain.
         /// </summary>
         /// <remarks>
-        /// Description for Get details of a top-level domain.
+        /// Get details of a top-level domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -76,8 +75,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// purchasing a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all legal agreements that user needs to accept
-        /// before purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before
+        /// purchasing a domain.
         /// </remarks>
         /// <param name='name'>
         /// Name of the top-level domain.
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -105,8 +104,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all top-level domains supported for registration.
         /// </summary>
         /// <remarks>
-        /// Description for Get all top-level domains supported for
-        /// registration.
+        /// Get all top-level domains supported for registration.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -117,7 +115,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -132,8 +130,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// purchasing a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all legal agreements that user needs to accept
-        /// before purchasing a domain.
+        /// Gets all legal agreements that user needs to accept before
+        /// purchasing a domain.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -144,7 +142,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
