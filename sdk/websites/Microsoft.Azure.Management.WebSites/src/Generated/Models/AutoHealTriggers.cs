@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Triggers for auto-heal.
+    /// AutoHealTriggers - describes the triggers for auto-heal.
     /// </summary>
     public partial class AutoHealTriggers
     {
@@ -31,12 +31,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the AutoHealTriggers class.
         /// </summary>
-        /// <param name="requests">A rule based on total requests.</param>
-        /// <param name="privateBytesInKB">A rule based on private
-        /// bytes.</param>
-        /// <param name="statusCodes">A rule based on status codes.</param>
-        /// <param name="slowRequests">A rule based on request execution
-        /// time.</param>
+        /// <param name="requests">Requests - Defines a rule based on total
+        /// requests</param>
+        /// <param name="privateBytesInKB">PrivateBytesInKB - Defines a rule
+        /// based on private bytes</param>
+        /// <param name="statusCodes">StatusCodes - Defines a rule based on
+        /// status codes</param>
+        /// <param name="slowRequests">SlowRequests - Defines a rule based on
+        /// request execution time</param>
         public AutoHealTriggers(RequestsBasedTrigger requests = default(RequestsBasedTrigger), int? privateBytesInKB = default(int?), IList<StatusCodesBasedTrigger> statusCodes = default(IList<StatusCodesBasedTrigger>), SlowRequestsBasedTrigger slowRequests = default(SlowRequestsBasedTrigger))
         {
             Requests = requests;
@@ -52,25 +54,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a rule based on total requests.
+        /// Gets or sets requests - Defines a rule based on total requests
         /// </summary>
         [JsonProperty(PropertyName = "requests")]
         public RequestsBasedTrigger Requests { get; set; }
 
         /// <summary>
-        /// Gets or sets a rule based on private bytes.
+        /// Gets or sets privateBytesInKB - Defines a rule based on private
+        /// bytes
         /// </summary>
         [JsonProperty(PropertyName = "privateBytesInKB")]
         public int? PrivateBytesInKB { get; set; }
 
         /// <summary>
-        /// Gets or sets a rule based on status codes.
+        /// Gets or sets statusCodes - Defines a rule based on status codes
         /// </summary>
         [JsonProperty(PropertyName = "statusCodes")]
         public IList<StatusCodesBasedTrigger> StatusCodes { get; set; }
 
         /// <summary>
-        /// Gets or sets a rule based on request execution time.
+        /// Gets or sets slowRequests - Defines a rule based on request
+        /// execution time
         /// </summary>
         [JsonProperty(PropertyName = "slowRequests")]
         public SlowRequestsBasedTrigger SlowRequests { get; set; }

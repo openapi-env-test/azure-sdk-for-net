@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// String dictionary resource.
+    /// String dictionary resource
     /// </summary>
-    public partial class ConnectionStringDictionary : ProxyOnlyResource
+    public partial class ConnectionStringDictionary : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionStringDictionary class.
@@ -31,13 +31,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the ConnectionStringDictionary class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="properties">Connection strings.</param>
-        public ConnectionStringDictionary(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, ConnStringValueTypePair> properties = default(IDictionary<string, ConnStringValueTypePair>))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="properties">Connection strings</param>
+        public ConnectionStringDictionary(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, ConnStringValueTypePair> properties = default(IDictionary<string, ConnStringValueTypePair>))
+            : base(location, id, name, kind, type, tags)
         {
             Properties = properties;
             CustomInit();
@@ -49,10 +51,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets connection strings.
+        /// Gets or sets connection strings
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public IDictionary<string, ConnStringValueTypePair> Properties { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+            if (Properties != null)
+            {
+                foreach (var valueElement in Properties.Values)
+                {
+                    if (valueElement != null)
+                    {
+                        valueElement.Validate();
+                    }
+                }
+            }
+        }
     }
 }

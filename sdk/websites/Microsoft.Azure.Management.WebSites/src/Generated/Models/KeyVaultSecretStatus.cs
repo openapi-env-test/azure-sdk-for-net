@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         KeyVaultSecretDoesNotExist,
         [EnumMember(Value = "UnknownError")]
         UnknownError,
-        [EnumMember(Value = "ExternalPrivateKey")]
-        ExternalPrivateKey,
         [EnumMember(Value = "Unknown")]
         Unknown
     }
@@ -73,8 +71,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "KeyVaultSecretDoesNotExist";
                 case KeyVaultSecretStatus.UnknownError:
                     return "UnknownError";
-                case KeyVaultSecretStatus.ExternalPrivateKey:
-                    return "ExternalPrivateKey";
                 case KeyVaultSecretStatus.Unknown:
                     return "Unknown";
             }
@@ -103,8 +99,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return KeyVaultSecretStatus.KeyVaultSecretDoesNotExist;
                 case "UnknownError":
                     return KeyVaultSecretStatus.UnknownError;
-                case "ExternalPrivateKey":
-                    return KeyVaultSecretStatus.ExternalPrivateKey;
                 case "Unknown":
                     return KeyVaultSecretStatus.Unknown;
             }

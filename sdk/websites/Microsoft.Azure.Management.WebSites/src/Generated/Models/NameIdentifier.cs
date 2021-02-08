@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Identifies an object.
+    /// Identifies an object
     /// </summary>
     public partial class NameIdentifier
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the NameIdentifier class.
         /// </summary>
-        /// <param name="name">Name of the object.</param>
+        /// <param name="name">Name of the object</param>
         public NameIdentifier(string name = default(string))
         {
             Name = name;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the object.
+        /// Gets or sets name of the object
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

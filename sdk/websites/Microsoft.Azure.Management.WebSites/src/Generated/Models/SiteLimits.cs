@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Metric limits set on an app.
+    /// Represents metric limits set on a web app.
     /// </summary>
     public partial class SiteLimits
     {
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteLimits class.
         /// </summary>
         /// <param name="maxPercentageCpu">Maximum allowed CPU usage
-        /// percentage.</param>
+        /// percentage</param>
         /// <param name="maxMemoryInMb">Maximum allowed memory usage in
-        /// MB.</param>
+        /// MB</param>
         /// <param name="maxDiskSizeInMb">Maximum allowed disk size usage in
-        /// MB.</param>
+        /// MB</param>
         public SiteLimits(double? maxPercentageCpu = default(double?), long? maxMemoryInMb = default(long?), long? maxDiskSizeInMb = default(long?))
         {
             MaxPercentageCpu = maxPercentageCpu;
@@ -49,19 +49,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets maximum allowed CPU usage percentage.
+        /// Gets or sets maximum allowed CPU usage percentage
         /// </summary>
         [JsonProperty(PropertyName = "maxPercentageCpu")]
         public double? MaxPercentageCpu { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum allowed memory usage in MB.
+        /// Gets or sets maximum allowed memory usage in MB
         /// </summary>
         [JsonProperty(PropertyName = "maxMemoryInMb")]
         public long? MaxMemoryInMb { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum allowed disk size usage in MB.
+        /// Gets or sets maximum allowed disk size usage in MB
         /// </summary>
         [JsonProperty(PropertyName = "maxDiskSizeInMb")]
         public long? MaxDiskSizeInMb { get; set; }

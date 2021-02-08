@@ -38,17 +38,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "OrgValidationComplete")]
         OrgValidationComplete,
         [EnumMember(Value = "SanDrop")]
-        SanDrop,
-        [EnumMember(Value = "FraudCleared")]
-        FraudCleared,
-        [EnumMember(Value = "CertificateExpired")]
-        CertificateExpired,
-        [EnumMember(Value = "CertificateExpirationWarning")]
-        CertificateExpirationWarning,
-        [EnumMember(Value = "FraudDocumentationRequired")]
-        FraudDocumentationRequired,
-        [EnumMember(Value = "Unknown")]
-        Unknown
+        SanDrop
     }
     internal static class CertificateOrderActionTypeEnumExtension
     {
@@ -79,16 +69,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "OrgValidationComplete";
                 case CertificateOrderActionType.SanDrop:
                     return "SanDrop";
-                case CertificateOrderActionType.FraudCleared:
-                    return "FraudCleared";
-                case CertificateOrderActionType.CertificateExpired:
-                    return "CertificateExpired";
-                case CertificateOrderActionType.CertificateExpirationWarning:
-                    return "CertificateExpirationWarning";
-                case CertificateOrderActionType.FraudDocumentationRequired:
-                    return "FraudDocumentationRequired";
-                case CertificateOrderActionType.Unknown:
-                    return "Unknown";
             }
             return null;
         }
@@ -115,16 +95,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return CertificateOrderActionType.OrgValidationComplete;
                 case "SanDrop":
                     return CertificateOrderActionType.SanDrop;
-                case "FraudCleared":
-                    return CertificateOrderActionType.FraudCleared;
-                case "CertificateExpired":
-                    return CertificateOrderActionType.CertificateExpired;
-                case "CertificateExpirationWarning":
-                    return CertificateOrderActionType.CertificateExpirationWarning;
-                case "FraudDocumentationRequired":
-                    return CertificateOrderActionType.FraudDocumentationRequired;
-                case "Unknown":
-                    return CertificateOrderActionType.Unknown;
             }
             return null;
         }

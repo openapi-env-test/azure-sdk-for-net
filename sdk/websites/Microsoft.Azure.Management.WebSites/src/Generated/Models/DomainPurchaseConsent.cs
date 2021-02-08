@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Domain purchase consent object, representing acceptance of applicable
-    /// legal agreements.
+    /// Domain purchase consent object representing acceptance of applicable
+    /// legal agreements
     /// </summary>
     public partial class DomainPurchaseConsent
     {
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the DomainPurchaseConsent class.
         /// </summary>
         /// <param name="agreementKeys">List of applicable legal agreement
-        /// keys. This list can be retrieved using ListLegalAgreements API
-        /// under &lt;code&gt;TopLevelDomain&lt;/code&gt; resource.</param>
-        /// <param name="agreedBy">Client IP address.</param>
+        /// keys. This list can be retrieved using ListLegalAgreements Api
+        /// under TopLevelDomain resource</param>
+        /// <param name="agreedBy">Client IP address</param>
         /// <param name="agreedAt">Timestamp when the agreements were
-        /// accepted.</param>
+        /// accepted</param>
         public DomainPurchaseConsent(IList<string> agreementKeys = default(IList<string>), string agreedBy = default(string), System.DateTime? agreedAt = default(System.DateTime?))
         {
             AgreementKeys = agreementKeys;
@@ -53,20 +53,20 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets list of applicable legal agreement keys. This list can
-        /// be retrieved using ListLegalAgreements API under
-        /// &amp;lt;code&amp;gt;TopLevelDomain&amp;lt;/code&amp;gt; resource.
+        /// be retrieved using ListLegalAgreements Api under TopLevelDomain
+        /// resource
         /// </summary>
         [JsonProperty(PropertyName = "agreementKeys")]
         public IList<string> AgreementKeys { get; set; }
 
         /// <summary>
-        /// Gets or sets client IP address.
+        /// Gets or sets client IP address
         /// </summary>
         [JsonProperty(PropertyName = "agreedBy")]
         public string AgreedBy { get; set; }
 
         /// <summary>
-        /// Gets or sets timestamp when the agreements were accepted.
+        /// Gets or sets timestamp when the agreements were accepted
         /// </summary>
         [JsonProperty(PropertyName = "agreedAt")]
         public System.DateTime? AgreedAt { get; set; }

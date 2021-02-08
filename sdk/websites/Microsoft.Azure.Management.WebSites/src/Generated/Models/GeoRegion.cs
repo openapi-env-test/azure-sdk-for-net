@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Geographical region.
+    /// Geographical region
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GeoRegion : ProxyOnlyResource
+    public partial class GeoRegion : Resource
     {
         /// <summary>
         /// Initializes a new instance of the GeoRegion class.
@@ -32,19 +34,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the GeoRegion class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="description">Region description.</param>
-        /// <param name="displayName">Display name for region.</param>
-        /// <param name="orgDomain">Display name for region.</param>
-        public GeoRegion(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string description = default(string), string displayName = default(string), string orgDomain = default(string))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="geoRegionName">Region name</param>
+        /// <param name="description">Region description</param>
+        /// <param name="displayName">Display name for region</param>
+        public GeoRegion(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string geoRegionName = default(string), string description = default(string), string displayName = default(string))
+            : base(location, id, name, kind, type, tags)
         {
+            GeoRegionName = geoRegionName;
             Description = description;
             DisplayName = displayName;
-            OrgDomain = orgDomain;
             CustomInit();
         }
 
@@ -54,22 +58,32 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets region description.
+        /// Gets or sets region name
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string GeoRegionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets region description
         /// </summary>
         [JsonProperty(PropertyName = "properties.description")]
-        public string Description { get; private set; }
+        public string Description { get; set; }
 
         /// <summary>
-        /// Gets display name for region.
+        /// Gets or sets display name for region
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
-        public string DisplayName { get; private set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets display name for region.
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.orgDomain")]
-        public string OrgDomain { get; private set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

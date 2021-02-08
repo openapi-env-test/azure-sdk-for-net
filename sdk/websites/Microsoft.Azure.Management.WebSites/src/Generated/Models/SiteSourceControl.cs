@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Source control configuration for an app.
+    /// Describes the source control configuration for web app
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteSourceControl : ProxyOnlyResource
+    public partial class SiteSourceControl : Resource
     {
         /// <summary>
         /// Initializes a new instance of the SiteSourceControl class.
@@ -32,32 +34,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SiteSourceControl class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="repoUrl">Repository or source control URL.</param>
-        /// <param name="branch">Name of branch to use for deployment.</param>
-        /// <param name="isManualIntegration">&lt;code&gt;true&lt;/code&gt; to
-        /// limit to manual integration; &lt;code&gt;false&lt;/code&gt; to
-        /// enable continuous integration (which configures webhooks into
-        /// online repos like GitHub).</param>
-        /// <param name="isGitHubAction">&lt;code&gt;true&lt;/code&gt; if this
-        /// is deployed via GitHub action.</param>
-        /// <param
-        /// name="deploymentRollbackEnabled">&lt;code&gt;true&lt;/code&gt; to
-        /// enable deployment rollback; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="isMercurial">&lt;code&gt;true&lt;/code&gt; for a
-        /// Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git
-        /// repository.</param>
-        public SiteSourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? isGitHubAction = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="repoUrl">Repository or source control url</param>
+        /// <param name="branch">Name of branch to use for deployment</param>
+        /// <param name="isManualIntegration">Whether to manual or continuous
+        /// integration</param>
+        /// <param name="deploymentRollbackEnabled">Whether to manual or
+        /// continuous integration</param>
+        /// <param name="isMercurial">Mercurial or Git repository type</param>
+        public SiteSourceControl(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?))
+            : base(location, id, name, kind, type, tags)
         {
             RepoUrl = repoUrl;
             Branch = branch;
             IsManualIntegration = isManualIntegration;
-            IsGitHubAction = isGitHubAction;
             DeploymentRollbackEnabled = deploymentRollbackEnabled;
             IsMercurial = isMercurial;
             CustomInit();
@@ -69,50 +64,44 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets repository or source control URL.
+        /// Gets or sets repository or source control url
         /// </summary>
         [JsonProperty(PropertyName = "properties.repoUrl")]
         public string RepoUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets name of branch to use for deployment.
+        /// Gets or sets name of branch to use for deployment
         /// </summary>
         [JsonProperty(PropertyName = "properties.branch")]
         public string Branch { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to limit
-        /// to manual integration;
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt; to enable continuous
-        /// integration (which configures webhooks into online repos like
-        /// GitHub).
+        /// Gets or sets whether to manual or continuous integration
         /// </summary>
         [JsonProperty(PropertyName = "properties.isManualIntegration")]
         public bool? IsManualIntegration { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if this
-        /// is deployed via GitHub action.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isGitHubAction")]
-        public bool? IsGitHubAction { get; set; }
-
-        /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// enable deployment rollback; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets whether to manual or continuous integration
         /// </summary>
         [JsonProperty(PropertyName = "properties.deploymentRollbackEnabled")]
         public bool? DeploymentRollbackEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; for a
-        /// Mercurial repository;
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt; for a Git
-        /// repository.
+        /// Gets or sets mercurial or Git repository type
         /// </summary>
         [JsonProperty(PropertyName = "properties.isMercurial")]
         public bool? IsMercurial { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

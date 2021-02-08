@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Localizable string object containing the name and a localized value.
+    /// LocalizableString object containing the name and a localized value.
     /// </summary>
     public partial class LocalizableString
     {
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the LocalizableString class.
         /// </summary>
-        /// <param name="value">Non-localized name.</param>
-        /// <param name="localizedValue">Localized name.</param>
+        /// <param name="value">Non localized name</param>
+        /// <param name="localizedValue">Localized name</param>
         public LocalizableString(string value = default(string), string localizedValue = default(string))
         {
             Value = value;
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets non-localized name.
+        /// Gets or sets non localized name
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
         /// <summary>
-        /// Gets or sets localized name.
+        /// Gets or sets localized name
         /// </summary>
         [JsonProperty(PropertyName = "localizedValue")]
         public string LocalizedValue { get; set; }

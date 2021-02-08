@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// A web app, a mobile app backend, or an API app.
+    /// Represents a web app
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class Site : Resource
@@ -34,115 +34,82 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Site class.
         /// </summary>
-        /// <param name="location">Resource Location.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="state">Current state of the app.</param>
-        /// <param name="hostNames">Hostnames associated with the app.</param>
-        /// <param name="repositorySiteName">Name of the repository
-        /// site.</param>
-        /// <param name="usageState">State indicating whether the app has
-        /// exceeded its quota usage. Read-only. Possible values include:
-        /// 'Normal', 'Exceeded'</param>
-        /// <param name="enabled">&lt;code&gt;true&lt;/code&gt; if the app is
-        /// enabled; otherwise, &lt;code&gt;false&lt;/code&gt;. Setting this
-        /// value to false disables the app (takes the app offline).</param>
-        /// <param name="enabledHostNames">Enabled hostnames for the
-        /// app.Hostnames need to be assigned (see HostNames) AND enabled.
-        /// Otherwise,
-        /// the app is not served on those hostnames.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="usageState">State indicating whether web app has
+        /// exceeded its quota usage. Possible values include: 'Normal',
+        /// 'Exceeded'</param>
         /// <param name="availabilityState">Management information availability
-        /// state for the app. Possible values include: 'Normal', 'Limited',
+        /// state for the web app. Possible values are Normal or Limited.
+        /// Normal means that the site is running correctly and that management
+        /// information for the site is available.
+        /// Limited means that only partial management information for the site
+        /// is available and that detailed site information is unavailable.
+        /// Possible values include: 'Normal', 'Limited',
         /// 'DisasterRecoveryMode'</param>
-        /// <param name="hostNameSslStates">Hostname SSL states are used to
-        /// manage the SSL bindings for app's hostnames.</param>
-        /// <param name="serverFarmId">Resource ID of the associated App
-        /// Service plan, formatted as:
-        /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
-        /// <param name="reserved">&lt;code&gt;true&lt;/code&gt; if reserved;
-        /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="isXenon">Obsolete: Hyper-V sandbox.</param>
-        /// <param name="hyperV">Hyper-V sandbox.</param>
-        /// <param name="lastModifiedTimeUtc">Last time the app was modified,
-        /// in UTC. Read-only.</param>
-        /// <param name="siteConfig">Configuration of the app.</param>
-        /// <param name="trafficManagerHostNames">Azure Traffic Manager
-        /// hostnames associated with the app. Read-only.</param>
-        /// <param name="scmSiteAlsoStopped">&lt;code&gt;true&lt;/code&gt; to
-        /// stop SCM (KUDU) site when the app is stopped; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;. The default is
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="targetSwapSlot">Specifies which deployment slot this
-        /// app will swap into. Read-only.</param>
-        /// <param name="hostingEnvironmentProfile">App Service Environment to
-        /// use for the app.</param>
-        /// <param name="clientAffinityEnabled">&lt;code&gt;true&lt;/code&gt;
-        /// to enable client affinity; &lt;code&gt;false&lt;/code&gt; to stop
-        /// sending session affinity cookies, which route client requests in
-        /// the same session to the same instance. Default is
-        /// &lt;code&gt;true&lt;/code&gt;.</param>
-        /// <param name="clientCertEnabled">&lt;code&gt;true&lt;/code&gt; to
-        /// enable client certificate authentication (TLS mutual
-        /// authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default
-        /// is &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="clientCertMode">This composes with ClientCertEnabled
-        /// setting.
-        /// - ClientCertEnabled: false means ClientCert is ignored.
-        /// - ClientCertEnabled: true and ClientCertMode: Required means
-        /// ClientCert is required.
-        /// - ClientCertEnabled: true and ClientCertMode: Optional means
-        /// ClientCert is optional or accepted. Possible values include:
-        /// 'Required', 'Optional'</param>
-        /// <param name="clientCertExclusionPaths">client certificate
-        /// authentication comma-separated exclusion paths</param>
-        /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to
-        /// disable the public hostnames of the app; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.
-        /// If &lt;code&gt;true&lt;/code&gt;, the app is only accessible via
-        /// API management process.</param>
-        /// <param name="customDomainVerificationId">Unique identifier that
-        /// verifies the custom domains assigned to the app. Customer will add
-        /// this id to a txt record for verification.</param>
-        /// <param name="outboundIpAddresses">List of IP addresses that the app
-        /// uses for outbound connections (e.g. database access). Includes VIPs
-        /// from tenants that site can be hosted with current settings.
-        /// Read-only.</param>
-        /// <param name="possibleOutboundIpAddresses">List of IP addresses that
-        /// the app uses for outbound connections (e.g. database access).
-        /// Includes VIPs from all tenants except dataComponent.
-        /// Read-only.</param>
-        /// <param name="containerSize">Size of the function container.</param>
-        /// <param name="dailyMemoryTimeQuota">Maximum allowed daily
-        /// memory-time quota (applicable on dynamic apps only).</param>
-        /// <param name="suspendedTill">App suspended till in case memory-time
-        /// quota is exceeded.</param>
-        /// <param name="maxNumberOfWorkers">Maximum number of workers.
-        /// This only applies to Functions container.</param>
-        /// <param name="cloningInfo">If specified during app creation, the app
-        /// is cloned from a source app.</param>
-        /// <param name="resourceGroup">Name of the resource group the app
-        /// belongs to. Read-only.</param>
-        /// <param name="isDefaultContainer">&lt;code&gt;true&lt;/code&gt; if
-        /// the app is a default container; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="defaultHostName">Default hostname of the app.
-        /// Read-only.</param>
-        /// <param name="slotSwapStatus">Status of the last deployment slot
-        /// swap operation.</param>
-        /// <param name="httpsOnly">HttpsOnly: configures a web site to accept
-        /// only https requests. Issues redirect for
-        /// http requests</param>
-        /// <param name="redundancyMode">Site redundancy mode. Possible values
-        /// include: 'None', 'Manual', 'Failover', 'ActiveActive',
-        /// 'GeoRedundant'</param>
-        /// <param name="inProgressOperationId">Specifies an operation id if
-        /// this site has a pending operation.</param>
-        public Site(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="siteName">Name of web app</param>
+        /// <param name="state">State of the web app</param>
+        /// <param name="hostNames">Hostnames associated with web app</param>
+        /// <param name="repositorySiteName">Name of repository site</param>
+        /// <param name="enabled">True if the site is enabled; otherwise,
+        /// false. Setting this  value to false disables the site (takes the
+        /// site off line).</param>
+        /// <param name="enabledHostNames">Hostnames for the web app that are
+        /// enabled. Hostnames need to be assigned and enabled. If some
+        /// hostnames are assigned but not enabled
+        /// the app is not served on those hostnames</param>
+        /// <param name="hostNameSslStates">Hostname SSL states are  used to
+        /// manage the SSL bindings for site's hostnames.</param>
+        /// <param name="lastModifiedTimeUtc">Last time web app was modified in
+        /// UTC</param>
+        /// <param name="siteConfig">Configuration of web app</param>
+        /// <param name="trafficManagerHostNames">Read-only list of Azure
+        /// Traffic manager hostnames associated with web app</param>
+        /// <param name="premiumAppDeployed">If set indicates whether web app
+        /// is deployed as a premium app</param>
+        /// <param name="scmSiteAlsoStopped">If set indicates whether to stop
+        /// SCM (KUDU) site when the web app is stopped. Default is
+        /// false.</param>
+        /// <param name="targetSwapSlot">Read-only property that specifies
+        /// which slot this app will swap into</param>
+        /// <param name="hostingEnvironmentProfile">Specification for the
+        /// hosting environment (App Service Environment) to use for the web
+        /// app</param>
+        /// <param name="gatewaySiteName">Name of gateway app associated with
+        /// web app</param>
+        /// <param name="clientAffinityEnabled">Specifies if the client
+        /// affinity is enabled when load balancing http request for multiple
+        /// instances of the web app</param>
+        /// <param name="clientCertEnabled">Specifies if the client certificate
+        /// is enabled for the web app</param>
+        /// <param name="hostNamesDisabled">Specifies if the public hostnames
+        /// are disabled the web app.
+        /// If set to true the app is only accessible via API Management
+        /// process</param>
+        /// <param name="outboundIpAddresses">List of comma separated IP
+        /// addresses that this web app uses for outbound connections. Those
+        /// can be used when configuring firewall rules for databases accessed
+        /// by this web app.</param>
+        /// <param name="containerSize">Size of a function container</param>
+        /// <param name="maxNumberOfWorkers">Maximum number of workers
+        /// This only applies to function container</param>
+        /// <param name="cloningInfo">This is only valid for web app creation.
+        /// If specified, web app is cloned from
+        /// a source web app</param>
+        /// <param name="resourceGroup">Resource group web app belongs
+        /// to</param>
+        /// <param name="isDefaultContainer">Site is a default
+        /// container</param>
+        /// <param name="defaultHostName">Default hostname of the web
+        /// app</param>
+        public Site(string location, UsageState usageState, SiteAvailabilityState availabilityState, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string siteName = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? premiumAppDeployed = default(bool?), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string microService = default(string), string gatewaySiteName = default(string), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), int? containerSize = default(int?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string))
             : base(location, id, name, kind, type, tags)
         {
+            SiteName = siteName;
             State = state;
             HostNames = hostNames;
             RepositorySiteName = repositorySiteName;
@@ -152,36 +119,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
             AvailabilityState = availabilityState;
             HostNameSslStates = hostNameSslStates;
             ServerFarmId = serverFarmId;
-            Reserved = reserved;
-            IsXenon = isXenon;
-            HyperV = hyperV;
             LastModifiedTimeUtc = lastModifiedTimeUtc;
             SiteConfig = siteConfig;
             TrafficManagerHostNames = trafficManagerHostNames;
+            PremiumAppDeployed = premiumAppDeployed;
             ScmSiteAlsoStopped = scmSiteAlsoStopped;
             TargetSwapSlot = targetSwapSlot;
             HostingEnvironmentProfile = hostingEnvironmentProfile;
+            MicroService = microService;
+            GatewaySiteName = gatewaySiteName;
             ClientAffinityEnabled = clientAffinityEnabled;
             ClientCertEnabled = clientCertEnabled;
-            ClientCertMode = clientCertMode;
-            ClientCertExclusionPaths = clientCertExclusionPaths;
             HostNamesDisabled = hostNamesDisabled;
-            CustomDomainVerificationId = customDomainVerificationId;
             OutboundIpAddresses = outboundIpAddresses;
-            PossibleOutboundIpAddresses = possibleOutboundIpAddresses;
             ContainerSize = containerSize;
-            DailyMemoryTimeQuota = dailyMemoryTimeQuota;
-            SuspendedTill = suspendedTill;
             MaxNumberOfWorkers = maxNumberOfWorkers;
             CloningInfo = cloningInfo;
             ResourceGroup = resourceGroup;
             IsDefaultContainer = isDefaultContainer;
             DefaultHostName = defaultHostName;
-            SlotSwapStatus = slotSwapStatus;
-            HttpsOnly = httpsOnly;
-            RedundancyMode = redundancyMode;
-            InProgressOperationId = inProgressOperationId;
-            Identity = identity;
             CustomInit();
         }
 
@@ -191,290 +147,203 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets current state of the app.
+        /// Gets or sets name of web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string SiteName { get; set; }
+
+        /// <summary>
+        /// Gets state of the web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
         public string State { get; private set; }
 
         /// <summary>
-        /// Gets hostnames associated with the app.
+        /// Gets hostnames associated with web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostNames")]
         public IList<string> HostNames { get; private set; }
 
         /// <summary>
-        /// Gets name of the repository site.
+        /// Gets name of repository site
         /// </summary>
         [JsonProperty(PropertyName = "properties.repositorySiteName")]
         public string RepositorySiteName { get; private set; }
 
         /// <summary>
-        /// Gets state indicating whether the app has exceeded its quota usage.
-        /// Read-only. Possible values include: 'Normal', 'Exceeded'
+        /// Gets state indicating whether web app has exceeded its quota usage.
+        /// Possible values include: 'Normal', 'Exceeded'
         /// </summary>
         [JsonProperty(PropertyName = "properties.usageState")]
-        public UsageState? UsageState { get; private set; }
+        public UsageState UsageState { get; private set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if the
-        /// app is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. Setting this value
-        /// to false disables the app (takes the app offline).
+        /// Gets or sets true if the site is enabled; otherwise, false. Setting
+        /// this  value to false disables the site (takes the site off line).
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Gets enabled hostnames for the app.Hostnames need to be assigned
-        /// (see HostNames) AND enabled. Otherwise,
-        /// the app is not served on those hostnames.
+        /// Gets hostnames for the web app that are enabled. Hostnames need to
+        /// be assigned and enabled. If some hostnames are assigned but not
+        /// enabled
+        /// the app is not served on those hostnames
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabledHostNames")]
         public IList<string> EnabledHostNames { get; private set; }
 
         /// <summary>
-        /// Gets management information availability state for the app.
+        /// Gets management information availability state for the web app.
+        /// Possible values are Normal or Limited.
+        /// Normal means that the site is running correctly and that management
+        /// information for the site is available.
+        /// Limited means that only partial management information for the site
+        /// is available and that detailed site information is unavailable.
         /// Possible values include: 'Normal', 'Limited',
         /// 'DisasterRecoveryMode'
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilityState")]
-        public SiteAvailabilityState? AvailabilityState { get; private set; }
+        public SiteAvailabilityState AvailabilityState { get; private set; }
 
         /// <summary>
-        /// Gets or sets hostname SSL states are used to manage the SSL
-        /// bindings for app's hostnames.
+        /// Gets or sets hostname SSL states are  used to manage the SSL
+        /// bindings for site's hostnames.
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostNameSslStates")]
         public IList<HostNameSslState> HostNameSslStates { get; set; }
 
         /// <summary>
-        /// Gets or sets resource ID of the associated App Service plan,
-        /// formatted as:
-        /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
         /// </summary>
         [JsonProperty(PropertyName = "properties.serverFarmId")]
         public string ServerFarmId { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// reserved; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.reserved")]
-        public bool? Reserved { get; set; }
-
-        /// <summary>
-        /// Gets or sets obsolete: Hyper-V sandbox.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isXenon")]
-        public bool? IsXenon { get; set; }
-
-        /// <summary>
-        /// Gets or sets hyper-V sandbox.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.hyperV")]
-        public bool? HyperV { get; set; }
-
-        /// <summary>
-        /// Gets last time the app was modified, in UTC. Read-only.
+        /// Gets last time web app was modified in UTC
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastModifiedTimeUtc")]
         public System.DateTime? LastModifiedTimeUtc { get; private set; }
 
         /// <summary>
-        /// Gets or sets configuration of the app.
+        /// Gets or sets configuration of web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.siteConfig")]
         public SiteConfig SiteConfig { get; set; }
 
         /// <summary>
-        /// Gets azure Traffic Manager hostnames associated with the app.
-        /// Read-only.
+        /// Gets read-only list of Azure Traffic manager hostnames associated
+        /// with web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.trafficManagerHostNames")]
         public IList<string> TrafficManagerHostNames { get; private set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to stop
-        /// SCM (KUDU) site when the app is stopped; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. The default is
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets if set indicates whether web app is deployed as a premium app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.premiumAppDeployed")]
+        public bool? PremiumAppDeployed { get; private set; }
+
+        /// <summary>
+        /// Gets or sets if set indicates whether to stop SCM (KUDU) site when
+        /// the web app is stopped. Default is false.
         /// </summary>
         [JsonProperty(PropertyName = "properties.scmSiteAlsoStopped")]
         public bool? ScmSiteAlsoStopped { get; set; }
 
         /// <summary>
-        /// Gets specifies which deployment slot this app will swap into.
-        /// Read-only.
+        /// Gets read-only property that specifies which slot this app will
+        /// swap into
         /// </summary>
         [JsonProperty(PropertyName = "properties.targetSwapSlot")]
         public string TargetSwapSlot { get; private set; }
 
         /// <summary>
-        /// Gets or sets app Service Environment to use for the app.
+        /// Gets or sets specification for the hosting environment (App Service
+        /// Environment) to use for the web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostingEnvironmentProfile")]
         public HostingEnvironmentProfile HostingEnvironmentProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// enable client affinity;
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt; to stop sending
-        /// session affinity cookies, which route client requests in the same
-        /// session to the same instance. Default is
-        /// &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.microService")]
+        public string MicroService { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of gateway app associated with web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.gatewaySiteName")]
+        public string GatewaySiteName { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies if the client affinity is enabled when load
+        /// balancing http request for multiple instances of the web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientAffinityEnabled")]
         public bool? ClientAffinityEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// enable client certificate authentication (TLS mutual
-        /// authentication); otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. Default is
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets specifies if the client certificate is enabled for the
+        /// web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientCertEnabled")]
         public bool? ClientCertEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets this composes with ClientCertEnabled setting.
-        /// - ClientCertEnabled: false means ClientCert is ignored.
-        /// - ClientCertEnabled: true and ClientCertMode: Required means
-        /// ClientCert is required.
-        /// - ClientCertEnabled: true and ClientCertMode: Optional means
-        /// ClientCert is optional or accepted. Possible values include:
-        /// 'Required', 'Optional'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.clientCertMode")]
-        public ClientCertMode? ClientCertMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets client certificate authentication comma-separated
-        /// exclusion paths
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.clientCertExclusionPaths")]
-        public string ClientCertExclusionPaths { get; set; }
-
-        /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// disable the public hostnames of the app; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
-        /// If &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, the app is only
-        /// accessible via API management process.
+        /// Gets or sets specifies if the public hostnames are disabled the web
+        /// app.
+        /// If set to true the app is only accessible via API Management
+        /// process
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostNamesDisabled")]
         public bool? HostNamesDisabled { get; set; }
 
         /// <summary>
-        /// Gets or sets unique identifier that verifies the custom domains
-        /// assigned to the app. Customer will add this id to a txt record for
-        /// verification.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.customDomainVerificationId")]
-        public string CustomDomainVerificationId { get; set; }
-
-        /// <summary>
-        /// Gets list of IP addresses that the app uses for outbound
-        /// connections (e.g. database access). Includes VIPs from tenants that
-        /// site can be hosted with current settings. Read-only.
+        /// Gets list of comma separated IP addresses that this web app uses
+        /// for outbound connections. Those can be used when configuring
+        /// firewall rules for databases accessed by this web app.
         /// </summary>
         [JsonProperty(PropertyName = "properties.outboundIpAddresses")]
         public string OutboundIpAddresses { get; private set; }
 
         /// <summary>
-        /// Gets list of IP addresses that the app uses for outbound
-        /// connections (e.g. database access). Includes VIPs from all tenants
-        /// except dataComponent. Read-only.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.possibleOutboundIpAddresses")]
-        public string PossibleOutboundIpAddresses { get; private set; }
-
-        /// <summary>
-        /// Gets or sets size of the function container.
+        /// Gets or sets size of a function container
         /// </summary>
         [JsonProperty(PropertyName = "properties.containerSize")]
         public int? ContainerSize { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum allowed daily memory-time quota (applicable on
-        /// dynamic apps only).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.dailyMemoryTimeQuota")]
-        public int? DailyMemoryTimeQuota { get; set; }
-
-        /// <summary>
-        /// Gets app suspended till in case memory-time quota is exceeded.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.suspendedTill")]
-        public System.DateTime? SuspendedTill { get; private set; }
-
-        /// <summary>
-        /// Gets maximum number of workers.
-        /// This only applies to Functions container.
+        /// Gets or sets maximum number of workers
+        /// This only applies to function container
         /// </summary>
         [JsonProperty(PropertyName = "properties.maxNumberOfWorkers")]
-        public int? MaxNumberOfWorkers { get; private set; }
+        public int? MaxNumberOfWorkers { get; set; }
 
         /// <summary>
-        /// Gets or sets if specified during app creation, the app is cloned
-        /// from a source app.
+        /// Gets or sets this is only valid for web app creation. If specified,
+        /// web app is cloned from
+        /// a source web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.cloningInfo")]
         public CloningInfo CloningInfo { get; set; }
 
         /// <summary>
-        /// Gets name of the resource group the app belongs to. Read-only.
+        /// Gets resource group web app belongs to
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGroup")]
         public string ResourceGroup { get; private set; }
 
         /// <summary>
-        /// Gets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if the app is a
-        /// default container; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets site is a default container
         /// </summary>
         [JsonProperty(PropertyName = "properties.isDefaultContainer")]
         public bool? IsDefaultContainer { get; private set; }
 
         /// <summary>
-        /// Gets default hostname of the app. Read-only.
+        /// Gets default hostname of the web app
         /// </summary>
         [JsonProperty(PropertyName = "properties.defaultHostName")]
         public string DefaultHostName { get; private set; }
-
-        /// <summary>
-        /// Gets status of the last deployment slot swap operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.slotSwapStatus")]
-        public SlotSwapStatus SlotSwapStatus { get; private set; }
-
-        /// <summary>
-        /// Gets or sets httpsOnly: configures a web site to accept only https
-        /// requests. Issues redirect for
-        /// http requests
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.httpsOnly")]
-        public bool? HttpsOnly { get; set; }
-
-        /// <summary>
-        /// Gets or sets site redundancy mode. Possible values include: 'None',
-        /// 'Manual', 'Failover', 'ActiveActive', 'GeoRedundant'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.redundancyMode")]
-        public RedundancyMode? RedundancyMode { get; set; }
-
-        /// <summary>
-        /// Gets specifies an operation id if this site has a pending
-        /// operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.inProgressOperationId")]
-        public System.Guid? InProgressOperationId { get; private set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -485,13 +354,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+            if (HostNameSslStates != null)
+            {
+                foreach (var element in HostNameSslStates)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
             if (SiteConfig != null)
             {
                 SiteConfig.Validate();
-            }
-            if (CloningInfo != null)
-            {
-                CloningInfo.Validate();
             }
         }
     }

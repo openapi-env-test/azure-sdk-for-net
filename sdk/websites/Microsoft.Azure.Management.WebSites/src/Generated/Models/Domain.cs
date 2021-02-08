@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Information about a domain.
+    /// Represents a domain
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class Domain : Resource
@@ -34,17 +34,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Domain class.
         /// </summary>
-        /// <param name="location">Resource Location.</param>
-        /// <param name="contactAdmin">Administrative contact.</param>
-        /// <param name="contactBilling">Billing contact.</param>
-        /// <param name="contactRegistrant">Registrant contact.</param>
-        /// <param name="contactTech">Technical contact.</param>
-        /// <param name="consent">Legal agreement consent.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="contactAdmin">Admin contact information</param>
+        /// <param name="contactBilling">Billing contact information</param>
+        /// <param name="contactRegistrant">Registrant contact
+        /// information</param>
+        /// <param name="contactTech">Technical contact information</param>
         /// <param name="registrationStatus">Domain registration status.
         /// Possible values include: 'Active', 'Awaiting', 'Cancelled',
         /// 'Confiscated', 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held',
@@ -54,36 +54,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="provisioningState">Domain provisioning state. Possible
         /// values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress',
         /// 'Deleting'</param>
-        /// <param name="nameServers">Name servers.</param>
-        /// <param name="privacy">&lt;code&gt;true&lt;/code&gt; if domain
-        /// privacy is enabled for this domain; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="createdTime">Domain creation timestamp.</param>
-        /// <param name="expirationTime">Domain expiration timestamp.</param>
+        /// <param name="nameServers">Name servers</param>
+        /// <param name="privacy">If true then domain privacy is enabled for
+        /// this domain</param>
+        /// <param name="createdTime">Domain creation timestamp</param>
+        /// <param name="expirationTime">Domain expiration timestamp</param>
         /// <param name="lastRenewedTime">Timestamp when the domain was renewed
-        /// last time.</param>
-        /// <param name="autoRenew">&lt;code&gt;true&lt;/code&gt; if the domain
-        /// should be automatically renewed; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param
-        /// name="readyForDnsRecordManagement">&lt;code&gt;true&lt;/code&gt; if
-        /// Azure can assign this domain to App Service apps; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;. This value will be
-        /// &lt;code&gt;true&lt;/code&gt; if domain registration status is
-        /// active and
-        /// it is hosted on name servers Azure has programmatic access
-        /// to.</param>
+        /// last time</param>
+        /// <param name="autoRenew">If true then domain will renewed
+        /// automatically</param>
+        /// <param name="readyForDnsRecordManagement">If true then Azure can
+        /// assign this domain to Web Apps. This value will be true if domain
+        /// registration status is active and it is hosted on name servers
+        /// Azure has programmatic access to</param>
         /// <param name="managedHostNames">All hostnames derived from the
-        /// domain and assigned to Azure resources.</param>
+        /// domain and assigned to Azure resources</param>
+        /// <param name="consent">Legal agreement consent</param>
         /// <param name="domainNotRenewableReasons">Reasons why domain is not
-        /// renewable.</param>
-        /// <param name="dnsType">Current DNS type. Possible values include:
-        /// 'AzureDns', 'DefaultDomainRegistrarDns'</param>
-        /// <param name="dnsZoneId">Azure DNS Zone to use</param>
-        /// <param name="targetDnsType">Target DNS type (would be used for
-        /// migration). Possible values include: 'AzureDns',
-        /// 'DefaultDomainRegistrarDns'</param>
-        public Domain(string location, Contact contactAdmin, Contact contactBilling, Contact contactRegistrant, Contact contactTech, DomainPurchaseConsent consent, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), IList<string> domainNotRenewableReasons = default(IList<string>), DnsType? dnsType = default(DnsType?), string dnsZoneId = default(string), DnsType? targetDnsType = default(DnsType?), string authCode = default(string))
+        /// renewable</param>
+        public Domain(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Contact contactAdmin = default(Contact), Contact contactBilling = default(Contact), Contact contactRegistrant = default(Contact), Contact contactTech = default(Contact), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), DomainPurchaseConsent consent = default(DomainPurchaseConsent), IList<string> domainNotRenewableReasons = default(IList<string>))
             : base(location, id, name, kind, type, tags)
         {
             ContactAdmin = contactAdmin;
@@ -102,10 +91,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             ManagedHostNames = managedHostNames;
             Consent = consent;
             DomainNotRenewableReasons = domainNotRenewableReasons;
-            DnsType = dnsType;
-            DnsZoneId = dnsZoneId;
-            TargetDnsType = targetDnsType;
-            AuthCode = authCode;
             CustomInit();
         }
 
@@ -115,140 +100,108 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets administrative contact.
+        /// Gets or sets admin contact information
         /// </summary>
         [JsonProperty(PropertyName = "properties.contactAdmin")]
         public Contact ContactAdmin { get; set; }
 
         /// <summary>
-        /// Gets or sets billing contact.
+        /// Gets or sets billing contact information
         /// </summary>
         [JsonProperty(PropertyName = "properties.contactBilling")]
         public Contact ContactBilling { get; set; }
 
         /// <summary>
-        /// Gets or sets registrant contact.
+        /// Gets or sets registrant contact information
         /// </summary>
         [JsonProperty(PropertyName = "properties.contactRegistrant")]
         public Contact ContactRegistrant { get; set; }
 
         /// <summary>
-        /// Gets or sets technical contact.
+        /// Gets or sets technical contact information
         /// </summary>
         [JsonProperty(PropertyName = "properties.contactTech")]
         public Contact ContactTech { get; set; }
 
         /// <summary>
-        /// Gets domain registration status. Possible values include: 'Active',
-        /// 'Awaiting', 'Cancelled', 'Confiscated', 'Disabled', 'Excluded',
-        /// 'Expired', 'Failed', 'Held', 'Locked', 'Parked', 'Pending',
-        /// 'Reserved', 'Reverted', 'Suspended', 'Transferred', 'Unknown',
-        /// 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
+        /// Gets or sets domain registration status. Possible values include:
+        /// 'Active', 'Awaiting', 'Cancelled', 'Confiscated', 'Disabled',
+        /// 'Excluded', 'Expired', 'Failed', 'Held', 'Locked', 'Parked',
+        /// 'Pending', 'Reserved', 'Reverted', 'Suspended', 'Transferred',
+        /// 'Unknown', 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.registrationStatus")]
-        public DomainStatus? RegistrationStatus { get; private set; }
+        public DomainStatus? RegistrationStatus { get; set; }
 
         /// <summary>
-        /// Gets domain provisioning state. Possible values include:
+        /// Gets or sets domain provisioning state. Possible values include:
         /// 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState? ProvisioningState { get; private set; }
+        public ProvisioningState? ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets name servers.
+        /// Gets or sets name servers
         /// </summary>
         [JsonProperty(PropertyName = "properties.nameServers")]
-        public IList<string> NameServers { get; private set; }
+        public IList<string> NameServers { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// domain privacy is enabled for this domain; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets if true then domain privacy is enabled for this domain
         /// </summary>
         [JsonProperty(PropertyName = "properties.privacy")]
         public bool? Privacy { get; set; }
 
         /// <summary>
-        /// Gets domain creation timestamp.
+        /// Gets or sets domain creation timestamp
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdTime")]
-        public System.DateTime? CreatedTime { get; private set; }
+        public System.DateTime? CreatedTime { get; set; }
 
         /// <summary>
-        /// Gets domain expiration timestamp.
+        /// Gets or sets domain expiration timestamp
         /// </summary>
         [JsonProperty(PropertyName = "properties.expirationTime")]
-        public System.DateTime? ExpirationTime { get; private set; }
+        public System.DateTime? ExpirationTime { get; set; }
 
         /// <summary>
-        /// Gets timestamp when the domain was renewed last time.
+        /// Gets or sets timestamp when the domain was renewed last time
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastRenewedTime")]
-        public System.DateTime? LastRenewedTime { get; private set; }
+        public System.DateTime? LastRenewedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if the
-        /// domain should be automatically renewed; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets if true then domain will renewed automatically
         /// </summary>
         [JsonProperty(PropertyName = "properties.autoRenew")]
         public bool? AutoRenew { get; set; }
 
         /// <summary>
-        /// Gets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if Azure can
-        /// assign this domain to App Service apps; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;. This value will be
-        /// &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if domain
-        /// registration status is active and
-        /// it is hosted on name servers Azure has programmatic access to.
+        /// Gets or sets if true then Azure can assign this domain to Web Apps.
+        /// This value will be true if domain registration status is active and
+        /// it is hosted on name servers Azure has programmatic access to
         /// </summary>
         [JsonProperty(PropertyName = "properties.readyForDnsRecordManagement")]
-        public bool? ReadyForDnsRecordManagement { get; private set; }
+        public bool? ReadyForDnsRecordManagement { get; set; }
 
         /// <summary>
-        /// Gets all hostnames derived from the domain and assigned to Azure
-        /// resources.
+        /// Gets or sets all hostnames derived from the domain and assigned to
+        /// Azure resources
         /// </summary>
         [JsonProperty(PropertyName = "properties.managedHostNames")]
-        public IList<HostName> ManagedHostNames { get; private set; }
+        public IList<HostName> ManagedHostNames { get; set; }
 
         /// <summary>
-        /// Gets or sets legal agreement consent.
+        /// Gets or sets legal agreement consent
         /// </summary>
         [JsonProperty(PropertyName = "properties.consent")]
         public DomainPurchaseConsent Consent { get; set; }
 
         /// <summary>
-        /// Gets reasons why domain is not renewable.
+        /// Gets or sets reasons why domain is not renewable
         /// </summary>
         [JsonProperty(PropertyName = "properties.domainNotRenewableReasons")]
-        public IList<string> DomainNotRenewableReasons { get; private set; }
-
-        /// <summary>
-        /// Gets or sets current DNS type. Possible values include: 'AzureDns',
-        /// 'DefaultDomainRegistrarDns'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.dnsType")]
-        public DnsType? DnsType { get; set; }
-
-        /// <summary>
-        /// Gets or sets azure DNS Zone to use
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.dnsZoneId")]
-        public string DnsZoneId { get; set; }
-
-        /// <summary>
-        /// Gets or sets target DNS type (would be used for migration).
-        /// Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.targetDnsType")]
-        public DnsType? TargetDnsType { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.authCode")]
-        public string AuthCode { get; set; }
+        public IList<string> DomainNotRenewableReasons { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -259,42 +212,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
-            if (ContactAdmin == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContactAdmin");
-            }
-            if (ContactBilling == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContactBilling");
-            }
-            if (ContactRegistrant == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContactRegistrant");
-            }
-            if (ContactTech == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContactTech");
-            }
-            if (Consent == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Consent");
-            }
-            if (ContactAdmin != null)
-            {
-                ContactAdmin.Validate();
-            }
-            if (ContactBilling != null)
-            {
-                ContactBilling.Validate();
-            }
-            if (ContactRegistrant != null)
-            {
-                ContactRegistrant.Validate();
-            }
-            if (ContactTech != null)
-            {
-                ContactTech.Validate();
-            }
         }
     }
 }

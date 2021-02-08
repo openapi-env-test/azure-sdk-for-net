@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Information about the formal API definition for the app.
+    /// Information about the formal API definition for the web app.
     /// </summary>
     public partial class ApiDefinitionInfo
     {

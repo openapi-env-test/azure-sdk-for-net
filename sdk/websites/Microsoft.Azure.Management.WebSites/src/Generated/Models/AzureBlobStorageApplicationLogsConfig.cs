@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Application logs azure blob storage configuration.
+    /// Application logs azure blob storage configuration
     /// </summary>
     public partial class AzureBlobStorageApplicationLogsConfig
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="level">Log level. Possible values include: 'Off',
         /// 'Verbose', 'Information', 'Warning', 'Error'</param>
         /// <param name="sasUrl">SAS url to a azure blob container with
-        /// read/write/list/delete permissions.</param>
+        /// read/write/list/delete permissions</param>
         /// <param name="retentionInDays">Retention in days.
         /// Remove blobs older than X days.
         /// 0 or lower means no retention.</param>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets SAS url to a azure blob container with
-        /// read/write/list/delete permissions.
+        /// read/write/list/delete permissions
         /// </summary>
         [JsonProperty(PropertyName = "sasUrl")]
         public string SasUrl { get; set; }

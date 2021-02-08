@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Hybrid Connection for an App Service app.
+    /// Class that represents a BizTalk Hybrid Connection
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RelayServiceConnectionEntity : ProxyOnlyResource
+    public partial class RelayServiceConnectionEntity : Resource
     {
         /// <summary>
         /// Initializes a new instance of the RelayServiceConnectionEntity
@@ -34,12 +36,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the RelayServiceConnectionEntity
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        public RelayServiceConnectionEntity(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        public RelayServiceConnectionEntity(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
+            : base(location, id, name, kind, type, tags)
         {
             EntityName = entityName;
             EntityConnectionString = entityConnectionString;
@@ -91,5 +95,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [JsonProperty(PropertyName = "properties.biztalkUri")]
         public string BiztalkUri { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

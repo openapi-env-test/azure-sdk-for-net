@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Enabled configuration.
+    /// Enabled configuration
     /// </summary>
     public partial class EnabledConfig
     {
@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the EnabledConfig class.
         /// </summary>
-        /// <param name="enabled">True if configuration is enabled, false if it
-        /// is disabled and null if configuration is not set.</param>
+        /// <param name="enabled">Enabled</param>
         public EnabledConfig(bool? enabled = default(bool?))
         {
             Enabled = enabled;
@@ -43,8 +42,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets true if configuration is enabled, false if it is
-        /// disabled and null if configuration is not set.
+        /// Gets or sets enabled
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }

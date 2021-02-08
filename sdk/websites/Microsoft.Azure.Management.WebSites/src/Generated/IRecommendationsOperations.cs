@@ -24,144 +24,18 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface IRecommendationsOperations
     {
         /// <summary>
-        /// List all recommendations for a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Description for List all recommendations for a subscription.
-        /// </remarks>
-        /// <param name='featured'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most
-        /// critical recommendations. The default is
-        /// &lt;code&gt;false&lt;/code&gt;, which returns all recommendations.
-        /// </param>
-        /// <param name='filter'>
-        /// Filter is specified by using OData syntax. Example: $filter=channel
-        /// eq 'Api' or channel eq 'Notification' and startTime eq
-        /// 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and
-        /// timeGrain eq duration'[PT1H|PT1M|P1D]
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListWithHttpMessagesAsync(bool? featured = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Reset all recommendation opt-out settings for a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Description for Reset all recommendation opt-out settings for a
+        /// Gets a list of recommendations associated with the specified
         /// subscription.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> ResetAllFiltersWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Disables the specified rule so it will not apply to a subscription
-        /// in the future.
         /// </summary>
-        /// <remarks>
-        /// Description for Disables the specified rule so it will not apply to
-        /// a subscription in the future.
-        /// </remarks>
-        /// <param name='name'>
-        /// Rule name
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DisableRecommendationForSubscriptionWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get past recommendations for an app, optionally
-        /// specified by the time range.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// Name of the hosting environment.
-        /// </param>
-        /// <param name='expiredOnly'>
-        /// Specify &lt;code&gt;false&lt;/code&gt; to return all
-        /// recommendations. The default is &lt;code&gt;true&lt;/code&gt;,
-        /// which returns only expired recommendations.
-        /// </param>
-        /// <param name='filter'>
-        /// Filter is specified by using OData syntax. Example: $filter=channel
-        /// eq 'Api' or channel eq 'Notification' and startTime eq
-        /// 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and
-        /// timeGrain eq duration'[PT1H|PT1M|P1D]
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListHistoryForHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string hostingEnvironmentName, bool? expiredOnly = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get all recommendations for a hosting environment.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get all recommendations for a hosting environment.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// Name of the app.
-        /// </param>
         /// <param name='featured'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most
-        /// critical recommendations. The default is
-        /// &lt;code&gt;false&lt;/code&gt;, which returns all recommendations.
+        /// If set, this API returns only the most critical recommendation
+        /// among the others. Otherwise this API returns all recommendations
+        /// available
         /// </param>
         /// <param name='filter'>
         /// Return only channels specified in the filter. Filter is specified
-        /// by using OData syntax. Example: $filter=channel eq 'Api' or channel
-        /// eq 'Notification'
+        /// by using OData syntax. Example: $filter=channels eq 'Api' or
+        /// channel eq 'Notification'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -169,7 +43,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -178,316 +52,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListRecommendedRulesForHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string hostingEnvironmentName, bool? featured = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<Recommendation>>> GetRecommendationBySubscriptionWithHttpMessagesAsync(bool? featured = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Disable all recommendations for an app.
+        /// Gets the detailed properties of the recommendation object for the
+        /// specified web site.
         /// </summary>
-        /// <remarks>
-        /// Description for Disable all recommendations for an app.
-        /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DisableAllForHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string environmentName, string hostingEnvironmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Reset all recommendation opt-out settings for an
-        /// app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> ResetAllFiltersForHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string environmentName, string hostingEnvironmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a recommendation rule for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get a recommendation rule for an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// Name of the hosting environment.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the recommendation.
-        /// </param>
-        /// <param name='updateSeen'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to update the last-seen
-        /// timestamp of the recommendation object.
-        /// </param>
-        /// <param name='recommendationId'>
-        /// The GUID of the recommendation object if you query an expired one.
-        /// You don't need to specify it to query an active entry.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RecommendationRule>> GetRuleDetailsByHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string hostingEnvironmentName, string name, bool? updateSeen = default(bool?), string recommendationId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Disables the specific rule for a web site permanently.
-        /// </summary>
-        /// <remarks>
-        /// Description for Disables the specific rule for a web site
-        /// permanently.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='environmentName'>
-        /// Site name
-        /// </param>
-        /// <param name='name'>
-        /// Rule name
-        /// </param>
-        /// <param name='hostingEnvironmentName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DisableRecommendationForHostingEnvironmentWithHttpMessagesAsync(string resourceGroupName, string environmentName, string name, string hostingEnvironmentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get past recommendations for an app, optionally
-        /// specified by the time range.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='expiredOnly'>
-        /// Specify &lt;code&gt;false&lt;/code&gt; to return all
-        /// recommendations. The default is &lt;code&gt;true&lt;/code&gt;,
-        /// which returns only expired recommendations.
-        /// </param>
-        /// <param name='filter'>
-        /// Filter is specified by using OData syntax. Example: $filter=channel
-        /// eq 'Api' or channel eq 'Notification' and startTime eq
-        /// 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and
-        /// timeGrain eq duration'[PT1H|PT1M|P1D]
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListHistoryForWebAppWithHttpMessagesAsync(string resourceGroupName, string siteName, bool? expiredOnly = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get all recommendations for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get all recommendations for an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='featured'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to return only the most
-        /// critical recommendations. The default is
-        /// &lt;code&gt;false&lt;/code&gt;, which returns all recommendations.
-        /// </param>
-        /// <param name='filter'>
-        /// Return only channels specified in the filter. Filter is specified
-        /// by using OData syntax. Example: $filter=channel eq 'Api' or channel
-        /// eq 'Notification'
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListRecommendedRulesForWebAppWithHttpMessagesAsync(string resourceGroupName, string siteName, bool? featured = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Disable all recommendations for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Disable all recommendations for an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DisableAllForWebAppWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Reset all recommendation opt-out settings for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Reset all recommendation opt-out settings for an
-        /// app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> ResetAllFiltersForWebAppWithHttpMessagesAsync(string resourceGroupName, string siteName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a recommendation rule for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get a recommendation rule for an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the recommendation.
-        /// </param>
-        /// <param name='updateSeen'>
-        /// Specify &lt;code&gt;true&lt;/code&gt; to update the last-seen
-        /// timestamp of the recommendation object.
-        /// </param>
-        /// <param name='recommendationId'>
-        /// The GUID of the recommendation object if you query an expired one.
-        /// You don't need to specify it to query an active entry.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RecommendationRule>> GetRuleDetailsByWebAppWithHttpMessagesAsync(string resourceGroupName, string siteName, string name, bool? updateSeen = default(bool?), string recommendationId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Disables the specific rule for a web site permanently.
-        /// </summary>
-        /// <remarks>
-        /// Description for Disables the specific rule for a web site
-        /// permanently.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// Resource group name
         /// </param>
         /// <param name='siteName'>
         /// Site name
         /// </param>
         /// <param name='name'>
-        /// Rule name
+        /// Recommendation rule name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -495,29 +72,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DisableRecommendationForSiteWithHttpMessagesAsync(string resourceGroupName, string siteName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List all recommendations for a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Description for List all recommendations for a subscription.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -526,17 +81,61 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RecommendationRule>> GetRuleDetailsBySiteNameWithHttpMessagesAsync(string resourceGroupName, string siteName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get past recommendations for an app, optionally specified by the
+        /// Gets a list of recommendations associated with the specified web
+        /// site.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Resource group name
+        /// </param>
+        /// <param name='siteName'>
+        /// Site name
+        /// </param>
+        /// <param name='featured'>
+        /// If set, this API returns only the most critical recommendation
+        /// among the others. Otherwise this API returns all recommendations
+        /// available
+        /// </param>
+        /// <param name='siteSku'>
+        /// The name of site SKU.
+        /// </param>
+        /// <param name='numSlots'>
+        /// The number of site slots associated to the site
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IList<Recommendation>>> GetRecommendedRulesForSiteWithHttpMessagesAsync(string resourceGroupName, string siteName, bool? featured = default(bool?), string siteSku = default(string), int? numSlots = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the list of past recommendations optionally specified by the
         /// time range.
         /// </summary>
-        /// <remarks>
-        /// Description for Get past recommendations for an app, optionally
-        /// specified by the time range.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// Resource group name
+        /// </param>
+        /// <param name='siteName'>
+        /// Site name
+        /// </param>
+        /// <param name='startTime'>
+        /// The start time of a time range to query, e.g. $filter=startTime eq
+        /// '2015-01-01T00:00:00Z' and endTime eq '2015-01-02T00:00:00Z'
+        /// </param>
+        /// <param name='endTime'>
+        /// The end time of a time range to query, e.g. $filter=startTime eq
+        /// '2015-01-01T00:00:00Z' and endTime eq '2015-01-02T00:00:00Z'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -544,7 +143,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -553,83 +152,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListHistoryForHostingEnvironmentNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get all recommendations for a hosting environment.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get all recommendations for a hosting environment.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListRecommendedRulesForHostingEnvironmentNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get past recommendations for an app, optionally specified by the
-        /// time range.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get past recommendations for an app, optionally
-        /// specified by the time range.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListHistoryForWebAppNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get all recommendations for an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get all recommendations for an app.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Recommendation>>> ListRecommendedRulesForWebAppNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<Recommendation>>> GetRecommendationHistoryForSiteWithHttpMessagesAsync(string resourceGroupName, string siteName, string startTime = default(string), string endTime = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

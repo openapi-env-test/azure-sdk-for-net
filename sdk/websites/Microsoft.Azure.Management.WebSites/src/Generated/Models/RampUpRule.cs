@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// Routing rules for ramp up testing. This rule allows to redirect static
     /// traffic % to a slot or to gradually change routing % based on
-    /// performance.
+    /// performance
     /// </summary>
     public partial class RampUpRule
     {
@@ -33,28 +33,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         /// <param name="actionHostName">Hostname of a slot to which the
         /// traffic will be redirected if decided to. E.g.
-        /// myapp-stage.azurewebsites.net.</param>
+        /// mysite-stage.azurewebsites.net</param>
         /// <param name="reroutePercentage">Percentage of the traffic which
         /// will be redirected to
-        /// &lt;code&gt;ActionHostName&lt;/code&gt;.</param>
-        /// <param name="changeStep">In auto ramp up scenario this is the step
-        /// to add/remove from &lt;code&gt;ReroutePercentage&lt;/code&gt; until
-        /// it reaches \n&lt;code&gt;MinReroutePercentage&lt;/code&gt; or
-        /// &lt;code&gt;MaxReroutePercentage&lt;/code&gt;. Site metrics are
-        /// checked every N minutes specified in
-        /// &lt;code&gt;ChangeIntervalInMinutes&lt;/code&gt;.\nCustom decision
-        /// algorithm
-        /// can be provided in TiPCallback site extension which URL can be
-        /// specified in
-        /// &lt;code&gt;ChangeDecisionCallbackUrl&lt;/code&gt;.</param>
-        /// <param name="changeIntervalInMinutes">Specifies interval in minutes
-        /// to reevaluate ReroutePercentage.</param>
-        /// <param name="minReroutePercentage">Specifies lower boundary above
-        /// which ReroutePercentage will stay.</param>
-        /// <param name="maxReroutePercentage">Specifies upper boundary below
-        /// which ReroutePercentage will stay.</param>
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ActionHostName}</param>
+        /// <param name="changeStep">[Optional] In auto ramp up scenario this
+        /// is the step to add/remove from
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ReroutePercentage}
+        /// until it reaches
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.MinReroutePercentage}
+        /// or
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.MaxReroutePercentage}.
+        /// Site metrics are checked every N minutes specified in
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeIntervalInMinutes}.
+        /// Custom decision algorithm can be provided in TiPCallback site
+        /// extension which Url can be specified in
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeDecisionCallbackUrl}</param>
+        /// <param name="changeIntervalInMinutes">[Optional] Specifies interval
+        /// in minutes to reevaluate ReroutePercentage</param>
+        /// <param name="minReroutePercentage">[Optional] Specifies lower
+        /// boundary above which ReroutePercentage will stay.</param>
+        /// <param name="maxReroutePercentage">[Optional] Specifies upper
+        /// boundary below which ReroutePercentage will stay.</param>
         /// <param name="changeDecisionCallbackUrl">Custom decision algorithm
-        /// can be provided in TiPCallback site extension which URL can be
+        /// can be provided in TiPCallback site extension which Url can be
         /// specified. See TiPCallback site extension for the scaffold and
         /// contracts.
         /// https://www.siteextensions.net/packages/TiPCallback/</param>
@@ -81,59 +83,59 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets hostname of a slot to which the traffic will be
-        /// redirected if decided to. E.g. myapp-stage.azurewebsites.net.
+        /// redirected if decided to. E.g. mysite-stage.azurewebsites.net
         /// </summary>
         [JsonProperty(PropertyName = "actionHostName")]
         public string ActionHostName { get; set; }
 
         /// <summary>
         /// Gets or sets percentage of the traffic which will be redirected to
-        /// &amp;lt;code&amp;gt;ActionHostName&amp;lt;/code&amp;gt;.
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ActionHostName}
         /// </summary>
         [JsonProperty(PropertyName = "reroutePercentage")]
         public double? ReroutePercentage { get; set; }
 
         /// <summary>
-        /// Gets or sets in auto ramp up scenario this is the step to
-        /// add/remove from
-        /// &amp;lt;code&amp;gt;ReroutePercentage&amp;lt;/code&amp;gt; until it
-        /// reaches
-        /// \n&amp;lt;code&amp;gt;MinReroutePercentage&amp;lt;/code&amp;gt; or
-        /// &amp;lt;code&amp;gt;MaxReroutePercentage&amp;lt;/code&amp;gt;. Site
-        /// metrics are checked every N minutes specified in
-        /// &amp;lt;code&amp;gt;ChangeIntervalInMinutes&amp;lt;/code&amp;gt;.\nCustom
-        /// decision algorithm
-        /// can be provided in TiPCallback site extension which URL can be
-        /// specified in
-        /// &amp;lt;code&amp;gt;ChangeDecisionCallbackUrl&amp;lt;/code&amp;gt;.
+        /// Gets or sets [Optional] In auto ramp up scenario this is the step
+        /// to add/remove from
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ReroutePercentage}
+        /// until it reaches
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.MinReroutePercentage}
+        /// or
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.MaxReroutePercentage}.
+        /// Site metrics are checked every N minutes specified in
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeIntervalInMinutes}.
+        /// Custom decision algorithm can be provided in TiPCallback site
+        /// extension which Url can be specified in
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeDecisionCallbackUrl}
         /// </summary>
         [JsonProperty(PropertyName = "changeStep")]
         public double? ChangeStep { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies interval in minutes to reevaluate
-        /// ReroutePercentage.
+        /// Gets or sets [Optional] Specifies interval in minutes to reevaluate
+        /// ReroutePercentage
         /// </summary>
         [JsonProperty(PropertyName = "changeIntervalInMinutes")]
         public int? ChangeIntervalInMinutes { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies lower boundary above which ReroutePercentage
-        /// will stay.
+        /// Gets or sets [Optional] Specifies lower boundary above which
+        /// ReroutePercentage will stay.
         /// </summary>
         [JsonProperty(PropertyName = "minReroutePercentage")]
         public double? MinReroutePercentage { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies upper boundary below which ReroutePercentage
-        /// will stay.
+        /// Gets or sets [Optional] Specifies upper boundary below which
+        /// ReroutePercentage will stay.
         /// </summary>
         [JsonProperty(PropertyName = "maxReroutePercentage")]
         public double? MaxReroutePercentage { get; set; }
 
         /// <summary>
         /// Gets or sets custom decision algorithm can be provided in
-        /// TiPCallback site extension which URL can be specified. See
+        /// TiPCallback site extension which Url can be specified. See
         /// TiPCallback site extension for the scaffold and contracts.
         /// https://www.siteextensions.net/packages/TiPCallback/
         /// </summary>

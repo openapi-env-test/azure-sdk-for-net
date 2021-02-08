@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Legal agreement for a top level domain.
+    /// Represents a legal agreement for top level domain
     /// </summary>
     public partial class TldLegalAgreement
     {
@@ -31,12 +30,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the TldLegalAgreement class.
         /// </summary>
         /// <param name="agreementKey">Unique identifier for the
-        /// agreement.</param>
-        /// <param name="title">Agreement title.</param>
-        /// <param name="content">Agreement details.</param>
-        /// <param name="url">URL where a copy of the agreement details is
-        /// hosted.</param>
-        public TldLegalAgreement(string agreementKey, string title, string content, string url = default(string))
+        /// agreement</param>
+        /// <param name="title">Agreement title</param>
+        /// <param name="content">Agreement details</param>
+        /// <param name="url">Url where a copy of the agreement details is
+        /// hosted</param>
+        public TldLegalAgreement(string agreementKey = default(string), string title = default(string), string content = default(string), string url = default(string))
         {
             AgreementKey = agreementKey;
             Title = title;
@@ -51,49 +50,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets unique identifier for the agreement.
+        /// Gets or sets unique identifier for the agreement
         /// </summary>
         [JsonProperty(PropertyName = "agreementKey")]
         public string AgreementKey { get; set; }
 
         /// <summary>
-        /// Gets or sets agreement title.
+        /// Gets or sets agreement title
         /// </summary>
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets agreement details.
+        /// Gets or sets agreement details
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public string Content { get; set; }
 
         /// <summary>
-        /// Gets or sets URL where a copy of the agreement details is hosted.
+        /// Gets or sets url where a copy of the agreement details is hosted
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (AgreementKey == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AgreementKey");
-            }
-            if (Title == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Title");
-            }
-            if (Content == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Content");
-            }
-        }
     }
 }

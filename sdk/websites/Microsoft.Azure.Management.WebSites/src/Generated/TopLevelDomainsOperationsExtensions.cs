@@ -22,152 +22,124 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class TopLevelDomainsOperationsExtensions
     {
             /// <summary>
-            /// Get all top-level domains supported for registration.
+            /// Lists all top level domains supported for registration
             /// </summary>
-            /// <remarks>
-            /// Description for Get all top-level domains supported for registration.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<TopLevelDomain> List(this ITopLevelDomainsOperations operations)
+            public static IPage<TopLevelDomain> GetGetTopLevelDomains(this ITopLevelDomainsOperations operations)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetGetTopLevelDomainsAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get all top-level domains supported for registration.
+            /// Lists all top level domains supported for registration
             /// </summary>
-            /// <remarks>
-            /// Description for Get all top-level domains supported for registration.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TopLevelDomain>> ListAsync(this ITopLevelDomainsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<TopLevelDomain>> GetGetTopLevelDomainsAsync(this ITopLevelDomainsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetGetTopLevelDomainsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get details of a top-level domain.
+            /// Gets details of a top level domain
             /// </summary>
-            /// <remarks>
-            /// Description for Get details of a top-level domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='name'>
-            /// Name of the top-level domain.
+            /// Name of the top level domain
             /// </param>
-            public static TopLevelDomain Get(this ITopLevelDomainsOperations operations, string name)
+            public static TopLevelDomain GetTopLevelDomain(this ITopLevelDomainsOperations operations, string name)
             {
-                return operations.GetAsync(name).GetAwaiter().GetResult();
+                return operations.GetTopLevelDomainAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get details of a top-level domain.
+            /// Gets details of a top level domain
             /// </summary>
-            /// <remarks>
-            /// Description for Get details of a top-level domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='name'>
-            /// Name of the top-level domain.
+            /// Name of the top level domain
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TopLevelDomain> GetAsync(this ITopLevelDomainsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TopLevelDomain> GetTopLevelDomainAsync(this ITopLevelDomainsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetTopLevelDomainWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets all legal agreements that user needs to accept before purchasing a
-            /// domain.
+            /// Lists legal agreements that user needs to accept before purchasing domain
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all legal agreements that user needs to accept before
-            /// purchasing a domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='name'>
-            /// Name of the top-level domain.
+            /// Name of the top level domain
             /// </param>
             /// <param name='agreementOption'>
-            /// Domain agreement options.
+            /// Domain agreement options
             /// </param>
-            public static IPage<TldLegalAgreement> ListAgreements(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOption agreementOption)
+            public static IPage<TldLegalAgreement> ListTopLevelDomainAgreements(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOption agreementOption)
             {
-                return operations.ListAgreementsAsync(name, agreementOption).GetAwaiter().GetResult();
+                return operations.ListTopLevelDomainAgreementsAsync(name, agreementOption).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets all legal agreements that user needs to accept before purchasing a
-            /// domain.
+            /// Lists legal agreements that user needs to accept before purchasing domain
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all legal agreements that user needs to accept before
-            /// purchasing a domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='name'>
-            /// Name of the top-level domain.
+            /// Name of the top level domain
             /// </param>
             /// <param name='agreementOption'>
-            /// Domain agreement options.
+            /// Domain agreement options
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TldLegalAgreement>> ListAgreementsAsync(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOption agreementOption, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<TldLegalAgreement>> ListTopLevelDomainAgreementsAsync(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOption agreementOption, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAgreementsWithHttpMessagesAsync(name, agreementOption, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListTopLevelDomainAgreementsWithHttpMessagesAsync(name, agreementOption, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get all top-level domains supported for registration.
+            /// Lists all top level domains supported for registration
             /// </summary>
-            /// <remarks>
-            /// Description for Get all top-level domains supported for registration.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<TopLevelDomain> ListNext(this ITopLevelDomainsOperations operations, string nextPageLink)
+            public static IPage<TopLevelDomain> GetGetTopLevelDomainsNext(this ITopLevelDomainsOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetGetTopLevelDomainsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get all top-level domains supported for registration.
+            /// Lists all top level domains supported for registration
             /// </summary>
-            /// <remarks>
-            /// Description for Get all top-level domains supported for registration.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -177,41 +149,31 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TopLevelDomain>> ListNextAsync(this ITopLevelDomainsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<TopLevelDomain>> GetGetTopLevelDomainsNextAsync(this ITopLevelDomainsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetGetTopLevelDomainsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets all legal agreements that user needs to accept before purchasing a
-            /// domain.
+            /// Lists legal agreements that user needs to accept before purchasing domain
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all legal agreements that user needs to accept before
-            /// purchasing a domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<TldLegalAgreement> ListAgreementsNext(this ITopLevelDomainsOperations operations, string nextPageLink)
+            public static IPage<TldLegalAgreement> ListTopLevelDomainAgreementsNext(this ITopLevelDomainsOperations operations, string nextPageLink)
             {
-                return operations.ListAgreementsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListTopLevelDomainAgreementsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets all legal agreements that user needs to accept before purchasing a
-            /// domain.
+            /// Lists legal agreements that user needs to accept before purchasing domain
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all legal agreements that user needs to accept before
-            /// purchasing a domain.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -221,9 +183,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TldLegalAgreement>> ListAgreementsNextAsync(this ITopLevelDomainsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<TldLegalAgreement>> ListTopLevelDomainAgreementsNextAsync(this ITopLevelDomainsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAgreementsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListTopLevelDomainAgreementsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

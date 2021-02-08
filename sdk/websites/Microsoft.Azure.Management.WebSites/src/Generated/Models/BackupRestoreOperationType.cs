@@ -26,11 +26,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "Clone")]
         Clone,
         [EnumMember(Value = "Relocation")]
-        Relocation,
-        [EnumMember(Value = "Snapshot")]
-        Snapshot,
-        [EnumMember(Value = "CloudFS")]
-        CloudFS
+        Relocation
     }
     internal static class BackupRestoreOperationTypeEnumExtension
     {
@@ -49,10 +45,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "Clone";
                 case BackupRestoreOperationType.Relocation:
                     return "Relocation";
-                case BackupRestoreOperationType.Snapshot:
-                    return "Snapshot";
-                case BackupRestoreOperationType.CloudFS:
-                    return "CloudFS";
             }
             return null;
         }
@@ -67,10 +59,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return BackupRestoreOperationType.Clone;
                 case "Relocation":
                     return BackupRestoreOperationType.Relocation;
-                case "Snapshot":
-                    return BackupRestoreOperationType.Snapshot;
-                case "CloudFS":
-                    return BackupRestoreOperationType.CloudFS;
             }
             return null;
         }

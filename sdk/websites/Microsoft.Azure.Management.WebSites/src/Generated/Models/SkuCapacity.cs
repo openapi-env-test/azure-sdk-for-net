@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of the App Service plan scale options.
+    /// Description of the App Service Plan scale options
     /// </summary>
     public partial class SkuCapacity
     {
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SkuCapacity class.
         /// </summary>
-        /// <param name="minimum">Minimum number of workers for this App
-        /// Service plan SKU.</param>
-        /// <param name="maximum">Maximum number of workers for this App
-        /// Service plan SKU.</param>
-        /// <param name="defaultProperty">Default number of workers for this
-        /// App Service plan SKU.</param>
+        /// <param name="minimum">Minimum number of Workers for this App
+        /// Service Plan SKU</param>
+        /// <param name="maximum">Maximum number of Workers for this App
+        /// Service Plan SKU</param>
+        /// <param name="defaultProperty">Default number of Workers for this
+        /// App Service Plan SKU</param>
         /// <param name="scaleType">Available scale configurations for an App
-        /// Service plan.</param>
+        /// Service Plan</param>
         public SkuCapacity(int? minimum = default(int?), int? maximum = default(int?), int? defaultProperty = default(int?), string scaleType = default(string))
         {
             Minimum = minimum;
@@ -52,29 +52,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets minimum number of workers for this App Service plan
-        /// SKU.
+        /// Gets or sets minimum number of Workers for this App Service Plan
+        /// SKU
         /// </summary>
         [JsonProperty(PropertyName = "minimum")]
         public int? Minimum { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum number of workers for this App Service plan
-        /// SKU.
+        /// Gets or sets maximum number of Workers for this App Service Plan
+        /// SKU
         /// </summary>
         [JsonProperty(PropertyName = "maximum")]
         public int? Maximum { get; set; }
 
         /// <summary>
-        /// Gets or sets default number of workers for this App Service plan
-        /// SKU.
+        /// Gets or sets default number of Workers for this App Service Plan
+        /// SKU
         /// </summary>
         [JsonProperty(PropertyName = "default")]
         public int? DefaultProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets available scale configurations for an App Service
-        /// plan.
+        /// Gets or sets available scale configurations for an App Service Plan
         /// </summary>
         [JsonProperty(PropertyName = "scaleType")]
         public string ScaleType { get; set; }

@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Http logs to file system configuration.
+    /// Http logs to file system configuration
     /// </summary>
     public partial class FileSystemHttpLogsConfig
     {
@@ -38,8 +37,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="retentionInDays">Retention in days.
         /// Remove files older than X days.
         /// 0 or lower means no retention.</param>
-        /// <param name="enabled">True if configuration is enabled, false if it
-        /// is disabled and null if configuration is not set.</param>
+        /// <param name="enabled">Enabled</param>
         public FileSystemHttpLogsConfig(int? retentionInMb = default(int?), int? retentionInDays = default(int?), bool? enabled = default(bool?))
         {
             RetentionInMb = retentionInMb;
@@ -71,28 +69,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public int? RetentionInDays { get; set; }
 
         /// <summary>
-        /// Gets or sets true if configuration is enabled, false if it is
-        /// disabled and null if configuration is not set.
+        /// Gets or sets enabled
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (RetentionInMb > 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInMb", 100);
-            }
-            if (RetentionInMb < 25)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInMb", 25);
-            }
-        }
     }
 }

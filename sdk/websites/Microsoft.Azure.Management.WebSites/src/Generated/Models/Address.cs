@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Address information for domain registration.
+    /// Address information for domain registration
     /// </summary>
     public partial class Address
     {
@@ -30,14 +29,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Address class.
         /// </summary>
-        /// <param name="address1">First line of an Address.</param>
-        /// <param name="city">The city for the address.</param>
-        /// <param name="country">The country for the address.</param>
-        /// <param name="postalCode">The postal code for the address.</param>
-        /// <param name="state">The state or province for the address.</param>
-        /// <param name="address2">The second line of the Address.
-        /// Optional.</param>
-        public Address(string address1, string city, string country, string postalCode, string state, string address2 = default(string))
+        /// <param name="address1">Address 1</param>
+        /// <param name="address2">Address 2</param>
+        /// <param name="city">City</param>
+        /// <param name="country">Country</param>
+        /// <param name="postalCode">Postal code</param>
+        /// <param name="state">State</param>
+        public Address(string address1 = default(string), string address2 = default(string), string city = default(string), string country = default(string), string postalCode = default(string), string state = default(string))
         {
             Address1 = address1;
             Address2 = address2;
@@ -54,69 +52,40 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets first line of an Address.
+        /// Gets or sets address 1
         /// </summary>
         [JsonProperty(PropertyName = "address1")]
         public string Address1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the second line of the Address. Optional.
+        /// Gets or sets address 2
         /// </summary>
         [JsonProperty(PropertyName = "address2")]
         public string Address2 { get; set; }
 
         /// <summary>
-        /// Gets or sets the city for the address.
+        /// Gets or sets city
         /// </summary>
         [JsonProperty(PropertyName = "city")]
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or sets the country for the address.
+        /// Gets or sets country
         /// </summary>
         [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
         /// <summary>
-        /// Gets or sets the postal code for the address.
+        /// Gets or sets postal code
         /// </summary>
         [JsonProperty(PropertyName = "postalCode")]
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the state or province for the address.
+        /// Gets or sets state
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Address1 == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Address1");
-            }
-            if (City == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "City");
-            }
-            if (Country == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Country");
-            }
-            if (PostalCode == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PostalCode");
-            }
-            if (State == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "State");
-            }
-        }
     }
 }

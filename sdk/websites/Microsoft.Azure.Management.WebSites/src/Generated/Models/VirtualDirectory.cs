@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Directory for virtual application.
-    /// </summary>
     public partial class VirtualDirectory
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the VirtualDirectory class.
         /// </summary>
-        /// <param name="virtualPath">Path to virtual application.</param>
-        /// <param name="physicalPath">Physical path.</param>
         public VirtualDirectory(string virtualPath = default(string), string physicalPath = default(string))
         {
             VirtualPath = virtualPath;
@@ -44,13 +39,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets path to virtual application.
         /// </summary>
         [JsonProperty(PropertyName = "virtualPath")]
         public string VirtualPath { get; set; }
 
         /// <summary>
-        /// Gets or sets physical path.
         /// </summary>
         [JsonProperty(PropertyName = "physicalPath")]
         public string PhysicalPath { get; set; }

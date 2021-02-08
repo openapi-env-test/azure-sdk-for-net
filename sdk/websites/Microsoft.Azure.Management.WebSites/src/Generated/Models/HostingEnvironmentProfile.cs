@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Specification for an App Service Environment to use for this resource.
+    /// Specification for a hostingEnvironment (App Service Environment) to use
+    /// for this resource
     /// </summary>
     public partial class HostingEnvironmentProfile
     {
@@ -29,11 +30,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the HostingEnvironmentProfile class.
         /// </summary>
-        /// <param name="id">Resource ID of the App Service
-        /// Environment.</param>
-        /// <param name="name">Name of the App Service Environment.</param>
-        /// <param name="type">Resource type of the App Service
-        /// Environment.</param>
+        /// <param name="id">Resource id of the hostingEnvironment (App Service
+        /// Environment)</param>
+        /// <param name="name">Name of the hostingEnvironment (App Service
+        /// Environment) (read only)</param>
+        /// <param name="type">Resource type of the hostingEnvironment (App
+        /// Service Environment) (read only)</param>
         public HostingEnvironmentProfile(string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
@@ -48,22 +50,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource ID of the App Service Environment.
+        /// Gets or sets resource id of the hostingEnvironment (App Service
+        /// Environment)
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets name of the App Service Environment.
+        /// Gets or sets name of the hostingEnvironment (App Service
+        /// Environment) (read only)
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets resource type of the App Service Environment.
+        /// Gets or sets resource type of the hostingEnvironment (App Service
+        /// Environment) (read only)
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }

@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.WebSites
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,110 +24,66 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class CertificatesOperationsExtensions
     {
             /// <summary>
-            /// Get all certificates for a subscription.
+            /// Get certificates for a subscription in the specified resource group.
             /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates for a subscription.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<Certificate> List(this ICertificatesOperations operations)
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            public static IPage<Certificate> GetCertificates(this ICertificatesOperations operations, string resourceGroupName)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.GetCertificatesAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get all certificates for a subscription.
+            /// Get certificates for a subscription in the specified resource group.
             /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates for a subscription.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Certificate>> ListAsync(this ICertificatesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Certificate>> GetCertificatesAsync(this ICertificatesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetCertificatesWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get all certificates in a resource group.
+            /// Get a certificate by certificate name for a subscription in the specified
+            /// resource group.
             /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates in a resource group.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            public static IPage<Certificate> ListByResourceGroup(this ICertificatesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get all certificates in a resource group.
-            /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates in a resource group.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Certificate>> ListByResourceGroupAsync(this ICertificatesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Get a certificate.
-            /// </summary>
-            /// <remarks>
-            /// Description for Get a certificate.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
             /// Name of the certificate.
             /// </param>
-            public static Certificate Get(this ICertificatesOperations operations, string resourceGroupName, string name)
+            public static Certificate GetCertificate(this ICertificatesOperations operations, string resourceGroupName, string name)
             {
-                return operations.GetAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.GetCertificateAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get a certificate.
+            /// Get a certificate by certificate name for a subscription in the specified
+            /// resource group.
             /// </summary>
-            /// <remarks>
-            /// Description for Get a certificate.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
             /// Name of the certificate.
@@ -133,184 +91,373 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Certificate> GetAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Certificate> GetCertificateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetCertificateWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create or update a certificate.
+            /// Creates or modifies an existing certificate.
             /// </summary>
-            /// <remarks>
-            /// Description for Create or update a certificate.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
             /// Name of the certificate.
             /// </param>
             /// <param name='certificateEnvelope'>
-            /// Details of certificate, if it exists already.
+            /// Details of certificate if it exists already.
             /// </param>
-            public static Certificate CreateOrUpdate(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope)
+            public static Certificate CreateOrUpdateCertificate(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, name, certificateEnvelope).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateCertificateAsync(resourceGroupName, name, certificateEnvelope).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create or update a certificate.
+            /// Creates or modifies an existing certificate.
             /// </summary>
-            /// <remarks>
-            /// Description for Create or update a certificate.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
             /// Name of the certificate.
             /// </param>
             /// <param name='certificateEnvelope'>
-            /// Details of certificate, if it exists already.
+            /// Details of certificate if it exists already.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Certificate> CreateOrUpdateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Certificate> CreateOrUpdateCertificateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, certificateEnvelope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateCertificateWithHttpMessagesAsync(resourceGroupName, name, certificateEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Delete a certificate.
+            /// Delete a certificate by name in a specified subscription and resourcegroup.
             /// </summary>
-            /// <remarks>
-            /// Description for Delete a certificate.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
-            /// Name of the certificate.
+            /// Name of the certificate to be deleted.
             /// </param>
-            public static void Delete(this ICertificatesOperations operations, string resourceGroupName, string name)
+            public static object DeleteCertificate(this ICertificatesOperations operations, string resourceGroupName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.DeleteCertificateAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete a certificate.
+            /// Delete a certificate by name in a specified subscription and resourcegroup.
             /// </summary>
-            /// <remarks>
-            /// Description for Delete a certificate.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// Name of the resource group
             /// </param>
             /// <param name='name'>
-            /// Name of the certificate.
+            /// Name of the certificate to be deleted.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> DeleteCertificateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Create or update a certificate.
-            /// </summary>
-            /// <remarks>
-            /// Description for Create or update a certificate.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='name'>
-            /// Name of the certificate.
-            /// </param>
-            /// <param name='certificateEnvelope'>
-            /// Details of certificate, if it exists already.
-            /// </param>
-            public static Certificate Update(this ICertificatesOperations operations, string resourceGroupName, string name, CertificatePatchResource certificateEnvelope)
-            {
-                return operations.UpdateAsync(resourceGroupName, name, certificateEnvelope).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update a certificate.
-            /// </summary>
-            /// <remarks>
-            /// Description for Create or update a certificate.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='name'>
-            /// Name of the certificate.
-            /// </param>
-            /// <param name='certificateEnvelope'>
-            /// Details of certificate, if it exists already.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Certificate> UpdateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CertificatePatchResource certificateEnvelope, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, certificateEnvelope, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteCertificateWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get all certificates for a subscription.
+            /// Creates or modifies an existing certificate.
             /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates for a subscription.
-            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='certificateEnvelope'>
+            /// Details of certificate if it exists already.
+            /// </param>
+            public static Certificate UpdateCertificate(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope)
+            {
+                return operations.UpdateCertificateAsync(resourceGroupName, name, certificateEnvelope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or modifies an existing certificate.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='certificateEnvelope'>
+            /// Details of certificate if it exists already.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Certificate> UpdateCertificateAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Certificate certificateEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateCertificateWithHttpMessagesAsync(resourceGroupName, name, certificateEnvelope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the certificate signing requests for a subscription in the specified
+            /// resource group
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            public static IList<Csr> GetCsrs(this ICertificatesOperations operations, string resourceGroupName)
+            {
+                return operations.GetCsrsAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the certificate signing requests for a subscription in the specified
+            /// resource group
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<Csr>> GetCsrsAsync(this ICertificatesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCsrsWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a certificate signing request by certificate name for a subscription
+            /// in the specified resource group
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            public static Csr GetCsr(this ICertificatesOperations operations, string resourceGroupName, string name)
+            {
+                return operations.GetCsrAsync(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a certificate signing request by certificate name for a subscription
+            /// in the specified resource group
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Csr> GetCsrAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCsrWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or modifies an existing certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='csrEnvelope'>
+            /// Details of certificate signing request if it exists already.
+            /// </param>
+            public static Csr CreateOrUpdateCsr(this ICertificatesOperations operations, string resourceGroupName, string name, Csr csrEnvelope)
+            {
+                return operations.CreateOrUpdateCsrAsync(resourceGroupName, name, csrEnvelope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or modifies an existing certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='csrEnvelope'>
+            /// Details of certificate signing request if it exists already.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Csr> CreateOrUpdateCsrAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Csr csrEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateCsrWithHttpMessagesAsync(resourceGroupName, name, csrEnvelope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete the certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate signing request.
+            /// </param>
+            public static object DeleteCsr(this ICertificatesOperations operations, string resourceGroupName, string name)
+            {
+                return operations.DeleteCsrAsync(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete the certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate signing request.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> DeleteCsrAsync(this ICertificatesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteCsrWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or modifies an existing certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='csrEnvelope'>
+            /// Details of certificate signing request if it exists already.
+            /// </param>
+            public static Csr UpdateCsr(this ICertificatesOperations operations, string resourceGroupName, string name, Csr csrEnvelope)
+            {
+                return operations.UpdateCsrAsync(resourceGroupName, name, csrEnvelope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or modifies an existing certificate signing request.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group
+            /// </param>
+            /// <param name='name'>
+            /// Name of the certificate.
+            /// </param>
+            /// <param name='csrEnvelope'>
+            /// Details of certificate signing request if it exists already.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Csr> UpdateCsrAsync(this ICertificatesOperations operations, string resourceGroupName, string name, Csr csrEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateCsrWithHttpMessagesAsync(resourceGroupName, name, csrEnvelope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get certificates for a subscription in the specified resource group.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<Certificate> ListNext(this ICertificatesOperations operations, string nextPageLink)
+            public static IPage<Certificate> GetCertificatesNext(this ICertificatesOperations operations, string nextPageLink)
             {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetCertificatesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get all certificates for a subscription.
+            /// Get certificates for a subscription in the specified resource group.
             /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates for a subscription.
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -320,49 +467,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Certificate>> ListNextAsync(this ICertificatesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Certificate>> GetCertificatesNextAsync(this ICertificatesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Get all certificates in a resource group.
-            /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates in a resource group.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Certificate> ListByResourceGroupNext(this ICertificatesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get all certificates in a resource group.
-            /// </summary>
-            /// <remarks>
-            /// Description for Get all certificates in a resource group.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Certificate>> ListByResourceGroupNextAsync(this ICertificatesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetCertificatesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

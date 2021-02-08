@@ -10,15 +10,14 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Object with a list of the resources that need to be moved and the
-    /// resource group they should be moved to.
+    /// Class containing a list of the resources that need to be moved and the
+    /// resource group they should be moved to
     /// </summary>
     public partial class CsmMoveResourceEnvelope
     {
@@ -55,29 +54,5 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [JsonProperty(PropertyName = "resources")]
         public IList<string> Resources { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (TargetResourceGroup != null)
-            {
-                if (TargetResourceGroup.Length > 90)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "TargetResourceGroup", 90);
-                }
-                if (TargetResourceGroup.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "TargetResourceGroup", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(TargetResourceGroup, " ^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "TargetResourceGroup", " ^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
-            }
-        }
     }
 }

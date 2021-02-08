@@ -10,18 +10,15 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Describes main public IP address and any extra virtual IPs.
+    /// Describes main public ip address and any extra vips
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class AddressResponse : ProxyOnlyResource
+    public partial class AddressResponse
     {
         /// <summary>
         /// Initializes a new instance of the AddressResponse class.
@@ -34,19 +31,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the AddressResponse class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="serviceIpAddress">Main public virtual IP.</param>
-        /// <param name="internalIpAddress">Virtual Network internal IP address
-        /// of the App Service Environment if it is in internal load-balancing
-        /// mode.</param>
+        /// <param name="serviceIpAddress">Main public vip</param>
+        /// <param name="internalIpAddress">VNET internal ip address of the
+        /// hostingEnvironment (App Service Environment) if it is in internal
+        /// load-balancing mode</param>
         /// <param name="outboundIpAddresses">IP addresses appearing on
-        /// outbound connections.</param>
-        /// <param name="vipMappings">Additional virtual IPs.</param>
-        public AddressResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
-            : base(id, name, kind, type)
+        /// outbound connections</param>
+        /// <param name="vipMappings">Additional vips</param>
+        public AddressResponse(string serviceIpAddress = default(string), string internalIpAddress = default(string), IList<string> outboundIpAddresses = default(IList<string>), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>))
         {
             ServiceIpAddress = serviceIpAddress;
             InternalIpAddress = internalIpAddress;
@@ -61,28 +53,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets main public virtual IP.
+        /// Gets or sets main public vip
         /// </summary>
-        [JsonProperty(PropertyName = "properties.serviceIpAddress")]
+        [JsonProperty(PropertyName = "serviceIpAddress")]
         public string ServiceIpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets virtual Network internal IP address of the App Service
-        /// Environment if it is in internal load-balancing mode.
+        /// Gets or sets VNET internal ip address of the hostingEnvironment
+        /// (App Service Environment) if it is in internal load-balancing mode
         /// </summary>
-        [JsonProperty(PropertyName = "properties.internalIpAddress")]
+        [JsonProperty(PropertyName = "internalIpAddress")]
         public string InternalIpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets IP addresses appearing on outbound connections.
+        /// Gets or sets IP addresses appearing on outbound connections
         /// </summary>
-        [JsonProperty(PropertyName = "properties.outboundIpAddresses")]
+        [JsonProperty(PropertyName = "outboundIpAddresses")]
         public IList<string> OutboundIpAddresses { get; set; }
 
         /// <summary>
-        /// Gets or sets additional virtual IPs.
+        /// Gets or sets additional vips
         /// </summary>
-        [JsonProperty(PropertyName = "properties.vipMappings")]
+        [JsonProperty(PropertyName = "vipMappings")]
         public IList<VirtualIPMapping> VipMappings { get; set; }
 
     }

@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Backup description.
+    /// Backup description
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BackupItem : ProxyOnlyResource
+    public partial class BackupItem : Resource
     {
         /// <summary>
         /// Initializes a new instance of the BackupItem class.
@@ -34,26 +34,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the BackupItem class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="backupId">Id of the backup.</param>
-        /// <param name="storageAccountUrl">SAS URL for the storage account
-        /// container which contains this backup.</param>
-        /// <param name="blobName">Name of the blob which contains data for
-        /// this backup.</param>
-        /// <param name="backupItemName">Name of this backup.</param>
+        /// <param name="location">Resource Location</param>
         /// <param name="status">Backup status. Possible values include:
         /// 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created',
         /// 'Skipped', 'PartiallySucceeded', 'DeleteInProgress',
         /// 'DeleteFailed', 'Deleted'</param>
-        /// <param name="sizeInBytes">Size of the backup in bytes.</param>
-        /// <param name="created">Timestamp of the backup creation.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="backupItemId">Id of the backup.</param>
+        /// <param name="storageAccountUrl">SAS URL for the storage account
+        /// container which contains this backup</param>
+        /// <param name="blobName">Name of the blob which contains data for
+        /// this backup</param>
+        /// <param name="backupItemName">Name of this backup</param>
+        /// <param name="sizeInBytes">Size of the backup in bytes</param>
+        /// <param name="created">Timestamp of the backup creation</param>
         /// <param name="log">Details regarding this backup. Might contain an
         /// error message.</param>
         /// <param name="databases">List of databases included in the
-        /// backup.</param>
+        /// backup</param>
         /// <param name="scheduled">True if this backup has been created due to
         /// a schedule being triggered.</param>
         /// <param name="lastRestoreTimeStamp">Timestamp of a last restore
@@ -64,11 +66,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// use this along with the timestamp while communicating with Azure
         /// support.</param>
         /// <param name="websiteSizeInBytes">Size of the original web app which
-        /// has been backed up.</param>
-        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
-            : base(id, name, kind, type)
+        /// has been backed up</param>
+        public BackupItem(string location, BackupItemStatus status, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? backupItemId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
+            : base(location, id, name, kind, type, tags)
         {
-            BackupId = backupId;
+            BackupItemId = backupItemId;
             StorageAccountUrl = storageAccountUrl;
             BlobName = blobName;
             BackupItemName = backupItemName;
@@ -91,93 +93,105 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets id of the backup.
+        /// Gets or sets id of the backup.
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public int? BackupId { get; private set; }
+        public int? BackupItemId { get; set; }
 
         /// <summary>
-        /// Gets SAS URL for the storage account container which contains this
-        /// backup.
+        /// Gets or sets SAS URL for the storage account container which
+        /// contains this backup
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageAccountUrl")]
-        public string StorageAccountUrl { get; private set; }
+        public string StorageAccountUrl { get; set; }
 
         /// <summary>
-        /// Gets name of the blob which contains data for this backup.
+        /// Gets or sets name of the blob which contains data for this backup
         /// </summary>
         [JsonProperty(PropertyName = "properties.blobName")]
-        public string BlobName { get; private set; }
+        public string BlobName { get; set; }
 
         /// <summary>
-        /// Gets name of this backup.
+        /// Gets or sets name of this backup
         /// </summary>
         [JsonProperty(PropertyName = "properties.name")]
-        public string BackupItemName { get; private set; }
+        public string BackupItemName { get; set; }
 
         /// <summary>
-        /// Gets backup status. Possible values include: 'InProgress',
+        /// Gets or sets backup status. Possible values include: 'InProgress',
         /// 'Failed', 'Succeeded', 'TimedOut', 'Created', 'Skipped',
         /// 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
-        public BackupItemStatus? Status { get; private set; }
+        public BackupItemStatus Status { get; set; }
 
         /// <summary>
-        /// Gets size of the backup in bytes.
+        /// Gets or sets size of the backup in bytes
         /// </summary>
         [JsonProperty(PropertyName = "properties.sizeInBytes")]
-        public long? SizeInBytes { get; private set; }
+        public long? SizeInBytes { get; set; }
 
         /// <summary>
-        /// Gets timestamp of the backup creation.
+        /// Gets or sets timestamp of the backup creation
         /// </summary>
         [JsonProperty(PropertyName = "properties.created")]
-        public System.DateTime? Created { get; private set; }
+        public System.DateTime? Created { get; set; }
 
         /// <summary>
-        /// Gets details regarding this backup. Might contain an error message.
+        /// Gets or sets details regarding this backup. Might contain an error
+        /// message.
         /// </summary>
         [JsonProperty(PropertyName = "properties.log")]
-        public string Log { get; private set; }
+        public string Log { get; set; }
 
         /// <summary>
-        /// Gets list of databases included in the backup.
+        /// Gets or sets list of databases included in the backup
         /// </summary>
         [JsonProperty(PropertyName = "properties.databases")]
-        public IList<DatabaseBackupSetting> Databases { get; private set; }
+        public IList<DatabaseBackupSetting> Databases { get; set; }
 
         /// <summary>
-        /// Gets true if this backup has been created due to a schedule being
-        /// triggered.
+        /// Gets or sets true if this backup has been created due to a schedule
+        /// being triggered.
         /// </summary>
         [JsonProperty(PropertyName = "properties.scheduled")]
-        public bool? Scheduled { get; private set; }
+        public bool? Scheduled { get; set; }
 
         /// <summary>
-        /// Gets timestamp of a last restore operation which used this backup.
+        /// Gets or sets timestamp of a last restore operation which used this
+        /// backup.
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastRestoreTimeStamp")]
-        public System.DateTime? LastRestoreTimeStamp { get; private set; }
+        public System.DateTime? LastRestoreTimeStamp { get; set; }
 
         /// <summary>
-        /// Gets timestamp when this backup finished.
+        /// Gets or sets timestamp when this backup finished.
         /// </summary>
         [JsonProperty(PropertyName = "properties.finishedTimeStamp")]
-        public System.DateTime? FinishedTimeStamp { get; private set; }
+        public System.DateTime? FinishedTimeStamp { get; set; }
 
         /// <summary>
-        /// Gets unique correlation identifier. Please use this along with the
-        /// timestamp while communicating with Azure support.
+        /// Gets or sets unique correlation identifier. Please use this along
+        /// with the timestamp while communicating with Azure support.
         /// </summary>
         [JsonProperty(PropertyName = "properties.correlationId")]
-        public string CorrelationId { get; private set; }
+        public string CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets size of the original web app which has been backed up.
+        /// Gets or sets size of the original web app which has been backed up
         /// </summary>
         [JsonProperty(PropertyName = "properties.websiteSizeInBytes")]
-        public long? WebsiteSizeInBytes { get; private set; }
+        public long? WebsiteSizeInBytes { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

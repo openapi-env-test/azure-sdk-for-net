@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A top level domain object.
+    /// A top level domain object
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TopLevelDomain : ProxyOnlyResource
+    public partial class TopLevelDomain : Resource
     {
         /// <summary>
         /// Initializes a new instance of the TopLevelDomain class.
@@ -32,16 +34,20 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the TopLevelDomain class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="privacy">If &lt;code&gt;true&lt;/code&gt;, then the
-        /// top level domain supports domain privacy; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        public TopLevelDomain(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? privacy = default(bool?))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="topLevelDomainName">Name of the top level
+        /// domain</param>
+        /// <param name="privacy">If true then the top level domain supports
+        /// domain privacy</param>
+        public TopLevelDomain(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string topLevelDomainName = default(string), bool? privacy = default(bool?))
+            : base(location, id, name, kind, type, tags)
         {
+            TopLevelDomainName = topLevelDomainName;
             Privacy = privacy;
             CustomInit();
         }
@@ -52,12 +58,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets if &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, then
-        /// the top level domain supports domain privacy; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets name of the top level domain
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string TopLevelDomainName { get; set; }
+
+        /// <summary>
+        /// Gets or sets if true then the top level domain supports domain
+        /// privacy
         /// </summary>
         [JsonProperty(PropertyName = "properties.privacy")]
         public bool? Privacy { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

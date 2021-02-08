@@ -18,11 +18,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Full view of network features for an app (presently VNET integration
-    /// and Hybrid Connections).
+    /// This is an object used to store a full view of network features
+    /// (presently VNET integration and Hybrid Connections)
+    /// for a web app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NetworkFeatures : ProxyOnlyResource
+    public partial class NetworkFeatures : Resource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkFeatures class.
@@ -35,24 +36,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the NetworkFeatures class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="virtualNetworkName">The Virtual Network name.</param>
-        /// <param name="virtualNetworkConnection">The Virtual Network summary
-        /// view.</param>
-        /// <param name="hybridConnections">The Hybrid Connections summary
-        /// view.</param>
-        /// <param name="hybridConnectionsV2">The Hybrid Connection V2 (Service
-        /// Bus) view.</param>
-        public NetworkFeatures(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string virtualNetworkName = default(string), VnetInfo virtualNetworkConnection = default(VnetInfo), IList<RelayServiceConnectionEntity> hybridConnections = default(IList<RelayServiceConnectionEntity>), IList<HybridConnection> hybridConnectionsV2 = default(IList<HybridConnection>))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="virtualNetworkName">The Vnet Name</param>
+        /// <param name="virtualNetworkConnection">The Vnet Summary
+        /// view</param>
+        /// <param name="hybridConnections">The Hybrid Connections Summary
+        /// view</param>
+        public NetworkFeatures(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string virtualNetworkName = default(string), VnetInfo virtualNetworkConnection = default(VnetInfo), IList<RelayServiceConnectionEntity> hybridConnections = default(IList<RelayServiceConnectionEntity>))
+            : base(location, id, name, kind, type, tags)
         {
             VirtualNetworkName = virtualNetworkName;
             VirtualNetworkConnection = virtualNetworkConnection;
             HybridConnections = hybridConnections;
-            HybridConnectionsV2 = hybridConnectionsV2;
             CustomInit();
         }
 
@@ -62,28 +62,46 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the Virtual Network name.
+        /// Gets or sets the Vnet Name
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetworkName")]
-        public string VirtualNetworkName { get; private set; }
+        public string VirtualNetworkName { get; set; }
 
         /// <summary>
-        /// Gets the Virtual Network summary view.
+        /// Gets or sets the Vnet Summary view
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetworkConnection")]
-        public VnetInfo VirtualNetworkConnection { get; private set; }
+        public VnetInfo VirtualNetworkConnection { get; set; }
 
         /// <summary>
-        /// Gets the Hybrid Connections summary view.
+        /// Gets or sets the Hybrid Connections Summary view
         /// </summary>
         [JsonProperty(PropertyName = "properties.hybridConnections")]
-        public IList<RelayServiceConnectionEntity> HybridConnections { get; private set; }
+        public IList<RelayServiceConnectionEntity> HybridConnections { get; set; }
 
         /// <summary>
-        /// Gets the Hybrid Connection V2 (Service Bus) view.
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.hybridConnectionsV2")]
-        public IList<HybridConnection> HybridConnectionsV2 { get; private set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+            if (VirtualNetworkConnection != null)
+            {
+                VirtualNetworkConnection.Validate();
+            }
+            if (HybridConnections != null)
+            {
+                foreach (var element in HybridConnections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }

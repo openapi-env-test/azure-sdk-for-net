@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A hostname binding object.
+    /// A host name binding object
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class HostNameBinding : ProxyOnlyResource
+    public partial class HostNameBinding : Resource
     {
         /// <summary>
         /// Initializes a new instance of the HostNameBinding class.
@@ -32,37 +34,33 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the HostNameBinding class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="siteName">App Service app name.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="hostNameBindingName">Hostname</param>
+        /// <param name="siteName">Web app name</param>
         /// <param name="domainId">Fully qualified ARM domain resource
-        /// URI.</param>
-        /// <param name="azureResourceName">Azure resource name.</param>
+        /// URI</param>
+        /// <param name="azureResourceName">Azure resource name</param>
         /// <param name="azureResourceType">Azure resource type. Possible
         /// values include: 'Website', 'TrafficManager'</param>
         /// <param name="customHostNameDnsRecordType">Custom DNS record type.
         /// Possible values include: 'CName', 'A'</param>
-        /// <param name="hostNameType">Hostname type. Possible values include:
+        /// <param name="hostNameType">Host name type. Possible values include:
         /// 'Verified', 'Managed'</param>
-        /// <param name="sslState">SSL type. Possible values include:
-        /// 'Disabled', 'SniEnabled', 'IpBasedEnabled'</param>
-        /// <param name="thumbprint">SSL certificate thumbprint</param>
-        /// <param name="virtualIP">Virtual IP address assigned to the hostname
-        /// if IP based SSL is enabled.</param>
-        public HostNameBinding(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?), SslState? sslState = default(SslState?), string thumbprint = default(string), string virtualIP = default(string))
-            : base(id, name, kind, type)
+        public HostNameBinding(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string hostNameBindingName = default(string), string siteName = default(string), string domainId = default(string), string azureResourceName = default(string), AzureResourceType? azureResourceType = default(AzureResourceType?), CustomHostNameDnsRecordType? customHostNameDnsRecordType = default(CustomHostNameDnsRecordType?), HostNameType? hostNameType = default(HostNameType?))
+            : base(location, id, name, kind, type, tags)
         {
+            HostNameBindingName = hostNameBindingName;
             SiteName = siteName;
             DomainId = domainId;
             AzureResourceName = azureResourceName;
             AzureResourceType = azureResourceType;
             CustomHostNameDnsRecordType = customHostNameDnsRecordType;
             HostNameType = hostNameType;
-            SslState = sslState;
-            Thumbprint = thumbprint;
-            VirtualIP = virtualIP;
             CustomInit();
         }
 
@@ -72,19 +70,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets app Service app name.
+        /// Gets or sets hostname
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string HostNameBindingName { get; set; }
+
+        /// <summary>
+        /// Gets or sets web app name
         /// </summary>
         [JsonProperty(PropertyName = "properties.siteName")]
         public string SiteName { get; set; }
 
         /// <summary>
-        /// Gets or sets fully qualified ARM domain resource URI.
+        /// Gets or sets fully qualified ARM domain resource URI
         /// </summary>
         [JsonProperty(PropertyName = "properties.domainId")]
         public string DomainId { get; set; }
 
         /// <summary>
-        /// Gets or sets azure resource name.
+        /// Gets or sets azure resource name
         /// </summary>
         [JsonProperty(PropertyName = "properties.azureResourceName")]
         public string AzureResourceName { get; set; }
@@ -104,31 +108,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public CustomHostNameDnsRecordType? CustomHostNameDnsRecordType { get; set; }
 
         /// <summary>
-        /// Gets or sets hostname type. Possible values include: 'Verified',
+        /// Gets or sets host name type. Possible values include: 'Verified',
         /// 'Managed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostNameType")]
         public HostNameType? HostNameType { get; set; }
 
         /// <summary>
-        /// Gets or sets SSL type. Possible values include: 'Disabled',
-        /// 'SniEnabled', 'IpBasedEnabled'
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.sslState")]
-        public SslState? SslState { get; set; }
-
-        /// <summary>
-        /// Gets or sets SSL certificate thumbprint
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.thumbprint")]
-        public string Thumbprint { get; set; }
-
-        /// <summary>
-        /// Gets virtual IP address assigned to the hostname if IP based SSL is
-        /// enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.virtualIP")]
-        public string VirtualIP { get; private set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Database connection string value to type pair.
+    /// Database connection string value to type pair
     /// </summary>
     public partial class ConnStringValueTypePair
     {
@@ -30,12 +29,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the ConnStringValueTypePair class.
         /// </summary>
-        /// <param name="value">Value of pair.</param>
         /// <param name="type">Type of database. Possible values include:
-        /// 'MySql', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub',
-        /// 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache',
-        /// 'PostgreSQL'</param>
-        public ConnStringValueTypePair(string value, ConnectionStringType type)
+        /// 'MySql', 'SQLServer', 'SQLAzure', 'Custom'</param>
+        /// <param name="value">Value of pair</param>
+        public ConnStringValueTypePair(DatabaseServerType type, string value = default(string))
         {
             Value = value;
             Type = type;
@@ -48,31 +45,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets value of pair.
+        /// Gets or sets value of pair
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
         /// <summary>
         /// Gets or sets type of database. Possible values include: 'MySql',
-        /// 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
-        /// 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
+        /// 'SQLServer', 'SQLAzure', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public ConnectionStringType Type { get; set; }
+        public DatabaseServerType Type { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Value == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
-            }
         }
     }
 }

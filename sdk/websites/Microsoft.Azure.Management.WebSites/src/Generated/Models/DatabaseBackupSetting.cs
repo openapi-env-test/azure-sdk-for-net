@@ -10,12 +10,13 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Database backup settings.
+    /// Note: properties are serialized in JSON format and stored in DB.
+    /// if new properties are added they might not be in the previous data rows
+    /// so please handle nulls
     /// </summary>
     public partial class DatabaseBackupSetting
     {
@@ -30,18 +31,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the DatabaseBackupSetting class.
         /// </summary>
-        /// <param name="databaseType">Database type (e.g. SqlAzure / MySql).
-        /// Possible values include: 'SqlAzure', 'MySql', 'LocalMySql',
-        /// 'PostgreSql'</param>
+        /// <param name="databaseType">SqlAzure / MySql</param>
         /// <param name="connectionStringName">Contains a connection string
         /// name that is linked to the SiteConfig.ConnectionStrings.
         /// This is used during restore with overwrite connection strings
         /// options.</param>
         /// <param name="connectionString">Contains a connection string to a
-        /// database which is being backed up or restored. If the restore
-        /// should happen to a new database, the database name inside is the
-        /// new one.</param>
-        public DatabaseBackupSetting(string databaseType, string name = default(string), string connectionStringName = default(string), string connectionString = default(string))
+        /// database which is being backed up/restored. If the restore should
+        /// happen to a new database, the database name inside is the new
+        /// one.</param>
+        public DatabaseBackupSetting(string databaseType = default(string), string name = default(string), string connectionStringName = default(string), string connectionString = default(string))
         {
             DatabaseType = databaseType;
             Name = name;
@@ -56,8 +55,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets database type (e.g. SqlAzure / MySql). Possible values
-        /// include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
+        /// Gets or sets sqlAzure / MySql
         /// </summary>
         [JsonProperty(PropertyName = "databaseType")]
         public string DatabaseType { get; set; }
@@ -78,24 +76,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets contains a connection string to a database which is
-        /// being backed up or restored. If the restore should happen to a new
+        /// being backed up/restored. If the restore should happen to a new
         /// database, the database name inside is the new one.
         /// </summary>
         [JsonProperty(PropertyName = "connectionString")]
         public string ConnectionString { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (DatabaseType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DatabaseType");
-            }
-        }
     }
 }

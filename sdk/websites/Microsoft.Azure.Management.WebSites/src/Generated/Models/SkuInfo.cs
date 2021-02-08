@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU discovery information.
+    /// Sku discovery information
     /// </summary>
     public partial class SkuInfo
     {
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SkuInfo class.
         /// </summary>
-        /// <param name="resourceType">Resource type that this SKU applies
-        /// to.</param>
-        /// <param name="sku">Name and tier of the SKU.</param>
+        /// <param name="resourceType">Resource type that this sku applies
+        /// to</param>
+        /// <param name="sku">Name and tier of the sku</param>
         /// <param name="capacity">Min, max, and default scale values of the
-        /// SKU.</param>
+        /// sku</param>
         public SkuInfo(string resourceType = default(string), SkuDescription sku = default(SkuDescription), SkuCapacity capacity = default(SkuCapacity))
         {
             ResourceType = resourceType;
@@ -48,19 +48,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource type that this SKU applies to.
+        /// Gets or sets resource type that this sku applies to
         /// </summary>
         [JsonProperty(PropertyName = "resourceType")]
         public string ResourceType { get; set; }
 
         /// <summary>
-        /// Gets or sets name and tier of the SKU.
+        /// Gets or sets name and tier of the sku
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public SkuDescription Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets min, max, and default scale values of the SKU.
+        /// Gets or sets min, max, and default scale values of the sku
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public SkuCapacity Capacity { get; set; }

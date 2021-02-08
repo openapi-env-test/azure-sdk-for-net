@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         Api,
         [EnumMember(Value = "Email")]
         Email,
-        [EnumMember(Value = "Webhook")]
-        Webhook,
         [EnumMember(Value = "All")]
         All
     }
@@ -49,8 +47,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "Api";
                 case Channels.Email:
                     return "Email";
-                case Channels.Webhook:
-                    return "Webhook";
                 case Channels.All:
                     return "All";
             }
@@ -67,8 +63,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return Channels.Api;
                 case "Email":
                     return Channels.Email;
-                case "Webhook":
-                    return Channels.Webhook;
                 case "All":
                     return Channels.All;
             }

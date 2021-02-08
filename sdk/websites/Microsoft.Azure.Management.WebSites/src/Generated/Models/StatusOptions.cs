@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "Ready")]
         Ready,
         [EnumMember(Value = "Pending")]
-        Pending,
-        [EnumMember(Value = "Creating")]
-        Creating
+        Pending
     }
     internal static class StatusOptionsEnumExtension
     {
@@ -43,8 +41,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "Ready";
                 case StatusOptions.Pending:
                     return "Pending";
-                case StatusOptions.Creating:
-                    return "Creating";
             }
             return null;
         }
@@ -57,8 +53,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return StatusOptions.Ready;
                 case "Pending":
                     return StatusOptions.Pending;
-                case "Creating":
-                    return StatusOptions.Creating;
             }
             return null;
         }

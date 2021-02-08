@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// An app cloneability criterion.
+    /// Represents a site cloneability criterion
     /// </summary>
     public partial class SiteCloneabilityCriterion
     {
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SiteCloneabilityCriterion class.
         /// </summary>
-        /// <param name="name">Name of criterion.</param>
-        /// <param name="description">Description of criterion.</param>
+        /// <param name="name">Name of criterion</param>
+        /// <param name="description">Description of criterion</param>
         public SiteCloneabilityCriterion(string name = default(string), string description = default(string))
         {
             Name = name;
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of criterion.
+        /// Gets or sets name of criterion
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets description of criterion.
+        /// Gets or sets description of criterion
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }

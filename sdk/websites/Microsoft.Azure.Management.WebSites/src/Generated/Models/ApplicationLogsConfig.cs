@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Application logs configuration.
+    /// Application logs configuration
     /// </summary>
     public partial class ApplicationLogsConfig
     {
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ApplicationLogsConfig class.
         /// </summary>
         /// <param name="fileSystem">Application logs to file system
-        /// configuration.</param>
+        /// configuration</param>
         /// <param name="azureTableStorage">Application logs to azure table
-        /// storage configuration.</param>
+        /// storage configuration</param>
         /// <param name="azureBlobStorage">Application logs to blob storage
-        /// configuration.</param>
+        /// configuration</param>
         public ApplicationLogsConfig(FileSystemApplicationLogsConfig fileSystem = default(FileSystemApplicationLogsConfig), AzureTableStorageApplicationLogsConfig azureTableStorage = default(AzureTableStorageApplicationLogsConfig), AzureBlobStorageApplicationLogsConfig azureBlobStorage = default(AzureBlobStorageApplicationLogsConfig))
         {
             FileSystem = fileSystem;
@@ -49,35 +49,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets application logs to file system configuration.
+        /// Gets or sets application logs to file system configuration
         /// </summary>
         [JsonProperty(PropertyName = "fileSystem")]
         public FileSystemApplicationLogsConfig FileSystem { get; set; }
 
         /// <summary>
-        /// Gets or sets application logs to azure table storage configuration.
+        /// Gets or sets application logs to azure table storage configuration
         /// </summary>
         [JsonProperty(PropertyName = "azureTableStorage")]
         public AzureTableStorageApplicationLogsConfig AzureTableStorage { get; set; }
 
         /// <summary>
-        /// Gets or sets application logs to blob storage configuration.
+        /// Gets or sets application logs to blob storage configuration
         /// </summary>
         [JsonProperty(PropertyName = "azureBlobStorage")]
         public AzureBlobStorageApplicationLogsConfig AzureBlobStorage { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (AzureTableStorage != null)
-            {
-                AzureTableStorage.Validate();
-            }
-        }
     }
 }

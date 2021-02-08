@@ -10,13 +10,18 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// SSL certificate details.
+    /// Certificate Details
     /// </summary>
-    public partial class CertificateDetails
+    [Rest.Serialization.JsonTransformation]
+    public partial class CertificateDetails : Resource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateDetails class.
@@ -29,17 +34,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the CertificateDetails class.
         /// </summary>
-        /// <param name="version">Certificate Version.</param>
-        /// <param name="serialNumber">Certificate Serial Number.</param>
-        /// <param name="thumbprint">Certificate Thumbprint.</param>
-        /// <param name="subject">Certificate Subject.</param>
-        /// <param name="notBefore">Date Certificate is valid from.</param>
-        /// <param name="notAfter">Date Certificate is valid to.</param>
-        /// <param name="signatureAlgorithm">Certificate Signature
-        /// algorithm.</param>
-        /// <param name="issuer">Certificate Issuer.</param>
-        /// <param name="rawData">Raw certificate data.</param>
-        public CertificateDetails(int? version = default(int?), string serialNumber = default(string), string thumbprint = default(string), string subject = default(string), System.DateTime? notBefore = default(System.DateTime?), System.DateTime? notAfter = default(System.DateTime?), string signatureAlgorithm = default(string), string issuer = default(string), string rawData = default(string))
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="version">Version</param>
+        /// <param name="serialNumber">Serial Number</param>
+        /// <param name="thumbprint">Thumbprint</param>
+        /// <param name="subject">Subject</param>
+        /// <param name="notBefore">Valid from</param>
+        /// <param name="notAfter">Valid to</param>
+        /// <param name="signatureAlgorithm">Signature Algorithm</param>
+        /// <param name="issuer">Issuer</param>
+        /// <param name="rawData">Raw certificate data</param>
+        public CertificateDetails(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? version = default(int?), string serialNumber = default(string), string thumbprint = default(string), string subject = default(string), System.DateTime? notBefore = default(System.DateTime?), System.DateTime? notAfter = default(System.DateTime?), string signatureAlgorithm = default(string), string issuer = default(string), string rawData = default(string))
+            : base(location, id, name, kind, type, tags)
         {
             Version = version;
             SerialNumber = serialNumber;
@@ -59,58 +70,68 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets certificate Version.
+        /// Gets or sets version
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
-        public int? Version { get; private set; }
+        [JsonProperty(PropertyName = "properties.version")]
+        public int? Version { get; set; }
 
         /// <summary>
-        /// Gets certificate Serial Number.
+        /// Gets or sets serial Number
         /// </summary>
-        [JsonProperty(PropertyName = "serialNumber")]
-        public string SerialNumber { get; private set; }
+        [JsonProperty(PropertyName = "properties.serialNumber")]
+        public string SerialNumber { get; set; }
 
         /// <summary>
-        /// Gets certificate Thumbprint.
+        /// Gets or sets thumbprint
         /// </summary>
-        [JsonProperty(PropertyName = "thumbprint")]
-        public string Thumbprint { get; private set; }
+        [JsonProperty(PropertyName = "properties.thumbprint")]
+        public string Thumbprint { get; set; }
 
         /// <summary>
-        /// Gets certificate Subject.
+        /// Gets or sets subject
         /// </summary>
-        [JsonProperty(PropertyName = "subject")]
-        public string Subject { get; private set; }
+        [JsonProperty(PropertyName = "properties.subject")]
+        public string Subject { get; set; }
 
         /// <summary>
-        /// Gets date Certificate is valid from.
+        /// Gets or sets valid from
         /// </summary>
-        [JsonProperty(PropertyName = "notBefore")]
-        public System.DateTime? NotBefore { get; private set; }
+        [JsonProperty(PropertyName = "properties.notBefore")]
+        public System.DateTime? NotBefore { get; set; }
 
         /// <summary>
-        /// Gets date Certificate is valid to.
+        /// Gets or sets valid to
         /// </summary>
-        [JsonProperty(PropertyName = "notAfter")]
-        public System.DateTime? NotAfter { get; private set; }
+        [JsonProperty(PropertyName = "properties.notAfter")]
+        public System.DateTime? NotAfter { get; set; }
 
         /// <summary>
-        /// Gets certificate Signature algorithm.
+        /// Gets or sets signature Algorithm
         /// </summary>
-        [JsonProperty(PropertyName = "signatureAlgorithm")]
-        public string SignatureAlgorithm { get; private set; }
+        [JsonProperty(PropertyName = "properties.signatureAlgorithm")]
+        public string SignatureAlgorithm { get; set; }
 
         /// <summary>
-        /// Gets certificate Issuer.
+        /// Gets or sets issuer
         /// </summary>
-        [JsonProperty(PropertyName = "issuer")]
-        public string Issuer { get; private set; }
+        [JsonProperty(PropertyName = "properties.issuer")]
+        public string Issuer { get; set; }
 
         /// <summary>
-        /// Gets raw certificate data.
+        /// Gets or sets raw certificate data
         /// </summary>
-        [JsonProperty(PropertyName = "rawData")]
-        public string RawData { get; private set; }
+        [JsonProperty(PropertyName = "properties.rawData")]
+        public string RawData { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Name value pair.
+    /// Name value pair
     /// </summary>
     public partial class NameValuePair
     {
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the NameValuePair class.
         /// </summary>
-        /// <param name="name">Pair name.</param>
-        /// <param name="value">Pair value.</param>
+        /// <param name="name">Pair name</param>
+        /// <param name="value">Pair value</param>
         public NameValuePair(string name = default(string), string value = default(string))
         {
             Name = name;
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets pair name.
+        /// Gets or sets pair name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets pair value.
+        /// Gets or sets pair value
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

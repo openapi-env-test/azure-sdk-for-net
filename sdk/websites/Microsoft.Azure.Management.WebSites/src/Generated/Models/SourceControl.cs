@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The source control OAuth token.
+    /// Describes the Source Control OAuth Token
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SourceControl : ProxyOnlyResource
+    public partial class SourceControl : Resource
     {
         /// <summary>
         /// Initializes a new instance of the SourceControl class.
@@ -32,17 +34,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SourceControl class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="token">OAuth access token.</param>
-        /// <param name="tokenSecret">OAuth access token secret.</param>
-        /// <param name="refreshToken">OAuth refresh token.</param>
-        /// <param name="expirationTime">OAuth token expiration.</param>
-        public SourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string token = default(string), string tokenSecret = default(string), string refreshToken = default(string), System.DateTime? expirationTime = default(System.DateTime?))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="sourceControlName">Name or Source Control Type</param>
+        /// <param name="token">OAuth Access Token</param>
+        /// <param name="tokenSecret">OAuth Access Token Secret</param>
+        /// <param name="refreshToken">OAuth Refresh Token</param>
+        /// <param name="expirationTime">OAuth Token Expiration</param>
+        public SourceControl(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sourceControlName = default(string), string token = default(string), string tokenSecret = default(string), string refreshToken = default(string), System.DateTime? expirationTime = default(System.DateTime?))
+            : base(location, id, name, kind, type, tags)
         {
+            SourceControlName = sourceControlName;
             Token = token;
             TokenSecret = tokenSecret;
             RefreshToken = refreshToken;
@@ -56,28 +62,44 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets oAuth access token.
+        /// Gets or sets name or Source Control Type
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string SourceControlName { get; set; }
+
+        /// <summary>
+        /// Gets or sets oAuth Access Token
         /// </summary>
         [JsonProperty(PropertyName = "properties.token")]
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or sets oAuth access token secret.
+        /// Gets or sets oAuth Access Token Secret
         /// </summary>
         [JsonProperty(PropertyName = "properties.tokenSecret")]
         public string TokenSecret { get; set; }
 
         /// <summary>
-        /// Gets or sets oAuth refresh token.
+        /// Gets or sets oAuth Refresh Token
         /// </summary>
         [JsonProperty(PropertyName = "properties.refreshToken")]
         public string RefreshToken { get; set; }
 
         /// <summary>
-        /// Gets or sets oAuth token expiration.
+        /// Gets or sets oAuth Token Expiration
         /// </summary>
         [JsonProperty(PropertyName = "properties.expirationTime")]
         public System.DateTime? ExpirationTime { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

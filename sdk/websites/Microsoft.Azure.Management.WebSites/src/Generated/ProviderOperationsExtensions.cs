@@ -22,234 +22,186 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class ProviderOperationsExtensions
     {
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets the source controls available for Azure websites
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
-            /// 'LinuxFunctions'
-            /// </param>
-            public static IPage<ApplicationStackResource> GetAvailableStacks(this IProviderOperations operations, string osTypeSelected = default(string))
+            public static IPage<SourceControl> GetSourceControls(this IProviderOperations operations)
             {
-                return operations.GetAvailableStacksAsync(osTypeSelected).GetAwaiter().GetResult();
+                return operations.GetSourceControlsAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets the source controls available for Azure websites
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
-            /// 'LinuxFunctions'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksAsync(this IProviderOperations operations, string osTypeSelected = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SourceControl>> GetSourceControlsAsync(this IProviderOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetSourceControlsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Gets source control token
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all available operations for the Microsoft.Web
-            /// resource provider. Also exposes resource metric definitions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<CsmOperationDescription> ListOperations(this IProviderOperations operations)
+            /// <param name='sourceControlType'>
+            /// Type of source control
+            /// </param>
+            public static SourceControl GetSourceControl(this IProviderOperations operations, string sourceControlType)
             {
-                return operations.ListOperationsAsync().GetAwaiter().GetResult();
+                return operations.GetSourceControlAsync(sourceControlType).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Gets source control token
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all available operations for the Microsoft.Web
-            /// resource provider. Also exposes resource metric definitions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='sourceControlType'>
+            /// Type of source control
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<CsmOperationDescription>> ListOperationsAsync(this IProviderOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SourceControl> GetSourceControlAsync(this IProviderOperations operations, string sourceControlType, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListOperationsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetSourceControlWithHttpMessagesAsync(sourceControlType, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Updates source control token
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
-            /// 'LinuxFunctions'
+            /// <param name='sourceControlType'>
+            /// Type of source control
             /// </param>
-            public static IPage<ApplicationStackResource> GetAvailableStacksOnPrem(this IProviderOperations operations, string osTypeSelected = default(string))
+            /// <param name='requestMessage'>
+            /// Source control token information
+            /// </param>
+            public static SourceControl UpdateSourceControl(this IProviderOperations operations, string sourceControlType, SourceControl requestMessage)
             {
-                return operations.GetAvailableStacksOnPremAsync(osTypeSelected).GetAwaiter().GetResult();
+                return operations.UpdateSourceControlAsync(sourceControlType, requestMessage).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Updates source control token
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='osTypeSelected'>
-            /// Possible values include: 'Windows', 'Linux', 'WindowsFunctions',
-            /// 'LinuxFunctions'
+            /// <param name='sourceControlType'>
+            /// Type of source control
+            /// </param>
+            /// <param name='requestMessage'>
+            /// Source control token information
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksOnPremAsync(this IProviderOperations operations, string osTypeSelected = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SourceControl> UpdateSourceControlAsync(this IProviderOperations operations, string sourceControlType, SourceControl requestMessage, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksOnPremWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateSourceControlWithHttpMessagesAsync(sourceControlType, requestMessage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets publishing user
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ApplicationStackResource> GetAvailableStacksNext(this IProviderOperations operations, string nextPageLink)
+            public static User GetPublishingUser(this IProviderOperations operations)
             {
-                return operations.GetAvailableStacksNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetPublishingUserAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets publishing user
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<User> GetPublishingUserAsync(this IProviderOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetPublishingUserWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Updates publishing user
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all available operations for the Microsoft.Web
-            /// resource provider. Also exposes resource metric definitions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='requestMessage'>
+            /// Details of publishing user
             /// </param>
-            public static IPage<CsmOperationDescription> ListOperationsNext(this IProviderOperations operations, string nextPageLink)
+            public static User UpdatePublishingUser(this IProviderOperations operations, User requestMessage)
             {
-                return operations.ListOperationsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.UpdatePublishingUserAsync(requestMessage).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets all available operations for the Microsoft.Web resource provider. Also
-            /// exposes resource metric definitions
+            /// Updates publishing user
             /// </summary>
-            /// <remarks>
-            /// Description for Gets all available operations for the Microsoft.Web
-            /// resource provider. Also exposes resource metric definitions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='requestMessage'>
+            /// Details of publishing user
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<CsmOperationDescription>> ListOperationsNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<User> UpdatePublishingUserAsync(this IProviderOperations operations, User requestMessage, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListOperationsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdatePublishingUserWithHttpMessagesAsync(requestMessage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets the source controls available for Azure websites
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ApplicationStackResource> GetAvailableStacksOnPremNext(this IProviderOperations operations, string nextPageLink)
+            public static IPage<SourceControl> GetSourceControlsNext(this IProviderOperations operations, string nextPageLink)
             {
-                return operations.GetAvailableStacksOnPremNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.GetSourceControlsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get available application frameworks and their versions
+            /// Gets the source controls available for Azure websites
             /// </summary>
-            /// <remarks>
-            /// Description for Get available application frameworks and their versions
-            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -259,9 +211,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ApplicationStackResource>> GetAvailableStacksOnPremNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<SourceControl>> GetSourceControlsNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksOnPremNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetSourceControlsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

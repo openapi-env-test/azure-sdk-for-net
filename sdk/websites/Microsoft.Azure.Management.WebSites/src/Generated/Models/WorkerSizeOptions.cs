@@ -21,22 +21,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum WorkerSizeOptions
     {
+        [EnumMember(Value = "Default")]
+        Default,
         [EnumMember(Value = "Small")]
         Small,
         [EnumMember(Value = "Medium")]
         Medium,
         [EnumMember(Value = "Large")]
-        Large,
-        [EnumMember(Value = "D1")]
-        D1,
-        [EnumMember(Value = "D2")]
-        D2,
-        [EnumMember(Value = "D3")]
-        D3,
-        [EnumMember(Value = "NestedSmall")]
-        NestedSmall,
-        [EnumMember(Value = "Default")]
-        Default
+        Large
     }
     internal static class WorkerSizeOptionsEnumExtension
     {
@@ -49,22 +41,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         {
             switch( value )
             {
+                case WorkerSizeOptions.Default:
+                    return "Default";
                 case WorkerSizeOptions.Small:
                     return "Small";
                 case WorkerSizeOptions.Medium:
                     return "Medium";
                 case WorkerSizeOptions.Large:
                     return "Large";
-                case WorkerSizeOptions.D1:
-                    return "D1";
-                case WorkerSizeOptions.D2:
-                    return "D2";
-                case WorkerSizeOptions.D3:
-                    return "D3";
-                case WorkerSizeOptions.NestedSmall:
-                    return "NestedSmall";
-                case WorkerSizeOptions.Default:
-                    return "Default";
             }
             return null;
         }
@@ -73,22 +57,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         {
             switch( value )
             {
+                case "Default":
+                    return WorkerSizeOptions.Default;
                 case "Small":
                     return WorkerSizeOptions.Small;
                 case "Medium":
                     return WorkerSizeOptions.Medium;
                 case "Large":
                     return WorkerSizeOptions.Large;
-                case "D1":
-                    return WorkerSizeOptions.D1;
-                case "D2":
-                    return WorkerSizeOptions.D2;
-                case "D3":
-                    return WorkerSizeOptions.D3;
-                case "NestedSmall":
-                    return WorkerSizeOptions.NestedSmall;
-                case "Default":
-                    return WorkerSizeOptions.Default;
             }
             return null;
         }

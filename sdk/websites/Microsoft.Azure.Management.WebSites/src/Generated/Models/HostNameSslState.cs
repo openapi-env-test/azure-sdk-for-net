@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// SSL-enabled hostname.
+    /// Object that represents a SSL-enabled host name.
     /// </summary>
     public partial class HostNameSslState
     {
@@ -29,25 +29,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the HostNameSslState class.
         /// </summary>
-        /// <param name="name">Hostname.</param>
         /// <param name="sslState">SSL type. Possible values include:
         /// 'Disabled', 'SniEnabled', 'IpBasedEnabled'</param>
-        /// <param name="virtualIP">Virtual IP address assigned to the hostname
-        /// if IP based SSL is enabled.</param>
-        /// <param name="thumbprint">SSL certificate thumbprint.</param>
-        /// <param name="toUpdate">Set to &lt;code&gt;true&lt;/code&gt; to
-        /// update existing hostname.</param>
-        /// <param name="hostType">Indicates whether the hostname is a standard
-        /// or repository hostname. Possible values include: 'Standard',
-        /// 'Repository'</param>
-        public HostNameSslState(string name = default(string), SslState? sslState = default(SslState?), string virtualIP = default(string), string thumbprint = default(string), bool? toUpdate = default(bool?), HostType? hostType = default(HostType?))
+        /// <param name="name">Host name</param>
+        /// <param name="virtualIP">Virtual IP address assigned to the host
+        /// name if IP based SSL is enabled</param>
+        /// <param name="thumbprint">SSL cert thumbprint</param>
+        /// <param name="toUpdate">Set this flag to update existing host
+        /// name</param>
+        public HostNameSslState(SslState sslState, string name = default(string), string virtualIP = default(string), string thumbprint = default(string), bool? toUpdate = default(bool?))
         {
             Name = name;
             SslState = sslState;
             VirtualIP = virtualIP;
             Thumbprint = thumbprint;
             ToUpdate = toUpdate;
-            HostType = hostType;
             CustomInit();
         }
 
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets hostname.
+        /// Gets or sets host name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -67,35 +63,35 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'SniEnabled', 'IpBasedEnabled'
         /// </summary>
         [JsonProperty(PropertyName = "sslState")]
-        public SslState? SslState { get; set; }
+        public SslState SslState { get; set; }
 
         /// <summary>
-        /// Gets or sets virtual IP address assigned to the hostname if IP
-        /// based SSL is enabled.
+        /// Gets or sets virtual IP address assigned to the host name if IP
+        /// based SSL is enabled
         /// </summary>
         [JsonProperty(PropertyName = "virtualIP")]
         public string VirtualIP { get; set; }
 
         /// <summary>
-        /// Gets or sets SSL certificate thumbprint.
+        /// Gets or sets SSL cert thumbprint
         /// </summary>
         [JsonProperty(PropertyName = "thumbprint")]
         public string Thumbprint { get; set; }
 
         /// <summary>
-        /// Gets or sets set to &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;
-        /// to update existing hostname.
+        /// Gets or sets set this flag to update existing host name
         /// </summary>
         [JsonProperty(PropertyName = "toUpdate")]
         public bool? ToUpdate { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates whether the hostname is a standard or
-        /// repository hostname. Possible values include: 'Standard',
-        /// 'Repository'
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "hostType")]
-        public HostType? HostType { get; set; }
-
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

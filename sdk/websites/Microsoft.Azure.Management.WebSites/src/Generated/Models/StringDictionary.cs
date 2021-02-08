@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// String dictionary resource.
+    /// String dictionary resource
     /// </summary>
-    public partial class StringDictionary : ProxyOnlyResource
+    public partial class StringDictionary : Resource
     {
         /// <summary>
         /// Initializes a new instance of the StringDictionary class.
@@ -31,13 +31,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the StringDictionary class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="properties">Settings.</param>
-        public StringDictionary(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="properties">Settings</param>
+        public StringDictionary(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> properties = default(IDictionary<string, string>))
+            : base(location, id, name, kind, type, tags)
         {
             Properties = properties;
             CustomInit();
@@ -49,10 +51,20 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets settings.
+        /// Gets or sets settings
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public IDictionary<string, string> Properties { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

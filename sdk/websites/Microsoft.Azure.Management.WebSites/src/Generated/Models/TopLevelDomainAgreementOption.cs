@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Options for retrieving the list of top level domain legal agreements.
+    /// Options for retrieving the list of top level domain legal agreements
     /// </summary>
     public partial class TopLevelDomainAgreementOption
     {
@@ -31,16 +31,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the TopLevelDomainAgreementOption
         /// class.
         /// </summary>
-        /// <param name="includePrivacy">If &lt;code&gt;true&lt;/code&gt;, then
-        /// the list of agreements will include agreements for domain privacy
-        /// as well; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="forTransfer">If &lt;code&gt;true&lt;/code&gt;, then
-        /// the list of agreements will include agreements for domain transfer
-        /// as well; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        public TopLevelDomainAgreementOption(bool? includePrivacy = default(bool?), bool? forTransfer = default(bool?))
+        /// <param name="includePrivacy">If true then the list of agreements
+        /// will include agreements for domain privacy as well.</param>
+        public TopLevelDomainAgreementOption(bool? includePrivacy = default(bool?))
         {
             IncludePrivacy = includePrivacy;
-            ForTransfer = forTransfer;
             CustomInit();
         }
 
@@ -50,20 +45,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets if &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, then
-        /// the list of agreements will include agreements for domain privacy
-        /// as well; otherwise, &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets if true then the list of agreements will include
+        /// agreements for domain privacy as well.
         /// </summary>
         [JsonProperty(PropertyName = "includePrivacy")]
         public bool? IncludePrivacy { get; set; }
-
-        /// <summary>
-        /// Gets or sets if &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, then
-        /// the list of agreements will include agreements for domain transfer
-        /// as well; otherwise, &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
-        /// </summary>
-        [JsonProperty(PropertyName = "forTransfer")]
-        public bool? ForTransfer { get; set; }
 
     }
 }

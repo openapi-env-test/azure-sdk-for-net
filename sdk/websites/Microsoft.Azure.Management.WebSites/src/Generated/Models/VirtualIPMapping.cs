@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Virtual IP mapping.
+    /// Class that represents a VIP mapping
     /// </summary>
     public partial class VirtualIPMapping
     {
@@ -29,19 +29,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the VirtualIPMapping class.
         /// </summary>
-        /// <param name="virtualIP">Virtual IP address.</param>
-        /// <param name="internalHttpPort">Internal HTTP port.</param>
-        /// <param name="internalHttpsPort">Internal HTTPS port.</param>
-        /// <param name="inUse">Is virtual IP mapping in use.</param>
-        /// <param name="serviceName">name of the service that virtual IP is
-        /// assigned to</param>
-        public VirtualIPMapping(string virtualIP = default(string), int? internalHttpPort = default(int?), int? internalHttpsPort = default(int?), bool? inUse = default(bool?), string serviceName = default(string))
+        /// <param name="virtualIP">Virtual IP address</param>
+        /// <param name="internalHttpPort">Internal HTTP port</param>
+        /// <param name="internalHttpsPort">Internal HTTPS port</param>
+        /// <param name="inUse">Is VIP mapping in use</param>
+        public VirtualIPMapping(string virtualIP = default(string), int? internalHttpPort = default(int?), int? internalHttpsPort = default(int?), bool? inUse = default(bool?))
         {
             VirtualIP = virtualIP;
             InternalHttpPort = internalHttpPort;
             InternalHttpsPort = internalHttpsPort;
             InUse = inUse;
-            ServiceName = serviceName;
             CustomInit();
         }
 
@@ -51,34 +48,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets virtual IP address.
+        /// Gets or sets virtual IP address
         /// </summary>
         [JsonProperty(PropertyName = "virtualIP")]
         public string VirtualIP { get; set; }
 
         /// <summary>
-        /// Gets or sets internal HTTP port.
+        /// Gets or sets internal HTTP port
         /// </summary>
         [JsonProperty(PropertyName = "internalHttpPort")]
         public int? InternalHttpPort { get; set; }
 
         /// <summary>
-        /// Gets or sets internal HTTPS port.
+        /// Gets or sets internal HTTPS port
         /// </summary>
         [JsonProperty(PropertyName = "internalHttpsPort")]
         public int? InternalHttpsPort { get; set; }
 
         /// <summary>
-        /// Gets or sets is virtual IP mapping in use.
+        /// Gets or sets is VIP mapping in use
         /// </summary>
         [JsonProperty(PropertyName = "inUse")]
         public bool? InUse { get; set; }
-
-        /// <summary>
-        /// Gets or sets name of the service that virtual IP is assigned to
-        /// </summary>
-        [JsonProperty(PropertyName = "serviceName")]
-        public string ServiceName { get; set; }
 
     }
 }

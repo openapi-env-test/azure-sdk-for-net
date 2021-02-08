@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Usage of the quota resource.
+    /// Usage of the quota resource
     /// </summary>
     public partial class CsmUsageQuota
     {
@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the CsmUsageQuota class.
         /// </summary>
         /// <param name="unit">Units of measurement for the quota
-        /// resource.</param>
+        /// resource</param>
         /// <param name="nextResetTime">Next reset time for the resource
-        /// counter.</param>
+        /// counter</param>
         /// <param name="currentValue">The current value of the resource
-        /// counter.</param>
-        /// <param name="limit">The resource limit.</param>
-        /// <param name="name">Quota name.</param>
+        /// counter</param>
+        /// <param name="limit">The resource limit</param>
+        /// <param name="name">Quota name</param>
         public CsmUsageQuota(string unit = default(string), System.DateTime? nextResetTime = default(System.DateTime?), long? currentValue = default(long?), long? limit = default(long?), LocalizableString name = default(LocalizableString))
         {
             Unit = unit;
@@ -53,31 +53,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets units of measurement for the quota resource.
+        /// Gets or sets units of measurement for the quota resource
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public string Unit { get; set; }
 
         /// <summary>
-        /// Gets or sets next reset time for the resource counter.
+        /// Gets or sets next reset time for the resource counter
         /// </summary>
         [JsonProperty(PropertyName = "nextResetTime")]
         public System.DateTime? NextResetTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the current value of the resource counter.
+        /// Gets or sets the current value of the resource counter
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
         public long? CurrentValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource limit.
+        /// Gets or sets the resource limit
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
         public long? Limit { get; set; }
 
         /// <summary>
-        /// Gets or sets quota name.
+        /// Gets or sets quota name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public LocalizableString Name { get; set; }

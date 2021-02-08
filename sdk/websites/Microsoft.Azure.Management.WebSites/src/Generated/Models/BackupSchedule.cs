@@ -30,23 +30,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the BackupSchedule class.
         /// </summary>
-        /// <param name="frequencyInterval">How often the backup should be
+        /// <param name="frequencyUnit">How often should be the backup executed
+        /// (e.g. for weekly backup, this should be set to Day and
+        /// FrequencyInterval should be set to 7). Possible values include:
+        /// 'Day', 'Hour'</param>
+        /// <param name="frequencyInterval">How often should be the backup
         /// executed (e.g. for weekly backup, this should be set to 7 and
         /// FrequencyUnit should be set to Day)</param>
-        /// <param name="frequencyUnit">The unit of time for how often the
-        /// backup should be executed (e.g. for weekly backup, this should be
-        /// set to Day and FrequencyInterval should be set to 7). Possible
-        /// values include: 'Day', 'Hour'</param>
         /// <param name="keepAtLeastOneBackup">True if the retention policy
         /// should always keep at least one backup in the storage account,
         /// regardless how old it is; false otherwise.</param>
         /// <param name="retentionPeriodInDays">After how many days backups
-        /// should be deleted.</param>
+        /// should be deleted</param>
         /// <param name="startTime">When the schedule should start
-        /// working.</param>
-        /// <param name="lastExecutionTime">Last time when this schedule was
-        /// triggered.</param>
-        public BackupSchedule(int frequencyInterval, FrequencyUnit frequencyUnit, bool keepAtLeastOneBackup, int retentionPeriodInDays, System.DateTime? startTime = default(System.DateTime?), System.DateTime? lastExecutionTime = default(System.DateTime?))
+        /// working</param>
+        /// <param name="lastExecutionTime">The last time when this schedule
+        /// was triggered</param>
+        public BackupSchedule(FrequencyUnit frequencyUnit, int? frequencyInterval = default(int?), bool? keepAtLeastOneBackup = default(bool?), int? retentionPeriodInDays = default(int?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? lastExecutionTime = default(System.DateTime?))
         {
             FrequencyInterval = frequencyInterval;
             FrequencyUnit = frequencyUnit;
@@ -63,18 +63,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets how often the backup should be executed (e.g. for
+        /// Gets or sets how often should be the backup executed (e.g. for
         /// weekly backup, this should be set to 7 and FrequencyUnit should be
         /// set to Day)
         /// </summary>
         [JsonProperty(PropertyName = "frequencyInterval")]
-        public int FrequencyInterval { get; set; }
+        public int? FrequencyInterval { get; set; }
 
         /// <summary>
-        /// Gets or sets the unit of time for how often the backup should be
-        /// executed (e.g. for weekly backup, this should be set to Day and
-        /// FrequencyInterval should be set to 7). Possible values include:
-        /// 'Day', 'Hour'
+        /// Gets or sets how often should be the backup executed (e.g. for
+        /// weekly backup, this should be set to Day and FrequencyInterval
+        /// should be set to 7). Possible values include: 'Day', 'Hour'
         /// </summary>
         [JsonProperty(PropertyName = "frequencyUnit")]
         public FrequencyUnit FrequencyUnit { get; set; }
@@ -85,25 +84,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// false otherwise.
         /// </summary>
         [JsonProperty(PropertyName = "keepAtLeastOneBackup")]
-        public bool KeepAtLeastOneBackup { get; set; }
+        public bool? KeepAtLeastOneBackup { get; set; }
 
         /// <summary>
-        /// Gets or sets after how many days backups should be deleted.
+        /// Gets or sets after how many days backups should be deleted
         /// </summary>
         [JsonProperty(PropertyName = "retentionPeriodInDays")]
-        public int RetentionPeriodInDays { get; set; }
+        public int? RetentionPeriodInDays { get; set; }
 
         /// <summary>
-        /// Gets or sets when the schedule should start working.
+        /// Gets or sets when the schedule should start working
         /// </summary>
         [JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// Gets last time when this schedule was triggered.
+        /// Gets or sets the last time when this schedule was triggered
         /// </summary>
         [JsonProperty(PropertyName = "lastExecutionTime")]
-        public System.DateTime? LastExecutionTime { get; private set; }
+        public System.DateTime? LastExecutionTime { get; set; }
 
         /// <summary>
         /// Validate the object.

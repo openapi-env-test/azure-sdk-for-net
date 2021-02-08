@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Single sign-on request information for domain management.
+    /// Single sign on request information for domain management
     /// </summary>
     public partial class DomainControlCenterSsoRequest
     {
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the DomainControlCenterSsoRequest
         /// class.
         /// </summary>
-        /// <param name="url">URL where the single sign-on request is to be
-        /// made.</param>
-        /// <param name="postParameterKey">Post parameter key.</param>
+        /// <param name="url">Url where the single sign on request is to be
+        /// made</param>
+        /// <param name="postParameterKey">Post parameter key</param>
         /// <param name="postParameterValue">Post parameter value. Client
         /// should use 'application/x-www-form-urlencoded' encoding for this
         /// value.</param>
@@ -51,23 +51,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets URL where the single sign-on request is to be made.
+        /// Gets or sets url where the single sign on request is to be made
         /// </summary>
         [JsonProperty(PropertyName = "url")]
-        public string Url { get; private set; }
+        public string Url { get; set; }
 
         /// <summary>
-        /// Gets post parameter key.
+        /// Gets or sets post parameter key
         /// </summary>
         [JsonProperty(PropertyName = "postParameterKey")]
-        public string PostParameterKey { get; private set; }
+        public string PostParameterKey { get; set; }
 
         /// <summary>
-        /// Gets post parameter value. Client should use
+        /// Gets or sets post parameter value. Client should use
         /// 'application/x-www-form-urlencoded' encoding for this value.
         /// </summary>
         [JsonProperty(PropertyName = "postParameterValue")]
-        public string PostParameterValue { get; private set; }
+        public string PostParameterValue { get; set; }
 
     }
 }

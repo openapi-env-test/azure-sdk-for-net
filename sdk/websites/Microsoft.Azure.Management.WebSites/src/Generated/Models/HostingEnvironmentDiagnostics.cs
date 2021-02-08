@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Diagnostics for an App Service Environment.
+    /// Diagnostics for a hosting environment (App Service Environment)
     /// </summary>
     public partial class HostingEnvironmentDiagnostics
     {
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the HostingEnvironmentDiagnostics
         /// class.
         /// </summary>
-        /// <param name="name">Name/identifier of the diagnostics.</param>
-        /// <param name="diagnosticsOutput">Diagnostics output.</param>
-        public HostingEnvironmentDiagnostics(string name = default(string), string diagnosticsOutput = default(string))
+        /// <param name="name">Name/identifier of the diagnostics</param>
+        /// <param name="diagnosicsOutput">Diagnostics output</param>
+        public HostingEnvironmentDiagnostics(string name = default(string), string diagnosicsOutput = default(string))
         {
             Name = name;
-            DiagnosticsOutput = diagnosticsOutput;
+            DiagnosicsOutput = diagnosicsOutput;
             CustomInit();
         }
 
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name/identifier of the diagnostics.
+        /// Gets or sets name/identifier of the diagnostics
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets diagnostics output.
+        /// Gets or sets diagnostics output
         /// </summary>
-        [JsonProperty(PropertyName = "diagnosticsOutput")]
-        public string DiagnosticsOutput { get; set; }
+        [JsonProperty(PropertyName = "diagnosicsOutput")]
+        public string DiagnosicsOutput { get; set; }
 
     }
 }

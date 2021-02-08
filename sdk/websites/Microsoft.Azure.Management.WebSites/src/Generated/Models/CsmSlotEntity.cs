@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Deployment slot parameters.
+    /// Class containing deployment slot parameters
     /// </summary>
     public partial class CsmSlotEntity
     {
@@ -30,12 +29,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the CsmSlotEntity class.
         /// </summary>
-        /// <param name="targetSlot">Destination deployment slot during swap
-        /// operation.</param>
-        /// <param name="preserveVnet">&lt;code&gt;true&lt;/code&gt; to
-        /// preserve Virtual Network to the slot during swap; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        public CsmSlotEntity(string targetSlot, bool preserveVnet)
+        /// <param name="targetSlot">Set the destination deployment slot during
+        /// swap operation</param>
+        /// <param name="preserveVnet">Get or set the flag indicating it should
+        /// preserve VNet to the slot during swap</param>
+        public CsmSlotEntity(string targetSlot = default(string), bool? preserveVnet = default(bool?))
         {
             TargetSlot = targetSlot;
             PreserveVnet = preserveVnet;
@@ -48,31 +46,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets destination deployment slot during swap operation.
+        /// Gets or sets set the destination deployment slot during swap
+        /// operation
         /// </summary>
         [JsonProperty(PropertyName = "targetSlot")]
         public string TargetSlot { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// preserve Virtual Network to the slot during swap; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets get or set the flag indicating it should preserve VNet
+        /// to the slot during swap
         /// </summary>
         [JsonProperty(PropertyName = "preserveVnet")]
-        public bool PreserveVnet { get; set; }
+        public bool? PreserveVnet { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (TargetSlot == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TargetSlot");
-            }
-        }
     }
 }

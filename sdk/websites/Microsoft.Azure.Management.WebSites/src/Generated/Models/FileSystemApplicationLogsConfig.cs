@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Application logs to file system configuration.
+    /// Application logs to file system configuration
     /// </summary>
     public partial class FileSystemApplicationLogsConfig
     {

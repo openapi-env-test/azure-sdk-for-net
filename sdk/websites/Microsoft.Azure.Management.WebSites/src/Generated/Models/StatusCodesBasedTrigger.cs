@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Trigger based on status code.
+    /// StatusCodeBasedTrigger
     /// </summary>
     public partial class StatusCodesBasedTrigger
     {
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the StatusCodesBasedTrigger class.
         /// </summary>
-        /// <param name="status">HTTP status code.</param>
-        /// <param name="subStatus">Request Sub Status.</param>
-        /// <param name="win32Status">Win32 error code.</param>
-        /// <param name="count">Request Count.</param>
-        /// <param name="timeInterval">Time interval.</param>
+        /// <param name="status">HTTP status code</param>
+        /// <param name="subStatus">SubStatus</param>
+        /// <param name="win32Status">Win32 error code</param>
+        /// <param name="count">Count</param>
+        /// <param name="timeInterval">TimeInterval</param>
         public StatusCodesBasedTrigger(int? status = default(int?), int? subStatus = default(int?), int? win32Status = default(int?), int? count = default(int?), string timeInterval = default(string))
         {
             Status = status;
@@ -50,31 +50,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets HTTP status code.
+        /// Gets or sets HTTP status code
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public int? Status { get; set; }
 
         /// <summary>
-        /// Gets or sets request Sub Status.
+        /// Gets or sets subStatus
         /// </summary>
         [JsonProperty(PropertyName = "subStatus")]
         public int? SubStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets win32 error code.
+        /// Gets or sets win32 error code
         /// </summary>
         [JsonProperty(PropertyName = "win32Status")]
         public int? Win32Status { get; set; }
 
         /// <summary>
-        /// Gets or sets request Count.
+        /// Gets or sets count
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int? Count { get; set; }
 
         /// <summary>
-        /// Gets or sets time interval.
+        /// Gets or sets timeInterval
         /// </summary>
         [JsonProperty(PropertyName = "timeInterval")]
         public string TimeInterval { get; set; }
