@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans for a subscription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans for a subscription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in a resource group.
+            /// Get all App Service plans in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in a resource group.
+            /// Get all App Service plans in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get an App Service plan.
+            /// Get an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get an App Service plan.
+            /// Get an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service plan.
+            /// Delete an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service plan.
+            /// Delete an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// List all capabilities of an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for List all capabilities of an App Service plan.
+            /// List all capabilities of an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// List all capabilities of an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for List all capabilities of an App Service plan.
+            /// List all capabilities of an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve a Hybrid Connection in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve a Hybrid Connection in use in an App Service plan.
+            /// Retrieve a Hybrid Connection in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve a Hybrid Connection in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve a Hybrid Connection in use in an App Service plan.
+            /// Retrieve a Hybrid Connection in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete a Hybrid Connection in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete a Hybrid Connection in use in an App Service plan.
+            /// Delete a Hybrid Connection in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete a Hybrid Connection in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete a Hybrid Connection in use in an App Service plan.
+            /// Delete a Hybrid Connection in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get the send key name and value of a Hybrid Connection.
             /// </summary>
             /// <remarks>
-            /// Description for Get the send key name and value of a Hybrid Connection.
+            /// Get the send key name and value of a Hybrid Connection.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get the send key name and value of a Hybrid Connection.
             /// </summary>
             /// <remarks>
-            /// Description for Get the send key name and value of a Hybrid Connection.
+            /// Get the send key name and value of a Hybrid Connection.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -523,8 +523,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps that use a Hybrid Connection in an App Service
-            /// Plan.
+            /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -550,8 +549,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps that use a Hybrid Connection in an App Service
-            /// Plan.
+            /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -584,8 +582,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get the maximum number of Hybrid Connections allowed in an
-            /// App Service plan.
+            /// Get the maximum number of Hybrid Connections allowed in an App Service
+            /// plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -606,8 +604,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get the maximum number of Hybrid Connections allowed in an
-            /// App Service plan.
+            /// Get the maximum number of Hybrid Connections allowed in an App Service
+            /// plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -633,8 +631,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve all Hybrid Connections in use in an App Service
-            /// plan.
+            /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -654,8 +651,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve all Hybrid Connections in use in an App Service
-            /// plan.
+            /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -678,10 +674,126 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service plan.
+            /// </param>
+            public static IPage<ResourceMetricDefinition> ListMetricDefintions(this IAppServicePlansOperations operations, string resourceGroupName, string name)
+            {
+                return operations.ListMetricDefintionsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service plan.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetricDefinition>> ListMetricDefintionsAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricDefintionsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get metrics for an App Service plan.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for an App Service plan.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service plan.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            public static IPage<ResourceMetric> ListMetrics(this IAppServicePlansOperations operations, string resourceGroupName, string name, bool? details = default(bool?), string filter = default(string))
+            {
+                return operations.ListMetricsAsync(resourceGroupName, name, details, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for an App Service plan.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for an App Service plan.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service plan.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMetricsAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, bool? details = default(bool?), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, name, details, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Restart all apps in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Restart all apps in an App Service plan.
+            /// Restart all apps in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -707,7 +819,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Restart all apps in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Restart all apps in an App Service plan.
+            /// Restart all apps in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -736,7 +848,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps associated with an App Service plan.
+            /// Get all apps associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -769,7 +881,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps associated with an App Service plan.
+            /// Get all apps associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -808,7 +920,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets all selectable SKUs for a given App Service Plan
             /// </summary>
             /// <remarks>
-            /// Description for Gets all selectable SKUs for a given App Service Plan
+            /// Gets all selectable SKUs for a given App Service Plan
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -828,7 +940,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets all selectable SKUs for a given App Service Plan
             /// </summary>
             /// <remarks>
-            /// Description for Gets all selectable SKUs for a given App Service Plan
+            /// Gets all selectable SKUs for a given App Service Plan
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -854,7 +966,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets server farm usage information
             /// </summary>
             /// <remarks>
-            /// Description for Gets server farm usage information
+            /// Gets server farm usage information
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -879,7 +991,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets server farm usage information
             /// </summary>
             /// <remarks>
-            /// Description for Gets server farm usage information
+            /// Gets server farm usage information
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -910,8 +1022,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all Virtual Networks associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all Virtual Networks associated with an App Service
-            /// plan.
+            /// Get all Virtual Networks associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -931,8 +1042,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all Virtual Networks associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all Virtual Networks associated with an App Service
-            /// plan.
+            /// Get all Virtual Networks associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -958,7 +1068,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network associated with an App Service plan.
+            /// Get a Virtual Network associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -981,7 +1091,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network associated with an App Service plan.
+            /// Get a Virtual Network associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1010,7 +1120,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network gateway.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network gateway.
+            /// Get a Virtual Network gateway.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1036,7 +1146,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network gateway.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network gateway.
+            /// Get a Virtual Network gateway.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1068,7 +1178,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Update a Virtual Network gateway.
             /// </summary>
             /// <remarks>
-            /// Description for Update a Virtual Network gateway.
+            /// Update a Virtual Network gateway.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1097,7 +1207,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Update a Virtual Network gateway.
             /// </summary>
             /// <remarks>
-            /// Description for Update a Virtual Network gateway.
+            /// Update a Virtual Network gateway.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1133,8 +1243,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all routes that are associated with a Virtual Network
-            /// in an App Service plan.
+            /// Get all routes that are associated with a Virtual Network in an App Service
+            /// plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1158,8 +1268,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all routes that are associated with a Virtual Network
-            /// in an App Service plan.
+            /// Get all routes that are associated with a Virtual Network in an App Service
+            /// plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1188,7 +1298,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network route in an App Service plan.
+            /// Get a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1214,7 +1324,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get a Virtual Network route in an App Service plan.
+            /// Get a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1246,8 +1356,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a Virtual Network route in an App Service
-            /// plan.
+            /// Create or update a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1276,8 +1385,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a Virtual Network route in an App Service
-            /// plan.
+            /// Create or update a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1312,7 +1420,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete a Virtual Network route in an App Service plan.
+            /// Delete a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1338,7 +1446,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Delete a Virtual Network route in an App Service plan.
+            /// Delete a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1367,8 +1475,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a Virtual Network route in an App Service
-            /// plan.
+            /// Create or update a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1397,8 +1504,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a Virtual Network route in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a Virtual Network route in an App Service
-            /// plan.
+            /// Create or update a Virtual Network route in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1433,7 +1539,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Reboot a worker machine in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Reboot a worker machine in an App Service plan.
+            /// Reboot a worker machine in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1456,7 +1562,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Reboot a worker machine in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Reboot a worker machine in an App Service plan.
+            /// Reboot a worker machine in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1482,7 +1588,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1505,7 +1611,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Creates or updates an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Creates or updates an App Service Plan.
+            /// Creates or updates an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1534,7 +1640,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans for a subscription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1551,7 +1657,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans for a subscription.
+            /// Get all App Service plans for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1574,7 +1680,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in a resource group.
+            /// Get all App Service plans in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1591,7 +1697,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in a resource group.
+            /// Get all App Service plans in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1614,8 +1720,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps that use a Hybrid Connection in an App Service
-            /// Plan.
+            /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1632,8 +1737,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps that use a Hybrid Connection in an App Service
-            /// Plan.
+            /// Get all apps that use a Hybrid Connection in an App Service Plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1656,8 +1760,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve all Hybrid Connections in use in an App Service
-            /// plan.
+            /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1674,8 +1777,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Retrieve all Hybrid Connections in use in an App Service
-            /// plan.
+            /// Retrieve all Hybrid Connections in use in an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1695,10 +1797,94 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetricDefinition> ListMetricDefintionsNext(this IAppServicePlansOperations operations, string nextPageLink)
+            {
+                return operations.ListMetricDefintionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics that can be queried for an App Service plan, and their
+            /// definitions.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetricDefinition>> ListMetricDefintionsNextAsync(this IAppServicePlansOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricDefintionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get metrics for an App Service plan.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for an App Service plan.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListMetricsNext(this IAppServicePlansOperations operations, string nextPageLink)
+            {
+                return operations.ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for an App Service plan.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for an App Service plan.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMetricsNextAsync(this IAppServicePlansOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get all apps associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps associated with an App Service plan.
+            /// Get all apps associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1715,7 +1901,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps associated with an App Service plan.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps associated with an App Service plan.
+            /// Get all apps associated with an App Service plan.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1738,7 +1924,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets server farm usage information
             /// </summary>
             /// <remarks>
-            /// Description for Gets server farm usage information
+            /// Gets server farm usage information
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1755,7 +1941,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Gets server farm usage information
             /// </summary>
             /// <remarks>
-            /// Description for Gets server farm usage information
+            /// Gets server farm usage information
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

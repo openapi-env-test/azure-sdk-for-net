@@ -130,11 +130,6 @@ namespace Microsoft.Azure.Management.WebSites
         IWebAppsOperations WebApps { get; }
 
         /// <summary>
-        /// Gets the IStaticSitesOperations.
-        /// </summary>
-        IStaticSitesOperations StaticSites { get; }
-
-        /// <summary>
         /// Gets the IAppServiceEnvironmentsOperations.
         /// </summary>
         IAppServiceEnvironmentsOperations AppServiceEnvironments { get; }
@@ -153,7 +148,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets publishing user
         /// </summary>
         /// <remarks>
-        /// Description for Gets publishing user
+        /// Gets publishing user
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -167,7 +162,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates publishing user
         /// </summary>
         /// <remarks>
-        /// Description for Updates publishing user
+        /// Updates publishing user
         /// </remarks>
         /// <param name='userDetails'>
         /// Details of publishing user
@@ -184,8 +179,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the source controls available for Azure websites.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the source controls available for Azure
-        /// websites.
+        /// Gets the source controls available for Azure websites.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -199,7 +193,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets source control token
         /// </summary>
         /// <remarks>
-        /// Description for Gets source control token
+        /// Gets source control token
         /// </remarks>
         /// <param name='sourceControlType'>
         /// Type of source control
@@ -216,7 +210,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates source control token
         /// </summary>
         /// <remarks>
-        /// Description for Updates source control token
+        /// Updates source control token
         /// </remarks>
         /// <param name='sourceControlType'>
         /// Type of source control
@@ -236,7 +230,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of meters for a given location.
+        /// Gets a list of meters for a given location.
         /// </remarks>
         /// <param name='billingLocation'>
         /// Azure Location of billable resource
@@ -256,7 +250,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Check if a resource name is available.
         /// </summary>
         /// <remarks>
-        /// Description for Check if a resource name is available.
+        /// Check if a resource name is available.
         /// </remarks>
         /// <param name='name'>
         /// Resource name to verify.
@@ -283,7 +277,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets list of available geo regions plus ministamps
         /// </summary>
         /// <remarks>
-        /// Description for Gets list of available geo regions plus ministamps
+        /// Gets list of available geo regions plus ministamps
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -297,7 +291,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a list of available geographical regions.
         /// </summary>
         /// <remarks>
-        /// Description for Get a list of available geographical regions.
+        /// Get a list of available geographical regions.
         /// </remarks>
         /// <param name='sku'>
         /// Name of SKU used to filter the regions. Possible values include:
@@ -328,7 +322,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List all apps that are assigned to a hostname.
         /// </summary>
         /// <remarks>
-        /// Description for List all apps that are assigned to a hostname.
+        /// List all apps that are assigned to a hostname.
         /// </remarks>
         /// <param name='nameIdentifier'>
         /// Hostname information.
@@ -345,7 +339,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List all premier add-on offers.
         /// </summary>
         /// <remarks>
-        /// Description for List all premier add-on offers.
+        /// List all premier add-on offers.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -359,7 +353,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List all SKUs.
         /// </summary>
         /// <remarks>
-        /// Description for List all SKUs.
+        /// List all SKUs.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -374,8 +368,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// by analyzing the Network Security Group rules.
         /// </summary>
         /// <remarks>
-        /// Description for Verifies if this VNET is compatible with an App
-        /// Service Environment by analyzing the Network Security Group rules.
+        /// Verifies if this VNET is compatible with an App Service Environment
+        /// by analyzing the Network Security Group rules.
         /// </remarks>
         /// <param name='parameters'>
         /// VNET information
@@ -392,7 +386,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Move resources between resource groups.
         /// </summary>
         /// <remarks>
-        /// Description for Move resources between resource groups.
+        /// Move resources between resource groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -412,7 +406,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Validate if a resource can be created.
         /// </summary>
         /// <remarks>
-        /// Description for Validate if a resource can be created.
+        /// Validate if a resource can be created.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -429,10 +423,29 @@ namespace Microsoft.Azure.Management.WebSites
         Task<AzureOperationResponse<ValidateResponse>> ValidateWithHttpMessagesAsync(string resourceGroupName, ValidateRequest validateRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Validate if the container settings are correct.
+        /// </summary>
+        /// <remarks>
+        /// Validate if the container settings are correct.
+        /// </remarks>
+        /// <param name='validateContainerSettingsRequest'>
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<object>> ValidateContainerSettingsWithHttpMessagesAsync(ValidateContainerSettingsRequest validateContainerSettingsRequest, string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Validate whether a resource can be moved.
         /// </summary>
         /// <remarks>
-        /// Description for Validate whether a resource can be moved.
+        /// Validate whether a resource can be moved.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -452,8 +465,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the source controls available for Azure websites.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the source controls available for Azure
-        /// websites.
+        /// Gets the source controls available for Azure websites.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -470,7 +482,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a list of meters for a given location.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of meters for a given location.
+        /// Gets a list of meters for a given location.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -487,7 +499,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a list of available geographical regions.
         /// </summary>
         /// <remarks>
-        /// Description for Get a list of available geographical regions.
+        /// Get a list of available geographical regions.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -504,7 +516,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List all apps that are assigned to a hostname.
         /// </summary>
         /// <remarks>
-        /// Description for List all apps that are assigned to a hostname.
+        /// List all apps that are assigned to a hostname.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -521,7 +533,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List all premier add-on offers.
         /// </summary>
         /// <remarks>
-        /// Description for List all premier add-on offers.
+        /// List all premier add-on offers.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

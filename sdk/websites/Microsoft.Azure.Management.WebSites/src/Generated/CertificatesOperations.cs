@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates for a subscription.
+        /// Get all certificates for a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates in a resource group.
+        /// Get all certificates in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Get a certificate.
+        /// Get a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate.
+        /// Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a certificate.
+        /// Delete a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -1008,13 +1008,14 @@ namespace Microsoft.Azure.Management.WebSites
             string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new DefaultErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    DefaultErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<DefaultErrorResponse>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
+                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1024,6 +1025,10 @@ namespace Microsoft.Azure.Management.WebSites
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1054,7 +1059,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate.
+        /// Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1277,7 +1282,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates for a subscription.
+        /// Get all certificates for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1448,7 +1453,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates in a resource group.
+        /// Get all certificates in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

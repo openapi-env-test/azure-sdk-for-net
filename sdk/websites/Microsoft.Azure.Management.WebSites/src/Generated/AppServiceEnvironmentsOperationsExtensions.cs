@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments for a subscription.
+            /// Get all App Service Environments for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments for a subscription.
+            /// Get all App Service Environments for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments in a resource group.
+            /// Get all App Service Environments in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments in a resource group.
+            /// Get all App Service Environments in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get the properties of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the properties of an App Service Environment.
+            /// Get the properties of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get the properties of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the properties of an App Service Environment.
+            /// Get the properties of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service Environment.
+            /// Delete an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service Environment.
+            /// Delete an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -305,8 +305,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the used, available, and total worker capacity an App
-            /// Service Environment.
+            /// Get the used, available, and total worker capacity an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -327,8 +327,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the used, available, and total worker capacity an App
-            /// Service Environment.
+            /// Get the used, available, and total worker capacity an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get IP addresses assigned to an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get IP addresses assigned to an App Service Environment.
+            /// Get IP addresses assigned to an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -365,16 +365,16 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the App Service Environment.
             /// </param>
-            public static AddressResponse GetVipInfo(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name)
+            public static AddressResponse ListVips(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name)
             {
-                return operations.GetVipInfoAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.ListVipsAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Get IP addresses assigned to an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get IP addresses assigned to an App Service Environment.
+            /// Get IP addresses assigned to an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -388,9 +388,9 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AddressResponse> GetVipInfoAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AddressResponse> ListVipsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetVipInfoWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListVipsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get diagnostic information for an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get diagnostic information for an App Service Environment.
+            /// Get diagnostic information for an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get diagnostic information for an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get diagnostic information for an App Service Environment.
+            /// Get diagnostic information for an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a diagnostics item for an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get a diagnostics item for an App Service Environment.
+            /// Get a diagnostics item for an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get a diagnostics item for an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get a diagnostics item for an App Service Environment.
+            /// Get a diagnostics item for an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -551,8 +551,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all inbound dependencies of an
-            /// App Service Environment.
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -573,8 +573,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all inbound dependencies of an
-            /// App Service Environment.
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -597,10 +597,122 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get global metric definitions of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metric definitions of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            public static MetricDefinition ListMetricDefinitions(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name)
+            {
+                return operations.ListMetricDefinitionsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get global metric definitions of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metric definitions of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MetricDefinition> ListMetricDefinitionsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get global metrics of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metrics of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            public static IPage<ResourceMetric> ListMetrics(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, bool? details = default(bool?), string filter = default(string))
+            {
+                return operations.ListMetricsAsync(resourceGroupName, name, details, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get global metrics of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metrics of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMetricsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, bool? details = default(bool?), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, name, details, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get all multi-role pools.
             /// </summary>
             /// <remarks>
-            /// Description for Get all multi-role pools.
+            /// Get all multi-role pools.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -620,7 +732,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all multi-role pools.
             /// </summary>
             /// <remarks>
-            /// Description for Get all multi-role pools.
+            /// Get all multi-role pools.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -646,7 +758,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get properties of a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get properties of a multi-role pool.
+            /// Get properties of a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -666,7 +778,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get properties of a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get properties of a multi-role pool.
+            /// Get properties of a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -692,7 +804,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -715,7 +827,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -744,7 +856,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -767,7 +879,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -797,8 +909,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a
-            /// multi-role pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a multi-role pool of an
+            /// App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -822,8 +934,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a
-            /// multi-role pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a multi-role pool of an
+            /// App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -849,11 +961,74 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='instance'>
+            /// Name of the instance in the multi-role pool.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            public static IPage<ResourceMetric> ListMultiRolePoolInstanceMetrics(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string instance, bool? details = default(bool?))
+            {
+                return operations.ListMultiRolePoolInstanceMetricsAsync(resourceGroupName, name, instance, details).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='instance'>
+            /// Name of the instance in the multi-role pool.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMultiRolePoolInstanceMetricsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string instance, bool? details = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMultiRolePoolInstanceMetricsWithHttpMessagesAsync(resourceGroupName, name, instance, details, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a multi-role pool of an App
-            /// Service Environment.
+            /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -873,8 +1048,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a multi-role pool of an App
-            /// Service Environment.
+            /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -897,10 +1071,94 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='startTime'>
+            /// Beginning time of the metrics query.
+            /// </param>
+            /// <param name='endTime'>
+            /// End time of the metrics query.
+            /// </param>
+            /// <param name='timeGrain'>
+            /// Time granularity of the metrics query.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            public static IPage<ResourceMetric> ListMultiRoleMetrics(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string startTime = default(string), string endTime = default(string), string timeGrain = default(string), bool? details = default(bool?), string filter = default(string))
+            {
+                return operations.ListMultiRoleMetricsAsync(resourceGroupName, name, startTime, endTime, timeGrain, details, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='startTime'>
+            /// Beginning time of the metrics query.
+            /// </param>
+            /// <param name='endTime'>
+            /// End time of the metrics query.
+            /// </param>
+            /// <param name='timeGrain'>
+            /// Time granularity of the metrics query.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMultiRoleMetricsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string startTime = default(string), string endTime = default(string), string timeGrain = default(string), bool? details = default(bool?), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMultiRoleMetricsWithHttpMessagesAsync(resourceGroupName, name, startTime, endTime, timeGrain, details, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get available SKUs for scaling a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a multi-role pool.
+            /// Get available SKUs for scaling a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -920,7 +1178,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get available SKUs for scaling a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a multi-role pool.
+            /// Get available SKUs for scaling a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -946,8 +1204,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a multi-role pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -967,8 +1224,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a multi-role pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -994,8 +1250,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// List all currently running operations on the App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for List all currently running operations on the App Service
-            /// Environment.
+            /// List all currently running operations on the App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1015,8 +1270,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// List all currently running operations on the App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for List all currently running operations on the App Service
-            /// Environment.
+            /// List all currently running operations on the App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1043,8 +1297,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all outbound dependencies of
-            /// an App Service Environment.
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1065,8 +1319,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all outbound dependencies of
-            /// an App Service Environment.
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1092,7 +1346,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Reboot all machines in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Reboot all machines in an App Service Environment.
+            /// Reboot all machines in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1112,7 +1366,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Reboot all machines in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Reboot all machines in an App Service Environment.
+            /// Reboot all machines in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1135,7 +1389,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1155,7 +1409,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1181,7 +1435,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in an App Service Environment.
+            /// Get all App Service plans in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1201,7 +1455,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in an App Service Environment.
+            /// Get all App Service plans in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1227,7 +1481,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps in an App Service Environment.
+            /// Get all apps in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1250,7 +1504,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps in an App Service Environment.
+            /// Get all apps in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1279,7 +1533,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1299,7 +1553,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1325,7 +1579,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get global usage metrics of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get global usage metrics of an App Service Environment.
+            /// Get global usage metrics of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1351,7 +1605,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get global usage metrics of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get global usage metrics of an App Service Environment.
+            /// Get global usage metrics of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1383,7 +1637,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all worker pools of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all worker pools of an App Service Environment.
+            /// Get all worker pools of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1403,7 +1657,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all worker pools of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all worker pools of an App Service Environment.
+            /// Get all worker pools of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1429,7 +1683,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get properties of a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get properties of a worker pool.
+            /// Get properties of a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1452,7 +1706,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get properties of a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get properties of a worker pool.
+            /// Get properties of a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1481,7 +1735,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1507,7 +1761,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1539,7 +1793,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1565,7 +1819,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1598,8 +1852,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a worker
-            /// pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a worker pool of an App
+            /// Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1626,8 +1880,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a worker
-            /// pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a worker pool of an App
+            /// Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1656,11 +1910,92 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='workerPoolName'>
+            /// Name of the worker pool.
+            /// </param>
+            /// <param name='instance'>
+            /// Name of the instance in the worker pool.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            public static IPage<ResourceMetric> ListWorkerPoolInstanceMetrics(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string workerPoolName, string instance, bool? details = default(bool?), string filter = default(string))
+            {
+                return operations.ListWorkerPoolInstanceMetricsAsync(resourceGroupName, name, workerPoolName, instance, details, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='workerPoolName'>
+            /// Name of the worker pool.
+            /// </param>
+            /// <param name='instance'>
+            /// Name of the instance in the worker pool.
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListWorkerPoolInstanceMetricsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string workerPoolName, string instance, bool? details = default(bool?), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWorkerPoolInstanceMetricsWithHttpMessagesAsync(resourceGroupName, name, workerPoolName, instance, details, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get metric definitions for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a worker pool of an App Service
-            /// Environment.
+            /// Get metric definitions for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1683,8 +2018,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get metric definitions for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a worker pool of an App Service
-            /// Environment.
+            /// Get metric definitions for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1710,10 +2044,86 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='workerPoolName'>
+            /// Name of worker pool
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            public static IPage<ResourceMetric> ListWebWorkerMetrics(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string workerPoolName, bool? details = default(bool?), string filter = default(string))
+            {
+                return operations.ListWebWorkerMetricsAsync(resourceGroupName, name, workerPoolName, details, filter).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='workerPoolName'>
+            /// Name of worker pool
+            /// </param>
+            /// <param name='details'>
+            /// Specify &lt;code&gt;true&lt;/code&gt; to include instance details. The
+            /// default is &lt;code&gt;false&lt;/code&gt;.
+            /// </param>
+            /// <param name='filter'>
+            /// Return only usages/metrics specified in the filter. Filter conforms to
+            /// odata syntax. Example: $filter=(name.value eq 'Metric1' or name.value eq
+            /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+            /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListWebWorkerMetricsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, string workerPoolName, bool? details = default(bool?), string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWebWorkerMetricsWithHttpMessagesAsync(resourceGroupName, name, workerPoolName, details, filter, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get available SKUs for scaling a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a worker pool.
+            /// Get available SKUs for scaling a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1736,7 +2146,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get available SKUs for scaling a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a worker pool.
+            /// Get available SKUs for scaling a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1765,8 +2175,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a worker pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1789,8 +2198,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a worker pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1819,7 +2227,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1842,7 +2250,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update an App Service Environment.
+            /// Create or update an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1871,7 +2279,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service Environment.
+            /// Delete an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1896,7 +2304,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Delete an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Delete an App Service Environment.
+            /// Delete an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1924,7 +2332,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1947,7 +2355,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1976,7 +2384,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1999,7 +2407,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a multi-role pool.
+            /// Create or update a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2028,7 +2436,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2048,7 +2456,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2074,7 +2482,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2094,7 +2502,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2120,7 +2528,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2146,7 +2554,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Create or update a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Create or update a worker pool.
+            /// Create or update a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2178,7 +2586,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments for a subscription.
+            /// Get all App Service Environments for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2195,7 +2603,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments for a subscription.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments for a subscription.
+            /// Get all App Service Environments for a subscription.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2218,7 +2626,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments in a resource group.
+            /// Get all App Service Environments in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2235,7 +2643,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service Environments in a resource group.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service Environments in a resource group.
+            /// Get all App Service Environments in a resource group.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2259,8 +2667,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the used, available, and total worker capacity an App
-            /// Service Environment.
+            /// Get the used, available, and total worker capacity an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2278,8 +2686,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the used, available, and total worker capacity an App
-            /// Service Environment.
+            /// Get the used, available, and total worker capacity an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2302,7 +2710,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2319,7 +2727,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2343,8 +2751,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all inbound dependencies of an
-            /// App Service Environment.
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2362,8 +2770,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all inbound dependencies of an
-            /// App Service Environment.
+            /// Get the network endpoints of all inbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2383,10 +2791,50 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get global metrics of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metrics of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListMetricsNext(this IAppServiceEnvironmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get global metrics of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get global metrics of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMetricsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get all multi-role pools.
             /// </summary>
             /// <remarks>
-            /// Description for Get all multi-role pools.
+            /// Get all multi-role pools.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2403,7 +2851,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all multi-role pools.
             /// </summary>
             /// <remarks>
-            /// Description for Get all multi-role pools.
+            /// Get all multi-role pools.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2427,8 +2875,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a
-            /// multi-role pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a multi-role pool of an
+            /// App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2446,8 +2894,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a
-            /// multi-role pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a multi-role pool of an
+            /// App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2467,11 +2915,54 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListMultiRolePoolInstanceMetricsNext(this IAppServiceEnvironmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListMultiRolePoolInstanceMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a multi-role pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMultiRolePoolInstanceMetricsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMultiRolePoolInstanceMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a multi-role pool of an App
-            /// Service Environment.
+            /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2488,8 +2979,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a multi-role pool of an App
-            /// Service Environment.
+            /// Get metric definitions for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2509,10 +2999,50 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListMultiRoleMetricsNext(this IAppServiceEnvironmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListMultiRoleMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a multi-role pool of an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListMultiRoleMetricsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMultiRoleMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get available SKUs for scaling a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a multi-role pool.
+            /// Get available SKUs for scaling a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2529,7 +3059,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get available SKUs for scaling a multi-role pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a multi-role pool.
+            /// Get available SKUs for scaling a multi-role pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2552,8 +3082,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a multi-role pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2570,8 +3099,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a multi-role pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a multi-role pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2595,8 +3123,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all outbound dependencies of
-            /// an App Service Environment.
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2614,8 +3142,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get the network endpoints of all outbound dependencies of
-            /// an App Service Environment.
+            /// Get the network endpoints of all outbound dependencies of an App Service
+            /// Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2638,7 +3166,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2655,7 +3183,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2678,7 +3206,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in an App Service Environment.
+            /// Get all App Service plans in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2695,7 +3223,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all App Service plans in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all App Service plans in an App Service Environment.
+            /// Get all App Service plans in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2718,7 +3246,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps in an App Service Environment.
+            /// Get all apps in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2735,7 +3263,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all apps in an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all apps in an App Service Environment.
+            /// Get all apps in an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2758,7 +3286,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2775,7 +3303,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2798,7 +3326,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get global usage metrics of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get global usage metrics of an App Service Environment.
+            /// Get global usage metrics of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2815,7 +3343,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get global usage metrics of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get global usage metrics of an App Service Environment.
+            /// Get global usage metrics of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2838,7 +3366,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all worker pools of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all worker pools of an App Service Environment.
+            /// Get all worker pools of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2855,7 +3383,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get all worker pools of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get all worker pools of an App Service Environment.
+            /// Get all worker pools of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2879,8 +3407,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a worker
-            /// pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a worker pool of an App
+            /// Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2898,8 +3426,8 @@ namespace Microsoft.Azure.Management.WebSites
             /// Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a specific instance of a worker
-            /// pool of an App Service Environment.
+            /// Get metric definitions for a specific instance of a worker pool of an App
+            /// Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2919,11 +3447,54 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListWorkerPoolInstanceMetricsNext(this IAppServiceEnvironmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListWorkerPoolInstanceMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a specific instance of a worker pool of an App Service
+            /// Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListWorkerPoolInstanceMetricsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWorkerPoolInstanceMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get metric definitions for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a worker pool of an App Service
-            /// Environment.
+            /// Get metric definitions for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2940,8 +3511,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get metric definitions for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get metric definitions for a worker pool of an App Service
-            /// Environment.
+            /// Get metric definitions for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2961,10 +3531,54 @@ namespace Microsoft.Azure.Management.WebSites
             }
 
             /// <summary>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ResourceMetric> ListWebWorkerMetricsNext(this IAppServiceEnvironmentsOperations operations, string nextPageLink)
+            {
+                return operations.ListWebWorkerMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </summary>
+            /// <remarks>
+            /// Get metrics for a worker pool of a AppServiceEnvironment (App Service
+            /// Environment).
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ResourceMetric>> ListWebWorkerMetricsNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWebWorkerMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Get available SKUs for scaling a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a worker pool.
+            /// Get available SKUs for scaling a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -2981,7 +3595,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get available SKUs for scaling a worker pool.
             /// </summary>
             /// <remarks>
-            /// Description for Get available SKUs for scaling a worker pool.
+            /// Get available SKUs for scaling a worker pool.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3004,8 +3618,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a worker pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3022,8 +3635,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Get usage metrics for a worker pool of an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Get usage metrics for a worker pool of an App Service
-            /// Environment.
+            /// Get usage metrics for a worker pool of an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3046,7 +3658,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3063,7 +3675,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Move an App Service Environment to a different VNET.
             /// </summary>
             /// <remarks>
-            /// Description for Move an App Service Environment to a different VNET.
+            /// Move an App Service Environment to a different VNET.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3086,7 +3698,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3103,7 +3715,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Resume an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Resume an App Service Environment.
+            /// Resume an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3126,7 +3738,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -3143,7 +3755,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Suspend an App Service Environment.
             /// </summary>
             /// <remarks>
-            /// Description for Suspend an App Service Environment.
+            /// Suspend an App Service Environment.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

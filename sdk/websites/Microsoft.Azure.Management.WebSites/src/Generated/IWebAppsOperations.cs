@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all apps for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all apps for a subscription.
+        /// Get all apps for a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,8 +50,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all web, mobile, and API apps in the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all web, mobile, and API apps in the specified
-        /// resource group.
+        /// Gets all web, mobile, and API apps in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the details of a web, mobile, or API app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the details of a web, mobile, or API app.
+        /// Gets the details of a web, mobile, or API app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -110,8 +109,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -143,8 +142,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a web, mobile, or API app, or one of the
-        /// deployment slots.
+        /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -165,7 +163,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -177,8 +175,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -210,7 +208,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Analyze a custom hostname.
         /// </summary>
         /// <remarks>
-        /// Description for Analyze a custom hostname.
+        /// Analyze a custom hostname.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -242,8 +240,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// current slot.
         /// </summary>
         /// <remarks>
-        /// Description for Applies the configuration settings from the target
-        /// slot onto the current slot.
+        /// Applies the configuration settings from the target slot onto the
+        /// current slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -260,7 +258,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -271,7 +269,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a backup of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a backup of an app.
+        /// Creates a backup of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -303,7 +301,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets existing backups of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -331,7 +329,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a backup of an app by its ID.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a backup of an app by its ID.
+        /// Gets a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -362,7 +360,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a backup of an app by its ID.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a backup of an app by its ID.
+        /// Deletes a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -379,7 +377,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -393,10 +391,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// URL is passed in the request body.
         /// </summary>
         /// <remarks>
-        /// Description for Gets status of a web app backup that may be in
-        /// progress, including secrets associated with the backup, such as the
-        /// Azure Storage SAS URL. Also can be used to update the SAS URL for
-        /// the backup if a new URL is passed in the request body.
+        /// Gets status of a web app backup that may be in progress, including
+        /// secrets associated with the backup, such as the Azure Storage SAS
+        /// URL. Also can be used to update the SAS URL for the backup if a new
+        /// URL is passed in the request body.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -431,8 +429,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restores a specific backup to another app (or
-        /// deployment slot, if specified).
+        /// Restores a specific backup to another app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -452,7 +450,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -460,159 +458,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Returns whether Scm basic auth is allowed and whether Ftp is
-        /// allowed for a given site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Returns whether Scm basic auth is allowed and
-        /// whether Ftp is allowed for a given site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CsmPublishingCredentialsPoliciesCollection>> GetBasicPublishingCredentialsPoliciesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Returns whether FTP is allowed on the site or not.
-        /// </summary>
-        /// <remarks>
-        /// Description for Returns whether FTP is allowed on the site or not.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CsmPublishingCredentialsPoliciesEntity>> GetFtpAllowedWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates whether FTP is allowed on the site or not.
-        /// </summary>
-        /// <remarks>
-        /// Description for Updates whether FTP is allowed on the site or not.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='csmPublishingAccessPoliciesEntity'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CsmPublishingCredentialsPoliciesEntity>> UpdateFtpAllowedWithHttpMessagesAsync(string resourceGroupName, string name, CsmPublishingCredentialsPoliciesEntity csmPublishingAccessPoliciesEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Returns whether Scm basic auth is allowed on the site or not.
-        /// </summary>
-        /// <remarks>
-        /// Description for Returns whether Scm basic auth is allowed on the
-        /// site or not.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CsmPublishingCredentialsPoliciesEntity>> GetScmAllowedWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates whether user publishing credentials are allowed on the site
-        /// or not.
-        /// </summary>
-        /// <remarks>
-        /// Description for Updates whether user publishing credentials are
-        /// allowed on the site or not.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='csmPublishingAccessPoliciesEntity'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CsmPublishingCredentialsPoliciesEntity>> UpdateScmAllowedWithHttpMessagesAsync(string resourceGroupName, string name, CsmPublishingCredentialsPoliciesEntity csmPublishingAccessPoliciesEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// List the configurations of an app
         /// </summary>
         /// <remarks>
-        /// Description for List the configurations of an app
+        /// List the configurations of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -640,7 +489,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the application settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the application settings of an app.
+        /// Replaces the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -671,7 +520,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the application settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the application settings of an app.
+        /// Gets the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -700,8 +549,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// web app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Authentication / Authorization settings
-        /// associated with web app.
+        /// Updates the Authentication / Authorization settings associated with
+        /// web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -732,8 +581,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Authentication/Authorization settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Authentication/Authorization settings of
-        /// an app.
+        /// Gets the Authentication/Authorization settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -758,74 +606,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteAuthSettings>> GetAuthSettingsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates site's Authentication / Authorization settings for apps via
-        /// the V2 format
-        /// </summary>
-        /// <remarks>
-        /// Description for Updates site's Authentication / Authorization
-        /// settings for apps via the V2 format
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='siteAuthSettingsV2'>
-        /// Auth settings associated with web app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteAuthSettingsV2>> UpdateAuthSettingsV2WithHttpMessagesAsync(string resourceGroupName, string name, SiteAuthSettingsV2 siteAuthSettingsV2, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets site's Authentication / Authorization settings for apps via
-        /// the V2 format
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets site's Authentication / Authorization settings
-        /// for apps via the V2 format
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteAuthSettingsV2>> GetAuthSettingsV2WithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Updates the Azure storage account configurations of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Azure storage account configurations of
-        /// an app.
+        /// Updates the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -856,8 +640,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Azure storage account configurations of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Azure storage account configurations of an
-        /// app.
+        /// Gets the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -885,7 +668,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the backup configuration of an app.
+        /// Updates the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -916,7 +699,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes the backup configuration of an app.
+        /// Deletes the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -930,7 +713,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -941,7 +724,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the backup configuration of an app.
+        /// Gets the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -969,7 +752,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the connection strings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the connection strings of an app.
+        /// Replaces the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1000,7 +783,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the connection strings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the connection strings of an app.
+        /// Gets the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1028,7 +811,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the logging configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the logging configuration of an app.
+        /// Gets the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1056,7 +839,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the logging configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the logging configuration of an app.
+        /// Updates the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1088,7 +871,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the metadata of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the metadata of an app.
+        /// Replaces the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1119,7 +902,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the metadata of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the metadata of an app.
+        /// Gets the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1147,7 +930,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Git/FTP publishing credentials of an app.
+        /// Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1175,7 +958,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the Push settings associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Push settings associated with web app.
+        /// Updates the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1206,7 +989,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Push settings associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Push settings associated with web app.
+        /// Gets the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1235,8 +1018,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// the slot (not swapped).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the names of app settings and connection
-        /// strings that stick to the slot (not swapped).
+        /// Gets the names of app settings and connection strings that stick to
+        /// the slot (not swapped).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1265,8 +1048,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// that remain with the slot during swap operation.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the names of application settings and
-        /// connection string that remain with the slot during swap operation.
+        /// Updates the names of application settings and connection string
+        /// that remain with the slot during swap operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1298,9 +1081,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// bitness, default documents, virtual applications, Always On, etc.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the configuration of an app, such as platform
-        /// version and bitness, default documents, virtual applications,
-        /// Always On, etc.
+        /// Gets the configuration of an app, such as platform version and
+        /// bitness, default documents, virtual applications, Always On, etc.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1328,7 +1110,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the configuration of an app.
+        /// Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1359,7 +1141,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the configuration of an app.
+        /// Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1392,9 +1174,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of web app configuration snapshots
-        /// identifiers. Each element of the list contains a timestamp and the
-        /// ID of the snapshot.
+        /// Gets a list of web app configuration snapshots identifiers. Each
+        /// element of the list contains a timestamp and the ID of the
+        /// snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1423,8 +1205,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// in time.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a snapshot of the configuration of an app at a
-        /// previous point in time.
+        /// Gets a snapshot of the configuration of an app at a previous point
+        /// in time.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1455,8 +1237,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Reverts the configuration of an app to a previous snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Reverts the configuration of an app to a previous
-        /// snapshot.
+        /// Reverts the configuration of an app to a previous snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1473,7 +1254,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -1484,8 +1265,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the last lines of docker logs for the given site
         /// </summary>
         /// <remarks>
-        /// Description for Gets the last lines of docker logs for the given
-        /// site
+        /// Gets the last lines of docker logs for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1513,8 +1293,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the ZIP archived docker log files for the given site
         /// </summary>
         /// <remarks>
-        /// Description for Gets the ZIP archived docker log files for the
-        /// given site
+        /// Gets the ZIP archived docker log files for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1542,8 +1321,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List continuous web jobs for an app, or a
-        /// deployment slot.
+        /// List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1572,8 +1350,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a continuous web job by its ID for an app, or
-        /// a deployment slot.
+        /// Gets a continuous web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1590,7 +1368,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -1605,8 +1383,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a continuous web job by its ID for an app,
-        /// or a deployment slot.
+        /// Delete a continuous web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1623,7 +1401,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -1634,8 +1412,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start a continuous web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Start a continuous web job for an app, or a
-        /// deployment slot.
+        /// Start a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1652,7 +1429,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -1663,8 +1440,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop a continuous web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Stop a continuous web job for an app, or a
-        /// deployment slot.
+        /// Stop a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1681,7 +1457,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -1692,7 +1468,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List deployments for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// List deployments for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1720,8 +1496,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a deployment by its ID for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get a deployment by its ID for an app, or a
-        /// deployment slot.
+        /// Get a deployment by its ID for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1752,8 +1527,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create a deployment for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create a deployment for an app, or a deployment
-        /// slot.
+        /// Create a deployment for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1787,8 +1561,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a deployment by its ID for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a deployment by its ID for an app, or a
-        /// deployment slot.
+        /// Delete a deployment by its ID for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1805,7 +1578,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -1817,8 +1590,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployment log for specific deployment for an
-        /// app, or a deployment slot.
+        /// List deployment log for specific deployment for an app, or a
+        /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1853,9 +1626,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// stored in a backup.
         /// </summary>
         /// <remarks>
-        /// Description for Discovers an existing app backup that can be
-        /// restored from a blob in Azure storage. Use this to get information
-        /// about the databases stored in a backup.
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1887,8 +1660,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Lists ownership identifiers for domain associated
-        /// with web app.
+        /// Lists ownership identifiers for domain associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1916,7 +1688,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get domain ownership identifier for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Get domain ownership identifier for web app.
+        /// Get domain ownership identifier for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1948,8 +1720,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing ownership identifier.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a domain ownership identifier for web app,
-        /// or updates an existing ownership identifier.
+        /// Creates a domain ownership identifier for web app, or updates an
+        /// existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1983,8 +1755,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a domain ownership identifier for a web app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a domain ownership identifier for a web
-        /// app.
+        /// Deletes a domain ownership identifier for a web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2001,7 +1772,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2013,8 +1784,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing ownership identifier.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a domain ownership identifier for web app,
-        /// or updates an existing ownership identifier.
+        /// Creates a domain ownership identifier for web app, or updates an
+        /// existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2048,7 +1819,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the status of the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the status of the last MSDeploy operation.
+        /// Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2076,7 +1847,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2093,7 +1864,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2107,8 +1878,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the MSDeploy Log for the last MSDeploy
-        /// operation.
+        /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2122,7 +1892,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2136,8 +1906,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the functions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List the functions for a web site, or a deployment
-        /// slot.
+        /// List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2151,7 +1920,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2165,8 +1934,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Fetch a short lived token that can be exchanged for a master key.
         /// </summary>
         /// <remarks>
-        /// Description for Fetch a short lived token that can be exchanged for
-        /// a master key.
+        /// Fetch a short lived token that can be exchanged for a master key.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2195,8 +1963,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function information by its ID for web site, or
-        /// a deployment slot.
+        /// Get function information by its ID for web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2213,7 +1981,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -2227,7 +1995,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create function for web site, or a deployment slot.
+        /// Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2261,8 +2029,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a function for web site, or a deployment
-        /// slot.
+        /// Delete a function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2279,7 +2046,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2290,7 +2057,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Add or update a function secret.
         /// </summary>
         /// <remarks>
-        /// Description for Add or update a function secret.
+        /// Add or update a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2327,7 +2094,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a function secret.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a function secret.
+        /// Delete a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2347,7 +2114,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2359,8 +2126,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function keys for a function in a web site, or
-        /// a deployment slot.
+        /// Get function keys for a function in a web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2392,8 +2159,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function secrets for a function in a web site,
-        /// or a deployment slot.
+        /// Get function secrets for a function in a web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2424,7 +2191,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get host secrets for a function app.
         /// </summary>
         /// <remarks>
-        /// Description for Get host secrets for a function app.
+        /// Get host secrets for a function app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2452,8 +2219,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// This is to allow calling via powershell and ARM template.
         /// </summary>
         /// <remarks>
-        /// Description for This is to allow calling via powershell and ARM
-        /// template.
+        /// This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2478,8 +2244,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Syncs function trigger metadata to the management database
         /// </summary>
         /// <remarks>
-        /// Description for Syncs function trigger metadata to the management
-        /// database
+        /// Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2493,7 +2258,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2504,7 +2269,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Add or update a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Add or update a host level secret.
+        /// Add or update a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2541,7 +2306,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a host level secret.
+        /// Delete a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2572,8 +2337,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get hostname bindings for an app or a deployment
-        /// slot.
+        /// Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2602,8 +2366,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Get the named hostname binding for an app (or
-        /// deployment slot, if specified).
+        /// Get the named hostname binding for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2634,7 +2398,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a hostname binding for an app.
+        /// Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2669,7 +2433,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a hostname binding for an app.
+        /// Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2686,7 +2450,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2698,8 +2462,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// App.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieves a specific Service Bus Hybrid Connection
-        /// used by this Web App.
+        /// Retrieves a specific Service Bus Hybrid Connection used by this Web
+        /// App.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2733,8 +2497,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new Hybrid Connection using a Service Bus
-        /// relay.
+        /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2771,7 +2534,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Removes a Hybrid Connection from this site.
         /// </summary>
         /// <remarks>
-        /// Description for Removes a Hybrid Connection from this site.
+        /// Removes a Hybrid Connection from this site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2791,7 +2554,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2802,8 +2565,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new Hybrid Connection using a Service Bus
-        /// relay.
+        /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2837,11 +2599,44 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<HybridConnection>> UpdateHybridConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, HybridConnection connectionEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the send key name and value for a Hybrid Connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets the send key name and value for a Hybrid Connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='namespaceName'>
+        /// The namespace for this hybrid connection.
+        /// </param>
+        /// <param name='relayName'>
+        /// The relay name for this hybrid connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<HybridConnectionKey>> ListHybridConnectionKeysWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Retrieves all Service Bus Hybrid Connections used by this Web App.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieves all Service Bus Hybrid Connections used
-        /// by this Web App.
+        /// Retrieves all Service Bus Hybrid Connections used by this Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2870,8 +2665,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets hybrid connections configured for an app (or
-        /// deployment slot, if specified).
+        /// Gets hybrid connections configured for an app (or deployment slot,
+        /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2899,7 +2694,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a hybrid connection configuration by its name.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a hybrid connection configuration by its name.
+        /// Gets a hybrid connection configuration by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2931,8 +2726,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing one (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new hybrid connection configuration
-        /// (PUT), or updates an existing one (PATCH).
+        /// Creates a new hybrid connection configuration (PUT), or updates an
+        /// existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2966,7 +2761,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a relay service connection by its name.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a relay service connection by its name.
+        /// Deletes a relay service connection by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -2983,7 +2778,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -2995,8 +2790,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing one (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new hybrid connection configuration
-        /// (PUT), or updates an existing one (PATCH).
+        /// Creates a new hybrid connection configuration (PUT), or updates an
+        /// existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3030,43 +2825,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all scale-out instances of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<WebSiteInstanceStatus>>> ListInstanceIdentifiersWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets all scale-out instances of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='instanceId'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3083,12 +2848,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<WebSiteInstanceStatus>> GetInstanceInfoWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SiteInstance>>> ListInstanceIdentifiersWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the status of the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the status of the last MSDeploy operation.
+        /// Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3119,7 +2884,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3139,7 +2904,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3153,8 +2918,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the MSDeploy Log for the last MSDeploy
-        /// operation.
+        /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3171,7 +2935,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3186,9 +2950,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3207,7 +2970,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3222,8 +2985,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3245,7 +3008,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3260,8 +3023,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// or specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Terminate a process by its ID for a web site, or a
-        /// deployment slot, or specific scaled-out instance in a web site.
+        /// Terminate a process by its ID for a web site, or a deployment slot,
+        /// or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3283,7 +3046,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -3295,8 +3058,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get a memory dump of a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// Get a memory dump of a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3318,7 +3081,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3333,8 +3096,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3356,7 +3119,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3371,8 +3134,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3397,7 +3160,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3412,8 +3175,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3435,7 +3198,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3446,12 +3209,53 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </summary>
+        /// <remarks>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
+        /// </param>
+        /// <param name='threadId'>
+        /// TID.
+        /// </param>
+        /// <param name='instanceId'>
+        /// ID of a specific scaled-out instance. This is the value of the name
+        /// property in the JSON response from "GET
+        /// api/sites/{siteName}/instances".
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProcessThreadInfo>> GetInstanceProcessThreadWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string threadId, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Shows whether an app can be cloned to another resource group or
         /// subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Shows whether an app can be cloned to another
-        /// resource group or subscription.
+        /// Shows whether an app can be cloned to another resource group or
+        /// subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3476,39 +3280,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteCloneability>> IsCloneableWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets existing backups of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets existing backups of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<BackupItem>>> ListSiteBackupsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// This is to allow calling via powershell and ARM template.
         /// </summary>
         /// <remarks>
-        /// Description for This is to allow calling via powershell and ARM
-        /// template.
+        /// This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3533,10 +3308,80 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<FunctionSecrets>> ListSyncFunctionTriggersWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetricDefinition>>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='details'>
+        /// Specify "true" to include metric details in the response. It is
+        /// "false" by default.
+        /// </param>
+        /// <param name='filter'>
+        /// Return only metrics specified in the filter (using OData syntax).
+        /// For example: $filter=(name.value eq 'Metric1' or name.value eq
+        /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+        /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetric>>> ListMetricsWithHttpMessagesAsync(string resourceGroupName, string name, bool? details = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Restores a web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app.
+        /// Restores a web app.
         /// </remarks>
         /// <param name='subscriptionName'>
         /// Azure subscription.
@@ -3571,8 +3416,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// database.
         /// </summary>
         /// <remarks>
-        /// Description for Migrates a local (in-app) MySql database to a
-        /// remote MySql database.
+        /// Migrates a local (in-app) MySql database to a remote MySql
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3604,8 +3449,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// whether or not MySql in app is enabled
         /// </summary>
         /// <remarks>
-        /// Description for Returns the status of MySql in app migration, if
-        /// one is active, and whether or not MySql in app is enabled
+        /// Returns the status of MySql in app migration, if one is active, and
+        /// whether or not MySql in app is enabled
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3633,7 +3478,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a Swift Virtual Network connection.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a Swift Virtual Network connection.
+        /// Gets a Swift Virtual Network connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3666,10 +3511,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// in.
         /// </summary>
         /// <remarks>
-        /// Description for Integrates this Web App with a Virtual Network.
-        /// This requires that 1) "swiftSupported" is true when doing a GET
-        /// against this resource, and 2) that the target Subnet has already
-        /// been delegated, and is not
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
         /// in use by another App Service Plan other than the one this App is
         /// in.
         /// </remarks>
@@ -3703,8 +3548,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot).
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a Swift Virtual Network connection from an
-        /// app (or deployment slot).
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3718,7 +3563,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -3734,10 +3579,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// in.
         /// </summary>
         /// <remarks>
-        /// Description for Integrates this Web App with a Virtual Network.
-        /// This requires that 1) "swiftSupported" is true when doing a GET
-        /// against this resource, and 2) that the target Subnet has already
-        /// been delegated, and is not
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
         /// in use by another App Service Plan other than the one this App is
         /// in.
         /// </remarks>
@@ -3771,8 +3616,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets all network features used by the app (or
-        /// deployment slot, if specified).
+        /// Gets all network features used by the app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3789,7 +3634,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -3804,8 +3649,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3836,8 +3681,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site (To be deprecated).
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site (To be
-        /// deprecated).
+        /// Start capturing network packets for the site (To be deprecated).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3874,7 +3718,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3911,8 +3755,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Stop ongoing capturing network packets for the
-        /// site.
+        /// Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3926,7 +3769,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -3938,8 +3781,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -3971,8 +3814,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4004,8 +3847,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4037,8 +3880,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Generates a new publishing password for an app (or
-        /// deployment slot, if specified).
+        /// Generates a new publishing password for an app (or deployment slot,
+        /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4052,7 +3895,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4063,7 +3906,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets perfmon counters for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets perfmon counters for web app.
+        /// Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4097,7 +3940,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets web app's event logs.
         /// </summary>
         /// <remarks>
-        /// Description for Gets web app's event logs.
+        /// Gets web app's event logs.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4125,7 +3968,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the premier add-ons of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the premier add-ons of an app.
+        /// Gets the premier add-ons of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4153,7 +3996,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named add-on of an app.
+        /// Gets a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4184,7 +4027,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates a named add-on of an app.
+        /// Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4218,7 +4061,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a premier add-on from an app.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a premier add-on from an app.
+        /// Delete a premier add-on from an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4235,7 +4078,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4246,7 +4089,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates a named add-on of an app.
+        /// Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4281,8 +4124,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Virtual Networks that can access the site.
         /// </summary>
         /// <remarks>
-        /// Description for Gets data around private site access enablement and
-        /// authorized Virtual Networks that can access the site.
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4311,8 +4154,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Virtual Networks that can access the site.
         /// </summary>
         /// <remarks>
-        /// Description for Sets data around private site access enablement and
-        /// authorized Virtual Networks that can access the site.
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4344,9 +4187,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4360,7 +4202,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4375,8 +4217,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4393,7 +4235,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4408,8 +4250,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// or specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Terminate a process by its ID for a web site, or a
-        /// deployment slot, or specific scaled-out instance in a web site.
+        /// Terminate a process by its ID for a web site, or a deployment slot,
+        /// or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4426,7 +4268,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4438,8 +4280,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get a memory dump of a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// Get a memory dump of a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4456,7 +4298,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4471,8 +4313,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4489,7 +4331,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4504,8 +4346,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4525,7 +4367,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4540,8 +4382,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4558,7 +4400,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4569,11 +4411,46 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListProcessThreadsWithHttpMessagesAsync(string resourceGroupName, string name, string processId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </summary>
+        /// <remarks>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
+        /// </param>
+        /// <param name='threadId'>
+        /// TID.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProcessThreadInfo>> GetProcessThreadWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string threadId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get public certificates for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get public certificates for an app or a deployment
-        /// slot.
+        /// Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4602,8 +4479,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Get the named public certificate for an app (or
-        /// deployment slot, if specified).
+        /// Get the named public certificate for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4634,7 +4511,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a hostname binding for an app.
+        /// Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4669,7 +4546,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a hostname binding for an app.
+        /// Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4686,7 +4563,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4698,8 +4575,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the publishing profile for an app (or
-        /// deployment slot, if specified).
+        /// Gets the publishing profile for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4733,8 +4610,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// previously modified by calling the API with POST.
         /// </summary>
         /// <remarks>
-        /// Description for Resets the configuration settings of the current
-        /// slot if they were previously modified by calling the API with POST.
+        /// Resets the configuration settings of the current slot if they were
+        /// previously modified by calling the API with POST.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4748,7 +4625,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4759,7 +4636,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restarts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restarts an app (or deployment slot, if specified).
+        /// Restarts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4782,7 +4659,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4793,8 +4670,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores an app from a backup blob in Azure Storage.
         /// </summary>
         /// <remarks>
-        /// Description for Restores an app from a backup blob in Azure
-        /// Storage.
+        /// Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4811,7 +4687,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4822,7 +4698,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a deleted web app to this web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a deleted web app to this web app.
+        /// Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4839,7 +4715,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4850,7 +4726,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a web app from a snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app from a snapshot.
+        /// Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4868,7 +4744,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4879,8 +4755,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of siteextensions for a web site, or a
-        /// deployment slot.
+        /// Get list of siteextensions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4894,7 +4769,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4909,8 +4784,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get site extension information by its ID for a web
-        /// site, or a deployment slot.
+        /// Get site extension information by its ID for a web site, or a
+        /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4927,7 +4802,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4941,8 +4816,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Install site extension on a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Install site extension on a web site, or a
-        /// deployment slot.
+        /// Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4959,7 +4833,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -4973,8 +4847,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Remove a site extension from a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Remove a site extension from a web site, or a
-        /// deployment slot.
+        /// Remove a site extension from a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -4991,7 +4864,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -4999,40 +4872,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse> DeleteSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Copies a deployment slot to another deployment slot of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Copies a deployment slot to another deployment slot
-        /// of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='copySlotEntity'>
-        /// JSON object that contains the target slot name and site config
-        /// properties to override the source slot config. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> CopyProductionSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmCopySlotEntity copySlotEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets an app's deployment slots.
         /// </summary>
         /// <remarks>
-        /// Description for Gets an app's deployment slots.
+        /// Gets an app's deployment slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5060,7 +4903,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the details of a web, mobile, or API app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the details of a web, mobile, or API app.
+        /// Gets the details of a web, mobile, or API app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5078,7 +4921,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -5093,8 +4936,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5130,8 +4973,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a web, mobile, or API app, or one of the
-        /// deployment slots.
+        /// Deletes a web, mobile, or API app, or one of the deployment slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5157,7 +4999,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -5169,8 +5011,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5206,7 +5048,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Analyze a custom hostname.
         /// </summary>
         /// <remarks>
-        /// Description for Analyze a custom hostname.
+        /// Analyze a custom hostname.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5242,8 +5084,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// current slot.
         /// </summary>
         /// <remarks>
-        /// Description for Applies the configuration settings from the target
-        /// slot onto the current slot.
+        /// Applies the configuration settings from the target slot onto the
+        /// current slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5264,7 +5106,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -5275,7 +5117,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a backup of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a backup of an app.
+        /// Creates a backup of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5311,7 +5153,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets existing backups of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5343,7 +5185,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a backup of an app by its ID.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a backup of an app by its ID.
+        /// Gets a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5378,7 +5220,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a backup of an app by its ID.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a backup of an app by its ID.
+        /// Deletes a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5399,7 +5241,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -5413,10 +5255,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// URL is passed in the request body.
         /// </summary>
         /// <remarks>
-        /// Description for Gets status of a web app backup that may be in
-        /// progress, including secrets associated with the backup, such as the
-        /// Azure Storage SAS URL. Also can be used to update the SAS URL for
-        /// the backup if a new URL is passed in the request body.
+        /// Gets status of a web app backup that may be in progress, including
+        /// secrets associated with the backup, such as the Azure Storage SAS
+        /// URL. Also can be used to update the SAS URL for the backup if a new
+        /// URL is passed in the request body.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5455,8 +5297,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restores a specific backup to another app (or
-        /// deployment slot, if specified).
+        /// Restores a specific backup to another app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5480,7 +5322,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -5491,7 +5333,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the configurations of an app
         /// </summary>
         /// <remarks>
-        /// Description for List the configurations of an app
+        /// List the configurations of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5523,7 +5365,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the application settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the application settings of an app.
+        /// Replaces the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5558,7 +5400,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the application settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the application settings of an app.
+        /// Gets the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5591,8 +5433,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// web app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Authentication / Authorization settings
-        /// associated with web app.
+        /// Updates the Authentication / Authorization settings associated with
+        /// web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5627,8 +5469,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Authentication/Authorization settings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Authentication/Authorization settings of
-        /// an app.
+        /// Gets the Authentication/Authorization settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5657,82 +5498,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteAuthSettings>> GetAuthSettingsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates site's Authentication / Authorization settings for apps via
-        /// the V2 format
-        /// </summary>
-        /// <remarks>
-        /// Description for Updates site's Authentication / Authorization
-        /// settings for apps via the V2 format
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='siteAuthSettingsV2'>
-        /// Auth settings associated with web app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to
-        /// production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteAuthSettingsV2>> UpdateAuthSettingsV2SlotWithHttpMessagesAsync(string resourceGroupName, string name, SiteAuthSettingsV2 siteAuthSettingsV2, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets site's Authentication / Authorization settings for apps via
-        /// the V2 format
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets site's Authentication / Authorization settings
-        /// for apps via the V2 format
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// will get the settings for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteAuthSettingsV2>> GetAuthSettingsV2SlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Updates the Azure storage account configurations of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Azure storage account configurations of
-        /// an app.
+        /// Updates the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5768,8 +5537,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Azure storage account configurations of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Azure storage account configurations of an
-        /// app.
+        /// Gets the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5802,7 +5570,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the backup configuration of an app.
+        /// Updates the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5837,7 +5605,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes the backup configuration of an app.
+        /// Deletes the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5855,7 +5623,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -5866,7 +5634,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the backup configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the backup configuration of an app.
+        /// Gets the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5898,7 +5666,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the connection strings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the connection strings of an app.
+        /// Replaces the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5933,7 +5701,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the connection strings of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the connection strings of an app.
+        /// Gets the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5965,7 +5733,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the logging configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the logging configuration of an app.
+        /// Gets the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -5997,7 +5765,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the logging configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the logging configuration of an app.
+        /// Updates the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6033,7 +5801,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Replaces the metadata of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Replaces the metadata of an app.
+        /// Replaces the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6068,7 +5836,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the metadata of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the metadata of an app.
+        /// Gets the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6100,7 +5868,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Git/FTP publishing credentials of an app.
+        /// Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6132,7 +5900,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the Push settings associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the Push settings associated with web app.
+        /// Updates the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6167,7 +5935,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Push settings associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Push settings associated with web app.
+        /// Gets the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6200,9 +5968,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// bitness, default documents, virtual applications, Always On, etc.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the configuration of an app, such as platform
-        /// version and bitness, default documents, virtual applications,
-        /// Always On, etc.
+        /// Gets the configuration of an app, such as platform version and
+        /// bitness, default documents, virtual applications, Always On, etc.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6234,7 +6001,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the configuration of an app.
+        /// Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6269,7 +6036,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the configuration of an app.
+        /// Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6306,9 +6073,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of web app configuration snapshots
-        /// identifiers. Each element of the list contains a timestamp and the
-        /// ID of the snapshot.
+        /// Gets a list of web app configuration snapshots identifiers. Each
+        /// element of the list contains a timestamp and the ID of the
+        /// snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6341,8 +6108,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// in time.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a snapshot of the configuration of an app at a
-        /// previous point in time.
+        /// Gets a snapshot of the configuration of an app at a previous point
+        /// in time.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6377,8 +6144,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Reverts the configuration of an app to a previous snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Reverts the configuration of an app to a previous
-        /// snapshot.
+        /// Reverts the configuration of an app to a previous snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6399,7 +6165,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -6410,8 +6176,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the last lines of docker logs for the given site
         /// </summary>
         /// <remarks>
-        /// Description for Gets the last lines of docker logs for the given
-        /// site
+        /// Gets the last lines of docker logs for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6443,8 +6208,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the ZIP archived docker log files for the given site
         /// </summary>
         /// <remarks>
-        /// Description for Gets the ZIP archived docker log files for the
-        /// given site
+        /// Gets the ZIP archived docker log files for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6476,8 +6240,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List continuous web jobs for an app, or a
-        /// deployment slot.
+        /// List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6510,8 +6273,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a continuous web job by its ID for an app, or
-        /// a deployment slot.
+        /// Gets a continuous web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6532,7 +6295,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -6547,8 +6310,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a continuous web job by its ID for an app,
-        /// or a deployment slot.
+        /// Delete a continuous web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6569,7 +6332,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -6580,8 +6343,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start a continuous web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Start a continuous web job for an app, or a
-        /// deployment slot.
+        /// Start a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6602,7 +6364,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -6613,8 +6375,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop a continuous web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Stop a continuous web job for an app, or a
-        /// deployment slot.
+        /// Stop a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6635,7 +6396,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -6646,7 +6407,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List deployments for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// List deployments for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6678,8 +6439,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a deployment by its ID for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get a deployment by its ID for an app, or a
-        /// deployment slot.
+        /// Get a deployment by its ID for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6714,8 +6474,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create a deployment for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create a deployment for an app, or a deployment
-        /// slot.
+        /// Create a deployment for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6753,8 +6512,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a deployment by its ID for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a deployment by its ID for an app, or a
-        /// deployment slot.
+        /// Delete a deployment by its ID for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6775,7 +6533,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -6787,8 +6545,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployment log for specific deployment for an
-        /// app, or a deployment slot.
+        /// List deployment log for specific deployment for an app, or a
+        /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6827,9 +6585,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// stored in a backup.
         /// </summary>
         /// <remarks>
-        /// Description for Discovers an existing app backup that can be
-        /// restored from a blob in Azure storage. Use this to get information
-        /// about the databases stored in a backup.
+        /// Discovers an existing app backup that can be restored from a blob
+        /// in Azure storage. Use this to get information about the databases
+        /// stored in a backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6865,8 +6623,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Lists ownership identifiers for domain associated
-        /// with web app.
+        /// Lists ownership identifiers for domain associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6898,7 +6655,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get domain ownership identifier for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Get domain ownership identifier for web app.
+        /// Get domain ownership identifier for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6934,8 +6691,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing ownership identifier.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a domain ownership identifier for web app,
-        /// or updates an existing ownership identifier.
+        /// Creates a domain ownership identifier for web app, or updates an
+        /// existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6973,8 +6730,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a domain ownership identifier for a web app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a domain ownership identifier for a web
-        /// app.
+        /// Deletes a domain ownership identifier for a web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -6995,7 +6751,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -7007,8 +6763,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing ownership identifier.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a domain ownership identifier for web app,
-        /// or updates an existing ownership identifier.
+        /// Creates a domain ownership identifier for web app, or updates an
+        /// existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7046,7 +6802,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the status of the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the status of the last MSDeploy operation.
+        /// Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7078,7 +6834,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7099,7 +6855,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7113,8 +6869,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the MSDeploy Log for the last MSDeploy
-        /// operation.
+        /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7132,7 +6887,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7146,8 +6901,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the functions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List the functions for a web site, or a deployment
-        /// slot.
+        /// List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7164,7 +6918,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7178,8 +6932,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Fetch a short lived token that can be exchanged for a master key.
         /// </summary>
         /// <remarks>
-        /// Description for Fetch a short lived token that can be exchanged for
-        /// a master key.
+        /// Fetch a short lived token that can be exchanged for a master key.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7212,8 +6965,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function information by its ID for web site, or
-        /// a deployment slot.
+        /// Get function information by its ID for web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7233,7 +6986,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -7247,7 +7000,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create function for web site, or a deployment slot.
+        /// Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7284,8 +7037,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a function for web site, or a deployment
-        /// slot.
+        /// Delete a function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7305,7 +7057,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -7316,7 +7068,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Add or update a function secret.
         /// </summary>
         /// <remarks>
-        /// Description for Add or update a function secret.
+        /// Add or update a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7356,7 +7108,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a function secret.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a function secret.
+        /// Delete a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7379,7 +7131,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -7391,8 +7143,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function keys for a function in a web site, or
-        /// a deployment slot.
+        /// Get function keys for a function in a web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7427,8 +7179,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get function secrets for a function in a web site,
-        /// or a deployment slot.
+        /// Get function secrets for a function in a web site, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7462,7 +7214,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get host secrets for a function app.
         /// </summary>
         /// <remarks>
-        /// Description for Get host secrets for a function app.
+        /// Get host secrets for a function app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7493,8 +7245,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// This is to allow calling via powershell and ARM template.
         /// </summary>
         /// <remarks>
-        /// Description for This is to allow calling via powershell and ARM
-        /// template.
+        /// This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7522,8 +7273,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Syncs function trigger metadata to the management database
         /// </summary>
         /// <remarks>
-        /// Description for Syncs function trigger metadata to the management
-        /// database
+        /// Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7551,7 +7301,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Add or update a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Add or update a host level secret.
+        /// Add or update a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7591,7 +7341,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a host level secret.
+        /// Delete a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7625,8 +7375,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get hostname bindings for an app or a deployment
-        /// slot.
+        /// Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7659,8 +7408,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Get the named hostname binding for an app (or
-        /// deployment slot, if specified).
+        /// Get the named hostname binding for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7695,7 +7444,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a hostname binding for an app.
+        /// Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7734,7 +7483,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a hostname binding for an app.
+        /// Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7755,7 +7504,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -7767,8 +7516,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// App.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieves a specific Service Bus Hybrid Connection
-        /// used by this Web App.
+        /// Retrieves a specific Service Bus Hybrid Connection used by this Web
+        /// App.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7805,8 +7554,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new Hybrid Connection using a Service Bus
-        /// relay.
+        /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7846,7 +7594,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Removes a Hybrid Connection from this site.
         /// </summary>
         /// <remarks>
-        /// Description for Removes a Hybrid Connection from this site.
+        /// Removes a Hybrid Connection from this site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7869,7 +7617,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -7880,8 +7628,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new Hybrid Connection using a Service Bus
-        /// relay.
+        /// Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7918,11 +7665,47 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<HybridConnection>> UpdateHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, HybridConnection connectionEnvelope, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets the send key name and value for a Hybrid Connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets the send key name and value for a Hybrid Connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='namespaceName'>
+        /// The namespace for this hybrid connection.
+        /// </param>
+        /// <param name='relayName'>
+        /// The relay name for this hybrid connection.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<HybridConnectionKey>> ListHybridConnectionKeysSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Retrieves all Service Bus Hybrid Connections used by this Web App.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieves all Service Bus Hybrid Connections used
-        /// by this Web App.
+        /// Retrieves all Service Bus Hybrid Connections used by this Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7954,8 +7737,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets hybrid connections configured for an app (or
-        /// deployment slot, if specified).
+        /// Gets hybrid connections configured for an app (or deployment slot,
+        /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -7987,7 +7770,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a hybrid connection configuration by its name.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a hybrid connection configuration by its name.
+        /// Gets a hybrid connection configuration by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8023,8 +7806,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing one (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new hybrid connection configuration
-        /// (PUT), or updates an existing one (PATCH).
+        /// Creates a new hybrid connection configuration (PUT), or updates an
+        /// existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8062,7 +7845,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a relay service connection by its name.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a relay service connection by its name.
+        /// Deletes a relay service connection by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8083,7 +7866,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -8095,8 +7878,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// existing one (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new hybrid connection configuration
-        /// (PUT), or updates an existing one (PATCH).
+        /// Creates a new hybrid connection configuration (PUT), or updates an
+        /// existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8134,47 +7917,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all scale-out instances of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// gets the production slot instances.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<WebSiteInstanceStatus>>> ListInstanceIdentifiersSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets all scale-out instances of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='instanceId'>
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
@@ -8195,12 +7944,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<WebSiteInstanceStatus>> GetInstanceInfoSlotWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SiteInstance>>> ListInstanceIdentifiersSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the status of the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the status of the last MSDeploy operation.
+        /// Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8235,7 +7984,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8259,7 +8008,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8273,8 +8022,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </summary>
         /// <remarks>
-        /// Description for Get the MSDeploy Log for the last MSDeploy
-        /// operation.
+        /// Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8295,7 +8043,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8310,9 +8058,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8335,7 +8082,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8350,8 +8097,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8377,7 +8124,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8392,8 +8139,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// or specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Terminate a process by its ID for a web site, or a
-        /// deployment slot, or specific scaled-out instance in a web site.
+        /// Terminate a process by its ID for a web site, or a deployment slot,
+        /// or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8419,7 +8166,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -8431,8 +8178,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get a memory dump of a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// Get a memory dump of a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8458,7 +8205,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8473,8 +8220,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8500,7 +8247,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8515,8 +8262,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8545,7 +8292,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8560,8 +8307,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8587,7 +8334,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8598,12 +8345,57 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </summary>
+        /// <remarks>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
+        /// </param>
+        /// <param name='threadId'>
+        /// TID.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// returns deployments for the production slot.
+        /// </param>
+        /// <param name='instanceId'>
+        /// ID of a specific scaled-out instance. This is the value of the name
+        /// property in the JSON response from "GET
+        /// api/sites/{siteName}/instances".
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProcessThreadInfo>> GetInstanceProcessThreadSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string threadId, string slot, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Shows whether an app can be cloned to another resource group or
         /// subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Shows whether an app can be cloned to another
-        /// resource group or subscription.
+        /// Shows whether an app can be cloned to another resource group or
+        /// subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8632,43 +8424,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteCloneability>> IsCloneableSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets existing backups of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets existing backups of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// will get backups of the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<BackupItem>>> ListSiteBackupsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// This is to allow calling via powershell and ARM template.
         /// </summary>
         /// <remarks>
-        /// Description for This is to allow calling via powershell and ARM
-        /// template.
+        /// This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8696,12 +8455,90 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<FunctionSecrets>> ListSyncFunctionTriggersSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get metric definitions of the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetricDefinition>>> ListMetricDefinitionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// will get metrics of the production slot.
+        /// </param>
+        /// <param name='details'>
+        /// Specify "true" to include metric details in the response. It is
+        /// "false" by default.
+        /// </param>
+        /// <param name='filter'>
+        /// Return only metrics specified in the filter (using OData syntax).
+        /// For example: $filter=(name.value eq 'Metric1' or name.value eq
+        /// 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq
+        /// 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetric>>> ListMetricsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, bool? details = default(bool?), string filter = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Returns the status of MySql in app migration, if one is active, and
         /// whether or not MySql in app is enabled
         /// </summary>
         /// <remarks>
-        /// Description for Returns the status of MySql in app migration, if
-        /// one is active, and whether or not MySql in app is enabled
+        /// Returns the status of MySql in app migration, if one is active, and
+        /// whether or not MySql in app is enabled
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8732,7 +8569,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a Swift Virtual Network connection.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a Swift Virtual Network connection.
+        /// Gets a Swift Virtual Network connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8769,10 +8606,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// in.
         /// </summary>
         /// <remarks>
-        /// Description for Integrates this Web App with a Virtual Network.
-        /// This requires that 1) "swiftSupported" is true when doing a GET
-        /// against this resource, and 2) that the target Subnet has already
-        /// been delegated, and is not
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
         /// in use by another App Service Plan other than the one this App is
         /// in.
         /// </remarks>
@@ -8810,8 +8647,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot).
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a Swift Virtual Network connection from an
-        /// app (or deployment slot).
+        /// Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8829,7 +8666,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -8845,10 +8682,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// in.
         /// </summary>
         /// <remarks>
-        /// Description for Integrates this Web App with a Virtual Network.
-        /// This requires that 1) "swiftSupported" is true when doing a GET
-        /// against this resource, and 2) that the target Subnet has already
-        /// been delegated, and is not
+        /// Integrates this Web App with a Virtual Network. This requires that
+        /// 1) "swiftSupported" is true when doing a GET against this resource,
+        /// and 2) that the target Subnet has already been delegated, and is
+        /// not
         /// in use by another App Service Plan other than the one this App is
         /// in.
         /// </remarks>
@@ -8886,8 +8723,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets all network features used by the app (or
-        /// deployment slot, if specified).
+        /// Gets all network features used by the app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8908,7 +8745,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -8923,8 +8760,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -8959,8 +8796,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site (To be deprecated).
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site (To be
-        /// deprecated).
+        /// Start capturing network packets for the site (To be deprecated).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9000,7 +8836,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9040,8 +8876,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Stop ongoing capturing network packets for the
-        /// site.
+        /// Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9058,7 +8893,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -9070,8 +8905,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9107,8 +8942,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9144,8 +8979,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named operation for a network trace
-        /// capturing (or deployment slot, if specified).
+        /// Gets a named operation for a network trace capturing (or deployment
+        /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9181,8 +9016,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Generates a new publishing password for an app (or
-        /// deployment slot, if specified).
+        /// Generates a new publishing password for an app (or deployment slot,
+        /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9200,7 +9035,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -9211,7 +9046,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets perfmon counters for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets perfmon counters for web app.
+        /// Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9249,7 +9084,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets web app's event logs.
         /// </summary>
         /// <remarks>
-        /// Description for Gets web app's event logs.
+        /// Gets web app's event logs.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9281,7 +9116,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the premier add-ons of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the premier add-ons of an app.
+        /// Gets the premier add-ons of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9313,7 +9148,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a named add-on of an app.
+        /// Gets a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9348,7 +9183,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates a named add-on of an app.
+        /// Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9386,7 +9221,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a premier add-on from an app.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a premier add-on from an app.
+        /// Delete a premier add-on from an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9407,7 +9242,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -9418,7 +9253,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates a named add-on of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates a named add-on of an app.
+        /// Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9457,8 +9292,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Virtual Networks that can access the site.
         /// </summary>
         /// <remarks>
-        /// Description for Gets data around private site access enablement and
-        /// authorized Virtual Networks that can access the site.
+        /// Gets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9490,8 +9325,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// Virtual Networks that can access the site.
         /// </summary>
         /// <remarks>
-        /// Description for Sets data around private site access enablement and
-        /// authorized Virtual Networks that can access the site.
+        /// Sets data around private site access enablement and authorized
+        /// Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9522,133 +9357,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<PrivateAccess>> PutPrivateAccessVnetSlotWithHttpMessagesAsync(string resourceGroupName, string name, PrivateAccess access, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a private endpoint connection
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets a private endpoint connection
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> GetPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Approves or rejects a private endpoint connection
-        /// </summary>
-        /// <remarks>
-        /// Description for Approves or rejects a private endpoint connection
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// </param>
-        /// <param name='privateEndpointWrapper'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a private endpoint connection
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a private endpoint connection
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<object>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the private link resources
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets the private link resources
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<PrivateLinkResourcesWrapper>> GetPrivateLinkResourcesWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get list of processes for a web site, or a deployment slot, or for
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9666,7 +9380,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9681,8 +9395,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9703,7 +9417,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9718,8 +9432,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// or specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Terminate a process by its ID for a web site, or a
-        /// deployment slot, or specific scaled-out instance in a web site.
+        /// Terminate a process by its ID for a web site, or a deployment slot,
+        /// or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9740,7 +9454,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -9752,8 +9466,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get a memory dump of a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// Get a memory dump of a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9774,7 +9488,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9789,8 +9503,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9811,7 +9525,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9826,8 +9540,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get process information by its ID for a specific
-        /// scaled-out instance in a web site.
+        /// Get process information by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9851,7 +9565,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9866,8 +9580,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9888,7 +9602,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -9899,11 +9613,50 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </summary>
+        /// <remarks>
+        /// Get thread information by Thread ID for a specific process, in a
+        /// specific scaled-out instance in a web site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
+        /// </param>
+        /// <param name='threadId'>
+        /// TID.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// returns deployments for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ProcessThreadInfo>> GetProcessThreadSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string threadId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get public certificates for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get public certificates for an app or a deployment
-        /// slot.
+        /// Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9936,8 +9689,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Get the named public certificate for an app (or
-        /// deployment slot, if specified).
+        /// Get the named public certificate for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -9972,7 +9725,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Creates a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a hostname binding for an app.
+        /// Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10011,7 +9764,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes a hostname binding for an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a hostname binding for an app.
+        /// Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10032,7 +9785,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10044,8 +9797,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the publishing profile for an app (or
-        /// deployment slot, if specified).
+        /// Gets the publishing profile for an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10083,8 +9836,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// previously modified by calling the API with POST.
         /// </summary>
         /// <remarks>
-        /// Description for Resets the configuration settings of the current
-        /// slot if they were previously modified by calling the API with POST.
+        /// Resets the configuration settings of the current slot if they were
+        /// previously modified by calling the API with POST.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10102,7 +9855,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10113,7 +9866,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restarts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restarts an app (or deployment slot, if specified).
+        /// Restarts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10140,7 +9893,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10151,8 +9904,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores an app from a backup blob in Azure Storage.
         /// </summary>
         /// <remarks>
-        /// Description for Restores an app from a backup blob in Azure
-        /// Storage.
+        /// Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10173,7 +9925,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10184,7 +9936,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a deleted web app to this web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a deleted web app to this web app.
+        /// Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10205,7 +9957,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10216,7 +9968,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a web app from a snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app from a snapshot.
+        /// Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10238,7 +9990,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10249,8 +10001,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of siteextensions for a web site, or a
-        /// deployment slot.
+        /// Get list of siteextensions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10260,7 +10011,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10268,7 +10019,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10283,79 +10034,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get site extension information by its ID for a web
-        /// site, or a deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='siteExtensionId'>
-        /// Site extension name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteExtensionInfo>> GetSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Install site extension on a web site, or a deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Install site extension on a web site, or a
-        /// deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='siteExtensionId'>
-        /// Site extension name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SiteExtensionInfo>> InstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Remove a site extension from a web site, or a deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Remove a site extension from a web site, or a
+        /// Get site extension information by its ID for a web site, or a
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -10377,33 +10056,34 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SiteExtensionInfo>> GetSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Copies a deployment slot to another deployment slot of an app.
+        /// Install site extension on a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Copies a deployment slot to another deployment slot
-        /// of an app.
+        /// Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
         /// <param name='name'>
-        /// Name of the app.
+        /// Site name.
         /// </param>
-        /// <param name='copySlotEntity'>
-        /// JSON object that contains the target slot name and site config
-        /// properties to override the source slot config. See example.
+        /// <param name='siteExtensionId'>
+        /// Site extension name.
         /// </param>
         /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production
-        /// slot is used as the source slot.
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10411,20 +10091,55 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<SiteExtensionInfo>> InstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Remove a site extension from a web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Remove a site extension from a web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='siteExtensionId'>
+        /// Site extension name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API
+        /// deletes a deployment for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> CopySlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmCopySlotEntity copySlotEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the difference in configuration settings between two web app
         /// slots.
         /// </summary>
         /// <remarks>
-        /// Description for Get the difference in configuration settings
-        /// between two web app slots.
+        /// Get the difference in configuration settings between two web app
+        /// slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10459,7 +10174,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Swaps two deployment slots of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Swaps two deployment slots of an app.
+        /// Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10480,7 +10195,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10491,7 +10206,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user.
+        /// Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10522,8 +10237,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user from DRSecondary
-        /// endpoint.
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10554,7 +10268,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the source control configuration of an app.
+        /// Gets the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10586,7 +10300,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10622,7 +10336,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes the source control configuration of an app.
+        /// Deletes the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10641,7 +10355,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10652,7 +10366,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10688,7 +10402,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Starts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Starts an app (or deployment slot, if specified).
+        /// Starts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10706,7 +10420,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10717,7 +10431,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10757,7 +10471,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stops an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Stops an app (or deployment slot, if specified).
+        /// Stops an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10775,7 +10489,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10786,8 +10500,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Stop ongoing capturing network packets for the
-        /// site.
+        /// Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10804,7 +10517,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10815,7 +10528,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Sync web app repository.
         /// </summary>
         /// <remarks>
-        /// Description for Sync web app repository.
+        /// Sync web app repository.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10833,7 +10546,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10844,8 +10557,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Syncs function trigger metadata to the management database
         /// </summary>
         /// <remarks>
-        /// Description for Syncs function trigger metadata to the management
-        /// database
+        /// Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10862,7 +10574,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10873,8 +10585,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List triggered web jobs for an app, or a deployment
-        /// slot.
+        /// List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10907,8 +10618,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a triggered web job by its ID for an app, or a
-        /// deployment slot.
+        /// Gets a triggered web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10921,7 +10632,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10929,7 +10640,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -10944,8 +10655,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a triggered web job by its ID for an app, or
-        /// a deployment slot.
+        /// Delete a triggered web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10958,7 +10669,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// deletes web job for the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10966,7 +10677,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -10978,8 +10689,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for List a triggered web job's history for an app, or a
-        /// deployment slot.
+        /// List a triggered web job's history for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -10992,7 +10703,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11000,7 +10711,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11015,8 +10726,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a triggered web job's history by its ID for an
-        /// app, , or a deployment slot.
+        /// Gets a triggered web job's history by its ID for an app, , or a
+        /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11032,7 +10743,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11040,7 +10751,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11054,8 +10765,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Run a triggered web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Run a triggered web job for an app, or a deployment
-        /// slot.
+        /// Run a triggered web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11068,7 +10778,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11076,7 +10786,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11088,8 +10798,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the quota usage information of an app (or
-        /// deployment slot, if specified).
+        /// Gets the quota usage information of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11129,8 +10839,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// to.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the virtual networks the app (or deployment
-        /// slot) is connected to.
+        /// Gets the virtual networks the app (or deployment slot) is connected
+        /// to.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11163,8 +10873,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// by name.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a virtual network the app (or deployment slot)
-        /// is connected to by name.
+        /// Gets a virtual network the app (or deployment slot) is connected to
+        /// by name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11200,8 +10910,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates the connection properties (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot
-        /// (PUT) or updates the connection properties (PATCH).
+        /// Adds a Virtual Network connection to an app or slot (PUT) or
+        /// updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11240,8 +10950,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// virtual network.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a connection from an app (or deployment
-        /// slot to a named virtual network.
+        /// Deletes a connection from an app (or deployment slot to a named
+        /// virtual network.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11262,7 +10972,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11274,8 +10984,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates the connection properties (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot
-        /// (PUT) or updates the connection properties (PATCH).
+        /// Adds a Virtual Network connection to an app or slot (PUT) or
+        /// updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11313,7 +11023,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets an app's Virtual Network gateway.
         /// </summary>
         /// <remarks>
-        /// Description for Gets an app's Virtual Network gateway.
+        /// Gets an app's Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11338,7 +11048,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11353,8 +11063,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a gateway to a connected Virtual Network (PUT)
-        /// or updates it (PATCH).
+        /// Adds a gateway to a connected Virtual Network (PUT) or updates it
+        /// (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11398,8 +11108,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a gateway to a connected Virtual Network (PUT)
-        /// or updates it (PATCH).
+        /// Adds a gateway to a connected Virtual Network (PUT) or updates it
+        /// (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11442,7 +11152,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List webjobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List webjobs for an app, or a deployment slot.
+        /// List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11474,8 +11184,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get webjob information for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get webjob information for an app, or a deployment
-        /// slot.
+        /// Get webjob information for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11511,8 +11220,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slots.
         /// </summary>
         /// <remarks>
-        /// Description for Get the difference in configuration settings
-        /// between two web app slots.
+        /// Get the difference in configuration settings between two web app
+        /// slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11543,7 +11252,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Swaps two deployment slots of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Swaps two deployment slots of an app.
+        /// Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11560,7 +11269,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11571,7 +11280,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user.
+        /// Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11599,8 +11308,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user from DRSecondary
-        /// endpoint.
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11628,7 +11336,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the source control configuration of an app.
+        /// Gets the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11656,7 +11364,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11687,7 +11395,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Deletes the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes the source control configuration of an app.
+        /// Deletes the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11701,7 +11409,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11712,7 +11420,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11743,7 +11451,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Starts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Starts an app (or deployment slot, if specified).
+        /// Starts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11757,7 +11465,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11768,7 +11476,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11805,7 +11513,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stops an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
-        /// Description for Stops an app (or deployment slot, if specified).
+        /// Stops an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11819,7 +11527,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11830,8 +11538,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Stop ongoing capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Stop ongoing capturing network packets for the
-        /// site.
+        /// Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11845,7 +11552,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11856,7 +11563,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Sync web app repository.
         /// </summary>
         /// <remarks>
-        /// Description for Sync web app repository.
+        /// Sync web app repository.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11870,7 +11577,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11881,8 +11588,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Syncs function trigger metadata to the management database
         /// </summary>
         /// <remarks>
-        /// Description for Syncs function trigger metadata to the management
-        /// database
+        /// Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11896,7 +11602,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -11907,8 +11613,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List triggered web jobs for an app, or a deployment
-        /// slot.
+        /// List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11937,8 +11642,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a triggered web job by its ID for an app, or a
-        /// deployment slot.
+        /// Gets a triggered web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11955,7 +11660,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -11970,8 +11675,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a triggered web job by its ID for an app, or
-        /// a deployment slot.
+        /// Delete a triggered web job by its ID for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -11988,7 +11693,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12000,8 +11705,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for List a triggered web job's history for an app, or a
-        /// deployment slot.
+        /// List a triggered web job's history for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12018,7 +11723,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12033,8 +11738,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a triggered web job's history by its ID for an
-        /// app, , or a deployment slot.
+        /// Gets a triggered web job's history by its ID for an app, , or a
+        /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12054,7 +11759,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12068,8 +11773,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Run a triggered web job for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Run a triggered web job for an app, or a deployment
-        /// slot.
+        /// Run a triggered web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12086,7 +11790,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12098,8 +11802,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the quota usage information of an app (or
-        /// deployment slot, if specified).
+        /// Gets the quota usage information of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12135,8 +11839,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// to.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the virtual networks the app (or deployment
-        /// slot) is connected to.
+        /// Gets the virtual networks the app (or deployment slot) is connected
+        /// to.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12165,8 +11869,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// by name.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a virtual network the app (or deployment slot)
-        /// is connected to by name.
+        /// Gets a virtual network the app (or deployment slot) is connected to
+        /// by name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12198,8 +11902,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates the connection properties (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot
-        /// (PUT) or updates the connection properties (PATCH).
+        /// Adds a Virtual Network connection to an app or slot (PUT) or
+        /// updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12234,8 +11938,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// virtual network.
         /// </summary>
         /// <remarks>
-        /// Description for Deletes a connection from an app (or deployment
-        /// slot to a named virtual network.
+        /// Deletes a connection from an app (or deployment slot to a named
+        /// virtual network.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12252,7 +11956,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12264,8 +11968,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates the connection properties (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot
-        /// (PUT) or updates the connection properties (PATCH).
+        /// Adds a Virtual Network connection to an app or slot (PUT) or
+        /// updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12299,7 +12003,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets an app's Virtual Network gateway.
         /// </summary>
         /// <remarks>
-        /// Description for Gets an app's Virtual Network gateway.
+        /// Gets an app's Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12320,7 +12024,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12335,8 +12039,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a gateway to a connected Virtual Network (PUT)
-        /// or updates it (PATCH).
+        /// Adds a gateway to a connected Virtual Network (PUT) or updates it
+        /// (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12375,8 +12079,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// (PATCH).
         /// </summary>
         /// <remarks>
-        /// Description for Adds a gateway to a connected Virtual Network (PUT)
-        /// or updates it (PATCH).
+        /// Adds a gateway to a connected Virtual Network (PUT) or updates it
+        /// (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12414,7 +12118,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List webjobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List webjobs for an app, or a deployment slot.
+        /// List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12442,8 +12146,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get webjob information for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get webjob information for an app, or a deployment
-        /// slot.
+        /// Get webjob information for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12475,8 +12178,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12509,8 +12212,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restores a specific backup to another app (or
-        /// deployment slot, if specified).
+        /// Restores a specific backup to another app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12530,7 +12233,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12541,7 +12244,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Git/FTP publishing credentials of an app.
+        /// Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12569,7 +12272,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12586,7 +12289,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12600,7 +12303,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create function for web site, or a deployment slot.
+        /// Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12634,7 +12337,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12654,7 +12357,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12668,7 +12371,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app.
+        /// Restores a web app.
         /// </remarks>
         /// <param name='subscriptionName'>
         /// Azure subscription.
@@ -12703,8 +12406,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// database.
         /// </summary>
         /// <remarks>
-        /// Description for Migrates a local (in-app) MySql database to a
-        /// remote MySql database.
+        /// Migrates a local (in-app) MySql database to a remote MySql
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12735,7 +12438,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12772,8 +12475,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores an app from a backup blob in Azure Storage.
         /// </summary>
         /// <remarks>
-        /// Description for Restores an app from a backup blob in Azure
-        /// Storage.
+        /// Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12790,7 +12492,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12801,7 +12503,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a deleted web app to this web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a deleted web app to this web app.
+        /// Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12818,7 +12520,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12829,7 +12531,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a web app from a snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app from a snapshot.
+        /// Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12847,7 +12549,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12858,8 +12560,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Install site extension on a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Install site extension on a web site, or a
-        /// deployment slot.
+        /// Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12876,7 +12577,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -12887,42 +12588,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteExtensionInfo>> BeginInstallSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Copies a deployment slot to another deployment slot of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Copies a deployment slot to another deployment slot
-        /// of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='copySlotEntity'>
-        /// JSON object that contains the target slot name and site config
-        /// properties to override the source slot config. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> BeginCopyProductionSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmCopySlotEntity copySlotEntity, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Creates a new web, mobile, or API app in an existing resource
         /// group, or updates an existing app.
         /// </summary>
         /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an
-        /// existing resource group, or updates an existing app.
+        /// Creates a new web, mobile, or API app in an existing resource
+        /// group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12959,8 +12630,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Restores a specific backup to another app (or
-        /// deployment slot, if specified).
+        /// Restores a specific backup to another app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -12984,7 +12655,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -12995,7 +12666,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets the Git/FTP publishing credentials of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets the Git/FTP publishing credentials of an app.
+        /// Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13027,7 +12698,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13048,7 +12719,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13062,7 +12733,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create function for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Create function for web site, or a deployment slot.
+        /// Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13099,7 +12770,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Invoke the MSDeploy web app extension.
         /// </summary>
         /// <remarks>
-        /// Description for Invoke the MSDeploy web app extension.
+        /// Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13123,7 +12794,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13137,7 +12808,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13174,73 +12845,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IList<NetworkTrace>>> BeginStartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Approves or rejects a private endpoint connection
-        /// </summary>
-        /// <remarks>
-        /// Description for Approves or rejects a private endpoint connection
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// </param>
-        /// <param name='privateEndpointWrapper'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnectionResource>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a private endpoint connection
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a private endpoint connection
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the site.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Restores an app from a backup blob in Azure Storage.
         /// </summary>
         /// <remarks>
-        /// Description for Restores an app from a backup blob in Azure
-        /// Storage.
+        /// Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13261,7 +12869,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -13272,7 +12880,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a deleted web app to this web app.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a deleted web app to this web app.
+        /// Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13293,7 +12901,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -13304,7 +12912,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Restores a web app from a snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Restores a web app from a snapshot.
+        /// Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13326,7 +12934,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -13337,8 +12945,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Install site extension on a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Install site extension on a web site, or a
-        /// deployment slot.
+        /// Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13351,7 +12958,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API
-        /// uses the production slot.
+        /// deletes a deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -13359,7 +12966,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13370,44 +12977,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<SiteExtensionInfo>> BeginInstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Copies a deployment slot to another deployment slot of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Copies a deployment slot to another deployment slot
-        /// of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='copySlotEntity'>
-        /// JSON object that contains the target slot name and site config
-        /// properties to override the source slot config. See example.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production
-        /// slot is used as the source slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="DefaultErrorResponseException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> BeginCopySlotSlotWithHttpMessagesAsync(string resourceGroupName, string name, CsmCopySlotEntity copySlotEntity, string slot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Swaps two deployment slots of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Swaps two deployment slots of an app.
+        /// Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13428,7 +13001,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -13439,7 +13012,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13475,7 +13048,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13515,7 +13088,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Swaps two deployment slots of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Swaps two deployment slots of an app.
+        /// Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13532,7 +13105,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -13543,7 +13116,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Updates the source control configuration of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Updates the source control configuration of an app.
+        /// Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13574,7 +13147,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Start capturing network packets for the site.
         /// </summary>
         /// <remarks>
-        /// Description for Start capturing network packets for the site.
+        /// Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -13611,7 +13184,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all apps for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all apps for a subscription.
+        /// Get all apps for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13636,8 +13209,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all web, mobile, and API apps in the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all web, mobile, and API apps in the specified
-        /// resource group.
+        /// Gets all web, mobile, and API apps in the specified resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13662,7 +13234,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets existing backups of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets existing backups of an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13687,7 +13259,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the configurations of an app
         /// </summary>
         /// <remarks>
-        /// Description for List the configurations of an app
+        /// List the configurations of an app
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13714,9 +13286,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of web app configuration snapshots
-        /// identifiers. Each element of the list contains a timestamp and the
-        /// ID of the snapshot.
+        /// Gets a list of web app configuration snapshots identifiers. Each
+        /// element of the list contains a timestamp and the ID of the
+        /// snapshot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13741,8 +13313,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List continuous web jobs for an app, or a
-        /// deployment slot.
+        /// List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13767,7 +13338,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List deployments for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// List deployments for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13792,8 +13363,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Lists ownership identifiers for domain associated
-        /// with web app.
+        /// Lists ownership identifiers for domain associated with web app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13818,8 +13388,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the functions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List the functions for a web site, or a deployment
-        /// slot.
+        /// List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13830,7 +13399,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13844,8 +13413,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get hostname bindings for an app or a deployment
-        /// slot.
+        /// Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13870,7 +13438,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all scale-out instances of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
+        /// Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13890,15 +13458,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<WebSiteInstanceStatus>>> ListInstanceIdentifiersNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SiteInstance>>> ListInstanceIdentifiersNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of processes for a web site, or a deployment slot, or for
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13909,7 +13476,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13924,8 +13491,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13936,7 +13503,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13951,8 +13518,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13963,7 +13530,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -13974,10 +13541,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets existing backups of an app.
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -13997,12 +13566,39 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<BackupItem>>> ListSiteBackupsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceMetricDefinition>>> ListMetricDefinitionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetric>>> ListMetricsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets perfmon counters for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets perfmon counters for web app.
+        /// Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14028,9 +13624,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14041,7 +13636,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14056,8 +13651,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14068,7 +13663,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14083,8 +13678,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14095,7 +13690,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14109,8 +13704,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get public certificates for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get public certificates for an app or a deployment
-        /// slot.
+        /// Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14135,8 +13729,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of siteextensions for a web site, or a
-        /// deployment slot.
+        /// Get list of siteextensions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14147,7 +13740,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14161,7 +13754,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets an app's deployment slots.
         /// </summary>
         /// <remarks>
-        /// Description for Gets an app's deployment slots.
+        /// Gets an app's deployment slots.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14186,7 +13779,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets existing backups of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets existing backups of an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14211,7 +13804,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the configurations of an app
         /// </summary>
         /// <remarks>
-        /// Description for List the configurations of an app
+        /// List the configurations of an app
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14238,9 +13831,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// snapshot.
         /// </summary>
         /// <remarks>
-        /// Description for Gets a list of web app configuration snapshots
-        /// identifiers. Each element of the list contains a timestamp and the
-        /// ID of the snapshot.
+        /// Gets a list of web app configuration snapshots identifiers. Each
+        /// element of the list contains a timestamp and the ID of the
+        /// snapshot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14265,8 +13858,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List continuous web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List continuous web jobs for an app, or a
-        /// deployment slot.
+        /// List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14291,7 +13883,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List deployments for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// List deployments for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14316,8 +13908,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Lists ownership identifiers for domain associated with web app.
         /// </summary>
         /// <remarks>
-        /// Description for Lists ownership identifiers for domain associated
-        /// with web app.
+        /// Lists ownership identifiers for domain associated with web app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14342,8 +13933,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List the functions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List the functions for a web site, or a deployment
-        /// slot.
+        /// List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14354,7 +13944,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14368,8 +13958,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get hostname bindings for an app or a deployment
-        /// slot.
+        /// Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14394,7 +13983,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Gets all scale-out instances of an app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets all scale-out instances of an app.
+        /// Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14414,15 +14003,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<WebSiteInstanceStatus>>> ListInstanceIdentifiersSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<SiteInstance>>> ListInstanceIdentifiersSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get list of processes for a web site, or a deployment slot, or for
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14433,7 +14021,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14448,8 +14036,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14460,7 +14048,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14475,8 +14063,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14487,7 +14075,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14498,10 +14086,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// </exception>
         Task<AzureOperationResponse<IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets existing backups of an app.
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets existing backups of an app.
+        /// Gets all metric definitions of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14521,12 +14111,39 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<BackupItem>>> ListSiteBackupsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ResourceMetricDefinition>>> ListMetricDefinitionsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets performance metrics of an app (or deployment slot, if
+        /// specified).
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="DefaultErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ResourceMetric>>> ListMetricsSlotNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets perfmon counters for web app.
         /// </summary>
         /// <remarks>
-        /// Description for Gets perfmon counters for web app.
+        /// Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14552,9 +14169,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// a specific scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of processes for a web site, or a
-        /// deployment slot, or for a specific scaled-out instance in a web
-        /// site.
+        /// Get list of processes for a web site, or a deployment slot, or for
+        /// a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14565,7 +14181,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14580,8 +14196,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List module information for a process by its ID for
-        /// a specific scaled-out instance in a web site.
+        /// List module information for a process by its ID for a specific
+        /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14592,7 +14208,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14607,8 +14223,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </summary>
         /// <remarks>
-        /// Description for List the threads in a process by its ID for a
-        /// specific scaled-out instance in a web site.
+        /// List the threads in a process by its ID for a specific scaled-out
+        /// instance in a web site.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14619,7 +14235,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14633,8 +14249,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get public certificates for an app or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get public certificates for an app or a deployment
-        /// slot.
+        /// Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14659,8 +14274,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get list of siteextensions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for Get list of siteextensions for a web site, or a
-        /// deployment slot.
+        /// Get list of siteextensions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14671,7 +14285,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14686,8 +14300,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slots.
         /// </summary>
         /// <remarks>
-        /// Description for Get the difference in configuration settings
-        /// between two web app slots.
+        /// Get the difference in configuration settings between two web app
+        /// slots.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14712,7 +14326,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user.
+        /// Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14737,8 +14351,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user from DRSecondary
-        /// endpoint.
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14763,8 +14376,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List triggered web jobs for an app, or a deployment
-        /// slot.
+        /// List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14790,8 +14402,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for List a triggered web job's history for an app, or a
-        /// deployment slot.
+        /// List a triggered web job's history for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14802,7 +14414,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -14817,8 +14429,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the quota usage information of an app (or
-        /// deployment slot, if specified).
+        /// Gets the quota usage information of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14843,7 +14455,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List webjobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List webjobs for an app, or a deployment slot.
+        /// List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14869,8 +14481,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slots.
         /// </summary>
         /// <remarks>
-        /// Description for Get the difference in configuration settings
-        /// between two web app slots.
+        /// Get the difference in configuration settings between two web app
+        /// slots.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14895,7 +14507,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user.
+        /// Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14920,8 +14532,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </summary>
         /// <remarks>
-        /// Description for Returns all Snapshots to the user from DRSecondary
-        /// endpoint.
+        /// Returns all Snapshots to the user from DRSecondary endpoint.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14946,8 +14557,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List triggered web jobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List triggered web jobs for an app, or a deployment
-        /// slot.
+        /// List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14973,8 +14583,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </summary>
         /// <remarks>
-        /// Description for List a triggered web job's history for an app, or a
-        /// deployment slot.
+        /// List a triggered web job's history for an app, or a deployment
+        /// slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -14985,7 +14595,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -15000,8 +14610,8 @@ namespace Microsoft.Azure.Management.WebSites
         /// specified).
         /// </summary>
         /// <remarks>
-        /// Description for Gets the quota usage information of an app (or
-        /// deployment slot, if specified).
+        /// Gets the quota usage information of an app (or deployment slot, if
+        /// specified).
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -15026,7 +14636,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// List webjobs for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List webjobs for an app, or a deployment slot.
+        /// List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
