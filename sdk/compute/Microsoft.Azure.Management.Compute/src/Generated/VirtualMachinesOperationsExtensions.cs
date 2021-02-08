@@ -213,12 +213,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.(Feature in Preview)
-            /// </param>
-            public static void Delete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?))
+            public static void Delete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
             {
-                operations.DeleteAsync(resourceGroupName, vmName, forceDeletion).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -233,15 +230,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.(Feature in Preview)
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -337,6 +331,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Converts virtual machine disks from blob-based to managed disks. Virtual
             /// machine must be stop-deallocated before invoking this operation.
+            /// &lt;br&gt;For Windows, please refer to [Convert a virtual machine from
+            /// unmanaged disks to managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+            /// Linux, please refer to [Convert a virtual machine from unmanaged disks to
+            /// managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -355,6 +355,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Converts virtual machine disks from blob-based to managed disks. Virtual
             /// machine must be stop-deallocated before invoking this operation.
+            /// &lt;br&gt;For Windows, please refer to [Convert a virtual machine from
+            /// unmanaged disks to managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+            /// Linux, please refer to [Convert a virtual machine from unmanaged disks to
+            /// managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -828,59 +834,8 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to retrieve SAS URIs for a virtual machine's boot diagnostic
-            /// logs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='sasUriExpirationTimeInMinutes'>
-            /// Expiration duration in minutes for the SAS URIs with a value between 1 to
-            /// 1440 minutes. &lt;br&gt;&lt;br&gt;NOTE: If not specified, SAS URIs will be
-            /// generated with a default expiration duration of 120 minutes.
-            /// </param>
-            public static RetrieveBootDiagnosticsDataResult RetrieveBootDiagnosticsData(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, int? sasUriExpirationTimeInMinutes = default(int?))
-            {
-                return operations.RetrieveBootDiagnosticsDataAsync(resourceGroupName, vmName, sasUriExpirationTimeInMinutes).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to retrieve SAS URIs for a virtual machine's boot diagnostic
-            /// logs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='sasUriExpirationTimeInMinutes'>
-            /// Expiration duration in minutes for the SAS URIs with a value between 1 to
-            /// 1440 minutes. &lt;br&gt;&lt;br&gt;NOTE: If not specified, SAS URIs will be
-            /// generated with a default expiration duration of 120 minutes.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RetrieveBootDiagnosticsDataResult> RetrieveBootDiagnosticsDataAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, int? sasUriExpirationTimeInMinutes = default(int?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.RetrieveBootDiagnosticsDataWithHttpMessagesAsync(resourceGroupName, vmName, sasUriExpirationTimeInMinutes, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// Shuts down the virtual machine, moves it to an already updated node, and
+            /// powers it back on during the self-service phase of planned maintenance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -897,7 +852,8 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// Shuts down the virtual machine, moves it to an already updated node, and
+            /// powers it back on during the self-service phase of planned maintenance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -914,83 +870,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task PerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static void SimulateEviction(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                operations.SimulateEvictionAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task SimulateEvictionAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static VirtualMachineAssessPatchesResult AssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                return operations.AssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineAssessPatchesResult> AssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.AssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>
@@ -1193,12 +1072,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.(Feature in Preview)
-            /// </param>
-            public static void BeginDelete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?))
+            public static void BeginDelete(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, vmName, forceDeletion).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1213,20 +1089,23 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='vmName'>
             /// The name of the virtual machine.
             /// </param>
-            /// <param name='forceDeletion'>
-            /// Optional parameter to force delete virtual machines.(Feature in Preview)
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
             /// Converts virtual machine disks from blob-based to managed disks. Virtual
             /// machine must be stop-deallocated before invoking this operation.
+            /// &lt;br&gt;For Windows, please refer to [Convert a virtual machine from
+            /// unmanaged disks to managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+            /// Linux, please refer to [Convert a virtual machine from unmanaged disks to
+            /// managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1245,6 +1124,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <summary>
             /// Converts virtual machine disks from blob-based to managed disks. Virtual
             /// machine must be stop-deallocated before invoking this operation.
+            /// &lt;br&gt;For Windows, please refer to [Convert a virtual machine from
+            /// unmanaged disks to managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).&lt;br&gt;For
+            /// Linux, please refer to [Convert a virtual machine from unmanaged disks to
+            /// managed
+            /// disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1553,7 +1438,8 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// Shuts down the virtual machine, moves it to an already updated node, and
+            /// powers it back on during the self-service phase of planned maintenance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1570,7 +1456,8 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to perform maintenance on a virtual machine.
+            /// Shuts down the virtual machine, moves it to an already updated node, and
+            /// powers it back on during the self-service phase of planned maintenance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1587,46 +1474,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task BeginPerformMaintenanceAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            public static VirtualMachineAssessPatchesResult BeginAssessPatches(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName)
-            {
-                return operations.BeginAssessPatchesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Assess patches on the VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineAssessPatchesResult> BeginAssessPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginAssessPatchesWithHttpMessagesAsync(resourceGroupName, vmName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>

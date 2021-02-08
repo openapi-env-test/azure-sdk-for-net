@@ -184,7 +184,10 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
-            string apiVersion = "2019-12-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -197,7 +200,6 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("galleryImageVersionName", galleryImageVersionName);
                 tracingParameters.Add("expand", expand);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -214,9 +216,9 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -424,7 +426,10 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageName");
             }
-            string apiVersion = "2019-12-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -435,7 +440,6 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("galleryName", galleryName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByGalleryImage", tracingParameters);
             }
@@ -447,9 +451,9 @@ namespace Microsoft.Azure.Management.Compute
             _url = _url.Replace("{galleryName}", System.Uri.EscapeDataString(galleryName));
             _url = _url.Replace("{galleryImageName}", System.Uri.EscapeDataString(galleryImageName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -642,6 +646,10 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (galleryImageVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersion");
@@ -650,7 +658,6 @@ namespace Microsoft.Azure.Management.Compute
             {
                 galleryImageVersion.Validate();
             }
-            string apiVersion = "2019-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -662,7 +669,6 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("galleryName", galleryName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("galleryImageVersionName", galleryImageVersionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("galleryImageVersion", galleryImageVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
@@ -676,9 +682,9 @@ namespace Microsoft.Azure.Management.Compute
             _url = _url.Replace("{galleryImageName}", System.Uri.EscapeDataString(galleryImageName));
             _url = _url.Replace("{galleryImageVersionName}", System.Uri.EscapeDataString(galleryImageVersionName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -912,11 +918,14 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (galleryImageVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersion");
             }
-            string apiVersion = "2019-12-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -928,7 +937,6 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("galleryName", galleryName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("galleryImageVersionName", galleryImageVersionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("galleryImageVersion", galleryImageVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
@@ -942,9 +950,9 @@ namespace Microsoft.Azure.Management.Compute
             _url = _url.Replace("{galleryImageName}", System.Uri.EscapeDataString(galleryImageName));
             _url = _url.Replace("{galleryImageVersionName}", System.Uri.EscapeDataString(galleryImageVersionName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1133,7 +1141,10 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
-            string apiVersion = "2019-12-01";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1145,7 +1156,6 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("galleryName", galleryName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("galleryImageVersionName", galleryImageVersionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
@@ -1158,9 +1168,9 @@ namespace Microsoft.Azure.Management.Compute
             _url = _url.Replace("{galleryImageName}", System.Uri.EscapeDataString(galleryImageName));
             _url = _url.Replace("{galleryImageVersionName}", System.Uri.EscapeDataString(galleryImageVersionName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

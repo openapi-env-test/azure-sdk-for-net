@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// after the VM is created. &lt;br&gt;&lt;br&gt; customData is passed
         /// to the VM to be saved as a file, for more information see [Custom
         /// Data on Azure
-        /// VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)
+        /// VMs](https://docs.microsoft.com/azure/virtual-machines/custom-data)
         /// &lt;br&gt;&lt;br&gt; For using cloud-init for your Linux VM, see
         /// [Using cloud-init to customize a Linux VM during
         /// creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</param>
@@ -107,9 +107,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// extensions are present on the virtual machine.</param>
         /// <param name="requireGuestProvisionSignal">Specifies whether the
         /// guest provision signal is required to infer provision success of
-        /// the virtual machine.  **Note: This property is for private testing
-        /// only, and all customers must not set the property to
-        /// false.**</param>
+        /// the virtual machine.</param>
         public OSProfile(string computerName = default(string), string adminUsername = default(string), string adminPassword = default(string), string customData = default(string), WindowsConfiguration windowsConfiguration = default(WindowsConfiguration), LinuxConfiguration linuxConfiguration = default(LinuxConfiguration), IList<VaultSecretGroup> secrets = default(IList<VaultSecretGroup>), bool? allowExtensionOperations = default(bool?), bool? requireGuestProvisionSignal = default(bool?))
         {
             ComputerName = computerName;
@@ -207,7 +205,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; customData is passed to the VM
         /// to be saved as a file, for more information see [Custom Data on
         /// Azure
-        /// VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)
+        /// VMs](https://docs.microsoft.com/azure/virtual-machines/custom-data)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For using cloud-init for your
         /// Linux VM, see [Using cloud-init to customize a Linux VM during
         /// creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -253,8 +251,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies whether the guest provision signal is
         /// required to infer provision success of the virtual machine.
-        /// **Note: This property is for private testing only, and all
-        /// customers must not set the property to false.**
         /// </summary>
         [JsonProperty(PropertyName = "requireGuestProvisionSignal")]
         public bool? RequireGuestProvisionSignal { get; set; }

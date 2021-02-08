@@ -51,8 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// purposes. This property is updatable.</param>
         /// <param name="storageAccountType">Specifies the storage account type
         /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'Premium_LRS'</param>
+        /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
         /// <param name="enableHealthCheck">Optional. Whether or not this
         /// application reports health.</param>
         public GalleryApplicationVersionPublishingProfile(UserArtifactSource source, IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), string storageAccountType = default(string), UserArtifactManage manageActions = default(UserArtifactManage), bool? enableHealthCheck = default(bool?))
