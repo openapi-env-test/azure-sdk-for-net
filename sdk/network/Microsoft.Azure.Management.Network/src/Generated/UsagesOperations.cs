@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List network usages for a subscription.
+        /// Lists compute usages for a subscription.
         /// </summary>
         /// <param name='location'>
         /// The location where resource usage is queried.
@@ -85,16 +85,16 @@ namespace Microsoft.Azure.Management.Network
             }
             if (location != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(location, "^[-\\w\\._ ]+$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(location, "^[-\\w\\._]+$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "location", "^[-\\w\\._ ]+$");
+                    throw new ValidationException(ValidationRules.Pattern, "location", "^[-\\w\\._]+$");
                 }
             }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2017-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// List network usages for a subscription.
+        /// Lists compute usages for a subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

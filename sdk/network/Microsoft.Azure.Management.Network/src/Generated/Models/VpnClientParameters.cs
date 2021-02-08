@@ -10,13 +10,12 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Vpn Client Parameters for package generation.
+    /// Vpn Client Parameters for package generation
     /// </summary>
     public partial class VpnClientParameters
     {
@@ -32,23 +31,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VpnClientParameters class.
         /// </summary>
         /// <param name="processorArchitecture">VPN client Processor
-        /// Architecture. Possible values include: 'Amd64', 'X86'</param>
-        /// <param name="authenticationMethod">VPN client authentication
-        /// method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'</param>
-        /// <param name="radiusServerAuthCertificate">The public certificate
-        /// data for the radius server authentication certificate as a Base-64
-        /// encoded string. Required only if external radius authentication has
-        /// been configured with EAPTLS authentication.</param>
-        /// <param name="clientRootCertificates">A list of client root
-        /// certificates public certificate data encoded as Base-64 strings.
-        /// Optional parameter for external radius based authentication with
-        /// EAPTLS.</param>
-        public VpnClientParameters(string processorArchitecture = default(string), string authenticationMethod = default(string), string radiusServerAuthCertificate = default(string), IList<string> clientRootCertificates = default(IList<string>))
+        /// Architecture. Possible values are: 'AMD64' and 'X86'. Possible
+        /// values include: 'Amd64', 'X86'</param>
+        public VpnClientParameters(string processorArchitecture)
         {
             ProcessorArchitecture = processorArchitecture;
-            AuthenticationMethod = authenticationMethod;
-            RadiusServerAuthCertificate = radiusServerAuthCertificate;
-            ClientRootCertificates = clientRootCertificates;
             CustomInit();
         }
 
@@ -59,34 +46,23 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets VPN client Processor Architecture. Possible values
-        /// include: 'Amd64', 'X86'
+        /// are: 'AMD64' and 'X86'. Possible values include: 'Amd64', 'X86'
         /// </summary>
         [JsonProperty(PropertyName = "processorArchitecture")]
         public string ProcessorArchitecture { get; set; }
 
         /// <summary>
-        /// Gets or sets VPN client authentication method. Possible values
-        /// include: 'EAPTLS', 'EAPMSCHAPv2'
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "authenticationMethod")]
-        public string AuthenticationMethod { get; set; }
-
-        /// <summary>
-        /// Gets or sets the public certificate data for the radius server
-        /// authentication certificate as a Base-64 encoded string. Required
-        /// only if external radius authentication has been configured with
-        /// EAPTLS authentication.
-        /// </summary>
-        [JsonProperty(PropertyName = "radiusServerAuthCertificate")]
-        public string RadiusServerAuthCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or sets a list of client root certificates public certificate
-        /// data encoded as Base-64 strings. Optional parameter for external
-        /// radius based authentication with EAPTLS.
-        /// </summary>
-        [JsonProperty(PropertyName = "clientRootCertificates")]
-        public IList<string> ClientRootCertificates { get; set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ProcessorArchitecture == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ProcessorArchitecture");
+            }
+        }
     }
 }

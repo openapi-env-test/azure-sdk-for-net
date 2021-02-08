@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="backendIPConfiguration">A reference to a private IP
         /// address defined on a network interface of a VM. Traffic sent to the
         /// frontend port of each of the frontend IP configurations is
-        /// forwarded to the backend IP.</param>
-        /// <param name="protocol">The reference to the transport protocol used
-        /// by the load balancing rule. Possible values include: 'Udp', 'Tcp',
-        /// 'All'</param>
+        /// forwarded to the backed IP.</param>
+        /// <param name="protocol">The transport protocol for the endpoint.
+        /// Possible values are: 'Udp' or 'Tcp'. Possible values include:
+        /// 'Udp', 'Tcp'</param>
         /// <param name="frontendPort">The port for the external endpoint. Port
         /// numbers for each rule must be unique within the Load Balancer.
         /// Acceptable values range from 1 to 65534.</param>
@@ -56,19 +56,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// AlwaysOn Availability Group. This setting is required when using
         /// the SQL AlwaysOn Availability Groups in SQL server. This setting
         /// can't be changed after you create the endpoint.</param>
-        /// <param name="enableTcpReset">Receive bidirectional TCP Reset on TCP
-        /// flow idle timeout or unexpected connection termination. This
-        /// element is only used when the protocol is set to TCP.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// inbound NAT rule resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the set of inbound NAT rules used by the load balancer. This name
-        /// can be used to access the resource.</param>
+        /// <param name="provisioningState">Gets the provisioning state of the
+        /// public IP resource. Possible values are: 'Updating', 'Deleting',
+        /// and 'Failed'.</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public InboundNatRule(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public InboundNatRule(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -78,11 +74,9 @@ namespace Microsoft.Azure.Management.Network.Models
             BackendPort = backendPort;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             EnableFloatingIP = enableFloatingIP;
-            EnableTcpReset = enableTcpReset;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -100,14 +94,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets a reference to a private IP address defined on a network
         /// interface of a VM. Traffic sent to the frontend port of each of the
-        /// frontend IP configurations is forwarded to the backend IP.
+        /// frontend IP configurations is forwarded to the backed IP.
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendIPConfiguration")]
         public NetworkInterfaceIPConfiguration BackendIPConfiguration { get; private set; }
 
         /// <summary>
-        /// Gets or sets the reference to the transport protocol used by the
-        /// load balancing rule. Possible values include: 'Udp', 'Tcp', 'All'
+        /// Gets or sets the transport protocol for the endpoint. Possible
+        /// values are: 'Udp' or 'Tcp'. Possible values include: 'Udp', 'Tcp'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
@@ -146,54 +140,25 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? EnableFloatingIP { get; set; }
 
         /// <summary>
-        /// Gets or sets receive bidirectional TCP Reset on TCP flow idle
-        /// timeout or unexpected connection termination. This element is only
-        /// used when the protocol is set to TCP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enableTcpReset")]
-        public bool? EnableTcpReset { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the inbound NAT rule resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets the provisioning state of the public IP resource. Possible
+        /// values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set
-        /// of inbound NAT rules used by the load balancer. This name can be
-        /// used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (BackendIPConfiguration != null)
-            {
-                BackendIPConfiguration.Validate();
-            }
-        }
     }
 }

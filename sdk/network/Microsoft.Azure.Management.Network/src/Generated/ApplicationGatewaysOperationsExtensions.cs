@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -141,52 +139,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ApplicationGateway> CreateOrUpdateAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, ApplicationGateway parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates the specified application gateway tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update application gateway tags.
-            /// </param>
-            public static ApplicationGateway UpdateTags(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, applicationGatewayName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates the specified application gateway tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update application gateway tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ApplicationGateway> UpdateTagsAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -379,146 +331,6 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the backend health for given combination of backend pool and http
-            /// setting of the specified application gateway in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='probeRequest'>
-            /// Request body for on-demand test probe operation.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands BackendAddressPool and BackendHttpSettings referenced in backend
-            /// health.
-            /// </param>
-            public static ApplicationGatewayBackendHealthOnDemand BackendHealthOnDemand(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, string expand = default(string))
-            {
-                return operations.BackendHealthOnDemandAsync(resourceGroupName, applicationGatewayName, probeRequest, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the backend health for given combination of backend pool and http
-            /// setting of the specified application gateway in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='probeRequest'>
-            /// Request body for on-demand test probe operation.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands BackendAddressPool and BackendHttpSettings referenced in backend
-            /// health.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ApplicationGatewayBackendHealthOnDemand> BackendHealthOnDemandAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BackendHealthOnDemandWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, probeRequest, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available server variables.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<string> ListAvailableServerVariables(this IApplicationGatewaysOperations operations)
-            {
-                return operations.ListAvailableServerVariablesAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available server variables.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<string>> ListAvailableServerVariablesAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableServerVariablesWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available request headers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<string> ListAvailableRequestHeaders(this IApplicationGatewaysOperations operations)
-            {
-                return operations.ListAvailableRequestHeadersAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available request headers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<string>> ListAvailableRequestHeadersAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableRequestHeadersWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all available response headers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<string> ListAvailableResponseHeaders(this IApplicationGatewaysOperations operations)
-            {
-                return operations.ListAvailableResponseHeadersAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available response headers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<string>> ListAvailableResponseHeadersAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableResponseHeadersWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists all available web application firewall rule sets.
             /// </summary>
             /// <param name='operations'>
@@ -541,96 +353,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ApplicationGatewayAvailableWafRuleSetsResult> ListAvailableWafRuleSetsAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAvailableWafRuleSetsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists available Ssl options for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static ApplicationGatewayAvailableSslOptions ListAvailableSslOptions(this IApplicationGatewaysOperations operations)
-            {
-                return operations.ListAvailableSslOptionsAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists available Ssl options for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ApplicationGatewayAvailableSslOptions> ListAvailableSslOptionsAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSslOptionsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all SSL predefined policies for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IPage<ApplicationGatewaySslPredefinedPolicy> ListAvailableSslPredefinedPolicies(this IApplicationGatewaysOperations operations)
-            {
-                return operations.ListAvailableSslPredefinedPoliciesAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all SSL predefined policies for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ApplicationGatewaySslPredefinedPolicy>> ListAvailableSslPredefinedPoliciesAsync(this IApplicationGatewaysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSslPredefinedPoliciesWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets Ssl predefined policy with the specified policy name.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='predefinedPolicyName'>
-            /// Name of Ssl predefined policy.
-            /// </param>
-            public static ApplicationGatewaySslPredefinedPolicy GetSslPredefinedPolicy(this IApplicationGatewaysOperations operations, string predefinedPolicyName)
-            {
-                return operations.GetSslPredefinedPolicyAsync(predefinedPolicyName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets Ssl predefined policy with the specified policy name.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='predefinedPolicyName'>
-            /// Name of Ssl predefined policy.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ApplicationGatewaySslPredefinedPolicy> GetSslPredefinedPolicyAsync(this IApplicationGatewaysOperations operations, string predefinedPolicyName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetSslPredefinedPolicyWithHttpMessagesAsync(predefinedPolicyName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -844,62 +566,6 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the backend health for given combination of backend pool and http
-            /// setting of the specified application gateway in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='probeRequest'>
-            /// Request body for on-demand test probe operation.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands BackendAddressPool and BackendHttpSettings referenced in backend
-            /// health.
-            /// </param>
-            public static ApplicationGatewayBackendHealthOnDemand BeginBackendHealthOnDemand(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, string expand = default(string))
-            {
-                return operations.BeginBackendHealthOnDemandAsync(resourceGroupName, applicationGatewayName, probeRequest, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the backend health for given combination of backend pool and http
-            /// setting of the specified application gateway in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='applicationGatewayName'>
-            /// The name of the application gateway.
-            /// </param>
-            /// <param name='probeRequest'>
-            /// Request body for on-demand test probe operation.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands BackendAddressPool and BackendHttpSettings referenced in backend
-            /// health.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ApplicationGatewayBackendHealthOnDemand> BeginBackendHealthOnDemandAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, ApplicationGatewayOnDemandProbe probeRequest, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginBackendHealthOnDemandWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, probeRequest, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists all application gateways in a resource group.
             /// </summary>
             /// <param name='operations'>
@@ -962,40 +628,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<IPage<ApplicationGateway>> ListAllNextAsync(this IApplicationGatewaysOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all SSL predefined policies for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ApplicationGatewaySslPredefinedPolicy> ListAvailableSslPredefinedPoliciesNext(this IApplicationGatewaysOperations operations, string nextPageLink)
-            {
-                return operations.ListAvailableSslPredefinedPoliciesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all SSL predefined policies for configuring Ssl policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ApplicationGatewaySslPredefinedPolicy>> ListAvailableSslPredefinedPoliciesNextAsync(this IApplicationGatewaysOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableSslPredefinedPoliciesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
