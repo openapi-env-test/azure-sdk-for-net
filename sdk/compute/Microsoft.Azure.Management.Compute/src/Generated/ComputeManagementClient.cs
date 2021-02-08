@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Management.Compute
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -95,11 +100,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IDedicatedHostsOperations.
         /// </summary>
         public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
-
-        /// <summary>
-        /// Gets the ISshPublicKeysOperations.
-        /// </summary>
-        public virtual ISshPublicKeysOperations SshPublicKeys { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
@@ -152,11 +152,6 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; private set; }
 
         /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
-
-        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMsOperations.
         /// </summary>
         public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
@@ -170,41 +165,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineRunCommandsOperations.
         /// </summary>
         public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
-
-        /// <summary>
-        /// Gets the IResourceSkusOperations.
-        /// </summary>
-        public virtual IResourceSkusOperations ResourceSkus { get; private set; }
-
-        /// <summary>
-        /// Gets the IDisksOperations.
-        /// </summary>
-        public virtual IDisksOperations Disks { get; private set; }
-
-        /// <summary>
-        /// Gets the ISnapshotsOperations.
-        /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskEncryptionSetsOperations.
-        /// </summary>
-        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
 
         /// <summary>
         /// Gets the IGalleriesOperations.
@@ -232,29 +192,14 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
 
         /// <summary>
-        /// Gets the IContainerServicesOperations.
+        /// Gets the IDisksOperations.
         /// </summary>
-        public virtual IContainerServicesOperations ContainerServices { get; private set; }
+        public virtual IDisksOperations Disks { get; private set; }
 
         /// <summary>
-        /// Gets the ICloudServiceRoleInstancesOperations.
+        /// Gets the ISnapshotsOperations.
         /// </summary>
-        public virtual ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServiceRolesOperations.
-        /// </summary>
-        public virtual ICloudServiceRolesOperations CloudServiceRoles { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServicesOperations.
-        /// </summary>
-        public virtual ICloudServicesOperations CloudServices { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServicesUpdateDomainOperations.
-        /// </summary>
-        public virtual ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; private set; }
+        public virtual ISnapshotsOperations Snapshots { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -502,7 +447,6 @@ namespace Microsoft.Azure.Management.Compute
             ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
             DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
             DedicatedHosts = new DedicatedHostsOperations(this);
-            SshPublicKeys = new SshPublicKeysOperations(this);
             VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             VirtualMachineImages = new VirtualMachineImagesOperations(this);
@@ -513,28 +457,18 @@ namespace Microsoft.Azure.Management.Compute
             VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
             VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
-            VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
             LogAnalytics = new LogAnalyticsOperations(this);
             VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
-            VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
-            ResourceSkus = new ResourceSkusOperations(this);
-            Disks = new DisksOperations(this);
-            Snapshots = new SnapshotsOperations(this);
-            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
-            DiskAccesses = new DiskAccessesOperations(this);
-            DiskRestorePoint = new DiskRestorePointOperations(this);
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
             GalleryApplications = new GalleryApplicationsOperations(this);
             GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
-            ContainerServices = new ContainerServicesOperations(this);
-            CloudServiceRoleInstances = new CloudServiceRoleInstancesOperations(this);
-            CloudServiceRoles = new CloudServiceRolesOperations(this);
-            CloudServices = new CloudServicesOperations(this);
-            CloudServicesUpdateDomain = new CloudServicesUpdateDomainOperations(this);
+            Disks = new DisksOperations(this);
+            Snapshots = new SnapshotsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2019-03-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

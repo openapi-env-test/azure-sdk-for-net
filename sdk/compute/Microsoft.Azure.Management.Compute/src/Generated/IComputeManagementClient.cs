@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Management.Compute
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -90,11 +95,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IDedicatedHostsOperations.
         /// </summary>
         IDedicatedHostsOperations DedicatedHosts { get; }
-
-        /// <summary>
-        /// Gets the ISshPublicKeysOperations.
-        /// </summary>
-        ISshPublicKeysOperations SshPublicKeys { get; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionImagesOperations.
@@ -147,11 +147,6 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; }
 
         /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
-        /// </summary>
-        IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; }
-
-        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMsOperations.
         /// </summary>
         IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; }
@@ -165,41 +160,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineRunCommandsOperations.
         /// </summary>
         IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
-        /// </summary>
-        IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
-
-        /// <summary>
-        /// Gets the IResourceSkusOperations.
-        /// </summary>
-        IResourceSkusOperations ResourceSkus { get; }
-
-        /// <summary>
-        /// Gets the IDisksOperations.
-        /// </summary>
-        IDisksOperations Disks { get; }
-
-        /// <summary>
-        /// Gets the ISnapshotsOperations.
-        /// </summary>
-        ISnapshotsOperations Snapshots { get; }
-
-        /// <summary>
-        /// Gets the IDiskEncryptionSetsOperations.
-        /// </summary>
-        IDiskEncryptionSetsOperations DiskEncryptionSets { get; }
-
-        /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        IDiskAccessesOperations DiskAccesses { get; }
-
-        /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        IDiskRestorePointOperations DiskRestorePoint { get; }
 
         /// <summary>
         /// Gets the IGalleriesOperations.
@@ -227,29 +187,14 @@ namespace Microsoft.Azure.Management.Compute
         IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; }
 
         /// <summary>
-        /// Gets the IContainerServicesOperations.
+        /// Gets the IDisksOperations.
         /// </summary>
-        IContainerServicesOperations ContainerServices { get; }
+        IDisksOperations Disks { get; }
 
         /// <summary>
-        /// Gets the ICloudServiceRoleInstancesOperations.
+        /// Gets the ISnapshotsOperations.
         /// </summary>
-        ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; }
-
-        /// <summary>
-        /// Gets the ICloudServiceRolesOperations.
-        /// </summary>
-        ICloudServiceRolesOperations CloudServiceRoles { get; }
-
-        /// <summary>
-        /// Gets the ICloudServicesOperations.
-        /// </summary>
-        ICloudServicesOperations CloudServices { get; }
-
-        /// <summary>
-        /// Gets the ICloudServicesUpdateDomainOperations.
-        /// </summary>
-        ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; }
+        ISnapshotsOperations Snapshots { get; }
 
     }
 }

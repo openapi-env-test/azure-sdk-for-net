@@ -44,13 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="tags">Resource tags</param>
         /// <param name="managedBy">A relative URI containing the ID of the VM
         /// that has the disk attached.</param>
-        /// <param name="managedByExtended">List of relative URIs containing
-        /// the IDs of the VMs that have the disk attached. maxShares should be
-        /// set to a value greater than one for disks to allow attaching them
-        /// to multiple VMs.</param>
         /// <param name="zones">The Logical zone list for Disk.</param>
-        /// <param name="extendedLocation">The extended location where the disk
-        /// will be created. Extended location cannot be changed.</param>
         /// <param name="timeCreated">The time when the disk was
         /// created.</param>
         /// <param name="osType">The Operating System type. Possible values
@@ -58,10 +52,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="hyperVGeneration">The hypervisor generation of the
         /// Virtual Machine. Applicable to OS disks only. Possible values
         /// include: 'V1', 'V2'</param>
-        /// <param name="purchasePlan">Purchase plan information for the the
-        /// image from which the OS disk was created. E.g. - {name:
-        /// 2019-Datacenter, publisher: MicrosoftWindowsServer, product:
-        /// WindowsServer}</param>
         /// <param name="diskSizeGB">If creationData.createOption is Empty,
         /// this field is mandatory and it indicates the size of the disk to
         /// create. If this field is present for updates or creation with other
@@ -84,48 +74,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk; only settable for UltraSSD disks. MBps means millions of
         /// bytes per second - MB here uses the ISO notation, of powers of
         /// 10.</param>
-        /// <param name="diskIOPSReadOnly">The total number of IOPS that will
-        /// be allowed across all VMs mounting the shared disk as ReadOnly. One
-        /// operation can transfer between 4k and 256k bytes.</param>
-        /// <param name="diskMBpsReadOnly">The total throughput (MBps) that
-        /// will be allowed across all VMs mounting the shared disk as
-        /// ReadOnly. MBps means millions of bytes per second - MB here uses
-        /// the ISO notation, of powers of 10.</param>
         /// <param name="diskState">The state of the disk. Possible values
         /// include: 'Unattached', 'Attached', 'Reserved', 'ActiveSAS',
         /// 'ReadyToUpload', 'ActiveUpload'</param>
-        /// <param name="encryption">Encryption property can be used to encrypt
-        /// data at rest with customer managed keys or platform managed
-        /// keys.</param>
-        /// <param name="maxShares">The maximum number of VMs that can attach
-        /// to the disk at the same time. Value greater than one indicates a
-        /// disk that can be mounted on multiple VMs at the same time.</param>
-        /// <param name="shareInfo">Details of the list of all VMs that have
-        /// the disk attached. maxShares should be set to a value greater than
-        /// one for disks to allow attaching them to multiple VMs.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
-        /// <param name="diskAccessId">ARM id of the DiskAccess resource for
-        /// using private endpoints on disks.</param>
-        /// <param name="tier">Performance tier of the disk (e.g, P4, S10) as
-        /// described here:
-        /// https://azure.microsoft.com/en-us/pricing/details/managed-disks/.
-        /// Does not apply to Ultra disks.</param>
-        /// <param name="burstingEnabled">Set to true to enable bursting beyond
-        /// the provisioned performance target of the disk. Bursting is
-        /// disabled by default. Does not apply to Ultra disks.</param>
-        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), string diskState = default(string), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), string networkAccessPolicy = default(string), string diskAccessId = default(string), string tier = default(string), bool? burstingEnabled = default(bool?))
+        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), int? diskMBpsReadWrite = default(int?), string diskState = default(string))
             : base(location, id, name, type, tags)
         {
             ManagedBy = managedBy;
-            ManagedByExtended = managedByExtended;
             Sku = sku;
             Zones = zones;
-            ExtendedLocation = extendedLocation;
             TimeCreated = timeCreated;
             OsType = osType;
             HyperVGeneration = hyperVGeneration;
-            PurchasePlan = purchasePlan;
             CreationData = creationData;
             DiskSizeGB = diskSizeGB;
             DiskSizeBytes = diskSizeBytes;
@@ -134,16 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProvisioningState = provisioningState;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
-            DiskMBpsReadOnly = diskMBpsReadOnly;
             DiskState = diskState;
-            Encryption = encryption;
-            MaxShares = maxShares;
-            ShareInfo = shareInfo;
-            NetworkAccessPolicy = networkAccessPolicy;
-            DiskAccessId = diskAccessId;
-            Tier = tier;
-            BurstingEnabled = burstingEnabled;
             CustomInit();
         }
 
@@ -160,14 +111,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string ManagedBy { get; private set; }
 
         /// <summary>
-        /// Gets list of relative URIs containing the IDs of the VMs that have
-        /// the disk attached. maxShares should be set to a value greater than
-        /// one for disks to allow attaching them to multiple VMs.
-        /// </summary>
-        [JsonProperty(PropertyName = "managedByExtended")]
-        public IList<string> ManagedByExtended { get; private set; }
-
-        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public DiskSku Sku { get; set; }
@@ -177,13 +120,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended location where the disk will be created.
-        /// Extended location cannot be changed.
-        /// </summary>
-        [JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Gets the time when the disk was created.
@@ -204,14 +140,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hyperVGeneration")]
         public string HyperVGeneration { get; set; }
-
-        /// <summary>
-        /// Gets or sets purchase plan information for the the image from which
-        /// the OS disk was created. E.g. - {name: 2019-Datacenter, publisher:
-        /// MicrosoftWindowsServer, product: WindowsServer}
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.purchasePlan")]
-        public PurchasePlan PurchasePlan { get; set; }
 
         /// <summary>
         /// Gets or sets disk source information. CreationData information
@@ -270,86 +198,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// uses the ISO notation, of powers of 10.
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskMBpsReadWrite")]
-        public long? DiskMBpsReadWrite { get; set; }
+        public int? DiskMBpsReadWrite { get; set; }
 
         /// <summary>
-        /// Gets or sets the total number of IOPS that will be allowed across
-        /// all VMs mounting the shared disk as ReadOnly. One operation can
-        /// transfer between 4k and 256k bytes.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.diskIOPSReadOnly")]
-        public long? DiskIOPSReadOnly { get; set; }
-
-        /// <summary>
-        /// Gets or sets the total throughput (MBps) that will be allowed
-        /// across all VMs mounting the shared disk as ReadOnly. MBps means
-        /// millions of bytes per second - MB here uses the ISO notation, of
-        /// powers of 10.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.diskMBpsReadOnly")]
-        public long? DiskMBpsReadOnly { get; set; }
-
-        /// <summary>
-        /// Gets or sets the state of the disk. Possible values include:
-        /// 'Unattached', 'Attached', 'Reserved', 'ActiveSAS', 'ReadyToUpload',
+        /// Gets the state of the disk. Possible values include: 'Unattached',
+        /// 'Attached', 'Reserved', 'ActiveSAS', 'ReadyToUpload',
         /// 'ActiveUpload'
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskState")]
-        public string DiskState { get; set; }
-
-        /// <summary>
-        /// Gets or sets encryption property can be used to encrypt data at
-        /// rest with customer managed keys or platform managed keys.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.encryption")]
-        public Encryption Encryption { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum number of VMs that can attach to the disk
-        /// at the same time. Value greater than one indicates a disk that can
-        /// be mounted on multiple VMs at the same time.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maxShares")]
-        public int? MaxShares { get; set; }
-
-        /// <summary>
-        /// Gets details of the list of all VMs that have the disk attached.
-        /// maxShares should be set to a value greater than one for disks to
-        /// allow attaching them to multiple VMs.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.shareInfo")]
-        public IList<ShareInfoElement> ShareInfo { get; private set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
-        public string NetworkAccessPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets ARM id of the DiskAccess resource for using private
-        /// endpoints on disks.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.diskAccessId")]
-        public string DiskAccessId { get; set; }
-
-        /// <summary>
-        /// Gets or sets performance tier of the disk (e.g, P4, S10) as
-        /// described here:
-        /// https://azure.microsoft.com/en-us/pricing/details/managed-disks/.
-        /// Does not apply to Ultra disks.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.tier")]
-        public string Tier { get; set; }
-
-        /// <summary>
-        /// Gets or sets set to true to enable bursting beyond the provisioned
-        /// performance target of the disk. Bursting is disabled by default.
-        /// Does not apply to Ultra disks.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.burstingEnabled")]
-        public bool? BurstingEnabled { get; set; }
+        public string DiskState { get; private set; }
 
         /// <summary>
         /// Validate the object.
@@ -363,10 +220,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (CreationData == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CreationData");
-            }
-            if (PurchasePlan != null)
-            {
-                PurchasePlan.Validate();
             }
             if (CreationData != null)
             {

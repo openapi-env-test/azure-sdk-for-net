@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public const string Attach = "Attach";
         /// <summary>
         /// Create a new disk from a platform image specified by the given
-        /// imageReference or galleryImageReference.
+        /// imageReference.
         /// </summary>
         public const string FromImage = "FromImage";
         /// <summary>
