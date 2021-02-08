@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of an application gateway.
+    /// SKU of application gateway
     /// </summary>
     public partial class ApplicationGatewaySku
     {
@@ -29,14 +29,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewaySku class.
         /// </summary>
-        /// <param name="name">Name of an application gateway SKU. Possible
-        /// values include: 'Standard_Small', 'Standard_Medium',
-        /// 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2',
-        /// 'WAF_v2'</param>
-        /// <param name="tier">Tier of an application gateway. Possible values
-        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'</param>
-        /// <param name="capacity">Capacity (instance count) of an application
-        /// gateway.</param>
+        /// <param name="name">Gets or sets name of application gateway SKU.
+        /// Possible values include: 'Standard_Small', 'Standard_Medium',
+        /// 'Standard_Large'</param>
+        /// <param name="tier">Gets or sets tier of application gateway.
+        /// Possible values include: 'Standard'</param>
+        /// <param name="capacity">Gets or sets capacity (instance count) of
+        /// application gateway</param>
         public ApplicationGatewaySku(string name = default(string), string tier = default(string), int? capacity = default(int?))
         {
             Name = name;
@@ -51,22 +50,21 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of an application gateway SKU. Possible values
-        /// include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
-        /// 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
+        /// Gets or sets name of application gateway SKU. Possible values
+        /// include: 'Standard_Small', 'Standard_Medium', 'Standard_Large'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets tier of an application gateway. Possible values
-        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
+        /// Gets or sets tier of application gateway. Possible values include:
+        /// 'Standard'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets capacity (instance count) of an application gateway.
+        /// Gets or sets capacity (instance count) of application gateway
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public int? Capacity { get; set; }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains stats associated with the peering.
+    /// Contains Stats associated with the peering
     /// </summary>
     public partial class ExpressRouteCircuitStats
     {
@@ -29,20 +29,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCircuitStats class.
         /// </summary>
-        /// <param name="primarybytesIn">The Primary BytesIn of the
-        /// peering.</param>
-        /// <param name="primarybytesOut">The primary BytesOut of the
-        /// peering.</param>
-        /// <param name="secondarybytesIn">The secondary BytesIn of the
-        /// peering.</param>
-        /// <param name="secondarybytesOut">The secondary BytesOut of the
-        /// peering.</param>
-        public ExpressRouteCircuitStats(long? primarybytesIn = default(long?), long? primarybytesOut = default(long?), long? secondarybytesIn = default(long?), long? secondarybytesOut = default(long?))
+        /// <param name="bytesIn">Gets BytesIn of the peering.</param>
+        /// <param name="bytesOut">Gets BytesOut of the peering.</param>
+        public ExpressRouteCircuitStats(int? bytesIn = default(int?), int? bytesOut = default(int?))
         {
-            PrimarybytesIn = primarybytesIn;
-            PrimarybytesOut = primarybytesOut;
-            SecondarybytesIn = secondarybytesIn;
-            SecondarybytesOut = secondarybytesOut;
+            BytesIn = bytesIn;
+            BytesOut = bytesOut;
             CustomInit();
         }
 
@@ -52,28 +44,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the Primary BytesIn of the peering.
+        /// Gets BytesIn of the peering.
         /// </summary>
-        [JsonProperty(PropertyName = "primarybytesIn")]
-        public long? PrimarybytesIn { get; set; }
+        [JsonProperty(PropertyName = "bytesIn")]
+        public int? BytesIn { get; set; }
 
         /// <summary>
-        /// Gets or sets the primary BytesOut of the peering.
+        /// Gets BytesOut of the peering.
         /// </summary>
-        [JsonProperty(PropertyName = "primarybytesOut")]
-        public long? PrimarybytesOut { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary BytesIn of the peering.
-        /// </summary>
-        [JsonProperty(PropertyName = "secondarybytesIn")]
-        public long? SecondarybytesIn { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary BytesOut of the peering.
-        /// </summary>
-        [JsonProperty(PropertyName = "secondarybytesOut")]
-        public long? SecondarybytesOut { get; set; }
+        [JsonProperty(PropertyName = "bytesOut")]
+        public int? BytesOut { get; set; }
 
     }
 }

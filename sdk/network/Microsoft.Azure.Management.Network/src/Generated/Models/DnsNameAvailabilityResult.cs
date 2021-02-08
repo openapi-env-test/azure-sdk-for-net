@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for the CheckDnsNameAvailability API service call.
+    /// Response for CheckDnsNameAvailability Api service call
     /// </summary>
     public partial class DnsNameAvailabilityResult
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the DnsNameAvailabilityResult class.
         /// </summary>
-        /// <param name="available">Domain availability (True/False).</param>
+        /// <param name="available">Domain availability (True/False)</param>
         public DnsNameAvailabilityResult(bool? available = default(bool?))
         {
             Available = available;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets domain availability (True/False).
+        /// Gets or sets domain availability (True/False)
         /// </summary>
         [JsonProperty(PropertyName = "available")]
         public bool? Available { get; set; }

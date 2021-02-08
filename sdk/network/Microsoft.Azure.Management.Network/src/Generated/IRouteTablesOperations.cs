@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IRouteTablesOperations
     {
         /// <summary>
-        /// Deletes the specified route table.
+        /// The Delete RouteTable operation deletes the specified Route Table
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -46,16 +46,14 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string routeTableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified route table.
+        /// The Get RouteTables operation retrieves information about the
+        /// specified route table.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='routeTableName'>
         /// The name of the route table.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -72,9 +70,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RouteTable>> GetWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RouteTable>> GetWithHttpMessagesAsync(string resourceGroupName, string routeTableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or updates a route table in a specified resource group.
+        /// The Put RouteTable operation creates/updates a route table in the
+        /// specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the route table.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the create or update route table operation.
+        /// Parameters supplied to the create/update Route Table operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -102,35 +101,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<RouteTable>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeTableName, RouteTable parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Updates a route table tags.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeTableName'>
-        /// The name of the route table.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to update route table tags.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<RouteTable>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string routeTableName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets all route tables in a resource group.
+        /// The list RouteTables returns all route tables in a resource group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -152,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<RouteTable>>> ListWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all route tables in a subscription.
+        /// The list RouteTables returns all route tables in a subscription
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -171,7 +142,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<RouteTable>>> ListAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified route table.
+        /// The Delete RouteTable operation deletes the specified Route Table
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -193,7 +164,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string routeTableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Create or updates a route table in a specified resource group.
+        /// The Put RouteTable operation creates/updates a route table in the
+        /// specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -202,7 +174,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the route table.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the create or update route table operation.
+        /// Parameters supplied to the create/update Route Table operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,7 +193,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<RouteTable>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeTableName, RouteTable parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all route tables in a resource group.
+        /// The list RouteTables returns all route tables in a resource group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -243,7 +215,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<RouteTable>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all route tables in a subscription.
+        /// The list RouteTables returns all route tables in a subscription
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRouteCircuitPeeringsOperations
     {
         /// <summary>
-        /// Deletes the specified peering from the specified express route
-        /// circuit.
+        /// The delete peering operation deletes the specified peering from the
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified peering for the express route circuit.
+        /// The GET peering operation retrieves the specified authorization
+        /// from the ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -78,8 +79,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitPeering>> GetWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a peering in the specified express route
-        /// circuits.
+        /// The Put Peering operation creates/updates an peering in the
+        /// specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -91,8 +92,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the peering.
         /// </param>
         /// <param name='peeringParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// peering operation.
+        /// Parameters supplied to the create/update ExpressRouteCircuit
+        /// Peering operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -111,13 +112,14 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitPeering>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeering peeringParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all peerings in a specified express route circuit.
+        /// The List peering operation retrieves all the peerings in an
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of the circuit.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -136,8 +138,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<ExpressRouteCircuitPeering>>> ListWithHttpMessagesAsync(string resourceGroupName, string circuitName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified peering from the specified express route
-        /// circuit.
+        /// The delete peering operation deletes the specified peering from the
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -162,8 +164,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a peering in the specified express route
-        /// circuits.
+        /// The Put Peering operation creates/updates an peering in the
+        /// specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -175,8 +177,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the peering.
         /// </param>
         /// <param name='peeringParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// peering operation.
+        /// Parameters supplied to the create/update ExpressRouteCircuit
+        /// Peering operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -195,7 +197,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitPeering>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeering peeringParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all peerings in a specified express route circuit.
+        /// The List peering operation retrieves all the peerings in an
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

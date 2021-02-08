@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRouteCircuitAuthorizationsOperations
     {
         /// <summary>
-        /// Deletes the specified authorization from the specified express
-        /// route circuit.
+        /// The delete authorization operation deletes the specified
+        /// authorization from the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified authorization from the specified express route
-        /// circuit.
+        /// The GET authorization operation retrieves the specified
+        /// authorization from the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitAuthorization>> GetWithHttpMessagesAsync(string resourceGroupName, string circuitName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates an authorization in the specified express route
-        /// circuit.
+        /// The Put Authorization operation creates/updates an authorization in
+        /// the specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -92,8 +92,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the authorization.
         /// </param>
         /// <param name='authorizationParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// authorization operation.
+        /// Parameters supplied to the create/update
+        /// ExpressRouteCircuitAuthorization operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -112,7 +112,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string authorizationName, ExpressRouteCircuitAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all authorizations in an express route circuit.
+        /// The List authorization operation retrieves all the authorizations
+        /// in an ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -137,8 +138,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<ExpressRouteCircuitAuthorization>>> ListWithHttpMessagesAsync(string resourceGroupName, string circuitName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified authorization from the specified express
-        /// route circuit.
+        /// The delete authorization operation deletes the specified
+        /// authorization from the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -163,8 +164,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string authorizationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates an authorization in the specified express route
-        /// circuit.
+        /// The Put Authorization operation creates/updates an authorization in
+        /// the specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -176,8 +177,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the authorization.
         /// </param>
         /// <param name='authorizationParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// authorization operation.
+        /// Parameters supplied to the create/update
+        /// ExpressRouteCircuitAuthorization operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -196,7 +197,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<ExpressRouteCircuitAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string authorizationName, ExpressRouteCircuitAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all authorizations in an express route circuit.
+        /// The List authorization operation retrieves all the authorizations
+        /// in an ExpressRouteCircuit.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

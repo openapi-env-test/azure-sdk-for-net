@@ -10,18 +10,13 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A ExpressRouteResourceProvider object.
+    /// ExpressRouteResourceProvider object
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteServiceProvider : Resource
+    public partial class ExpressRouteServiceProvider
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteServiceProvider
@@ -36,23 +31,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteServiceProvider
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="location">Resource location.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="peeringLocations">A list of peering locations.</param>
-        /// <param name="bandwidthsOffered">A list of bandwidths
-        /// offered.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// express route service provider resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        public ExpressRouteServiceProvider(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> peeringLocations = default(IList<string>), IList<ExpressRouteServiceProviderBandwidthsOffered> bandwidthsOffered = default(IList<ExpressRouteServiceProviderBandwidthsOffered>), string provisioningState = default(string))
-            : base(id, name, type, location, tags)
+        /// <param name="id">Gets or sets the ID of the resource.</param>
+        /// <param name="name">Gets or sets the name of the resource.</param>
+        /// <param name="type">Gets or sets the type of the resource.</param>
+        public ExpressRouteServiceProvider(string id = default(string), string name = default(string), string type = default(string), ExpressRouteServiceProviderPropertiesFormat properties = default(ExpressRouteServiceProviderPropertiesFormat))
         {
-            PeeringLocations = peeringLocations;
-            BandwidthsOffered = bandwidthsOffered;
-            ProvisioningState = provisioningState;
+            Id = id;
+            Name = name;
+            Type = type;
+            Properties = properties;
             CustomInit();
         }
 
@@ -62,24 +49,27 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of peering locations.
+        /// Gets or sets the ID of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.peeringLocations")]
-        public IList<string> PeeringLocations { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of bandwidths offered.
+        /// Gets or sets the name of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.bandwidthsOffered")]
-        public IList<ExpressRouteServiceProviderBandwidthsOffered> BandwidthsOffered { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the express route service provider
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets or sets the type of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public ExpressRouteServiceProviderPropertiesFormat Properties { get; set; }
 
     }
 }

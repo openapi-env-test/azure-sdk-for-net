@@ -12,10 +12,12 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ApplicationGatewayTier.
+    /// Defines values for ExpressRouteCircuitPeeringType.
     /// </summary>
-    public static class ApplicationGatewayTier
+    public static class ExpressRouteCircuitPeeringType
     {
-        public const string Standard = "Standard";
+        public const string AzurePublicPeering = "AzurePublicPeering";
+        public const string AzurePrivatePeering = "AzurePrivatePeering";
+        public const string MicrosoftPeering = "MicrosoftPeering";
     }
 }

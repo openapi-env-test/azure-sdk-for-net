@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Frontend port of an application gateway.
+    /// Frontend Port of application gateway
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ApplicationGatewayFrontendPort : SubResource
@@ -34,24 +34,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ApplicationGatewayFrontendPort
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="port">Frontend port.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// frontend port resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">Name of the frontend port that is unique within
-        /// an Application Gateway.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="port">Gets or sets the frontend port</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the frontend port resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayFrontendPort(string id = default(string), int? port = default(int?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        /// the resource is updated</param>
+        public ApplicationGatewayFrontendPort(string id = default(string), int? port = default(int?), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             Port = port;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -61,37 +59,31 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets frontend port.
+        /// Gets or sets the frontend port
         /// </summary>
         [JsonProperty(PropertyName = "properties.port")]
         public int? Port { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the frontend port resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets Provisioning state of the frontend port resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the frontend port that is unique within an
-        /// Application Gateway.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Etag { get; set; }
 
     }
 }

@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class LocalNetworkGatewaysOperationsExtensions
     {
             /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
+            /// The Put LocalNetworkGateway operation creates/updates a local network
+            /// gateway in the specified resource group through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -34,8 +35,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the local network gateway.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
+            /// Parameters supplied to the Begin Create or update Local Network Gateway
+            /// operation through Network resource provider.
             /// </param>
             public static LocalNetworkGateway CreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters)
             {
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
+            /// The Put LocalNetworkGateway operation creates/updates a local network
+            /// gateway in the specified resource group through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -55,8 +57,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the local network gateway.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
+            /// Parameters supplied to the Begin Create or update Local Network Gateway
+            /// operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -70,7 +72,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified local network gateway in a resource group.
+            /// The Get LocalNetworkGateway operation retrieves information about the
+            /// specified local network gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -87,7 +90,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified local network gateway in a resource group.
+            /// The Get LocalNetworkGateway operation retrieves information about the
+            /// specified local network gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -110,7 +114,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified local network gateway.
+            /// The Delete LocalNetworkGateway operation deletes the specified local
+            /// network Gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -127,7 +132,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified local network gateway.
+            /// The Delete LocalNetworkGateway operation deletes the specified local
+            /// network Gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -147,53 +153,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a local network gateway tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update local network gateway tags.
-            /// </param>
-            public static LocalNetworkGateway UpdateTags(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a local network gateway tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update local network gateway tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LocalNetworkGateway> UpdateTagsAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all the local network gateways in a resource group.
+            /// The List LocalNetworkGateways operation retrieves all the local network
+            /// gateways stored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,7 +168,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the local network gateways in a resource group.
+            /// The List LocalNetworkGateways operation retrieves all the local network
+            /// gateways stored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -227,7 +189,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
+            /// The Put LocalNetworkGateway operation creates/updates a local network
+            /// gateway in the specified resource group through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -239,8 +202,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the local network gateway.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
+            /// Parameters supplied to the Begin Create or update Local Network Gateway
+            /// operation through Network resource provider.
             /// </param>
             public static LocalNetworkGateway BeginCreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters)
             {
@@ -248,7 +211,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
+            /// The Put LocalNetworkGateway operation creates/updates a local network
+            /// gateway in the specified resource group through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -260,8 +224,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the local network gateway.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
+            /// Parameters supplied to the Begin Create or update Local Network Gateway
+            /// operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -275,7 +239,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified local network gateway.
+            /// The Delete LocalNetworkGateway operation deletes the specified local
+            /// network Gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -292,7 +257,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified local network gateway.
+            /// The Delete LocalNetworkGateway operation deletes the specified local
+            /// network Gateway through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -312,7 +278,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the local network gateways in a resource group.
+            /// The List LocalNetworkGateways operation retrieves all the local network
+            /// gateways stored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -326,7 +293,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the local network gateways in a resource group.
+            /// The List LocalNetworkGateways operation retrieves all the local network
+            /// gateways stored.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

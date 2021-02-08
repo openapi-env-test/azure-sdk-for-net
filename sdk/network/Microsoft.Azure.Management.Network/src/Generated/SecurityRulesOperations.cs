@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Deletes the specified network security rule.
+        /// The delete network security rule operation deletes the specified network
+        /// security rule.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Get the specified network security rule.
+        /// The Get NetworkSecurityRule operation retrieves information about the
+        /// specified network security rule.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -122,11 +124,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "securityRuleName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -137,7 +142,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkSecurityGroupName", networkSecurityGroupName);
                 tracingParameters.Add("securityRuleName", securityRuleName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -149,9 +153,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{securityRuleName}", System.Uri.EscapeDataString(securityRuleName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -279,7 +283,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates a security rule in the specified network security group.
+        /// The Put network security rule operation creates/updates a security rule in
+        /// the specified network security group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -291,8 +296,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the security rule.
         /// </param>
         /// <param name='securityRuleParameters'>
-        /// Parameters supplied to the create or update network security rule
-        /// operation.
+        /// Parameters supplied to the create/update network security rule operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -308,7 +312,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets all security rules in a network security group.
+        /// The List network security rule operation retrieves all the security rules
+        /// in a network security group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -347,11 +352,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkSecurityGroupName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -361,7 +369,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkSecurityGroupName", networkSecurityGroupName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -372,9 +379,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{networkSecurityGroupName}", System.Uri.EscapeDataString(networkSecurityGroupName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -502,7 +509,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Deletes the specified network security rule.
+        /// The delete network security rule operation deletes the specified network
+        /// security rule.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -545,11 +553,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "securityRuleName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -560,7 +571,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkSecurityGroupName", networkSecurityGroupName);
                 tracingParameters.Add("securityRuleName", securityRuleName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
@@ -572,9 +582,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{securityRuleName}", System.Uri.EscapeDataString(securityRuleName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -684,7 +694,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates a security rule in the specified network security group.
+        /// The Put network security rule operation creates/updates a security rule in
+        /// the specified network security group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -696,8 +707,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the security rule.
         /// </param>
         /// <param name='securityRuleParameters'>
-        /// Parameters supplied to the create or update network security rule
-        /// operation.
+        /// Parameters supplied to the create/update network security rule operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -742,11 +752,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 securityRuleParameters.Validate();
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -758,7 +771,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("networkSecurityGroupName", networkSecurityGroupName);
                 tracingParameters.Add("securityRuleName", securityRuleName);
                 tracingParameters.Add("securityRuleParameters", securityRuleParameters);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
@@ -770,9 +782,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{securityRuleName}", System.Uri.EscapeDataString(securityRuleName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -924,7 +936,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets all security rules in a network security group.
+        /// The List network security rule operation retrieves all the security rules
+        /// in a network security group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

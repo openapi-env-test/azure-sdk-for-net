@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteCircuitAuthorizationsOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified authorization from the specified express route
-            /// circuit.
+            /// The delete authorization operation deletes the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified authorization from the specified express route
-            /// circuit.
+            /// The delete authorization operation deletes the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified authorization from the specified express route circuit.
+            /// The GET authorization operation retrieves the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -87,7 +88,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified authorization from the specified express route circuit.
+            /// The GET authorization operation retrieves the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -113,7 +115,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates an authorization in the specified express route circuit.
+            /// The Put Authorization operation creates/updates an authorization in the
+            /// specified ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -128,8 +131,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the authorization.
             /// </param>
             /// <param name='authorizationParameters'>
-            /// Parameters supplied to the create or update express route circuit
-            /// authorization operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+            /// operation
             /// </param>
             public static ExpressRouteCircuitAuthorization CreateOrUpdate(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, ExpressRouteCircuitAuthorization authorizationParameters)
             {
@@ -137,7 +140,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates an authorization in the specified express route circuit.
+            /// The Put Authorization operation creates/updates an authorization in the
+            /// specified ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -152,8 +156,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the authorization.
             /// </param>
             /// <param name='authorizationParameters'>
-            /// Parameters supplied to the create or update express route circuit
-            /// authorization operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+            /// operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -167,7 +171,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all authorizations in an express route circuit.
+            /// The List authorization operation retrieves all the authorizations in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -184,7 +189,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all authorizations in an express route circuit.
+            /// The List authorization operation retrieves all the authorizations in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,8 +213,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified authorization from the specified express route
-            /// circuit.
+            /// The delete authorization operation deletes the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -228,8 +234,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified authorization from the specified express route
-            /// circuit.
+            /// The delete authorization operation deletes the specified authorization from
+            /// the specified ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -252,7 +258,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates an authorization in the specified express route circuit.
+            /// The Put Authorization operation creates/updates an authorization in the
+            /// specified ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -267,8 +274,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the authorization.
             /// </param>
             /// <param name='authorizationParameters'>
-            /// Parameters supplied to the create or update express route circuit
-            /// authorization operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+            /// operation
             /// </param>
             public static ExpressRouteCircuitAuthorization BeginCreateOrUpdate(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, ExpressRouteCircuitAuthorization authorizationParameters)
             {
@@ -276,7 +283,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates an authorization in the specified express route circuit.
+            /// The Put Authorization operation creates/updates an authorization in the
+            /// specified ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -291,8 +299,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the authorization.
             /// </param>
             /// <param name='authorizationParameters'>
-            /// Parameters supplied to the create or update express route circuit
-            /// authorization operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+            /// operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -306,7 +314,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all authorizations in an express route circuit.
+            /// The List authorization operation retrieves all the authorizations in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -320,7 +329,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all authorizations in an express route circuit.
+            /// The List authorization operation retrieves all the authorizations in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

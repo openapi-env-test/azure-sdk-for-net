@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains SKU in an ExpressRouteCircuit.
+    /// Contains sku in an ExpressRouteCircuit
     /// </summary>
     public partial class ExpressRouteCircuitSku
     {
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCircuitSku class.
         /// </summary>
-        /// <param name="name">The name of the SKU.</param>
-        /// <param name="tier">The tier of the SKU. Possible values include:
-        /// 'Standard', 'Premium', 'Basic', 'Local'</param>
-        /// <param name="family">The family of the SKU. Possible values
-        /// include: 'UnlimitedData', 'MeteredData'</param>
+        /// <param name="name">Gets or sets name of the sku.</param>
+        /// <param name="tier">Gets or sets tier of the sku. Possible values
+        /// include: 'Standard', 'Premium'</param>
+        /// <param name="family">Gets or sets family of the sku. Possible
+        /// values include: 'UnlimitedData', 'MeteredData'</param>
         public ExpressRouteCircuitSku(string name = default(string), string tier = default(string), string family = default(string))
         {
             Name = name;
@@ -48,20 +48,20 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the SKU.
+        /// Gets or sets name of the sku.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the tier of the SKU. Possible values include:
-        /// 'Standard', 'Premium', 'Basic', 'Local'
+        /// Gets or sets tier of the sku. Possible values include: 'Standard',
+        /// 'Premium'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets the family of the SKU. Possible values include:
+        /// Gets or sets family of the sku. Possible values include:
         /// 'UnlimitedData', 'MeteredData'
         /// </summary>
         [JsonProperty(PropertyName = "family")]

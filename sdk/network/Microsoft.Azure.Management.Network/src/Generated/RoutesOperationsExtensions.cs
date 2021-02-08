@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RoutesOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified route from a route table.
+            /// The delete route operation deletes the specified route from a route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route from a route table.
+            /// The delete route operation deletes the specified route from a route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified route from a route table.
+            /// The Get route operation retrieves information about the specified route
+            /// from the route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -85,7 +86,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified route from a route table.
+            /// The Get route operation retrieves information about the specified route
+            /// from the route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -111,7 +113,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a route in the specified route table.
+            /// The Put route operation creates/updates a route in the specified route
+            /// table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -126,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route.
             /// </param>
             /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
+            /// Parameters supplied to the create/update route operation
             /// </param>
             public static Route CreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, Route routeParameters)
             {
@@ -134,7 +137,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a route in the specified route table.
+            /// The Put route operation creates/updates a route in the specified route
+            /// table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -149,7 +153,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route.
             /// </param>
             /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
+            /// Parameters supplied to the create/update route operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -163,7 +167,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all routes in a route table.
+            /// The List network security rule operation retrieves all the routes in a
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -180,7 +185,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all routes in a route table.
+            /// The List network security rule operation retrieves all the routes in a
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -203,7 +209,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route from a route table.
+            /// The delete route operation deletes the specified route from a route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -223,7 +229,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route from a route table.
+            /// The delete route operation deletes the specified route from a route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -246,7 +252,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a route in the specified route table.
+            /// The Put route operation creates/updates a route in the specified route
+            /// table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -261,7 +268,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route.
             /// </param>
             /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
+            /// Parameters supplied to the create/update route operation
             /// </param>
             public static Route BeginCreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, Route routeParameters)
             {
@@ -269,7 +276,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a route in the specified route table.
+            /// The Put route operation creates/updates a route in the specified route
+            /// table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -284,7 +292,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route.
             /// </param>
             /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
+            /// Parameters supplied to the create/update route operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -298,7 +306,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all routes in a route table.
+            /// The List network security rule operation retrieves all the routes in a
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -312,7 +321,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all routes in a route table.
+            /// The List network security rule operation retrieves all the routes in a
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

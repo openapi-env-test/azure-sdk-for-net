@@ -13,37 +13,35 @@ namespace Microsoft.Azure.Management.Network.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// IpConfiguration for Virtual network gateway
+    /// Outbound NAT pool of the loadbalancer
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayIpConfiguration : SubResource
+    public partial class OutboundNatRule : SubResource
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// Initializes a new instance of the OutboundNatRule class.
         /// </summary>
-        public VirtualNetworkGatewayIpConfiguration()
+        public OutboundNatRule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// Initializes a new instance of the OutboundNatRule class.
         /// </summary>
+        /// <param name="allocatedOutboundPorts">Gets or sets the number of
+        /// outbound ports to be used for SNAT</param>
+        /// <param name="backendAddressPool">Gets or sets a reference to a pool
+        /// of DIPs. Outbound traffic is randomly load balanced across IPs in
+        /// the backend IPs</param>
         /// <param name="id">Resource Id</param>
-        /// <param name="privateIPAddress">Gets or sets the privateIPAddress of
-        /// the Network Interface IP Configuration</param>
-        /// <param name="privateIPAllocationMethod">Gets or sets PrivateIP
-        /// allocation method (Static/Dynamic). Possible values include:
-        /// 'Static', 'Dynamic'</param>
-        /// <param name="subnet">Gets or sets the reference of the subnet
-        /// resource</param>
-        /// <param name="publicIPAddress">Gets or sets the reference of the
-        /// PublicIP resource</param>
+        /// <param name="frontendIPConfigurations">Gets or sets Frontend IP
+        /// addresses of the load balancer</param>
         /// <param name="provisioningState">Gets or sets Provisioning state of
         /// the PublicIP resource Updating/Deleting/Failed</param>
         /// <param name="name">Gets name of the resource that is unique within
@@ -51,13 +49,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated</param>
-        public VirtualNetworkGatewayIpConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public OutboundNatRule(int allocatedOutboundPorts, SubResource backendAddressPool, string id = default(string), IList<SubResource> frontendIPConfigurations = default(IList<SubResource>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
-            PrivateIPAddress = privateIPAddress;
-            PrivateIPAllocationMethod = privateIPAllocationMethod;
-            Subnet = subnet;
-            PublicIPAddress = publicIPAddress;
+            AllocatedOutboundPorts = allocatedOutboundPorts;
+            FrontendIPConfigurations = frontendIPConfigurations;
+            BackendAddressPool = backendAddressPool;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -70,30 +67,23 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the privateIPAddress of the Network Interface IP
-        /// Configuration
+        /// Gets or sets the number of outbound ports to be used for SNAT
         /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAddress")]
-        public string PrivateIPAddress { get; set; }
+        [JsonProperty(PropertyName = "properties.allocatedOutboundPorts")]
+        public int AllocatedOutboundPorts { get; set; }
 
         /// <summary>
-        /// Gets or sets PrivateIP allocation method (Static/Dynamic). Possible
-        /// values include: 'Static', 'Dynamic'
+        /// Gets or sets Frontend IP addresses of the load balancer
         /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
-        public string PrivateIPAllocationMethod { get; set; }
+        [JsonProperty(PropertyName = "properties.frontendIPConfigurations")]
+        public IList<SubResource> FrontendIPConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference of the subnet resource
+        /// Gets or sets a reference to a pool of DIPs. Outbound traffic is
+        /// randomly load balanced across IPs in the backend IPs
         /// </summary>
-        [JsonProperty(PropertyName = "properties.subnet")]
-        public SubResource Subnet { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference of the PublicIP resource
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public SubResource PublicIPAddress { get; set; }
+        [JsonProperty(PropertyName = "properties.backendAddressPool")]
+        public SubResource BackendAddressPool { get; set; }
 
         /// <summary>
         /// Gets or sets Provisioning state of the PublicIP resource
@@ -116,5 +106,18 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (BackendAddressPool == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "BackendAddressPool");
+            }
+        }
     }
 }

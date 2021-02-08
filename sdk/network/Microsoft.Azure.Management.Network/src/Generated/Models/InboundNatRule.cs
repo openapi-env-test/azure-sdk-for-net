@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Inbound NAT rule of the load balancer.
+    /// Inbound NAT rule of the loadbalancer
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class InboundNatRule : SubResource
@@ -32,43 +32,46 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the InboundNatRule class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="frontendIPConfiguration">A reference to frontend IP
-        /// addresses.</param>
-        /// <param name="backendIPConfiguration">A reference to a private IP
-        /// address defined on a network interface of a VM. Traffic sent to the
-        /// frontend port of each of the frontend IP configurations is
-        /// forwarded to the backend IP.</param>
-        /// <param name="protocol">The reference to the transport protocol used
-        /// by the load balancing rule. Possible values include: 'Udp', 'Tcp',
-        /// 'All'</param>
-        /// <param name="frontendPort">The port for the external endpoint. Port
-        /// numbers for each rule must be unique within the Load Balancer.
-        /// Acceptable values range from 1 to 65534.</param>
-        /// <param name="backendPort">The port used for the internal endpoint.
-        /// Acceptable values range from 1 to 65535.</param>
-        /// <param name="idleTimeoutInMinutes">The timeout for the TCP idle
-        /// connection. The value can be set between 4 and 30 minutes. The
-        /// default value is 4 minutes. This element is only used when the
-        /// protocol is set to TCP.</param>
+        /// <param name="protocol">Gets or sets the transport protocol for the
+        /// external endpoint. Possible values are Udp or Tcp. Possible values
+        /// include: 'Udp', 'Tcp'</param>
+        /// <param name="frontendPort">Gets or sets the port for the external
+        /// endpoint. You can specify any port number you choose, but the port
+        /// numbers specified for each role in the service must be unique.
+        /// Possible values range between 1 and 65535, inclusive</param>
         /// <param name="enableFloatingIP">Configures a virtual machine's
         /// endpoint for the floating IP capability required to configure a SQL
-        /// AlwaysOn Availability Group. This setting is required when using
-        /// the SQL AlwaysOn Availability Groups in SQL server. This setting
-        /// can't be changed after you create the endpoint.</param>
-        /// <param name="enableTcpReset">Receive bidirectional TCP Reset on TCP
-        /// flow idle timeout or unexpected connection termination. This
-        /// element is only used when the protocol is set to TCP.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// inbound NAT rule resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the set of inbound NAT rules used by the load balancer. This name
-        /// can be used to access the resource.</param>
+        /// AlwaysOn availability Group. This setting is required when using
+        /// the SQL Always ON availability Groups in SQL server. This setting
+        /// can't be changed after you create the endpoint</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="frontendIPConfiguration">Gets or sets a reference to
+        /// frontend IP Addresses</param>
+        /// <param name="backendIPConfiguration">Gets or sets a reference to a
+        /// private ip address defined on a NetworkInterface of a VM. Traffic
+        /// sent to frontendPort of each of the frontendIPConfigurations is
+        /// forwarded to the backed IP</param>
+        /// <param name="backendPort">Gets or sets a port used for internal
+        /// connections on the endpoint. The localPort attribute maps the
+        /// eternal port of the endpoint to an internal port on a role. This is
+        /// useful in scenarios where a role must communicate to an internal
+        /// component on a port that is different from the one that is exposed
+        /// externally. If not specified, the value of localPort is the same as
+        /// the port attribute. Set the value of localPort to '*' to
+        /// automatically assign an unallocated port that is discoverable using
+        /// the runtime API</param>
+        /// <param name="idleTimeoutInMinutes">Gets or sets the timeout for the
+        /// Tcp idle connection. The value can be set between 4 and 30 minutes.
+        /// The default value is 4 minutes. This element is only used when the
+        /// protocol is set to Tcp</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public InboundNatRule(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        /// the resource is updated</param>
+        public InboundNatRule(string protocol, int frontendPort, bool enableFloatingIP, string id = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendIPConfiguration = default(SubResource), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -78,11 +81,9 @@ namespace Microsoft.Azure.Management.Network.Models
             BackendPort = backendPort;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             EnableFloatingIP = enableFloatingIP;
-            EnableTcpReset = enableTcpReset;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -92,45 +93,54 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a reference to frontend IP addresses.
+        /// Gets or sets a reference to frontend IP Addresses
         /// </summary>
         [JsonProperty(PropertyName = "properties.frontendIPConfiguration")]
         public SubResource FrontendIPConfiguration { get; set; }
 
         /// <summary>
-        /// Gets a reference to a private IP address defined on a network
-        /// interface of a VM. Traffic sent to the frontend port of each of the
-        /// frontend IP configurations is forwarded to the backend IP.
+        /// Gets or sets a reference to a private ip address defined on a
+        /// NetworkInterface of a VM. Traffic sent to frontendPort of each of
+        /// the frontendIPConfigurations is forwarded to the backed IP
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendIPConfiguration")]
-        public NetworkInterfaceIPConfiguration BackendIPConfiguration { get; private set; }
+        public SubResource BackendIPConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the transport protocol used by the
-        /// load balancing rule. Possible values include: 'Udp', 'Tcp', 'All'
+        /// Gets or sets the transport protocol for the external endpoint.
+        /// Possible values are Udp or Tcp. Possible values include: 'Udp',
+        /// 'Tcp'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
 
         /// <summary>
-        /// Gets or sets the port for the external endpoint. Port numbers for
-        /// each rule must be unique within the Load Balancer. Acceptable
-        /// values range from 1 to 65534.
+        /// Gets or sets the port for the external endpoint. You can specify
+        /// any port number you choose, but the port numbers specified for each
+        /// role in the service must be unique. Possible values range between 1
+        /// and 65535, inclusive
         /// </summary>
         [JsonProperty(PropertyName = "properties.frontendPort")]
-        public int? FrontendPort { get; set; }
+        public int FrontendPort { get; set; }
 
         /// <summary>
-        /// Gets or sets the port used for the internal endpoint. Acceptable
-        /// values range from 1 to 65535.
+        /// Gets or sets a port used for internal connections on the endpoint.
+        /// The localPort attribute maps the eternal port of the endpoint to an
+        /// internal port on a role. This is useful in scenarios where a role
+        /// must communicate to an internal component on a port that is
+        /// different from the one that is exposed externally. If not
+        /// specified, the value of localPort is the same as the port
+        /// attribute. Set the value of localPort to '*' to automatically
+        /// assign an unallocated port that is discoverable using the runtime
+        /// API
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendPort")]
         public int? BackendPort { get; set; }
 
         /// <summary>
-        /// Gets or sets the timeout for the TCP idle connection. The value can
+        /// Gets or sets the timeout for the Tcp idle connection. The value can
         /// be set between 4 and 30 minutes. The default value is 4 minutes.
-        /// This element is only used when the protocol is set to TCP.
+        /// This element is only used when the protocol is set to Tcp
         /// </summary>
         [JsonProperty(PropertyName = "properties.idleTimeoutInMinutes")]
         public int? IdleTimeoutInMinutes { get; set; }
@@ -138,49 +148,33 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets configures a virtual machine's endpoint for the
         /// floating IP capability required to configure a SQL AlwaysOn
-        /// Availability Group. This setting is required when using the SQL
-        /// AlwaysOn Availability Groups in SQL server. This setting can't be
-        /// changed after you create the endpoint.
+        /// availability Group. This setting is required when using the SQL
+        /// Always ON availability Groups in SQL server. This setting can't be
+        /// changed after you create the endpoint
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableFloatingIP")]
-        public bool? EnableFloatingIP { get; set; }
+        public bool EnableFloatingIP { get; set; }
 
         /// <summary>
-        /// Gets or sets receive bidirectional TCP Reset on TCP flow idle
-        /// timeout or unexpected connection termination. This element is only
-        /// used when the protocol is set to TCP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enableTcpReset")]
-        public bool? EnableTcpReset { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the inbound NAT rule resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets Provisioning state of the PublicIP resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set
-        /// of inbound NAT rules used by the load balancer. This name can be
-        /// used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -190,9 +184,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (BackendIPConfiguration != null)
+            if (Protocol == null)
             {
-                BackendIPConfiguration.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "Protocol");
             }
         }
     }

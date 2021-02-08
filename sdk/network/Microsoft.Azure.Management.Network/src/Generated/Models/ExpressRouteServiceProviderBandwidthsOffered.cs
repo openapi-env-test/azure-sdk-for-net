@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains bandwidths offered in ExpressRouteServiceProvider resources.
+    /// Contains Bandwidths offered in ExpressRouteServiceProviders
     /// </summary>
     public partial class ExpressRouteServiceProviderBandwidthsOffered
     {
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// ExpressRouteServiceProviderBandwidthsOffered class.
         /// </summary>
-        /// <param name="offerName">The OfferName.</param>
-        /// <param name="valueInMbps">The ValueInMbps.</param>
+        /// <param name="offerName">Gets the OfferName</param>
+        /// <param name="valueInMbps">Gets the ValueInMbps.</param>
         public ExpressRouteServiceProviderBandwidthsOffered(string offerName = default(string), int? valueInMbps = default(int?))
         {
             OfferName = offerName;
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the OfferName.
+        /// Gets the OfferName
         /// </summary>
         [JsonProperty(PropertyName = "offerName")]
         public string OfferName { get; set; }
 
         /// <summary>
-        /// Gets or sets the ValueInMbps.
+        /// Gets the ValueInMbps.
         /// </summary>
         [JsonProperty(PropertyName = "valueInMbps")]
         public int? ValueInMbps { get; set; }

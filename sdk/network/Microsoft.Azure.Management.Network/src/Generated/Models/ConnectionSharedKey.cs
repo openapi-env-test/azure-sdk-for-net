@@ -10,14 +10,13 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Response for GetConnectionSharedKey API service call.
+    /// Response for GetConnectionSharedKey Api service call
     /// </summary>
-    public partial class ConnectionSharedKey : SubResource
+    public partial class ConnectionSharedKey
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKey class.
@@ -31,10 +30,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ConnectionSharedKey class.
         /// </summary>
         /// <param name="value">The virtual network connection shared key
-        /// value.</param>
-        /// <param name="id">Resource ID.</param>
-        public ConnectionSharedKey(string value, string id = default(string))
-            : base(id)
+        /// value</param>
+        public ConnectionSharedKey(string value = default(string))
         {
             Value = value;
             CustomInit();
@@ -46,23 +43,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the virtual network connection shared key value.
+        /// Gets or sets the virtual network connection shared key value
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Value == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
-            }
-        }
     }
 }

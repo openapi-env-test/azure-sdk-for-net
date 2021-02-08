@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class SecurityRulesOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified network security rule.
+            /// The delete network security rule operation deletes the specified network
+            /// security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security rule.
+            /// The delete network security rule operation deletes the specified network
+            /// security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,7 +67,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the specified network security rule.
+            /// The Get NetworkSecurityRule operation retrieves information about the
+            /// specified network security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -85,7 +88,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the specified network security rule.
+            /// The Get NetworkSecurityRule operation retrieves information about the
+            /// specified network security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -111,7 +115,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a security rule in the specified network security group.
+            /// The Put network security rule operation creates/updates a security rule in
+            /// the specified network security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -126,8 +131,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the security rule.
             /// </param>
             /// <param name='securityRuleParameters'>
-            /// Parameters supplied to the create or update network security rule
-            /// operation.
+            /// Parameters supplied to the create/update network security rule operation
             /// </param>
             public static SecurityRule CreateOrUpdate(this ISecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string securityRuleName, SecurityRule securityRuleParameters)
             {
@@ -135,7 +139,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a security rule in the specified network security group.
+            /// The Put network security rule operation creates/updates a security rule in
+            /// the specified network security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -150,8 +155,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the security rule.
             /// </param>
             /// <param name='securityRuleParameters'>
-            /// Parameters supplied to the create or update network security rule
-            /// operation.
+            /// Parameters supplied to the create/update network security rule operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -165,7 +169,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all security rules in a network security group.
+            /// The List network security rule operation retrieves all the security rules
+            /// in a network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -182,7 +187,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all security rules in a network security group.
+            /// The List network security rule operation retrieves all the security rules
+            /// in a network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -205,7 +211,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security rule.
+            /// The delete network security rule operation deletes the specified network
+            /// security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -225,7 +232,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security rule.
+            /// The delete network security rule operation deletes the specified network
+            /// security rule.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -248,7 +256,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a security rule in the specified network security group.
+            /// The Put network security rule operation creates/updates a security rule in
+            /// the specified network security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -263,8 +272,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the security rule.
             /// </param>
             /// <param name='securityRuleParameters'>
-            /// Parameters supplied to the create or update network security rule
-            /// operation.
+            /// Parameters supplied to the create/update network security rule operation
             /// </param>
             public static SecurityRule BeginCreateOrUpdate(this ISecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string securityRuleName, SecurityRule securityRuleParameters)
             {
@@ -272,7 +280,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a security rule in the specified network security group.
+            /// The Put network security rule operation creates/updates a security rule in
+            /// the specified network security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -287,8 +296,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the security rule.
             /// </param>
             /// <param name='securityRuleParameters'>
-            /// Parameters supplied to the create or update network security rule
-            /// operation.
+            /// Parameters supplied to the create/update network security rule operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -302,7 +310,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all security rules in a network security group.
+            /// The List network security rule operation retrieves all the security rules
+            /// in a network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -316,7 +325,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all security rules in a network security group.
+            /// The List network security rule operation retrieves all the security rules
+            /// in a network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

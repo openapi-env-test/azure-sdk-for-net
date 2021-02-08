@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// A load balancer probe.
+    /// Load balancer Probe
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class Probe : SubResource
@@ -34,40 +34,40 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the Probe class.
         /// </summary>
-        /// <param name="protocol">The protocol of the end point. If 'Tcp' is
-        /// specified, a received ACK is required for the probe to be
-        /// successful. If 'Http' or 'Https' is specified, a 200 OK response
-        /// from the specifies URI is required for the probe to be successful.
-        /// Possible values include: 'Http', 'Tcp', 'Https'</param>
-        /// <param name="port">The port for communicating the probe. Possible
-        /// values range from 1 to 65535, inclusive.</param>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="loadBalancingRules">The load balancer rules that use
-        /// this probe.</param>
-        /// <param name="intervalInSeconds">The interval, in seconds, for how
-        /// frequently to probe the endpoint for health status. Typically, the
-        /// interval is slightly less than half the allocated timeout period
-        /// (in seconds) which allows two full probes before taking the
-        /// instance out of rotation. The default value is 15, the minimum
-        /// value is 5.</param>
-        /// <param name="numberOfProbes">The number of probes where if no
-        /// response, will result in stopping further traffic from being
-        /// delivered to the endpoint. This values allows endpoints to be taken
-        /// out of rotation faster or slower than the typical times used in
-        /// Azure.</param>
-        /// <param name="requestPath">The URI used for requesting health status
-        /// from the VM. Path is required if a protocol is set to http.
-        /// Otherwise, it is not allowed. There is no default value.</param>
-        /// <param name="provisioningState">The provisioning state of the probe
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the set of probes used by the load balancer. This name can be used
-        /// to access the resource.</param>
+        /// <param name="protocol">Gets or sets the protocol of the end point.
+        /// Possible values are http pr Tcp. If Tcp is specified, a received
+        /// ACK is required for the probe to be successful. If http is
+        /// specified,a 200 OK response from the specifies URI is required for
+        /// the probe to be successful. Possible values include: 'Http',
+        /// 'Tcp'</param>
+        /// <param name="port">Gets or sets Port for communicating the probe.
+        /// Possible values range from 1 to 65535, inclusive.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="loadBalancingRules">Gets Load balancer rules that use
+        /// this probe</param>
+        /// <param name="intervalInSeconds">Gets or sets the interval, in
+        /// seconds, for how frequently to probe the endpoint for health
+        /// status. Typically, the interval is slightly less than half the
+        /// allocated timeout period (in seconds) which allows two full probes
+        /// before taking the instance out of rotation. The default value is
+        /// 15, the minimum value is 5</param>
+        /// <param name="numberOfProbes">Gets or sets the number of probes
+        /// where if no response, will result in stopping further traffic from
+        /// being delivered to the endpoint. This values allows endpoints to be
+        /// taken out of rotation faster or slower than the typical times used
+        /// in Azure. </param>
+        /// <param name="requestPath">Gets or sets the URI used for requesting
+        /// health status from the VM. Path is required if a protocol is set to
+        /// http. Otherwise, it is not allowed. There is no default
+        /// value</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public Probe(string protocol, int port, string id = default(string), IList<SubResource> loadBalancingRules = default(IList<SubResource>), int? intervalInSeconds = default(int?), int? numberOfProbes = default(int?), string requestPath = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        /// the resource is updated</param>
+        public Probe(string protocol, int port, string id = default(string), IList<SubResource> loadBalancingRules = default(IList<SubResource>), int? intervalInSeconds = default(int?), int? numberOfProbes = default(int?), string requestPath = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             LoadBalancingRules = loadBalancingRules;
@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -89,23 +88,23 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the load balancer rules that use this probe.
+        /// Gets Load balancer rules that use this probe
         /// </summary>
         [JsonProperty(PropertyName = "properties.loadBalancingRules")]
-        public IList<SubResource> LoadBalancingRules { get; private set; }
+        public IList<SubResource> LoadBalancingRules { get; set; }
 
         /// <summary>
-        /// Gets or sets the protocol of the end point. If 'Tcp' is specified,
-        /// a received ACK is required for the probe to be successful. If
-        /// 'Http' or 'Https' is specified, a 200 OK response from the
-        /// specifies URI is required for the probe to be successful. Possible
-        /// values include: 'Http', 'Tcp', 'Https'
+        /// Gets or sets the protocol of the end point. Possible values are
+        /// http pr Tcp. If Tcp is specified, a received ACK is required for
+        /// the probe to be successful. If http is specified,a 200 OK response
+        /// from the specifies URI is required for the probe to be successful.
+        /// Possible values include: 'Http', 'Tcp'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
 
         /// <summary>
-        /// Gets or sets the port for communicating the probe. Possible values
+        /// Gets or sets Port for communicating the probe. Possible values
         /// range from 1 to 65535, inclusive.
         /// </summary>
         [JsonProperty(PropertyName = "properties.port")]
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the endpoint for health status. Typically, the interval is slightly
         /// less than half the allocated timeout period (in seconds) which
         /// allows two full probes before taking the instance out of rotation.
-        /// The default value is 15, the minimum value is 5.
+        /// The default value is 15, the minimum value is 5
         /// </summary>
         [JsonProperty(PropertyName = "properties.intervalInSeconds")]
         public int? IntervalInSeconds { get; set; }
@@ -133,38 +132,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets the URI used for requesting health status from the VM.
         /// Path is required if a protocol is set to http. Otherwise, it is not
-        /// allowed. There is no default value.
+        /// allowed. There is no default value
         /// </summary>
         [JsonProperty(PropertyName = "properties.requestPath")]
         public string RequestPath { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the probe resource. Possible values
-        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets Provisioning state of the PublicIP resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set
-        /// of probes used by the load balancer. This name can be used to
-        /// access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
         /// Validate the object.

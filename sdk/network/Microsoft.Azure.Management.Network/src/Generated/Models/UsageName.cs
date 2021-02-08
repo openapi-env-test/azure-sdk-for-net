@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The usage names.
+    /// The Usage Names.
     /// </summary>
     public partial class UsageName
     {
@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the UsageName class.
         /// </summary>
-        /// <param name="value">A string describing the resource name.</param>
-        /// <param name="localizedValue">A localized string describing the
-        /// resource name.</param>
+        /// <param name="value">Gets or sets a string describing the resource
+        /// name.</param>
+        /// <param name="localizedValue">Gets or sets a localized string
+        /// describing the resource name.</param>
         public UsageName(string value = default(string), string localizedValue = default(string))
         {
             Value = value;

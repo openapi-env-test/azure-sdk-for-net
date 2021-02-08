@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// DNS settings of a network interface.
+    /// Dns Settings of a network interface
     /// </summary>
     public partial class NetworkInterfaceDnsSettings
     {
@@ -33,32 +33,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the NetworkInterfaceDnsSettings
         /// class.
         /// </summary>
-        /// <param name="dnsServers">List of DNS servers IP addresses. Use
-        /// 'AzureProvidedDNS' to switch to azure provided DNS resolution.
-        /// 'AzureProvidedDNS' value cannot be combined with other IPs, it must
-        /// be the only value in dnsServers collection.</param>
-        /// <param name="appliedDnsServers">If the VM that uses this NIC is
-        /// part of an Availability Set, then this list will have the union of
-        /// all DNS servers from all NICs that are part of the Availability
-        /// Set. This property is what is configured on each of those
-        /// VMs.</param>
-        /// <param name="internalDnsNameLabel">Relative DNS name for this NIC
-        /// used for internal communications between VMs in the same virtual
-        /// network.</param>
-        /// <param name="internalFqdn">Fully qualified DNS name supporting
-        /// internal communications between VMs in the same virtual
-        /// network.</param>
-        /// <param name="internalDomainNameSuffix">Even if internalDnsNameLabel
-        /// is not specified, a DNS entry is created for the primary NIC of the
-        /// VM. This DNS name can be constructed by concatenating the VM name
-        /// with the value of internalDomainNameSuffix.</param>
-        public NetworkInterfaceDnsSettings(IList<string> dnsServers = default(IList<string>), IList<string> appliedDnsServers = default(IList<string>), string internalDnsNameLabel = default(string), string internalFqdn = default(string), string internalDomainNameSuffix = default(string))
+        /// <param name="dnsServers">Gets or sets list of DNS servers IP
+        /// addresses</param>
+        /// <param name="appliedDnsServers">Gets or sets list of Applied DNS
+        /// servers IP addresses</param>
+        /// <param name="internalDnsNameLabel">Gets or sets the Internal DNS
+        /// name</param>
+        /// <param name="internalFqdn">Gets or sets full IDNS name in the form,
+        /// DnsName.VnetId.ZoneId.TopLevelSuffix. This is set when the NIC is
+        /// associated to a VM</param>
+        public NetworkInterfaceDnsSettings(IList<string> dnsServers = default(IList<string>), IList<string> appliedDnsServers = default(IList<string>), string internalDnsNameLabel = default(string), string internalFqdn = default(string))
         {
             DnsServers = dnsServers;
             AppliedDnsServers = appliedDnsServers;
             InternalDnsNameLabel = internalDnsNameLabel;
             InternalFqdn = internalFqdn;
-            InternalDomainNameSuffix = internalDomainNameSuffix;
             CustomInit();
         }
 
@@ -68,45 +57,30 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of DNS servers IP addresses. Use
-        /// 'AzureProvidedDNS' to switch to azure provided DNS resolution.
-        /// 'AzureProvidedDNS' value cannot be combined with other IPs, it must
-        /// be the only value in dnsServers collection.
+        /// Gets or sets list of DNS servers IP addresses
         /// </summary>
         [JsonProperty(PropertyName = "dnsServers")]
         public IList<string> DnsServers { get; set; }
 
         /// <summary>
-        /// Gets if the VM that uses this NIC is part of an Availability Set,
-        /// then this list will have the union of all DNS servers from all NICs
-        /// that are part of the Availability Set. This property is what is
-        /// configured on each of those VMs.
+        /// Gets or sets list of Applied DNS servers IP addresses
         /// </summary>
         [JsonProperty(PropertyName = "appliedDnsServers")]
-        public IList<string> AppliedDnsServers { get; private set; }
+        public IList<string> AppliedDnsServers { get; set; }
 
         /// <summary>
-        /// Gets or sets relative DNS name for this NIC used for internal
-        /// communications between VMs in the same virtual network.
+        /// Gets or sets the Internal DNS name
         /// </summary>
         [JsonProperty(PropertyName = "internalDnsNameLabel")]
         public string InternalDnsNameLabel { get; set; }
 
         /// <summary>
-        /// Gets fully qualified DNS name supporting internal communications
-        /// between VMs in the same virtual network.
+        /// Gets or sets full IDNS name in the form,
+        /// DnsName.VnetId.ZoneId.TopLevelSuffix. This is set when the NIC is
+        /// associated to a VM
         /// </summary>
         [JsonProperty(PropertyName = "internalFqdn")]
-        public string InternalFqdn { get; private set; }
-
-        /// <summary>
-        /// Gets even if internalDnsNameLabel is not specified, a DNS entry is
-        /// created for the primary NIC of the VM. This DNS name can be
-        /// constructed by concatenating the VM name with the value of
-        /// internalDomainNameSuffix.
-        /// </summary>
-        [JsonProperty(PropertyName = "internalDomainNameSuffix")]
-        public string InternalDomainNameSuffix { get; private set; }
+        public string InternalFqdn { get; set; }
 
     }
 }

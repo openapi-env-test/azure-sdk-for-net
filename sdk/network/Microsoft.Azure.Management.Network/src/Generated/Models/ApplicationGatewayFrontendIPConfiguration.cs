@@ -16,23 +16,23 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// IpConfiguration for Virtual network gateway
+    /// Frontend IP configuration of application gateway
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayIpConfiguration : SubResource
+    public partial class ApplicationGatewayFrontendIPConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// ApplicationGatewayFrontendIPConfiguration class.
         /// </summary>
-        public VirtualNetworkGatewayIpConfiguration()
+        public ApplicationGatewayFrontendIPConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// ApplicationGatewayFrontendIPConfiguration class.
         /// </summary>
         /// <param name="id">Resource Id</param>
         /// <param name="privateIPAddress">Gets or sets the privateIPAddress of
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated</param>
-        public VirtualNetworkGatewayIpConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public ApplicationGatewayFrontendIPConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             PrivateIPAddress = privateIPAddress;

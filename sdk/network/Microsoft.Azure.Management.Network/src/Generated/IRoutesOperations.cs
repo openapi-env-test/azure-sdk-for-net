@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IRoutesOperations
     {
         /// <summary>
-        /// Deletes the specified route from a route table.
+        /// The delete route operation deletes the specified route from a route
+        /// table.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string routeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified route from a route table.
+        /// The Get route operation retrieves information about the specified
+        /// route from the route table.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -77,7 +79,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<Route>> GetWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string routeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a route in the specified route table.
+        /// The Put route operation creates/updates a route in the specified
+        /// route table
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -89,7 +92,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the route.
         /// </param>
         /// <param name='routeParameters'>
-        /// Parameters supplied to the create or update route operation.
+        /// Parameters supplied to the create/update route operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -108,7 +111,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<Route>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string routeName, Route routeParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all routes in a route table.
+        /// The List network security rule operation retrieves all the routes
+        /// in a route table.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -133,7 +137,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<IPage<Route>>> ListWithHttpMessagesAsync(string resourceGroupName, string routeTableName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the specified route from a route table.
+        /// The delete route operation deletes the specified route from a route
+        /// table.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -158,7 +163,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string routeName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates a route in the specified route table.
+        /// The Put route operation creates/updates a route in the specified
+        /// route table
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -170,7 +176,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the route.
         /// </param>
         /// <param name='routeParameters'>
-        /// Parameters supplied to the create or update route operation.
+        /// Parameters supplied to the create/update route operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -189,7 +195,8 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<Route>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeTableName, string routeName, Route routeParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets all routes in a route table.
+        /// The List network security rule operation retrieves all the routes
+        /// in a route table.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

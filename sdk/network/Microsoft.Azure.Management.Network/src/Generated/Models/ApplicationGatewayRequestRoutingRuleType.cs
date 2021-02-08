@@ -17,6 +17,5 @@ namespace Microsoft.Azure.Management.Network.Models
     public static class ApplicationGatewayRequestRoutingRuleType
     {
         public const string Basic = "Basic";
-        public const string PathBasedRouting = "PathBasedRouting";
     }
 }

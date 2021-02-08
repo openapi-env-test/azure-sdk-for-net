@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains ServiceProviderProperties in an ExpressRouteCircuit.
+    /// Contains ServiceProviderProperties in an ExpressRouteCircuit
     /// </summary>
     public partial class ExpressRouteCircuitServiceProviderProperties
     {
@@ -31,9 +31,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// ExpressRouteCircuitServiceProviderProperties class.
         /// </summary>
-        /// <param name="serviceProviderName">The serviceProviderName.</param>
-        /// <param name="peeringLocation">The peering location.</param>
-        /// <param name="bandwidthInMbps">The BandwidthInMbps.</param>
+        /// <param name="serviceProviderName">Gets or sets
+        /// serviceProviderName.</param>
+        /// <param name="peeringLocation">Gets or sets peering
+        /// location.</param>
+        /// <param name="bandwidthInMbps">Gets or sets BandwidthInMbps.</param>
         public ExpressRouteCircuitServiceProviderProperties(string serviceProviderName = default(string), string peeringLocation = default(string), int? bandwidthInMbps = default(int?))
         {
             ServiceProviderName = serviceProviderName;
@@ -48,19 +50,19 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the serviceProviderName.
+        /// Gets or sets serviceProviderName.
         /// </summary>
         [JsonProperty(PropertyName = "serviceProviderName")]
         public string ServiceProviderName { get; set; }
 
         /// <summary>
-        /// Gets or sets the peering location.
+        /// Gets or sets peering location.
         /// </summary>
         [JsonProperty(PropertyName = "peeringLocation")]
         public string PeeringLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the BandwidthInMbps.
+        /// Gets or sets BandwidthInMbps.
         /// </summary>
         [JsonProperty(PropertyName = "bandwidthInMbps")]
         public int? BandwidthInMbps { get; set; }

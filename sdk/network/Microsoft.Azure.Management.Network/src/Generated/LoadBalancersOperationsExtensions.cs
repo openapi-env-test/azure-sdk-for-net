@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
     public static partial class LoadBalancersOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified load balancer.
+            /// The delete loadbalancer operation deletes the specified loadbalancer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             public static void Delete(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName)
             {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified load balancer.
+            /// The delete loadbalancer operation deletes the specified loadbalancer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified load balancer.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -68,18 +69,16 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static LoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string))
+            public static LoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName)
             {
-                return operations.GetAsync(resourceGroupName, loadBalancerName, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the specified load balancer.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -88,24 +87,21 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates or updates a load balancer.
+            /// The Put LoadBalancer operation creates/updates a LoadBalancer
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -114,10 +110,10 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
+            /// Parameters supplied to the create/delete LoadBalancer operation
             /// </param>
             public static LoadBalancer CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
             {
@@ -125,7 +121,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a load balancer.
+            /// The Put LoadBalancer operation creates/updates a LoadBalancer
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -134,10 +130,10 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
+            /// Parameters supplied to the create/delete LoadBalancer operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -151,53 +147,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a load balancer tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update load balancer tags.
-            /// </param>
-            public static LoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a load balancer tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update load balancer tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all the load balancers in a subscription.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -208,7 +159,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a subscription.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -225,7 +177,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a resource group.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -239,7 +192,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a resource group.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -259,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified load balancer.
+            /// The delete loadbalancer operation deletes the specified loadbalancer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -268,7 +222,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             public static void BeginDelete(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName)
             {
@@ -276,7 +230,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified load balancer.
+            /// The delete loadbalancer operation deletes the specified loadbalancer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -285,7 +239,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -296,7 +250,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a load balancer.
+            /// The Put LoadBalancer operation creates/updates a LoadBalancer
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -305,10 +259,10 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
+            /// Parameters supplied to the create/delete LoadBalancer operation
             /// </param>
             public static LoadBalancer BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
             {
@@ -316,7 +270,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a load balancer.
+            /// The Put LoadBalancer operation creates/updates a LoadBalancer
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -325,10 +279,10 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
+            /// The name of the loadBalancer.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
+            /// Parameters supplied to the create/delete LoadBalancer operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -342,7 +296,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a subscription.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -356,7 +311,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a subscription.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -376,7 +332,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a resource group.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -390,7 +347,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the load balancers in a resource group.
+            /// The List loadBalancer operation retrieves all the load balancers in a
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
