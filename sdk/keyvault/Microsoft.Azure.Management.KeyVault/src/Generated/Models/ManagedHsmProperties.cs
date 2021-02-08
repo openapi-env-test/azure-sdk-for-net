@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public IList<string> InitialAdminObjectIds { get; set; }
 
         /// <summary>
-        /// Gets or sets the URI of the managed hsm pool for performing
-        /// operations on keys.
+        /// Gets the URI of the managed hsm pool for performing operations on
+        /// keys.
         /// </summary>
         [JsonProperty(PropertyName = "hsmUri")]
-        public string HsmUri { get; set; }
+        public string HsmUri { get; private set; }
 
         /// <summary>
         /// Gets or sets property to specify whether the 'soft delete'
