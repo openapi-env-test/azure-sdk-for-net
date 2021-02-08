@@ -38,21 +38,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="userName">Username</param>
         /// <param name="publishingPassword">Password used for
         /// publishing.</param>
         /// <param name="publishingPasswordHash">Password hash used for
         /// publishing.</param>
         /// <param name="publishingPasswordHashSalt">Password hash salt used
         /// for publishing.</param>
-        /// <param name="scmUri">Url of SCM site.</param>
-        public User(string publishingUserName, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
+        public User(string publishingUserName, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string userName = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string))
             : base(id, name, kind, type)
         {
+            UserName = userName;
             PublishingUserName = publishingUserName;
             PublishingPassword = publishingPassword;
             PublishingPasswordHash = publishingPasswordHash;
             PublishingPasswordHashSalt = publishingPasswordHashSalt;
-            ScmUri = scmUri;
             CustomInit();
         }
 
@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets username
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string UserName { get; set; }
 
         /// <summary>
         /// Gets or sets username used for publishing.
@@ -84,12 +90,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishingPasswordHashSalt")]
         public string PublishingPasswordHashSalt { get; set; }
-
-        /// <summary>
-        /// Gets or sets url of SCM site.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.scmUri")]
-        public string ScmUri { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="cloneSourceControl">&lt;code&gt;true&lt;/code&gt; to
         /// clone source control from source app; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="sourceWebAppLocation">Location of source app ex: West
-        /// US or North Europe</param>
         /// <param name="hostingEnvironment">App Service Environment.</param>
         /// <param name="appSettingsOverrides">Application setting overrides
         /// for cloned app. If specified, these settings override the settings
@@ -66,19 +64,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="trafficManagerProfileName">Name of Traffic Manager
         /// profile to create. This is only needed if Traffic Manager profile
         /// does not already exist.</param>
-        public CloningInfo(string sourceWebAppId, System.Guid? correlationId = default(System.Guid?), bool? overwrite = default(bool?), bool? cloneCustomHostNames = default(bool?), bool? cloneSourceControl = default(bool?), string sourceWebAppLocation = default(string), string hostingEnvironment = default(string), IDictionary<string, string> appSettingsOverrides = default(IDictionary<string, string>), bool? configureLoadBalancing = default(bool?), string trafficManagerProfileId = default(string), string trafficManagerProfileName = default(string))
+        /// <param name="ignoreQuotas">&lt;code&gt;true&lt;/code&gt; if quotas
+        /// should be ignored; otherwise,
+        /// &lt;code&gt;false&lt;/code&gt;.</param>
+        public CloningInfo(string sourceWebAppId, System.Guid? correlationId = default(System.Guid?), bool? overwrite = default(bool?), bool? cloneCustomHostNames = default(bool?), bool? cloneSourceControl = default(bool?), string hostingEnvironment = default(string), IDictionary<string, string> appSettingsOverrides = default(IDictionary<string, string>), bool? configureLoadBalancing = default(bool?), string trafficManagerProfileId = default(string), string trafficManagerProfileName = default(string), bool? ignoreQuotas = default(bool?))
         {
             CorrelationId = correlationId;
             Overwrite = overwrite;
             CloneCustomHostNames = cloneCustomHostNames;
             CloneSourceControl = cloneSourceControl;
             SourceWebAppId = sourceWebAppId;
-            SourceWebAppLocation = sourceWebAppLocation;
             HostingEnvironment = hostingEnvironment;
             AppSettingsOverrides = appSettingsOverrides;
             ConfigureLoadBalancing = configureLoadBalancing;
             TrafficManagerProfileId = trafficManagerProfileId;
             TrafficManagerProfileName = trafficManagerProfileName;
+            IgnoreQuotas = ignoreQuotas;
             CustomInit();
         }
 
@@ -131,12 +132,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string SourceWebAppId { get; set; }
 
         /// <summary>
-        /// Gets or sets location of source app ex: West US or North Europe
-        /// </summary>
-        [JsonProperty(PropertyName = "sourceWebAppLocation")]
-        public string SourceWebAppLocation { get; set; }
-
-        /// <summary>
         /// Gets or sets app Service Environment.
         /// </summary>
         [JsonProperty(PropertyName = "hostingEnvironment")]
@@ -172,6 +167,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "trafficManagerProfileName")]
         public string TrafficManagerProfileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
+        /// quotas should be ignored; otherwise,
+        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// </summary>
+        [JsonProperty(PropertyName = "ignoreQuotas")]
+        public bool? IgnoreQuotas { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -60,8 +60,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="appServicePlan">Specify app service plan that will own
         /// restored site.</param>
         /// <param name="operationType">Operation type. Possible values
-        /// include: 'Default', 'Clone', 'Relocation', 'Snapshot',
-        /// 'CloudFS'</param>
+        /// include: 'Default', 'Clone', 'Relocation', 'Snapshot'</param>
         /// <param name="adjustConnectionStrings">&lt;code&gt;true&lt;/code&gt;
         /// if SiteConfig.ConnectionStrings should be set in new app;
         /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets operation type. Possible values include: 'Default',
-        /// 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+        /// 'Clone', 'Relocation', 'Snapshot'
         /// </summary>
         [JsonProperty(PropertyName = "properties.operationType")]
         public BackupRestoreOperationType? OperationType { get; set; }

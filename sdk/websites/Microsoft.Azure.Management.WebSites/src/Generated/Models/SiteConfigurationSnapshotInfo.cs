@@ -39,12 +39,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="time">The time the snapshot was taken.</param>
-        /// <param name="snapshotId">The id of the snapshot</param>
-        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? time = default(System.DateTime?), int? snapshotId = default(int?))
+        /// <param name="siteConfigurationSnapshotInfoId">The id of the
+        /// snapshot</param>
+        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? time = default(System.DateTime?), int? siteConfigurationSnapshotInfoId = default(int?))
             : base(id, name, kind, type)
         {
             Time = time;
-            SnapshotId = snapshotId;
+            SiteConfigurationSnapshotInfoId = siteConfigurationSnapshotInfoId;
             CustomInit();
         }
 
@@ -62,8 +63,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets the id of the snapshot
         /// </summary>
-        [JsonProperty(PropertyName = "properties.snapshotId")]
-        public int? SnapshotId { get; private set; }
+        [JsonProperty(PropertyName = "properties.id")]
+        public int? SiteConfigurationSnapshotInfoId { get; private set; }
 
     }
 }

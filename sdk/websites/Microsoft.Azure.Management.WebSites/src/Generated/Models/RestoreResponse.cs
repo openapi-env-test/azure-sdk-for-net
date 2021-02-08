@@ -13,38 +13,36 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Triggered Web Job History. List of Triggered Web Job Run Information
-    /// elements.
+    /// Response for an app restore request.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TriggeredJobHistory : ProxyOnlyResource
+    public partial class RestoreResponse : ProxyOnlyResource
     {
         /// <summary>
-        /// Initializes a new instance of the TriggeredJobHistory class.
+        /// Initializes a new instance of the RestoreResponse class.
         /// </summary>
-        public TriggeredJobHistory()
+        public RestoreResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TriggeredJobHistory class.
+        /// Initializes a new instance of the RestoreResponse class.
         /// </summary>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="triggeredJobRuns">List of triggered web job
-        /// runs.</param>
-        public TriggeredJobHistory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<TriggeredJobRun> triggeredJobRuns = default(IList<TriggeredJobRun>))
+        /// <param name="operationId">When server starts the restore process,
+        /// it will return an operation ID identifying that particular restore
+        /// operation.</param>
+        public RestoreResponse(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string operationId = default(string))
             : base(id, name, kind, type)
         {
-            TriggeredJobRuns = triggeredJobRuns;
+            OperationId = operationId;
             CustomInit();
         }
 
@@ -54,10 +52,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of triggered web job runs.
+        /// Gets when server starts the restore process, it will return an
+        /// operation ID identifying that particular restore operation.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.triggeredJobRuns")]
-        public IList<TriggeredJobRun> TriggeredJobRuns { get; set; }
+        [JsonProperty(PropertyName = "properties.operationId")]
+        public string OperationId { get; private set; }
 
     }
 }

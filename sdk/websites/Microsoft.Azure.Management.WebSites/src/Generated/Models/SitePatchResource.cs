@@ -62,8 +62,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
         /// <param name="reserved">&lt;code&gt;true&lt;/code&gt; if reserved;
         /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="isXenon">Obsolete: Hyper-V sandbox.</param>
-        /// <param name="hyperV">Hyper-V sandbox.</param>
         /// <param name="lastModifiedTimeUtc">Last time the app was modified,
         /// in UTC. Read-only.</param>
         /// <param name="siteConfig">Configuration of the app.</param>
@@ -86,32 +84,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// enable client certificate authentication (TLS mutual
         /// authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default
         /// is &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="clientCertMode">This composes with ClientCertEnabled
-        /// setting.
-        /// - ClientCertEnabled: false means ClientCert is ignored.
-        /// - ClientCertEnabled: true and ClientCertMode: Required means
-        /// ClientCert is required.
-        /// - ClientCertEnabled: true and ClientCertMode: Optional means
-        /// ClientCert is optional or accepted. Possible values include:
-        /// 'Required', 'Optional'</param>
-        /// <param name="clientCertExclusionPaths">client certificate
-        /// authentication comma-separated exclusion paths</param>
         /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to
         /// disable the public hostnames of the app; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.
         /// If &lt;code&gt;true&lt;/code&gt;, the app is only accessible via
         /// API management process.</param>
-        /// <param name="customDomainVerificationId">Unique identifier that
-        /// verifies the custom domains assigned to the app. Customer will add
-        /// this id to a txt record for verification.</param>
         /// <param name="outboundIpAddresses">List of IP addresses that the app
         /// uses for outbound connections (e.g. database access). Includes VIPs
         /// from tenants that site can be hosted with current settings.
         /// Read-only.</param>
         /// <param name="possibleOutboundIpAddresses">List of IP addresses that
         /// the app uses for outbound connections (e.g. database access).
-        /// Includes VIPs from all tenants except dataComponent.
-        /// Read-only.</param>
+        /// Includes VIPs from all tenants. Read-only.</param>
         /// <param name="containerSize">Size of the function container.</param>
         /// <param name="dailyMemoryTimeQuota">Maximum allowed daily
         /// memory-time quota (applicable on dynamic apps only).</param>
@@ -121,6 +105,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// This only applies to Functions container.</param>
         /// <param name="cloningInfo">If specified during app creation, the app
         /// is cloned from a source app.</param>
+        /// <param name="snapshotInfo">If specified during app creation, the
+        /// app is created from a previous snapshot.</param>
         /// <param name="resourceGroup">Name of the resource group the app
         /// belongs to. Read-only.</param>
         /// <param name="isDefaultContainer">&lt;code&gt;true&lt;/code&gt; if
@@ -133,12 +119,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="httpsOnly">HttpsOnly: configures a web site to accept
         /// only https requests. Issues redirect for
         /// http requests</param>
-        /// <param name="redundancyMode">Site redundancy mode. Possible values
-        /// include: 'None', 'Manual', 'Failover', 'ActiveActive',
-        /// 'GeoRedundant'</param>
-        /// <param name="inProgressOperationId">Specifies an operation id if
-        /// this site has a pending operation.</param>
-        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), RedundancyMode? redundancyMode = default(RedundancyMode?), System.Guid? inProgressOperationId = default(System.Guid?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        public SitePatchResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), SnapshotRecoveryRequest snapshotInfo = default(SnapshotRecoveryRequest), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?))
             : base(id, name, kind, type)
         {
             State = state;
@@ -151,8 +132,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             HostNameSslStates = hostNameSslStates;
             ServerFarmId = serverFarmId;
             Reserved = reserved;
-            IsXenon = isXenon;
-            HyperV = hyperV;
             LastModifiedTimeUtc = lastModifiedTimeUtc;
             SiteConfig = siteConfig;
             TrafficManagerHostNames = trafficManagerHostNames;
@@ -161,10 +140,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             HostingEnvironmentProfile = hostingEnvironmentProfile;
             ClientAffinityEnabled = clientAffinityEnabled;
             ClientCertEnabled = clientCertEnabled;
-            ClientCertMode = clientCertMode;
-            ClientCertExclusionPaths = clientCertExclusionPaths;
             HostNamesDisabled = hostNamesDisabled;
-            CustomDomainVerificationId = customDomainVerificationId;
             OutboundIpAddresses = outboundIpAddresses;
             PossibleOutboundIpAddresses = possibleOutboundIpAddresses;
             ContainerSize = containerSize;
@@ -172,14 +148,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
             SuspendedTill = suspendedTill;
             MaxNumberOfWorkers = maxNumberOfWorkers;
             CloningInfo = cloningInfo;
+            SnapshotInfo = snapshotInfo;
             ResourceGroup = resourceGroup;
             IsDefaultContainer = isDefaultContainer;
             DefaultHostName = defaultHostName;
             SlotSwapStatus = slotSwapStatus;
             HttpsOnly = httpsOnly;
-            RedundancyMode = redundancyMode;
-            InProgressOperationId = inProgressOperationId;
-            Identity = identity;
             CustomInit();
         }
 
@@ -262,18 +236,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? Reserved { get; set; }
 
         /// <summary>
-        /// Gets or sets obsolete: Hyper-V sandbox.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isXenon")]
-        public bool? IsXenon { get; set; }
-
-        /// <summary>
-        /// Gets or sets hyper-V sandbox.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.hyperV")]
-        public bool? HyperV { get; set; }
-
-        /// <summary>
         /// Gets last time the app was modified, in UTC. Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastModifiedTimeUtc")]
@@ -336,25 +298,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? ClientCertEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets this composes with ClientCertEnabled setting.
-        /// - ClientCertEnabled: false means ClientCert is ignored.
-        /// - ClientCertEnabled: true and ClientCertMode: Required means
-        /// ClientCert is required.
-        /// - ClientCertEnabled: true and ClientCertMode: Optional means
-        /// ClientCert is optional or accepted. Possible values include:
-        /// 'Required', 'Optional'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.clientCertMode")]
-        public ClientCertMode? ClientCertMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets client certificate authentication comma-separated
-        /// exclusion paths
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.clientCertExclusionPaths")]
-        public string ClientCertExclusionPaths { get; set; }
-
-        /// <summary>
         /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
         /// disable the public hostnames of the app; otherwise,
         /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
@@ -363,14 +306,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostNamesDisabled")]
         public bool? HostNamesDisabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets unique identifier that verifies the custom domains
-        /// assigned to the app. Customer will add this id to a txt record for
-        /// verification.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.customDomainVerificationId")]
-        public string CustomDomainVerificationId { get; set; }
 
         /// <summary>
         /// Gets list of IP addresses that the app uses for outbound
@@ -382,8 +317,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets list of IP addresses that the app uses for outbound
-        /// connections (e.g. database access). Includes VIPs from all tenants
-        /// except dataComponent. Read-only.
+        /// connections (e.g. database access). Includes VIPs from all tenants.
+        /// Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.possibleOutboundIpAddresses")]
         public string PossibleOutboundIpAddresses { get; private set; }
@@ -422,6 +357,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public CloningInfo CloningInfo { get; set; }
 
         /// <summary>
+        /// Gets or sets if specified during app creation, the app is created
+        /// from a previous snapshot.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotInfo")]
+        public SnapshotRecoveryRequest SnapshotInfo { get; set; }
+
+        /// <summary>
         /// Gets name of the resource group the app belongs to. Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGroup")]
@@ -456,25 +398,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? HttpsOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets site redundancy mode. Possible values include: 'None',
-        /// 'Manual', 'Failover', 'ActiveActive', 'GeoRedundant'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.redundancyMode")]
-        public RedundancyMode? RedundancyMode { get; set; }
-
-        /// <summary>
-        /// Gets specifies an operation id if this site has a pending
-        /// operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.inProgressOperationId")]
-        public System.Guid? InProgressOperationId { get; private set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -489,6 +412,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
             if (CloningInfo != null)
             {
                 CloningInfo.Validate();
+            }
+            if (SnapshotInfo != null)
+            {
+                SnapshotInfo.Validate();
             }
         }
     }

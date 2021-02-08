@@ -36,12 +36,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// WebDeploy -- default
         /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy',
         /// 'Ftp'</param>
-        /// <param name="includeDisasterRecoveryEndpoints">Include the
-        /// DisasterRecover endpoint if true</param>
-        public CsmPublishingProfileOptions(string format = default(string), bool? includeDisasterRecoveryEndpoints = default(bool?))
+        public CsmPublishingProfileOptions(string format = default(string))
         {
             Format = format;
-            IncludeDisasterRecoveryEndpoints = includeDisasterRecoveryEndpoints;
             CustomInit();
         }
 
@@ -58,12 +55,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "format")]
         public string Format { get; set; }
-
-        /// <summary>
-        /// Gets or sets include the DisasterRecover endpoint if true
-        /// </summary>
-        [JsonProperty(PropertyName = "includeDisasterRecoveryEndpoints")]
-        public bool? IncludeDisasterRecoveryEndpoints { get; set; }
 
     }
 }
