@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation.
+            /// Parameters supplied to the create or update virtual network operation
             /// </param>
             public static VirtualNetwork CreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters)
             {
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation.
+            /// Parameters supplied to the create or update virtual network operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ipAddress'>
             /// The private IP address to be verified.
             /// </param>
-            public static IPAddressAvailabilityResult CheckIPAddressAvailability(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress)
+            public static IPAddressAvailabilityResult CheckIPAddressAvailability(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress = default(string))
             {
                 return operations.CheckIPAddressAvailabilityAsync(resourceGroupName, virtualNetworkName, ipAddress).GetAwaiter().GetResult();
             }
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPAddressAvailabilityResult> CheckIPAddressAvailabilityAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPAddressAvailabilityResult> CheckIPAddressAvailabilityAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckIPAddressAvailabilityWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, ipAddress, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation.
+            /// Parameters supplied to the create or update virtual network operation
             /// </param>
             public static VirtualNetwork BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters)
             {
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation.
+            /// Parameters supplied to the create or update virtual network operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -422,6 +422,52 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<VirtualNetwork> BeginCreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates a virtual network tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkName'>
+            /// The name of the virtual network.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network tags.
+            /// </param>
+            public static VirtualNetwork BeginUpdateTags(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters)
+            {
+                return operations.BeginUpdateTagsAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates a virtual network tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkName'>
+            /// The name of the virtual network.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualNetwork> BeginUpdateTagsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

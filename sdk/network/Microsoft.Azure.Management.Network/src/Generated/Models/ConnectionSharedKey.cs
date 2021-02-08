@@ -15,9 +15,9 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for GetConnectionSharedKey API service call.
+    /// Response for GetConnectionSharedKey API service call
     /// </summary>
-    public partial class ConnectionSharedKey : SubResource
+    public partial class ConnectionSharedKey
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKey class.
@@ -32,9 +32,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="value">The virtual network connection shared key
         /// value.</param>
-        /// <param name="id">Resource ID.</param>
-        public ConnectionSharedKey(string value, string id = default(string))
-            : base(id)
+        public ConnectionSharedKey(string value)
         {
             Value = value;
             CustomInit();

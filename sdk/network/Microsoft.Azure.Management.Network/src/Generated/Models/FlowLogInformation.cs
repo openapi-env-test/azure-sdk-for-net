@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Information on the configuration of flow log and traffic analytics
-    /// (optional) .
+    /// Information on the configuration of flow log.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class FlowLogInformation
@@ -34,24 +33,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the FlowLogInformation class.
         /// </summary>
         /// <param name="targetResourceId">The ID of the resource to configure
-        /// for flow log and traffic analytics (optional) .</param>
+        /// for flow logging.</param>
         /// <param name="storageId">ID of the storage account which is used to
         /// store the flow log.</param>
         /// <param name="enabled">Flag to enable/disable flow logging.</param>
-        /// <param name="retentionPolicy">Parameters that define the retention
-        /// policy for flow log.</param>
-        /// <param name="format">Parameters that define the flow log
-        /// format.</param>
-        /// <param name="flowAnalyticsConfiguration">Parameters that define the
-        /// configuration of traffic analytics.</param>
-        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters), TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties))
+        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters))
         {
             TargetResourceId = targetResourceId;
             StorageId = storageId;
             Enabled = enabled;
             RetentionPolicy = retentionPolicy;
-            Format = format;
-            FlowAnalyticsConfiguration = flowAnalyticsConfiguration;
             CustomInit();
         }
 
@@ -61,8 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ID of the resource to configure for flow log and
-        /// traffic analytics (optional) .
+        /// Gets or sets the ID of the resource to configure for flow logging.
         /// </summary>
         [JsonProperty(PropertyName = "targetResourceId")]
         public string TargetResourceId { get; set; }
@@ -81,24 +71,9 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Gets or sets parameters that define the retention policy for flow
-        /// log.
         /// </summary>
         [JsonProperty(PropertyName = "properties.retentionPolicy")]
         public RetentionPolicyParameters RetentionPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets parameters that define the flow log format.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.format")]
-        public FlowLogFormatParameters Format { get; set; }
-
-        /// <summary>
-        /// Gets or sets parameters that define the configuration of traffic
-        /// analytics.
-        /// </summary>
-        [JsonProperty(PropertyName = "flowAnalyticsConfiguration")]
-        public TrafficAnalyticsProperties FlowAnalyticsConfiguration { get; set; }
 
         /// <summary>
         /// Validate the object.
