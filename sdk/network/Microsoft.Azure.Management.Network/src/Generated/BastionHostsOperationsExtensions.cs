@@ -145,6 +145,52 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Updates bastion host tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name of the BastionHost.
+            /// </param>
+            /// <param name='bastionHostName'>
+            /// The name of the bastionHost.
+            /// </param>
+            /// <param name='bastionHostParameters'>
+            /// Parameters supplied to update a bastion host tags.
+            /// </param>
+            public static BastionHost UpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters)
+            {
+                return operations.UpdateTagsAsync(resourceGroupName, bastionHostName, bastionHostParameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates bastion host tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name of the BastionHost.
+            /// </param>
+            /// <param name='bastionHostName'>
+            /// The name of the bastionHost.
+            /// </param>
+            /// <param name='bastionHostParameters'>
+            /// Parameters supplied to update a bastion host tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BastionHost> UpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, bastionHostParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists all Bastion Hosts in a subscription.
             /// </summary>
             /// <param name='operations'>
@@ -284,6 +330,52 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<BastionHost> BeginCreateOrUpdateAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHost parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates bastion host tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name of the BastionHost.
+            /// </param>
+            /// <param name='bastionHostName'>
+            /// The name of the bastionHost.
+            /// </param>
+            /// <param name='bastionHostParameters'>
+            /// Parameters supplied to update a bastion host tags.
+            /// </param>
+            public static BastionHost BeginUpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters)
+            {
+                return operations.BeginUpdateTagsAsync(resourceGroupName, bastionHostName, bastionHostParameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates bastion host tags.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The resource group name of the BastionHost.
+            /// </param>
+            /// <param name='bastionHostName'>
+            /// The name of the bastionHost.
+            /// </param>
+            /// <param name='bastionHostParameters'>
+            /// Parameters supplied to update a bastion host tags.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BastionHost> BeginUpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, bastionHostParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

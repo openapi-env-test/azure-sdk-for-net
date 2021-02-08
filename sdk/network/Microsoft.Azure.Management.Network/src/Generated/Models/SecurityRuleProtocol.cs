@@ -21,6 +21,5 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string Icmp = "Icmp";
         public const string Esp = "Esp";
         public const string Asterisk = "*";
-        public const string Ah = "Ah";
     }
 }

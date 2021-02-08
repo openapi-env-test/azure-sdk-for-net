@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="backendIPConfigurations">Collection of references to
         /// IPs defined in network interfaces.</param>
         /// <param name="backendAddresses">Backend addresses.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// backend address pool resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">Provisioning state of the backend
+        /// address pool resource. Possible values are: 'Updating', 'Deleting',
+        /// and 'Failed'.</param>
         /// <param name="name">Name of the backend address pool that is unique
         /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
@@ -66,10 +66,11 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets collection of references to IPs defined in network interfaces.
+        /// Gets or sets collection of references to IPs defined in network
+        /// interfaces.
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendIPConfigurations")]
-        public IList<NetworkInterfaceIPConfiguration> BackendIPConfigurations { get; private set; }
+        public IList<NetworkInterfaceIPConfiguration> BackendIPConfigurations { get; set; }
 
         /// <summary>
         /// Gets or sets backend addresses.
@@ -78,12 +79,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<ApplicationGatewayBackendAddress> BackendAddresses { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the backend address pool resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets provisioning state of the backend address pool
+        /// resource. Possible values are: 'Updating', 'Deleting', and
+        /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets name of the backend address pool that is unique within
@@ -93,17 +94,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }

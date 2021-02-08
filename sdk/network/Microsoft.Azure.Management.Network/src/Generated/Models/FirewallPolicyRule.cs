@@ -10,12 +10,14 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Properties of a rule.
+    /// Properties of the rule.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("FirewallPolicyRule")]
     public partial class FirewallPolicyRule
     {
         /// <summary>
@@ -29,12 +31,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the FirewallPolicyRule class.
         /// </summary>
-        /// <param name="name">Name of the rule.</param>
-        /// <param name="description">Description of the rule.</param>
-        public FirewallPolicyRule(string name = default(string), string description = default(string))
+        /// <param name="name">Name of the Rule</param>
+        /// <param name="priority">Priority of the Firewall Policy Rule
+        /// resource.</param>
+        public FirewallPolicyRule(string name = default(string), int? priority = default(int?))
         {
             Name = name;
-            Description = description;
+            Priority = priority;
             CustomInit();
         }
 
@@ -44,16 +47,33 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the rule.
+        /// Gets or sets name of the Rule
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets description of the rule.
+        /// Gets or sets priority of the Firewall Policy Rule resource.
         /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        [JsonProperty(PropertyName = "priority")]
+        public int? Priority { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Priority > 65000)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "Priority", 65000);
+            }
+            if (Priority < 100)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Priority", 100);
+            }
+        }
     }
 }
