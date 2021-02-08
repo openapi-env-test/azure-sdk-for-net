@@ -33,8 +33,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualWanSecurityProviders
         /// class.
         /// </summary>
-        /// <param name="supportedProviders">List of VirtualWAN security
-        /// providers.</param>
         public VirtualWanSecurityProviders(IList<VirtualWanSecurityProvider> supportedProviders = default(IList<VirtualWanSecurityProvider>))
         {
             SupportedProviders = supportedProviders;
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of VirtualWAN security providers.
         /// </summary>
         [JsonProperty(PropertyName = "supportedProviders")]
         public IList<VirtualWanSecurityProvider> SupportedProviders { get; set; }

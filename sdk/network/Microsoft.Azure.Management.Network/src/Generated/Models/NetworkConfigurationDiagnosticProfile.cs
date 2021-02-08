@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// NetworkConfigurationDiagnosticProfile class.
         /// </summary>
-        /// <param name="direction">The direction of the traffic. Possible
-        /// values include: 'Inbound', 'Outbound'</param>
+        /// <param name="direction">The direction of the traffic. Accepted
+        /// values are 'Inbound' and 'Outbound'. Possible values include:
+        /// 'Inbound', 'Outbound'</param>
         /// <param name="protocol">Protocol to be verified on. Accepted values
         /// are '*', TCP, UDP.</param>
         /// <param name="source">Traffic source. Accepted values are '*', IP
@@ -41,7 +42,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="destination">Traffic destination. Accepted values are:
         /// '*', IP Address/CIDR, Service Tag.</param>
         /// <param name="destinationPort">Traffic destination port. Accepted
-        /// values are '*' and a single port in the range (0 - 65535).</param>
+        /// values are '*', port (for example, 3389) and port range (for
+        /// example, 80-100).</param>
         public NetworkConfigurationDiagnosticProfile(string direction, string protocol, string source, string destination, string destinationPort)
         {
             Direction = direction;
@@ -58,8 +60,9 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the direction of the traffic. Possible values include:
-        /// 'Inbound', 'Outbound'
+        /// Gets or sets the direction of the traffic. Accepted values are
+        /// 'Inbound' and 'Outbound'. Possible values include: 'Inbound',
+        /// 'Outbound'
         /// </summary>
         [JsonProperty(PropertyName = "direction")]
         public string Direction { get; set; }
@@ -86,8 +89,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Destination { get; set; }
 
         /// <summary>
-        /// Gets or sets traffic destination port. Accepted values are '*' and
-        /// a single port in the range (0 - 65535).
+        /// Gets or sets traffic destination port. Accepted values are '*',
+        /// port (for example, 3389) and port range (for example, 80-100).
         /// </summary>
         [JsonProperty(PropertyName = "destinationPort")]
         public string DestinationPort { get; set; }

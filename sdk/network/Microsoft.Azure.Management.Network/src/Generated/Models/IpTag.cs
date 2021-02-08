@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains the IpTag associated with the object.
+    /// Contains the IpTag associated with the object
     /// </summary>
     public partial class IpTag
     {
@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the IpTag class.
         /// </summary>
-        /// <param name="ipTagType">The IP tag type. Example:
+        /// <param name="ipTagType">Gets or sets the ipTag type: Example
         /// FirstPartyUsage.</param>
-        /// <param name="tag">The value of the IP tag associated with the
-        /// public IP. Example: SQL.</param>
+        /// <param name="tag">Gets or sets value of the IpTag associated with
+        /// the public IP. Example SQL, Storage etc</param>
         public IpTag(string ipTagType = default(string), string tag = default(string))
         {
             IpTagType = ipTagType;
@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the IP tag type. Example: FirstPartyUsage.
+        /// Gets or sets the ipTag type: Example FirstPartyUsage.
         /// </summary>
         [JsonProperty(PropertyName = "ipTagType")]
         public string IpTagType { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the IP tag associated with the public IP.
-        /// Example: SQL.
+        /// Gets or sets value of the IpTag associated with the public IP.
+        /// Example SQL, Storage etc
         /// </summary>
         [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }

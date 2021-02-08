@@ -37,11 +37,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// prefix.</param>
         /// <param name="microsoftPeeringConfig">The Microsoft peering
         /// configuration.</param>
-        /// <param name="routeFilter">The reference to the RouteFilter
+        /// <param name="routeFilter">The reference of the RouteFilter
         /// resource.</param>
-        /// <param name="state">The state of peering. Possible values include:
-        /// 'Disabled', 'Enabled'</param>
-        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), SubResource routeFilter = default(SubResource), string state = default(string))
+        /// <param name="state">The state of peering. Possible values are:
+        /// 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
+        /// 'Enabled'</param>
+        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), RouteFilter routeFilter = default(RouteFilter), string state = default(string))
         {
             PrimaryPeerAddressPrefix = primaryPeerAddressPrefix;
             SecondaryPeerAddressPrefix = secondaryPeerAddressPrefix;
@@ -75,14 +76,14 @@ namespace Microsoft.Azure.Management.Network.Models
         public ExpressRouteCircuitPeeringConfig MicrosoftPeeringConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the RouteFilter resource.
+        /// Gets or sets the reference of the RouteFilter resource.
         /// </summary>
         [JsonProperty(PropertyName = "routeFilter")]
-        public SubResource RouteFilter { get; set; }
+        public RouteFilter RouteFilter { get; set; }
 
         /// <summary>
-        /// Gets or sets the state of peering. Possible values include:
-        /// 'Disabled', 'Enabled'
+        /// Gets or sets the state of peering. Possible values are: 'Disabled'
+        /// and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }

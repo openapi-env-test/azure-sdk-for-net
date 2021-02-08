@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="peeringLocation">The name of the peering location that
         /// the ExpressRoutePort is mapped to physically.</param>
         /// <param name="bandwidthInGbps">Bandwidth of procured ports in
-        /// Gbps.</param>
+        /// Gbps</param>
         /// <param name="provisionedBandwidthInGbps">Aggregate Gbps of
         /// associated circuit bandwidths.</param>
         /// <param name="mtu">Maximum transmission unit of the physical port
-        /// pair(s).</param>
+        /// pair(s)</param>
         /// <param name="encapsulation">Encapsulation method on physical ports.
         /// Possible values include: 'Dot1Q', 'QinQ'</param>
         /// <param name="etherType">Ether type of the physical port.</param>
@@ -59,15 +59,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="circuits">Reference the ExpressRoute circuit(s) that
         /// are provisioned on this ExpressRoutePort resource.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// express route port resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// ExpressRoutePort resource. Possible values are: 'Succeeded',
+        /// 'Updating', 'Deleting', and 'Failed'.</param>
         /// <param name="resourceGuid">The resource GUID property of the
-        /// express route port resource.</param>
+        /// ExpressRoutePort resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="identity">The identity of ExpressRoutePort, if
-        /// configured.</param>
-        public ExpressRoutePort(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), IList<ExpressRouteLink> links = default(IList<ExpressRouteLink>), IList<SubResource> circuits = default(IList<SubResource>), string provisioningState = default(string), string resourceGuid = default(string), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        public ExpressRoutePort(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), IList<ExpressRouteLink> links = default(IList<ExpressRouteLink>), IList<SubResource> circuits = default(IList<SubResource>), string provisioningState = default(string), string resourceGuid = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             PeeringLocation = peeringLocation;
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             ResourceGuid = resourceGuid;
             Etag = etag;
-            Identity = identity;
             CustomInit();
         }
 
@@ -99,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string PeeringLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets bandwidth of procured ports in Gbps.
+        /// Gets or sets bandwidth of procured ports in Gbps
         /// </summary>
         [JsonProperty(PropertyName = "properties.bandwidthInGbps")]
         public int? BandwidthInGbps { get; set; }
@@ -111,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public double? ProvisionedBandwidthInGbps { get; private set; }
 
         /// <summary>
-        /// Gets maximum transmission unit of the physical port pair(s).
+        /// Gets maximum transmission unit of the physical port pair(s)
         /// </summary>
         [JsonProperty(PropertyName = "properties.mtu")]
         public string Mtu { get; private set; }
@@ -140,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets expressRouteLink Sub-Resources
         /// </summary>
         /// <remarks>
-        /// The set of physical links of the ExpressRoutePort resource.
+        /// The set of physical links of the ExpressRoutePort resource
         /// </remarks>
         [JsonProperty(PropertyName = "properties.links")]
         public IList<ExpressRouteLink> Links { get; set; }
@@ -153,18 +150,19 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<SubResource> Circuits { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the express route port resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets the provisioning state of the ExpressRoutePort resource.
+        /// Possible values are: 'Succeeded', 'Updating', 'Deleting', and
+        /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets the resource GUID property of the express route port resource.
+        /// Gets or sets the resource GUID property of the ExpressRoutePort
+        /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; private set; }
+        public string ResourceGuid { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
@@ -172,12 +170,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the identity of ExpressRoutePort, if configured.
-        /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity { get; set; }
 
     }
 }

@@ -35,35 +35,38 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the SecurityRule class.
         /// </summary>
         /// <param name="protocol">Network protocol this rule applies to.
-        /// Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*',
-        /// 'Ah'</param>
+        /// Possible values are 'Tcp', 'Udp', and '*'. Possible values include:
+        /// 'Tcp', 'Udp', '*'</param>
         /// <param name="access">The network traffic is allowed or denied.
-        /// Possible values include: 'Allow', 'Deny'</param>
+        /// Possible values are: 'Allow' and 'Deny'. Possible values include:
+        /// 'Allow', 'Deny'</param>
         /// <param name="direction">The direction of the rule. The direction
         /// specifies if rule will be evaluated on incoming or outgoing
-        /// traffic. Possible values include: 'Inbound', 'Outbound'</param>
+        /// traffic. Possible values are: 'Inbound' and 'Outbound'. Possible
+        /// values include: 'Inbound', 'Outbound'</param>
         /// <param name="id">Resource ID.</param>
         /// <param name="description">A description for this rule. Restricted
         /// to 140 chars.</param>
         /// <param name="sourcePortRange">The source port or range. Integer or
-        /// range between 0 and 65535. Asterisk '*' can also be used to match
+        /// range between 0 and 65535. Asterisks '*' can also be used to match
         /// all ports.</param>
         /// <param name="destinationPortRange">The destination port or range.
-        /// Integer or range between 0 and 65535. Asterisk '*' can also be used
-        /// to match all ports.</param>
+        /// Integer or range between 0 and 65535. Asterisks '*' can also be
+        /// used to match all ports.</param>
         /// <param name="sourceAddressPrefix">The CIDR or source IP range.
-        /// Asterisk '*' can also be used to match all source IPs. Default tags
-        /// such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can
-        /// also be used. If this is an ingress rule, specifies where network
-        /// traffic originates from.</param>
+        /// Asterisks '*' can also be used to match all source IPs. Default
+        /// tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
+        /// can also be used. If this is an ingress rule, specifies where
+        /// network traffic originates from. </param>
         /// <param name="sourceAddressPrefixes">The CIDR or source IP
         /// ranges.</param>
         /// <param name="sourceApplicationSecurityGroups">The application
         /// security group specified as source.</param>
         /// <param name="destinationAddressPrefix">The destination address
-        /// prefix. CIDR or destination IP range. Asterisk '*' can also be used
-        /// to match all source IPs. Default tags such as 'VirtualNetwork',
-        /// 'AzureLoadBalancer' and 'Internet' can also be used.</param>
+        /// prefix. CIDR or destination IP range. Asterisks '*' can also be
+        /// used to match all source IPs. Default tags such as
+        /// 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be
+        /// used.</param>
         /// <param name="destinationAddressPrefixes">The destination address
         /// prefixes. CIDR or destination IP ranges.</param>
         /// <param name="destinationApplicationSecurityGroups">The application
@@ -76,15 +79,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// rule in the collection. The lower the priority number, the higher
         /// the priority of the rule.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// security rule resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// public IP resource. Possible values are: 'Updating', 'Deleting',
+        /// and 'Failed'.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="type">The type of the resource.</param>
-        public SecurityRule(string protocol, string access, string direction, string id = default(string), string description = default(string), string sourcePortRange = default(string), string destinationPortRange = default(string), string sourceAddressPrefix = default(string), IList<string> sourceAddressPrefixes = default(IList<string>), IList<ApplicationSecurityGroup> sourceApplicationSecurityGroups = default(IList<ApplicationSecurityGroup>), string destinationAddressPrefix = default(string), IList<string> destinationAddressPrefixes = default(IList<string>), IList<ApplicationSecurityGroup> destinationApplicationSecurityGroups = default(IList<ApplicationSecurityGroup>), IList<string> sourcePortRanges = default(IList<string>), IList<string> destinationPortRanges = default(IList<string>), int? priority = default(int?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public SecurityRule(string protocol, string access, string direction, string id = default(string), string description = default(string), string sourcePortRange = default(string), string destinationPortRange = default(string), string sourceAddressPrefix = default(string), IList<string> sourceAddressPrefixes = default(IList<string>), IList<ApplicationSecurityGroup> sourceApplicationSecurityGroups = default(IList<ApplicationSecurityGroup>), string destinationAddressPrefix = default(string), IList<string> destinationAddressPrefixes = default(IList<string>), IList<ApplicationSecurityGroup> destinationApplicationSecurityGroups = default(IList<ApplicationSecurityGroup>), IList<string> sourcePortRanges = default(IList<string>), IList<string> destinationPortRanges = default(IList<string>), int? priority = default(int?), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             Description = description;
@@ -105,7 +107,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -122,28 +123,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets network protocol this rule applies to. Possible values
-        /// include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*', 'Ah'
+        /// are 'Tcp', 'Udp', and '*'. Possible values include: 'Tcp', 'Udp',
+        /// '*'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
 
         /// <summary>
         /// Gets or sets the source port or range. Integer or range between 0
-        /// and 65535. Asterisk '*' can also be used to match all ports.
+        /// and 65535. Asterisks '*' can also be used to match all ports.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourcePortRange")]
         public string SourcePortRange { get; set; }
 
         /// <summary>
         /// Gets or sets the destination port or range. Integer or range
-        /// between 0 and 65535. Asterisk '*' can also be used to match all
+        /// between 0 and 65535. Asterisks '*' can also be used to match all
         /// ports.
         /// </summary>
         [JsonProperty(PropertyName = "properties.destinationPortRange")]
         public string DestinationPortRange { get; set; }
 
         /// <summary>
-        /// Gets or sets the CIDR or source IP range. Asterisk '*' can also be
+        /// Gets or sets the CIDR or source IP range. Asterisks '*' can also be
         /// used to match all source IPs. Default tags such as
         /// 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be
         /// used. If this is an ingress rule, specifies where network traffic
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the destination address prefix. CIDR or destination IP
-        /// range. Asterisk '*' can also be used to match all source IPs.
+        /// range. Asterisks '*' can also be used to match all source IPs.
         /// Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
         /// 'Internet' can also be used.
         /// </summary>
@@ -201,7 +203,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the network traffic is allowed or denied. Possible
-        /// values include: 'Allow', 'Deny'
+        /// values are: 'Allow' and 'Deny'. Possible values include: 'Allow',
+        /// 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "properties.access")]
         public string Access { get; set; }
@@ -218,17 +221,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets the direction of the rule. The direction specifies if
         /// rule will be evaluated on incoming or outgoing traffic. Possible
-        /// values include: 'Inbound', 'Outbound'
+        /// values are: 'Inbound' and 'Outbound'. Possible values include:
+        /// 'Inbound', 'Outbound'
         /// </summary>
         [JsonProperty(PropertyName = "properties.direction")]
         public string Direction { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the security rule resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets the provisioning state of the public IP resource.
+        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -238,17 +242,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public string Etag { get; set; }
 
         /// <summary>
         /// Validate the object.

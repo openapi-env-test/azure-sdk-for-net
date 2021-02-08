@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="port">The destination port on the backend.</param>
         /// <param name="protocol">The protocol used to communicate with the
-        /// backend. Possible values include: 'Http', 'Https'</param>
+        /// backend. Possible values are 'Http' and 'Https'. Possible values
+        /// include: 'Http', 'Https'</param>
         /// <param name="cookieBasedAffinity">Cookie based affinity. Possible
         /// values include: 'Enabled', 'Disabled'</param>
         /// <param name="requestTimeout">Request timeout in seconds.
@@ -66,9 +67,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="path">Path which should be used as a prefix for all
         /// HTTP requests. Null means no path will be prefixed. Default value
         /// is null.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// backend HTTP settings resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">Provisioning state of the backend
+        /// http settings resource. Possible values are: 'Updating',
+        /// 'Deleting', and 'Failed'.</param>
         /// <param name="name">Name of the backend http settings that is unique
         /// within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
@@ -110,7 +111,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the protocol used to communicate with the backend.
-        /// Possible values include: 'Http', 'Https'
+        /// Possible values are 'Http' and 'Https'. Possible values include:
+        /// 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
@@ -191,12 +193,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the backend HTTP settings resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets provisioning state of the backend http settings
+        /// resource. Possible values are: 'Updating', 'Deleting', and
+        /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets name of the backend http settings that is unique
@@ -206,17 +208,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Validate the object.

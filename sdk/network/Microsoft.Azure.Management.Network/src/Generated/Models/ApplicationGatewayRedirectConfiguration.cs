@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ApplicationGatewayRedirectConfiguration class.
         /// </summary>
         /// <param name="id">Resource ID.</param>
-        /// <param name="redirectType">HTTP redirection type. Possible values
-        /// include: 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
+        /// <param name="redirectType">Supported http redirection types -
+        /// Permanent, Temporary, Found, SeeOther. Possible values include:
+        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
         /// <param name="targetListener">Reference to a listener to redirect
         /// the request to.</param>
         /// <param name="targetUrl">Url to redirect the request to.</param>
@@ -80,8 +81,9 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets HTTP redirection type. Possible values include:
-        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'
+        /// Gets or sets supported http redirection types - Permanent,
+        /// Temporary, Found, SeeOther. Possible values include: 'Permanent',
+        /// 'Found', 'SeeOther', 'Temporary'
         /// </summary>
         [JsonProperty(PropertyName = "properties.redirectType")]
         public string RedirectType { get; set; }
@@ -137,17 +139,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }
