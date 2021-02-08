@@ -39,22 +39,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// information about the state of the connection between service
         /// consumer and provider.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// private endpoint connection resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="linkIdentifier">The consumer link id.</param>
+        /// private endpoint connection. Possible values include: 'Succeeded',
+        /// 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="type">The resource type.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public PrivateEndpointConnection(string id = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string), string linkIdentifier = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public PrivateEndpointConnection(string id = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string), string name = default(string), string type = default(string), string etag = default(string))
             : base(id)
         {
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
-            LinkIdentifier = linkIdentifier;
             Name = name;
             Type = type;
             Etag = etag;
@@ -67,10 +65,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resource of private end point.
+        /// Gets or sets the resource of private end point.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpoint")]
-        public PrivateEndpoint PrivateEndpoint { get; private set; }
+        public PrivateEndpoint PrivateEndpoint { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of information about the state of the
@@ -80,18 +78,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the private endpoint connection
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets the provisioning state of the private endpoint connection.
+        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
+        /// 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets the consumer link id.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.linkIdentifier")]
-        public string LinkIdentifier { get; private set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a
@@ -113,18 +105,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (PrivateEndpoint != null)
-            {
-                PrivateEndpoint.Validate();
-            }
-        }
     }
 }

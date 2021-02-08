@@ -39,12 +39,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
-        /// <param name="provisioningState">The provisioning state of the Azure
-        /// firewall FQDN tag resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource.</param>
         /// <param name="fqdnTagName">The name of this FQDN Tag.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
         public AzureFirewallFqdnTag(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string fqdnTagName = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
@@ -60,9 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the provisioning state of the Azure firewall FQDN tag
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets the provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
