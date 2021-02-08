@@ -40,23 +40,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="virtualWan">The VirtualWAN to which the vpnSite
-        /// belongs.</param>
-        /// <param name="deviceProperties">The device properties.</param>
+        /// belongs</param>
+        /// <param name="deviceProperties">The device properties</param>
         /// <param name="ipAddress">The ip-address for the vpn-site.</param>
         /// <param name="siteKey">The key for vpn-site that can be used for
         /// connections.</param>
         /// <param name="addressSpace">The AddressSpace that contains an array
         /// of IP address ranges.</param>
         /// <param name="bgpProperties">The set of bgp properties.</param>
-        /// <param name="provisioningState">The provisioning state of the VPN
-        /// site resource. Possible values include: 'Succeeded', 'Updating',
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
-        /// <param name="isSecuritySite">IsSecuritySite flag.</param>
-        /// <param name="vpnSiteLinks">List of all vpn site links.</param>
-        /// <param name="o365Policy">Office365 Policy.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public VpnSite(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualWan = default(SubResource), DeviceProperties deviceProperties = default(DeviceProperties), string ipAddress = default(string), string siteKey = default(string), AddressSpace addressSpace = default(AddressSpace), BgpSettings bgpProperties = default(BgpSettings), string provisioningState = default(string), bool? isSecuritySite = default(bool?), IList<VpnSiteLink> vpnSiteLinks = default(IList<VpnSiteLink>), O365PolicyProperties o365Policy = default(O365PolicyProperties), string etag = default(string))
+        /// <param name="isSecuritySite">IsSecuritySite flag</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
+        public VpnSite(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualWan = default(SubResource), DeviceProperties deviceProperties = default(DeviceProperties), string ipAddress = default(string), string siteKey = default(string), AddressSpace addressSpace = default(AddressSpace), BgpSettings bgpProperties = default(BgpSettings), string provisioningState = default(string), bool? isSecuritySite = default(bool?), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             VirtualWan = virtualWan;
@@ -67,8 +65,6 @@ namespace Microsoft.Azure.Management.Network.Models
             BgpProperties = bgpProperties;
             ProvisioningState = provisioningState;
             IsSecuritySite = isSecuritySite;
-            VpnSiteLinks = vpnSiteLinks;
-            O365Policy = o365Policy;
             Etag = etag;
             CustomInit();
         }
@@ -79,13 +75,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the VirtualWAN to which the vpnSite belongs.
+        /// Gets or sets the VirtualWAN to which the vpnSite belongs
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualWan")]
         public SubResource VirtualWan { get; set; }
 
         /// <summary>
-        /// Gets or sets the device properties.
+        /// Gets or sets the device properties
         /// </summary>
         [JsonProperty(PropertyName = "properties.deviceProperties")]
         public DeviceProperties DeviceProperties { get; set; }
@@ -116,29 +112,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public BgpSettings BgpProperties { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the VPN site resource. Possible
+        /// Gets or sets the provisioning state of the resource. Possible
         /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets isSecuritySite flag.
+        /// Gets or sets isSecuritySite flag
         /// </summary>
         [JsonProperty(PropertyName = "properties.isSecuritySite")]
         public bool? IsSecuritySite { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of all vpn site links.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.vpnSiteLinks")]
-        public IList<VpnSiteLink> VpnSiteLinks { get; set; }
-
-        /// <summary>
-        /// Gets or sets office365 Policy.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.o365Policy")]
-        public O365PolicyProperties O365Policy { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
@@ -147,18 +131,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (BgpProperties != null)
-            {
-                BgpProperties.Validate();
-            }
-        }
     }
 }

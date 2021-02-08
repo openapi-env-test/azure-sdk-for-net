@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// SKU of a public IP prefix.
+    /// SKU of a public IP prefix
     /// </summary>
     public partial class PublicIPPrefixSku
     {
@@ -31,12 +31,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="name">Name of a public IP prefix SKU. Possible values
         /// include: 'Standard'</param>
-        /// <param name="tier">Tier of a public IP prefix SKU. Possible values
-        /// include: 'Regional', 'Global'</param>
-        public PublicIPPrefixSku(string name = default(string), string tier = default(string))
+        public PublicIPPrefixSku(string name = default(string))
         {
             Name = name;
-            Tier = tier;
             CustomInit();
         }
 
@@ -51,13 +48,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets tier of a public IP prefix SKU. Possible values
-        /// include: 'Regional', 'Global'
-        /// </summary>
-        [JsonProperty(PropertyName = "tier")]
-        public string Tier { get; set; }
 
     }
 }

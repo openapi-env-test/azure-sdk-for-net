@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// ApplicationGatewayBackendHealthHttpSettings class.
         /// </summary>
-        /// <param name="backendHttpSettings">Reference to an
+        /// <param name="backendHttpSettings">Reference of an
         /// ApplicationGatewayBackendHttpSettings resource.</param>
         /// <param name="servers">List of ApplicationGatewayBackendHealthServer
         /// resources.</param>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets reference to an ApplicationGatewayBackendHttpSettings
+        /// Gets or sets reference of an ApplicationGatewayBackendHttpSettings
         /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "backendHttpSettings")]
@@ -74,16 +74,6 @@ namespace Microsoft.Azure.Management.Network.Models
             if (BackendHttpSettings != null)
             {
                 BackendHttpSettings.Validate();
-            }
-            if (Servers != null)
-            {
-                foreach (var element in Servers)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }

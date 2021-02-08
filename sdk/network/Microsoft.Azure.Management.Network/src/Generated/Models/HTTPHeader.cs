@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The HTTP header.
+    /// Describes the HTTP header.
     /// </summary>
     public partial class HTTPHeader
     {

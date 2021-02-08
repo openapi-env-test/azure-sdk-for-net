@@ -34,16 +34,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ApplicationGatewayRewriteRuleActionSet class.
         /// </summary>
         /// <param name="requestHeaderConfigurations">Request Header Actions in
-        /// the Action Set.</param>
+        /// the Action Set</param>
         /// <param name="responseHeaderConfigurations">Response Header Actions
-        /// in the Action Set.</param>
-        /// <param name="urlConfiguration">Url Configuration Action in the
-        /// Action Set.</param>
-        public ApplicationGatewayRewriteRuleActionSet(IList<ApplicationGatewayHeaderConfiguration> requestHeaderConfigurations = default(IList<ApplicationGatewayHeaderConfiguration>), IList<ApplicationGatewayHeaderConfiguration> responseHeaderConfigurations = default(IList<ApplicationGatewayHeaderConfiguration>), ApplicationGatewayUrlConfiguration urlConfiguration = default(ApplicationGatewayUrlConfiguration))
+        /// in the Action Set</param>
+        public ApplicationGatewayRewriteRuleActionSet(IList<ApplicationGatewayHeaderConfiguration> requestHeaderConfigurations = default(IList<ApplicationGatewayHeaderConfiguration>), IList<ApplicationGatewayHeaderConfiguration> responseHeaderConfigurations = default(IList<ApplicationGatewayHeaderConfiguration>))
         {
             RequestHeaderConfigurations = requestHeaderConfigurations;
             ResponseHeaderConfigurations = responseHeaderConfigurations;
-            UrlConfiguration = urlConfiguration;
             CustomInit();
         }
 
@@ -53,22 +50,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets request Header Actions in the Action Set.
+        /// Gets or sets request Header Actions in the Action Set
         /// </summary>
         [JsonProperty(PropertyName = "requestHeaderConfigurations")]
         public IList<ApplicationGatewayHeaderConfiguration> RequestHeaderConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or sets response Header Actions in the Action Set.
+        /// Gets or sets response Header Actions in the Action Set
         /// </summary>
         [JsonProperty(PropertyName = "responseHeaderConfigurations")]
         public IList<ApplicationGatewayHeaderConfiguration> ResponseHeaderConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets or sets url Configuration Action in the Action Set.
-        /// </summary>
-        [JsonProperty(PropertyName = "urlConfiguration")]
-        public ApplicationGatewayUrlConfiguration UrlConfiguration { get; set; }
 
     }
 }

@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Details of PrepareNetworkPolicies for Subnet.
-    /// </summary>
     public partial class PrepareNetworkPoliciesRequest
     {
         /// <summary>
@@ -35,11 +32,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="serviceName">The name of the service for which subnet
         /// is being prepared for.</param>
+        /// <param name="resourceGroupName">The name of the resource group
+        /// where the Network Intent Policy will be stored.</param>
         /// <param name="networkIntentPolicyConfigurations">A list of
         /// NetworkIntentPolicyConfiguration.</param>
-        public PrepareNetworkPoliciesRequest(string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>))
+        public PrepareNetworkPoliciesRequest(string serviceName = default(string), string resourceGroupName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>))
         {
             ServiceName = serviceName;
+            ResourceGroupName = resourceGroupName;
             NetworkIntentPolicyConfigurations = networkIntentPolicyConfigurations;
             CustomInit();
         }
@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group where the Network
+        /// Intent Policy will be stored.
+        /// </summary>
+        [JsonProperty(PropertyName = "resourceGroupName")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets a list of NetworkIntentPolicyConfiguration.
