@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='include'>
         /// If specified, restricts the response to only include the selected item.
         /// Possible values include: 'supportedEditions',
-        /// 'supportedElasticPoolEditions', 'supportedManagedInstanceVersions',
-        /// 'supportedInstancePoolEditions', 'supportedManagedInstanceEditions'
+        /// 'supportedElasticPoolEditions', 'supportedManagedInstanceVersions'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -93,7 +92,10 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01-preview";
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -103,7 +105,6 @@ namespace Microsoft.Azure.Management.Sql
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("locationName", locationName);
                 tracingParameters.Add("include", include);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByLocation", tracingParameters);
             }
@@ -117,9 +118,9 @@ namespace Microsoft.Azure.Management.Sql
             {
                 _queryParameters.Add(string.Format("include={0}", System.Uri.EscapeDataString(include)));
             }
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
