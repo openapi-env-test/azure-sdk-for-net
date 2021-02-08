@@ -32,17 +32,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ApplicationGatewayBackendHealthServer class.
         /// </summary>
         /// <param name="address">IP address or FQDN of backend server.</param>
-        /// <param name="ipConfiguration">Reference to IP configuration of
+        /// <param name="ipConfiguration">Reference of IP configuration of
         /// backend server.</param>
         /// <param name="health">Health of backend server. Possible values
         /// include: 'Unknown', 'Up', 'Down', 'Partial', 'Draining'</param>
-        /// <param name="healthProbeLog">Health Probe Log.</param>
-        public ApplicationGatewayBackendHealthServer(string address = default(string), NetworkInterfaceIPConfiguration ipConfiguration = default(NetworkInterfaceIPConfiguration), string health = default(string), string healthProbeLog = default(string))
+        public ApplicationGatewayBackendHealthServer(string address = default(string), NetworkInterfaceIPConfiguration ipConfiguration = default(NetworkInterfaceIPConfiguration), string health = default(string))
         {
             Address = address;
             IpConfiguration = ipConfiguration;
             Health = health;
-            HealthProbeLog = healthProbeLog;
             CustomInit();
         }
 
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or sets reference to IP configuration of backend server.
+        /// Gets or sets reference of IP configuration of backend server.
         /// </summary>
         [JsonProperty(PropertyName = "ipConfiguration")]
         public NetworkInterfaceIPConfiguration IpConfiguration { get; set; }
@@ -70,24 +68,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "health")]
         public string Health { get; set; }
 
-        /// <summary>
-        /// Gets or sets health Probe Log.
-        /// </summary>
-        [JsonProperty(PropertyName = "healthProbeLog")]
-        public string HealthProbeLog { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (IpConfiguration != null)
-            {
-                IpConfiguration.Validate();
-            }
-        }
     }
 }

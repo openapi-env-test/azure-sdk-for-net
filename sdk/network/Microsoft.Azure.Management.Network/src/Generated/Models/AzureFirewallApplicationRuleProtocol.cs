@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// AzureFirewallApplicationRuleProtocol class.
         /// </summary>
         /// <param name="protocolType">Protocol type. Possible values include:
-        /// 'Http', 'Https', 'Mssql'</param>
+        /// 'Http', 'Https'</param>
         /// <param name="port">Port number for the protocol, cannot be greater
         /// than 64000. This field is optional.</param>
         public AzureFirewallApplicationRuleProtocol(string protocolType = default(string), int? port = default(int?))
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets protocol type. Possible values include: 'Http',
-        /// 'Https', 'Mssql'
+        /// 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "protocolType")]
         public string ProtocolType { get; set; }

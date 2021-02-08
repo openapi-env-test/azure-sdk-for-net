@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Network rule collection resource.
+    /// Network rule collection resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class AzureFirewallNetworkRuleCollection : SubResource
@@ -39,17 +39,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="priority">Priority of the network rule collection
         /// resource.</param>
-        /// <param name="action">The action type of a rule collection.</param>
+        /// <param name="action">The action type of a rule collection</param>
         /// <param name="rules">Collection of rules used by a network rule
         /// collection.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// network rule collection resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the Azure firewall. This name can be used to access the
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
         /// resource.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
         public AzureFirewallNetworkRuleCollection(string id = default(string), int? priority = default(int?), AzureFirewallRCAction action = default(AzureFirewallRCAction), IList<AzureFirewallNetworkRule> rules = default(IList<AzureFirewallNetworkRule>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? Priority { get; set; }
 
         /// <summary>
-        /// Gets or sets the action type of a rule collection.
+        /// Gets or sets the action type of a rule collection
         /// </summary>
         [JsonProperty(PropertyName = "properties.action")]
         public AzureFirewallRCAction Action { get; set; }
@@ -86,16 +86,15 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<AzureFirewallNetworkRule> Rules { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the network rule collection
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets or sets the provisioning state of the resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the
-        /// Azure firewall. This name can be used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

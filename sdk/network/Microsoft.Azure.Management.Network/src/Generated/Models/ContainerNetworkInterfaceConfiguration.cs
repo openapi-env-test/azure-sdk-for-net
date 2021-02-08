@@ -43,14 +43,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// network interfaces created from this container network interface
         /// configuration.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// container network interface configuration resource. Possible values
-        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// resource.</param>
         /// <param name="name">The name of the resource. This name can be used
         /// to access the resource.</param>
         /// <param name="type">Sub Resource type.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ContainerNetworkInterfaceConfiguration(string id = default(string), IList<IPConfigurationProfile> ipConfigurations = default(IList<IPConfigurationProfile>), IList<SubResource> containerNetworkInterfaces = default(IList<SubResource>), string provisioningState = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public ContainerNetworkInterfaceConfiguration(string id = default(string), IList<IPConfigurationProfile> ipConfigurations = default(IList<IPConfigurationProfile>), IList<ContainerNetworkInterface> containerNetworkInterfaces = default(IList<ContainerNetworkInterface>), string provisioningState = default(string), string name = default(string), string type = default(string), string etag = default(string))
             : base(id)
         {
             IpConfigurations = ipConfigurations;
@@ -79,12 +78,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// this container network interface configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.containerNetworkInterfaces")]
-        public IList<SubResource> ContainerNetworkInterfaces { get; set; }
+        public IList<ContainerNetworkInterface> ContainerNetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the container network interface
-        /// configuration resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
@@ -103,11 +100,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
     }
 }

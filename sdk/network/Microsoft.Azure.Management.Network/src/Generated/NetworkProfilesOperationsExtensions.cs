@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='networkProfileName'>
-            /// The name of the public IP prefix.
+            /// The name of the Public IP Prefix.
             /// </param>
             /// <param name='expand'>
             /// Expands referenced resources.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='networkProfileName'>
-            /// The name of the public IP prefix.
+            /// The name of the Public IP Prefix.
             /// </param>
             /// <param name='expand'>
             /// Expands referenced resources.
