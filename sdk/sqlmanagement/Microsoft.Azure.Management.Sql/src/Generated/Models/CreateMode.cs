@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         public const string Default = "Default";
         public const string Copy = "Copy";
         public const string Secondary = "Secondary";
+        public const string OnlineSecondary = "OnlineSecondary";
         public const string PointInTimeRestore = "PointInTimeRestore";
         public const string Restore = "Restore";
         public const string Recovery = "Recovery";
         public const string RestoreExternalBackup = "RestoreExternalBackup";
         public const string RestoreExternalBackupSecondary = "RestoreExternalBackupSecondary";
         public const string RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup";
-        public const string OnlineSecondary = "OnlineSecondary";
     }
 }
