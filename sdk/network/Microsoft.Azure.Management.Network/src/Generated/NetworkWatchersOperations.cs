@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='parameters'>
         /// Parameters that define a resource to query flow log and traffic analytics
-        /// (optional) status.
+        /// (optional)  status.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1446,9 +1446,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for
-        /// stability. Gets the relative latency score for internet service providers
-        /// from a specified location to Azure regions.
+        /// Gets the relative latency score for internet service providers from a
+        /// specified location to Azure regions.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1473,9 +1472,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for
-        /// stability. Lists all available internet service providers for a specified
-        /// Azure region.
+        /// Lists all available internet service providers for a specified Azure
+        /// region.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1500,13 +1498,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets Network Configuration Diagnostic data to help customers understand and
-        /// debug network behavior. It provides detailed information on what security
-        /// rules were applied to a specified traffic flow and the result of evaluating
-        /// these rules. Customers must provide details of a flow like source,
-        /// destination, protocol, etc. The API returns whether traffic was allowed or
-        /// denied, the rules evaluated for the specified flow and the evaluation
-        /// results.
+        /// Get network configuration diagnostic.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1571,7 +1563,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1754,7 +1746,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1979,7 +1971,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2204,7 +2196,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2429,7 +2421,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2654,7 +2646,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2880,7 +2872,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3062,7 +3054,7 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='parameters'>
         /// Parameters that define a resource to query flow log and traffic analytics
-        /// (optional) status.
+        /// (optional)  status.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3107,7 +3099,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3334,7 +3326,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3505,9 +3497,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for
-        /// stability. Gets the relative latency score for internet service providers
-        /// from a specified location to Azure regions.
+        /// Gets the relative latency score for internet service providers from a
+        /// specified location to Azure regions.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -3561,7 +3552,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3732,9 +3723,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for
-        /// stability. Lists all available internet service providers for a specified
-        /// Azure region.
+        /// Lists all available internet service providers for a specified Azure
+        /// region.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -3784,7 +3774,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3955,13 +3945,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets Network Configuration Diagnostic data to help customers understand and
-        /// debug network behavior. It provides detailed information on what security
-        /// rules were applied to a specified traffic flow and the result of evaluating
-        /// these rules. Customers must provide details of a flow like source,
-        /// destination, protocol, etc. The API returns whether traffic was allowed or
-        /// denied, the rules evaluated for the specified flow and the evaluation
-        /// results.
+        /// Get network configuration diagnostic.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -4015,7 +3999,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
+            string apiVersion = "2019-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
