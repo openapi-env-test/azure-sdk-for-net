@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines contents of a web application rule.
+    /// Defines contents of a web application rule
     /// </summary>
     public partial class WebApplicationFirewallCustomRule
     {
@@ -34,17 +34,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the WebApplicationFirewallCustomRule
         /// class.
         /// </summary>
-        /// <param name="priority">Priority of the rule. Rules with a lower
-        /// value will be evaluated before rules with a higher value.</param>
-        /// <param name="ruleType">The rule type. Possible values include:
-        /// 'MatchRule', 'Invalid'</param>
-        /// <param name="matchConditions">List of match conditions.</param>
+        /// <param name="priority">Describes priority of the rule. Rules with a
+        /// lower value will be evaluated before rules with a higher
+        /// value</param>
+        /// <param name="ruleType">Describes type of rule. Possible values
+        /// include: 'MatchRule', 'Invalid'</param>
+        /// <param name="matchConditions">List of match conditions</param>
         /// <param name="action">Type of Actions. Possible values include:
         /// 'Allow', 'Block', 'Log'</param>
-        /// <param name="name">The name of the resource that is unique within a
-        /// policy. This name can be used to access the resource.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a policy. This name can be used to access the resource.</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
         public WebApplicationFirewallCustomRule(int priority, string ruleType, IList<MatchCondition> matchConditions, string action, string name = default(string), string etag = default(string))
         {
             Name = name;
@@ -62,8 +63,8 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a
-        /// policy. This name can be used to access the resource.
+        /// Gets name of the resource that is unique within a policy. This name
+        /// can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -76,21 +77,21 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag { get; private set; }
 
         /// <summary>
-        /// Gets or sets priority of the rule. Rules with a lower value will be
-        /// evaluated before rules with a higher value.
+        /// Gets or sets describes priority of the rule. Rules with a lower
+        /// value will be evaluated before rules with a higher value
         /// </summary>
         [JsonProperty(PropertyName = "priority")]
         public int Priority { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule type. Possible values include: 'MatchRule',
-        /// 'Invalid'
+        /// Gets or sets describes type of rule. Possible values include:
+        /// 'MatchRule', 'Invalid'
         /// </summary>
         [JsonProperty(PropertyName = "ruleType")]
         public string RuleType { get; set; }
 
         /// <summary>
-        /// Gets or sets list of match conditions.
+        /// Gets or sets list of match conditions
         /// </summary>
         [JsonProperty(PropertyName = "matchConditions")]
         public IList<MatchCondition> MatchConditions { get; set; }

@@ -34,11 +34,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="id">Resource ID.</param>
         /// <param name="protocol">The protocol used for the probe. Possible
-        /// values include: 'Http', 'Https'</param>
+        /// values are 'Http' and 'Https'. Possible values include: 'Http',
+        /// 'Https'</param>
         /// <param name="host">Host name to send the probe to.</param>
         /// <param name="path">Relative path of probe. Valid path starts from
         /// '/'. Probe is sent to
-        /// &lt;Protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;.</param>
+        /// &lt;Protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;</param>
         /// <param name="interval">The probing interval in seconds. This is the
         /// time interval between two consecutive probes. Acceptable values are
         /// from 1 second to 86400 seconds.</param>
@@ -56,19 +57,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// marked healthy. Default value is 0.</param>
         /// <param name="match">Criterion for classifying a healthy probe
         /// response.</param>
-        /// <param name="provisioningState">The provisioning state of the probe
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
-        /// <param name="port">Custom port which will be used for probing the
-        /// backend servers. The valid value ranges from 1 to 65535. In case
-        /// not set, port from http settings will be used. This property is
-        /// valid for Standard_v2 and WAF_v2 only.</param>
+        /// <param name="provisioningState">Provisioning state of the backend
+        /// http settings resource. Possible values are: 'Updating',
+        /// 'Deleting', and 'Failed'.</param>
         /// <param name="name">Name of the probe that is unique within an
         /// Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayProbe(string id = default(string), string protocol = default(string), string host = default(string), string path = default(string), int? interval = default(int?), int? timeout = default(int?), int? unhealthyThreshold = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), int? minServers = default(int?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), string provisioningState = default(string), int? port = default(int?), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayProbe(string id = default(string), string protocol = default(string), string host = default(string), string path = default(string), int? interval = default(int?), int? timeout = default(int?), int? unhealthyThreshold = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), int? minServers = default(int?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             Protocol = protocol;
@@ -81,7 +78,6 @@ namespace Microsoft.Azure.Management.Network.Models
             MinServers = minServers;
             Match = match;
             ProvisioningState = provisioningState;
-            Port = port;
             Name = name;
             Etag = etag;
             Type = type;
@@ -94,8 +90,8 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the protocol used for the probe. Possible values
-        /// include: 'Http', 'Https'
+        /// Gets or sets the protocol used for the probe. Possible values are
+        /// 'Http' and 'Https'. Possible values include: 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
@@ -109,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets relative path of probe. Valid path starts from '/'.
         /// Probe is sent to
-        /// &amp;lt;Protocol&amp;gt;://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;&amp;lt;path&amp;gt;.
+        /// &amp;lt;Protocol&amp;gt;://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;&amp;lt;path&amp;gt;
         /// </summary>
         [JsonProperty(PropertyName = "properties.path")]
         public string Path { get; set; }
@@ -159,20 +155,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public ApplicationGatewayProbeHealthResponseMatch Match { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the probe resource. Possible values
-        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets provisioning state of the backend http settings
+        /// resource. Possible values are: 'Updating', 'Deleting', and
+        /// 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets custom port which will be used for probing the backend
-        /// servers. The valid value ranges from 1 to 65535. In case not set,
-        /// port from http settings will be used. This property is valid for
-        /// Standard_v2 and WAF_v2 only.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.port")]
-        public int? Port { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets name of the probe that is unique within an Application
@@ -182,34 +170,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Port > 65535)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Port", 65535);
-            }
-            if (Port < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Port", 1);
-            }
-        }
     }
 }

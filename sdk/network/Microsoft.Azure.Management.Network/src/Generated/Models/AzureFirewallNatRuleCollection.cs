@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// NAT rule collection resource.
+    /// NAT rule collection resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class AzureFirewallNatRuleCollection : SubResource
@@ -40,17 +40,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="priority">Priority of the NAT rule collection
         /// resource.</param>
         /// <param name="action">The action type of a NAT rule
-        /// collection.</param>
+        /// collection</param>
         /// <param name="rules">Collection of rules used by a NAT rule
         /// collection.</param>
-        /// <param name="provisioningState">The provisioning state of the NAT
-        /// rule collection resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the Azure firewall. This name can be used to access the
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
         /// resource.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
         public AzureFirewallNatRuleCollection(string id = default(string), int? priority = default(int?), AzureFirewallNatRCAction action = default(AzureFirewallNatRCAction), IList<AzureFirewallNatRule> rules = default(IList<AzureFirewallNatRule>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? Priority { get; set; }
 
         /// <summary>
-        /// Gets or sets the action type of a NAT rule collection.
+        /// Gets or sets the action type of a NAT rule collection
         /// </summary>
         [JsonProperty(PropertyName = "properties.action")]
         public AzureFirewallNatRCAction Action { get; set; }
@@ -87,16 +87,15 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<AzureFirewallNatRule> Rules { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the NAT rule collection resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets the provisioning state of the resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the
-        /// Azure firewall. This name can be used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

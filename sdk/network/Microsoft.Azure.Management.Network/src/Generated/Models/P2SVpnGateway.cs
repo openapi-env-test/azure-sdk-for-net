@@ -40,35 +40,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="virtualHub">The VirtualHub to which the gateway
-        /// belongs.</param>
-        /// <param name="p2SConnectionConfigurations">List of all p2s
-        /// connection configurations of the gateway.</param>
-        /// <param name="provisioningState">The provisioning state of the P2S
-        /// VPN gateway resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// belongs</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
         /// <param name="vpnGatewayScaleUnit">The scale unit for this p2s vpn
         /// gateway.</param>
-        /// <param name="vpnServerConfiguration">The VpnServerConfiguration to
-        /// which the p2sVpnGateway is attached to.</param>
+        /// <param name="p2SVpnServerConfiguration">The
+        /// P2SVpnServerConfiguration to which the p2sVpnGateway is attached
+        /// to.</param>
+        /// <param name="vpnClientAddressPool">The reference of the address
+        /// space resource which represents Address space for P2S
+        /// VpnClient.</param>
         /// <param name="vpnClientConnectionHealth">All P2S VPN clients'
         /// connection health status.</param>
-        /// <param name="customDnsServers">List of all customer specified DNS
-        /// servers IP addresses.</param>
-        /// <param name="isRoutingPreferenceInternet">Enable Routing Preference
-        /// property for the Public IP Interface of the P2SVpnGateway.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public P2SVpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualHub = default(SubResource), IList<P2SConnectionConfiguration> p2SConnectionConfigurations = default(IList<P2SConnectionConfiguration>), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), SubResource vpnServerConfiguration = default(SubResource), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), IList<string> customDnsServers = default(IList<string>), bool? isRoutingPreferenceInternet = default(bool?), string etag = default(string))
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated.</param>
+        public P2SVpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource virtualHub = default(SubResource), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), SubResource p2SVpnServerConfiguration = default(SubResource), AddressSpace vpnClientAddressPool = default(AddressSpace), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             VirtualHub = virtualHub;
-            P2SConnectionConfigurations = p2SConnectionConfigurations;
             ProvisioningState = provisioningState;
             VpnGatewayScaleUnit = vpnGatewayScaleUnit;
-            VpnServerConfiguration = vpnServerConfiguration;
+            P2SVpnServerConfiguration = p2SVpnServerConfiguration;
+            VpnClientAddressPool = vpnClientAddressPool;
             VpnClientConnectionHealth = vpnClientConnectionHealth;
-            CustomDnsServers = customDnsServers;
-            IsRoutingPreferenceInternet = isRoutingPreferenceInternet;
             Etag = etag;
             CustomInit();
         }
@@ -79,25 +75,17 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the VirtualHub to which the gateway belongs.
+        /// Gets or sets the VirtualHub to which the gateway belongs
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualHub")]
         public SubResource VirtualHub { get; set; }
 
         /// <summary>
-        /// Gets or sets list of all p2s connection configurations of the
-        /// gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.p2SConnectionConfigurations")]
-        public IList<P2SConnectionConfiguration> P2SConnectionConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the P2S VPN gateway resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets the provisioning state of the resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets the scale unit for this p2s vpn gateway.
@@ -106,31 +94,24 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? VpnGatewayScaleUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the VpnServerConfiguration to which the p2sVpnGateway
-        /// is attached to.
+        /// Gets or sets the P2SVpnServerConfiguration to which the
+        /// p2sVpnGateway is attached to.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.vpnServerConfiguration")]
-        public SubResource VpnServerConfiguration { get; set; }
+        [JsonProperty(PropertyName = "properties.p2SVpnServerConfiguration")]
+        public SubResource P2SVpnServerConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference of the address space resource which
+        /// represents Address space for P2S VpnClient.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.vpnClientAddressPool")]
+        public AddressSpace VpnClientAddressPool { get; set; }
 
         /// <summary>
         /// Gets all P2S VPN clients' connection health status.
         /// </summary>
         [JsonProperty(PropertyName = "properties.vpnClientConnectionHealth")]
         public VpnClientConnectionHealth VpnClientConnectionHealth { get; private set; }
-
-        /// <summary>
-        /// Gets or sets list of all customer specified DNS servers IP
-        /// addresses.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.customDnsServers")]
-        public IList<string> CustomDnsServers { get; set; }
-
-        /// <summary>
-        /// Gets or sets enable Routing Preference property for the Public IP
-        /// Interface of the P2SVpnGateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isRoutingPreferenceInternet")]
-        public bool? IsRoutingPreferenceInternet { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
