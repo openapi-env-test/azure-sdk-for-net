@@ -42,29 +42,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="frontendPort">Frontend port resource of an application
         /// gateway.</param>
         /// <param name="protocol">Protocol of the HTTP listener. Possible
-        /// values include: 'Http', 'Https'</param>
+        /// values are 'Http' and 'Https'. Possible values include: 'Http',
+        /// 'Https'</param>
         /// <param name="hostName">Host name of HTTP listener.</param>
         /// <param name="sslCertificate">SSL certificate resource of an
         /// application gateway.</param>
-        /// <param name="sslProfile">SSL profile resource of the application
-        /// gateway.</param>
         /// <param name="requireServerNameIndication">Applicable only if
         /// protocol is https. Enables SNI for multi-hosting.</param>
-        /// <param name="provisioningState">The provisioning state of the HTTP
-        /// listener resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">Provisioning state of the HTTP
+        /// listener resource. Possible values are: 'Updating', 'Deleting', and
+        /// 'Failed'.</param>
         /// <param name="customErrorConfigurations">Custom error configurations
         /// of the HTTP listener.</param>
-        /// <param name="firewallPolicy">Reference to the FirewallPolicy
-        /// resource.</param>
-        /// <param name="hostNames">List of Host names for HTTP Listener that
-        /// allows special wildcard characters as well.</param>
         /// <param name="name">Name of the HTTP listener that is unique within
         /// an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayHttpListener(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), string hostName = default(string), SubResource sslCertificate = default(SubResource), SubResource sslProfile = default(SubResource), bool? requireServerNameIndication = default(bool?), string provisioningState = default(string), IList<ApplicationGatewayCustomError> customErrorConfigurations = default(IList<ApplicationGatewayCustomError>), SubResource firewallPolicy = default(SubResource), IList<string> hostNames = default(IList<string>), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayHttpListener(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), string hostName = default(string), SubResource sslCertificate = default(SubResource), bool? requireServerNameIndication = default(bool?), string provisioningState = default(string), IList<ApplicationGatewayCustomError> customErrorConfigurations = default(IList<ApplicationGatewayCustomError>), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -72,12 +67,9 @@ namespace Microsoft.Azure.Management.Network.Models
             Protocol = protocol;
             HostName = hostName;
             SslCertificate = sslCertificate;
-            SslProfile = sslProfile;
             RequireServerNameIndication = requireServerNameIndication;
             ProvisioningState = provisioningState;
             CustomErrorConfigurations = customErrorConfigurations;
-            FirewallPolicy = firewallPolicy;
-            HostNames = hostNames;
             Name = name;
             Etag = etag;
             Type = type;
@@ -103,8 +95,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource FrontendPort { get; set; }
 
         /// <summary>
-        /// Gets or sets protocol of the HTTP listener. Possible values
-        /// include: 'Http', 'Https'
+        /// Gets or sets protocol of the HTTP listener. Possible values are
+        /// 'Http' and 'Https'. Possible values include: 'Http', 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
@@ -122,12 +114,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource SslCertificate { get; set; }
 
         /// <summary>
-        /// Gets or sets SSL profile resource of the application gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.sslProfile")]
-        public SubResource SslProfile { get; set; }
-
-        /// <summary>
         /// Gets or sets applicable only if protocol is https. Enables SNI for
         /// multi-hosting.
         /// </summary>
@@ -135,30 +121,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? RequireServerNameIndication { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the HTTP listener resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets provisioning state of the HTTP listener resource.
+        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets custom error configurations of the HTTP listener.
         /// </summary>
         [JsonProperty(PropertyName = "properties.customErrorConfigurations")]
         public IList<ApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets or sets reference to the FirewallPolicy resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.firewallPolicy")]
-        public SubResource FirewallPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of Host names for HTTP Listener that allows
-        /// special wildcard characters as well.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.hostNames")]
-        public IList<string> HostNames { get; set; }
 
         /// <summary>
         /// Gets or sets name of the HTTP listener that is unique within an
@@ -168,17 +141,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }

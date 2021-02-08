@@ -37,21 +37,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="privateIPAddress">The Firewall Internal Load Balancer
         /// IP to be used as the next hop in User Defined Routes.</param>
-        /// <param name="subnet">Reference to the subnet resource. This
-        /// resource must be named 'AzureFirewallSubnet' or
-        /// 'AzureFirewallManagementSubnet'.</param>
-        /// <param name="publicIPAddress">Reference to the PublicIP resource.
+        /// <param name="subnet">Reference of the subnet resource. This
+        /// resource must be named 'AzureFirewallSubnet'.</param>
+        /// <param name="publicIPAddress">Reference of the PublicIP resource.
         /// This field is a mandatory input if subnet is not null.</param>
-        /// <param name="provisioningState">The provisioning state of the Azure
-        /// firewall IP configuration resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values include: 'Succeeded', 'Updating',
+        /// 'Deleting', 'Failed'</param>
         /// <param name="name">Name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public AzureFirewallIPConfiguration(string id = default(string), string privateIPAddress = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public AzureFirewallIPConfiguration(string id = default(string), string privateIPAddress = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             PrivateIPAddress = privateIPAddress;
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -70,33 +67,32 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the Firewall Internal Load Balancer IP to be used as the next
-        /// hop in User Defined Routes.
+        /// Gets or sets the Firewall Internal Load Balancer IP to be used as
+        /// the next hop in User Defined Routes.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddress")]
-        public string PrivateIPAddress { get; private set; }
+        public string PrivateIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets reference to the subnet resource. This resource must
-        /// be named 'AzureFirewallSubnet' or 'AzureFirewallManagementSubnet'.
+        /// Gets or sets reference of the subnet resource. This resource must
+        /// be named 'AzureFirewallSubnet'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnet")]
         public SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets or sets reference to the PublicIP resource. This field is a
+        /// Gets or sets reference of the PublicIP resource. This field is a
         /// mandatory input if subnet is not null.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddress")]
         public SubResource PublicIPAddress { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the Azure firewall IP configuration
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets or sets the provisioning state of the resource. Possible
+        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets name of the resource that is unique within a resource
@@ -111,12 +107,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
     }
 }
