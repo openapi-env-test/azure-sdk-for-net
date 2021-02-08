@@ -15,8 +15,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters that define a resource to query flow log and traffic
-    /// analytics (optional) status.
+    /// Parameters that define a resource to query flow log status.
     /// </summary>
     public partial class FlowLogStatusParameters
     {
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the FlowLogStatusParameters class.
         /// </summary>
         /// <param name="targetResourceId">The target resource where getting
-        /// the flow log and traffic analytics (optional) status.</param>
+        /// the flow logging status.</param>
         public FlowLogStatusParameters(string targetResourceId)
         {
             TargetResourceId = targetResourceId;
@@ -45,8 +44,8 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target resource where getting the flow log and
-        /// traffic analytics (optional) status.
+        /// Gets or sets the target resource where getting the flow logging
+        /// status.
         /// </summary>
         [JsonProperty(PropertyName = "targetResourceId")]
         public string TargetResourceId { get; set; }

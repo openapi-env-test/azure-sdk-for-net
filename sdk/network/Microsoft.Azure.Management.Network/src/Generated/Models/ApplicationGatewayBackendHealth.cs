@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for ApplicationGatewayBackendHealth API service call.
+    /// List of ApplicationGatewayBackendHealthPool resources.
     /// </summary>
     public partial class ApplicationGatewayBackendHealth
     {
@@ -33,8 +33,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ApplicationGatewayBackendHealth
         /// class.
         /// </summary>
-        /// <param name="backendAddressPools">A list of
-        /// ApplicationGatewayBackendHealthPool resources.</param>
         public ApplicationGatewayBackendHealth(IList<ApplicationGatewayBackendHealthPool> backendAddressPools = default(IList<ApplicationGatewayBackendHealthPool>))
         {
             BackendAddressPools = backendAddressPools;
@@ -47,8 +45,6 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of ApplicationGatewayBackendHealthPool
-        /// resources.
         /// </summary>
         [JsonProperty(PropertyName = "backendAddressPools")]
         public IList<ApplicationGatewayBackendHealthPool> BackendAddressPools { get; set; }

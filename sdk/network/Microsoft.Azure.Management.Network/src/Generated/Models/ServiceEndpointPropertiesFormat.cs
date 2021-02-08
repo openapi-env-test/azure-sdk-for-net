@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="service">The type of the endpoint service.</param>
         /// <param name="locations">A list of locations.</param>
         /// <param name="provisioningState">The provisioning state of the
-        /// service endpoint resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// resource.</param>
         public ServiceEndpointPropertiesFormat(string service = default(string), IList<string> locations = default(IList<string>), string provisioningState = default(string))
         {
             Service = service;
@@ -64,12 +63,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<string> Locations { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the service endpoint resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets the provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
     }
 }

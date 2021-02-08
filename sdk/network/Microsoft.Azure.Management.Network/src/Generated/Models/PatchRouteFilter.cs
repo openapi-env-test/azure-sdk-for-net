@@ -39,11 +39,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// a route filter.</param>
         /// <param name="peerings">A collection of references to express route
         /// circuit peerings.</param>
-        /// <param name="ipv6Peerings">A collection of references to express
-        /// route circuit ipv6 peerings.</param>
-        /// <param name="provisioningState">The provisioning state of the route
-        /// filter resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values are: 'Updating', 'Deleting', 'Succeeded'
+        /// and 'Failed'.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
@@ -51,12 +49,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the resource is updated.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
-        public PatchRouteFilter(string id = default(string), IList<RouteFilterRule> rules = default(IList<RouteFilterRule>), IList<ExpressRouteCircuitPeering> peerings = default(IList<ExpressRouteCircuitPeering>), IList<ExpressRouteCircuitPeering> ipv6Peerings = default(IList<ExpressRouteCircuitPeering>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public PatchRouteFilter(string id = default(string), IList<RouteFilterRule> rules = default(IList<RouteFilterRule>), IList<ExpressRouteCircuitPeering> peerings = default(IList<ExpressRouteCircuitPeering>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id)
         {
             Rules = rules;
             Peerings = peerings;
-            Ipv6Peerings = ipv6Peerings;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -78,21 +75,15 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<RouteFilterRule> Rules { get; set; }
 
         /// <summary>
-        /// Gets a collection of references to express route circuit peerings.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.peerings")]
-        public IList<ExpressRouteCircuitPeering> Peerings { get; private set; }
-
-        /// <summary>
-        /// Gets a collection of references to express route circuit ipv6
+        /// Gets or sets a collection of references to express route circuit
         /// peerings.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.ipv6Peerings")]
-        public IList<ExpressRouteCircuitPeering> Ipv6Peerings { get; private set; }
+        [JsonProperty(PropertyName = "properties.peerings")]
+        public IList<ExpressRouteCircuitPeering> Peerings { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the route filter resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets the provisioning state of the resource. Possible values are:
+        /// 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
