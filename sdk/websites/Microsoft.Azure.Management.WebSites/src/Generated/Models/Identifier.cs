@@ -36,11 +36,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="value">String representation of the identity.</param>
-        public Identifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string value = default(string))
+        /// <param name="identifierId">String representation of the
+        /// identity.</param>
+        public Identifier(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string identifierId = default(string))
             : base(id, name, kind, type)
         {
-            Value = value;
+            IdentifierId = identifierId;
             CustomInit();
         }
 
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets string representation of the identity.
         /// </summary>
         [JsonProperty(PropertyName = "properties.id")]
-        public string Value { get; set; }
+        public string IdentifierId { get; set; }
 
     }
 }
