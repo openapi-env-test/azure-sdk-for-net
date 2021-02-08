@@ -99,6 +99,34 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse<BastionHost>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHost parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Updates bastion host tags.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the BastionHost.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the bastionHost.
+        /// </param>
+        /// <param name='bastionHostParameters'>
+        /// Parameters supplied to update a bastion host tags.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BastionHost>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists all Bastion Hosts in a subscription.
         /// </summary>
         /// <param name='customHeaders'>
@@ -189,6 +217,34 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<BastionHost>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHost parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates bastion host tags.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the BastionHost.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the bastionHost.
+        /// </param>
+        /// <param name='bastionHostParameters'>
+        /// Parameters supplied to update a bastion host tags.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<BastionHost>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject bastionHostParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all Bastion Hosts in a subscription.
         /// </summary>

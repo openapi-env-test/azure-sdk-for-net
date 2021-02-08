@@ -36,9 +36,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="linkedResourceType">Resource type of the linked
         /// resource.</param>
         /// <param name="link">Link to the external resource.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// resource navigation link resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">Provisioning state of the
+        /// ResourceNavigationLink resource.</param>
         /// <param name="name">Name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
@@ -75,9 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Link { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource navigation link
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets provisioning state of the ResourceNavigationLink resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
