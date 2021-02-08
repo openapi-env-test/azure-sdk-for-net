@@ -10,13 +10,45 @@
 
 namespace Microsoft.Azure.Management.Sql.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using System.Runtime;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// Defines values for PerformanceLevelUnit.
     /// </summary>
-    public static class PerformanceLevelUnit
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PerformanceLevelUnit
     {
-        public const string DTU = "DTU";
-        public const string VCores = "VCores";
+        [EnumMember(Value = "DTU")]
+        DTU
+    }
+    internal static class PerformanceLevelUnitEnumExtension
+    {
+        internal static string ToSerializedValue(this PerformanceLevelUnit? value)
+        {
+            return value == null ? null : ((PerformanceLevelUnit)value).ToSerializedValue();
+        }
+
+        internal static string ToSerializedValue(this PerformanceLevelUnit value)
+        {
+            switch( value )
+            {
+                case PerformanceLevelUnit.DTU:
+                    return "DTU";
+            }
+            return null;
+        }
+
+        internal static PerformanceLevelUnit? ParsePerformanceLevelUnit(this string value)
+        {
+            switch( value )
+            {
+                case "DTU":
+                    return PerformanceLevelUnit.DTU;
+            }
+            return null;
+        }
     }
 }

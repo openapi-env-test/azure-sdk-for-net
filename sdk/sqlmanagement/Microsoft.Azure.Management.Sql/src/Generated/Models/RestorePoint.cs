@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// Database restore points.
+    /// A database restore point.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RestorePoint : ProxyResource
@@ -35,23 +35,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="location">Resource location.</param>
-        /// <param name="restorePointType">The type of restore point. Possible
-        /// values include: 'CONTINUOUS', 'DISCRETE'</param>
-        /// <param name="earliestRestoreDate">The earliest time to which this
-        /// database can be restored</param>
-        /// <param name="restorePointCreationDate">The time the backup was
-        /// taken</param>
-        /// <param name="restorePointLabel">The label of restore point for
-        /// backup request by user</param>
-        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), RestorePointType? restorePointType = default(RestorePointType?), System.DateTime? earliestRestoreDate = default(System.DateTime?), System.DateTime? restorePointCreationDate = default(System.DateTime?), string restorePointLabel = default(string))
+        /// <param name="restorePointType">The restore point type of the
+        /// database restore point. Possible values include: 'DISCRETE',
+        /// 'CONTINUOUS'</param>
+        /// <param name="restorePointCreationDate">Restore point creation time
+        /// (ISO8601 format). Populated when restorePointType = CONTINUOUS.
+        /// Null otherwise.</param>
+        /// <param name="earliestRestoreDate">Earliest restore time (ISO8601
+        /// format). Populated when restorePointType = DISCRETE. Null
+        /// otherwise.</param>
+        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), RestorePointType? restorePointType = default(RestorePointType?), System.DateTime? restorePointCreationDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?))
             : base(id, name, type)
         {
-            Location = location;
             RestorePointType = restorePointType;
-            EarliestRestoreDate = earliestRestoreDate;
             RestorePointCreationDate = restorePointCreationDate;
-            RestorePointLabel = restorePointLabel;
+            EarliestRestoreDate = earliestRestoreDate;
             CustomInit();
         }
 
@@ -61,35 +59,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource location.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; private set; }
-
-        /// <summary>
-        /// Gets the type of restore point. Possible values include:
-        /// 'CONTINUOUS', 'DISCRETE'
+        /// Gets the restore point type of the database restore point. Possible
+        /// values include: 'DISCRETE', 'CONTINUOUS'
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePointType")]
         public RestorePointType? RestorePointType { get; private set; }
 
         /// <summary>
-        /// Gets the earliest time to which this database can be restored
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.earliestRestoreDate")]
-        public System.DateTime? EarliestRestoreDate { get; private set; }
-
-        /// <summary>
-        /// Gets the time the backup was taken
+        /// Gets restore point creation time (ISO8601 format). Populated when
+        /// restorePointType = CONTINUOUS. Null otherwise.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePointCreationDate")]
         public System.DateTime? RestorePointCreationDate { get; private set; }
 
         /// <summary>
-        /// Gets the label of restore point for backup request by user
+        /// Gets earliest restore time (ISO8601 format). Populated when
+        /// restorePointType = DISCRETE. Null otherwise.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.restorePointLabel")]
-        public string RestorePointLabel { get; private set; }
+        [JsonProperty(PropertyName = "properties.earliestRestoreDate")]
+        public System.DateTime? EarliestRestoreDate { get; private set; }
 
     }
 }

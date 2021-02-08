@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </return>
         public async Task<AzureOperationResponse<ServiceObjective>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string serviceObjectiveName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -102,7 +106,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serviceObjectiveName");
             }
-            string apiVersion = "2014-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -110,7 +113,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serverName", serverName);
                 tracingParameters.Add("serviceObjectiveName", serviceObjectiveName);
@@ -125,9 +127,9 @@ namespace Microsoft.Azure.Management.Sql
             _url = _url.Replace("{serverName}", System.Uri.EscapeDataString(serverName));
             _url = _url.Replace("{serviceObjectiveName}", System.Uri.EscapeDataString(serviceObjectiveName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -287,6 +289,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </return>
         public async Task<AzureOperationResponse<IEnumerable<ServiceObjective>>> ListByServerWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -299,7 +305,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serverName");
             }
-            string apiVersion = "2014-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -307,7 +312,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serverName", serverName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -320,9 +324,9 @@ namespace Microsoft.Azure.Management.Sql
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serverName}", System.Uri.EscapeDataString(serverName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

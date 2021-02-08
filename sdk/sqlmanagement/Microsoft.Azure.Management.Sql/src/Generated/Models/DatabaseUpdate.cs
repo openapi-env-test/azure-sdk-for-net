@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// A database resource.
+    /// Represents a database update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DatabaseUpdate
+    public partial class DatabaseUpdate : Resource
     {
         /// <summary>
         /// Initializes a new instance of the DatabaseUpdate class.
@@ -34,7 +34,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the DatabaseUpdate class.
         /// </summary>
-        /// <param name="sku">The name and tier of the SKU.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        /// <param name="tags">Resource tags.</param>
+        /// <param name="collation">The collation of the database. If
+        /// createMode is not Default, this value is ignored.</param>
+        /// <param name="creationDate">The creation date of the database
+        /// (ISO8601 format).</param>
+        /// <param name="containmentState">The containment state of the
+        /// database.</param>
+        /// <param name="currentServiceObjectiveId">The current service level
+        /// objective ID of the database. This is the ID of the service level
+        /// objective that is currently active.</param>
+        /// <param name="databaseId">The ID of the database.</param>
+        /// <param name="earliestRestoreDate">This records the earliest start
+        /// date and time that restore is available for this database (ISO8601
+        /// format).</param>
         /// <param name="createMode">Specifies the mode of database creation.
         ///
         /// Default: regular database creation.
@@ -43,7 +59,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// sourceDatabaseId must be specified as the resource ID of the source
         /// database.
         ///
-        /// Secondary: creates a database as a secondary replica of an existing
+        /// OnlineSecondary/NonReadableSecondary: creates a database as a
+        /// (readable or nonreadable) secondary replica of an existing
         /// database. sourceDatabaseId must be specified as the resource ID of
         /// the existing primary database.
         ///
@@ -69,143 +86,171 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// recoveryServicesRecoveryPointResourceId must be specified as the
         /// recovery point resource ID.
         ///
-        /// Copy, Secondary, and RestoreLongTermRetentionBackup are not
-        /// supported for DataWarehouse edition. Possible values include:
-        /// 'Default', 'Copy', 'Secondary', 'PointInTimeRestore', 'Restore',
-        /// 'Recovery', 'RestoreExternalBackup',
-        /// 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup',
-        /// 'OnlineSecondary'</param>
-        /// <param name="collation">The collation of the database.</param>
+        /// Copy, NonReadableSecondary, OnlineSecondary and
+        /// RestoreLongTermRetentionBackup are not supported for DataWarehouse
+        /// edition. Possible values include: 'Copy', 'Default',
+        /// 'NonReadableSecondary', 'OnlineSecondary', 'PointInTimeRestore',
+        /// 'Recovery', 'Restore', 'RestoreLongTermRetentionBackup'</param>
+        /// <param name="sourceDatabaseId">Conditional. If createMode is Copy,
+        /// NonReadableSecondary, OnlineSecondary, PointInTimeRestore,
+        /// Recovery, or Restore, then this value is required. Specifies the
+        /// resource ID of the source database. If createMode is
+        /// NonReadableSecondary or OnlineSecondary, the name of the source
+        /// database must be the same as the new database being
+        /// created.</param>
+        /// <param name="sourceDatabaseDeletionDate">Conditional. If createMode
+        /// is Restore and sourceDatabaseId is the deleted database's original
+        /// resource id when it existed (as opposed to its current restorable
+        /// dropped database id), then this value is required. Specifies the
+        /// time that the database was deleted.</param>
+        /// <param name="restorePointInTime">Conditional. If createMode is
+        /// PointInTimeRestore, this value is required. If createMode is
+        /// Restore, this value is optional. Specifies the point in time
+        /// (ISO8601 format) of the source database that will be restored to
+        /// create the new database. Must be greater than or equal to the
+        /// source database's earliestRestoreDate value.</param>
+        /// <param name="recoveryServicesRecoveryPointResourceId">Conditional.
+        /// If createMode is RestoreLongTermRetentionBackup, then this value is
+        /// required. Specifies the resource ID of the recovery point to
+        /// restore from.</param>
+        /// <param name="edition">The edition of the database. The
+        /// DatabaseEditions enumeration contains all the valid editions. If
+        /// createMode is NonReadableSecondary or OnlineSecondary, this value
+        /// is ignored.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the SKUs (including the SKU name, tier/edition, family, and
+        /// capacity) that are available to your subscription in an Azure
+        /// region, use the `Capabilities_ListByLocation` REST API or one of
+        /// the following commands:
+        ///
+        /// ```azurecli
+        /// az sql db list-editions -l &lt;location&gt; -o table
+        /// ````
+        ///
+        /// ```powershell
+        /// Get-AzSqlServerServiceObjective -Location &lt;location&gt;
+        /// ````
+        /// . Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+        /// 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse',
+        /// 'System', 'System2', 'GeneralPurpose', 'BusinessCritical',
+        /// 'Hyperscale'</param>
         /// <param name="maxSizeBytes">The max size of the database expressed
-        /// in bytes.</param>
-        /// <param name="sampleName">The name of the sample schema to apply
-        /// when creating this database. Possible values include:
-        /// 'AdventureWorksLT', 'WideWorldImportersStd',
-        /// 'WideWorldImportersFull'</param>
-        /// <param name="elasticPoolId">The resource identifier of the elastic
-        /// pool containing this database.</param>
-        /// <param name="sourceDatabaseId">The resource identifier of the
-        /// source database associated with create operation of this
-        /// database.</param>
-        /// <param name="status">The status of the database. Possible values
-        /// include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering',
-        /// 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
-        /// 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
-        /// 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling',
-        /// 'OfflineChangingDwPerformanceTiers',
-        /// 'OnlineChangingDwPerformanceTiers', 'Disabled'</param>
-        /// <param name="databaseId">The ID of the database.</param>
-        /// <param name="creationDate">The creation date of the database
-        /// (ISO8601 format).</param>
-        /// <param name="currentServiceObjectiveName">The current service level
-        /// objective name of the database.</param>
-        /// <param name="requestedServiceObjectiveName">The requested service
-        /// level objective name of the database.</param>
+        /// in bytes. If createMode is not Default, this value is ignored. To
+        /// see possible values, query the capabilities API
+        /// (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+        /// referred to by operationId: "Capabilities_ListByLocation."</param>
+        /// <param name="requestedServiceObjectiveId">The configured service
+        /// level objective ID of the database. This is the service level
+        /// objective that is in the process of being applied to the database.
+        /// Once successfully updated, it will match the value of
+        /// currentServiceObjectiveId property. If requestedServiceObjectiveId
+        /// and requestedServiceObjectiveName are both updated, the value of
+        /// requestedServiceObjectiveId overrides the value of
+        /// requestedServiceObjectiveName.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the service objective ids that are available to your subscription
+        /// in an Azure region, use the `Capabilities_ListByLocation` REST
+        /// API.</param>
+        /// <param name="requestedServiceObjectiveName">The name of the
+        /// configured service level objective of the database. This is the
+        /// service level objective that is in the process of being applied to
+        /// the database. Once successfully updated, it will match the value of
+        /// serviceLevelObjective property.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the SKUs (including the SKU name, tier/edition, family, and
+        /// capacity) that are available to your subscription in an Azure
+        /// region, use the `Capabilities_ListByLocation` REST API or one of
+        /// the following commands:
+        ///
+        /// ```azurecli
+        /// az sql db list-editions -l &lt;location&gt; -o table
+        /// ````
+        ///
+        /// ```powershell
+        /// Get-AzSqlServerServiceObjective -Location &lt;location&gt;
+        /// ````
+        /// . Possible values include: 'System', 'System0', 'System1',
+        /// 'System2', 'System3', 'System4', 'System2L', 'System3L',
+        /// 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+        /// 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15',
+        /// 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400',
+        /// 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500',
+        /// 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+        /// 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+        /// 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600',
+        /// 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'</param>
+        /// <param name="serviceLevelObjective">The current service level
+        /// objective of the database. Possible values include: 'System',
+        /// 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+        /// 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3',
+        /// 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11',
+        /// 'P15', 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300',
+        /// 'DW400', 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500',
+        /// 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+        /// 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+        /// 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600',
+        /// 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'</param>
+        /// <param name="status">The status of the database.</param>
+        /// <param name="elasticPoolName">The name of the elastic pool the
+        /// database is in. If elasticPoolName and
+        /// requestedServiceObjectiveName are both updated, the value of
+        /// requestedServiceObjectiveName is ignored. Not supported for
+        /// DataWarehouse edition.</param>
         /// <param name="defaultSecondaryLocation">The default secondary region
         /// for this database.</param>
-        /// <param name="failoverGroupId">Failover Group resource identifier
-        /// that this database belongs to.</param>
-        /// <param name="restorePointInTime">Specifies the point in time
-        /// (ISO8601 format) of the source database that will be restored to
-        /// create the new database.</param>
-        /// <param name="sourceDatabaseDeletionDate">Specifies the time that
-        /// the database was deleted.</param>
-        /// <param name="recoveryServicesRecoveryPointId">The resource
-        /// identifier of the recovery point associated with create operation
-        /// of this database.</param>
-        /// <param name="longTermRetentionBackupResourceId">The resource
-        /// identifier of the long term retention backup associated with create
-        /// operation of this database.</param>
-        /// <param name="recoverableDatabaseId">The resource identifier of the
-        /// recoverable database associated with create operation of this
+        /// <param name="serviceTierAdvisors">The list of service tier advisors
+        /// for this database. Expanded property</param>
+        /// <param name="transparentDataEncryption">The transparent data
+        /// encryption info for this database.</param>
+        /// <param name="recommendedIndex">The recommended indices for this
         /// database.</param>
-        /// <param name="restorableDroppedDatabaseId">The resource identifier
-        /// of the restorable dropped database associated with create operation
-        /// of this database.</param>
-        /// <param name="catalogCollation">Collation of the metadata catalog.
-        /// Possible values include: 'DATABASE_DEFAULT',
-        /// 'SQL_Latin1_General_CP1_CI_AS'</param>
+        /// <param name="failoverGroupId">The resource identifier of the
+        /// failover group containing this database.</param>
+        /// <param name="readScale">Conditional. If the database is a
+        /// geo-secondary, readScale indicates whether read-only connections
+        /// are allowed to this database or not. Not supported for
+        /// DataWarehouse edition. Possible values include: 'Enabled',
+        /// 'Disabled'</param>
+        /// <param name="sampleName">Indicates the name of the sample schema to
+        /// apply when creating this database. If createMode is not Default,
+        /// this value is ignored. Not supported for DataWarehouse edition.
+        /// Possible values include: 'AdventureWorksLT'</param>
         /// <param name="zoneRedundant">Whether or not this database is zone
         /// redundant, which means the replicas of this database will be spread
         /// across multiple availability zones.</param>
-        /// <param name="licenseType">The license type to apply for this
-        /// database. `LicenseIncluded` if you need a license, or `BasePrice`
-        /// if you have a license and are eligible for the Azure Hybrid
-        /// Benefit. Possible values include: 'LicenseIncluded',
-        /// 'BasePrice'</param>
-        /// <param name="maxLogSizeBytes">The max log size for this
-        /// database.</param>
-        /// <param name="earliestRestoreDate">This records the earliest start
-        /// date and time that restore is available for this database (ISO8601
-        /// format).</param>
-        /// <param name="readScale">The state of read-only routing. If enabled,
-        /// connections that have application intent set to readonly in their
-        /// connection string may be routed to a readonly secondary replica in
-        /// the same region. Possible values include: 'Enabled',
-        /// 'Disabled'</param>
-        /// <param name="highAvailabilityReplicaCount">The number of secondary
-        /// replicas associated with the database that are used to provide high
-        /// availability.</param>
-        /// <param name="secondaryType">The secondary type of the database if
-        /// it is a secondary.  Valid values are Geo and Named. Possible values
-        /// include: 'Geo', 'Named'</param>
-        /// <param name="currentSku">The name and tier of the SKU.</param>
-        /// <param name="autoPauseDelay">Time in minutes after which database
-        /// is automatically paused. A value of -1 means that automatic pause
-        /// is disabled</param>
-        /// <param name="storageAccountType">The storage account type used to
-        /// store backups for this database. Possible values include: 'GRS',
-        /// 'LRS', 'ZRS'</param>
-        /// <param name="minCapacity">Minimal capacity that database will
-        /// always have allocated, if not paused</param>
-        /// <param name="pausedDate">The date when database was paused by user
-        /// configuration or action(ISO8601 format). Null if the database is
-        /// ready.</param>
-        /// <param name="resumedDate">The date when database was resumed by
-        /// user action or database login (ISO8601 format). Null if the
-        /// database is paused.</param>
-        /// <param name="maintenanceConfigurationId">Maintenance configuration
-        /// id assigned to the database. This configuration defines the period
-        /// when the maintenance updates will occur.</param>
-        /// <param name="tags">Resource tags.</param>
-        public DatabaseUpdate(Sku sku = default(Sku), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string storageAccountType = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public DatabaseUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string collation = default(string), System.DateTime? creationDate = default(System.DateTime?), long? containmentState = default(long?), System.Guid? currentServiceObjectiveId = default(System.Guid?), System.Guid? databaseId = default(System.Guid?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string createMode = default(string), string sourceDatabaseId = default(string), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string recoveryServicesRecoveryPointResourceId = default(string), string edition = default(string), string maxSizeBytes = default(string), System.Guid? requestedServiceObjectiveId = default(System.Guid?), string requestedServiceObjectiveName = default(string), string serviceLevelObjective = default(string), string status = default(string), string elasticPoolName = default(string), string defaultSecondaryLocation = default(string), IList<ServiceTierAdvisor> serviceTierAdvisors = default(IList<ServiceTierAdvisor>), IList<TransparentDataEncryption> transparentDataEncryption = default(IList<TransparentDataEncryption>), IList<RecommendedIndex> recommendedIndex = default(IList<RecommendedIndex>), string failoverGroupId = default(string), ReadScale? readScale = default(ReadScale?), string sampleName = default(string), bool? zoneRedundant = default(bool?))
+            : base(id, name, type)
         {
-            Sku = sku;
-            CreateMode = createMode;
-            Collation = collation;
-            MaxSizeBytes = maxSizeBytes;
-            SampleName = sampleName;
-            ElasticPoolId = elasticPoolId;
-            SourceDatabaseId = sourceDatabaseId;
-            Status = status;
-            DatabaseId = databaseId;
-            CreationDate = creationDate;
-            CurrentServiceObjectiveName = currentServiceObjectiveName;
-            RequestedServiceObjectiveName = requestedServiceObjectiveName;
-            DefaultSecondaryLocation = defaultSecondaryLocation;
-            FailoverGroupId = failoverGroupId;
-            RestorePointInTime = restorePointInTime;
-            SourceDatabaseDeletionDate = sourceDatabaseDeletionDate;
-            RecoveryServicesRecoveryPointId = recoveryServicesRecoveryPointId;
-            LongTermRetentionBackupResourceId = longTermRetentionBackupResourceId;
-            RecoverableDatabaseId = recoverableDatabaseId;
-            RestorableDroppedDatabaseId = restorableDroppedDatabaseId;
-            CatalogCollation = catalogCollation;
-            ZoneRedundant = zoneRedundant;
-            LicenseType = licenseType;
-            MaxLogSizeBytes = maxLogSizeBytes;
-            EarliestRestoreDate = earliestRestoreDate;
-            ReadScale = readScale;
-            HighAvailabilityReplicaCount = highAvailabilityReplicaCount;
-            SecondaryType = secondaryType;
-            CurrentSku = currentSku;
-            AutoPauseDelay = autoPauseDelay;
-            StorageAccountType = storageAccountType;
-            MinCapacity = minCapacity;
-            PausedDate = pausedDate;
-            ResumedDate = resumedDate;
-            MaintenanceConfigurationId = maintenanceConfigurationId;
             Tags = tags;
+            Collation = collation;
+            CreationDate = creationDate;
+            ContainmentState = containmentState;
+            CurrentServiceObjectiveId = currentServiceObjectiveId;
+            DatabaseId = databaseId;
+            EarliestRestoreDate = earliestRestoreDate;
+            CreateMode = createMode;
+            SourceDatabaseId = sourceDatabaseId;
+            SourceDatabaseDeletionDate = sourceDatabaseDeletionDate;
+            RestorePointInTime = restorePointInTime;
+            RecoveryServicesRecoveryPointResourceId = recoveryServicesRecoveryPointResourceId;
+            Edition = edition;
+            MaxSizeBytes = maxSizeBytes;
+            RequestedServiceObjectiveId = requestedServiceObjectiveId;
+            RequestedServiceObjectiveName = requestedServiceObjectiveName;
+            ServiceLevelObjective = serviceLevelObjective;
+            Status = status;
+            ElasticPoolName = elasticPoolName;
+            DefaultSecondaryLocation = defaultSecondaryLocation;
+            ServiceTierAdvisors = serviceTierAdvisors;
+            TransparentDataEncryption = transparentDataEncryption;
+            RecommendedIndex = recommendedIndex;
+            FailoverGroupId = failoverGroupId;
+            ReadScale = readScale;
+            SampleName = sampleName;
+            ZoneRedundant = zoneRedundant;
             CustomInit();
         }
 
@@ -215,10 +260,49 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name and tier of the SKU.
+        /// Gets or sets resource tags.
         /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collation of the database. If createMode is not
+        /// Default, this value is ignored.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.collation")]
+        public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets the creation date of the database (ISO8601 format).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.creationDate")]
+        public System.DateTime? CreationDate { get; private set; }
+
+        /// <summary>
+        /// Gets the containment state of the database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.containmentState")]
+        public long? ContainmentState { get; private set; }
+
+        /// <summary>
+        /// Gets the current service level objective ID of the database. This
+        /// is the ID of the service level objective that is currently active.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.currentServiceObjectiveId")]
+        public System.Guid? CurrentServiceObjectiveId { get; private set; }
+
+        /// <summary>
+        /// Gets the ID of the database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.databaseId")]
+        public System.Guid? DatabaseId { get; private set; }
+
+        /// <summary>
+        /// Gets this records the earliest start date and time that restore is
+        /// available for this database (ISO8601 format).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.earliestRestoreDate")]
+        public System.DateTime? EarliestRestoreDate { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the mode of database creation.
@@ -229,7 +313,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// sourceDatabaseId must be specified as the resource ID of the source
         /// database.
         ///
-        /// Secondary: creates a database as a secondary replica of an existing
+        /// OnlineSecondary/NonReadableSecondary: creates a database as a
+        /// (readable or nonreadable) secondary replica of an existing
         /// database. sourceDatabaseId must be specified as the resource ID of
         /// the existing primary database.
         ///
@@ -255,85 +340,171 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// recoveryServicesRecoveryPointResourceId must be specified as the
         /// recovery point resource ID.
         ///
-        /// Copy, Secondary, and RestoreLongTermRetentionBackup are not
-        /// supported for DataWarehouse edition. Possible values include:
-        /// 'Default', 'Copy', 'Secondary', 'PointInTimeRestore', 'Restore',
-        /// 'Recovery', 'RestoreExternalBackup',
-        /// 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup',
-        /// 'OnlineSecondary'
+        /// Copy, NonReadableSecondary, OnlineSecondary and
+        /// RestoreLongTermRetentionBackup are not supported for DataWarehouse
+        /// edition. Possible values include: 'Copy', 'Default',
+        /// 'NonReadableSecondary', 'OnlineSecondary', 'PointInTimeRestore',
+        /// 'Recovery', 'Restore', 'RestoreLongTermRetentionBackup'
         /// </summary>
         [JsonProperty(PropertyName = "properties.createMode")]
         public string CreateMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the collation of the database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.collation")]
-        public string Collation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max size of the database expressed in bytes.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maxSizeBytes")]
-        public long? MaxSizeBytes { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the sample schema to apply when creating
-        /// this database. Possible values include: 'AdventureWorksLT',
-        /// 'WideWorldImportersStd', 'WideWorldImportersFull'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.sampleName")]
-        public string SampleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the elastic pool containing
-        /// this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.elasticPoolId")]
-        public string ElasticPoolId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the source database
-        /// associated with create operation of this database.
+        /// Gets or sets conditional. If createMode is Copy,
+        /// NonReadableSecondary, OnlineSecondary, PointInTimeRestore,
+        /// Recovery, or Restore, then this value is required. Specifies the
+        /// resource ID of the source database. If createMode is
+        /// NonReadableSecondary or OnlineSecondary, the name of the source
+        /// database must be the same as the new database being created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceDatabaseId")]
         public string SourceDatabaseId { get; set; }
 
         /// <summary>
-        /// Gets the status of the database. Possible values include: 'Online',
-        /// 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect', 'Offline',
-        /// 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
-        /// 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing',
-        /// 'Paused', 'Resuming', 'Scaling',
-        /// 'OfflineChangingDwPerformanceTiers',
-        /// 'OnlineChangingDwPerformanceTiers', 'Disabled'
+        /// Gets or sets conditional. If createMode is Restore and
+        /// sourceDatabaseId is the deleted database's original resource id
+        /// when it existed (as opposed to its current restorable dropped
+        /// database id), then this value is required. Specifies the time that
+        /// the database was deleted.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sourceDatabaseDeletionDate")]
+        public System.DateTime? SourceDatabaseDeletionDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets conditional. If createMode is PointInTimeRestore, this
+        /// value is required. If createMode is Restore, this value is
+        /// optional. Specifies the point in time (ISO8601 format) of the
+        /// source database that will be restored to create the new database.
+        /// Must be greater than or equal to the source database's
+        /// earliestRestoreDate value.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.restorePointInTime")]
+        public System.DateTime? RestorePointInTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets conditional. If createMode is
+        /// RestoreLongTermRetentionBackup, then this value is required.
+        /// Specifies the resource ID of the recovery point to restore from.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.recoveryServicesRecoveryPointResourceId")]
+        public string RecoveryServicesRecoveryPointResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database. The DatabaseEditions
+        /// enumeration contains all the valid editions. If createMode is
+        /// NonReadableSecondary or OnlineSecondary, this value is ignored.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the SKUs (including the SKU name, tier/edition, family, and
+        /// capacity) that are available to your subscription in an Azure
+        /// region, use the `Capabilities_ListByLocation` REST API or one of
+        /// the following commands:
+        ///
+        /// ```azurecli
+        /// az sql db list-editions -l &amp;lt;location&amp;gt; -o table
+        /// ````
+        ///
+        /// ```powershell
+        /// Get-AzSqlServerServiceObjective -Location &amp;lt;location&amp;gt;
+        /// ````
+        /// . Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+        /// 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse',
+        /// 'System', 'System2', 'GeneralPurpose', 'BusinessCritical',
+        /// 'Hyperscale'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.edition")]
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max size of the database expressed in bytes. If
+        /// createMode is not Default, this value is ignored. To see possible
+        /// values, query the capabilities API
+        /// (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+        /// referred to by operationId: "Capabilities_ListByLocation."
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.maxSizeBytes")]
+        public string MaxSizeBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the configured service level objective ID of the
+        /// database. This is the service level objective that is in the
+        /// process of being applied to the database. Once successfully
+        /// updated, it will match the value of currentServiceObjectiveId
+        /// property. If requestedServiceObjectiveId and
+        /// requestedServiceObjectiveName are both updated, the value of
+        /// requestedServiceObjectiveId overrides the value of
+        /// requestedServiceObjectiveName.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the service objective ids that are available to your subscription
+        /// in an Azure region, use the `Capabilities_ListByLocation` REST API.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.requestedServiceObjectiveId")]
+        public System.Guid? RequestedServiceObjectiveId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the configured service level objective of
+        /// the database. This is the service level objective that is in the
+        /// process of being applied to the database. Once successfully
+        /// updated, it will match the value of serviceLevelObjective property.
+        ///
+        /// The list of SKUs may vary by region and support offer. To determine
+        /// the SKUs (including the SKU name, tier/edition, family, and
+        /// capacity) that are available to your subscription in an Azure
+        /// region, use the `Capabilities_ListByLocation` REST API or one of
+        /// the following commands:
+        ///
+        /// ```azurecli
+        /// az sql db list-editions -l &amp;lt;location&amp;gt; -o table
+        /// ````
+        ///
+        /// ```powershell
+        /// Get-AzSqlServerServiceObjective -Location &amp;lt;location&amp;gt;
+        /// ````
+        /// . Possible values include: 'System', 'System0', 'System1',
+        /// 'System2', 'System3', 'System4', 'System2L', 'System3L',
+        /// 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+        /// 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15',
+        /// 'PRS1', 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400',
+        /// 'DW500', 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500',
+        /// 'DW1500c', 'DW2000', 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c',
+        /// 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
+        /// 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600',
+        /// 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.requestedServiceObjectiveName")]
+        public string RequestedServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// Gets the current service level objective of the database. Possible
+        /// values include: 'System', 'System0', 'System1', 'System2',
+        /// 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
+        /// 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12',
+        /// 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1', 'PRS2', 'PRS4',
+        /// 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500', 'DW600',
+        /// 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+        /// 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c',
+        /// 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100',
+        /// 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200',
+        /// 'DS1500', 'DS2000', 'ElasticPool'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serviceLevelObjective")]
+        public string ServiceLevelObjective { get; private set; }
+
+        /// <summary>
+        /// Gets the status of the database.
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }
 
         /// <summary>
-        /// Gets the ID of the database.
+        /// Gets or sets the name of the elastic pool the database is in. If
+        /// elasticPoolName and requestedServiceObjectiveName are both updated,
+        /// the value of requestedServiceObjectiveName is ignored. Not
+        /// supported for DataWarehouse edition.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.databaseId")]
-        public System.Guid? DatabaseId { get; private set; }
-
-        /// <summary>
-        /// Gets the creation date of the database (ISO8601 format).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.creationDate")]
-        public System.DateTime? CreationDate { get; private set; }
-
-        /// <summary>
-        /// Gets the current service level objective name of the database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.currentServiceObjectiveName")]
-        public string CurrentServiceObjectiveName { get; private set; }
-
-        /// <summary>
-        /// Gets the requested service level objective name of the database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.requestedServiceObjectiveName")]
-        public string RequestedServiceObjectiveName { get; private set; }
+        [JsonProperty(PropertyName = "properties.elasticPoolName")]
+        public string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Gets the default secondary region for this database.
@@ -342,59 +513,48 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string DefaultSecondaryLocation { get; private set; }
 
         /// <summary>
-        /// Gets failover Group resource identifier that this database belongs
-        /// to.
+        /// Gets the list of service tier advisors for this database. Expanded
+        /// property
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serviceTierAdvisors")]
+        public IList<ServiceTierAdvisor> ServiceTierAdvisors { get; private set; }
+
+        /// <summary>
+        /// Gets the transparent data encryption info for this database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.transparentDataEncryption")]
+        public IList<TransparentDataEncryption> TransparentDataEncryption { get; private set; }
+
+        /// <summary>
+        /// Gets the recommended indices for this database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.recommendedIndex")]
+        public IList<RecommendedIndex> RecommendedIndex { get; private set; }
+
+        /// <summary>
+        /// Gets the resource identifier of the failover group containing this
+        /// database.
         /// </summary>
         [JsonProperty(PropertyName = "properties.failoverGroupId")]
         public string FailoverGroupId { get; private set; }
 
         /// <summary>
-        /// Gets or sets specifies the point in time (ISO8601 format) of the
-        /// source database that will be restored to create the new database.
+        /// Gets or sets conditional. If the database is a geo-secondary,
+        /// readScale indicates whether read-only connections are allowed to
+        /// this database or not. Not supported for DataWarehouse edition.
+        /// Possible values include: 'Enabled', 'Disabled'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.restorePointInTime")]
-        public System.DateTime? RestorePointInTime { get; set; }
+        [JsonProperty(PropertyName = "properties.readScale")]
+        public ReadScale? ReadScale { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the time that the database was deleted.
+        /// Gets or sets indicates the name of the sample schema to apply when
+        /// creating this database. If createMode is not Default, this value is
+        /// ignored. Not supported for DataWarehouse edition. Possible values
+        /// include: 'AdventureWorksLT'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.sourceDatabaseDeletionDate")]
-        public System.DateTime? SourceDatabaseDeletionDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the recovery point
-        /// associated with create operation of this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.recoveryServicesRecoveryPointId")]
-        public string RecoveryServicesRecoveryPointId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the long term retention
-        /// backup associated with create operation of this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.longTermRetentionBackupResourceId")]
-        public string LongTermRetentionBackupResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the recoverable database
-        /// associated with create operation of this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.recoverableDatabaseId")]
-        public string RecoverableDatabaseId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier of the restorable dropped
-        /// database associated with create operation of this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.restorableDroppedDatabaseId")]
-        public string RestorableDroppedDatabaseId { get; set; }
-
-        /// <summary>
-        /// Gets or sets collation of the metadata catalog. Possible values
-        /// include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.catalogCollation")]
-        public string CatalogCollation { get; set; }
+        [JsonProperty(PropertyName = "properties.sampleName")]
+        public string SampleName { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not this database is zone redundant, which
@@ -404,123 +564,5 @@ namespace Microsoft.Azure.Management.Sql.Models
         [JsonProperty(PropertyName = "properties.zoneRedundant")]
         public bool? ZoneRedundant { get; set; }
 
-        /// <summary>
-        /// Gets or sets the license type to apply for this database.
-        /// `LicenseIncluded` if you need a license, or `BasePrice` if you have
-        /// a license and are eligible for the Azure Hybrid Benefit. Possible
-        /// values include: 'LicenseIncluded', 'BasePrice'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.licenseType")]
-        public string LicenseType { get; set; }
-
-        /// <summary>
-        /// Gets the max log size for this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maxLogSizeBytes")]
-        public long? MaxLogSizeBytes { get; private set; }
-
-        /// <summary>
-        /// Gets this records the earliest start date and time that restore is
-        /// available for this database (ISO8601 format).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.earliestRestoreDate")]
-        public System.DateTime? EarliestRestoreDate { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the state of read-only routing. If enabled,
-        /// connections that have application intent set to readonly in their
-        /// connection string may be routed to a readonly secondary replica in
-        /// the same region. Possible values include: 'Enabled', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.readScale")]
-        public string ReadScale { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of secondary replicas associated with the
-        /// database that are used to provide high availability.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.highAvailabilityReplicaCount")]
-        public int? HighAvailabilityReplicaCount { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary type of the database if it is a
-        /// secondary.  Valid values are Geo and Named. Possible values
-        /// include: 'Geo', 'Named'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.secondaryType")]
-        public string SecondaryType { get; set; }
-
-        /// <summary>
-        /// Gets the name and tier of the SKU.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.currentSku")]
-        public Sku CurrentSku { get; private set; }
-
-        /// <summary>
-        /// Gets or sets time in minutes after which database is automatically
-        /// paused. A value of -1 means that automatic pause is disabled
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.autoPauseDelay")]
-        public int? AutoPauseDelay { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage account type used to store backups for
-        /// this database. Possible values include: 'GRS', 'LRS', 'ZRS'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.storageAccountType")]
-        public string StorageAccountType { get; set; }
-
-        /// <summary>
-        /// Gets or sets minimal capacity that database will always have
-        /// allocated, if not paused
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minCapacity")]
-        public double? MinCapacity { get; set; }
-
-        /// <summary>
-        /// Gets the date when database was paused by user configuration or
-        /// action(ISO8601 format). Null if the database is ready.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.pausedDate")]
-        public System.DateTime? PausedDate { get; private set; }
-
-        /// <summary>
-        /// Gets the date when database was resumed by user action or database
-        /// login (ISO8601 format). Null if the database is paused.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.resumedDate")]
-        public System.DateTime? ResumedDate { get; private set; }
-
-        /// <summary>
-        /// Gets or sets maintenance configuration id assigned to the database.
-        /// This configuration defines the period when the maintenance updates
-        /// will occur.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
-        public string MaintenanceConfigurationId { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Sku != null)
-            {
-                Sku.Validate();
-            }
-            if (CurrentSku != null)
-            {
-                CurrentSku.Validate();
-            }
-        }
     }
 }

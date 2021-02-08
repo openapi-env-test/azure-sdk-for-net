@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </return>
         public async Task<AzureOperationResponse<ServiceTierAdvisor>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string serviceTierAdvisorName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -109,7 +113,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serviceTierAdvisorName");
             }
-            string apiVersion = "2014-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -117,7 +120,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serverName", serverName);
                 tracingParameters.Add("databaseName", databaseName);
@@ -134,9 +136,9 @@ namespace Microsoft.Azure.Management.Sql
             _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
             _url = _url.Replace("{serviceTierAdvisorName}", System.Uri.EscapeDataString(serviceTierAdvisorName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -299,6 +301,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </return>
         public async Task<AzureOperationResponse<IEnumerable<ServiceTierAdvisor>>> ListByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -315,7 +321,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "databaseName");
             }
-            string apiVersion = "2014-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -323,7 +328,6 @@ namespace Microsoft.Azure.Management.Sql
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serverName", serverName);
                 tracingParameters.Add("databaseName", databaseName);
@@ -338,9 +342,9 @@ namespace Microsoft.Azure.Management.Sql
             _url = _url.Replace("{serverName}", System.Uri.EscapeDataString(serverName));
             _url = _url.Replace("{databaseName}", System.Uri.EscapeDataString(databaseName));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

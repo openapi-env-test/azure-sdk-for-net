@@ -29,20 +29,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
-        /// <param name="provider">The localized friendly form of the resource
-        /// provider name.</param>
-        /// <param name="resource">The localized friendly form of the resource
-        /// type related to this action/operation.</param>
-        /// <param name="operation">The localized friendly name for the
-        /// operation.</param>
-        /// <param name="description">The localized friendly description for
-        /// the operation.</param>
-        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
+        /// <param name="provider">Service provider: Microsoft SQL
+        /// Database.</param>
+        /// <param name="resource">Resource on which the operation is
+        /// performed: Server, Database, etc.</param>
+        /// <param name="operation">Type of operation: get, read, delete,
+        /// etc.</param>
+        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
             Resource = resource;
             Operation = operation;
-            Description = description;
             CustomInit();
         }
 
@@ -52,29 +49,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the localized friendly form of the resource provider name.
+        /// Gets or sets service provider: Microsoft SQL Database.
         /// </summary>
         [JsonProperty(PropertyName = "provider")]
-        public string Provider { get; private set; }
+        public string Provider { get; set; }
 
         /// <summary>
-        /// Gets the localized friendly form of the resource type related to
-        /// this action/operation.
+        /// Gets or sets resource on which the operation is performed: Server,
+        /// Database, etc.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
-        public string Resource { get; private set; }
+        public string Resource { get; set; }
 
         /// <summary>
-        /// Gets the localized friendly name for the operation.
+        /// Gets or sets type of operation: get, read, delete, etc.
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
-        public string Operation { get; private set; }
-
-        /// <summary>
-        /// Gets the localized friendly description for the operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; private set; }
+        public string Operation { get; set; }
 
     }
 }

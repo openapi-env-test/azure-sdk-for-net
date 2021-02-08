@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Sql
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,39 +24,200 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServersOperationsExtensions
     {
             /// <summary>
-            /// Gets a list of servers in a resource groups.
+            /// Determines whether a resource can be created with the specified name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
+            /// <param name='parameters'>
+            /// The parameters to request for name availability.
             /// </param>
-            public static IPage<Server> ListByResourceGroup(this IServersOperations operations, string resourceGroupName)
+            public static CheckNameAvailabilityResponse CheckNameAvailability(this IServersOperations operations, CheckNameAvailabilityRequest parameters)
             {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+                return operations.CheckNameAvailabilityAsync(parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of servers in a resource groups.
+            /// Determines whether a resource can be created with the specified name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
+            /// <param name='parameters'>
+            /// The parameters to request for name availability.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Server>> ListByResourceGroupAsync(this IServersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this IServersOperations operations, CheckNameAvailabilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// Returns a list of servers.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            public static IEnumerable<Server> List(this IServersOperations operations)
+            {
+                return operations.ListAsync().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns a list of servers.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IEnumerable<Server>> ListAsync(this IServersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates a new server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for creating or updating a server.
+            /// </param>
+            public static Server CreateOrUpdate(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates a new server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for creating or updating a server.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Server> CreateOrUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates an existing server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            public static Server Update(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters)
+            {
+                return operations.UpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates an existing server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='parameters'>
+            /// The required parameters for updating a server.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Server> UpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a SQL server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            public static void Delete(this IServersOperations operations, string resourceGroupName, string serverName)
+            {
+                operations.DeleteAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a SQL server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -100,7 +263,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Creates or updates a server.
+            /// Returns a list of servers in a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -109,19 +272,13 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
             /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            public static Server CreateOrUpdate(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters)
+            public static IEnumerable<Server> ListByResourceGroup(this IServersOperations operations, string resourceGroupName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates or updates a server.
+            /// Returns a list of servers in a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -129,467 +286,13 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='resourceGroupName'>
             /// The name of the resource group that contains the resource. You can obtain
             /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Server> CreateOrUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Server>> ListByResourceGroupAsync(this IServersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            public static void Delete(this IServersOperations operations, string resourceGroupName, string serverName)
-            {
-                operations.DeleteAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            public static Server Update(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Server> UpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IPage<Server> List(this IServersOperations operations)
-            {
-                return operations.ListAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Server>> ListAsync(this IServersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Determines whether a resource can be created with the specified name.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// The name availability request parameters.
-            /// </param>
-            public static CheckNameAvailabilityResponse CheckNameAvailability(this IServersOperations operations, CheckNameAvailabilityRequest parameters)
-            {
-                return operations.CheckNameAvailabilityAsync(parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Determines whether a resource can be created with the specified name.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// The name availability request parameters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this IServersOperations operations, CheckNameAvailabilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Imports a bacpac into a new database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The database import request parameters.
-            /// </param>
-            public static ImportExportOperationResult ImportDatabase(this IServersOperations operations, string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters)
-            {
-                return operations.ImportDatabaseAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Imports a bacpac into a new database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The database import request parameters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ImportExportOperationResult> ImportDatabaseAsync(this IServersOperations operations, string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ImportDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates or updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            public static Server BeginCreateOrUpdate(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Server> BeginCreateOrUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, Server parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            public static void BeginDelete(this IServersOperations operations, string resourceGroupName, string serverName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            public static Server BeginUpdate(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested server resource state.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Server> BeginUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Imports a bacpac into a new database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The database import request parameters.
-            /// </param>
-            public static ImportExportOperationResult BeginImportDatabase(this IServersOperations operations, string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters)
-            {
-                return operations.BeginImportDatabaseAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Imports a bacpac into a new database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server.
-            /// </param>
-            /// <param name='parameters'>
-            /// The database import request parameters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ImportExportOperationResult> BeginImportDatabaseAsync(this IServersOperations operations, string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginImportDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of servers in a resource groups.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Server> ListByResourceGroupNext(this IServersOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of servers in a resource groups.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Server>> ListByResourceGroupNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Server> ListNext(this IServersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Server>> ListNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

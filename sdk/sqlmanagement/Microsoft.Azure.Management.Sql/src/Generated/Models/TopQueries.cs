@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// A database query.
+    /// </summary>
     public partial class TopQueries
     {
         /// <summary>
@@ -28,28 +31,34 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the TopQueries class.
         /// </summary>
-        /// <param name="numberOfQueries">Requested number of top
+        /// <param name="aggregationFunction">The function that is used to
+        /// aggregate each query's metrics. Possible values include: 'min',
+        /// 'max', 'avg', 'sum'</param>
+        /// <param name="executionType">The execution type that is used to
+        /// filter the query instances that are returned. Possible values
+        /// include: 'any', 'regular', 'irregular', 'aborted',
+        /// 'exception'</param>
+        /// <param name="intervalType">The duration of the interval (ISO8601
+        /// duration format).</param>
+        /// <param name="numberOfTopQueries">The number of requested
         /// queries.</param>
-        /// <param name="aggregationFunction">Aggregation function used to
-        /// calculate query metrics.</param>
-        /// <param name="observationMetric">Metric used to rank
-        /// queries.</param>
-        /// <param name="intervalType">Interval type (length). Possible values
-        /// include: 'PT1H', 'P1D'</param>
-        /// <param name="startTime">The start time for the metric (ISO-8601
-        /// format).</param>
-        /// <param name="endTime">The end time for the metric (ISO-8601
-        /// format).</param>
-        /// <param name="queries">List of top resource consuming queries with
-        /// appropriate metric data</param>
-        public TopQueries(int? numberOfQueries = default(int?), string aggregationFunction = default(string), string observationMetric = default(string), string intervalType = default(string), string startTime = default(string), string endTime = default(string), IList<QueryStatisticsProperties> queries = default(IList<QueryStatisticsProperties>))
+        /// <param name="observationStartTime">The start time for queries that
+        /// are returned (ISO8601 format)</param>
+        /// <param name="observationEndTime">The end time for queries that are
+        /// returned (ISO8601 format)</param>
+        /// <param name="observedMetric">The type of metric to use for ordering
+        /// the top metrics. Possible values include: 'cpu', 'io', 'logio',
+        /// 'duration', 'executionCount'</param>
+        /// <param name="queries">The list of queries.</param>
+        public TopQueries(QueryAggregationFunction? aggregationFunction = default(QueryAggregationFunction?), QueryExecutionType? executionType = default(QueryExecutionType?), string intervalType = default(string), double? numberOfTopQueries = default(double?), System.DateTime? observationStartTime = default(System.DateTime?), System.DateTime? observationEndTime = default(System.DateTime?), QueryObservedMetricType? observedMetric = default(QueryObservedMetricType?), IList<QueryStatistic> queries = default(IList<QueryStatistic>))
         {
-            NumberOfQueries = numberOfQueries;
             AggregationFunction = aggregationFunction;
-            ObservationMetric = observationMetric;
+            ExecutionType = executionType;
             IntervalType = intervalType;
-            StartTime = startTime;
-            EndTime = endTime;
+            NumberOfTopQueries = numberOfTopQueries;
+            ObservationStartTime = observationStartTime;
+            ObservationEndTime = observationEndTime;
+            ObservedMetric = observedMetric;
             Queries = queries;
             CustomInit();
         }
@@ -60,47 +69,57 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets requested number of top queries.
-        /// </summary>
-        [JsonProperty(PropertyName = "numberOfQueries")]
-        public int? NumberOfQueries { get; private set; }
-
-        /// <summary>
-        /// Gets aggregation function used to calculate query metrics.
+        /// Gets the function that is used to aggregate each query's metrics.
+        /// Possible values include: 'min', 'max', 'avg', 'sum'
         /// </summary>
         [JsonProperty(PropertyName = "aggregationFunction")]
-        public string AggregationFunction { get; private set; }
+        public QueryAggregationFunction? AggregationFunction { get; private set; }
 
         /// <summary>
-        /// Gets metric used to rank queries.
+        /// Gets the execution type that is used to filter the query instances
+        /// that are returned. Possible values include: 'any', 'regular',
+        /// 'irregular', 'aborted', 'exception'
         /// </summary>
-        [JsonProperty(PropertyName = "observationMetric")]
-        public string ObservationMetric { get; private set; }
+        [JsonProperty(PropertyName = "executionType")]
+        public QueryExecutionType? ExecutionType { get; private set; }
 
         /// <summary>
-        /// Gets interval type (length). Possible values include: 'PT1H', 'P1D'
+        /// Gets the duration of the interval (ISO8601 duration format).
         /// </summary>
         [JsonProperty(PropertyName = "intervalType")]
         public string IntervalType { get; private set; }
 
         /// <summary>
-        /// Gets the start time for the metric (ISO-8601 format).
+        /// Gets the number of requested queries.
         /// </summary>
-        [JsonProperty(PropertyName = "startTime")]
-        public string StartTime { get; private set; }
+        [JsonProperty(PropertyName = "numberOfTopQueries")]
+        public double? NumberOfTopQueries { get; private set; }
 
         /// <summary>
-        /// Gets the end time for the metric (ISO-8601 format).
+        /// Gets the start time for queries that are returned (ISO8601 format)
         /// </summary>
-        [JsonProperty(PropertyName = "endTime")]
-        public string EndTime { get; private set; }
+        [JsonProperty(PropertyName = "observationStartTime")]
+        public System.DateTime? ObservationStartTime { get; private set; }
 
         /// <summary>
-        /// Gets or sets list of top resource consuming queries with
-        /// appropriate metric data
+        /// Gets the end time for queries that are returned (ISO8601 format)
+        /// </summary>
+        [JsonProperty(PropertyName = "observationEndTime")]
+        public System.DateTime? ObservationEndTime { get; private set; }
+
+        /// <summary>
+        /// Gets the type of metric to use for ordering the top metrics.
+        /// Possible values include: 'cpu', 'io', 'logio', 'duration',
+        /// 'executionCount'
+        /// </summary>
+        [JsonProperty(PropertyName = "observedMetric")]
+        public QueryObservedMetricType? ObservedMetric { get; private set; }
+
+        /// <summary>
+        /// Gets the list of queries.
         /// </summary>
         [JsonProperty(PropertyName = "queries")]
-        public IList<QueryStatisticsProperties> Queries { get; set; }
+        public IList<QueryStatistic> Queries { get; private set; }
 
     }
 }
