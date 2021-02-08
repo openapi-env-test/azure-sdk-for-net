@@ -87,7 +87,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// permitted on requests to storage. The default interpretation is TLS
         /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
         /// 'TLS1_2'</param>
-        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string))
+        /// <param name="allowSharedKeyAccess">Indicates whether the storage
+        /// account permits requests to be authorized with the account access
+        /// key via Shared Key. If false, then all requests, including shared
+        /// access signatures, must be authorized with Azure Active Directory
+        /// (Azure AD). The default value is null, which is equivalent to
+        /// true.</param>
+        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?))
         {
             Sku = sku;
             Kind = kind;
@@ -106,6 +112,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             RoutingPreference = routingPreference;
             AllowBlobPublicAccess = allowBlobPublicAccess;
             MinimumTlsVersion = minimumTlsVersion;
+            AllowSharedKeyAccess = allowSharedKeyAccess;
             CustomInit();
         }
 
@@ -244,6 +251,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.minimumTlsVersion")]
         public string MinimumTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the storage account permits requests
+        /// to be authorized with the account access key via Shared Key. If
+        /// false, then all requests, including shared access signatures, must
+        /// be authorized with Azure Active Directory (Azure AD). The default
+        /// value is null, which is equivalent to true.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.allowSharedKeyAccess")]
+        public bool? AllowSharedKeyAccess { get; set; }
 
         /// <summary>
         /// Validate the object.
