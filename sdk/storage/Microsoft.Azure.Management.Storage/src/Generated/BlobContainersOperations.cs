@@ -63,18 +63,6 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
-        /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of containers that can be included in
-        /// the list.
-        /// </param>
-        /// <param name='filter'>
-        /// Optional. When specified, only container names starting with the filter
-        /// will be listed.
-        /// </param>
-        /// <param name='include'>
-        /// Optional, used to include the properties for soft deleted blob containers.
-        /// Possible values include: 'deleted'
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -96,7 +84,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ListContainerItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string maxpagesize = default(string), string filter = default(string), string include = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ListContainerItems>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -163,9 +151,6 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("maxpagesize", maxpagesize);
-                tracingParameters.Add("filter", filter);
-                tracingParameters.Add("include", include);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -179,18 +164,6 @@ namespace Microsoft.Azure.Management.Storage
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (maxpagesize != null)
-            {
-                _queryParameters.Add(string.Format("$maxpagesize={0}", System.Uri.EscapeDataString(maxpagesize)));
-            }
-            if (filter != null)
-            {
-                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
-            }
-            if (include != null)
-            {
-                _queryParameters.Add(string.Format("$include={0}", System.Uri.EscapeDataString(include)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -285,7 +258,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<ListContainerItem>>();
+            var _result = new AzureOperationResponse<ListContainerItems>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -298,7 +271,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ListContainerItem>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ListContainerItems>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -338,8 +311,12 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='blobContainer'>
-        /// Properties of the blob container to create.
+        /// <param name='publicAccess'>
+        /// Specifies whether data in the container may be accessed publicly and the
+        /// level of access. Possible values include: 'Container', 'Blob', 'None'
+        /// </param>
+        /// <param name='metadata'>
+        /// A name-value pair to associate with the container as metadata.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -362,7 +339,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BlobContainer>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BlobContainer>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, PublicAccess? publicAccess = default(PublicAccess?), IDictionary<string, string> metadata = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -413,10 +390,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (blobContainer == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "blobContainer");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -438,6 +411,12 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
+            }
+            BlobContainer blobContainer = new BlobContainer();
+            if (publicAccess != null || metadata != null)
+            {
+                blobContainer.PublicAccess = publicAccess;
+                blobContainer.Metadata = metadata;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -529,7 +508,7 @@ namespace Microsoft.Azure.Management.Storage
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 201)
+            if ((int)_statusCode != 201)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -570,24 +549,6 @@ namespace Microsoft.Azure.Management.Storage
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<BlobContainer>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
             }
             // Deserialize Response
             if ((int)_statusCode == 201)
@@ -634,8 +595,12 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='blobContainer'>
-        /// Properties to update for the blob container.
+        /// <param name='publicAccess'>
+        /// Specifies whether data in the container may be accessed publicly and the
+        /// level of access. Possible values include: 'Container', 'Blob', 'None'
+        /// </param>
+        /// <param name='metadata'>
+        /// A name-value pair to associate with the container as metadata.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -658,7 +623,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BlobContainer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BlobContainer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, PublicAccess? publicAccess = default(PublicAccess?), IDictionary<string, string> metadata = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -709,10 +674,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (blobContainer == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "blobContainer");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -734,6 +695,12 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
+            }
+            BlobContainer blobContainer = new BlobContainer();
+            if (publicAccess != null || metadata != null)
+            {
+                blobContainer.PublicAccess = publicAccess;
+                blobContainer.Metadata = metadata;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1982,21 +1949,14 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A
-        /// value of "*" can be used to apply the operation only if the immutability
-        /// policy already exists. If omitted, this operation will always be applied.
-        /// </param>
         /// <param name='immutabilityPeriodSinceCreationInDays'>
         /// The immutability period for the blobs in the container since the policy
         /// creation, in days.
         /// </param>
-        /// <param name='allowProtectedAppendWrites'>
-        /// This property can only be changed for unlocked time-based retention
-        /// policies. When enabled, new blocks can be written to an append blob while
-        /// maintaining immutability protection and compliance. Only new blocks can be
-        /// added and any existing blocks cannot be modified or deleted. This property
-        /// cannot be changed with ExtendImmutabilityPolicy API
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of "*" can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2019,7 +1979,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicy,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), int? immutabilityPeriodSinceCreationInDays = default(int?), bool? allowProtectedAppendWrites = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicy,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, int immutabilityPeriodSinceCreationInDays, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2094,12 +2054,8 @@ namespace Microsoft.Azure.Management.Storage
             }
             string immutabilityPolicyName = "default";
             ImmutabilityPolicy parameters = default(ImmutabilityPolicy);
-            if (immutabilityPeriodSinceCreationInDays != null || allowProtectedAppendWrites != null)
-            {
-                parameters = new ImmutabilityPolicy();
-                parameters.ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
-                parameters.AllowProtectedAppendWrites = allowProtectedAppendWrites;
-            }
+            parameters = new ImmutabilityPolicy();
+            parameters.ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2578,8 +2534,8 @@ namespace Microsoft.Azure.Management.Storage
         /// Aborts an unlocked immutability policy. The response of delete has
         /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
         /// required for this operation. Deleting a locked immutability policy is not
-        /// allowed, the only way is to delete the container after deleting all expired
-        /// blobs inside the policy locked container.
+        /// allowed, only way is to delete the container after deleting all blobs
+        /// inside the container.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -3198,13 +3154,6 @@ namespace Microsoft.Azure.Management.Storage
         /// The immutability period for the blobs in the container since the policy
         /// creation, in days.
         /// </param>
-        /// <param name='allowProtectedAppendWrites'>
-        /// This property can only be changed for unlocked time-based retention
-        /// policies. When enabled, new blocks can be written to an append blob while
-        /// maintaining immutability protection and compliance. Only new blocks can be
-        /// added and any existing blocks cannot be modified or deleted. This property
-        /// cannot be changed with ExtendImmutabilityPolicy API
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -3226,7 +3175,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ImmutabilityPolicy,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int? immutabilityPeriodSinceCreationInDays = default(int?), bool? allowProtectedAppendWrites = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ImmutabilityPolicy,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, int immutabilityPeriodSinceCreationInDays, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3304,12 +3253,8 @@ namespace Microsoft.Azure.Management.Storage
                 throw new ValidationException(ValidationRules.CannotBeNull, "ifMatch");
             }
             ImmutabilityPolicy parameters = default(ImmutabilityPolicy);
-            if (immutabilityPeriodSinceCreationInDays != null || allowProtectedAppendWrites != null)
-            {
-                parameters = new ImmutabilityPolicy();
-                parameters.ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
-                parameters.AllowProtectedAppendWrites = allowProtectedAppendWrites;
-            }
+            parameters = new ImmutabilityPolicy();
+            parameters.ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3626,7 +3571,7 @@ namespace Microsoft.Azure.Management.Storage
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
@@ -3749,180 +3694,6 @@ namespace Microsoft.Azure.Management.Storage
                 try
                 {
                     _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<LeaseContainerResponse>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Lists all containers and does not support a prefix like data plane. Also
-        /// SRP today does not return continuation token.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<ListContainerItem>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (nextPageLink == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
-            }
-            // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
-            List<string> _queryParameters = new List<string>();
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<ListContainerItem>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ListContainerItem>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

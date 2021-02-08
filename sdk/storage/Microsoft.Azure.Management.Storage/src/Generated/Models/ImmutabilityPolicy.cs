@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Initializes a new instance of the ImmutabilityPolicy class.
         /// </summary>
+        /// <param name="immutabilityPeriodSinceCreationInDays">The
+        /// immutability period for the blobs in the container since the policy
+        /// creation, in days.</param>
         /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
@@ -40,25 +43,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="etag">Resource Etag.</param>
-        /// <param name="immutabilityPeriodSinceCreationInDays">The
-        /// immutability period for the blobs in the container since the policy
-        /// creation, in days.</param>
         /// <param name="state">The ImmutabilityPolicy state of a blob
         /// container, possible values include: Locked and Unlocked. Possible
         /// values include: 'Locked', 'Unlocked'</param>
-        /// <param name="allowProtectedAppendWrites">This property can only be
-        /// changed for unlocked time-based retention policies. When enabled,
-        /// new blocks can be written to an append blob while maintaining
-        /// immutability protection and compliance. Only new blocks can be
-        /// added and any existing blocks cannot be modified or deleted. This
-        /// property cannot be changed with ExtendImmutabilityPolicy
-        /// API</param>
-        public ImmutabilityPolicy(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), int? immutabilityPeriodSinceCreationInDays = default(int?), string state = default(string), bool? allowProtectedAppendWrites = default(bool?))
+        public ImmutabilityPolicy(int immutabilityPeriodSinceCreationInDays, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string state = default(string))
             : base(id, name, type, etag)
         {
             ImmutabilityPeriodSinceCreationInDays = immutabilityPeriodSinceCreationInDays;
             State = state;
-            AllowProtectedAppendWrites = allowProtectedAppendWrites;
             CustomInit();
         }
 
@@ -72,7 +64,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// since the policy creation, in days.
         /// </summary>
         [JsonProperty(PropertyName = "properties.immutabilityPeriodSinceCreationInDays")]
-        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public int ImmutabilityPeriodSinceCreationInDays { get; set; }
 
         /// <summary>
         /// Gets the ImmutabilityPolicy state of a blob container, possible
@@ -83,15 +75,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string State { get; private set; }
 
         /// <summary>
-        /// Gets or sets this property can only be changed for unlocked
-        /// time-based retention policies. When enabled, new blocks can be
-        /// written to an append blob while maintaining immutability protection
-        /// and compliance. Only new blocks can be added and any existing
-        /// blocks cannot be modified or deleted. This property cannot be
-        /// changed with ExtendImmutabilityPolicy API
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.allowProtectedAppendWrites")]
-        public bool? AllowProtectedAppendWrites { get; set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

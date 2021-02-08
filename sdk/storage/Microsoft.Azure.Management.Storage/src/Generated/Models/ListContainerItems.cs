@@ -16,27 +16,25 @@ namespace Microsoft.Azure.Management.Storage.Models
     using System.Linq;
 
     /// <summary>
-    /// Sets the CORS rules. You can include up to five CorsRule elements in
-    /// the request.
+    /// The list of blob containers.
     /// </summary>
-    public partial class CorsRules
+    public partial class ListContainerItems
     {
         /// <summary>
-        /// Initializes a new instance of the CorsRules class.
+        /// Initializes a new instance of the ListContainerItems class.
         /// </summary>
-        public CorsRules()
+        public ListContainerItems()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CorsRules class.
+        /// Initializes a new instance of the ListContainerItems class.
         /// </summary>
-        /// <param name="corsRulesProperty">The List of CORS rules. You can
-        /// include up to five CorsRule elements in the request. </param>
-        public CorsRules(IList<CorsRule> corsRulesProperty = default(IList<CorsRule>))
+        /// <param name="value">The list of blob containers.</param>
+        public ListContainerItems(IList<ListContainerItem> value = default(IList<ListContainerItem>))
         {
-            CorsRulesProperty = corsRulesProperty;
+            Value = value;
             CustomInit();
         }
 
@@ -46,11 +44,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the List of CORS rules. You can include up to five
-        /// CorsRule elements in the request.
+        /// Gets or sets the list of blob containers.
         /// </summary>
-        [JsonProperty(PropertyName = "corsRules")]
-        public IList<CorsRule> CorsRulesProperty { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<ListContainerItem> Value { get; set; }
 
     }
 }
