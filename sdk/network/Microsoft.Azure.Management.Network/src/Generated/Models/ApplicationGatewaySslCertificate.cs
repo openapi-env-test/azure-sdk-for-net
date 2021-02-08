@@ -42,28 +42,23 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="publicCertData">Base-64 encoded Public cert data
         /// corresponding to pfx specified in data. Only applicable in GET
         /// request.</param>
-        /// <param name="keyVaultSecretId">Secret Id of (base-64 encoded
-        /// unencrypted pfx) 'Secret' or 'Certificate' object stored in
-        /// KeyVault.</param>
-        /// <param name="provisioningState">The provisioning state of the SSL
-        /// certificate resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">Name of the SSL certificate that is unique
-        /// within an Application Gateway.</param>
+        /// <param name="provisioningState">Provisioning state of the SSL
+        /// certificate resource Possible values are: 'Updating', 'Deleting',
+        /// and 'Failed'.</param>
+        /// <param name="name">Name of the resource that is unique within a
+        /// resource group. This name can be used to access the
+        /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewaySslCertificate(string id = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewaySslCertificate(string id = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             Data = data;
             Password = password;
             PublicCertData = publicCertData;
-            KeyVaultSecretId = keyVaultSecretId;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -87,46 +82,32 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets base-64 encoded Public cert data corresponding to pfx
+        /// Gets or sets base-64 encoded Public cert data corresponding to pfx
         /// specified in data. Only applicable in GET request.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicCertData")]
-        public string PublicCertData { get; private set; }
+        public string PublicCertData { get; set; }
 
         /// <summary>
-        /// Gets or sets secret Id of (base-64 encoded unencrypted pfx)
-        /// 'Secret' or 'Certificate' object stored in KeyVault.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.keyVaultSecretId")]
-        public string KeyVaultSecretId { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the SSL certificate resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets provisioning state of the SSL certificate resource
+        /// Possible values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the SSL certificate that is unique within an
-        /// Application Gateway.
+        /// Gets or sets name of the resource that is unique within a resource
+        /// group. This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Etag { get; set; }
 
     }
 }

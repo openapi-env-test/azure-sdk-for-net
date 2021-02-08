@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<EffectiveNetworkSecurityGroup> Value { get; set; }
 
         /// <summary>
-        /// Gets the URL to get the next set of results.
+        /// Gets or sets the URL to get the next set of results.
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
-        public string NextLink { get; private set; }
+        public string NextLink { get; set; }
 
     }
 }

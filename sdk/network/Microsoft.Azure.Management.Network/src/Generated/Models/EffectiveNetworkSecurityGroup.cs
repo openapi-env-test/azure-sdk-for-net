@@ -35,17 +35,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="networkSecurityGroup">The ID of network security group
         /// that is applied.</param>
-        /// <param name="association">Associated resources.</param>
         /// <param name="effectiveSecurityRules">A collection of effective
         /// security rules.</param>
-        /// <param name="tagMap">Mapping of tags to list of IP Addresses
-        /// included within the tag.</param>
-        public EffectiveNetworkSecurityGroup(SubResource networkSecurityGroup = default(SubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(IList<EffectiveNetworkSecurityRule>), IDictionary<string, IList<string>> tagMap = default(IDictionary<string, IList<string>>))
+        public EffectiveNetworkSecurityGroup(SubResource networkSecurityGroup = default(SubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(IList<EffectiveNetworkSecurityRule>))
         {
             NetworkSecurityGroup = networkSecurityGroup;
             Association = association;
             EffectiveSecurityRules = effectiveSecurityRules;
-            TagMap = tagMap;
             CustomInit();
         }
 
@@ -61,7 +57,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets associated resources.
         /// </summary>
         [JsonProperty(PropertyName = "association")]
         public EffectiveNetworkSecurityGroupAssociation Association { get; set; }
@@ -71,13 +66,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "effectiveSecurityRules")]
         public IList<EffectiveNetworkSecurityRule> EffectiveSecurityRules { get; set; }
-
-        /// <summary>
-        /// Gets or sets mapping of tags to list of IP Addresses included
-        /// within the tag.
-        /// </summary>
-        [JsonProperty(PropertyName = "tagMap")]
-        public IDictionary<string, IList<string>> TagMap { get; set; }
 
     }
 }

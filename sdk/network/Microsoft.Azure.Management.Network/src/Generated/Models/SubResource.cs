@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Network.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Reference to another subresource.
-    /// </summary>
     public partial class SubResource : IResource
     {
         /// <summary>

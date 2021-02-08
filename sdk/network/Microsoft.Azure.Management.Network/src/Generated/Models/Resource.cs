@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Common resource representation.
-    /// </summary>
     public partial class Resource : IResource
     {
         /// <summary>

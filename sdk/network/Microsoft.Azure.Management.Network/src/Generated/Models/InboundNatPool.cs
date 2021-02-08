@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the InboundNatPool class.
         /// </summary>
-        /// <param name="protocol">The reference to the transport protocol used
-        /// by the inbound NAT pool. Possible values include: 'Udp', 'Tcp',
-        /// 'All'</param>
+        /// <param name="protocol">The transport protocol for the endpoint.
+        /// Possible values are: 'Udp' or 'Tcp'. Possible values include:
+        /// 'Udp', 'Tcp'</param>
         /// <param name="frontendPortRangeStart">The first port number in the
         /// range of external ports that will be used to provide Inbound Nat to
         /// NICs associated with a load balancer. Acceptable values range
@@ -48,28 +48,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="frontendIPConfiguration">A reference to frontend IP
         /// addresses.</param>
-        /// <param name="idleTimeoutInMinutes">The timeout for the TCP idle
-        /// connection. The value can be set between 4 and 30 minutes. The
-        /// default value is 4 minutes. This element is only used when the
-        /// protocol is set to TCP.</param>
-        /// <param name="enableFloatingIP">Configures a virtual machine's
-        /// endpoint for the floating IP capability required to configure a SQL
-        /// AlwaysOn Availability Group. This setting is required when using
-        /// the SQL AlwaysOn Availability Groups in SQL server. This setting
-        /// can't be changed after you create the endpoint.</param>
-        /// <param name="enableTcpReset">Receive bidirectional TCP Reset on TCP
-        /// flow idle timeout or unexpected connection termination. This
-        /// element is only used when the protocol is set to TCP.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// inbound NAT pool resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the set of inbound NAT pools used by the load balancer. This name
-        /// can be used to access the resource.</param>
+        /// <param name="provisioningState">Gets the provisioning state of the
+        /// PublicIP resource. Possible values are: 'Updating', 'Deleting', and
+        /// 'Failed'.</param>
+        /// <param name="name">The name of the resource that is unique within a
+        /// resource group. This name can be used to access the
+        /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public InboundNatPool(string protocol, int frontendPortRangeStart, int frontendPortRangeEnd, int backendPort, string id = default(string), SubResource frontendIPConfiguration = default(SubResource), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public InboundNatPool(string protocol, int frontendPortRangeStart, int frontendPortRangeEnd, int backendPort, string id = default(string), SubResource frontendIPConfiguration = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -77,13 +64,9 @@ namespace Microsoft.Azure.Management.Network.Models
             FrontendPortRangeStart = frontendPortRangeStart;
             FrontendPortRangeEnd = frontendPortRangeEnd;
             BackendPort = backendPort;
-            IdleTimeoutInMinutes = idleTimeoutInMinutes;
-            EnableFloatingIP = enableFloatingIP;
-            EnableTcpReset = enableTcpReset;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -99,8 +82,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource FrontendIPConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the transport protocol used by the
-        /// inbound NAT pool. Possible values include: 'Udp', 'Tcp', 'All'
+        /// Gets or sets the transport protocol for the endpoint. Possible
+        /// values are: 'Udp' or 'Tcp'. Possible values include: 'Udp', 'Tcp'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol { get; set; }
@@ -129,59 +112,25 @@ namespace Microsoft.Azure.Management.Network.Models
         public int BackendPort { get; set; }
 
         /// <summary>
-        /// Gets or sets the timeout for the TCP idle connection. The value can
-        /// be set between 4 and 30 minutes. The default value is 4 minutes.
-        /// This element is only used when the protocol is set to TCP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.idleTimeoutInMinutes")]
-        public int? IdleTimeoutInMinutes { get; set; }
-
-        /// <summary>
-        /// Gets or sets configures a virtual machine's endpoint for the
-        /// floating IP capability required to configure a SQL AlwaysOn
-        /// Availability Group. This setting is required when using the SQL
-        /// AlwaysOn Availability Groups in SQL server. This setting can't be
-        /// changed after you create the endpoint.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enableFloatingIP")]
-        public bool? EnableFloatingIP { get; set; }
-
-        /// <summary>
-        /// Gets or sets receive bidirectional TCP Reset on TCP flow idle
-        /// timeout or unexpected connection termination. This element is only
-        /// used when the protocol is set to TCP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enableTcpReset")]
-        public bool? EnableTcpReset { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the inbound NAT pool resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets the provisioning state of the PublicIP resource. Possible
+        /// values are: 'Updating', 'Deleting', and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set
-        /// of inbound NAT pools used by the load balancer. This name can be
-        /// used to access the resource.
+        /// Gets or sets the name of the resource that is unique within a
+        /// resource group. This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
         /// Validate the object.

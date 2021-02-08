@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Route Filter Rule Resource.
+    /// Route Filter Rule Resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RouteFilterRule : SubResource
@@ -34,21 +34,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the RouteFilterRule class.
         /// </summary>
-        /// <param name="access">The access type of the rule. Possible values
-        /// include: 'Allow', 'Deny'</param>
+        /// <param name="access">The access type of the rule. Valid values are:
+        /// 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'</param>
         /// <param name="communities">The collection for bgp community values
-        /// to filter on. e.g. ['12076:5010','12076:5020'].</param>
+        /// to filter on. e.g. ['12076:5010','12076:5020']</param>
         /// <param name="id">Resource ID.</param>
-        /// <param name="provisioningState">The provisioning state of the route
-        /// filter rule resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="provisioningState">The provisioning state of the
+        /// resource. Possible values are: 'Updating', 'Deleting', 'Succeeded'
+        /// and 'Failed'.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public RouteFilterRule(string access, IList<string> communities, string id = default(string), string provisioningState = default(string), string name = default(string), string location = default(string), string etag = default(string))
+        /// <param name="tags">Resource tags.</param>
+        public RouteFilterRule(string access, IList<string> communities, string id = default(string), string provisioningState = default(string), string name = default(string), string location = default(string), string etag = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(id)
         {
             Access = access;
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
             Name = name;
             Location = location;
             Etag = etag;
+            Tags = tags;
             CustomInit();
         }
         /// <summary>
@@ -73,33 +75,32 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the access type of the rule. Possible values include:
-        /// 'Allow', 'Deny'
+        /// Gets or sets the access type of the rule. Valid values are:
+        /// 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "properties.access")]
         public string Access { get; set; }
 
         /// <summary>
         /// Gets or sets the collection for bgp community values to filter on.
-        /// e.g. ['12076:5010','12076:5020'].
+        /// e.g. ['12076:5010','12076:5020']
         /// </summary>
         [JsonProperty(PropertyName = "properties.communities")]
         public IList<string> Communities { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the route filter rule resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets the provisioning state of the resource. Possible values are:
+        /// 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a
-        /// resource group. This name can be used to access the resource.
+        /// Gets the name of the resource that is unique within a resource
+        /// group. This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Gets or sets resource location.
@@ -115,7 +116,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag { get; private set; }
 
         /// <summary>
-        /// The rule type of the rule.
+        /// Gets or sets resource tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// The rule type of the rule. Valid value is: 'Community'
         /// </summary>
         [JsonProperty(PropertyName = "properties.routeFilterRuleType")]
         public static string RouteFilterRuleType { get; private set; }

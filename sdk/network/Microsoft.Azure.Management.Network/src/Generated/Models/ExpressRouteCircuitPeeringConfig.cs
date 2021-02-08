@@ -33,24 +33,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteCircuitPeeringConfig
         /// class.
         /// </summary>
-        /// <param name="advertisedPublicPrefixes">The reference to
+        /// <param name="advertisedPublicPrefixes">The reference of
         /// AdvertisedPublicPrefixes.</param>
-        /// <param name="advertisedCommunities">The communities of bgp peering.
-        /// Specified for microsoft peering.</param>
-        /// <param name="advertisedPublicPrefixesState">The advertised public
-        /// prefix state of the Peering resource. Possible values include:
-        /// 'NotConfigured', 'Configuring', 'Configured',
+        /// <param
+        /// name="advertisedPublicPrefixesState">AdvertisedPublicPrefixState of
+        /// the Peering resource. Possible values are 'NotConfigured',
+        /// 'Configuring', 'Configured', and 'ValidationNeeded'. Possible
+        /// values include: 'NotConfigured', 'Configuring', 'Configured',
         /// 'ValidationNeeded'</param>
-        /// <param name="legacyMode">The legacy mode of the peering.</param>
         /// <param name="customerASN">The CustomerASN of the peering.</param>
         /// <param name="routingRegistryName">The RoutingRegistryName of the
         /// configuration.</param>
-        public ExpressRouteCircuitPeeringConfig(IList<string> advertisedPublicPrefixes = default(IList<string>), IList<string> advertisedCommunities = default(IList<string>), string advertisedPublicPrefixesState = default(string), int? legacyMode = default(int?), int? customerASN = default(int?), string routingRegistryName = default(string))
+        public ExpressRouteCircuitPeeringConfig(IList<string> advertisedPublicPrefixes = default(IList<string>), string advertisedPublicPrefixesState = default(string), int? customerASN = default(int?), string routingRegistryName = default(string))
         {
             AdvertisedPublicPrefixes = advertisedPublicPrefixes;
-            AdvertisedCommunities = advertisedCommunities;
             AdvertisedPublicPrefixesState = advertisedPublicPrefixesState;
-            LegacyMode = legacyMode;
             CustomerASN = customerASN;
             RoutingRegistryName = routingRegistryName;
             CustomInit();
@@ -62,31 +59,19 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the reference to AdvertisedPublicPrefixes.
+        /// Gets or sets the reference of AdvertisedPublicPrefixes.
         /// </summary>
         [JsonProperty(PropertyName = "advertisedPublicPrefixes")]
         public IList<string> AdvertisedPublicPrefixes { get; set; }
 
         /// <summary>
-        /// Gets or sets the communities of bgp peering. Specified for
-        /// microsoft peering.
-        /// </summary>
-        [JsonProperty(PropertyName = "advertisedCommunities")]
-        public IList<string> AdvertisedCommunities { get; set; }
-
-        /// <summary>
-        /// Gets the advertised public prefix state of the Peering resource.
-        /// Possible values include: 'NotConfigured', 'Configuring',
-        /// 'Configured', 'ValidationNeeded'
+        /// Gets or sets advertisedPublicPrefixState of the Peering resource.
+        /// Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'. Possible values include: 'NotConfigured',
+        /// 'Configuring', 'Configured', 'ValidationNeeded'
         /// </summary>
         [JsonProperty(PropertyName = "advertisedPublicPrefixesState")]
-        public string AdvertisedPublicPrefixesState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the legacy mode of the peering.
-        /// </summary>
-        [JsonProperty(PropertyName = "legacyMode")]
-        public int? LegacyMode { get; set; }
+        public string AdvertisedPublicPrefixesState { get; set; }
 
         /// <summary>
         /// Gets or sets the CustomerASN of the peering.

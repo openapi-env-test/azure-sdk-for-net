@@ -147,52 +147,6 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a network watcher tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network watcher tags.
-            /// </param>
-            public static NetworkWatcher UpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a network watcher tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network watcher tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkWatcher> UpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets all network watchers by resource group.
             /// </summary>
             /// <param name='operations'>
@@ -441,7 +395,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource.
+            /// Initiate troubleshooting on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -461,7 +415,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource.
+            /// Initiate troubleshooting on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -487,7 +441,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource.
+            /// Get the last completed troubleshooting result on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -507,7 +461,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource.
+            /// Get the last completed troubleshooting result on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -533,8 +487,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Configures flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Configures flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -554,8 +507,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Configures flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Configures flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -581,8 +533,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Queries status of flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Queries status of flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -594,8 +545,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters that define a resource to query flow log and traffic analytics
-            /// (optional) status.
+            /// Parameters that define a resource to query flow log status.
             /// </param>
             public static FlowLogInformation GetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters)
             {
@@ -603,8 +553,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Queries status of flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Queries status of flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -616,8 +565,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters that define a resource to query flow log and traffic analytics
-            /// (optional) status.
+            /// Parameters that define a resource to query flow log status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -675,164 +623,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ConnectivityInformation> CheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Gets the relative latency score for internet service providers
-            /// from a specified location to Azure regions.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine Azure reachability report configuration.
-            /// </param>
-            public static AzureReachabilityReport GetAzureReachabilityReport(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AzureReachabilityReportParameters parameters)
-            {
-                return operations.GetAzureReachabilityReportAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Gets the relative latency score for internet service providers
-            /// from a specified location to Azure regions.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine Azure reachability report configuration.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AzureReachabilityReport> GetAzureReachabilityReportAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AzureReachabilityReportParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetAzureReachabilityReportWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Lists all available internet service providers for a specified
-            /// Azure region.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that scope the list of available providers.
-            /// </param>
-            public static AvailableProvidersList ListAvailableProviders(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters)
-            {
-                return operations.ListAvailableProvidersAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Lists all available internet service providers for a specified
-            /// Azure region.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that scope the list of available providers.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AvailableProvidersList> ListAvailableProvidersAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAvailableProvidersWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets Network Configuration Diagnostic data to help customers understand and
-            /// debug network behavior. It provides detailed information on what security
-            /// rules were applied to a specified traffic flow and the result of evaluating
-            /// these rules. Customers must provide details of a flow like source,
-            /// destination, protocol, etc. The API returns whether traffic was allowed or
-            /// denied, the rules evaluated for the specified flow and the evaluation
-            /// results.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to get network configuration diagnostic.
-            /// </param>
-            public static NetworkConfigurationDiagnosticResponse GetNetworkConfigurationDiagnostic(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters)
-            {
-                return operations.GetNetworkConfigurationDiagnosticAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets Network Configuration Diagnostic data to help customers understand and
-            /// debug network behavior. It provides detailed information on what security
-            /// rules were applied to a specified traffic flow and the result of evaluating
-            /// these rules. Customers must provide details of a flow like source,
-            /// destination, protocol, etc. The API returns whether traffic was allowed or
-            /// denied, the rules evaluated for the specified flow and the evaluation
-            /// results.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to get network configuration diagnostic.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkConfigurationDiagnosticResponse> GetNetworkConfigurationDiagnosticAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetNetworkConfigurationDiagnosticWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1016,7 +806,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource.
+            /// Initiate troubleshooting on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1036,7 +826,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Initiate troubleshooting on a specified resource.
+            /// Initiate troubleshooting on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1062,7 +852,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource.
+            /// Get the last completed troubleshooting result on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1082,7 +872,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource.
+            /// Get the last completed troubleshooting result on a specified resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1108,8 +898,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Configures flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Configures flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1129,8 +918,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Configures flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Configures flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1156,8 +944,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Queries status of flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Queries status of flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1169,8 +956,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters that define a resource to query flow log and traffic analytics
-            /// (optional) status.
+            /// Parameters that define a resource to query flow log status.
             /// </param>
             public static FlowLogInformation BeginGetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters)
             {
@@ -1178,8 +964,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Queries status of flow log and traffic analytics (optional) on a specified
-            /// resource.
+            /// Queries status of flow log on a specified resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1191,8 +976,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters that define a resource to query flow log and traffic analytics
-            /// (optional) status.
+            /// Parameters that define a resource to query flow log status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1250,164 +1034,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ConnectivityInformation> BeginCheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Gets the relative latency score for internet service providers
-            /// from a specified location to Azure regions.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine Azure reachability report configuration.
-            /// </param>
-            public static AzureReachabilityReport BeginGetAzureReachabilityReport(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AzureReachabilityReportParameters parameters)
-            {
-                return operations.BeginGetAzureReachabilityReportAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Gets the relative latency score for internet service providers
-            /// from a specified location to Azure regions.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine Azure reachability report configuration.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AzureReachabilityReport> BeginGetAzureReachabilityReportAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AzureReachabilityReportParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginGetAzureReachabilityReportWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Lists all available internet service providers for a specified
-            /// Azure region.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that scope the list of available providers.
-            /// </param>
-            public static AvailableProvidersList BeginListAvailableProviders(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters)
-            {
-                return operations.BeginListAvailableProvidersAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// NOTE: This feature is currently in preview and still being tested for
-            /// stability. Lists all available internet service providers for a specified
-            /// Azure region.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that scope the list of available providers.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AvailableProvidersList> BeginListAvailableProvidersAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, AvailableProvidersListParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginListAvailableProvidersWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets Network Configuration Diagnostic data to help customers understand and
-            /// debug network behavior. It provides detailed information on what security
-            /// rules were applied to a specified traffic flow and the result of evaluating
-            /// these rules. Customers must provide details of a flow like source,
-            /// destination, protocol, etc. The API returns whether traffic was allowed or
-            /// denied, the rules evaluated for the specified flow and the evaluation
-            /// results.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to get network configuration diagnostic.
-            /// </param>
-            public static NetworkConfigurationDiagnosticResponse BeginGetNetworkConfigurationDiagnostic(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters)
-            {
-                return operations.BeginGetNetworkConfigurationDiagnosticAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets Network Configuration Diagnostic data to help customers understand and
-            /// debug network behavior. It provides detailed information on what security
-            /// rules were applied to a specified traffic flow and the result of evaluating
-            /// these rules. Customers must provide details of a flow like source,
-            /// destination, protocol, etc. The API returns whether traffic was allowed or
-            /// denied, the rules evaluated for the specified flow and the evaluation
-            /// results.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to get network configuration diagnostic.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkConfigurationDiagnosticResponse> BeginGetNetworkConfigurationDiagnosticAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkConfigurationDiagnosticParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginGetNetworkConfigurationDiagnosticWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
