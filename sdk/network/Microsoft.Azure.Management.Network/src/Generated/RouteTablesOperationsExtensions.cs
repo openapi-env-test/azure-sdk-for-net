@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RouteTablesOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified route table.
+            /// The Delete RouteTable operation deletes the specified Route Table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route table.
+            /// The Delete RouteTable operation deletes the specified Route Table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified route table.
+            /// The Get RouteTables operation retrieves information about the specified
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -70,16 +71,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='routeTableName'>
             /// The name of the route table.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static RouteTable Get(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, string expand = default(string))
+            public static RouteTable Get(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName)
             {
-                return operations.GetAsync(resourceGroupName, routeTableName, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the specified route table.
+            /// The Get RouteTables operation retrieves information about the specified
+            /// route table.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -89,23 +88,21 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='routeTableName'>
             /// The name of the route table.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RouteTable> GetAsync(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RouteTable> GetAsync(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, routeTableName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, routeTableName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create or updates a route table in a specified resource group.
+            /// The Put RouteTable operation creates/updates a route table in the specified
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +114,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route table.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
+            /// Parameters supplied to the create/update Route Table operation
             /// </param>
             public static RouteTable CreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTable parameters)
             {
@@ -125,7 +122,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Create or updates a route table in a specified resource group.
+            /// The Put RouteTable operation creates/updates a route table in the specified
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -137,7 +135,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route table.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
+            /// Parameters supplied to the create/update Route Table operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -151,53 +149,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a route table tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update route table tags.
-            /// </param>
-            public static RouteTable UpdateTags(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, routeTableName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a route table tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update route table tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RouteTable> UpdateTagsAsync(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, routeTableName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all route tables in a resource group.
+            /// The list RouteTables returns all route tables in a resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -211,7 +163,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a resource group.
+            /// The list RouteTables returns all route tables in a resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -231,7 +183,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a subscription.
+            /// The list RouteTables returns all route tables in a subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -242,7 +194,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a subscription.
+            /// The list RouteTables returns all route tables in a subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -259,7 +211,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route table.
+            /// The Delete RouteTable operation deletes the specified Route Table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -276,7 +228,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified route table.
+            /// The Delete RouteTable operation deletes the specified Route Table
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -296,7 +248,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Create or updates a route table in a specified resource group.
+            /// The Put RouteTable operation creates/updates a route table in the specified
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -308,7 +261,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route table.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
+            /// Parameters supplied to the create/update Route Table operation
             /// </param>
             public static RouteTable BeginCreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTable parameters)
             {
@@ -316,7 +269,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Create or updates a route table in a specified resource group.
+            /// The Put RouteTable operation creates/updates a route table in the specified
+            /// resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -328,7 +282,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the route table.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
+            /// Parameters supplied to the create/update Route Table operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -342,7 +296,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a resource group.
+            /// The list RouteTables returns all route tables in a resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -356,7 +310,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a resource group.
+            /// The list RouteTables returns all route tables in a resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -376,7 +330,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a subscription.
+            /// The list RouteTables returns all route tables in a subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -390,7 +344,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables in a subscription.
+            /// The list RouteTables returns all route tables in a subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

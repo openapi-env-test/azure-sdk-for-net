@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Deletes the specified authorization from the specified express route
-        /// circuit.
+        /// The delete authorization operation deletes the specified authorization from
+        /// the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -77,7 +77,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the specified authorization from the specified express route circuit.
+        /// The GET authorization operation retrieves the specified authorization from
+        /// the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -123,11 +124,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -138,7 +142,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("circuitName", circuitName);
                 tracingParameters.Add("authorizationName", authorizationName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -150,9 +153,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -280,7 +283,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates an authorization in the specified express route circuit.
+        /// The Put Authorization operation creates/updates an authorization in the
+        /// specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -292,8 +296,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the authorization.
         /// </param>
         /// <param name='authorizationParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// authorization operation.
+        /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+        /// operation
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -309,7 +313,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets all authorizations in an express route circuit.
+        /// The List authorization operation retrieves all the authorizations in an
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -348,11 +353,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "circuitName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -362,7 +370,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("circuitName", circuitName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -373,9 +380,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{circuitName}", System.Uri.EscapeDataString(circuitName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -503,8 +510,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Deletes the specified authorization from the specified express route
-        /// circuit.
+        /// The delete authorization operation deletes the specified authorization from
+        /// the specified ExpressRouteCircuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -547,11 +554,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -562,7 +572,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("circuitName", circuitName);
                 tracingParameters.Add("authorizationName", authorizationName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
@@ -574,9 +583,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -686,7 +695,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates an authorization in the specified express route circuit.
+        /// The Put Authorization operation creates/updates an authorization in the
+        /// specified ExpressRouteCircuits
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -698,8 +708,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the authorization.
         /// </param>
         /// <param name='authorizationParameters'>
-        /// Parameters supplied to the create or update express route circuit
-        /// authorization operation.
+        /// Parameters supplied to the create/update ExpressRouteCircuitAuthorization
+        /// operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -740,11 +750,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "authorizationParameters");
             }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2020-08-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -756,7 +769,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("circuitName", circuitName);
                 tracingParameters.Add("authorizationName", authorizationName);
                 tracingParameters.Add("authorizationParameters", authorizationParameters);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
@@ -768,9 +780,9 @@ namespace Microsoft.Azure.Management.Network
             _url = _url.Replace("{authorizationName}", System.Uri.EscapeDataString(authorizationName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
-            if (apiVersion != null)
+            if (Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -922,7 +934,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets all authorizations in an express route circuit.
+        /// The List authorization operation retrieves all the authorizations in an
+        /// ExpressRouteCircuit.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

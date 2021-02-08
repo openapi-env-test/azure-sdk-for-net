@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// A common class for general resource information.
+    /// A common class for general resource information
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class LocalNetworkGateway : Resource
@@ -34,32 +34,26 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the LocalNetworkGateway class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="location">Resource location.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="localNetworkAddressSpace">Local network site address
-        /// space.</param>
+        /// <param name="location">Resource location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="localNetworkAddressSpace">Local network site Address
+        /// space</param>
         /// <param name="gatewayIpAddress">IP address of local network
         /// gateway.</param>
-        /// <param name="fqdn">FQDN of local network gateway.</param>
-        /// <param name="bgpSettings">Local network gateway's BGP speaker
-        /// settings.</param>
-        /// <param name="resourceGuid">The resource GUID property of the local
-        /// network gateway resource.</param>
-        /// <param name="provisioningState">The provisioning state of the local
-        /// network gateway resource. Possible values include: 'Succeeded',
-        /// 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public LocalNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace localNetworkAddressSpace = default(AddressSpace), string gatewayIpAddress = default(string), string fqdn = default(string), BgpSettings bgpSettings = default(BgpSettings), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
-            : base(id, name, type, location, tags)
+        /// <param name="resourceGuid">Gets or sets resource guid property of
+        /// the LocalNetworkGateway resource</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the LocalNetworkGateway resource Updating/Deleting/Failed</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated</param>
+        public LocalNetworkGateway(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace localNetworkAddressSpace = default(AddressSpace), string gatewayIpAddress = default(string), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+            : base(location, id, name, type, tags)
         {
             LocalNetworkAddressSpace = localNetworkAddressSpace;
             GatewayIpAddress = gatewayIpAddress;
-            Fqdn = fqdn;
-            BgpSettings = bgpSettings;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
@@ -72,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets local network site address space.
+        /// Gets or sets local network site Address space
         /// </summary>
         [JsonProperty(PropertyName = "properties.localNetworkAddressSpace")]
         public AddressSpace LocalNetworkAddressSpace { get; set; }
@@ -84,38 +78,25 @@ namespace Microsoft.Azure.Management.Network.Models
         public string GatewayIpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets FQDN of local network gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.fqdn")]
-        public string Fqdn { get; set; }
-
-        /// <summary>
-        /// Gets or sets local network gateway's BGP speaker settings.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.bgpSettings")]
-        public BgpSettings BgpSettings { get; set; }
-
-        /// <summary>
-        /// Gets the resource GUID property of the local network gateway
-        /// resource.
+        /// Gets or sets resource guid property of the LocalNetworkGateway
+        /// resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; private set; }
+        public string ResourceGuid { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the local network gateway resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets Provisioning state of the LocalNetworkGateway resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -123,12 +104,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (BgpSettings != null)
-            {
-                BgpSettings.Validate();
-            }
+            base.Validate();
         }
     }
 }

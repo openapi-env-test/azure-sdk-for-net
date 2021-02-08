@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The network resource usage.
+    /// Describes Network Resource Usage.
     /// </summary>
     public partial class Usage
     {
@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the Usage class.
         /// </summary>
-        /// <param name="currentValue">The current value of the usage.</param>
-        /// <param name="limit">The limit of usage.</param>
-        /// <param name="name">The name of the type of usage.</param>
-        /// <param name="id">Resource identifier.</param>
-        public Usage(long currentValue, long limit, UsageName name, string id = default(string))
+        /// <param name="currentValue">Gets or sets the current value of the
+        /// usage.</param>
+        /// <param name="limit">Gets or sets the limit of usage.</param>
+        /// <param name="name">Gets or sets the name of the type of
+        /// usage.</param>
+        public Usage(int currentValue, long limit, UsageName name)
         {
-            Id = id;
             CurrentValue = currentValue;
             Limit = limit;
             Name = name;
@@ -56,16 +56,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource identifier.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
         /// Gets or sets the current value of the usage.
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
-        public long CurrentValue { get; set; }
+        public int CurrentValue { get; set; }
 
         /// <summary>
         /// Gets or sets the limit of usage.
@@ -80,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public UsageName Name { get; set; }
 
         /// <summary>
-        /// An enum describing the unit of measurement.
+        /// Gets or sets an enum describing the unit of measurement.
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public static string Unit { get; private set; }

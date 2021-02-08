@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Network.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Reference to another subresource.
-    /// </summary>
     public partial class SubResource : IResource
     {
         /// <summary>
@@ -31,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the SubResource class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
+        /// <param name="id">Resource Id</param>
         public SubResource(string id = default(string))
         {
             Id = id;
@@ -44,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource ID.
+        /// Gets or sets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

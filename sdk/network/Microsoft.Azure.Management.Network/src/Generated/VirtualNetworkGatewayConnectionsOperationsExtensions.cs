@@ -22,8 +22,9 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualNetworkGatewayConnectionsOperationsExtensions
     {
             /// <summary>
-            /// Creates or updates a virtual network gateway connection in the specified
-            /// resource group.
+            /// The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
+            /// network gateway connection in the specified resource group through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network gateway connection.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network gateway
-            /// connection operation.
+            /// Parameters supplied to the Begin Create or update Virtual Network Gateway
+            /// connection operation through Network resource provider.
             /// </param>
             public static VirtualNetworkGatewayConnection CreateOrUpdate(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters)
             {
@@ -44,8 +45,9 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a virtual network gateway connection in the specified
-            /// resource group.
+            /// The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
+            /// network gateway connection in the specified resource group through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -57,8 +59,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network gateway connection.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network gateway
-            /// connection operation.
+            /// Parameters supplied to the Begin Create or update Virtual Network Gateway
+            /// connection operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -72,7 +74,9 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified virtual network gateway connection by resource group.
+            /// The Get VirtualNetworkGatewayConnection operation retrieves information
+            /// about the specified virtual network gateway connection through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -89,7 +93,9 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified virtual network gateway connection by resource group.
+            /// The Get VirtualNetworkGatewayConnection operation retrieves information
+            /// about the specified virtual network gateway connection through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -112,7 +118,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified virtual network Gateway connection.
+            /// The Delete VirtualNetworkGatewayConnection operation deletes the specified
+            /// virtual network Gateway connection through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -129,7 +136,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified virtual network Gateway connection.
+            /// The Delete VirtualNetworkGatewayConnection operation deletes the specified
+            /// virtual network Gateway connection through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -146,106 +154,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task DeleteAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a virtual network gateway connection tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update virtual network gateway connection tags.
-            /// </param>
-            public static VirtualNetworkGatewayConnection UpdateTags(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a virtual network gateway connection tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update virtual network gateway connection tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualNetworkGatewayConnection> UpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-            /// network gateway connection shared key for passed virtual network gateway
-            /// connection in the specified resource group through Network resource
-            /// provider.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The virtual network gateway connection name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
-            /// Shared key operation throughNetwork resource provider.
-            /// </param>
-            public static ConnectionSharedKey SetSharedKey(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters)
-            {
-                return operations.SetSharedKeyAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-            /// network gateway connection shared key for passed virtual network gateway
-            /// connection in the specified resource group through Network resource
-            /// provider.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The virtual network gateway connection name.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
-            /// Shared key operation throughNetwork resource provider.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ConnectionSharedKey> SetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.SetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>
@@ -287,6 +195,60 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ConnectionSharedKey> GetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+            /// network gateway connection shared key for passed virtual network gateway
+            /// connection in the specified resource group through Network resource
+            /// provider.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The virtual network gateway connection name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+            /// Shared key operation through Network resource provider.
+            /// </param>
+            public static ConnectionSharedKey SetSharedKey(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters)
+            {
+                return operations.SetSharedKeyAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+            /// network gateway connection shared key for passed virtual network gateway
+            /// connection in the specified resource group through Network resource
+            /// provider.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='virtualNetworkGatewayConnectionName'>
+            /// The virtual network gateway connection name.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+            /// Shared key operation through Network resource provider.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ConnectionSharedKey> SetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.SetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -344,8 +306,8 @@ namespace Microsoft.Azure.Management.Network
             /// The virtual network gateway connection reset shared key Name.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the begin reset virtual network gateway connection
-            /// shared key operation through network resource provider.
+            /// Parameters supplied to the Begin Reset Virtual Network Gateway connection
+            /// shared key operation through Network resource provider.
             /// </param>
             public static ConnectionResetSharedKey ResetSharedKey(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionResetSharedKey parameters)
             {
@@ -368,8 +330,8 @@ namespace Microsoft.Azure.Management.Network
             /// The virtual network gateway connection reset shared key Name.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the begin reset virtual network gateway connection
-            /// shared key operation through network resource provider.
+            /// Parameters supplied to the Begin Reset Virtual Network Gateway connection
+            /// shared key operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -383,8 +345,9 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Starts packet capture on virtual network gateway connection in the
-            /// specified resource group.
+            /// The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
+            /// network gateway connection in the specified resource group through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -396,150 +359,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network gateway connection.
             /// </param>
             /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to start packet
-            /// capture on gateway connection.
-            /// </param>
-            public static string StartPacketCapture(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters))
-            {
-                return operations.StartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Starts packet capture on virtual network gateway connection in the
-            /// specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to start packet
-            /// capture on gateway connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> StartPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Stops packet capture on virtual network gateway connection in the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to stop packet
-            /// capture on gateway connection.
-            /// </param>
-            public static string StopPacketCapture(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters)
-            {
-                return operations.StopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Stops packet capture on virtual network gateway connection in the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to stop packet
-            /// capture on gateway connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> StopPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists IKE Security Associations for the virtual network gateway connection
-            /// in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            public static string GetIkeSas(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
-            {
-                return operations.GetIkeSasAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists IKE Security Associations for the virtual network gateway connection
-            /// in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> GetIkeSasAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetIkeSasWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates or updates a virtual network gateway connection in the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network gateway
-            /// connection operation.
+            /// Parameters supplied to the Begin Create or update Virtual Network Gateway
+            /// connection operation through Network resource provider.
             /// </param>
             public static VirtualNetworkGatewayConnection BeginCreateOrUpdate(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters)
             {
@@ -547,8 +368,9 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a virtual network gateway connection in the specified
-            /// resource group.
+            /// The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
+            /// network gateway connection in the specified resource group through Network
+            /// resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -560,8 +382,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the virtual network gateway connection.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network gateway
-            /// connection operation.
+            /// Parameters supplied to the Begin Create or update Virtual Network Gateway
+            /// connection operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -575,7 +397,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified virtual network Gateway connection.
+            /// The Delete VirtualNetworkGatewayConnection operation deletes the specified
+            /// virtual network Gateway connection through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -592,7 +415,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified virtual network Gateway connection.
+            /// The Delete VirtualNetworkGatewayConnection operation deletes the specified
+            /// virtual network Gateway connection through Network resource provider.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -612,52 +436,6 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a virtual network gateway connection tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update virtual network gateway connection tags.
-            /// </param>
-            public static VirtualNetworkGatewayConnection BeginUpdateTags(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters)
-            {
-                return operations.BeginUpdateTagsAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a virtual network gateway connection tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update virtual network gateway connection tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualNetworkGatewayConnection> BeginUpdateTagsAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
             /// network gateway connection shared key for passed virtual network gateway
             /// connection in the specified resource group through Network resource
@@ -674,7 +452,7 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='parameters'>
             /// Parameters supplied to the Begin Set Virtual Network Gateway connection
-            /// Shared key operation throughNetwork resource provider.
+            /// Shared key operation through Network resource provider.
             /// </param>
             public static ConnectionSharedKey BeginSetSharedKey(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters)
             {
@@ -698,7 +476,7 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='parameters'>
             /// Parameters supplied to the Begin Set Virtual Network Gateway connection
-            /// Shared key operation throughNetwork resource provider.
+            /// Shared key operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -727,8 +505,8 @@ namespace Microsoft.Azure.Management.Network
             /// The virtual network gateway connection reset shared key Name.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the begin reset virtual network gateway connection
-            /// shared key operation through network resource provider.
+            /// Parameters supplied to the Begin Reset Virtual Network Gateway connection
+            /// shared key operation through Network resource provider.
             /// </param>
             public static ConnectionResetSharedKey BeginResetSharedKey(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionResetSharedKey parameters)
             {
@@ -751,8 +529,8 @@ namespace Microsoft.Azure.Management.Network
             /// The virtual network gateway connection reset shared key Name.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the begin reset virtual network gateway connection
-            /// shared key operation through network resource provider.
+            /// Parameters supplied to the Begin Reset Virtual Network Gateway connection
+            /// shared key operation through Network resource provider.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -760,148 +538,6 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<ConnectionResetSharedKey> BeginResetSharedKeyAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionResetSharedKey parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginResetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Starts packet capture on virtual network gateway connection in the
-            /// specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to start packet
-            /// capture on gateway connection.
-            /// </param>
-            public static string BeginStartPacketCapture(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters))
-            {
-                return operations.BeginStartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Starts packet capture on virtual network gateway connection in the
-            /// specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to start packet
-            /// capture on gateway connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> BeginStartPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Stops packet capture on virtual network gateway connection in the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to stop packet
-            /// capture on gateway connection.
-            /// </param>
-            public static string BeginStopPacketCapture(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters)
-            {
-                return operations.BeginStopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Stops packet capture on virtual network gateway connection in the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='parameters'>
-            /// Virtual network gateway packet capture parameters supplied to stop packet
-            /// capture on gateway connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> BeginStopPacketCaptureAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists IKE Security Associations for the virtual network gateway connection
-            /// in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            public static string BeginGetIkeSas(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
-            {
-                return operations.BeginGetIkeSasAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists IKE Security Associations for the virtual network gateway connection
-            /// in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkGatewayConnectionName'>
-            /// The name of the virtual network gateway Connection.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<string> BeginGetIkeSasAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginGetIkeSasWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

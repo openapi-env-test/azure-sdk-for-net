@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// DhcpOptions contains an array of DNS servers available to VMs deployed
-    /// in the virtual network. Standard DHCP option for a subnet overrides
-    /// VNET DHCP options.
+    /// DHCPOptions contains an array of DNS servers available to VMs deployed
+    /// in the virtual networkStandard DHCP option for a subnet overrides VNET
+    /// DHCP options.
     /// </summary>
     public partial class DhcpOptions
     {
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the DhcpOptions class.
         /// </summary>
-        /// <param name="dnsServers">The list of DNS servers IP
-        /// addresses.</param>
+        /// <param name="dnsServers">Gets or sets list of DNS servers IP
+        /// addresses</param>
         public DhcpOptions(IList<string> dnsServers = default(IList<string>))
         {
             DnsServers = dnsServers;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of DNS servers IP addresses.
+        /// Gets or sets list of DNS servers IP addresses
         /// </summary>
         [JsonProperty(PropertyName = "dnsServers")]
         public IList<string> DnsServers { get; set; }

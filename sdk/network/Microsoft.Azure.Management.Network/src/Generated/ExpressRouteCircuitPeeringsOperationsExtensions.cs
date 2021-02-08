@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteCircuitPeeringsOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
+            /// The delete peering operation deletes the specified peering from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
+            /// The delete peering operation deletes the specified peering from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,7 +67,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified peering for the express route circuit.
+            /// The GET peering operation retrieves the specified authorization from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -85,7 +88,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified peering for the express route circuit.
+            /// The GET peering operation retrieves the specified authorization from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -111,7 +115,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
+            /// The Put Peering operation creates/updates an peering in the specified
+            /// ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -126,8 +131,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the peering.
             /// </param>
             /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuit Peering
+            /// operation
             /// </param>
             public static ExpressRouteCircuitPeering CreateOrUpdate(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeering peeringParameters)
             {
@@ -135,7 +140,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
+            /// The Put Peering operation creates/updates an peering in the specified
+            /// ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -150,8 +156,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the peering.
             /// </param>
             /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuit Peering
+            /// operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -165,7 +171,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all peerings in a specified express route circuit.
+            /// The List peering operation retrieves all the peerings in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -174,7 +181,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='circuitName'>
-            /// The name of the express route circuit.
+            /// The name of the circuit.
             /// </param>
             public static IPage<ExpressRouteCircuitPeering> List(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName)
             {
@@ -182,7 +189,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all peerings in a specified express route circuit.
+            /// The List peering operation retrieves all the peerings in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -191,7 +199,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the resource group.
             /// </param>
             /// <param name='circuitName'>
-            /// The name of the express route circuit.
+            /// The name of the circuit.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -205,7 +213,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
+            /// The delete peering operation deletes the specified peering from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -225,7 +234,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
+            /// The delete peering operation deletes the specified peering from the
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -248,7 +258,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
+            /// The Put Peering operation creates/updates an peering in the specified
+            /// ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -263,8 +274,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the peering.
             /// </param>
             /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuit Peering
+            /// operation
             /// </param>
             public static ExpressRouteCircuitPeering BeginCreateOrUpdate(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeering peeringParameters)
             {
@@ -272,7 +283,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
+            /// The Put Peering operation creates/updates an peering in the specified
+            /// ExpressRouteCircuits
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -287,8 +299,8 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the peering.
             /// </param>
             /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
+            /// Parameters supplied to the create/update ExpressRouteCircuit Peering
+            /// operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -302,7 +314,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all peerings in a specified express route circuit.
+            /// The List peering operation retrieves all the peerings in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -316,7 +329,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all peerings in a specified express route circuit.
+            /// The List peering operation retrieves all the peerings in an
+            /// ExpressRouteCircuit.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

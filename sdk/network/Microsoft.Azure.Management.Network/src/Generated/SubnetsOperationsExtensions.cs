@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
     public static partial class SubnetsOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified subnet.
+            /// The delete subnet operation deletes the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified subnet.
+            /// The delete subnet operation deletes the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified subnet by virtual network and resource group.
+            /// The Get subnet operation retrieves information about the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -79,16 +79,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static Subnet Get(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string))
+            public static Subnet Get(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName)
             {
-                return operations.GetAsync(resourceGroupName, virtualNetworkName, subnetName, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, virtualNetworkName, subnetName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the specified subnet by virtual network and resource group.
+            /// The Get subnet operation retrieves information about the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -101,23 +98,21 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='subnetName'>
             /// The name of the subnet.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Subnet> GetAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Subnet> GetAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates or updates a subnet in the specified virtual network.
+            /// The Put Subnet operation creates/updates a subnet in the specified virtual
+            /// network
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -132,7 +127,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the subnet.
             /// </param>
             /// <param name='subnetParameters'>
-            /// Parameters supplied to the create or update subnet operation.
+            /// Parameters supplied to the create/update Subnet operation
             /// </param>
             public static Subnet CreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
             {
@@ -140,7 +135,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a subnet in the specified virtual network.
+            /// The Put Subnet operation creates/updates a subnet in the specified virtual
+            /// network
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -155,7 +151,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the subnet.
             /// </param>
             /// <param name='subnetParameters'>
-            /// Parameters supplied to the create or update subnet operation.
+            /// Parameters supplied to the create/update Subnet operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -169,105 +165,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Prepares a subnet by applying network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='prepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to prepare subnet by applying network intent policies.
-            /// </param>
-            public static void PrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
-            {
-                operations.PrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Prepares a subnet by applying network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='prepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to prepare subnet by applying network intent policies.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task PrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.PrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Unprepares a subnet by removing network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='unprepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to unprepare subnet to remove network intent policies.
-            /// </param>
-            public static void UnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
-            {
-                operations.UnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Unprepares a subnet by removing network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='unprepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to unprepare subnet to remove network intent policies.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task UnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.UnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets all subnets in a virtual network.
+            /// The List subnets operation retrieves all the subnets in a virtual network.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -284,7 +182,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all subnets in a virtual network.
+            /// The List subnets operation retrieves all the subnets in a virtual network.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -307,7 +205,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified subnet.
+            /// The delete subnet operation deletes the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -327,7 +225,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified subnet.
+            /// The delete subnet operation deletes the specified subnet.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -350,7 +248,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a subnet in the specified virtual network.
+            /// The Put Subnet operation creates/updates a subnet in the specified virtual
+            /// network
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -365,7 +264,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the subnet.
             /// </param>
             /// <param name='subnetParameters'>
-            /// Parameters supplied to the create or update subnet operation.
+            /// Parameters supplied to the create/update Subnet operation
             /// </param>
             public static Subnet BeginCreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
             {
@@ -373,7 +272,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a subnet in the specified virtual network.
+            /// The Put Subnet operation creates/updates a subnet in the specified virtual
+            /// network
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -388,7 +288,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the subnet.
             /// </param>
             /// <param name='subnetParameters'>
-            /// Parameters supplied to the create or update subnet operation.
+            /// Parameters supplied to the create/update Subnet operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -402,105 +302,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Prepares a subnet by applying network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='prepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to prepare subnet by applying network intent policies.
-            /// </param>
-            public static void BeginPrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
-            {
-                operations.BeginPrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Prepares a subnet by applying network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='prepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to prepare subnet by applying network intent policies.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginPrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Unprepares a subnet by removing network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='unprepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to unprepare subnet to remove network intent policies.
-            /// </param>
-            public static void BeginUnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
-            {
-                operations.BeginUnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Unprepares a subnet by removing network intent policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='subnetName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='unprepareNetworkPoliciesRequestParameters'>
-            /// Parameters supplied to unprepare subnet to remove network intent policies.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginUnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets all subnets in a virtual network.
+            /// The List subnets operation retrieves all the subnets in a virtual network.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -514,7 +316,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all subnets in a virtual network.
+            /// The List subnets operation retrieves all the subnets in a virtual network.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

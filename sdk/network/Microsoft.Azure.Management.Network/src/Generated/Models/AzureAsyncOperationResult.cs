@@ -36,10 +36,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the AzureAsyncOperationResult class.
         /// </summary>
-        /// <param name="status">Status of the Azure async operation. Possible
+        /// <param name="status">Status of the AzureAsyncOperation. Possible
         /// values include: 'InProgress', 'Succeeded', 'Failed'</param>
-        /// <param name="error">Details of the error occurred during specified
-        /// asynchronous operation.</param>
         public AzureAsyncOperationResult(string status = default(string), Error error = default(Error))
         {
             Status = status;
@@ -53,15 +51,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets status of the Azure async operation. Possible values
+        /// Gets or sets status of the AzureAsyncOperation. Possible values
         /// include: 'InProgress', 'Succeeded', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets details of the error occurred during specified
-        /// asynchronous operation.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public Error Error { get; set; }

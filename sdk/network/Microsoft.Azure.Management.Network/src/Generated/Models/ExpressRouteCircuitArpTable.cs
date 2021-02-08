@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The ARP table associated with the ExpressRouteCircuit.
+    /// The arp table associated with the ExpressRouteCircuit
     /// </summary>
     public partial class ExpressRouteCircuitArpTable
     {
@@ -31,14 +31,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteCircuitArpTable
         /// class.
         /// </summary>
-        /// <param name="age">Entry age in minutes.</param>
-        /// <param name="interfaceProperty">Interface address.</param>
-        /// <param name="ipAddress">The IP address.</param>
-        /// <param name="macAddress">The MAC address.</param>
-        public ExpressRouteCircuitArpTable(int? age = default(int?), string interfaceProperty = default(string), string ipAddress = default(string), string macAddress = default(string))
+        /// <param name="ipAddress">Gets ipAddress.</param>
+        /// <param name="macAddress">Gets macAddress.</param>
+        public ExpressRouteCircuitArpTable(string ipAddress = default(string), string macAddress = default(string))
         {
-            Age = age;
-            InterfaceProperty = interfaceProperty;
             IpAddress = ipAddress;
             MacAddress = macAddress;
             CustomInit();
@@ -50,25 +46,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets entry age in minutes.
-        /// </summary>
-        [JsonProperty(PropertyName = "age")]
-        public int? Age { get; set; }
-
-        /// <summary>
-        /// Gets or sets interface address.
-        /// </summary>
-        [JsonProperty(PropertyName = "interface")]
-        public string InterfaceProperty { get; set; }
-
-        /// <summary>
-        /// Gets or sets the IP address.
+        /// Gets ipAddress.
         /// </summary>
         [JsonProperty(PropertyName = "ipAddress")]
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the MAC address.
+        /// Gets macAddress.
         /// </summary>
         [JsonProperty(PropertyName = "macAddress")]
         public string MacAddress { get; set; }

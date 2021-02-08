@@ -18,74 +18,55 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// IPConfiguration in a network interface.
+    /// IPConfiguration in a NetworkInterface
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NetworkInterfaceIPConfiguration : SubResource
+    public partial class NetworkInterfaceIpConfiguration : SubResource
     {
         /// <summary>
-        /// Initializes a new instance of the NetworkInterfaceIPConfiguration
+        /// Initializes a new instance of the NetworkInterfaceIpConfiguration
         /// class.
         /// </summary>
-        public NetworkInterfaceIPConfiguration()
+        public NetworkInterfaceIpConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NetworkInterfaceIPConfiguration
+        /// Initializes a new instance of the NetworkInterfaceIpConfiguration
         /// class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="virtualNetworkTaps">The reference to Virtual Network
-        /// Taps.</param>
-        /// <param name="applicationGatewayBackendAddressPools">The reference
-        /// to ApplicationGatewayBackendAddressPool resource.</param>
-        /// <param name="loadBalancerBackendAddressPools">The reference to
-        /// LoadBalancerBackendAddressPool resource.</param>
-        /// <param name="loadBalancerInboundNatRules">A list of references of
-        /// LoadBalancerInboundNatRules.</param>
-        /// <param name="privateIPAddress">Private IP address of the IP
-        /// configuration.</param>
-        /// <param name="privateIPAllocationMethod">The private IP address
-        /// allocation method. Possible values include: 'Static',
-        /// 'Dynamic'</param>
-        /// <param name="privateIPAddressVersion">Whether the specific IP
-        /// configuration is IPv4 or IPv6. Default is IPv4. Possible values
-        /// include: 'IPv4', 'IPv6'</param>
-        /// <param name="subnet">Subnet bound to the IP configuration.</param>
-        /// <param name="primary">Whether this is a primary customer address on
-        /// the network interface.</param>
-        /// <param name="publicIPAddress">Public IP address bound to the IP
-        /// configuration.</param>
-        /// <param name="applicationSecurityGroups">Application security groups
-        /// in which the IP configuration is included.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// network interface IP configuration. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="privateLinkConnectionProperties">PrivateLinkConnection
-        /// properties for the network interface.</param>
-        /// <param name="name">The name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="privateIPAddress">Gets or sets the privateIPAddress of
+        /// the Network Interface IP Configuration</param>
+        /// <param name="privateIPAllocationMethod">Gets or sets PrivateIP
+        /// allocation method (Static/Dynamic). Possible values include:
+        /// 'Static', 'Dynamic'</param>
+        /// <param name="subnet">Gets or sets the reference of the subnet
+        /// resource</param>
+        /// <param name="publicIPAddress">Gets or sets the reference of the
+        /// PublicIP resource</param>
+        /// <param name="loadBalancerBackendAddressPools">Gets or sets the
+        /// reference of LoadBalancerBackendAddressPool resource</param>
+        /// <param name="loadBalancerInboundNatRules">Gets or sets list of
+        /// references of LoadBalancerInboundNatRules</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public NetworkInterfaceIPConfiguration(string id = default(string), IList<VirtualNetworkTap> virtualNetworkTaps = default(IList<VirtualNetworkTap>), IList<ApplicationGatewayBackendAddressPool> applicationGatewayBackendAddressPools = default(IList<ApplicationGatewayBackendAddressPool>), IList<BackendAddressPool> loadBalancerBackendAddressPools = default(IList<BackendAddressPool>), IList<InboundNatRule> loadBalancerInboundNatRules = default(IList<InboundNatRule>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), Subnet subnet = default(Subnet), bool? primary = default(bool?), PublicIPAddress publicIPAddress = default(PublicIPAddress), IList<ApplicationSecurityGroup> applicationSecurityGroups = default(IList<ApplicationSecurityGroup>), string provisioningState = default(string), NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties privateLinkConnectionProperties = default(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties), string name = default(string), string etag = default(string))
+        /// the resource is updated</param>
+        public NetworkInterfaceIpConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), IList<SubResource> loadBalancerBackendAddressPools = default(IList<SubResource>), IList<SubResource> loadBalancerInboundNatRules = default(IList<SubResource>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
-            VirtualNetworkTaps = virtualNetworkTaps;
-            ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
-            LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
-            LoadBalancerInboundNatRules = loadBalancerInboundNatRules;
             PrivateIPAddress = privateIPAddress;
             PrivateIPAllocationMethod = privateIPAllocationMethod;
-            PrivateIPAddressVersion = privateIPAddressVersion;
             Subnet = subnet;
-            Primary = primary;
             PublicIPAddress = publicIPAddress;
-            ApplicationSecurityGroups = applicationSecurityGroups;
+            LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
+            LoadBalancerInboundNatRules = loadBalancerInboundNatRules;
             ProvisioningState = provisioningState;
-            PrivateLinkConnectionProperties = privateLinkConnectionProperties;
             Name = name;
             Etag = etag;
             CustomInit();
@@ -97,137 +78,64 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the reference to Virtual Network Taps.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.virtualNetworkTaps")]
-        public IList<VirtualNetworkTap> VirtualNetworkTaps { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference to ApplicationGatewayBackendAddressPool
-        /// resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.applicationGatewayBackendAddressPools")]
-        public IList<ApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPools { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference to LoadBalancerBackendAddressPool
-        /// resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.loadBalancerBackendAddressPools")]
-        public IList<BackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
-
-        /// <summary>
-        /// Gets or sets a list of references of LoadBalancerInboundNatRules.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.loadBalancerInboundNatRules")]
-        public IList<InboundNatRule> LoadBalancerInboundNatRules { get; set; }
-
-        /// <summary>
-        /// Gets or sets private IP address of the IP configuration.
+        /// Gets or sets the privateIPAddress of the Network Interface IP
+        /// Configuration
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddress")]
         public string PrivateIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the private IP address allocation method. Possible
+        /// Gets or sets PrivateIP allocation method (Static/Dynamic). Possible
         /// values include: 'Static', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
         public string PrivateIPAllocationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the specific IP configuration is IPv4 or IPv6.
-        /// Default is IPv4. Possible values include: 'IPv4', 'IPv6'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
-        public string PrivateIPAddressVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets subnet bound to the IP configuration.
+        /// Gets or sets the reference of the subnet resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnet")]
-        public Subnet Subnet { get; set; }
+        public SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets or sets whether this is a primary customer address on the
-        /// network interface.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.primary")]
-        public bool? Primary { get; set; }
-
-        /// <summary>
-        /// Gets or sets public IP address bound to the IP configuration.
+        /// Gets or sets the reference of the PublicIP resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public PublicIPAddress PublicIPAddress { get; set; }
+        public SubResource PublicIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets application security groups in which the IP
-        /// configuration is included.
+        /// Gets or sets the reference of LoadBalancerBackendAddressPool
+        /// resource
         /// </summary>
-        [JsonProperty(PropertyName = "properties.applicationSecurityGroups")]
-        public IList<ApplicationSecurityGroup> ApplicationSecurityGroups { get; set; }
+        [JsonProperty(PropertyName = "properties.loadBalancerBackendAddressPools")]
+        public IList<SubResource> LoadBalancerBackendAddressPools { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the network interface IP
-        /// configuration. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets or sets list of references of LoadBalancerInboundNatRules
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.loadBalancerInboundNatRules")]
+        public IList<SubResource> LoadBalancerInboundNatRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets Provisioning state of the PublicIP resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets privateLinkConnection properties for the network interface.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateLinkConnectionProperties")]
-        public NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties PrivateLinkConnectionProperties { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a
-        /// resource group. This name can be used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (VirtualNetworkTaps != null)
-            {
-                foreach (var element in VirtualNetworkTaps)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (LoadBalancerInboundNatRules != null)
-            {
-                foreach (var element1 in LoadBalancerInboundNatRules)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-            if (PublicIPAddress != null)
-            {
-                PublicIPAddress.Validate();
-            }
-        }
     }
 }

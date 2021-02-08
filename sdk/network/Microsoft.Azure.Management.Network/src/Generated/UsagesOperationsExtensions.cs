@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class UsagesOperationsExtensions
     {
             /// <summary>
-            /// List network usages for a subscription.
+            /// Lists compute usages for a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location where resource usage is queried.
+            /// The location upon which resource usage is queried.
             /// </param>
             public static IPage<Usage> List(this IUsagesOperations operations, string location)
             {
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// List network usages for a subscription.
+            /// Lists compute usages for a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location where resource usage is queried.
+            /// The location upon which resource usage is queried.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// List network usages for a subscription.
+            /// Lists compute usages for a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// List network usages for a subscription.
+            /// Lists compute usages for a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

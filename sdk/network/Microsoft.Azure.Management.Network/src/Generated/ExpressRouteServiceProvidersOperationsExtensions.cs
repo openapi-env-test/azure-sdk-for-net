@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteServiceProvidersOperationsExtensions
     {
             /// <summary>
-            /// Gets all the available express route service providers.
+            /// The List ExpressRouteServiceProvider operation retrieves all the available
+            /// ExpressRouteServiceProviders.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the available express route service providers.
+            /// The List ExpressRouteServiceProvider operation retrieves all the available
+            /// ExpressRouteServiceProviders.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the available express route service providers.
+            /// The List ExpressRouteServiceProvider operation retrieves all the available
+            /// ExpressRouteServiceProviders.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -64,7 +67,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all the available express route service providers.
+            /// The List ExpressRouteServiceProvider operation retrieves all the available
+            /// ExpressRouteServiceProviders.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

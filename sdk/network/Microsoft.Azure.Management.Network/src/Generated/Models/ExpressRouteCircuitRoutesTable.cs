@@ -10,11 +10,12 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// The routes table associated with the ExpressRouteCircuit.
+    /// The routes table associated with the ExpressRouteCircuit
     /// </summary>
     public partial class ExpressRouteCircuitRoutesTable
     {
@@ -31,20 +32,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteCircuitRoutesTable
         /// class.
         /// </summary>
-        /// <param name="network">IP address of a network entity.</param>
-        /// <param name="nextHop">NextHop address.</param>
-        /// <param name="locPrf">Local preference value as set with the set
-        /// local-preference route-map configuration command.</param>
-        /// <param name="weight">Route Weight.</param>
-        /// <param name="path">Autonomous system paths to the destination
-        /// network.</param>
-        public ExpressRouteCircuitRoutesTable(string network = default(string), string nextHop = default(string), string locPrf = default(string), int? weight = default(int?), string path = default(string))
+        /// <param name="nextHopType">Gets NextHopType. Possible values
+        /// include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
+        /// 'VirtualAppliance', 'None'</param>
+        /// <param name="addressPrefix">Gets AddressPrefix.</param>
+        /// <param name="nextHopIP">Gets NextHopIP.</param>
+        /// <param name="asPath">Gets AsPath.</param>
+        public ExpressRouteCircuitRoutesTable(string nextHopType, string addressPrefix = default(string), string nextHopIP = default(string), string asPath = default(string))
         {
-            Network = network;
-            NextHop = nextHop;
-            LocPrf = locPrf;
-            Weight = weight;
-            Path = path;
+            AddressPrefix = addressPrefix;
+            NextHopType = nextHopType;
+            NextHopIP = nextHopIP;
+            AsPath = asPath;
             CustomInit();
         }
 
@@ -54,35 +53,42 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets IP address of a network entity.
+        /// Gets AddressPrefix.
         /// </summary>
-        [JsonProperty(PropertyName = "network")]
-        public string Network { get; set; }
+        [JsonProperty(PropertyName = "addressPrefix")]
+        public string AddressPrefix { get; set; }
 
         /// <summary>
-        /// Gets or sets nextHop address.
+        /// Gets NextHopType. Possible values include: 'VirtualNetworkGateway',
+        /// 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
         /// </summary>
-        [JsonProperty(PropertyName = "nextHop")]
-        public string NextHop { get; set; }
+        [JsonProperty(PropertyName = "nextHopType")]
+        public string NextHopType { get; set; }
 
         /// <summary>
-        /// Gets or sets local preference value as set with the set
-        /// local-preference route-map configuration command.
+        /// Gets NextHopIP.
         /// </summary>
-        [JsonProperty(PropertyName = "locPrf")]
-        public string LocPrf { get; set; }
+        [JsonProperty(PropertyName = "nextHopIP")]
+        public string NextHopIP { get; set; }
 
         /// <summary>
-        /// Gets or sets route Weight.
+        /// Gets AsPath.
         /// </summary>
-        [JsonProperty(PropertyName = "weight")]
-        public int? Weight { get; set; }
+        [JsonProperty(PropertyName = "asPath")]
+        public string AsPath { get; set; }
 
         /// <summary>
-        /// Gets or sets autonomous system paths to the destination network.
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
-        public string Path { get; set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (NextHopType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "NextHopType");
+            }
+        }
     }
 }

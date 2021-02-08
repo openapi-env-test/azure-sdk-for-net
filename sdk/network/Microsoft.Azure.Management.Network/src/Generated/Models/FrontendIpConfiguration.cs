@@ -18,72 +18,64 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Frontend IP address of the load balancer.
+    /// Frontend IP address of the load balancer
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FrontendIPConfiguration : SubResource
+    public partial class FrontendIpConfiguration : SubResource
     {
         /// <summary>
-        /// Initializes a new instance of the FrontendIPConfiguration class.
+        /// Initializes a new instance of the FrontendIpConfiguration class.
         /// </summary>
-        public FrontendIPConfiguration()
+        public FrontendIpConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FrontendIPConfiguration class.
+        /// Initializes a new instance of the FrontendIpConfiguration class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="inboundNatRules">An array of references to inbound
-        /// rules that use this frontend IP.</param>
-        /// <param name="inboundNatPools">An array of references to inbound
-        /// pools that use this frontend IP.</param>
-        /// <param name="outboundRules">An array of references to outbound
-        /// rules that use this frontend IP.</param>
-        /// <param name="loadBalancingRules">An array of references to load
-        /// balancing rules that use this frontend IP.</param>
-        /// <param name="privateIPAddress">The private IP address of the IP
-        /// configuration.</param>
-        /// <param name="privateIPAllocationMethod">The Private IP allocation
-        /// method. Possible values include: 'Static', 'Dynamic'</param>
-        /// <param name="privateIPAddressVersion">Whether the specific
-        /// ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
-        /// values include: 'IPv4', 'IPv6'</param>
-        /// <param name="subnet">The reference to the subnet resource.</param>
-        /// <param name="publicIPAddress">The reference to the Public IP
-        /// resource.</param>
-        /// <param name="publicIPPrefix">The reference to the Public IP Prefix
-        /// resource.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// frontend IP configuration resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">The name of the resource that is unique within
-        /// the set of frontend IP configurations used by the load balancer.
-        /// This name can be used to access the resource.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="privateIPAddress">Gets or sets the IP address of the
+        /// Load Balancer.This is only specified if a specific private IP
+        /// address shall be allocated from the subnet specified in
+        /// subnetRef</param>
+        /// <param name="privateIPAllocationMethod">Gets or sets PrivateIP
+        /// allocation method (Static/Dynamic). Possible values include:
+        /// 'Static', 'Dynamic'</param>
+        /// <param name="subnet">Gets or sets the reference of the subnet
+        /// resource.A subnet from where the load balancer gets its private
+        /// frontend address </param>
+        /// <param name="publicIPAddress">Gets or sets the reference of the
+        /// PublicIP resource</param>
+        /// <param name="inboundNatRules">Read only.Inbound rules URIs that use
+        /// this frontend IP</param>
+        /// <param name="inboundNatPools">Read only.Inbound pools URIs that use
+        /// this frontend IP</param>
+        /// <param name="outboundNatRules">Read only.Outbound rules URIs that
+        /// use this frontend IP</param>
+        /// <param name="loadBalancingRules">Gets Load Balancing rules URIs
+        /// that use this frontend IP</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        /// <param name="zones">A list of availability zones denoting the IP
-        /// allocated for the resource needs to come from.</param>
-        public FrontendIPConfiguration(string id = default(string), IList<SubResource> inboundNatRules = default(IList<SubResource>), IList<SubResource> inboundNatPools = default(IList<SubResource>), IList<SubResource> outboundRules = default(IList<SubResource>), IList<SubResource> loadBalancingRules = default(IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), Subnet subnet = default(Subnet), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string), IList<string> zones = default(IList<string>))
+        /// the resource is updated</param>
+        public FrontendIpConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), IList<SubResource> inboundNatRules = default(IList<SubResource>), IList<SubResource> inboundNatPools = default(IList<SubResource>), IList<SubResource> outboundNatRules = default(IList<SubResource>), IList<SubResource> loadBalancingRules = default(IList<SubResource>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
-            InboundNatRules = inboundNatRules;
-            InboundNatPools = inboundNatPools;
-            OutboundRules = outboundRules;
-            LoadBalancingRules = loadBalancingRules;
             PrivateIPAddress = privateIPAddress;
             PrivateIPAllocationMethod = privateIPAllocationMethod;
-            PrivateIPAddressVersion = privateIPAddressVersion;
             Subnet = subnet;
             PublicIPAddress = publicIPAddress;
-            PublicIPPrefix = publicIPPrefix;
+            InboundNatRules = inboundNatRules;
+            InboundNatPools = inboundNatPools;
+            OutboundNatRules = outboundNatRules;
+            LoadBalancingRules = loadBalancingRules;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
-            Zones = zones;
             CustomInit();
         }
 
@@ -93,119 +85,78 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets an array of references to inbound rules that use this frontend
-        /// IP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.inboundNatRules")]
-        public IList<SubResource> InboundNatRules { get; private set; }
-
-        /// <summary>
-        /// Gets an array of references to inbound pools that use this frontend
-        /// IP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.inboundNatPools")]
-        public IList<SubResource> InboundNatPools { get; private set; }
-
-        /// <summary>
-        /// Gets an array of references to outbound rules that use this
-        /// frontend IP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.outboundRules")]
-        public IList<SubResource> OutboundRules { get; private set; }
-
-        /// <summary>
-        /// Gets an array of references to load balancing rules that use this
-        /// frontend IP.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.loadBalancingRules")]
-        public IList<SubResource> LoadBalancingRules { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the private IP address of the IP configuration.
+        /// Gets or sets the IP address of the Load Balancer.This is only
+        /// specified if a specific private IP address shall be allocated from
+        /// the subnet specified in subnetRef
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAddress")]
         public string PrivateIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the Private IP allocation method. Possible values
-        /// include: 'Static', 'Dynamic'
+        /// Gets or sets PrivateIP allocation method (Static/Dynamic). Possible
+        /// values include: 'Static', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
         public string PrivateIPAllocationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the specific ipconfiguration is IPv4 or IPv6.
-        /// Default is taken as IPv4. Possible values include: 'IPv4', 'IPv6'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
-        public string PrivateIPAddressVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference to the subnet resource.
+        /// Gets or sets the reference of the subnet resource.A subnet from
+        /// where the load balancer gets its private frontend address
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnet")]
-        public Subnet Subnet { get; set; }
+        public SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the Public IP resource.
+        /// Gets or sets the reference of the PublicIP resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public PublicIPAddress PublicIPAddress { get; set; }
+        public SubResource PublicIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the Public IP Prefix resource.
+        /// Gets or sets read only.Inbound rules URIs that use this frontend IP
         /// </summary>
-        [JsonProperty(PropertyName = "properties.publicIPPrefix")]
-        public SubResource PublicIPPrefix { get; set; }
+        [JsonProperty(PropertyName = "properties.inboundNatRules")]
+        public IList<SubResource> InboundNatRules { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the frontend IP configuration
-        /// resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'
+        /// Gets or sets read only.Inbound pools URIs that use this frontend IP
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.inboundNatPools")]
+        public IList<SubResource> InboundNatPools { get; set; }
+
+        /// <summary>
+        /// Gets or sets read only.Outbound rules URIs that use this frontend
+        /// IP
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.outboundNatRules")]
+        public IList<SubResource> OutboundNatRules { get; set; }
+
+        /// <summary>
+        /// Gets Load Balancing rules URIs that use this frontend IP
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.loadBalancingRules")]
+        public IList<SubResource> LoadBalancingRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets Provisioning state of the PublicIP resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set
-        /// of frontend IP configurations used by the load balancer. This name
-        /// can be used to access the resource.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets or sets a list of availability zones denoting the IP allocated
-        /// for the resource needs to come from.
-        /// </summary>
-        [JsonProperty(PropertyName = "zones")]
-        public IList<string> Zones { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (PublicIPAddress != null)
-            {
-                PublicIPAddress.Validate();
-            }
-        }
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Backend address of an application gateway.
+    /// Backend Address of application gateway
     /// </summary>
     public partial class ApplicationGatewayBackendAddress
     {
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ApplicationGatewayBackendAddress
         /// class.
         /// </summary>
-        /// <param name="fqdn">Fully qualified domain name (FQDN).</param>
-        /// <param name="ipAddress">IP address.</param>
+        /// <param name="fqdn">Gets or sets the dns name</param>
+        /// <param name="ipAddress">Gets or sets the ip address</param>
         public ApplicationGatewayBackendAddress(string fqdn = default(string), string ipAddress = default(string))
         {
             Fqdn = fqdn;
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets fully qualified domain name (FQDN).
+        /// Gets or sets the dns name
         /// </summary>
         [JsonProperty(PropertyName = "fqdn")]
         public string Fqdn { get; set; }
 
         /// <summary>
-        /// Gets or sets IP address.
+        /// Gets or sets the ip address
         /// </summary>
         [JsonProperty(PropertyName = "ipAddress")]
         public string IpAddress { get; set; }

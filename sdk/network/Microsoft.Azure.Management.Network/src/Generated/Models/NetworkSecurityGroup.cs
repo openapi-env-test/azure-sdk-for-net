@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// NetworkSecurityGroup resource.
+    /// NetworkSecurityGroup resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class NetworkSecurityGroup : Resource
@@ -34,36 +34,32 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the NetworkSecurityGroup class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="location">Resource location.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="securityRules">A collection of security rules of the
-        /// network security group.</param>
-        /// <param name="defaultSecurityRules">The default security rules of
-        /// network security group.</param>
-        /// <param name="networkInterfaces">A collection of references to
-        /// network interfaces.</param>
-        /// <param name="subnets">A collection of references to
-        /// subnets.</param>
-        /// <param name="flowLogs">A collection of references to flow log
-        /// resources.</param>
-        /// <param name="resourceGuid">The resource GUID property of the
-        /// network security group resource.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// network security group resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public NetworkSecurityGroup(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRule> securityRules = default(IList<SecurityRule>), IList<SecurityRule> defaultSecurityRules = default(IList<SecurityRule>), IList<NetworkInterface> networkInterfaces = default(IList<NetworkInterface>), IList<Subnet> subnets = default(IList<Subnet>), IList<FlowLog> flowLogs = default(IList<FlowLog>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
-            : base(id, name, type, location, tags)
+        /// <param name="location">Resource location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="securityRules">Gets or sets Security rules of network
+        /// security group</param>
+        /// <param name="defaultSecurityRules">Gets or sets Default security
+        /// rules of network security group</param>
+        /// <param name="networkInterfaces">Gets collection of references to
+        /// Network Interfaces</param>
+        /// <param name="subnets">Gets collection of references to
+        /// subnets</param>
+        /// <param name="resourceGuid">Gets or sets resource guid property of
+        /// the network security group resource</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated</param>
+        public NetworkSecurityGroup(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRule> securityRules = default(IList<SecurityRule>), IList<SecurityRule> defaultSecurityRules = default(IList<SecurityRule>), IList<SubResource> networkInterfaces = default(IList<SubResource>), IList<SubResource> subnets = default(IList<SubResource>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+            : base(location, id, name, type, tags)
         {
             SecurityRules = securityRules;
             DefaultSecurityRules = defaultSecurityRules;
             NetworkInterfaces = networkInterfaces;
             Subnets = subnets;
-            FlowLogs = flowLogs;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
@@ -76,57 +72,79 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a collection of security rules of the network security
-        /// group.
+        /// Gets or sets Security rules of network security group
         /// </summary>
         [JsonProperty(PropertyName = "properties.securityRules")]
         public IList<SecurityRule> SecurityRules { get; set; }
 
         /// <summary>
-        /// Gets the default security rules of network security group.
+        /// Gets or sets Default security rules of network security group
         /// </summary>
         [JsonProperty(PropertyName = "properties.defaultSecurityRules")]
-        public IList<SecurityRule> DefaultSecurityRules { get; private set; }
+        public IList<SecurityRule> DefaultSecurityRules { get; set; }
 
         /// <summary>
-        /// Gets a collection of references to network interfaces.
+        /// Gets collection of references to Network Interfaces
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkInterfaces")]
-        public IList<NetworkInterface> NetworkInterfaces { get; private set; }
+        public IList<SubResource> NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Gets a collection of references to subnets.
+        /// Gets collection of references to subnets
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnets")]
-        public IList<Subnet> Subnets { get; private set; }
+        public IList<SubResource> Subnets { get; set; }
 
         /// <summary>
-        /// Gets a collection of references to flow log resources.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.flowLogs")]
-        public IList<FlowLog> FlowLogs { get; private set; }
-
-        /// <summary>
-        /// Gets the resource GUID property of the network security group
-        /// resource.
+        /// Gets or sets resource guid property of the network security group
+        /// resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; private set; }
+        public string ResourceGuid { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the network security group resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets Provisioning state of the PublicIP resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+            if (SecurityRules != null)
+            {
+                foreach (var element in SecurityRules)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (DefaultSecurityRules != null)
+            {
+                foreach (var element1 in DefaultSecurityRules)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
     /// <summary>
     /// AddressSpace contains an array of IP address ranges that can be used by
-    /// subnets of the virtual network.
+    /// subnets
     /// </summary>
     public partial class AddressSpace
     {
@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the AddressSpace class.
         /// </summary>
-        /// <param name="addressPrefixes">A list of address blocks reserved for
-        /// this virtual network in CIDR notation.</param>
+        /// <param name="addressPrefixes">Gets or sets List of address blocks
+        /// reserved for this virtual network in CIDR notation</param>
         public AddressSpace(IList<string> addressPrefixes = default(IList<string>))
         {
             AddressPrefixes = addressPrefixes;
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of address blocks reserved for this virtual
-        /// network in CIDR notation.
+        /// Gets or sets List of address blocks reserved for this virtual
+        /// network in CIDR notation
         /// </summary>
         [JsonProperty(PropertyName = "addressPrefixes")]
         public IList<string> AddressPrefixes { get; set; }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Request routing rule of an application gateway.
+    /// Request routing rule of application gateway
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ApplicationGatewayRequestRoutingRule : SubResource
@@ -34,46 +34,32 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// ApplicationGatewayRequestRoutingRule class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="ruleType">Rule type. Possible values include: 'Basic',
-        /// 'PathBasedRouting'</param>
-        /// <param name="priority">Priority of the request routing
-        /// rule.</param>
-        /// <param name="backendAddressPool">Backend address pool resource of
-        /// the application gateway.</param>
-        /// <param name="backendHttpSettings">Backend http settings resource of
-        /// the application gateway.</param>
-        /// <param name="httpListener">Http listener resource of the
-        /// application gateway.</param>
-        /// <param name="urlPathMap">URL path map resource of the application
-        /// gateway.</param>
-        /// <param name="rewriteRuleSet">Rewrite Rule Set resource in Basic
-        /// rule of the application gateway.</param>
-        /// <param name="redirectConfiguration">Redirect configuration resource
-        /// of the application gateway.</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// request routing rule resource. Possible values include:
-        /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="name">Name of the request routing rule that is unique
-        /// within an Application Gateway.</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="ruleType">Gets or sets the rule type. Possible values
+        /// include: 'Basic'</param>
+        /// <param name="backendAddressPool">Gets or sets backend address pool
+        /// resource of application gateway </param>
+        /// <param name="backendHttpSettings">Gets or sets frontend port
+        /// resource of application gateway </param>
+        /// <param name="httpListener">Gets or sets http listener resource of
+        /// application gateway </param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the request routing rule resource Updating/Deleting/Failed</param>
+        /// <param name="name">Gets name of the resource that is unique within
+        /// a resource group. This name can be used to access the
+        /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayRequestRoutingRule(string id = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        /// the resource is updated</param>
+        public ApplicationGatewayRequestRoutingRule(string id = default(string), string ruleType = default(string), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             RuleType = ruleType;
-            Priority = priority;
             BackendAddressPool = backendAddressPool;
             BackendHttpSettings = backendHttpSettings;
             HttpListener = httpListener;
-            UrlPathMap = urlPathMap;
-            RewriteRuleSet = rewriteRuleSet;
-            RedirectConfiguration = redirectConfiguration;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
-            Type = type;
             CustomInit();
         }
 
@@ -83,102 +69,49 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets rule type. Possible values include: 'Basic',
-        /// 'PathBasedRouting'
+        /// Gets or sets the rule type. Possible values include: 'Basic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.ruleType")]
         public string RuleType { get; set; }
 
         /// <summary>
-        /// Gets or sets priority of the request routing rule.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.priority")]
-        public int? Priority { get; set; }
-
-        /// <summary>
-        /// Gets or sets backend address pool resource of the application
-        /// gateway.
+        /// Gets or sets backend address pool resource of application gateway
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendAddressPool")]
         public SubResource BackendAddressPool { get; set; }
 
         /// <summary>
-        /// Gets or sets backend http settings resource of the application
-        /// gateway.
+        /// Gets or sets frontend port resource of application gateway
         /// </summary>
         [JsonProperty(PropertyName = "properties.backendHttpSettings")]
         public SubResource BackendHttpSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets http listener resource of the application gateway.
+        /// Gets or sets http listener resource of application gateway
         /// </summary>
         [JsonProperty(PropertyName = "properties.httpListener")]
         public SubResource HttpListener { get; set; }
 
         /// <summary>
-        /// Gets or sets URL path map resource of the application gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.urlPathMap")]
-        public SubResource UrlPathMap { get; set; }
-
-        /// <summary>
-        /// Gets or sets rewrite Rule Set resource in Basic rule of the
-        /// application gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.rewriteRuleSet")]
-        public SubResource RewriteRuleSet { get; set; }
-
-        /// <summary>
-        /// Gets or sets redirect configuration resource of the application
-        /// gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.redirectConfiguration")]
-        public SubResource RedirectConfiguration { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the request routing rule resource.
-        /// Possible values include: 'Succeeded', 'Updating', 'Deleting',
-        /// 'Failed'
+        /// Gets or sets Provisioning state of the request routing rule
+        /// resource Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the request routing rule that is unique within
-        /// an Application Gateway.
+        /// Gets name of the resource that is unique within a resource group.
+        /// This name can be used to access the resource
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Priority > 20000)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Priority", 20000);
-            }
-            if (Priority < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Priority", 1);
-            }
-        }
     }
 }

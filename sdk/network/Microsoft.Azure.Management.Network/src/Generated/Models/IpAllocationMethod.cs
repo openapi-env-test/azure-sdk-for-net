@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for IPAllocationMethod.
+    /// Defines values for IpAllocationMethod.
     /// </summary>
-    public static class IPAllocationMethod
+    public static class IpAllocationMethod
     {
         public const string Static = "Static";
         public const string Dynamic = "Dynamic";

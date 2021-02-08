@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkSecurityGroupsOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified network security group.
+            /// The Delete NetworkSecurityGroup operation deletes the specified network
+            /// security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security group.
+            /// The Delete NetworkSecurityGroup operation deletes the specified network
+            /// security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -59,7 +61,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified network security group.
+            /// The Get NetworkSecurityGroups operation retrieves information about the
+            /// specified network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -70,16 +73,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkSecurityGroupName'>
             /// The name of the network security group.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static NetworkSecurityGroup Get(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string))
+            public static NetworkSecurityGroup Get(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName)
             {
-                return operations.GetAsync(resourceGroupName, networkSecurityGroupName, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, networkSecurityGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the specified network security group.
+            /// The Get NetworkSecurityGroups operation retrieves information about the
+            /// specified network security group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -89,24 +90,21 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='networkSecurityGroupName'>
             /// The name of the network security group.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkSecurityGroup> GetAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkSecurityGroup> GetAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates or updates a network security group in the specified resource
-            /// group.
+            /// The Put NetworkSecurityGroup operation creates/updates a network security
+            /// group in the specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -118,8 +116,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network security group.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network security group
-            /// operation.
+            /// Parameters supplied to the create/update Network Security Group operation
             /// </param>
             public static NetworkSecurityGroup CreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
             {
@@ -127,8 +124,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network security group in the specified resource
-            /// group.
+            /// The Put NetworkSecurityGroup operation creates/updates a network security
+            /// group in the specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -140,8 +137,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network security group.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network security group
-            /// operation.
+            /// Parameters supplied to the create/update Network Security Group operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -155,53 +151,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a network security group tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkSecurityGroupName'>
-            /// The name of the network security group.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network security group tags.
-            /// </param>
-            public static NetworkSecurityGroup UpdateTags(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a network security group tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkSecurityGroupName'>
-            /// The name of the network security group.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network security group tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkSecurityGroup> UpdateTagsAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network security groups in a subscription.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -212,7 +163,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a subscription.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -229,7 +181,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a resource group.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -243,7 +196,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a resource group.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -263,7 +217,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security group.
+            /// The Delete NetworkSecurityGroup operation deletes the specified network
+            /// security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -280,7 +235,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network security group.
+            /// The Delete NetworkSecurityGroup operation deletes the specified network
+            /// security group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -300,8 +256,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network security group in the specified resource
-            /// group.
+            /// The Put NetworkSecurityGroup operation creates/updates a network security
+            /// group in the specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -313,8 +269,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network security group.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network security group
-            /// operation.
+            /// Parameters supplied to the create/update Network Security Group operation
             /// </param>
             public static NetworkSecurityGroup BeginCreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
             {
@@ -322,8 +277,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network security group in the specified resource
-            /// group.
+            /// The Put NetworkSecurityGroup operation creates/updates a network security
+            /// group in the specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -335,8 +290,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network security group.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network security group
-            /// operation.
+            /// Parameters supplied to the create/update Network Security Group operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -350,7 +304,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a subscription.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -364,7 +319,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a subscription.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// subscription
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -384,7 +340,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a resource group.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -398,7 +355,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network security groups in a resource group.
+            /// The list NetworkSecurityGroups returns all network security groups in a
+            /// resource group
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

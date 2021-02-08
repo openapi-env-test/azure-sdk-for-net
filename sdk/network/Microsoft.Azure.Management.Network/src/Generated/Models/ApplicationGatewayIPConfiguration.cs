@@ -16,48 +16,40 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// IpConfiguration for Virtual network gateway
+    /// IP configuration of application gateway
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayIpConfiguration : SubResource
+    public partial class ApplicationGatewayIPConfiguration : SubResource
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// Initializes a new instance of the ApplicationGatewayIPConfiguration
+        /// class.
         /// </summary>
-        public VirtualNetworkGatewayIpConfiguration()
+        public ApplicationGatewayIPConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// VirtualNetworkGatewayIpConfiguration class.
+        /// Initializes a new instance of the ApplicationGatewayIPConfiguration
+        /// class.
         /// </summary>
         /// <param name="id">Resource Id</param>
-        /// <param name="privateIPAddress">Gets or sets the privateIPAddress of
-        /// the Network Interface IP Configuration</param>
-        /// <param name="privateIPAllocationMethod">Gets or sets PrivateIP
-        /// allocation method (Static/Dynamic). Possible values include:
-        /// 'Static', 'Dynamic'</param>
         /// <param name="subnet">Gets or sets the reference of the subnet
-        /// resource</param>
-        /// <param name="publicIPAddress">Gets or sets the reference of the
-        /// PublicIP resource</param>
+        /// resource.A subnet from where application gateway gets its private
+        /// address </param>
         /// <param name="provisioningState">Gets or sets Provisioning state of
-        /// the PublicIP resource Updating/Deleting/Failed</param>
+        /// the application gateway subnet resource
+        /// Updating/Deleting/Failed</param>
         /// <param name="name">Gets name of the resource that is unique within
         /// a resource group. This name can be used to access the
         /// resource</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated</param>
-        public VirtualNetworkGatewayIpConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public ApplicationGatewayIPConfiguration(string id = default(string), SubResource subnet = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
-            PrivateIPAddress = privateIPAddress;
-            PrivateIPAllocationMethod = privateIPAllocationMethod;
             Subnet = subnet;
-            PublicIPAddress = publicIPAddress;
             ProvisioningState = provisioningState;
             Name = name;
             Etag = etag;
@@ -70,34 +62,15 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the privateIPAddress of the Network Interface IP
-        /// Configuration
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAddress")]
-        public string PrivateIPAddress { get; set; }
-
-        /// <summary>
-        /// Gets or sets PrivateIP allocation method (Static/Dynamic). Possible
-        /// values include: 'Static', 'Dynamic'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateIPAllocationMethod")]
-        public string PrivateIPAllocationMethod { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference of the subnet resource
+        /// Gets or sets the reference of the subnet resource.A subnet from
+        /// where application gateway gets its private address
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnet")]
         public SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference of the PublicIP resource
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public SubResource PublicIPAddress { get; set; }
-
-        /// <summary>
-        /// Gets or sets Provisioning state of the PublicIP resource
-        /// Updating/Deleting/Failed
+        /// Gets or sets Provisioning state of the application gateway subnet
+        /// resource Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; set; }

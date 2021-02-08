@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkInterfacesOperationsExtensions
     {
             /// <summary>
-            /// Deletes the specified network interface.
+            /// The delete networkInterface operation deletes the specified
+            /// networkInterface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network interface.
+            /// The delete networkInterface operation deletes the specified
+            /// networkInterface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -59,7 +61,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets information about the specified network interface.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -70,16 +73,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static NetworkInterface Get(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string))
+            public static NetworkInterface Get(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
             {
-                return operations.GetAsync(resourceGroupName, networkInterfaceName, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets information about the specified network interface.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -89,23 +90,20 @@ namespace Microsoft.Azure.Management.Network
             /// </param>
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkInterface> GetAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkInterface> GetAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Creates or updates a network interface.
+            /// The Put NetworkInterface operation creates/updates a networkInterface
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +115,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network interface.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network interface operation.
+            /// Parameters supplied to the create/update NetworkInterface operation
             /// </param>
             public static NetworkInterface CreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters)
             {
@@ -125,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network interface.
+            /// The Put NetworkInterface operation creates/updates a networkInterface
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -137,7 +135,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network interface.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network interface operation.
+            /// Parameters supplied to the create/update NetworkInterface operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -151,196 +149,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates a network interface tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network interface tags.
-            /// </param>
-            public static NetworkInterface UpdateTags(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, networkInterfaceName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a network interface tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update network interface tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkInterface> UpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IPage<NetworkInterface> ListAll(this INetworkInterfacesOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListAllAsync(this INetworkInterfacesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<NetworkInterface> List(this INetworkInterfacesOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListAsync(this INetworkInterfacesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all route tables applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            public static EffectiveRouteListResult GetEffectiveRouteTable(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.GetEffectiveRouteTableAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all route tables applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<EffectiveRouteListResult> GetEffectiveRouteTableAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetEffectiveRouteTableWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network security groups applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            public static EffectiveNetworkSecurityGroupListResult ListEffectiveNetworkSecurityGroups(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.ListEffectiveNetworkSecurityGroupsAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network security groups applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<EffectiveNetworkSecurityGroupListResult> ListEffectiveNetworkSecurityGroupsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListEffectiveNetworkSecurityGroupsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about all network interfaces in a virtual machine in a
-            /// virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine from a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -360,8 +170,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets information about all network interfaces in a virtual machine in a
-            /// virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine from a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -387,7 +197,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network interfaces in a virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -404,7 +215,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network interfaces in a virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -427,7 +239,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the specified network interface in a virtual machine scale set.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -444,16 +257,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static NetworkInterface GetVirtualMachineScaleSetNetworkInterface(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string expand = default(string))
+            public static NetworkInterface GetVirtualMachineScaleSetNetworkInterface(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName)
             {
-                return operations.GetVirtualMachineScaleSetNetworkInterfaceAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, expand).GetAwaiter().GetResult();
+                return operations.GetVirtualMachineScaleSetNetworkInterfaceAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the specified network interface in a virtual machine scale set.
+            /// The Get network interface operation retrieves information about the
+            /// specified network interface in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -470,83 +281,50 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkInterface> GetVirtualMachineScaleSetNetworkInterfaceAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkInterface> GetVirtualMachineScaleSetNetworkInterfaceAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetVirtualMachineScaleSetNetworkInterfaceWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetVirtualMachineScaleSetNetworkInterfaceWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static IPage<NetworkInterfaceIPConfiguration> ListVirtualMachineScaleSetIpConfigurations(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string expand = default(string))
+            public static IPage<NetworkInterface> ListAll(this INetworkInterfacesOperations operations)
             {
-                return operations.ListVirtualMachineScaleSetIpConfigurationsAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, expand).GetAwaiter().GetResult();
+                return operations.ListAllAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<NetworkInterfaceIPConfiguration>> ListVirtualMachineScaleSetIpConfigurationsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<NetworkInterface>> ListAllAsync(this INetworkInterfacesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListVirtualMachineScaleSetIpConfigurationsWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -554,210 +332,35 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='ipConfigurationName'>
-            /// The name of the ip configuration.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static NetworkInterfaceIPConfiguration GetVirtualMachineScaleSetIpConfiguration(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string ipConfigurationName, string expand = default(string))
+            public static IPage<NetworkInterface> List(this INetworkInterfacesOperations operations, string resourceGroupName)
             {
-                return operations.GetVirtualMachineScaleSetIpConfigurationAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, expand).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='ipConfigurationName'>
-            /// The name of the ip configuration.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkInterfaceIPConfiguration> GetVirtualMachineScaleSetIpConfigurationAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string ipConfigurationName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<NetworkInterface>> ListAsync(this INetworkInterfacesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetVirtualMachineScaleSetIpConfigurationWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets information about all network interfaces in a role instance in a cloud
-            /// service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            /// <param name='roleInstanceName'>
-            /// The name of role instance.
-            /// </param>
-            public static IPage<NetworkInterface> ListCloudServiceRoleInstanceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName)
-            {
-                return operations.ListCloudServiceRoleInstanceNetworkInterfacesAsync(resourceGroupName, cloudServiceName, roleInstanceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about all network interfaces in a role instance in a cloud
-            /// service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            /// <param name='roleInstanceName'>
-            /// The name of role instance.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListCloudServiceRoleInstanceNetworkInterfacesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            public static IPage<NetworkInterface> ListCloudServiceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName)
-            {
-                return operations.ListCloudServiceNetworkInterfacesAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListCloudServiceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListCloudServiceNetworkInterfacesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Get the specified network interface in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            /// <param name='roleInstanceName'>
-            /// The name of role instance.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static NetworkInterface GetCloudServiceNetworkInterface(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string))
-            {
-                return operations.GetCloudServiceNetworkInterfaceAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the specified network interface in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cloudServiceName'>
-            /// The name of the cloud service.
-            /// </param>
-            /// <param name='roleInstanceName'>
-            /// The name of role instance.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkInterface> GetCloudServiceNetworkInterfaceAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetCloudServiceNetworkInterfaceWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes the specified network interface.
+            /// The delete networkInterface operation deletes the specified
+            /// networkInterface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -774,7 +377,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Deletes the specified network interface.
+            /// The delete networkInterface operation deletes the specified
+            /// networkInterface.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -794,7 +398,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network interface.
+            /// The Put NetworkInterface operation creates/updates a networkInterface
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -806,7 +410,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network interface.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network interface operation.
+            /// Parameters supplied to the create/update NetworkInterface operation
             /// </param>
             public static NetworkInterface BeginCreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters)
             {
@@ -814,7 +418,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a network interface.
+            /// The Put NetworkInterface operation creates/updates a networkInterface
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -826,7 +430,7 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the network interface.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the create or update network interface operation.
+            /// Parameters supplied to the create/update NetworkInterface operation
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -840,156 +444,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all route tables applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            public static EffectiveRouteListResult BeginGetEffectiveRouteTable(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.BeginGetEffectiveRouteTableAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all route tables applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<EffectiveRouteListResult> BeginGetEffectiveRouteTableAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginGetEffectiveRouteTableWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network security groups applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            public static EffectiveNetworkSecurityGroupListResult BeginListEffectiveNetworkSecurityGroups(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.BeginListEffectiveNetworkSecurityGroupsAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network security groups applied to a network interface.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<EffectiveNetworkSecurityGroupListResult> BeginListEffectiveNetworkSecurityGroupsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginListEffectiveNetworkSecurityGroupsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<NetworkInterface> ListAllNext(this INetworkInterfacesOperations operations, string nextPageLink)
-            {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListAllNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<NetworkInterface> ListNext(this INetworkInterfacesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about all network interfaces in a virtual machine in a
-            /// virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine from a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1003,8 +459,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets information about all network interfaces in a virtual machine in a
-            /// virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine from a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1024,7 +480,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network interfaces in a virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1038,7 +495,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets all network interfaces in a virtual machine scale set.
+            /// The list network interface operation retrieves information about all
+            /// network interfaces in a virtual machine scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1058,8 +516,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1067,14 +525,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<NetworkInterfaceIPConfiguration> ListVirtualMachineScaleSetIpConfigurationsNext(this INetworkInterfacesOperations operations, string nextPageLink)
+            public static IPage<NetworkInterface> ListAllNext(this INetworkInterfacesOperations operations, string nextPageLink)
             {
-                return operations.ListVirtualMachineScaleSetIpConfigurationsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get the specified network interface ip configuration in a virtual machine
-            /// scale set.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1085,17 +543,17 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<NetworkInterfaceIPConfiguration>> ListVirtualMachineScaleSetIpConfigurationsNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<NetworkInterface>> ListAllNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListVirtualMachineScaleSetIpConfigurationsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets information about all network interfaces in a role instance in a cloud
-            /// service.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1103,14 +561,14 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<NetworkInterface> ListCloudServiceRoleInstanceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
+            public static IPage<NetworkInterface> ListNext(this INetworkInterfacesOperations operations, string nextPageLink)
             {
-                return operations.ListCloudServiceRoleInstanceNetworkInterfacesNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets information about all network interfaces in a role instance in a cloud
-            /// service.
+            /// The List networkInterfaces operation retrieves all the networkInterfaces in
+            /// a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1121,43 +579,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<NetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<NetworkInterface>> ListNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListCloudServiceRoleInstanceNetworkInterfacesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<NetworkInterface> ListCloudServiceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
-            {
-                return operations.ListCloudServiceNetworkInterfacesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network interfaces in a cloud service.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<NetworkInterface>> ListCloudServiceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListCloudServiceNetworkInterfacesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

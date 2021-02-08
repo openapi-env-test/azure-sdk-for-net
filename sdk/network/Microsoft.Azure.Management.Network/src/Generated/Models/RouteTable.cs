@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Route table resource.
+    /// RouteTable resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RouteTable : Resource
@@ -34,33 +34,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the RouteTable class.
         /// </summary>
-        /// <param name="id">Resource ID.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="location">Resource location.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="routes">Collection of routes contained within a route
-        /// table.</param>
-        /// <param name="subnets">A collection of references to
-        /// subnets.</param>
-        /// <param name="disableBgpRoutePropagation">Whether to disable the
-        /// routes learned by BGP on that route table. True means
-        /// disable.</param>
-        /// <param name="provisioningState">The provisioning state of the route
-        /// table resource. Possible values include: 'Succeeded', 'Updating',
-        /// 'Deleting', 'Failed'</param>
-        /// <param name="resourceGuid">The resource GUID property of the route
-        /// table.</param>
-        /// <param name="etag">A unique read-only string that changes whenever
-        /// the resource is updated.</param>
-        public RouteTable(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Route> routes = default(IList<Route>), IList<Subnet> subnets = default(IList<Subnet>), bool? disableBgpRoutePropagation = default(bool?), string provisioningState = default(string), string resourceGuid = default(string), string etag = default(string))
-            : base(id, name, type, location, tags)
+        /// <param name="location">Resource location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource name</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="routes">Gets or sets Routes in a Route Table</param>
+        /// <param name="subnets">Gets collection of references to
+        /// subnets</param>
+        /// <param name="provisioningState">Gets or sets Provisioning state of
+        /// the resource Updating/Deleting/Failed</param>
+        /// <param name="etag">Gets a unique read-only string that changes
+        /// whenever the resource is updated</param>
+        public RouteTable(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Route> routes = default(IList<Route>), IList<SubResource> subnets = default(IList<SubResource>), string provisioningState = default(string), string etag = default(string))
+            : base(location, id, name, type, tags)
         {
             Routes = routes;
             Subnets = subnets;
-            DisableBgpRoutePropagation = disableBgpRoutePropagation;
             ProvisioningState = provisioningState;
-            ResourceGuid = resourceGuid;
             Etag = etag;
             CustomInit();
         }
@@ -71,43 +62,50 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets collection of routes contained within a route table.
+        /// Gets or sets Routes in a Route Table
         /// </summary>
         [JsonProperty(PropertyName = "properties.routes")]
         public IList<Route> Routes { get; set; }
 
         /// <summary>
-        /// Gets a collection of references to subnets.
+        /// Gets collection of references to subnets
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnets")]
-        public IList<Subnet> Subnets { get; private set; }
+        public IList<SubResource> Subnets { get; set; }
 
         /// <summary>
-        /// Gets or sets whether to disable the routes learned by BGP on that
-        /// route table. True means disable.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.disableBgpRoutePropagation")]
-        public bool? DisableBgpRoutePropagation { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the route table resource. Possible
-        /// values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+        /// Gets or sets Provisioning state of the resource
+        /// Updating/Deleting/Failed
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets the resource GUID property of the route table.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.resourceGuid")]
-        public string ResourceGuid { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// is updated
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+            if (Routes != null)
+            {
+                foreach (var element in Routes)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }
