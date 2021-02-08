@@ -51,11 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// values include: 'NotReady', 'Error', 'Warning', 'Progressing',
         /// 'Good'</param>
         /// <param name="schema">Sync schema of the sync group.</param>
-        /// <param name="usePrivateLinkConnection">If use private link
-        /// connection is enabled.</param>
-        /// <param name="privateEndpointName">Private endpoint name of the sync
-        /// group if use private link connection is enabled.</param>
-        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string))
+        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema))
             : base(id, name, type)
         {
             Interval = interval;
@@ -66,8 +62,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             HubDatabasePassword = hubDatabasePassword;
             SyncState = syncState;
             Schema = schema;
-            UsePrivateLinkConnection = usePrivateLinkConnection;
-            PrivateEndpointName = privateEndpointName;
             CustomInit();
         }
 
@@ -126,19 +120,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.schema")]
         public SyncGroupSchema Schema { get; set; }
-
-        /// <summary>
-        /// Gets or sets if use private link connection is enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.usePrivateLinkConnection")]
-        public bool? UsePrivateLinkConnection { get; set; }
-
-        /// <summary>
-        /// Gets private endpoint name of the sync group if use private link
-        /// connection is enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateEndpointName")]
-        public string PrivateEndpointName { get; private set; }
 
     }
 }
