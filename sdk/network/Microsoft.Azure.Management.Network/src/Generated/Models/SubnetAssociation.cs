@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Subnet and it's custom security rules.
+    /// Network interface and its custom security rules.
     /// </summary>
     public partial class SubnetAssociation
     {

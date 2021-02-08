@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// An Ssl predefined policy.
+    /// An Ssl predefined policy
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ApplicationGatewaySslPredefinedPolicy : SubResource
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ApplicationGatewaySslPredefinedPolicy class.
         /// </summary>
         /// <param name="id">Resource ID.</param>
-        /// <param name="name">Name of the Ssl predefined policy.</param>
+        /// <param name="name">Name of Ssl predefined policy.</param>
         /// <param name="cipherSuites">Ssl cipher suites to be enabled in the
         /// specified order for application gateway.</param>
         /// <param name="minProtocolVersion">Minimum version of Ssl protocol to
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the Ssl predefined policy.
+        /// Gets or sets name of Ssl predefined policy.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

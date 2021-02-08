@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ApplicationGatewayRedirectConfiguration class.
         /// </summary>
         /// <param name="id">Resource ID.</param>
-        /// <param name="redirectType">HTTP redirection type. Possible values
-        /// include: 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
+        /// <param name="redirectType">Supported http redirection types -
+        /// Permanent, Temporary, Found, SeeOther. Possible values include:
+        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'</param>
         /// <param name="targetListener">Reference to a listener to redirect
         /// the request to.</param>
         /// <param name="targetUrl">Url to redirect the request to.</param>
@@ -52,8 +53,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// configuration.</param>
         /// <param name="pathRules">Path rules specifying redirect
         /// configuration.</param>
-        /// <param name="name">Name of the redirect configuration that is
-        /// unique within an Application Gateway.</param>
+        /// <param name="name">Name of the resource that is unique within a
+        /// resource group. This name can be used to access the
+        /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
@@ -80,8 +82,9 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets HTTP redirection type. Possible values include:
-        /// 'Permanent', 'Found', 'SeeOther', 'Temporary'
+        /// Gets or sets supported http redirection types - Permanent,
+        /// Temporary, Found, SeeOther. Possible values include: 'Permanent',
+        /// 'Found', 'SeeOther', 'Temporary'
         /// </summary>
         [JsonProperty(PropertyName = "properties.redirectType")]
         public string RedirectType { get; set; }
@@ -130,24 +133,24 @@ namespace Microsoft.Azure.Management.Network.Models
         public IList<SubResource> PathRules { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the redirect configuration that is unique
-        /// within an Application Gateway.
+        /// Gets or sets name of the resource that is unique within a resource
+        /// group. This name can be used to access the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource
-        /// is updated.
+        /// Gets or sets a unique read-only string that changes whenever the
+        /// resource is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
+        public string Etag { get; set; }
 
         /// <summary>
-        /// Gets type of the resource.
+        /// Gets or sets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }

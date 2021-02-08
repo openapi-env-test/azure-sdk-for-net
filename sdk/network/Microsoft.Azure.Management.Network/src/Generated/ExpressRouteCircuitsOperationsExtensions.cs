@@ -147,52 +147,6 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates an express route circuit tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the circuit.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update express route circuit tags.
-            /// </param>
-            public static ExpressRouteCircuit UpdateTags(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters)
-            {
-                return operations.UpdateTagsAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates an express route circuit tags.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the circuit.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update express route circuit tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ExpressRouteCircuit> UpdateTagsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets the currently advertised ARP table associated with the express route
             /// circuit in a resource group.
             /// </summary>

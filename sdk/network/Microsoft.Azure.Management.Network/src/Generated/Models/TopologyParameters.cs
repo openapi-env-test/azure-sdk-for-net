@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -31,15 +32,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         /// <param name="targetResourceGroupName">The name of the target
         /// resource group to perform topology on.</param>
-        /// <param name="targetVirtualNetwork">The reference to the Virtual
-        /// Network resource.</param>
-        /// <param name="targetSubnet">The reference to the Subnet
-        /// resource.</param>
-        public TopologyParameters(string targetResourceGroupName = default(string), SubResource targetVirtualNetwork = default(SubResource), SubResource targetSubnet = default(SubResource))
+        public TopologyParameters(string targetResourceGroupName)
         {
             TargetResourceGroupName = targetResourceGroupName;
-            TargetVirtualNetwork = targetVirtualNetwork;
-            TargetSubnet = targetSubnet;
             CustomInit();
         }
 
@@ -56,16 +51,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string TargetResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the Virtual Network resource.
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "targetVirtualNetwork")]
-        public SubResource TargetVirtualNetwork { get; set; }
-
-        /// <summary>
-        /// Gets or sets the reference to the Subnet resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "targetSubnet")]
-        public SubResource TargetSubnet { get; set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (TargetResourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "TargetResourceGroupName");
+            }
+        }
     }
 }
