@@ -39,15 +39,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="tenantId">Tenant ID of the administrator.</param>
-        /// <param name="azureADOnlyAuthentication">Azure Active Directory only
-        /// Authentication enabled.</param>
-        public ServerAzureADAdministrator(string login, System.Guid sid, string id = default(string), string name = default(string), string type = default(string), System.Guid? tenantId = default(System.Guid?), bool? azureADOnlyAuthentication = default(bool?))
+        public ServerAzureADAdministrator(string login, System.Guid sid, string id = default(string), string name = default(string), string type = default(string), System.Guid? tenantId = default(System.Guid?))
             : base(id, name, type)
         {
             Login = login;
             Sid = sid;
             TenantId = tenantId;
-            AzureADOnlyAuthentication = azureADOnlyAuthentication;
             CustomInit();
         }
         /// <summary>
@@ -80,12 +77,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.tenantId")]
         public System.Guid? TenantId { get; set; }
-
-        /// <summary>
-        /// Gets azure Active Directory only Authentication enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.azureADOnlyAuthentication")]
-        public bool? AzureADOnlyAuthentication { get; private set; }
 
         /// <summary>
         /// Type of the sever administrator.

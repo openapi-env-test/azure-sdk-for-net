@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServerAzureADAdministratorsOperationsExtensions
     {
             /// <summary>
-            /// Gets a Azure Active Directory administrator.
+            /// Gets a server Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a Azure Active Directory administrator.
+            /// Gets a server Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Creates or updates an existing Azure Active Directory administrator.
+            /// Creates a new Server Active Directory Administrator or updates an existing
+            /// server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='parameters'>
-            /// The requested Azure Active Directory administrator Resource state.
+            /// The required parameters for creating or updating an Active Directory
+            /// Administrator.
             /// </param>
             public static ServerAzureADAdministrator CreateOrUpdate(this IServerAzureADAdministratorsOperations operations, string resourceGroupName, string serverName, ServerAzureADAdministrator parameters)
             {
@@ -85,7 +87,8 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Creates or updates an existing Azure Active Directory administrator.
+            /// Creates a new Server Active Directory Administrator or updates an existing
+            /// server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -98,7 +101,8 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='parameters'>
-            /// The requested Azure Active Directory administrator Resource state.
+            /// The required parameters for creating or updating an Active Directory
+            /// Administrator.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -112,7 +116,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Deletes the Azure Active Directory administrator with the given name.
+            /// Deletes an existing server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -130,7 +134,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Deletes the Azure Active Directory administrator with the given name.
+            /// Deletes an existing server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -151,7 +155,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of Azure Active Directory administrators in a server.
+            /// Gets a list of server Administrators.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -169,7 +173,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of Azure Active Directory administrators in a server.
+            /// Gets a list of server Administrators.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -193,7 +197,8 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Creates or updates an existing Azure Active Directory administrator.
+            /// Creates a new Server Active Directory Administrator or updates an existing
+            /// server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -206,7 +211,8 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='parameters'>
-            /// The requested Azure Active Directory administrator Resource state.
+            /// The required parameters for creating or updating an Active Directory
+            /// Administrator.
             /// </param>
             public static ServerAzureADAdministrator BeginCreateOrUpdate(this IServerAzureADAdministratorsOperations operations, string resourceGroupName, string serverName, ServerAzureADAdministrator parameters)
             {
@@ -214,7 +220,8 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Creates or updates an existing Azure Active Directory administrator.
+            /// Creates a new Server Active Directory Administrator or updates an existing
+            /// server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -227,7 +234,8 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='parameters'>
-            /// The requested Azure Active Directory administrator Resource state.
+            /// The required parameters for creating or updating an Active Directory
+            /// Administrator.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -241,7 +249,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Deletes the Azure Active Directory administrator with the given name.
+            /// Deletes an existing server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -259,7 +267,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Deletes the Azure Active Directory administrator with the given name.
+            /// Deletes an existing server Active Directory Administrator.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -280,7 +288,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of Azure Active Directory administrators in a server.
+            /// Gets a list of server Administrators.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -294,7 +302,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of Azure Active Directory administrators in a server.
+            /// Gets a list of server Administrators.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
