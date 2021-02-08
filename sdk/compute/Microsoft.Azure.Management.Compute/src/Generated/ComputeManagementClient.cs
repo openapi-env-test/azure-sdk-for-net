@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Management.Compute
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client Api Version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -70,116 +75,6 @@ namespace Microsoft.Azure.Management.Compute
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAvailabilitySetsOperations.
-        /// </summary>
-        public virtual IAvailabilitySetsOperations AvailabilitySets { get; private set; }
-
-        /// <summary>
-        /// Gets the IProximityPlacementGroupsOperations.
-        /// </summary>
-        public virtual IProximityPlacementGroupsOperations ProximityPlacementGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostGroupsOperations.
-        /// </summary>
-        public virtual IDedicatedHostGroupsOperations DedicatedHostGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostsOperations.
-        /// </summary>
-        public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
-
-        /// <summary>
-        /// Gets the ISshPublicKeysOperations.
-        /// </summary>
-        public virtual ISshPublicKeysOperations SshPublicKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineExtensionImagesOperations.
-        /// </summary>
-        public virtual IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineExtensionsOperations VirtualMachineExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineImagesOperations.
-        /// </summary>
-        public virtual IVirtualMachineImagesOperations VirtualMachineImages { get; private set; }
-
-        /// <summary>
-        /// Gets the IUsageOperations.
-        /// </summary>
-        public virtual IUsageOperations Usage { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachinesOperations.
-        /// </summary>
-        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineSizesOperations.
-        /// </summary>
-        public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
-
-        /// <summary>
-        /// Gets the IImagesOperations.
-        /// </summary>
-        public virtual IImagesOperations Images { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetExtensionsOperations VirtualMachineScaleSetExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetRollingUpgradesOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
-
-        /// <summary>
-        /// Gets the ILogAnalyticsOperations.
-        /// </summary>
-        public virtual ILogAnalyticsOperations LogAnalytics { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineRunCommandsOperations.
-        /// </summary>
-        public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
-
-        /// <summary>
-        /// Gets the IResourceSkusOperations.
-        /// </summary>
-        public virtual IResourceSkusOperations ResourceSkus { get; private set; }
 
         /// <summary>
         /// Gets the IDisksOperations.
@@ -232,29 +127,24 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
 
         /// <summary>
-        /// Gets the IContainerServicesOperations.
+        /// Gets the IGallerySharingProfileOperations.
         /// </summary>
-        public virtual IContainerServicesOperations ContainerServices { get; private set; }
+        public virtual IGallerySharingProfileOperations GallerySharingProfile { get; private set; }
 
         /// <summary>
-        /// Gets the ICloudServiceRoleInstancesOperations.
+        /// Gets the ISharedGalleriesOperations.
         /// </summary>
-        public virtual ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; private set; }
+        public virtual ISharedGalleriesOperations SharedGalleries { get; private set; }
 
         /// <summary>
-        /// Gets the ICloudServiceRolesOperations.
+        /// Gets the ISharedGalleryImagesOperations.
         /// </summary>
-        public virtual ICloudServiceRolesOperations CloudServiceRoles { get; private set; }
+        public virtual ISharedGalleryImagesOperations SharedGalleryImages { get; private set; }
 
         /// <summary>
-        /// Gets the ICloudServicesOperations.
+        /// Gets the ISharedGalleryImageVersionsOperations.
         /// </summary>
-        public virtual ICloudServicesOperations CloudServices { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServicesUpdateDomainOperations.
-        /// </summary>
-        public virtual ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; private set; }
+        public virtual ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -497,28 +387,6 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         private void Initialize()
         {
-            Operations = new Operations(this);
-            AvailabilitySets = new AvailabilitySetsOperations(this);
-            ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
-            DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
-            DedicatedHosts = new DedicatedHostsOperations(this);
-            SshPublicKeys = new SshPublicKeysOperations(this);
-            VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
-            VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
-            VirtualMachineImages = new VirtualMachineImagesOperations(this);
-            Usage = new UsageOperations(this);
-            VirtualMachines = new VirtualMachinesOperations(this);
-            VirtualMachineSizes = new VirtualMachineSizesOperations(this);
-            Images = new ImagesOperations(this);
-            VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
-            VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
-            VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
-            VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
-            VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
-            LogAnalytics = new LogAnalyticsOperations(this);
-            VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
-            VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
-            ResourceSkus = new ResourceSkusOperations(this);
             Disks = new DisksOperations(this);
             Snapshots = new SnapshotsOperations(this);
             DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
@@ -529,12 +397,12 @@ namespace Microsoft.Azure.Management.Compute
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
             GalleryApplications = new GalleryApplicationsOperations(this);
             GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
-            ContainerServices = new ContainerServicesOperations(this);
-            CloudServiceRoleInstances = new CloudServiceRoleInstancesOperations(this);
-            CloudServiceRoles = new CloudServiceRolesOperations(this);
-            CloudServices = new CloudServicesOperations(this);
-            CloudServicesUpdateDomain = new CloudServicesUpdateDomainOperations(this);
+            GallerySharingProfile = new GallerySharingProfileOperations(this);
+            SharedGalleries = new SharedGalleriesOperations(this);
+            SharedGalleryImages = new SharedGalleryImagesOperations(this);
+            SharedGalleryImageVersions = new SharedGalleryImageVersionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2020-09-30";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
