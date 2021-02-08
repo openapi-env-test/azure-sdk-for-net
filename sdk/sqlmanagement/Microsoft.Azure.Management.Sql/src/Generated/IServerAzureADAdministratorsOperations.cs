@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface IServerAzureADAdministratorsOperations
     {
         /// <summary>
-        /// Gets a Azure Active Directory administrator.
+        /// Gets a server Administrator.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<ServerAzureADAdministrator>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates an existing Azure Active Directory
-        /// administrator.
+        /// Creates a new Server Active Directory Administrator or updates an
+        /// existing server Active Directory Administrator.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the server.
         /// </param>
         /// <param name='parameters'>
-        /// The requested Azure Active Directory administrator Resource state.
+        /// The required parameters for creating or updating an Active
+        /// Directory Administrator.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,8 +83,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<ServerAzureADAdministrator>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerAzureADAdministrator parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the Azure Active Directory administrator with the given
-        /// name.
+        /// Deletes an existing server Active Directory Administrator.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of Azure Active Directory administrators in a server.
+        /// Gets a list of server Administrators.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<IPage<ServerAzureADAdministrator>>> ListByServerWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates an existing Azure Active Directory
-        /// administrator.
+        /// Creates a new Server Active Directory Administrator or updates an
+        /// existing server Active Directory Administrator.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -146,7 +146,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the server.
         /// </param>
         /// <param name='parameters'>
-        /// The requested Azure Active Directory administrator Resource state.
+        /// The required parameters for creating or updating an Active
+        /// Directory Administrator.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -165,8 +166,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<ServerAzureADAdministrator>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerAzureADAdministrator parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes the Azure Active Directory administrator with the given
-        /// name.
+        /// Deletes an existing server Active Directory Administrator.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of Azure Active Directory administrators in a server.
+        /// Gets a list of server Administrators.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
