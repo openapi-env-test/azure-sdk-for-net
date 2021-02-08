@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Management.Authorization
     using Newtonsoft.Json;
 
     /// <summary>
+    /// Access reviews service provides the workflow for running access reviews
+    /// on different kind of resources.
     /// </summary>
     public partial interface IAuthorizationManagementClient : System.IDisposable
     {
@@ -45,6 +47,11 @@ namespace Microsoft.Azure.Management.Authorization
         string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to be used with the HTTP request.
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -64,39 +71,49 @@ namespace Microsoft.Azure.Management.Authorization
 
 
         /// <summary>
-        /// Gets the IClassicAdministratorsOperations.
+        /// Gets the IOperations.
         /// </summary>
-        IClassicAdministratorsOperations ClassicAdministrators { get; }
+        IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IGlobalAdministratorOperations.
+        /// Gets the IAccessReviewScheduleDefinitionsOperations.
         /// </summary>
-        IGlobalAdministratorOperations GlobalAdministrator { get; }
+        IAccessReviewScheduleDefinitionsOperations AccessReviewScheduleDefinitions { get; }
 
         /// <summary>
-        /// Gets the IProviderOperationsMetadataOperations.
+        /// Gets the IAccessReviewInstancesOperations.
         /// </summary>
-        IProviderOperationsMetadataOperations ProviderOperationsMetadata { get; }
+        IAccessReviewInstancesOperations AccessReviewInstances { get; }
 
         /// <summary>
-        /// Gets the IPermissionsOperations.
+        /// Gets the IAccessReviewInstanceOperations.
         /// </summary>
-        IPermissionsOperations Permissions { get; }
+        IAccessReviewInstanceOperations AccessReviewInstance { get; }
 
         /// <summary>
-        /// Gets the IRoleDefinitionsOperations.
+        /// Gets the IAccessReviewInstanceDecisionsOperations.
         /// </summary>
-        IRoleDefinitionsOperations RoleDefinitions { get; }
+        IAccessReviewInstanceDecisionsOperations AccessReviewInstanceDecisions { get; }
 
         /// <summary>
-        /// Gets the IDenyAssignmentsOperations.
+        /// Gets the IAccessReviewDefaultSettingsOperations.
         /// </summary>
-        IDenyAssignmentsOperations DenyAssignments { get; }
+        IAccessReviewDefaultSettingsOperations AccessReviewDefaultSettings { get; }
 
         /// <summary>
-        /// Gets the IRoleAssignmentsOperations.
+        /// Gets the IAccessReviewScheduleDefinitionsAssignedForMyApprovalOperations.
         /// </summary>
-        IRoleAssignmentsOperations RoleAssignments { get; }
+        IAccessReviewScheduleDefinitionsAssignedForMyApprovalOperations AccessReviewScheduleDefinitionsAssignedForMyApproval { get; }
+
+        /// <summary>
+        /// Gets the IAccessReviewInstancesAssignedForMyApprovalOperations.
+        /// </summary>
+        IAccessReviewInstancesAssignedForMyApprovalOperations AccessReviewInstancesAssignedForMyApproval { get; }
+
+        /// <summary>
+        /// Gets the IAccessReviewInstanceMyDecisionsOperations.
+        /// </summary>
+        IAccessReviewInstanceMyDecisionsOperations AccessReviewInstanceMyDecisions { get; }
 
     }
 }
