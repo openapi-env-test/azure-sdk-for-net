@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         ///
         /// Copy, Secondary, and RestoreLongTermRetentionBackup are not
         /// supported for DataWarehouse edition. Possible values include:
-        /// 'Default', 'Copy', 'Secondary', 'PointInTimeRestore', 'Restore',
-        /// 'Recovery', 'RestoreExternalBackup',
-        /// 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup',
-        /// 'OnlineSecondary'</param>
+        /// 'Default', 'Copy', 'Secondary', 'OnlineSecondary',
+        /// 'PointInTimeRestore', 'Restore', 'Recovery',
+        /// 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+        /// 'RestoreLongTermRetentionBackup'</param>
         /// <param name="collation">The collation of the database.</param>
         /// <param name="maxSizeBytes">The max size of the database expressed
         /// in bytes.</param>
@@ -91,16 +91,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering',
         /// 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
         /// 'AutoClosed', 'Copying', 'Creating', 'Inaccessible',
-        /// 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming', 'Scaling',
-        /// 'OfflineChangingDwPerformanceTiers',
-        /// 'OnlineChangingDwPerformanceTiers', 'Disabled'</param>
+        /// 'OfflineSecondary', 'Pausing', 'Paused', 'Resuming',
+        /// 'Scaling'</param>
         /// <param name="databaseId">The ID of the database.</param>
         /// <param name="creationDate">The creation date of the database
         /// (ISO8601 format).</param>
         /// <param name="currentServiceObjectiveName">The current service level
         /// objective name of the database.</param>
-        /// <param name="requestedServiceObjectiveName">The requested service
-        /// level objective name of the database.</param>
         /// <param name="defaultSecondaryLocation">The default secondary region
         /// for this database.</param>
         /// <param name="failoverGroupId">Failover Group resource identifier
@@ -128,47 +125,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="zoneRedundant">Whether or not this database is zone
         /// redundant, which means the replicas of this database will be spread
         /// across multiple availability zones.</param>
-        /// <param name="licenseType">The license type to apply for this
-        /// database. `LicenseIncluded` if you need a license, or `BasePrice`
-        /// if you have a license and are eligible for the Azure Hybrid
-        /// Benefit. Possible values include: 'LicenseIncluded',
-        /// 'BasePrice'</param>
-        /// <param name="maxLogSizeBytes">The max log size for this
-        /// database.</param>
-        /// <param name="earliestRestoreDate">This records the earliest start
-        /// date and time that restore is available for this database (ISO8601
-        /// format).</param>
-        /// <param name="readScale">The state of read-only routing. If enabled,
-        /// connections that have application intent set to readonly in their
-        /// connection string may be routed to a readonly secondary replica in
-        /// the same region. Possible values include: 'Enabled',
-        /// 'Disabled'</param>
-        /// <param name="highAvailabilityReplicaCount">The number of secondary
-        /// replicas associated with the database that are used to provide high
-        /// availability.</param>
-        /// <param name="secondaryType">The secondary type of the database if
-        /// it is a secondary.  Valid values are Geo and Named. Possible values
-        /// include: 'Geo', 'Named'</param>
-        /// <param name="currentSku">The name and tier of the SKU.</param>
-        /// <param name="autoPauseDelay">Time in minutes after which database
-        /// is automatically paused. A value of -1 means that automatic pause
-        /// is disabled</param>
-        /// <param name="storageAccountType">The storage account type used to
-        /// store backups for this database. Possible values include: 'GRS',
-        /// 'LRS', 'ZRS'</param>
-        /// <param name="minCapacity">Minimal capacity that database will
-        /// always have allocated, if not paused</param>
-        /// <param name="pausedDate">The date when database was paused by user
-        /// configuration or action(ISO8601 format). Null if the database is
-        /// ready.</param>
-        /// <param name="resumedDate">The date when database was resumed by
-        /// user action or database login (ISO8601 format). Null if the
-        /// database is paused.</param>
-        /// <param name="maintenanceConfigurationId">Maintenance configuration
-        /// id assigned to the database. This configuration defines the period
-        /// when the maintenance updates will occur.</param>
         /// <param name="tags">Resource tags.</param>
-        public DatabaseUpdate(Sku sku = default(Sku), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string storageAccountType = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public DatabaseUpdate(Sku sku = default(Sku), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Sku = sku;
             CreateMode = createMode;
@@ -181,7 +139,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             DatabaseId = databaseId;
             CreationDate = creationDate;
             CurrentServiceObjectiveName = currentServiceObjectiveName;
-            RequestedServiceObjectiveName = requestedServiceObjectiveName;
             DefaultSecondaryLocation = defaultSecondaryLocation;
             FailoverGroupId = failoverGroupId;
             RestorePointInTime = restorePointInTime;
@@ -192,19 +149,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             RestorableDroppedDatabaseId = restorableDroppedDatabaseId;
             CatalogCollation = catalogCollation;
             ZoneRedundant = zoneRedundant;
-            LicenseType = licenseType;
-            MaxLogSizeBytes = maxLogSizeBytes;
-            EarliestRestoreDate = earliestRestoreDate;
-            ReadScale = readScale;
-            HighAvailabilityReplicaCount = highAvailabilityReplicaCount;
-            SecondaryType = secondaryType;
-            CurrentSku = currentSku;
-            AutoPauseDelay = autoPauseDelay;
-            StorageAccountType = storageAccountType;
-            MinCapacity = minCapacity;
-            PausedDate = pausedDate;
-            ResumedDate = resumedDate;
-            MaintenanceConfigurationId = maintenanceConfigurationId;
             Tags = tags;
             CustomInit();
         }
@@ -257,10 +201,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         ///
         /// Copy, Secondary, and RestoreLongTermRetentionBackup are not
         /// supported for DataWarehouse edition. Possible values include:
-        /// 'Default', 'Copy', 'Secondary', 'PointInTimeRestore', 'Restore',
-        /// 'Recovery', 'RestoreExternalBackup',
-        /// 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup',
-        /// 'OnlineSecondary'
+        /// 'Default', 'Copy', 'Secondary', 'OnlineSecondary',
+        /// 'PointInTimeRestore', 'Restore', 'Recovery',
+        /// 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+        /// 'RestoreLongTermRetentionBackup'
         /// </summary>
         [JsonProperty(PropertyName = "properties.createMode")]
         public string CreateMode { get; set; }
@@ -304,9 +248,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect', 'Offline',
         /// 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
         /// 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing',
-        /// 'Paused', 'Resuming', 'Scaling',
-        /// 'OfflineChangingDwPerformanceTiers',
-        /// 'OnlineChangingDwPerformanceTiers', 'Disabled'
+        /// 'Paused', 'Resuming', 'Scaling'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }
@@ -328,12 +270,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.currentServiceObjectiveName")]
         public string CurrentServiceObjectiveName { get; private set; }
-
-        /// <summary>
-        /// Gets the requested service level objective name of the database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.requestedServiceObjectiveName")]
-        public string RequestedServiceObjectiveName { get; private set; }
 
         /// <summary>
         /// Gets the default secondary region for this database.
@@ -405,101 +341,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         public bool? ZoneRedundant { get; set; }
 
         /// <summary>
-        /// Gets or sets the license type to apply for this database.
-        /// `LicenseIncluded` if you need a license, or `BasePrice` if you have
-        /// a license and are eligible for the Azure Hybrid Benefit. Possible
-        /// values include: 'LicenseIncluded', 'BasePrice'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.licenseType")]
-        public string LicenseType { get; set; }
-
-        /// <summary>
-        /// Gets the max log size for this database.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maxLogSizeBytes")]
-        public long? MaxLogSizeBytes { get; private set; }
-
-        /// <summary>
-        /// Gets this records the earliest start date and time that restore is
-        /// available for this database (ISO8601 format).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.earliestRestoreDate")]
-        public System.DateTime? EarliestRestoreDate { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the state of read-only routing. If enabled,
-        /// connections that have application intent set to readonly in their
-        /// connection string may be routed to a readonly secondary replica in
-        /// the same region. Possible values include: 'Enabled', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.readScale")]
-        public string ReadScale { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of secondary replicas associated with the
-        /// database that are used to provide high availability.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.highAvailabilityReplicaCount")]
-        public int? HighAvailabilityReplicaCount { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary type of the database if it is a
-        /// secondary.  Valid values are Geo and Named. Possible values
-        /// include: 'Geo', 'Named'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.secondaryType")]
-        public string SecondaryType { get; set; }
-
-        /// <summary>
-        /// Gets the name and tier of the SKU.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.currentSku")]
-        public Sku CurrentSku { get; private set; }
-
-        /// <summary>
-        /// Gets or sets time in minutes after which database is automatically
-        /// paused. A value of -1 means that automatic pause is disabled
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.autoPauseDelay")]
-        public int? AutoPauseDelay { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage account type used to store backups for
-        /// this database. Possible values include: 'GRS', 'LRS', 'ZRS'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.storageAccountType")]
-        public string StorageAccountType { get; set; }
-
-        /// <summary>
-        /// Gets or sets minimal capacity that database will always have
-        /// allocated, if not paused
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minCapacity")]
-        public double? MinCapacity { get; set; }
-
-        /// <summary>
-        /// Gets the date when database was paused by user configuration or
-        /// action(ISO8601 format). Null if the database is ready.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.pausedDate")]
-        public System.DateTime? PausedDate { get; private set; }
-
-        /// <summary>
-        /// Gets the date when database was resumed by user action or database
-        /// login (ISO8601 format). Null if the database is paused.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.resumedDate")]
-        public System.DateTime? ResumedDate { get; private set; }
-
-        /// <summary>
-        /// Gets or sets maintenance configuration id assigned to the database.
-        /// This configuration defines the period when the maintenance updates
-        /// will occur.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
-        public string MaintenanceConfigurationId { get; set; }
-
-        /// <summary>
         /// Gets or sets resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
@@ -516,10 +357,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (Sku != null)
             {
                 Sku.Validate();
-            }
-            if (CurrentSku != null)
-            {
-                CurrentSku.Validate();
             }
         }
     }

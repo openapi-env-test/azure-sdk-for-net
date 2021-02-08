@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Sql.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -48,9 +46,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="databaseName">Database name.</param>
         /// <param name="status">Operation status.</param>
         /// <param name="errorMessage">Error message.</param>
-        /// <param name="privateEndpointConnections">Gets the status of private
-        /// endpoints associated with this request.</param>
-        public ImportExportOperationResult(string id = default(string), string name = default(string), string type = default(string), System.Guid? requestId = default(System.Guid?), string requestType = default(string), string queuedTime = default(string), string lastModifiedTime = default(string), string blobUri = default(string), string serverName = default(string), string databaseName = default(string), string status = default(string), string errorMessage = default(string), IList<PrivateEndpointConnectionRequestStatus> privateEndpointConnections = default(IList<PrivateEndpointConnectionRequestStatus>))
+        public ImportExportOperationResult(string id = default(string), string name = default(string), string type = default(string), System.Guid? requestId = default(System.Guid?), string requestType = default(string), string queuedTime = default(string), string lastModifiedTime = default(string), string blobUri = default(string), string serverName = default(string), string databaseName = default(string), string status = default(string), string errorMessage = default(string))
             : base(id, name, type)
         {
             RequestId = requestId;
@@ -62,7 +58,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             DatabaseName = databaseName;
             Status = status;
             ErrorMessage = errorMessage;
-            PrivateEndpointConnections = privateEndpointConnections;
             CustomInit();
         }
 
@@ -124,12 +119,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.errorMessage")]
         public string ErrorMessage { get; private set; }
-
-        /// <summary>
-        /// Gets the status of private endpoints associated with this request.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
-        public IList<PrivateEndpointConnectionRequestStatus> PrivateEndpointConnections { get; private set; }
 
     }
 }
