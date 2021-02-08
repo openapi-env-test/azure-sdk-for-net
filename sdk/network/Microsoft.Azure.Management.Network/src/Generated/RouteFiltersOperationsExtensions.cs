@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Updates tags of a route filter.
+            /// Updates a route filter in a specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -162,16 +162,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='routeFilterName'>
             /// The name of the route filter.
             /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update route filter tags.
+            /// <param name='routeFilterParameters'>
+            /// Parameters supplied to the update route filter operation.
             /// </param>
-            public static RouteFilter UpdateTags(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, TagsObject parameters)
+            public static RouteFilter Update(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, PatchRouteFilter routeFilterParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, routeFilterName, parameters).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, routeFilterName, routeFilterParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Updates tags of a route filter.
+            /// Updates a route filter in a specified resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -182,15 +182,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='routeFilterName'>
             /// The name of the route filter.
             /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to update route filter tags.
+            /// <param name='routeFilterParameters'>
+            /// Parameters supplied to the update route filter operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RouteFilter> UpdateTagsAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RouteFilter> UpdateAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, PatchRouteFilter routeFilterParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, routeFilterName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, routeFilterParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -336,6 +336,52 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<RouteFilter> BeginCreateOrUpdateAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, RouteFilter routeFilterParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, routeFilterParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Updates a route filter in a specified resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='routeFilterName'>
+            /// The name of the route filter.
+            /// </param>
+            /// <param name='routeFilterParameters'>
+            /// Parameters supplied to the update route filter operation.
+            /// </param>
+            public static RouteFilter BeginUpdate(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, PatchRouteFilter routeFilterParameters)
+            {
+                return operations.BeginUpdateAsync(resourceGroupName, routeFilterName, routeFilterParameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates a route filter in a specified resource group.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='routeFilterName'>
+            /// The name of the route filter.
+            /// </param>
+            /// <param name='routeFilterParameters'>
+            /// Parameters supplied to the update route filter operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RouteFilter> BeginUpdateAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, PatchRouteFilter routeFilterParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, routeFilterName, routeFilterParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
