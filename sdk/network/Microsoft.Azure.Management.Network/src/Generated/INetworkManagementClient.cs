@@ -121,19 +121,9 @@ namespace Microsoft.Azure.Management.Network
         IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; }
 
         /// <summary>
-        /// Gets the IWebCategoriesOperations.
-        /// </summary>
-        IWebCategoriesOperations WebCategories { get; }
-
-        /// <summary>
         /// Gets the IBastionHostsOperations.
         /// </summary>
         IBastionHostsOperations BastionHosts { get; }
-
-        /// <summary>
-        /// Gets the ICustomIPPrefixesOperations.
-        /// </summary>
-        ICustomIPPrefixesOperations CustomIPPrefixes { get; }
 
         /// <summary>
         /// Gets the IDdosCustomPoliciesOperations.
@@ -144,11 +134,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IDdosProtectionPlansOperations.
         /// </summary>
         IDdosProtectionPlansOperations DdosProtectionPlans { get; }
-
-        /// <summary>
-        /// Gets the IDscpConfigurationOperations.
-        /// </summary>
-        IDscpConfigurationOperations DscpConfiguration { get; }
 
         /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
@@ -329,11 +314,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualApplianceSkusOperations.
         /// </summary>
         IVirtualApplianceSkusOperations VirtualApplianceSkus { get; }
-
-        /// <summary>
-        /// Gets the IInboundSecurityRuleOperations.
-        /// </summary>
-        IInboundSecurityRuleOperations InboundSecurityRule { get; }
 
         /// <summary>
         /// Gets the INetworkWatchersOperations.
@@ -549,11 +529,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVpnLinkConnectionsOperations.
         /// </summary>
         IVpnLinkConnectionsOperations VpnLinkConnections { get; }
-
-        /// <summary>
-        /// Gets the INatRulesOperations.
-        /// </summary>
-        INatRulesOperations NatRules { get; }
 
         /// <summary>
         /// Gets the IP2sVpnGatewaysOperations.

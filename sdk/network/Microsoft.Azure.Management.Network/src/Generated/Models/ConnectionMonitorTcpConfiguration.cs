@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Network.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -35,13 +34,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="port">The port to connect to.</param>
         /// <param name="disableTraceRoute">Value indicating whether path
         /// evaluation with trace route should be disabled.</param>
-        /// <param name="destinationPortBehavior">Destination port behavior.
-        /// Possible values include: 'None', 'ListenIfAvailable'</param>
-        public ConnectionMonitorTcpConfiguration(int? port = default(int?), bool? disableTraceRoute = default(bool?), string destinationPortBehavior = default(string))
+        public ConnectionMonitorTcpConfiguration(int? port = default(int?), bool? disableTraceRoute = default(bool?))
         {
             Port = port;
             DisableTraceRoute = disableTraceRoute;
-            DestinationPortBehavior = destinationPortBehavior;
             CustomInit();
         }
 
@@ -63,29 +59,5 @@ namespace Microsoft.Azure.Management.Network.Models
         [JsonProperty(PropertyName = "disableTraceRoute")]
         public bool? DisableTraceRoute { get; set; }
 
-        /// <summary>
-        /// Gets or sets destination port behavior. Possible values include:
-        /// 'None', 'ListenIfAvailable'
-        /// </summary>
-        [JsonProperty(PropertyName = "destinationPortBehavior")]
-        public string DestinationPortBehavior { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Port > 65535)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Port", 65535);
-            }
-            if (Port < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Port", 0);
-            }
-        }
     }
 }

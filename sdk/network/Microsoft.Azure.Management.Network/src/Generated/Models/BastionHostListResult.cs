@@ -16,25 +16,28 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// List of virtual router peer routes.
+    /// Response for ListBastionHosts API service call.
     /// </summary>
-    public partial class PeerRouteList
+    public partial class BastionHostListResult
     {
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the BastionHostListResult class.
         /// </summary>
-        public PeerRouteList()
+        public BastionHostListResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PeerRouteList class.
+        /// Initializes a new instance of the BastionHostListResult class.
         /// </summary>
-        /// <param name="value">List of peer routes.</param>
-        public PeerRouteList(IList<PeerRoute> value = default(IList<PeerRoute>))
+        /// <param name="value">List of Bastion Hosts in a resource
+        /// group.</param>
+        /// <param name="nextLink">URL to get the next set of results.</param>
+        public BastionHostListResult(IList<BastionHost> value = default(IList<BastionHost>), string nextLink = default(string))
         {
             Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -44,10 +47,16 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of peer routes.
+        /// Gets or sets list of Bastion Hosts in a resource group.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<PeerRoute> Value { get; set; }
+        public IList<BastionHost> Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets URL to get the next set of results.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; set; }
 
     }
 }
