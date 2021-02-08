@@ -11,8 +11,6 @@
 namespace Microsoft.Azure.Management.Sql.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -31,20 +29,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the Operation class.
         /// </summary>
-        /// <param name="name">The name of the operation being performed on
-        /// this particular object.</param>
-        /// <param name="display">The localized display information for this
-        /// particular operation / action.</param>
-        /// <param name="origin">The intended executor of the operation.
-        /// Possible values include: 'user', 'system'</param>
-        /// <param name="properties">Additional descriptions for the
+        /// <param name="name">Operation name:
+        /// {provider}/{resource}/{operation}</param>
+        /// <param name="display">Display metadata associated with the
         /// operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), IDictionary<string, object> properties = default(IDictionary<string, object>))
+        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay))
         {
             Name = name;
             Display = display;
-            Origin = origin;
-            Properties = properties;
             CustomInit();
         }
 
@@ -54,31 +46,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the name of the operation being performed on this particular
-        /// object.
+        /// Gets or sets operation name: {provider}/{resource}/{operation}
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the localized display information for this particular
-        /// operation / action.
+        /// Gets or sets display metadata associated with the operation.
         /// </summary>
         [JsonProperty(PropertyName = "display")]
-        public OperationDisplay Display { get; private set; }
-
-        /// <summary>
-        /// Gets the intended executor of the operation. Possible values
-        /// include: 'user', 'system'
-        /// </summary>
-        [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; private set; }
-
-        /// <summary>
-        /// Gets additional descriptions for the operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public IDictionary<string, object> Properties { get; private set; }
+        public OperationDisplay Display { get; set; }
 
     }
 }

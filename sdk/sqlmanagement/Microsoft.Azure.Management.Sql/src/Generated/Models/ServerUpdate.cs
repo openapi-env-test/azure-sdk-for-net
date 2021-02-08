@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// An update request for an Azure SQL Database server.
+    /// Represents an update to a server.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ServerUpdate
+    public partial class ServerUpdate : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ServerUpdate class.
@@ -34,34 +34,41 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the ServerUpdate class.
         /// </summary>
-        /// <param name="administratorLogin">Administrator username for the
-        /// server. Once created it cannot be changed.</param>
-        /// <param name="administratorLoginPassword">The administrator login
-        /// password (required for server creation).</param>
-        /// <param name="version">The version of the server.</param>
-        /// <param name="state">The state of the server.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="fullyQualifiedDomainName">The fully qualified domain
         /// name of the server.</param>
-        /// <param name="privateEndpointConnections">List of private endpoint
-        /// connections on a server</param>
-        /// <param name="minimalTlsVersion">Minimal TLS version. Allowed
-        /// values: '1.0', '1.1', '1.2'</param>
-        /// <param name="publicNetworkAccess">Whether or not public endpoint
-        /// access is allowed for this server.  Value is optional but if passed
-        /// in, must be 'Enabled' or 'Disabled'. Possible values include:
-        /// 'Enabled', 'Disabled'</param>
-        /// <param name="tags">Resource tags.</param>
-        public ServerUpdate(string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        /// <param name="version">The version of the server. Possible values
+        /// include: '2.0', '12.0'</param>
+        /// <param name="administratorLogin">Administrator username for the
+        /// server. Can only be specified when the server is being created (and
+        /// is required for creation).</param>
+        /// <param name="administratorLoginPassword">The administrator login
+        /// password (required for server creation).</param>
+        /// <param name="externalAdministratorSid">The ID of the Active Azure
+        /// Directory object with admin permissions on this server. Legacy
+        /// parameter, always null. To check for Active Directory admin, query
+        /// .../servers/{serverName}/administrators.</param>
+        /// <param name="externalAdministratorLogin">The display name of the
+        /// Azure Active Directory object with admin permissions on this
+        /// server. Legacy parameter, always null. To check for Active
+        /// Directory admin, query
+        /// .../servers/{serverName}/administrators</param>
+        /// <param name="state">The state of the server. Possible values
+        /// include: 'Ready', 'Disabled'</param>
+        public ServerUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fullyQualifiedDomainName = default(string), string version = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), System.Guid? externalAdministratorSid = default(System.Guid?), string externalAdministratorLogin = default(string), ServerState? state = default(ServerState?))
+            : base(id, name, type)
         {
+            Tags = tags;
+            FullyQualifiedDomainName = fullyQualifiedDomainName;
+            Version = version;
             AdministratorLogin = administratorLogin;
             AdministratorLoginPassword = administratorLoginPassword;
-            Version = version;
+            ExternalAdministratorSid = externalAdministratorSid;
+            ExternalAdministratorLogin = externalAdministratorLogin;
             State = state;
-            FullyQualifiedDomainName = fullyQualifiedDomainName;
-            PrivateEndpointConnections = privateEndpointConnections;
-            MinimalTlsVersion = minimalTlsVersion;
-            PublicNetworkAccess = publicNetworkAccess;
-            Tags = tags;
             CustomInit();
         }
 
@@ -71,8 +78,28 @@ namespace Microsoft.Azure.Management.Sql.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets administrator username for the server. Once created it
-        /// cannot be changed.
+        /// Gets or sets resource tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets the fully qualified domain name of the server.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.fullyQualifiedDomainName")]
+        public string FullyQualifiedDomainName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the version of the server. Possible values include:
+        /// '2.0', '12.0'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.version")]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets administrator username for the server. Can only be
+        /// specified when the server is being created (and is required for
+        /// creation).
         /// </summary>
         [JsonProperty(PropertyName = "properties.administratorLogin")]
         public string AdministratorLogin { get; set; }
@@ -85,49 +112,29 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string AdministratorLoginPassword { get; set; }
 
         /// <summary>
-        /// Gets or sets the version of the server.
+        /// Gets the ID of the Active Azure Directory object with admin
+        /// permissions on this server. Legacy parameter, always null. To check
+        /// for Active Directory admin, query
+        /// .../servers/{serverName}/administrators.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.version")]
-        public string Version { get; set; }
+        [JsonProperty(PropertyName = "properties.externalAdministratorSid")]
+        public System.Guid? ExternalAdministratorSid { get; private set; }
 
         /// <summary>
-        /// Gets the state of the server.
+        /// Gets the display name of the Azure Active Directory object with
+        /// admin permissions on this server. Legacy parameter, always null. To
+        /// check for Active Directory admin, query
+        /// .../servers/{serverName}/administrators
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.externalAdministratorLogin")]
+        public string ExternalAdministratorLogin { get; private set; }
+
+        /// <summary>
+        /// Gets the state of the server. Possible values include: 'Ready',
+        /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.state")]
-        public string State { get; private set; }
-
-        /// <summary>
-        /// Gets the fully qualified domain name of the server.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.fullyQualifiedDomainName")]
-        public string FullyQualifiedDomainName { get; private set; }
-
-        /// <summary>
-        /// Gets list of private endpoint connections on a server
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
-        public IList<ServerPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets or sets minimal TLS version. Allowed values: '1.0', '1.1',
-        /// '1.2'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.minimalTlsVersion")]
-        public string MinimalTlsVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether or not public endpoint access is allowed for
-        /// this server.  Value is optional but if passed in, must be 'Enabled'
-        /// or 'Disabled'. Possible values include: 'Enabled', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
-        public string PublicNetworkAccess { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        public ServerState? State { get; private set; }
 
     }
 }

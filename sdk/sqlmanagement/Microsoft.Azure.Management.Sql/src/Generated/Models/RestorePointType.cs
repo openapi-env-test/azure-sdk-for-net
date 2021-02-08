@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Management.Sql.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum RestorePointType
     {
-        [EnumMember(Value = "CONTINUOUS")]
-        CONTINUOUS,
         [EnumMember(Value = "DISCRETE")]
-        DISCRETE
+        DISCRETE,
+        [EnumMember(Value = "CONTINUOUS")]
+        CONTINUOUS
     }
     internal static class RestorePointTypeEnumExtension
     {
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         {
             switch( value )
             {
-                case RestorePointType.CONTINUOUS:
-                    return "CONTINUOUS";
                 case RestorePointType.DISCRETE:
                     return "DISCRETE";
+                case RestorePointType.CONTINUOUS:
+                    return "CONTINUOUS";
             }
             return null;
         }
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         {
             switch( value )
             {
-                case "CONTINUOUS":
-                    return RestorePointType.CONTINUOUS;
                 case "DISCRETE":
                     return RestorePointType.DISCRETE;
+                case "CONTINUOUS":
+                    return RestorePointType.CONTINUOUS;
             }
             return null;
         }

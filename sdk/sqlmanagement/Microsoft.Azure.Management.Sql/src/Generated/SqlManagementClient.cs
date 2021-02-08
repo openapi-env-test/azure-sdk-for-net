@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Management.Sql
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// The API version to use for the request.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The subscription ID that identifies an Azure subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
@@ -73,6 +78,16 @@ namespace Microsoft.Azure.Management.Sql
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IServerAdvisorsOperations.
+        /// </summary>
+        public virtual IServerAdvisorsOperations ServerAdvisors { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseAdvisorsOperations.
+        /// </summary>
+        public virtual IDatabaseAdvisorsOperations DatabaseAdvisors { get; private set; }
+
+        /// <summary>
         /// Gets the IRecoverableDatabasesOperations.
         /// </summary>
         public virtual IRecoverableDatabasesOperations RecoverableDatabases { get; private set; }
@@ -83,9 +98,24 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the ICapabilitiesOperations.
+        /// </summary>
+        public virtual ICapabilitiesOperations Capabilities { get; private set; }
+
+        /// <summary>
+        /// Gets the IServersOperations.
+        /// </summary>
+        public virtual IServersOperations Servers { get; private set; }
+
+        /// <summary>
         /// Gets the IServerConnectionPoliciesOperations.
         /// </summary>
         public virtual IServerConnectionPoliciesOperations ServerConnectionPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabasesOperations.
+        /// </summary>
+        public virtual IDatabasesOperations Databases { get; private set; }
 
         /// <summary>
         /// Gets the IDatabaseThreatDetectionPoliciesOperations.
@@ -103,6 +133,26 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IDataMaskingRulesOperations DataMaskingRules { get; private set; }
 
         /// <summary>
+        /// Gets the ITransparentDataEncryptionConfigurationsOperations.
+        /// </summary>
+        public virtual ITransparentDataEncryptionConfigurationsOperations TransparentDataEncryptionConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the IExtensionsOperations.
+        /// </summary>
+        public virtual IExtensionsOperations Extensions { get; private set; }
+
+        /// <summary>
+        /// Gets the IDisasterRecoveryConfigurationsOperations.
+        /// </summary>
+        public virtual IDisasterRecoveryConfigurationsOperations DisasterRecoveryConfigurations { get; private set; }
+
+        /// <summary>
+        /// Gets the IElasticPoolsOperations.
+        /// </summary>
+        public virtual IElasticPoolsOperations ElasticPools { get; private set; }
+
+        /// <summary>
         /// Gets the IFirewallRulesOperations.
         /// </summary>
         public virtual IFirewallRulesOperations FirewallRules { get; private set; }
@@ -113,14 +163,24 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IGeoBackupPoliciesOperations GeoBackupPolicies { get; private set; }
 
         /// <summary>
-        /// Gets the IDatabasesOperations.
+        /// Gets the IOperations.
         /// </summary>
-        public virtual IDatabasesOperations Databases { get; private set; }
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IElasticPoolsOperations.
+        /// Gets the IQueriesOperations.
         /// </summary>
-        public virtual IElasticPoolsOperations ElasticPools { get; private set; }
+        public virtual IQueriesOperations Queries { get; private set; }
+
+        /// <summary>
+        /// Gets the IQueryStatisticsOperations.
+        /// </summary>
+        public virtual IQueryStatisticsOperations QueryStatistics { get; private set; }
+
+        /// <summary>
+        /// Gets the IQueryTextsOperations.
+        /// </summary>
+        public virtual IQueryTextsOperations QueryTexts { get; private set; }
 
         /// <summary>
         /// Gets the IRecommendedElasticPoolsOperations.
@@ -131,6 +191,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IReplicationLinksOperations.
         /// </summary>
         public virtual IReplicationLinksOperations ReplicationLinks { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        public virtual IRestorePointsOperations RestorePoints { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerAzureADAdministratorsOperations.
+        /// </summary>
+        public virtual IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; private set; }
 
         /// <summary>
         /// Gets the IServerCommunicationLinksOperations.
@@ -168,6 +238,21 @@ namespace Microsoft.Azure.Management.Sql
         public virtual ITransparentDataEncryptionActivitiesOperations TransparentDataEncryptionActivities { get; private set; }
 
         /// <summary>
+        /// Gets the IServerTableAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IServerTableAuditingPoliciesOperations ServerTableAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseTableAuditingPoliciesOperations.
+        /// </summary>
+        public virtual IDatabaseTableAuditingPoliciesOperations DatabaseTableAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseConnectionPoliciesOperations.
+        /// </summary>
+        public virtual IDatabaseConnectionPoliciesOperations DatabaseConnectionPolicies { get; private set; }
+
+        /// <summary>
         /// Gets the IServerUsagesOperations.
         /// </summary>
         public virtual IServerUsagesOperations ServerUsages { get; private set; }
@@ -176,381 +261,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IDatabaseUsagesOperations.
         /// </summary>
         public virtual IDatabaseUsagesOperations DatabaseUsages { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseAutomaticTuningOperations.
-        /// </summary>
-        public virtual IDatabaseAutomaticTuningOperations DatabaseAutomaticTuning { get; private set; }
-
-        /// <summary>
-        /// Gets the IEncryptionProtectorsOperations.
-        /// </summary>
-        public virtual IEncryptionProtectorsOperations EncryptionProtectors { get; private set; }
-
-        /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerKeysOperations.
-        /// </summary>
-        public virtual IServerKeysOperations ServerKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the ISyncAgentsOperations.
-        /// </summary>
-        public virtual ISyncAgentsOperations SyncAgents { get; private set; }
-
-        /// <summary>
-        /// Gets the ISubscriptionUsagesOperations.
-        /// </summary>
-        public virtual ISubscriptionUsagesOperations SubscriptionUsages { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualClustersOperations.
-        /// </summary>
-        public virtual IVirtualClustersOperations VirtualClusters { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualNetworkRulesOperations.
-        /// </summary>
-        public virtual IVirtualNetworkRulesOperations VirtualNetworkRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IExtendedDatabaseBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IExtendedDatabaseBlobAuditingPoliciesOperations ExtendedDatabaseBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IExtendedServerBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IExtendedServerBlobAuditingPoliciesOperations ExtendedServerBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IServerBlobAuditingPoliciesOperations ServerBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseBlobAuditingPoliciesOperations.
-        /// </summary>
-        public virtual IDatabaseBlobAuditingPoliciesOperations DatabaseBlobAuditingPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseVulnerabilityAssessmentRuleBaselinesOperations.
-        /// </summary>
-        public virtual IDatabaseVulnerabilityAssessmentRuleBaselinesOperations DatabaseVulnerabilityAssessmentRuleBaselines { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual IDatabaseVulnerabilityAssessmentsOperations DatabaseVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobAgentsOperations.
-        /// </summary>
-        public virtual IJobAgentsOperations JobAgents { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobCredentialsOperations.
-        /// </summary>
-        public virtual IJobCredentialsOperations JobCredentials { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobExecutionsOperations.
-        /// </summary>
-        public virtual IJobExecutionsOperations JobExecutions { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobsOperations.
-        /// </summary>
-        public virtual IJobsOperations Jobs { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobStepExecutionsOperations.
-        /// </summary>
-        public virtual IJobStepExecutionsOperations JobStepExecutions { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobStepsOperations.
-        /// </summary>
-        public virtual IJobStepsOperations JobSteps { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobTargetExecutionsOperations.
-        /// </summary>
-        public virtual IJobTargetExecutionsOperations JobTargetExecutions { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobTargetGroupsOperations.
-        /// </summary>
-        public virtual IJobTargetGroupsOperations JobTargetGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IJobVersionsOperations.
-        /// </summary>
-        public virtual IJobVersionsOperations JobVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the ILongTermRetentionBackupsOperations.
-        /// </summary>
-        public virtual ILongTermRetentionBackupsOperations LongTermRetentionBackups { get; private set; }
-
-        /// <summary>
-        /// Gets the IBackupLongTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IBackupLongTermRetentionPoliciesOperations BackupLongTermRetentionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedBackupShortTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IManagedBackupShortTermRetentionPoliciesOperations ManagedBackupShortTermRetentionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerAutomaticTuningOperations.
-        /// </summary>
-        public virtual IServerAutomaticTuningOperations ServerAutomaticTuning { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerDnsAliasesOperations.
-        /// </summary>
-        public virtual IServerDnsAliasesOperations ServerDnsAliases { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IServerSecurityAlertPoliciesOperations ServerSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IRestorableDroppedManagedDatabasesOperations.
-        /// </summary>
-        public virtual IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; private set; }
-
-        /// <summary>
-        /// Gets the IRestorePointsOperations.
-        /// </summary>
-        public virtual IRestorePointsOperations RestorePoints { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IManagedDatabaseSecurityAlertPoliciesOperations ManagedDatabaseSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedServerSecurityAlertPoliciesOperations.
-        /// </summary>
-        public virtual IManagedServerSecurityAlertPoliciesOperations ManagedServerSecurityAlertPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the ISensitivityLabelsOperations.
-        /// </summary>
-        public virtual ISensitivityLabelsOperations SensitivityLabels { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceAdministratorsOperations.
-        /// </summary>
-        public virtual IManagedInstanceAdministratorsOperations ManagedInstanceAdministrators { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseOperations.
-        /// </summary>
-        public virtual IDatabaseOperations DatabaseOperations { get; private set; }
-
-        /// <summary>
-        /// Gets the IElasticPoolOperations.
-        /// </summary>
-        public virtual IElasticPoolOperations ElasticPoolOperations { get; private set; }
-
-        /// <summary>
-        /// Gets the IDatabaseVulnerabilityAssessmentScansOperations.
-        /// </summary>
-        public virtual IDatabaseVulnerabilityAssessmentScansOperations DatabaseVulnerabilityAssessmentScans { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations.
-        /// </summary>
-        public virtual IManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations ManagedDatabaseVulnerabilityAssessmentRuleBaselines { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseVulnerabilityAssessmentScansOperations.
-        /// </summary>
-        public virtual IManagedDatabaseVulnerabilityAssessmentScansOperations ManagedDatabaseVulnerabilityAssessmentScans { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual IManagedDatabaseVulnerabilityAssessmentsOperations ManagedDatabaseVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the IInstanceFailoverGroupsOperations.
-        /// </summary>
-        public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the ITdeCertificatesOperations.
-        /// </summary>
-        public virtual ITdeCertificatesOperations TdeCertificates { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceTdeCertificatesOperations.
-        /// </summary>
-        public virtual IManagedInstanceTdeCertificatesOperations ManagedInstanceTdeCertificates { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceKeysOperations.
-        /// </summary>
-        public virtual IManagedInstanceKeysOperations ManagedInstanceKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceEncryptionProtectorsOperations.
-        /// </summary>
-        public virtual IManagedInstanceEncryptionProtectorsOperations ManagedInstanceEncryptionProtectors { get; private set; }
-
-        /// <summary>
-        /// Gets the IRecoverableManagedDatabasesOperations.
-        /// </summary>
-        public virtual IRecoverableManagedDatabasesOperations RecoverableManagedDatabases { get; private set; }
-
-        /// <summary>
-        /// Gets the IBackupShortTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IBackupShortTermRetentionPoliciesOperations BackupShortTermRetentionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual IManagedInstanceVulnerabilityAssessmentsOperations ManagedInstanceVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerVulnerabilityAssessmentsOperations.
-        /// </summary>
-        public virtual IServerVulnerabilityAssessmentsOperations ServerVulnerabilityAssessments { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseSensitivityLabelsOperations.
-        /// </summary>
-        public virtual IManagedDatabaseSensitivityLabelsOperations ManagedDatabaseSensitivityLabels { get; private set; }
-
-        /// <summary>
-        /// Gets the IInstancePoolsOperations.
-        /// </summary>
-        public virtual IInstancePoolsOperations InstancePools { get; private set; }
-
-        /// <summary>
-        /// Gets the IUsagesOperations.
-        /// </summary>
-        public virtual IUsagesOperations Usages { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-
-        /// <summary>
-        /// Gets the IServersOperations.
-        /// </summary>
-        public virtual IServersOperations Servers { get; private set; }
-
-        /// <summary>
-        /// Gets the ICapabilitiesOperations.
-        /// </summary>
-        public virtual ICapabilitiesOperations Capabilities { get; private set; }
-
-        /// <summary>
-        /// Gets the ILongTermRetentionManagedInstanceBackupsOperations.
-        /// </summary>
-        public virtual ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceLongTermRetentionPoliciesOperations.
-        /// </summary>
-        public virtual IManagedInstanceLongTermRetentionPoliciesOperations ManagedInstanceLongTermRetentionPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkloadGroupsOperations.
-        /// </summary>
-        public virtual IWorkloadGroupsOperations WorkloadGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkloadClassifiersOperations.
-        /// </summary>
-        public virtual IWorkloadClassifiersOperations WorkloadClassifiers { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceOperations.
-        /// </summary>
-        public virtual IManagedInstanceOperations ManagedInstanceOperations { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerAzureADAdministratorsOperations.
-        /// </summary>
-        public virtual IServerAzureADAdministratorsOperations ServerAzureADAdministrators { get; private set; }
-
-        /// <summary>
-        /// Gets the ISyncGroupsOperations.
-        /// </summary>
-        public virtual ISyncGroupsOperations SyncGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the ISyncMembersOperations.
-        /// </summary>
-        public virtual ISyncMembersOperations SyncMembers { get; private set; }
-
-        /// <summary>
-        /// Gets the IImportExportOperations.
-        /// </summary>
-        public virtual IImportExportOperations ImportExport { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabaseRestoreDetailsOperations.
-        /// </summary>
-        public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerAzureADOnlyAuthenticationsOperations.
-        /// </summary>
-        public virtual IServerAzureADOnlyAuthenticationsOperations ServerAzureADOnlyAuthentications { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedInstanceAzureADOnlyAuthenticationsOperations.
-        /// </summary>
-        public virtual IManagedInstanceAzureADOnlyAuthenticationsOperations ManagedInstanceAzureADOnlyAuthentications { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerTrustGroupsOperations.
-        /// </summary>
-        public virtual IServerTrustGroupsOperations ServerTrustGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IServerDevOpsAuditSettingsOperations.
-        /// </summary>
-        public virtual IServerDevOpsAuditSettingsOperations ServerDevOpsAuditSettings { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -793,18 +503,31 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         private void Initialize()
         {
+            ServerAdvisors = new ServerAdvisorsOperations(this);
+            DatabaseAdvisors = new DatabaseAdvisorsOperations(this);
             RecoverableDatabases = new RecoverableDatabasesOperations(this);
             RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
+            Capabilities = new CapabilitiesOperations(this);
+            Servers = new ServersOperations(this);
             ServerConnectionPolicies = new ServerConnectionPoliciesOperations(this);
+            Databases = new DatabasesOperations(this);
             DatabaseThreatDetectionPolicies = new DatabaseThreatDetectionPoliciesOperations(this);
             DataMaskingPolicies = new DataMaskingPoliciesOperations(this);
             DataMaskingRules = new DataMaskingRulesOperations(this);
+            TransparentDataEncryptionConfigurations = new TransparentDataEncryptionConfigurationsOperations(this);
+            Extensions = new ExtensionsOperations(this);
+            DisasterRecoveryConfigurations = new DisasterRecoveryConfigurationsOperations(this);
+            ElasticPools = new ElasticPoolsOperations(this);
             FirewallRules = new FirewallRulesOperations(this);
             GeoBackupPolicies = new GeoBackupPoliciesOperations(this);
-            Databases = new DatabasesOperations(this);
-            ElasticPools = new ElasticPoolsOperations(this);
+            Operations = new Operations(this);
+            Queries = new QueriesOperations(this);
+            QueryStatistics = new QueryStatisticsOperations(this);
+            QueryTexts = new QueryTextsOperations(this);
             RecommendedElasticPools = new RecommendedElasticPoolsOperations(this);
             ReplicationLinks = new ReplicationLinksOperations(this);
+            RestorePoints = new RestorePointsOperations(this);
+            ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
             ServerCommunicationLinks = new ServerCommunicationLinksOperations(this);
             ServiceObjectives = new ServiceObjectivesOperations(this);
             ElasticPoolActivities = new ElasticPoolActivitiesOperations(this);
@@ -812,84 +535,13 @@ namespace Microsoft.Azure.Management.Sql
             ServiceTierAdvisors = new ServiceTierAdvisorsOperations(this);
             TransparentDataEncryptions = new TransparentDataEncryptionsOperations(this);
             TransparentDataEncryptionActivities = new TransparentDataEncryptionActivitiesOperations(this);
+            ServerTableAuditingPolicies = new ServerTableAuditingPoliciesOperations(this);
+            DatabaseTableAuditingPolicies = new DatabaseTableAuditingPoliciesOperations(this);
+            DatabaseConnectionPolicies = new DatabaseConnectionPoliciesOperations(this);
             ServerUsages = new ServerUsagesOperations(this);
             DatabaseUsages = new DatabaseUsagesOperations(this);
-            DatabaseAutomaticTuning = new DatabaseAutomaticTuningOperations(this);
-            EncryptionProtectors = new EncryptionProtectorsOperations(this);
-            FailoverGroups = new FailoverGroupsOperations(this);
-            Operations = new Operations(this);
-            ServerKeys = new ServerKeysOperations(this);
-            SyncAgents = new SyncAgentsOperations(this);
-            SubscriptionUsages = new SubscriptionUsagesOperations(this);
-            VirtualClusters = new VirtualClustersOperations(this);
-            VirtualNetworkRules = new VirtualNetworkRulesOperations(this);
-            ExtendedDatabaseBlobAuditingPolicies = new ExtendedDatabaseBlobAuditingPoliciesOperations(this);
-            ExtendedServerBlobAuditingPolicies = new ExtendedServerBlobAuditingPoliciesOperations(this);
-            ServerBlobAuditingPolicies = new ServerBlobAuditingPoliciesOperations(this);
-            DatabaseBlobAuditingPolicies = new DatabaseBlobAuditingPoliciesOperations(this);
-            DatabaseVulnerabilityAssessmentRuleBaselines = new DatabaseVulnerabilityAssessmentRuleBaselinesOperations(this);
-            DatabaseVulnerabilityAssessments = new DatabaseVulnerabilityAssessmentsOperations(this);
-            JobAgents = new JobAgentsOperations(this);
-            JobCredentials = new JobCredentialsOperations(this);
-            JobExecutions = new JobExecutionsOperations(this);
-            Jobs = new JobsOperations(this);
-            JobStepExecutions = new JobStepExecutionsOperations(this);
-            JobSteps = new JobStepsOperations(this);
-            JobTargetExecutions = new JobTargetExecutionsOperations(this);
-            JobTargetGroups = new JobTargetGroupsOperations(this);
-            JobVersions = new JobVersionsOperations(this);
-            LongTermRetentionBackups = new LongTermRetentionBackupsOperations(this);
-            BackupLongTermRetentionPolicies = new BackupLongTermRetentionPoliciesOperations(this);
-            ManagedBackupShortTermRetentionPolicies = new ManagedBackupShortTermRetentionPoliciesOperations(this);
-            ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies = new ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations(this);
-            ServerAutomaticTuning = new ServerAutomaticTuningOperations(this);
-            ServerDnsAliases = new ServerDnsAliasesOperations(this);
-            ServerSecurityAlertPolicies = new ServerSecurityAlertPoliciesOperations(this);
-            RestorableDroppedManagedDatabases = new RestorableDroppedManagedDatabasesOperations(this);
-            RestorePoints = new RestorePointsOperations(this);
-            ManagedDatabaseSecurityAlertPolicies = new ManagedDatabaseSecurityAlertPoliciesOperations(this);
-            ManagedServerSecurityAlertPolicies = new ManagedServerSecurityAlertPoliciesOperations(this);
-            SensitivityLabels = new SensitivityLabelsOperations(this);
-            ManagedInstanceAdministrators = new ManagedInstanceAdministratorsOperations(this);
-            DatabaseOperations = new DatabaseOperations(this);
-            ElasticPoolOperations = new ElasticPoolOperations(this);
-            DatabaseVulnerabilityAssessmentScans = new DatabaseVulnerabilityAssessmentScansOperations(this);
-            ManagedDatabaseVulnerabilityAssessmentRuleBaselines = new ManagedDatabaseVulnerabilityAssessmentRuleBaselinesOperations(this);
-            ManagedDatabaseVulnerabilityAssessmentScans = new ManagedDatabaseVulnerabilityAssessmentScansOperations(this);
-            ManagedDatabaseVulnerabilityAssessments = new ManagedDatabaseVulnerabilityAssessmentsOperations(this);
-            InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
-            TdeCertificates = new TdeCertificatesOperations(this);
-            ManagedInstanceTdeCertificates = new ManagedInstanceTdeCertificatesOperations(this);
-            ManagedInstanceKeys = new ManagedInstanceKeysOperations(this);
-            ManagedInstanceEncryptionProtectors = new ManagedInstanceEncryptionProtectorsOperations(this);
-            RecoverableManagedDatabases = new RecoverableManagedDatabasesOperations(this);
-            BackupShortTermRetentionPolicies = new BackupShortTermRetentionPoliciesOperations(this);
-            ManagedInstanceVulnerabilityAssessments = new ManagedInstanceVulnerabilityAssessmentsOperations(this);
-            ServerVulnerabilityAssessments = new ServerVulnerabilityAssessmentsOperations(this);
-            ManagedDatabaseSensitivityLabels = new ManagedDatabaseSensitivityLabelsOperations(this);
-            InstancePools = new InstancePoolsOperations(this);
-            Usages = new UsagesOperations(this);
-            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            Servers = new ServersOperations(this);
-            Capabilities = new CapabilitiesOperations(this);
-            LongTermRetentionManagedInstanceBackups = new LongTermRetentionManagedInstanceBackupsOperations(this);
-            ManagedInstanceLongTermRetentionPolicies = new ManagedInstanceLongTermRetentionPoliciesOperations(this);
-            WorkloadGroups = new WorkloadGroupsOperations(this);
-            WorkloadClassifiers = new WorkloadClassifiersOperations(this);
-            ManagedInstanceOperations = new ManagedInstanceOperations(this);
-            ServerAzureADAdministrators = new ServerAzureADAdministratorsOperations(this);
-            SyncGroups = new SyncGroupsOperations(this);
-            SyncMembers = new SyncMembersOperations(this);
-            ImportExport = new ImportExportOperations(this);
-            ManagedDatabases = new ManagedDatabasesOperations(this);
-            ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
-            ServerAzureADOnlyAuthentications = new ServerAzureADOnlyAuthenticationsOperations(this);
-            ManagedInstances = new ManagedInstancesOperations(this);
-            ManagedInstanceAzureADOnlyAuthentications = new ManagedInstanceAzureADOnlyAuthenticationsOperations(this);
-            ServerTrustGroups = new ServerTrustGroupsOperations(this);
-            ServerDevOpsAuditSettings = new ServerDevOpsAuditSettingsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2014-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

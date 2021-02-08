@@ -17,7 +17,5 @@ namespace Microsoft.Azure.Management.Sql.Models
     public static class SampleName
     {
         public const string AdventureWorksLT = "AdventureWorksLT";
-        public const string WideWorldImportersStd = "WideWorldImportersStd";
-        public const string WideWorldImportersFull = "WideWorldImportersFull";
     }
 }
