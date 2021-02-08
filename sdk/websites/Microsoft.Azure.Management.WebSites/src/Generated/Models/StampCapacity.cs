@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="computeMode">Shared/dedicated workers. Possible values
         /// include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="workerSize">Size of the machines. Possible values
-        /// include: 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3',
-        /// 'NestedSmall', 'Default'</param>
+        /// include: 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2',
+        /// 'D3'</param>
         /// <param name="workerSizeId">Size ID of machines:
         /// 0 - Small
         /// 1 - Medium
@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// if capacity is applicable for all apps; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
         /// <param name="siteMode">Shared or Dedicated.</param>
-        /// <param name="isLinux">Is this a linux stamp capacity</param>
-        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string), bool? isLinux = default(bool?))
+        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string))
         {
             Name = name;
             AvailableCapacity = availableCapacity;
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             ExcludeFromCapacityAllocation = excludeFromCapacityAllocation;
             IsApplicableForAllComputeModes = isApplicableForAllComputeModes;
             SiteMode = siteMode;
-            IsLinux = isLinux;
             CustomInit();
         }
 
@@ -109,8 +107,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets size of the machines. Possible values include:
-        /// 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'NestedSmall',
-        /// 'Default'
+        /// 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3'
         /// </summary>
         [JsonProperty(PropertyName = "workerSize")]
         public WorkerSizeOptions? WorkerSize { get; set; }
@@ -145,12 +142,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "siteMode")]
         public string SiteMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets is this a linux stamp capacity
-        /// </summary>
-        [JsonProperty(PropertyName = "isLinux")]
-        public bool? IsLinux { get; set; }
 
     }
 }

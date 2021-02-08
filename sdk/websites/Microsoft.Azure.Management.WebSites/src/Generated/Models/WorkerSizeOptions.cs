@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum WorkerSizeOptions
     {
+        [EnumMember(Value = "Default")]
+        Default,
         [EnumMember(Value = "Small")]
         Small,
         [EnumMember(Value = "Medium")]
@@ -32,11 +34,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         [EnumMember(Value = "D2")]
         D2,
         [EnumMember(Value = "D3")]
-        D3,
-        [EnumMember(Value = "NestedSmall")]
-        NestedSmall,
-        [EnumMember(Value = "Default")]
-        Default
+        D3
     }
     internal static class WorkerSizeOptionsEnumExtension
     {
@@ -49,6 +47,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         {
             switch( value )
             {
+                case WorkerSizeOptions.Default:
+                    return "Default";
                 case WorkerSizeOptions.Small:
                     return "Small";
                 case WorkerSizeOptions.Medium:
@@ -61,10 +61,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return "D2";
                 case WorkerSizeOptions.D3:
                     return "D3";
-                case WorkerSizeOptions.NestedSmall:
-                    return "NestedSmall";
-                case WorkerSizeOptions.Default:
-                    return "Default";
             }
             return null;
         }
@@ -73,6 +69,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         {
             switch( value )
             {
+                case "Default":
+                    return WorkerSizeOptions.Default;
                 case "Small":
                     return WorkerSizeOptions.Small;
                 case "Medium":
@@ -85,10 +83,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
                     return WorkerSizeOptions.D2;
                 case "D3":
                     return WorkerSizeOptions.D3;
-                case "NestedSmall":
-                    return WorkerSizeOptions.NestedSmall;
-                case "Default":
-                    return WorkerSizeOptions.Default;
             }
             return null;
         }

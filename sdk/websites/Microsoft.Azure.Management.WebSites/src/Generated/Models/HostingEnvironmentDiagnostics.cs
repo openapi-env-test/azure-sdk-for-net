@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// class.
         /// </summary>
         /// <param name="name">Name/identifier of the diagnostics.</param>
-        /// <param name="diagnosticsOutput">Diagnostics output.</param>
-        public HostingEnvironmentDiagnostics(string name = default(string), string diagnosticsOutput = default(string))
+        /// <param name="diagnosicsOutput">Diagnostics output.</param>
+        public HostingEnvironmentDiagnostics(string name = default(string), string diagnosicsOutput = default(string))
         {
             Name = name;
-            DiagnosticsOutput = diagnosticsOutput;
+            DiagnosicsOutput = diagnosicsOutput;
             CustomInit();
         }
 
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets diagnostics output.
         /// </summary>
-        [JsonProperty(PropertyName = "diagnosticsOutput")]
-        public string DiagnosticsOutput { get; set; }
+        [JsonProperty(PropertyName = "diagnosicsOutput")]
+        public string DiagnosicsOutput { get; set; }
 
     }
 }
