@@ -36,15 +36,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="latency">The time in milliseconds it takes for a TCP
         /// connection to be created from the App Service Environment to this
         /// IpAddress at this Port.</param>
-        /// <param name="isAccessible">Whether it is possible to create a TCP
+        /// <param name="isAccessable">Whether it is possible to create a TCP
         /// connection from the App Service Environment to this IpAddress at
         /// this Port.</param>
-        public EndpointDetail(string ipAddress = default(string), int? port = default(int?), double? latency = default(double?), bool? isAccessible = default(bool?))
+        public EndpointDetail(string ipAddress = default(string), int? port = default(int?), double? latency = default(double?), bool? isAccessable = default(bool?))
         {
             IpAddress = ipAddress;
             Port = port;
             Latency = latency;
-            IsAccessible = isAccessible;
+            IsAccessable = isAccessable;
             CustomInit();
         }
 
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets whether it is possible to create a TCP connection from
         /// the App Service Environment to this IpAddress at this Port.
         /// </summary>
-        [JsonProperty(PropertyName = "isAccessible")]
-        public bool? IsAccessible { get; set; }
+        [JsonProperty(PropertyName = "isAccessable")]
+        public bool? IsAccessable { get; set; }
 
     }
 }

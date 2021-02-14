@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates for a subscription.
+        /// Get all certificates for a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates in a resource group.
+        /// Get all certificates in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Get a certificate.
+        /// Get a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate.
+        /// Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Delete a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a certificate.
+        /// Delete a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="DefaultErrorResponseException">
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Create or update a certificate.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate.
+        /// Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates for a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates for a subscription.
+        /// Get all certificates for a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Get all certificates in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all certificates in a resource group.
+        /// Get all certificates in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
