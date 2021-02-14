@@ -41,13 +41,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='parameters'>
             /// Parameters that define the operation to create a connection monitor.
             /// </param>
-            /// <param name='migrate'>
-            /// Value indicating whether connection monitor V1 should be migrated to V2
-            /// format.
-            /// </param>
-            public static ConnectionMonitorResult CreateOrUpdate(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, string migrate = default(string))
+            public static ConnectionMonitorResult CreateOrUpdate(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, migrate).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -68,16 +64,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='parameters'>
             /// Parameters that define the operation to create a connection monitor.
             /// </param>
-            /// <param name='migrate'>
-            /// Value indicating whether connection monitor V1 should be migrated to V2
-            /// format.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConnectionMonitorResult> CreateOrUpdateAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, string migrate = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConnectionMonitorResult> CreateOrUpdateAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, migrate, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -414,13 +406,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='parameters'>
             /// Parameters that define the operation to create a connection monitor.
             /// </param>
-            /// <param name='migrate'>
-            /// Value indicating whether connection monitor V1 should be migrated to V2
-            /// format.
-            /// </param>
-            public static ConnectionMonitorResult BeginCreateOrUpdate(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, string migrate = default(string))
+            public static ConnectionMonitorResult BeginCreateOrUpdate(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, migrate).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -441,16 +429,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='parameters'>
             /// Parameters that define the operation to create a connection monitor.
             /// </param>
-            /// <param name='migrate'>
-            /// Value indicating whether connection monitor V1 should be migrated to V2
-            /// format.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConnectionMonitorResult> BeginCreateOrUpdateAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, string migrate = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConnectionMonitorResult> BeginCreateOrUpdateAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, ConnectionMonitor parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, migrate, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
