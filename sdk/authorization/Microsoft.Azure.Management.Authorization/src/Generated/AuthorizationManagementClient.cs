@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Management.Authorization
     using System.Net;
     using System.Net.Http;
 
+    /// <summary>
+    /// Access reviews service provides the workflow for running access reviews
+    /// on different kind of resources.
+    /// </summary>
     public partial class AuthorizationManagementClient : ServiceClient<AuthorizationManagementClient>, IAuthorizationManagementClient, IAzureClient
     {
         /// <summary>
@@ -49,6 +53,11 @@ namespace Microsoft.Azure.Management.Authorization
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// The API version to be used with the HTTP request.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -67,39 +76,49 @@ namespace Microsoft.Azure.Management.Authorization
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IClassicAdministratorsOperations.
+        /// Gets the IOperations.
         /// </summary>
-        public virtual IClassicAdministratorsOperations ClassicAdministrators { get; private set; }
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IGlobalAdministratorOperations.
+        /// Gets the IAccessReviewScheduleDefinitionsOperations.
         /// </summary>
-        public virtual IGlobalAdministratorOperations GlobalAdministrator { get; private set; }
+        public virtual IAccessReviewScheduleDefinitionsOperations AccessReviewScheduleDefinitions { get; private set; }
 
         /// <summary>
-        /// Gets the IProviderOperationsMetadataOperations.
+        /// Gets the IAccessReviewInstancesOperations.
         /// </summary>
-        public virtual IProviderOperationsMetadataOperations ProviderOperationsMetadata { get; private set; }
+        public virtual IAccessReviewInstancesOperations AccessReviewInstances { get; private set; }
 
         /// <summary>
-        /// Gets the IPermissionsOperations.
+        /// Gets the IAccessReviewInstanceOperations.
         /// </summary>
-        public virtual IPermissionsOperations Permissions { get; private set; }
+        public virtual IAccessReviewInstanceOperations AccessReviewInstance { get; private set; }
 
         /// <summary>
-        /// Gets the IRoleDefinitionsOperations.
+        /// Gets the IAccessReviewInstanceDecisionsOperations.
         /// </summary>
-        public virtual IRoleDefinitionsOperations RoleDefinitions { get; private set; }
+        public virtual IAccessReviewInstanceDecisionsOperations AccessReviewInstanceDecisions { get; private set; }
 
         /// <summary>
-        /// Gets the IDenyAssignmentsOperations.
+        /// Gets the IAccessReviewDefaultSettingsOperations.
         /// </summary>
-        public virtual IDenyAssignmentsOperations DenyAssignments { get; private set; }
+        public virtual IAccessReviewDefaultSettingsOperations AccessReviewDefaultSettings { get; private set; }
 
         /// <summary>
-        /// Gets the IRoleAssignmentsOperations.
+        /// Gets the IAccessReviewScheduleDefinitionsAssignedForMyApprovalOperations.
         /// </summary>
-        public virtual IRoleAssignmentsOperations RoleAssignments { get; private set; }
+        public virtual IAccessReviewScheduleDefinitionsAssignedForMyApprovalOperations AccessReviewScheduleDefinitionsAssignedForMyApproval { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccessReviewInstancesAssignedForMyApprovalOperations.
+        /// </summary>
+        public virtual IAccessReviewInstancesAssignedForMyApprovalOperations AccessReviewInstancesAssignedForMyApproval { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccessReviewInstanceMyDecisionsOperations.
+        /// </summary>
+        public virtual IAccessReviewInstanceMyDecisionsOperations AccessReviewInstanceMyDecisions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AuthorizationManagementClient class.
@@ -342,14 +361,17 @@ namespace Microsoft.Azure.Management.Authorization
         /// </summary>
         private void Initialize()
         {
-            ClassicAdministrators = new ClassicAdministratorsOperations(this);
-            GlobalAdministrator = new GlobalAdministratorOperations(this);
-            ProviderOperationsMetadata = new ProviderOperationsMetadataOperations(this);
-            Permissions = new PermissionsOperations(this);
-            RoleDefinitions = new RoleDefinitionsOperations(this);
-            DenyAssignments = new DenyAssignmentsOperations(this);
-            RoleAssignments = new RoleAssignmentsOperations(this);
+            Operations = new Operations(this);
+            AccessReviewScheduleDefinitions = new AccessReviewScheduleDefinitionsOperations(this);
+            AccessReviewInstances = new AccessReviewInstancesOperations(this);
+            AccessReviewInstance = new AccessReviewInstanceOperations(this);
+            AccessReviewInstanceDecisions = new AccessReviewInstanceDecisionsOperations(this);
+            AccessReviewDefaultSettings = new AccessReviewDefaultSettingsOperations(this);
+            AccessReviewScheduleDefinitionsAssignedForMyApproval = new AccessReviewScheduleDefinitionsAssignedForMyApprovalOperations(this);
+            AccessReviewInstancesAssignedForMyApproval = new AccessReviewInstancesAssignedForMyApprovalOperations(this);
+            AccessReviewInstanceMyDecisions = new AccessReviewInstanceMyDecisionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2018-05-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -379,6 +401,8 @@ namespace Microsoft.Azure.Management.Authorization
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<AccessReviewDecisionTarget>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<AccessReviewDecisionTarget>("type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
