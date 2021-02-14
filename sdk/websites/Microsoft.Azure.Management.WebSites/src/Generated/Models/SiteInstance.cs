@@ -13,38 +13,34 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Triggered Web Job History. List of Triggered Web Job Run Information
-    /// elements.
+    /// Instance of an app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TriggeredJobHistory : ProxyOnlyResource
+    public partial class SiteInstance : ProxyOnlyResource
     {
         /// <summary>
-        /// Initializes a new instance of the TriggeredJobHistory class.
+        /// Initializes a new instance of the SiteInstance class.
         /// </summary>
-        public TriggeredJobHistory()
+        public SiteInstance()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TriggeredJobHistory class.
+        /// Initializes a new instance of the SiteInstance class.
         /// </summary>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="triggeredJobRuns">List of triggered web job
-        /// runs.</param>
-        public TriggeredJobHistory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<TriggeredJobRun> triggeredJobRuns = default(IList<TriggeredJobRun>))
+        /// <param name="siteInstanceName">Name of instance.</param>
+        public SiteInstance(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string siteInstanceName = default(string))
             : base(id, name, kind, type)
         {
-            TriggeredJobRuns = triggeredJobRuns;
+            SiteInstanceName = siteInstanceName;
             CustomInit();
         }
 
@@ -54,10 +50,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of triggered web job runs.
+        /// Gets name of instance.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.triggeredJobRuns")]
-        public IList<TriggeredJobRun> TriggeredJobRuns { get; set; }
+        [JsonProperty(PropertyName = "properties.name")]
+        public string SiteInstanceName { get; private set; }
 
     }
 }

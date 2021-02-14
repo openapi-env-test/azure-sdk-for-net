@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="deploymentId">Identifier for deployment.</param>
         /// <param name="status">Deployment status.</param>
         /// <param name="message">Details about deployment status.</param>
         /// <param name="author">Who authored the deployment.</param>
@@ -46,9 +47,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="active">True if deployment is currently active, false
         /// if completed and null if not started.</param>
         /// <param name="details">Details on deployment.</param>
-        public Deployment(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
+        public Deployment(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string deploymentId = default(string), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
             : base(id, name, kind, type)
         {
+            DeploymentId = deploymentId;
             Status = status;
             Message = message;
             Author = author;
@@ -65,6 +67,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets identifier for deployment.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.id")]
+        public string DeploymentId { get; set; }
 
         /// <summary>
         /// Gets or sets deployment status.
@@ -93,19 +101,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets author email.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.author_email")]
+        [JsonProperty(PropertyName = "properties.authorEmail")]
         public string AuthorEmail { get; set; }
 
         /// <summary>
         /// Gets or sets start time.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.start_time")]
+        [JsonProperty(PropertyName = "properties.startTime")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets end time.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.end_time")]
+        [JsonProperty(PropertyName = "properties.endTime")]
         public System.DateTime? EndTime { get; set; }
 
         /// <summary>

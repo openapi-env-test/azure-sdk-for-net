@@ -43,16 +43,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="sku">Premier add on SKU.</param>
         /// <param name="product">Premier add on Product.</param>
         /// <param name="vendor">Premier add on Vendor.</param>
+        /// <param name="premierAddOnName">Premier add on Name.</param>
+        /// <param name="premierAddOnLocation">Premier add on Location.</param>
+        /// <param name="premierAddOnTags">Premier add on Tags.</param>
         /// <param name="marketplacePublisher">Premier add on Marketplace
         /// publisher.</param>
         /// <param name="marketplaceOffer">Premier add on Marketplace
         /// offer.</param>
-        public PremierAddOn(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+        public PremierAddOn(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string premierAddOnName = default(string), string premierAddOnLocation = default(string), IDictionary<string, string> premierAddOnTags = default(IDictionary<string, string>), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
             : base(location, id, name, kind, type, tags)
         {
             Sku = sku;
             Product = product;
             Vendor = vendor;
+            PremierAddOnName = premierAddOnName;
+            PremierAddOnLocation = premierAddOnLocation;
+            PremierAddOnTags = premierAddOnTags;
             MarketplacePublisher = marketplacePublisher;
             MarketplaceOffer = marketplaceOffer;
             CustomInit();
@@ -80,6 +86,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.vendor")]
         public string Vendor { get; set; }
+
+        /// <summary>
+        /// Gets or sets premier add on Name.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string PremierAddOnName { get; set; }
+
+        /// <summary>
+        /// Gets or sets premier add on Location.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.location")]
+        public string PremierAddOnLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets premier add on Tags.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.tags")]
+        public IDictionary<string, string> PremierAddOnTags { get; set; }
 
         /// <summary>
         /// Gets or sets premier add on Marketplace publisher.

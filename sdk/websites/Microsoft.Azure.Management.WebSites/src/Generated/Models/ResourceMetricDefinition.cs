@@ -38,21 +38,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="resourceMetricDefinitionName">Name of the
+        /// metric.</param>
         /// <param name="unit">Unit of the metric.</param>
         /// <param name="primaryAggregationType">Primary aggregation
         /// type.</param>
         /// <param name="metricAvailabilities">List of time grains supported
         /// for the metric together with retention period.</param>
         /// <param name="resourceUri">Resource URI.</param>
+        /// <param name="resourceMetricDefinitionId">Resource ID.</param>
         /// <param name="properties">Resource metric definition
         /// properties.</param>
-        public ResourceMetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string unit = default(string), string primaryAggregationType = default(string), IList<ResourceMetricAvailability> metricAvailabilities = default(IList<ResourceMetricAvailability>), string resourceUri = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
+        public ResourceMetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ResourceMetricName resourceMetricDefinitionName = default(ResourceMetricName), string unit = default(string), string primaryAggregationType = default(string), IList<ResourceMetricAvailability> metricAvailabilities = default(IList<ResourceMetricAvailability>), string resourceUri = default(string), string resourceMetricDefinitionId = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
             : base(id, name, kind, type)
         {
+            ResourceMetricDefinitionName = resourceMetricDefinitionName;
             Unit = unit;
             PrimaryAggregationType = primaryAggregationType;
             MetricAvailabilities = metricAvailabilities;
             ResourceUri = resourceUri;
+            ResourceMetricDefinitionId = resourceMetricDefinitionId;
             Properties = properties;
             CustomInit();
         }
@@ -61,6 +66,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets name of the metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public ResourceMetricName ResourceMetricDefinitionName { get; private set; }
 
         /// <summary>
         /// Gets unit of the metric.
@@ -86,6 +97,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceUri")]
         public string ResourceUri { get; private set; }
+
+        /// <summary>
+        /// Gets resource ID.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.id")]
+        public string ResourceMetricDefinitionId { get; private set; }
 
         /// <summary>
         /// Gets resource metric definition properties.
