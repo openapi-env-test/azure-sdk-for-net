@@ -29,6 +29,5 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public const string ExternalHg = "ExternalHg";
         public const string OneDrive = "OneDrive";
         public const string VSO = "VSO";
-        public const string VSTSRM = "VSTSRM";
     }
 }

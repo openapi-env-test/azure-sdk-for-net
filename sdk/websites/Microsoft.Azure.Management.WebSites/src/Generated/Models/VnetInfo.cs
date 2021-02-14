@@ -53,9 +53,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="dnsServers">DNS servers to be used by this Virtual
         /// Network. This should be a comma-separated list of IP
         /// addresses.</param>
-        /// <param name="isSwift">Flag that is used to denote if this is VNET
-        /// injection</param>
-        public VnetInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), string certBlob = default(string), IList<VnetRoute> routes = default(IList<VnetRoute>), bool? resyncRequired = default(bool?), string dnsServers = default(string), bool? isSwift = default(bool?))
+        public VnetInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetResourceId = default(string), string certThumbprint = default(string), byte[] certBlob = default(byte[]), IList<VnetRoute> routes = default(IList<VnetRoute>), bool? resyncRequired = default(bool?), string dnsServers = default(string))
             : base(id, name, kind, type)
         {
             VnetResourceId = vnetResourceId;
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             Routes = routes;
             ResyncRequired = resyncRequired;
             DnsServers = dnsServers;
-            IsSwift = isSwift;
             CustomInit();
         }
 
@@ -91,7 +88,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Point-To-Site VPN connection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.certBlob")]
-        public string CertBlob { get; set; }
+        public byte[] CertBlob { get; set; }
 
         /// <summary>
         /// Gets the routes that this Virtual Network connection uses.
@@ -113,12 +110,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsServers")]
         public string DnsServers { get; set; }
-
-        /// <summary>
-        /// Gets or sets flag that is used to denote if this is VNET injection
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isSwift")]
-        public bool? IsSwift { get; set; }
 
     }
 }

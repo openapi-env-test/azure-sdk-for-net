@@ -18,47 +18,41 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Metadata for the metrics.
+    /// Metadata for a metric.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ResourceMetricDefinition : ProxyOnlyResource
+    public partial class MetricDefinition : ProxyOnlyResource
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceMetricDefinition class.
+        /// Initializes a new instance of the MetricDefinition class.
         /// </summary>
-        public ResourceMetricDefinition()
+        public MetricDefinition()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceMetricDefinition class.
+        /// Initializes a new instance of the MetricDefinition class.
         /// </summary>
         /// <param name="id">Resource Id.</param>
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="resourceMetricDefinitionName">Name of the
-        /// metric.</param>
+        /// <param name="metricDefinitionName">Name of the metric.</param>
         /// <param name="unit">Unit of the metric.</param>
         /// <param name="primaryAggregationType">Primary aggregation
         /// type.</param>
         /// <param name="metricAvailabilities">List of time grains supported
         /// for the metric together with retention period.</param>
-        /// <param name="resourceUri">Resource URI.</param>
-        /// <param name="resourceMetricDefinitionId">Resource ID.</param>
-        /// <param name="properties">Resource metric definition
-        /// properties.</param>
-        public ResourceMetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ResourceMetricName resourceMetricDefinitionName = default(ResourceMetricName), string unit = default(string), string primaryAggregationType = default(string), IList<ResourceMetricAvailability> metricAvailabilities = default(IList<ResourceMetricAvailability>), string resourceUri = default(string), string resourceMetricDefinitionId = default(string), IDictionary<string, string> properties = default(IDictionary<string, string>))
+        /// <param name="displayName">Friendly name shown in the UI.</param>
+        public MetricDefinition(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string metricDefinitionName = default(string), string unit = default(string), string primaryAggregationType = default(string), IList<MetricAvailabilily> metricAvailabilities = default(IList<MetricAvailabilily>), string displayName = default(string))
             : base(id, name, kind, type)
         {
-            ResourceMetricDefinitionName = resourceMetricDefinitionName;
+            MetricDefinitionName = metricDefinitionName;
             Unit = unit;
             PrimaryAggregationType = primaryAggregationType;
             MetricAvailabilities = metricAvailabilities;
-            ResourceUri = resourceUri;
-            ResourceMetricDefinitionId = resourceMetricDefinitionId;
-            Properties = properties;
+            DisplayName = displayName;
             CustomInit();
         }
 
@@ -71,7 +65,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets name of the metric.
         /// </summary>
         [JsonProperty(PropertyName = "properties.name")]
-        public ResourceMetricName ResourceMetricDefinitionName { get; private set; }
+        public string MetricDefinitionName { get; private set; }
 
         /// <summary>
         /// Gets unit of the metric.
@@ -90,25 +84,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// retention period.
         /// </summary>
         [JsonProperty(PropertyName = "properties.metricAvailabilities")]
-        public IList<ResourceMetricAvailability> MetricAvailabilities { get; private set; }
+        public IList<MetricAvailabilily> MetricAvailabilities { get; private set; }
 
         /// <summary>
-        /// Gets resource URI.
+        /// Gets friendly name shown in the UI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resourceUri")]
-        public string ResourceUri { get; private set; }
-
-        /// <summary>
-        /// Gets resource ID.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string ResourceMetricDefinitionId { get; private set; }
-
-        /// <summary>
-        /// Gets resource metric definition properties.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.properties")]
-        public IDictionary<string, string> Properties { get; private set; }
+        [JsonProperty(PropertyName = "properties.displayName")]
+        public string DisplayName { get; private set; }
 
     }
 }
