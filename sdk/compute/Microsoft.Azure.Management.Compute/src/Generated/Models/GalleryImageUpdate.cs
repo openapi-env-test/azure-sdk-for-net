@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// to update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageUpdate : UpdateResourceDefinition
+    public partial class GalleryImageUpdate : UpdateResource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageUpdate class.
@@ -44,9 +44,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// whether the virtual machines created under this image are
         /// 'Generalized' or 'Specialized'. Possible values include:
         /// 'Generalized', 'Specialized'</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
         /// <param name="description">The description of this gallery Image
         /// Definition resource. This property is updatable.</param>
@@ -63,8 +60,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// purposes. This property is updatable.</param>
         /// <param name="provisioningState">The current state of the gallery
         /// Image Definition.</param>
-        public GalleryImageUpdate(OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string))
-            : base(id, name, type, tags)
+        public GalleryImageUpdate(OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), string hyperVGeneration = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string provisioningState = default(string))
+            : base(tags)
         {
             Description = description;
             Eula = eula;
