@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
         /// <param name="type">Resource type.</param>
-        /// <param name="actionType">Action type. Possible values include:
-        /// 'CertificateIssued', 'CertificateOrderCanceled',
+        /// <param name="certificateOrderActionType">Action type. Possible
+        /// values include: 'CertificateIssued', 'CertificateOrderCanceled',
         /// 'CertificateOrderCreated', 'CertificateRevoked',
         /// 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
         /// 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'FraudDocumentationRequired', 'Unknown'</param>
         /// <param name="createdAt">Time at which the certificate action was
         /// performed.</param>
-        public CertificateOrderAction(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CertificateOrderActionType? actionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
+        public CertificateOrderAction(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CertificateOrderActionType? certificateOrderActionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
             : base(id, name, kind, type)
         {
-            ActionType = actionType;
+            CertificateOrderActionType = certificateOrderActionType;
             CreatedAt = createdAt;
             CustomInit();
         }
@@ -59,22 +59,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets action type. Possible values include: 'CertificateIssued',
-        /// 'CertificateOrderCanceled', 'CertificateOrderCreated',
-        /// 'CertificateRevoked', 'DomainValidationComplete', 'FraudDetected',
-        /// 'OrgNameChange', 'OrgValidationComplete', 'SanDrop',
-        /// 'FraudCleared', 'CertificateExpired',
-        /// 'CertificateExpirationWarning', 'FraudDocumentationRequired',
-        /// 'Unknown'
+        /// Gets or sets action type. Possible values include:
+        /// 'CertificateIssued', 'CertificateOrderCanceled',
+        /// 'CertificateOrderCreated', 'CertificateRevoked',
+        /// 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
+        /// 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
+        /// 'CertificateExpired', 'CertificateExpirationWarning',
+        /// 'FraudDocumentationRequired', 'Unknown'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.actionType")]
-        public CertificateOrderActionType? ActionType { get; private set; }
+        [JsonProperty(PropertyName = "properties.type")]
+        public CertificateOrderActionType? CertificateOrderActionType { get; set; }
 
         /// <summary>
-        /// Gets time at which the certificate action was performed.
+        /// Gets or sets time at which the certificate action was performed.
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdAt")]
-        public System.DateTime? CreatedAt { get; private set; }
+        public System.DateTime? CreatedAt { get; set; }
 
     }
 }
