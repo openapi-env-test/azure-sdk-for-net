@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// The storage location for a packet capture session.
+    /// Describes the storage location for a packet capture session.
     /// </summary>
     public partial class PacketCaptureStorageLocation
     {

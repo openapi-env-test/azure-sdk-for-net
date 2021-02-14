@@ -30,8 +30,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the ConnectivityParameters class.
         /// </summary>
-        /// <param name="source">The source of the connection.</param>
-        /// <param name="destination">The destination of connection.</param>
+        /// <param name="source">Describes the source of the
+        /// connection.</param>
+        /// <param name="destination">Describes the destination of
+        /// connection.</param>
         /// <param name="protocol">Network protocol. Possible values include:
         /// 'Tcp', 'Http', 'Https', 'Icmp'</param>
         /// <param name="protocolConfiguration">Configuration of the
@@ -54,13 +56,13 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the source of the connection.
+        /// Gets or sets describes the source of the connection.
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public ConnectivitySource Source { get; set; }
 
         /// <summary>
-        /// Gets or sets the destination of connection.
+        /// Gets or sets describes the destination of connection.
         /// </summary>
         [JsonProperty(PropertyName = "destination")]
         public ConnectivityDestination Destination { get; set; }
@@ -104,10 +106,6 @@ namespace Microsoft.Azure.Management.Network.Models
             if (Source != null)
             {
                 Source.Validate();
-            }
-            if (Destination != null)
-            {
-                Destination.Validate();
             }
         }
     }
