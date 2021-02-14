@@ -10,14 +10,13 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Information needed for cloning operation.
+    /// Represents information needed for cloning operation
     /// </summary>
     public partial class CloningInfo
     {
@@ -32,48 +31,42 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the CloningInfo class.
         /// </summary>
-        /// <param name="sourceWebAppId">ARM resource ID of the source app. App
-        /// resource ID is of the form
+        /// <param name="correlationId">Correlation Id of cloning operation.
+        /// This id ties multiple cloning operations
+        /// together to use the same snapshot</param>
+        /// <param name="overwrite">Overwrite destination web app</param>
+        /// <param name="cloneCustomHostNames">If true, clone custom hostnames
+        /// from source web app</param>
+        /// <param name="cloneSourceControl">Clone source control from source
+        /// web app</param>
+        /// <param name="sourceWebAppId">ARM resource id of the source web app.
+        /// Web app resource id is of the form
         /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
         /// for production slots and
         /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-        /// for other slots.</param>
-        /// <param name="correlationId">Correlation ID of cloning operation.
-        /// This ID ties multiple cloning operations
-        /// together to use the same snapshot.</param>
-        /// <param name="overwrite">&lt;code&gt;true&lt;/code&gt; to overwrite
-        /// destination app; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="cloneCustomHostNames">&lt;code&gt;true&lt;/code&gt; to
-        /// clone custom hostnames from source app; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="cloneSourceControl">&lt;code&gt;true&lt;/code&gt; to
-        /// clone source control from source app; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="sourceWebAppLocation">Location of source app ex: West
-        /// US or North Europe</param>
-        /// <param name="hostingEnvironment">App Service Environment.</param>
-        /// <param name="appSettingsOverrides">Application setting overrides
-        /// for cloned app. If specified, these settings override the settings
-        /// cloned
-        /// from source app. Otherwise, application settings from source app
-        /// are retained.</param>
-        /// <param name="configureLoadBalancing">&lt;code&gt;true&lt;/code&gt;
-        /// to configure load balancing for source and destination app.</param>
-        /// <param name="trafficManagerProfileId">ARM resource ID of the
-        /// Traffic Manager profile to use, if it exists. Traffic Manager
-        /// resource ID is of the form
-        /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.</param>
-        /// <param name="trafficManagerProfileName">Name of Traffic Manager
-        /// profile to create. This is only needed if Traffic Manager profile
-        /// does not already exist.</param>
-        public CloningInfo(string sourceWebAppId, System.Guid? correlationId = default(System.Guid?), bool? overwrite = default(bool?), bool? cloneCustomHostNames = default(bool?), bool? cloneSourceControl = default(bool?), string sourceWebAppLocation = default(string), string hostingEnvironment = default(string), IDictionary<string, string> appSettingsOverrides = default(IDictionary<string, string>), bool? configureLoadBalancing = default(bool?), string trafficManagerProfileId = default(string), string trafficManagerProfileName = default(string))
+        /// for other slots</param>
+        /// <param name="hostingEnvironment">Hosting environment</param>
+        /// <param name="appSettingsOverrides">Application settings overrides
+        /// for cloned web app. If specified these settings will override the
+        /// settings cloned
+        /// from source web app. If not specified, application settings from
+        /// source web app are retained.</param>
+        /// <param name="configureLoadBalancing">If specified configure load
+        /// balancing for source and clone site</param>
+        /// <param name="trafficManagerProfileId">ARM resource id of the
+        /// traffic manager profile to use if it exists. Traffic manager
+        /// resource id is of the form
+        /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}</param>
+        /// <param name="trafficManagerProfileName">Name of traffic manager
+        /// profile to create. This is only needed if traffic manager profile
+        /// does not already exist</param>
+        public CloningInfo(string correlationId = default(string), bool? overwrite = default(bool?), bool? cloneCustomHostNames = default(bool?), bool? cloneSourceControl = default(bool?), string sourceWebAppId = default(string), string hostingEnvironment = default(string), IDictionary<string, string> appSettingsOverrides = default(IDictionary<string, string>), bool? configureLoadBalancing = default(bool?), string trafficManagerProfileId = default(string), string trafficManagerProfileName = default(string))
         {
             CorrelationId = correlationId;
             Overwrite = overwrite;
             CloneCustomHostNames = cloneCustomHostNames;
             CloneSourceControl = cloneSourceControl;
             SourceWebAppId = sourceWebAppId;
-            SourceWebAppLocation = sourceWebAppLocation;
             HostingEnvironment = hostingEnvironment;
             AppSettingsOverrides = appSettingsOverrides;
             ConfigureLoadBalancing = configureLoadBalancing;
@@ -88,103 +81,78 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets correlation ID of cloning operation. This ID ties
+        /// Gets or sets correlation Id of cloning operation. This id ties
         /// multiple cloning operations
-        /// together to use the same snapshot.
+        /// together to use the same snapshot
         /// </summary>
         [JsonProperty(PropertyName = "correlationId")]
-        public System.Guid? CorrelationId { get; set; }
+        public string CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// overwrite destination app; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets overwrite destination web app
         /// </summary>
         [JsonProperty(PropertyName = "overwrite")]
         public bool? Overwrite { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to clone
-        /// custom hostnames from source app; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets if true, clone custom hostnames from source web app
         /// </summary>
         [JsonProperty(PropertyName = "cloneCustomHostNames")]
         public bool? CloneCustomHostNames { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to clone
-        /// source control from source app; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets clone source control from source web app
         /// </summary>
         [JsonProperty(PropertyName = "cloneSourceControl")]
         public bool? CloneSourceControl { get; set; }
 
         /// <summary>
-        /// Gets or sets ARM resource ID of the source app. App resource ID is
-        /// of the form
+        /// Gets or sets ARM resource id of the source web app. Web app
+        /// resource id is of the form
         /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
         /// for production slots and
         /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-        /// for other slots.
+        /// for other slots
         /// </summary>
         [JsonProperty(PropertyName = "sourceWebAppId")]
         public string SourceWebAppId { get; set; }
 
         /// <summary>
-        /// Gets or sets location of source app ex: West US or North Europe
-        /// </summary>
-        [JsonProperty(PropertyName = "sourceWebAppLocation")]
-        public string SourceWebAppLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets app Service Environment.
+        /// Gets or sets hosting environment
         /// </summary>
         [JsonProperty(PropertyName = "hostingEnvironment")]
         public string HostingEnvironment { get; set; }
 
         /// <summary>
-        /// Gets or sets application setting overrides for cloned app. If
-        /// specified, these settings override the settings cloned
-        /// from source app. Otherwise, application settings from source app
-        /// are retained.
+        /// Gets or sets application settings overrides for cloned web app. If
+        /// specified these settings will override the settings cloned
+        /// from source web app. If not specified, application settings from
+        /// source web app are retained.
         /// </summary>
         [JsonProperty(PropertyName = "appSettingsOverrides")]
         public IDictionary<string, string> AppSettingsOverrides { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// configure load balancing for source and destination app.
+        /// Gets or sets if specified configure load balancing for source and
+        /// clone site
         /// </summary>
         [JsonProperty(PropertyName = "configureLoadBalancing")]
         public bool? ConfigureLoadBalancing { get; set; }
 
         /// <summary>
-        /// Gets or sets ARM resource ID of the Traffic Manager profile to use,
-        /// if it exists. Traffic Manager resource ID is of the form
-        /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
+        /// Gets or sets ARM resource id of the traffic manager profile to use
+        /// if it exists. Traffic manager resource id is of the form
+        /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}
         /// </summary>
         [JsonProperty(PropertyName = "trafficManagerProfileId")]
         public string TrafficManagerProfileId { get; set; }
 
         /// <summary>
-        /// Gets or sets name of Traffic Manager profile to create. This is
-        /// only needed if Traffic Manager profile does not already exist.
+        /// Gets or sets name of traffic manager profile to create. This is
+        /// only needed if traffic manager profile does not already exist
         /// </summary>
         [JsonProperty(PropertyName = "trafficManagerProfileName")]
         public string TrafficManagerProfileName { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (SourceWebAppId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SourceWebAppId");
-            }
-        }
     }
 }

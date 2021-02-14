@@ -10,15 +10,18 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Worker pool of an App Service Environment.
+    /// Worker pool of a hostingEnvironment (App Service Environment)
     /// </summary>
-    public partial class WorkerPool
+    [Rest.Serialization.JsonTransformation]
+    public partial class WorkerPool : Resource
     {
         /// <summary>
         /// Initializes a new instance of the WorkerPool class.
@@ -31,23 +34,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the WorkerPool class.
         /// </summary>
-        /// <param name="workerSizeId">Worker size ID for referencing this
-        /// worker pool.</param>
-        /// <param name="computeMode">Shared or dedicated app hosting. Possible
-        /// values include: 'Shared', 'Dedicated', 'Dynamic'</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="workerSizeId">Worker size id for referencing this
+        /// worker pool</param>
+        /// <param name="computeMode">Shared or dedicated web app hosting.
+        /// Possible values include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="workerSize">VM size of the worker pool
-        /// instances.</param>
+        /// instances</param>
         /// <param name="workerCount">Number of instances in the worker
-        /// pool.</param>
+        /// pool</param>
         /// <param name="instanceNames">Names of all instances in the worker
-        /// pool (read only).</param>
-        public WorkerPool(int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), IList<string> instanceNames = default(IList<string>))
+        /// pool (read only)</param>
+        public WorkerPool(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), IList<string> instanceNames = default(IList<string>), SkuDescription sku = default(SkuDescription))
+            : base(location, id, name, kind, type, tags)
         {
             WorkerSizeId = workerSizeId;
             ComputeMode = computeMode;
             WorkerSize = workerSize;
             WorkerCount = workerCount;
             InstanceNames = instanceNames;
+            Sku = sku;
             CustomInit();
         }
 
@@ -57,35 +68,50 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets worker size ID for referencing this worker pool.
+        /// Gets or sets worker size id for referencing this worker pool
         /// </summary>
-        [JsonProperty(PropertyName = "workerSizeId")]
+        [JsonProperty(PropertyName = "properties.workerSizeId")]
         public int? WorkerSizeId { get; set; }
 
         /// <summary>
-        /// Gets or sets shared or dedicated app hosting. Possible values
+        /// Gets or sets shared or dedicated web app hosting. Possible values
         /// include: 'Shared', 'Dedicated', 'Dynamic'
         /// </summary>
-        [JsonProperty(PropertyName = "computeMode")]
+        [JsonProperty(PropertyName = "properties.computeMode")]
         public ComputeModeOptions? ComputeMode { get; set; }
 
         /// <summary>
-        /// Gets or sets VM size of the worker pool instances.
+        /// Gets or sets VM size of the worker pool instances
         /// </summary>
-        [JsonProperty(PropertyName = "workerSize")]
+        [JsonProperty(PropertyName = "properties.workerSize")]
         public string WorkerSize { get; set; }
 
         /// <summary>
-        /// Gets or sets number of instances in the worker pool.
+        /// Gets or sets number of instances in the worker pool
         /// </summary>
-        [JsonProperty(PropertyName = "workerCount")]
+        [JsonProperty(PropertyName = "properties.workerCount")]
         public int? WorkerCount { get; set; }
 
         /// <summary>
-        /// Gets names of all instances in the worker pool (read only).
+        /// Gets or sets names of all instances in the worker pool (read only)
         /// </summary>
-        [JsonProperty(PropertyName = "instanceNames")]
-        public IList<string> InstanceNames { get; private set; }
+        [JsonProperty(PropertyName = "properties.instanceNames")]
+        public IList<string> InstanceNames { get; set; }
 
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public SkuDescription Sku { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

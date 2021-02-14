@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Domain recommendation search parameters.
+    /// Domain recommendation search parameters
     /// </summary>
     public partial class DomainRecommendationSearchParameters
     {
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// DomainRecommendationSearchParameters class.
         /// </summary>
         /// <param name="keywords">Keywords to be used for generating domain
-        /// recommendations.</param>
+        /// recommendations</param>
         /// <param name="maxDomainRecommendations">Maximum number of
-        /// recommendations.</param>
+        /// recommendations</param>
         public DomainRecommendationSearchParameters(string keywords = default(string), int? maxDomainRecommendations = default(int?))
         {
             Keywords = keywords;
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets keywords to be used for generating domain
-        /// recommendations.
+        /// recommendations
         /// </summary>
         [JsonProperty(PropertyName = "keywords")]
         public string Keywords { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum number of recommendations.
+        /// Gets or sets maximum number of recommendations
         /// </summary>
         [JsonProperty(PropertyName = "maxDomainRecommendations")]
         public int? MaxDomainRecommendations { get; set; }

@@ -10,8 +10,6 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -19,10 +17,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
     /// <summary>
     /// Represents a recommendation rule that the recommendation engine can
-    /// perform.
+    /// perform
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class RecommendationRule : ProxyOnlyResource
+    public partial class RecommendationRule
     {
         /// <summary>
         /// Initializes a new instance of the RecommendationRule class.
@@ -35,53 +32,39 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the RecommendationRule class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="recommendationName">Unique name of the rule.</param>
-        /// <param name="displayName">UI friendly name of the rule.</param>
-        /// <param name="message">Localized name of the rule (Good for
-        /// UI).</param>
-        /// <param name="recommendationId">Recommendation ID of an associated
-        /// recommendation object tied to the rule, if exists.
-        /// If such an object doesn't exist, it is set to null.</param>
-        /// <param name="description">Localized detailed description of the
-        /// rule.</param>
-        /// <param name="actionName">Name of action that is recommended by this
-        /// rule in string.</param>
         /// <param name="level">Level of impact indicating how critical this
         /// rule is. Possible values include: 'Critical', 'Warning',
         /// 'Information', 'NonUrgentSuggestion'</param>
         /// <param name="channels">List of available channels that this rule
         /// applies. Possible values include: 'Notification', 'Api', 'Email',
-        /// 'Webhook', 'All'</param>
-        /// <param name="categoryTags">The list of category tags that this
-        /// recommendation rule belongs to.</param>
-        /// <param name="isDynamic">True if this is associated with a
-        /// dynamically added rule</param>
-        /// <param name="extensionName">Extension name of the portal if exists.
-        /// Applicable to dynamic rule only.</param>
-        /// <param name="bladeName">Deep link to a blade on the portal.
-        /// Applicable to dynamic rule only.</param>
-        /// <param name="forwardLink">Forward link to an external document
-        /// associated with the rule. Applicable to dynamic rule only.</param>
-        public RecommendationRule(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string recommendationName = default(string), string displayName = default(string), string message = default(string), System.Guid? recommendationId = default(System.Guid?), string description = default(string), string actionName = default(string), NotificationLevel? level = default(NotificationLevel?), Channels? channels = default(Channels?), IList<string> categoryTags = default(IList<string>), bool? isDynamic = default(bool?), string extensionName = default(string), string bladeName = default(string), string forwardLink = default(string))
-            : base(id, name, kind, type)
+        /// 'All'</param>
+        /// <param name="name">Unique name of the rule</param>
+        /// <param name="displayName">UI friendly name of the rule</param>
+        /// <param name="message">Localized name of the rule (Good for
+        /// UI)</param>
+        /// <param name="recommendationId">Recommendation ID of an associated
+        /// recommendation object tied to the rule, if exists.
+        /// If such an object doesn't exist, it is set to null.</param>
+        /// <param name="description">Localized detailed description of the
+        /// rule</param>
+        /// <param name="actionName">Name of action that is recommended by this
+        /// rule in string</param>
+        /// <param name="enabled">On/off flag indicating the rule is currently
+        /// enabled or disabled.</param>
+        /// <param name="tags">An array of category tags that the rule
+        /// contains.</param>
+        public RecommendationRule(NotificationLevel level, Channels channels, string name = default(string), string displayName = default(string), string message = default(string), string recommendationId = default(string), string description = default(string), string actionName = default(string), int? enabled = default(int?), IList<string> tags = default(IList<string>))
         {
-            RecommendationName = recommendationName;
+            Name = name;
             DisplayName = displayName;
             Message = message;
             RecommendationId = recommendationId;
             Description = description;
             ActionName = actionName;
+            Enabled = enabled;
             Level = level;
             Channels = channels;
-            CategoryTags = categoryTags;
-            IsDynamic = isDynamic;
-            ExtensionName = extensionName;
-            BladeName = bladeName;
-            ForwardLink = forwardLink;
+            Tags = tags;
             CustomInit();
         }
 
@@ -91,21 +74,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets unique name of the rule.
+        /// Gets or sets unique name of the rule
         /// </summary>
-        [JsonProperty(PropertyName = "properties.recommendationName")]
-        public string RecommendationName { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets UI friendly name of the rule.
+        /// Gets or sets UI friendly name of the rule
         /// </summary>
-        [JsonProperty(PropertyName = "properties.displayName")]
+        [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets localized name of the rule (Good for UI).
+        /// Gets or sets localized name of the rule (Good for UI)
         /// </summary>
-        [JsonProperty(PropertyName = "properties.message")]
+        [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
 
         /// <summary>
@@ -113,72 +96,58 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// object tied to the rule, if exists.
         /// If such an object doesn't exist, it is set to null.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.recommendationId")]
-        public System.Guid? RecommendationId { get; set; }
+        [JsonProperty(PropertyName = "recommendationId")]
+        public string RecommendationId { get; set; }
 
         /// <summary>
-        /// Gets or sets localized detailed description of the rule.
+        /// Gets or sets localized detailed description of the rule
         /// </summary>
-        [JsonProperty(PropertyName = "properties.description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets name of action that is recommended by this rule in
-        /// string.
+        /// string
         /// </summary>
-        [JsonProperty(PropertyName = "properties.actionName")]
+        [JsonProperty(PropertyName = "actionName")]
         public string ActionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets on/off flag indicating the rule is currently enabled
+        /// or disabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "enabled")]
+        public int? Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets level of impact indicating how critical this rule is.
         /// Possible values include: 'Critical', 'Warning', 'Information',
         /// 'NonUrgentSuggestion'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.level")]
-        public NotificationLevel? Level { get; set; }
+        [JsonProperty(PropertyName = "level")]
+        public NotificationLevel Level { get; set; }
 
         /// <summary>
         /// Gets or sets list of available channels that this rule applies.
-        /// Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
-        /// 'All'
+        /// Possible values include: 'Notification', 'Api', 'Email', 'All'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.channels")]
-        public Channels? Channels { get; set; }
+        [JsonProperty(PropertyName = "channels")]
+        public Channels Channels { get; set; }
 
         /// <summary>
-        /// Gets the list of category tags that this recommendation rule
-        /// belongs to.
+        /// Gets or sets an array of category tags that the rule contains.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.categoryTags")]
-        public IList<string> CategoryTags { get; private set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets true if this is associated with a dynamically added
-        /// rule
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.isDynamic")]
-        public bool? IsDynamic { get; set; }
-
-        /// <summary>
-        /// Gets or sets extension name of the portal if exists. Applicable to
-        /// dynamic rule only.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.extensionName")]
-        public string ExtensionName { get; set; }
-
-        /// <summary>
-        /// Gets or sets deep link to a blade on the portal. Applicable to
-        /// dynamic rule only.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.bladeName")]
-        public string BladeName { get; set; }
-
-        /// <summary>
-        /// Gets or sets forward link to an external document associated with
-        /// the rule. Applicable to dynamic rule only.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.forwardLink")]
-        public string ForwardLink { get; set; }
-
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

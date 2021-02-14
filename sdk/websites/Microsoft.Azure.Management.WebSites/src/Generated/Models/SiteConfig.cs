@@ -11,15 +11,17 @@
 namespace Microsoft.Azure.Management.WebSites.Models
 {
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Configuration of an App Service app.
+    /// Configuration of Azure web site
     /// </summary>
-    public partial class SiteConfig
+    [Rest.Serialization.JsonTransformation]
+    public partial class SiteConfig : Resource
     {
         /// <summary>
         /// Initializes a new instance of the SiteConfig class.
@@ -32,105 +34,69 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SiteConfig class.
         /// </summary>
-        /// <param name="numberOfWorkers">Number of workers.</param>
-        /// <param name="defaultDocuments">Default documents.</param>
-        /// <param name="netFrameworkVersion">.NET Framework version.</param>
-        /// <param name="phpVersion">Version of PHP.</param>
-        /// <param name="pythonVersion">Version of Python.</param>
-        /// <param name="nodeVersion">Version of Node.js.</param>
-        /// <param name="powerShellVersion">Version of PowerShell.</param>
-        /// <param name="linuxFxVersion">Linux App Framework and
-        /// version</param>
-        /// <param name="windowsFxVersion">Xenon App Framework and
-        /// version</param>
-        /// <param name="requestTracingEnabled">&lt;code&gt;true&lt;/code&gt;
-        /// if request tracing is enabled; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="numberOfWorkers">Number of workers</param>
+        /// <param name="defaultDocuments">Default documents</param>
+        /// <param name="netFrameworkVersion">Net Framework Version</param>
+        /// <param name="phpVersion">Version of PHP</param>
+        /// <param name="pythonVersion">Version of Python</param>
+        /// <param name="nodeVersion">Version of Node</param>
+        /// <param name="requestTracingEnabled">Enable request tracing</param>
         /// <param name="requestTracingExpirationTime">Request tracing
-        /// expiration time.</param>
-        /// <param name="remoteDebuggingEnabled">&lt;code&gt;true&lt;/code&gt;
-        /// if remote debugging is enabled; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="remoteDebuggingVersion">Remote debugging
-        /// version.</param>
-        /// <param name="httpLoggingEnabled">&lt;code&gt;true&lt;/code&gt; if
-        /// HTTP logging is enabled; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="logsDirectorySizeLimit">HTTP logs directory size
-        /// limit.</param>
-        /// <param
-        /// name="detailedErrorLoggingEnabled">&lt;code&gt;true&lt;/code&gt; if
-        /// detailed error logging is enabled; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="publishingUsername">Publishing user name.</param>
-        /// <param name="appSettings">Application settings.</param>
-        /// <param name="connectionStrings">Connection strings.</param>
-        /// <param name="machineKey">Site MachineKey.</param>
-        /// <param name="handlerMappings">Handler mappings.</param>
-        /// <param name="documentRoot">Document root.</param>
-        /// <param name="scmType">SCM type. Possible values include: 'None',
-        /// 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit',
-        /// 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit',
-        /// 'ExternalHg', 'OneDrive', 'VSO', 'VSTSRM'</param>
-        /// <param name="use32BitWorkerProcess">&lt;code&gt;true&lt;/code&gt;
-        /// to use 32-bit worker process; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="webSocketsEnabled">&lt;code&gt;true&lt;/code&gt; if
-        /// WebSocket is enabled; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="alwaysOn">&lt;code&gt;true&lt;/code&gt; if Always On
-        /// is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="javaVersion">Java version.</param>
-        /// <param name="javaContainer">Java container.</param>
-        /// <param name="javaContainerVersion">Java container version.</param>
-        /// <param name="appCommandLine">App command line to launch.</param>
+        /// expiration time</param>
+        /// <param name="remoteDebuggingEnabled">Remote Debugging
+        /// Enabled</param>
+        /// <param name="remoteDebuggingVersion">Remote Debugging
+        /// Version</param>
+        /// <param name="httpLoggingEnabled">HTTP logging Enabled</param>
+        /// <param name="logsDirectorySizeLimit">HTTP Logs Directory size
+        /// limit</param>
+        /// <param name="detailedErrorLoggingEnabled">Detailed error logging
+        /// enabled</param>
+        /// <param name="publishingUsername">Publishing user name</param>
+        /// <param name="publishingPassword">Publishing password</param>
+        /// <param name="appSettings">Application Settings</param>
+        /// <param name="metadata">Site Metadata</param>
+        /// <param name="connectionStrings">Connection strings</param>
+        /// <param name="handlerMappings">Handler mappings</param>
+        /// <param name="documentRoot">Document root</param>
+        /// <param name="scmType">SCM type</param>
+        /// <param name="use32BitWorkerProcess">Use 32 bit worker
+        /// process</param>
+        /// <param name="webSocketsEnabled">Web socket enabled.</param>
+        /// <param name="alwaysOn">Always On</param>
+        /// <param name="javaVersion">Java version</param>
+        /// <param name="javaContainer">Java container</param>
+        /// <param name="javaContainerVersion">Java container version</param>
+        /// <param name="appCommandLine">App Command Line to launch</param>
         /// <param name="managedPipelineMode">Managed pipeline mode. Possible
         /// values include: 'Integrated', 'Classic'</param>
-        /// <param name="virtualApplications">Virtual applications.</param>
+        /// <param name="virtualApplications">Virtual applications</param>
         /// <param name="loadBalancing">Site load balancing. Possible values
         /// include: 'WeightedRoundRobin', 'LeastRequests',
         /// 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'</param>
         /// <param name="experiments">This is work around for polymorphic
-        /// types.</param>
-        /// <param name="limits">Site limits.</param>
-        /// <param name="autoHealEnabled">&lt;code&gt;true&lt;/code&gt; if Auto
-        /// Heal is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="autoHealRules">Auto Heal rules.</param>
-        /// <param name="tracingOptions">Tracing options.</param>
-        /// <param name="vnetName">Virtual Network name.</param>
+        /// types</param>
+        /// <param name="limits">Site limits</param>
+        /// <param name="autoHealEnabled">Auto heal enabled</param>
+        /// <param name="autoHealRules">Auto heal rules</param>
+        /// <param name="tracingOptions">Tracing options</param>
+        /// <param name="vnetName">Vnet name</param>
         /// <param name="cors">Cross-Origin Resource Sharing (CORS)
         /// settings.</param>
-        /// <param name="push">Push endpoint settings.</param>
         /// <param name="apiDefinition">Information about the formal API
-        /// definition for the app.</param>
-        /// <param name="apiManagementConfig">Azure API management settings
-        /// linked to the app.</param>
-        /// <param name="autoSwapSlotName">Auto-swap slot name.</param>
-        /// <param name="localMySqlEnabled">&lt;code&gt;true&lt;/code&gt; to
-        /// enable local MySQL; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="managedServiceIdentityId">Managed Service Identity
-        /// Id</param>
-        /// <param name="xManagedServiceIdentityId">Explicit Managed Service
-        /// Identity Id</param>
-        /// <param name="ipSecurityRestrictions">IP security restrictions for
-        /// main.</param>
-        /// <param name="scmIpSecurityRestrictions">IP security restrictions
-        /// for scm.</param>
-        /// <param name="scmIpSecurityRestrictionsUseMain">IP security
-        /// restrictions for scm to use main.</param>
-        /// <param name="http20Enabled">Http20Enabled: configures a web site to
-        /// allow clients to connect over http2.0</param>
-        /// <param name="minTlsVersion">MinTlsVersion: configures the minimum
-        /// version of TLS required for SSL requests. Possible values include:
-        /// '1.0', '1.1', '1.2'</param>
-        /// <param name="ftpsState">State of FTP / FTPS service. Possible
-        /// values include: 'AllAllowed', 'FtpsOnly', 'Disabled'</param>
-        /// <param name="preWarmedInstanceCount">Number of preWarmed instances.
-        /// This setting only applies to the Consumption and Elastic
-        /// Plans</param>
-        /// <param name="healthCheckPath">Health check path</param>
-        public SiteConfig(int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), string powerShellVersion = default(string), string linuxFxVersion = default(string), string windowsFxVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), SiteMachineKey machineKey = default(SiteMachineKey), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), string scmType = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), CorsSettings cors = default(CorsSettings), PushSettings push = default(PushSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), ApiManagementConfig apiManagementConfig = default(ApiManagementConfig), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), int? managedServiceIdentityId = default(int?), int? xManagedServiceIdentityId = default(int?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>), IList<IpSecurityRestriction> scmIpSecurityRestrictions = default(IList<IpSecurityRestriction>), bool? scmIpSecurityRestrictionsUseMain = default(bool?), bool? http20Enabled = default(bool?), string minTlsVersion = default(string), string ftpsState = default(string), int? preWarmedInstanceCount = default(int?), string healthCheckPath = default(string))
+        /// definition for the web app.</param>
+        /// <param name="autoSwapSlotName">Auto swap slot name</param>
+        /// <param name="localMySqlEnabled">Local mysql enabled</param>
+        /// <param name="ipSecurityRestrictions">Ip Security
+        /// restrictions</param>
+        public SiteConfig(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? numberOfWorkers = default(int?), IList<string> defaultDocuments = default(IList<string>), string netFrameworkVersion = default(string), string phpVersion = default(string), string pythonVersion = default(string), string nodeVersion = default(string), bool? requestTracingEnabled = default(bool?), System.DateTime? requestTracingExpirationTime = default(System.DateTime?), bool? remoteDebuggingEnabled = default(bool?), string remoteDebuggingVersion = default(string), bool? httpLoggingEnabled = default(bool?), int? logsDirectorySizeLimit = default(int?), bool? detailedErrorLoggingEnabled = default(bool?), string publishingUsername = default(string), string publishingPassword = default(string), IList<NameValuePair> appSettings = default(IList<NameValuePair>), IList<NameValuePair> metadata = default(IList<NameValuePair>), IList<ConnStringInfo> connectionStrings = default(IList<ConnStringInfo>), IList<HandlerMapping> handlerMappings = default(IList<HandlerMapping>), string documentRoot = default(string), string scmType = default(string), bool? use32BitWorkerProcess = default(bool?), bool? webSocketsEnabled = default(bool?), bool? alwaysOn = default(bool?), string javaVersion = default(string), string javaContainer = default(string), string javaContainerVersion = default(string), string appCommandLine = default(string), ManagedPipelineMode? managedPipelineMode = default(ManagedPipelineMode?), IList<VirtualApplication> virtualApplications = default(IList<VirtualApplication>), SiteLoadBalancing? loadBalancing = default(SiteLoadBalancing?), Experiments experiments = default(Experiments), SiteLimits limits = default(SiteLimits), bool? autoHealEnabled = default(bool?), AutoHealRules autoHealRules = default(AutoHealRules), string tracingOptions = default(string), string vnetName = default(string), CorsSettings cors = default(CorsSettings), ApiDefinitionInfo apiDefinition = default(ApiDefinitionInfo), string autoSwapSlotName = default(string), bool? localMySqlEnabled = default(bool?), IList<IpSecurityRestriction> ipSecurityRestrictions = default(IList<IpSecurityRestriction>))
+            : base(location, id, name, kind, type, tags)
         {
             NumberOfWorkers = numberOfWorkers;
             DefaultDocuments = defaultDocuments;
@@ -138,9 +104,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             PhpVersion = phpVersion;
             PythonVersion = pythonVersion;
             NodeVersion = nodeVersion;
-            PowerShellVersion = powerShellVersion;
-            LinuxFxVersion = linuxFxVersion;
-            WindowsFxVersion = windowsFxVersion;
             RequestTracingEnabled = requestTracingEnabled;
             RequestTracingExpirationTime = requestTracingExpirationTime;
             RemoteDebuggingEnabled = remoteDebuggingEnabled;
@@ -149,9 +112,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
             LogsDirectorySizeLimit = logsDirectorySizeLimit;
             DetailedErrorLoggingEnabled = detailedErrorLoggingEnabled;
             PublishingUsername = publishingUsername;
+            PublishingPassword = publishingPassword;
             AppSettings = appSettings;
+            Metadata = metadata;
             ConnectionStrings = connectionStrings;
-            MachineKey = machineKey;
             HandlerMappings = handlerMappings;
             DocumentRoot = documentRoot;
             ScmType = scmType;
@@ -172,21 +136,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
             TracingOptions = tracingOptions;
             VnetName = vnetName;
             Cors = cors;
-            Push = push;
             ApiDefinition = apiDefinition;
-            ApiManagementConfig = apiManagementConfig;
             AutoSwapSlotName = autoSwapSlotName;
             LocalMySqlEnabled = localMySqlEnabled;
-            ManagedServiceIdentityId = managedServiceIdentityId;
-            XManagedServiceIdentityId = xManagedServiceIdentityId;
             IpSecurityRestrictions = ipSecurityRestrictions;
-            ScmIpSecurityRestrictions = scmIpSecurityRestrictions;
-            ScmIpSecurityRestrictionsUseMain = scmIpSecurityRestrictionsUseMain;
-            Http20Enabled = http20Enabled;
-            MinTlsVersion = minTlsVersion;
-            FtpsState = ftpsState;
-            PreWarmedInstanceCount = preWarmedInstanceCount;
-            HealthCheckPath = healthCheckPath;
             CustomInit();
         }
 
@@ -196,213 +149,184 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets number of workers.
+        /// Gets or sets number of workers
         /// </summary>
-        [JsonProperty(PropertyName = "numberOfWorkers")]
+        [JsonProperty(PropertyName = "properties.numberOfWorkers")]
         public int? NumberOfWorkers { get; set; }
 
         /// <summary>
-        /// Gets or sets default documents.
+        /// Gets or sets default documents
         /// </summary>
-        [JsonProperty(PropertyName = "defaultDocuments")]
+        [JsonProperty(PropertyName = "properties.defaultDocuments")]
         public IList<string> DefaultDocuments { get; set; }
 
         /// <summary>
-        /// Gets or sets .NET Framework version.
+        /// Gets or sets net Framework Version
         /// </summary>
-        [JsonProperty(PropertyName = "netFrameworkVersion")]
+        [JsonProperty(PropertyName = "properties.netFrameworkVersion")]
         public string NetFrameworkVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets version of PHP.
+        /// Gets or sets version of PHP
         /// </summary>
-        [JsonProperty(PropertyName = "phpVersion")]
+        [JsonProperty(PropertyName = "properties.phpVersion")]
         public string PhpVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets version of Python.
+        /// Gets or sets version of Python
         /// </summary>
-        [JsonProperty(PropertyName = "pythonVersion")]
+        [JsonProperty(PropertyName = "properties.pythonVersion")]
         public string PythonVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets version of Node.js.
+        /// Gets or sets version of Node
         /// </summary>
-        [JsonProperty(PropertyName = "nodeVersion")]
+        [JsonProperty(PropertyName = "properties.nodeVersion")]
         public string NodeVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets version of PowerShell.
+        /// Gets or sets enable request tracing
         /// </summary>
-        [JsonProperty(PropertyName = "powerShellVersion")]
-        public string PowerShellVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets linux App Framework and version
-        /// </summary>
-        [JsonProperty(PropertyName = "linuxFxVersion")]
-        public string LinuxFxVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets xenon App Framework and version
-        /// </summary>
-        [JsonProperty(PropertyName = "windowsFxVersion")]
-        public string WindowsFxVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// request tracing is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
-        /// </summary>
-        [JsonProperty(PropertyName = "requestTracingEnabled")]
+        [JsonProperty(PropertyName = "properties.requestTracingEnabled")]
         public bool? RequestTracingEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets request tracing expiration time.
+        /// Gets or sets request tracing expiration time
         /// </summary>
-        [JsonProperty(PropertyName = "requestTracingExpirationTime")]
+        [JsonProperty(PropertyName = "properties.requestTracingExpirationTime")]
         public System.DateTime? RequestTracingExpirationTime { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// remote debugging is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets remote Debugging Enabled
         /// </summary>
-        [JsonProperty(PropertyName = "remoteDebuggingEnabled")]
+        [JsonProperty(PropertyName = "properties.remoteDebuggingEnabled")]
         public bool? RemoteDebuggingEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets remote debugging version.
+        /// Gets or sets remote Debugging Version
         /// </summary>
-        [JsonProperty(PropertyName = "remoteDebuggingVersion")]
+        [JsonProperty(PropertyName = "properties.remoteDebuggingVersion")]
         public string RemoteDebuggingVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if HTTP
-        /// logging is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets HTTP logging Enabled
         /// </summary>
-        [JsonProperty(PropertyName = "httpLoggingEnabled")]
+        [JsonProperty(PropertyName = "properties.httpLoggingEnabled")]
         public bool? HttpLoggingEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets HTTP logs directory size limit.
+        /// Gets or sets HTTP Logs Directory size limit
         /// </summary>
-        [JsonProperty(PropertyName = "logsDirectorySizeLimit")]
+        [JsonProperty(PropertyName = "properties.logsDirectorySizeLimit")]
         public int? LogsDirectorySizeLimit { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// detailed error logging is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets detailed error logging enabled
         /// </summary>
-        [JsonProperty(PropertyName = "detailedErrorLoggingEnabled")]
+        [JsonProperty(PropertyName = "properties.detailedErrorLoggingEnabled")]
         public bool? DetailedErrorLoggingEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets publishing user name.
+        /// Gets or sets publishing user name
         /// </summary>
-        [JsonProperty(PropertyName = "publishingUsername")]
+        [JsonProperty(PropertyName = "properties.publishingUsername")]
         public string PublishingUsername { get; set; }
 
         /// <summary>
-        /// Gets or sets application settings.
+        /// Gets or sets publishing password
         /// </summary>
-        [JsonProperty(PropertyName = "appSettings")]
+        [JsonProperty(PropertyName = "properties.publishingPassword")]
+        public string PublishingPassword { get; set; }
+
+        /// <summary>
+        /// Gets or sets application Settings
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.appSettings")]
         public IList<NameValuePair> AppSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets connection strings.
+        /// Gets or sets site Metadata
         /// </summary>
-        [JsonProperty(PropertyName = "connectionStrings")]
+        [JsonProperty(PropertyName = "properties.metadata")]
+        public IList<NameValuePair> Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection strings
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.connectionStrings")]
         public IList<ConnStringInfo> ConnectionStrings { get; set; }
 
         /// <summary>
-        /// Gets site MachineKey.
+        /// Gets or sets handler mappings
         /// </summary>
-        [JsonProperty(PropertyName = "machineKey")]
-        public SiteMachineKey MachineKey { get; private set; }
-
-        /// <summary>
-        /// Gets or sets handler mappings.
-        /// </summary>
-        [JsonProperty(PropertyName = "handlerMappings")]
+        [JsonProperty(PropertyName = "properties.handlerMappings")]
         public IList<HandlerMapping> HandlerMappings { get; set; }
 
         /// <summary>
-        /// Gets or sets document root.
+        /// Gets or sets document root
         /// </summary>
-        [JsonProperty(PropertyName = "documentRoot")]
+        [JsonProperty(PropertyName = "properties.documentRoot")]
         public string DocumentRoot { get; set; }
 
         /// <summary>
-        /// Gets or sets SCM type. Possible values include: 'None', 'Dropbox',
-        /// 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
-        /// 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
-        /// 'OneDrive', 'VSO', 'VSTSRM'
+        /// Gets or sets SCM type
         /// </summary>
-        [JsonProperty(PropertyName = "scmType")]
+        [JsonProperty(PropertyName = "properties.scmType")]
         public string ScmType { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to use
-        /// 32-bit worker process; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets use 32 bit worker process
         /// </summary>
-        [JsonProperty(PropertyName = "use32BitWorkerProcess")]
+        [JsonProperty(PropertyName = "properties.use32BitWorkerProcess")]
         public bool? Use32BitWorkerProcess { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// WebSocket is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets web socket enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "webSocketsEnabled")]
+        [JsonProperty(PropertyName = "properties.webSocketsEnabled")]
         public bool? WebSocketsEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// Always On is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets always On
         /// </summary>
-        [JsonProperty(PropertyName = "alwaysOn")]
+        [JsonProperty(PropertyName = "properties.alwaysOn")]
         public bool? AlwaysOn { get; set; }
 
         /// <summary>
-        /// Gets or sets java version.
+        /// Gets or sets java version
         /// </summary>
-        [JsonProperty(PropertyName = "javaVersion")]
+        [JsonProperty(PropertyName = "properties.javaVersion")]
         public string JavaVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets java container.
+        /// Gets or sets java container
         /// </summary>
-        [JsonProperty(PropertyName = "javaContainer")]
+        [JsonProperty(PropertyName = "properties.javaContainer")]
         public string JavaContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets java container version.
+        /// Gets or sets java container version
         /// </summary>
-        [JsonProperty(PropertyName = "javaContainerVersion")]
+        [JsonProperty(PropertyName = "properties.javaContainerVersion")]
         public string JavaContainerVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets app command line to launch.
+        /// Gets or sets app Command Line to launch
         /// </summary>
-        [JsonProperty(PropertyName = "appCommandLine")]
+        [JsonProperty(PropertyName = "properties.appCommandLine")]
         public string AppCommandLine { get; set; }
 
         /// <summary>
         /// Gets or sets managed pipeline mode. Possible values include:
         /// 'Integrated', 'Classic'
         /// </summary>
-        [JsonProperty(PropertyName = "managedPipelineMode")]
+        [JsonProperty(PropertyName = "properties.managedPipelineMode")]
         public ManagedPipelineMode? ManagedPipelineMode { get; set; }
 
         /// <summary>
-        /// Gets or sets virtual applications.
+        /// Gets or sets virtual applications
         /// </summary>
-        [JsonProperty(PropertyName = "virtualApplications")]
+        [JsonProperty(PropertyName = "properties.virtualApplications")]
         public IList<VirtualApplication> VirtualApplications { get; set; }
 
         /// <summary>
@@ -410,150 +334,75 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
         /// 'WeightedTotalTraffic', 'RequestHash'
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancing")]
+        [JsonProperty(PropertyName = "properties.loadBalancing")]
         public SiteLoadBalancing? LoadBalancing { get; set; }
 
         /// <summary>
-        /// Gets or sets this is work around for polymorphic types.
+        /// Gets or sets this is work around for polymorphic types
         /// </summary>
-        [JsonProperty(PropertyName = "experiments")]
+        [JsonProperty(PropertyName = "properties.experiments")]
         public Experiments Experiments { get; set; }
 
         /// <summary>
-        /// Gets or sets site limits.
+        /// Gets or sets site limits
         /// </summary>
-        [JsonProperty(PropertyName = "limits")]
+        [JsonProperty(PropertyName = "properties.limits")]
         public SiteLimits Limits { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if Auto
-        /// Heal is enabled; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets auto heal enabled
         /// </summary>
-        [JsonProperty(PropertyName = "autoHealEnabled")]
+        [JsonProperty(PropertyName = "properties.autoHealEnabled")]
         public bool? AutoHealEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets auto Heal rules.
+        /// Gets or sets auto heal rules
         /// </summary>
-        [JsonProperty(PropertyName = "autoHealRules")]
+        [JsonProperty(PropertyName = "properties.autoHealRules")]
         public AutoHealRules AutoHealRules { get; set; }
 
         /// <summary>
-        /// Gets or sets tracing options.
+        /// Gets or sets tracing options
         /// </summary>
-        [JsonProperty(PropertyName = "tracingOptions")]
+        [JsonProperty(PropertyName = "properties.tracingOptions")]
         public string TracingOptions { get; set; }
 
         /// <summary>
-        /// Gets or sets virtual Network name.
+        /// Gets or sets vnet name
         /// </summary>
-        [JsonProperty(PropertyName = "vnetName")]
+        [JsonProperty(PropertyName = "properties.vnetName")]
         public string VnetName { get; set; }
 
         /// <summary>
         /// Gets or sets cross-Origin Resource Sharing (CORS) settings.
         /// </summary>
-        [JsonProperty(PropertyName = "cors")]
+        [JsonProperty(PropertyName = "properties.cors")]
         public CorsSettings Cors { get; set; }
 
         /// <summary>
-        /// Gets or sets push endpoint settings.
-        /// </summary>
-        [JsonProperty(PropertyName = "push")]
-        public PushSettings Push { get; set; }
-
-        /// <summary>
         /// Gets or sets information about the formal API definition for the
-        /// app.
+        /// web app.
         /// </summary>
-        [JsonProperty(PropertyName = "apiDefinition")]
+        [JsonProperty(PropertyName = "properties.apiDefinition")]
         public ApiDefinitionInfo ApiDefinition { get; set; }
 
         /// <summary>
-        /// Gets or sets azure API management settings linked to the app.
+        /// Gets or sets auto swap slot name
         /// </summary>
-        [JsonProperty(PropertyName = "apiManagementConfig")]
-        public ApiManagementConfig ApiManagementConfig { get; set; }
-
-        /// <summary>
-        /// Gets or sets auto-swap slot name.
-        /// </summary>
-        [JsonProperty(PropertyName = "autoSwapSlotName")]
+        [JsonProperty(PropertyName = "properties.autoSwapSlotName")]
         public string AutoSwapSlotName { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; to
-        /// enable local MySQL; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets local mysql enabled
         /// </summary>
-        [JsonProperty(PropertyName = "localMySqlEnabled")]
+        [JsonProperty(PropertyName = "properties.localMySqlEnabled")]
         public bool? LocalMySqlEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets managed Service Identity Id
+        /// Gets or sets ip Security restrictions
         /// </summary>
-        [JsonProperty(PropertyName = "managedServiceIdentityId")]
-        public int? ManagedServiceIdentityId { get; set; }
-
-        /// <summary>
-        /// Gets or sets explicit Managed Service Identity Id
-        /// </summary>
-        [JsonProperty(PropertyName = "xManagedServiceIdentityId")]
-        public int? XManagedServiceIdentityId { get; set; }
-
-        /// <summary>
-        /// Gets or sets IP security restrictions for main.
-        /// </summary>
-        [JsonProperty(PropertyName = "ipSecurityRestrictions")]
+        [JsonProperty(PropertyName = "properties.ipSecurityRestrictions")]
         public IList<IpSecurityRestriction> IpSecurityRestrictions { get; set; }
-
-        /// <summary>
-        /// Gets or sets IP security restrictions for scm.
-        /// </summary>
-        [JsonProperty(PropertyName = "scmIpSecurityRestrictions")]
-        public IList<IpSecurityRestriction> ScmIpSecurityRestrictions { get; set; }
-
-        /// <summary>
-        /// Gets or sets IP security restrictions for scm to use main.
-        /// </summary>
-        [JsonProperty(PropertyName = "scmIpSecurityRestrictionsUseMain")]
-        public bool? ScmIpSecurityRestrictionsUseMain { get; set; }
-
-        /// <summary>
-        /// Gets or sets http20Enabled: configures a web site to allow clients
-        /// to connect over http2.0
-        /// </summary>
-        [JsonProperty(PropertyName = "http20Enabled")]
-        public bool? Http20Enabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets minTlsVersion: configures the minimum version of TLS
-        /// required for SSL requests. Possible values include: '1.0', '1.1',
-        /// '1.2'
-        /// </summary>
-        [JsonProperty(PropertyName = "minTlsVersion")]
-        public string MinTlsVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets state of FTP / FTPS service. Possible values include:
-        /// 'AllAllowed', 'FtpsOnly', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "ftpsState")]
-        public string FtpsState { get; set; }
-
-        /// <summary>
-        /// Gets or sets number of preWarmed instances.
-        /// This setting only applies to the Consumption and Elastic Plans
-        /// </summary>
-        [JsonProperty(PropertyName = "preWarmedInstanceCount")]
-        public int? PreWarmedInstanceCount { get; set; }
-
-        /// <summary>
-        /// Gets or sets health check path
-        /// </summary>
-        [JsonProperty(PropertyName = "healthCheckPath")]
-        public string HealthCheckPath { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -561,19 +410,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (Push != null)
+            base.Validate();
+            if (ConnectionStrings != null)
             {
-                Push.Validate();
+                foreach (var element in ConnectionStrings)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
-            if (PreWarmedInstanceCount > 10)
+            if (AutoHealRules != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "PreWarmedInstanceCount", 10);
-            }
-            if (PreWarmedInstanceCount < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "PreWarmedInstanceCount", 0);
+                AutoHealRules.Validate();
             }
         }
     }

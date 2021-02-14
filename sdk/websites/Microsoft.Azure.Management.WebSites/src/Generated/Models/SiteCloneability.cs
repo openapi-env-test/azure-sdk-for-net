@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents whether or not an app is cloneable.
+    /// Represents whether or not a web app is cloneable
     /// </summary>
     public partial class SiteCloneability
     {
@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SiteCloneability class.
         /// </summary>
-        /// <param name="result">Name of app. Possible values include:
+        /// <param name="result">Name of web app. Possible values include:
         /// 'Cloneable', 'PartiallyCloneable', 'NotCloneable'</param>
-        /// <param name="blockingFeatures">List of features enabled on app that
-        /// prevent cloning.</param>
-        /// <param name="unsupportedFeatures">List of features enabled on app
-        /// that are non-blocking but cannot be cloned. The app can still be
-        /// cloned
-        /// but the features in this list will not be set up on cloned
+        /// <param name="blockingFeatures">List of features enabled on web app
+        /// that prevent cloning</param>
+        /// <param name="unsupportedFeatures">List of features enabled on web
+        /// app that are non-blocking but cannot be cloned. The web app can
+        /// still be cloned
+        /// but the features in this list will not be set up on cloned web
         /// app.</param>
         /// <param name="blockingCharacteristics">List of blocking application
-        /// characteristics.</param>
-        public SiteCloneability(CloneAbilityResult? result = default(CloneAbilityResult?), IList<SiteCloneabilityCriterion> blockingFeatures = default(IList<SiteCloneabilityCriterion>), IList<SiteCloneabilityCriterion> unsupportedFeatures = default(IList<SiteCloneabilityCriterion>), IList<SiteCloneabilityCriterion> blockingCharacteristics = default(IList<SiteCloneabilityCriterion>))
+        /// characteristics</param>
+        public SiteCloneability(CloneAbilityResult result, IList<SiteCloneabilityCriterion> blockingFeatures = default(IList<SiteCloneabilityCriterion>), IList<SiteCloneabilityCriterion> unsupportedFeatures = default(IList<SiteCloneabilityCriterion>), IList<SiteCloneabilityCriterion> blockingCharacteristics = default(IList<SiteCloneabilityCriterion>))
         {
             Result = result;
             BlockingFeatures = blockingFeatures;
@@ -57,31 +57,41 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of app. Possible values include: 'Cloneable',
+        /// Gets or sets name of web app. Possible values include: 'Cloneable',
         /// 'PartiallyCloneable', 'NotCloneable'
         /// </summary>
         [JsonProperty(PropertyName = "result")]
-        public CloneAbilityResult? Result { get; set; }
+        public CloneAbilityResult Result { get; set; }
 
         /// <summary>
-        /// Gets or sets list of features enabled on app that prevent cloning.
+        /// Gets or sets list of features enabled on web app that prevent
+        /// cloning
         /// </summary>
         [JsonProperty(PropertyName = "blockingFeatures")]
         public IList<SiteCloneabilityCriterion> BlockingFeatures { get; set; }
 
         /// <summary>
-        /// Gets or sets list of features enabled on app that are non-blocking
-        /// but cannot be cloned. The app can still be cloned
-        /// but the features in this list will not be set up on cloned app.
+        /// Gets or sets list of features enabled on web app that are
+        /// non-blocking but cannot be cloned. The web app can still be cloned
+        /// but the features in this list will not be set up on cloned web app.
         /// </summary>
         [JsonProperty(PropertyName = "unsupportedFeatures")]
         public IList<SiteCloneabilityCriterion> UnsupportedFeatures { get; set; }
 
         /// <summary>
-        /// Gets or sets list of blocking application characteristics.
+        /// Gets or sets list of blocking application characteristics
         /// </summary>
         [JsonProperty(PropertyName = "blockingCharacteristics")]
         public IList<SiteCloneabilityCriterion> BlockingCharacteristics { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

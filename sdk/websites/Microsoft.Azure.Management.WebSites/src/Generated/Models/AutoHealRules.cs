@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Rules that can be defined for auto-heal.
+    /// AutoHealRules - describes the rules which can be defined for auto-heal
     /// </summary>
     public partial class AutoHealRules
     {
@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the AutoHealRules class.
         /// </summary>
-        /// <param name="triggers">Conditions that describe when to execute the
-        /// auto-heal actions.</param>
-        /// <param name="actions">Actions to be executed when a rule is
-        /// triggered.</param>
+        /// <param name="triggers">Triggers - Conditions that describe when to
+        /// execute the auto-heal actions</param>
+        /// <param name="actions">Actions - Actions to be executed when a rule
+        /// is triggered</param>
         public AutoHealRules(AutoHealTriggers triggers = default(AutoHealTriggers), AutoHealActions actions = default(AutoHealActions))
         {
             Triggers = triggers;
@@ -46,17 +46,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets conditions that describe when to execute the auto-heal
-        /// actions.
+        /// Gets or sets triggers - Conditions that describe when to execute
+        /// the auto-heal actions
         /// </summary>
         [JsonProperty(PropertyName = "triggers")]
         public AutoHealTriggers Triggers { get; set; }
 
         /// <summary>
-        /// Gets or sets actions to be executed when a rule is triggered.
+        /// Gets or sets actions - Actions to be executed when a rule is
+        /// triggered
         /// </summary>
         [JsonProperty(PropertyName = "actions")]
         public AutoHealActions Actions { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Actions != null)
+            {
+                Actions.Validate();
+            }
+        }
     }
 }

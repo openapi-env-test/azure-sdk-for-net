@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Routing rules in production experiments.
+    /// Class containing Routing in production experiments
     /// </summary>
     public partial class Experiments
     {
@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Experiments class.
         /// </summary>
-        /// <param name="rampUpRules">List of ramp-up rules.</param>
+        /// <param name="rampUpRules">List of
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule} objects.</param>
         public Experiments(IList<RampUpRule> rampUpRules = default(IList<RampUpRule>))
         {
             RampUpRules = rampUpRules;
@@ -44,7 +45,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of ramp-up rules.
+        /// Gets or sets list of
+        /// {Microsoft.Web.Hosting.Administration.RampUpRule} objects.
         /// </summary>
         [JsonProperty(PropertyName = "rampUpRules")]
         public IList<RampUpRule> RampUpRules { get; set; }

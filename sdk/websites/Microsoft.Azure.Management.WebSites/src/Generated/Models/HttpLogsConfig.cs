@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Http logs configuration.
+    /// Http logs configuration
     /// </summary>
     public partial class HttpLogsConfig
     {
@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the HttpLogsConfig class.
         /// </summary>
         /// <param name="fileSystem">Http logs to file system
-        /// configuration.</param>
+        /// configuration</param>
         /// <param name="azureBlobStorage">Http logs to azure blob storage
-        /// configuration.</param>
+        /// configuration</param>
         public HttpLogsConfig(FileSystemHttpLogsConfig fileSystem = default(FileSystemHttpLogsConfig), AzureBlobStorageHttpLogsConfig azureBlobStorage = default(AzureBlobStorageHttpLogsConfig))
         {
             FileSystem = fileSystem;
@@ -46,29 +46,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets http logs to file system configuration.
+        /// Gets or sets http logs to file system configuration
         /// </summary>
         [JsonProperty(PropertyName = "fileSystem")]
         public FileSystemHttpLogsConfig FileSystem { get; set; }
 
         /// <summary>
-        /// Gets or sets http logs to azure blob storage configuration.
+        /// Gets or sets http logs to azure blob storage configuration
         /// </summary>
         [JsonProperty(PropertyName = "azureBlobStorage")]
         public AzureBlobStorageHttpLogsConfig AzureBlobStorage { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (FileSystem != null)
-            {
-                FileSystem.Validate();
-            }
-        }
     }
 }

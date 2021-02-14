@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of a backup which will be performed.
+    /// Description of a backup which will be performed
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BackupRequest : ProxyOnlyResource
+    public partial class BackupRequest : Resource
     {
         /// <summary>
         /// Initializes a new instance of the BackupRequest class.
@@ -34,26 +34,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the BackupRequest class.
         /// </summary>
-        /// <param name="storageAccountUrl">SAS URL to the container.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="backupName">Name of the backup.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="backupRequestType">Type of the backup. Possible values
+        /// include: 'Default', 'Clone', 'Relocation'</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="backupRequestName">Name of the backup</param>
         /// <param name="enabled">True if the backup schedule is enabled (must
         /// be included in that case), false if the backup schedule should be
-        /// disabled.</param>
+        /// disabled</param>
+        /// <param name="storageAccountUrl">SAS URL to the container</param>
         /// <param name="backupSchedule">Schedule for the backup if it is
-        /// executed periodically.</param>
-        /// <param name="databases">Databases included in the backup.</param>
-        public BackupRequest(string storageAccountUrl, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string backupName = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
-            : base(id, name, kind, type)
+        /// executed periodically</param>
+        /// <param name="databases">Databases included in the backup</param>
+        public BackupRequest(string location, BackupRestoreOperationType backupRequestType, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string backupRequestName = default(string), bool? enabled = default(bool?), string storageAccountUrl = default(string), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
+            : base(location, id, name, kind, type, tags)
         {
-            BackupName = backupName;
+            BackupRequestName = backupRequestName;
             Enabled = enabled;
             StorageAccountUrl = storageAccountUrl;
             BackupSchedule = backupSchedule;
             Databases = databases;
+            BackupRequestType = backupRequestType;
             CustomInit();
         }
 
@@ -63,37 +68,43 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the backup.
+        /// Gets or sets name of the backup
         /// </summary>
-        [JsonProperty(PropertyName = "properties.backupName")]
-        public string BackupName { get; set; }
+        [JsonProperty(PropertyName = "properties.name")]
+        public string BackupRequestName { get; set; }
 
         /// <summary>
         /// Gets or sets true if the backup schedule is enabled (must be
         /// included in that case), false if the backup schedule should be
-        /// disabled.
+        /// disabled
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Gets or sets SAS URL to the container.
+        /// Gets or sets SAS URL to the container
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageAccountUrl")]
         public string StorageAccountUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets schedule for the backup if it is executed
-        /// periodically.
+        /// Gets or sets schedule for the backup if it is executed periodically
         /// </summary>
         [JsonProperty(PropertyName = "properties.backupSchedule")]
         public BackupSchedule BackupSchedule { get; set; }
 
         /// <summary>
-        /// Gets or sets databases included in the backup.
+        /// Gets or sets databases included in the backup
         /// </summary>
         [JsonProperty(PropertyName = "properties.databases")]
         public IList<DatabaseBackupSetting> Databases { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of the backup. Possible values include:
+        /// 'Default', 'Clone', 'Relocation'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.type")]
+        public BackupRestoreOperationType BackupRequestType { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -101,25 +112,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (StorageAccountUrl == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "StorageAccountUrl");
-            }
+            base.Validate();
             if (BackupSchedule != null)
             {
                 BackupSchedule.Validate();
-            }
-            if (Databases != null)
-            {
-                foreach (var element in Databases)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }

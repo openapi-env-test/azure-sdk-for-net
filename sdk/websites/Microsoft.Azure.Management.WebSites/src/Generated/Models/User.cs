@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// User credentials used for publishing activity.
+    /// Represents user credentials used for publishing activity
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class User : ProxyOnlyResource
+    public partial class User : Resource
     {
         /// <summary>
         /// Initializes a new instance of the User class.
@@ -32,26 +34,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the User class.
         /// </summary>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="userName">Username (internal)</param>
         /// <param name="publishingUserName">Username used for
-        /// publishing.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
+        /// publishing</param>
         /// <param name="publishingPassword">Password used for
-        /// publishing.</param>
-        /// <param name="publishingPasswordHash">Password hash used for
-        /// publishing.</param>
-        /// <param name="publishingPasswordHashSalt">Password hash salt used
-        /// for publishing.</param>
-        /// <param name="scmUri">Url of SCM site.</param>
-        public User(string publishingUserName, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string publishingPassword = default(string), string publishingPasswordHash = default(string), string publishingPasswordHashSalt = default(string), string scmUri = default(string))
-            : base(id, name, kind, type)
+        /// publishing</param>
+        /// <param name="scmUri">Service Control Manager URI, including
+        /// username and password</param>
+        public User(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string userName = default(string), string publishingUserName = default(string), string publishingPassword = default(string), string scmUri = default(string))
+            : base(location, id, name, kind, type, tags)
         {
+            UserName = userName;
             PublishingUserName = publishingUserName;
             PublishingPassword = publishingPassword;
-            PublishingPasswordHash = publishingPasswordHash;
-            PublishingPasswordHashSalt = publishingPasswordHashSalt;
             ScmUri = scmUri;
             CustomInit();
         }
@@ -62,31 +63,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets username used for publishing.
+        /// Gets or sets username (internal)
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets username used for publishing
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishingUserName")]
         public string PublishingUserName { get; set; }
 
         /// <summary>
-        /// Gets or sets password used for publishing.
+        /// Gets or sets password used for publishing
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishingPassword")]
         public string PublishingPassword { get; set; }
 
         /// <summary>
-        /// Gets or sets password hash used for publishing.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publishingPasswordHash")]
-        public string PublishingPasswordHash { get; set; }
-
-        /// <summary>
-        /// Gets or sets password hash salt used for publishing.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publishingPasswordHashSalt")]
-        public string PublishingPasswordHashSalt { get; set; }
-
-        /// <summary>
-        /// Gets or sets url of SCM site.
+        /// Gets or sets service Control Manager URI, including username and
+        /// password
         /// </summary>
         [JsonProperty(PropertyName = "properties.scmUri")]
         public string ScmUri { get; set; }
@@ -97,12 +93,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (PublishingUserName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PublishingUserName");
-            }
+            base.Validate();
         }
     }
 }

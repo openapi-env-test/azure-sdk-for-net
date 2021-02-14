@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A deleted app.
+    /// Reports deleted site including the timestamp of operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DeletedSite : ProxyOnlyResource
+    public partial class DeletedSite : Resource
     {
         /// <summary>
         /// Initializes a new instance of the DeletedSite class.
@@ -32,32 +34,113 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the DeletedSite class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="deletedSiteId">Numeric id for the deleted site</param>
-        /// <param name="deletedTimestamp">Time in UTC when the app was
-        /// deleted.</param>
-        /// <param name="subscription">Subscription containing the deleted
-        /// site</param>
-        /// <param name="resourceGroup">ResourceGroup that contained the
-        /// deleted site</param>
-        /// <param name="deletedSiteName">Name of the deleted site</param>
-        /// <param name="slot">Slot of the deleted site</param>
-        /// <param name="deletedSiteKind">Kind of site that was deleted</param>
-        /// <param name="geoRegionName">Geo Region of the deleted site</param>
-        public DeletedSite(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? deletedSiteId = default(int?), string deletedTimestamp = default(string), string subscription = default(string), string resourceGroup = default(string), string deletedSiteName = default(string), string slot = default(string), string deletedSiteKind = default(string), string geoRegionName = default(string))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="usageState">State indicating whether web app has
+        /// exceeded its quota usage. Possible values include: 'Normal',
+        /// 'Exceeded'</param>
+        /// <param name="availabilityState">Management information availability
+        /// state for the web app. Possible values are Normal or Limited.
+        /// Normal means that the site is running correctly and that management
+        /// information for the site is available.
+        /// Limited means that only partial management information for the site
+        /// is available and that detailed site information is unavailable.
+        /// Possible values include: 'Normal', 'Limited',
+        /// 'DisasterRecoveryMode'</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="deletedTimestamp">Time when the site was
+        /// deleted</param>
+        /// <param name="deletedSiteName">Name of web app</param>
+        /// <param name="state">State of the web app</param>
+        /// <param name="hostNames">Hostnames associated with web app</param>
+        /// <param name="repositorySiteName">Name of repository site</param>
+        /// <param name="enabled">True if the site is enabled; otherwise,
+        /// false. Setting this  value to false disables the site (takes the
+        /// site off line).</param>
+        /// <param name="enabledHostNames">Hostnames for the web app that are
+        /// enabled. Hostnames need to be assigned and enabled. If some
+        /// hostnames are assigned but not enabled
+        /// the app is not served on those hostnames</param>
+        /// <param name="hostNameSslStates">Hostname SSL states are  used to
+        /// manage the SSL bindings for site's hostnames.</param>
+        /// <param name="lastModifiedTimeUtc">Last time web app was modified in
+        /// UTC</param>
+        /// <param name="siteConfig">Configuration of web app</param>
+        /// <param name="trafficManagerHostNames">Read-only list of Azure
+        /// Traffic manager hostnames associated with web app</param>
+        /// <param name="premiumAppDeployed">If set indicates whether web app
+        /// is deployed as a premium app</param>
+        /// <param name="scmSiteAlsoStopped">If set indicates whether to stop
+        /// SCM (KUDU) site when the web app is stopped. Default is
+        /// false.</param>
+        /// <param name="targetSwapSlot">Read-only property that specifies
+        /// which slot this app will swap into</param>
+        /// <param name="hostingEnvironmentProfile">Specification for the
+        /// hosting environment (App Service Environment) to use for the web
+        /// app</param>
+        /// <param name="gatewaySiteName">Name of gateway app associated with
+        /// web app</param>
+        /// <param name="clientAffinityEnabled">Specifies if the client
+        /// affinity is enabled when load balancing http request for multiple
+        /// instances of the web app</param>
+        /// <param name="clientCertEnabled">Specifies if the client certificate
+        /// is enabled for the web app</param>
+        /// <param name="hostNamesDisabled">Specifies if the public hostnames
+        /// are disabled the web app.
+        /// If set to true the app is only accessible via API Management
+        /// process</param>
+        /// <param name="outboundIpAddresses">List of comma separated IP
+        /// addresses that this web app uses for outbound connections. Those
+        /// can be used when configuring firewall rules for databases accessed
+        /// by this web app.</param>
+        /// <param name="containerSize">Size of a function container</param>
+        /// <param name="maxNumberOfWorkers">Maximum number of workers
+        /// This only applies to function container</param>
+        /// <param name="cloningInfo">This is only valid for web app creation.
+        /// If specified, web app is cloned from
+        /// a source web app</param>
+        /// <param name="resourceGroup">Resource group web app belongs
+        /// to</param>
+        /// <param name="isDefaultContainer">Site is a default
+        /// container</param>
+        /// <param name="defaultHostName">Default hostname of the web
+        /// app</param>
+        public DeletedSite(string location, UsageState usageState, SiteAvailabilityState availabilityState, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? deletedTimestamp = default(System.DateTime?), string deletedSiteName = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? premiumAppDeployed = default(bool?), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string microService = default(string), string gatewaySiteName = default(string), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), int? containerSize = default(int?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string))
+            : base(location, id, name, kind, type, tags)
         {
-            DeletedSiteId = deletedSiteId;
             DeletedTimestamp = deletedTimestamp;
-            Subscription = subscription;
-            ResourceGroup = resourceGroup;
             DeletedSiteName = deletedSiteName;
-            Slot = slot;
-            DeletedSiteKind = deletedSiteKind;
-            GeoRegionName = geoRegionName;
+            State = state;
+            HostNames = hostNames;
+            RepositorySiteName = repositorySiteName;
+            UsageState = usageState;
+            Enabled = enabled;
+            EnabledHostNames = enabledHostNames;
+            AvailabilityState = availabilityState;
+            HostNameSslStates = hostNameSslStates;
+            ServerFarmId = serverFarmId;
+            LastModifiedTimeUtc = lastModifiedTimeUtc;
+            SiteConfig = siteConfig;
+            TrafficManagerHostNames = trafficManagerHostNames;
+            PremiumAppDeployed = premiumAppDeployed;
+            ScmSiteAlsoStopped = scmSiteAlsoStopped;
+            TargetSwapSlot = targetSwapSlot;
+            HostingEnvironmentProfile = hostingEnvironmentProfile;
+            MicroService = microService;
+            GatewaySiteName = gatewaySiteName;
+            ClientAffinityEnabled = clientAffinityEnabled;
+            ClientCertEnabled = clientCertEnabled;
+            HostNamesDisabled = hostNamesDisabled;
+            OutboundIpAddresses = outboundIpAddresses;
+            ContainerSize = containerSize;
+            MaxNumberOfWorkers = maxNumberOfWorkers;
+            CloningInfo = cloningInfo;
+            ResourceGroup = resourceGroup;
+            IsDefaultContainer = isDefaultContainer;
+            DefaultHostName = defaultHostName;
             CustomInit();
         }
 
@@ -67,52 +150,233 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets numeric id for the deleted site
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.deletedSiteId")]
-        public int? DeletedSiteId { get; private set; }
-
-        /// <summary>
-        /// Gets time in UTC when the app was deleted.
+        /// Gets or sets time when the site was deleted
         /// </summary>
         [JsonProperty(PropertyName = "properties.deletedTimestamp")]
-        public string DeletedTimestamp { get; private set; }
+        public System.DateTime? DeletedTimestamp { get; set; }
 
         /// <summary>
-        /// Gets subscription containing the deleted site
+        /// Gets or sets name of web app
         /// </summary>
-        [JsonProperty(PropertyName = "properties.subscription")]
-        public string Subscription { get; private set; }
+        [JsonProperty(PropertyName = "properties.name")]
+        public string DeletedSiteName { get; set; }
 
         /// <summary>
-        /// Gets resourceGroup that contained the deleted site
+        /// Gets state of the web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.state")]
+        public string State { get; private set; }
+
+        /// <summary>
+        /// Gets hostnames associated with web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostNames")]
+        public IList<string> HostNames { get; private set; }
+
+        /// <summary>
+        /// Gets name of repository site
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.repositorySiteName")]
+        public string RepositorySiteName { get; private set; }
+
+        /// <summary>
+        /// Gets state indicating whether web app has exceeded its quota usage.
+        /// Possible values include: 'Normal', 'Exceeded'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.usageState")]
+        public UsageState UsageState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets true if the site is enabled; otherwise, false. Setting
+        /// this  value to false disables the site (takes the site off line).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Gets hostnames for the web app that are enabled. Hostnames need to
+        /// be assigned and enabled. If some hostnames are assigned but not
+        /// enabled
+        /// the app is not served on those hostnames
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enabledHostNames")]
+        public IList<string> EnabledHostNames { get; private set; }
+
+        /// <summary>
+        /// Gets management information availability state for the web app.
+        /// Possible values are Normal or Limited.
+        /// Normal means that the site is running correctly and that management
+        /// information for the site is available.
+        /// Limited means that only partial management information for the site
+        /// is available and that detailed site information is unavailable.
+        /// Possible values include: 'Normal', 'Limited',
+        /// 'DisasterRecoveryMode'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityState")]
+        public SiteAvailabilityState AvailabilityState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets hostname SSL states are  used to manage the SSL
+        /// bindings for site's hostnames.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostNameSslStates")]
+        public IList<HostNameSslState> HostNameSslStates { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serverFarmId")]
+        public string ServerFarmId { get; set; }
+
+        /// <summary>
+        /// Gets last time web app was modified in UTC
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.lastModifiedTimeUtc")]
+        public System.DateTime? LastModifiedTimeUtc { get; private set; }
+
+        /// <summary>
+        /// Gets or sets configuration of web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.siteConfig")]
+        public SiteConfig SiteConfig { get; set; }
+
+        /// <summary>
+        /// Gets read-only list of Azure Traffic manager hostnames associated
+        /// with web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.trafficManagerHostNames")]
+        public IList<string> TrafficManagerHostNames { get; private set; }
+
+        /// <summary>
+        /// Gets if set indicates whether web app is deployed as a premium app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.premiumAppDeployed")]
+        public bool? PremiumAppDeployed { get; private set; }
+
+        /// <summary>
+        /// Gets or sets if set indicates whether to stop SCM (KUDU) site when
+        /// the web app is stopped. Default is false.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.scmSiteAlsoStopped")]
+        public bool? ScmSiteAlsoStopped { get; set; }
+
+        /// <summary>
+        /// Gets read-only property that specifies which slot this app will
+        /// swap into
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.targetSwapSlot")]
+        public string TargetSwapSlot { get; private set; }
+
+        /// <summary>
+        /// Gets or sets specification for the hosting environment (App Service
+        /// Environment) to use for the web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostingEnvironmentProfile")]
+        public HostingEnvironmentProfile HostingEnvironmentProfile { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.microService")]
+        public string MicroService { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of gateway app associated with web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.gatewaySiteName")]
+        public string GatewaySiteName { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies if the client affinity is enabled when load
+        /// balancing http request for multiple instances of the web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientAffinityEnabled")]
+        public bool? ClientAffinityEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies if the client certificate is enabled for the
+        /// web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.clientCertEnabled")]
+        public bool? ClientCertEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies if the public hostnames are disabled the web
+        /// app.
+        /// If set to true the app is only accessible via API Management
+        /// process
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostNamesDisabled")]
+        public bool? HostNamesDisabled { get; set; }
+
+        /// <summary>
+        /// Gets list of comma separated IP addresses that this web app uses
+        /// for outbound connections. Those can be used when configuring
+        /// firewall rules for databases accessed by this web app.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.outboundIpAddresses")]
+        public string OutboundIpAddresses { get; private set; }
+
+        /// <summary>
+        /// Gets or sets size of a function container
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.containerSize")]
+        public int? ContainerSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of workers
+        /// This only applies to function container
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.maxNumberOfWorkers")]
+        public int? MaxNumberOfWorkers { get; set; }
+
+        /// <summary>
+        /// Gets or sets this is only valid for web app creation. If specified,
+        /// web app is cloned from
+        /// a source web app
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cloningInfo")]
+        public CloningInfo CloningInfo { get; set; }
+
+        /// <summary>
+        /// Gets resource group web app belongs to
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceGroup")]
         public string ResourceGroup { get; private set; }
 
         /// <summary>
-        /// Gets name of the deleted site
+        /// Gets site is a default container
         /// </summary>
-        [JsonProperty(PropertyName = "properties.deletedSiteName")]
-        public string DeletedSiteName { get; private set; }
+        [JsonProperty(PropertyName = "properties.isDefaultContainer")]
+        public bool? IsDefaultContainer { get; private set; }
 
         /// <summary>
-        /// Gets slot of the deleted site
+        /// Gets default hostname of the web app
         /// </summary>
-        [JsonProperty(PropertyName = "properties.slot")]
-        public string Slot { get; private set; }
+        [JsonProperty(PropertyName = "properties.defaultHostName")]
+        public string DefaultHostName { get; private set; }
 
         /// <summary>
-        /// Gets kind of site that was deleted
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.kind")]
-        public string DeletedSiteKind { get; private set; }
-
-        /// <summary>
-        /// Gets geo Region of the deleted site
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.geoRegionName")]
-        public string GeoRegionName { get; private set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+            if (HostNameSslStates != null)
+            {
+                foreach (var element in HostNameSslStates)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (SiteConfig != null)
+            {
+                SiteConfig.Validate();
+            }
+        }
     }
 }

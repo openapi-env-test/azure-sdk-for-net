@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Trigger based on request execution time.
+    /// SlowRequestsBasedTrigger
     /// </summary>
     public partial class SlowRequestsBasedTrigger
     {
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SlowRequestsBasedTrigger class.
         /// </summary>
-        /// <param name="timeTaken">Time taken.</param>
-        /// <param name="count">Request Count.</param>
-        /// <param name="timeInterval">Time interval.</param>
+        /// <param name="timeTaken">TimeTaken</param>
+        /// <param name="count">Count</param>
+        /// <param name="timeInterval">TimeInterval</param>
         public SlowRequestsBasedTrigger(string timeTaken = default(string), int? count = default(int?), string timeInterval = default(string))
         {
             TimeTaken = timeTaken;
@@ -46,19 +46,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets time taken.
+        /// Gets or sets timeTaken
         /// </summary>
         [JsonProperty(PropertyName = "timeTaken")]
         public string TimeTaken { get; set; }
 
         /// <summary>
-        /// Gets or sets request Count.
+        /// Gets or sets count
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int? Count { get; set; }
 
         /// <summary>
-        /// Gets or sets time interval.
+        /// Gets or sets timeInterval
         /// </summary>
         [JsonProperty(PropertyName = "timeInterval")]
         public string TimeInterval { get; set; }

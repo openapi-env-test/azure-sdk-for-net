@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Details of a hostname derived from a domain.
+    /// Details of a hostname derived from a domain
     /// </summary>
     public partial class HostName
     {
@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the HostName class.
         /// </summary>
-        /// <param name="name">Name of the hostname.</param>
-        /// <param name="siteNames">List of apps the hostname is assigned to.
-        /// This list will have more than one app only if the hostname is
-        /// pointing to a Traffic Manager.</param>
+        /// <param name="name">Name of the hostname</param>
+        /// <param name="siteNames">List of sites the hostname is assigned to.
+        /// This list will have more than one site only if the hostname is
+        /// pointing to a Traffic Manager</param>
         /// <param name="azureResourceName">Name of the Azure resource the
-        /// hostname is assigned to. If it is assigned to a Traffic Manager
-        /// then it will be the Traffic Manager name otherwise it will be the
-        /// app name.</param>
+        /// hostname is assigned to. If it is assigned to a traffic manager
+        /// then it will be the traffic manager name otherwise it will be the
+        /// website name</param>
         /// <param name="azureResourceType">Type of the Azure resource the
         /// hostname is assigned to. Possible values include: 'Website',
         /// 'TrafficManager'</param>
-        /// <param name="customHostNameDnsRecordType">Type of the DNS record.
+        /// <param name="customHostNameDnsRecordType">Type of the Dns record.
         /// Possible values include: 'CName', 'A'</param>
         /// <param name="hostNameType">Type of the hostname. Possible values
         /// include: 'Verified', 'Managed'</param>
@@ -63,23 +63,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the hostname.
+        /// Gets or sets name of the hostname
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets list of apps the hostname is assigned to. This list
-        /// will have more than one app only if the hostname is pointing to a
-        /// Traffic Manager.
+        /// Gets or sets list of sites the hostname is assigned to. This list
+        /// will have more than one site only if the hostname is pointing to a
+        /// Traffic Manager
         /// </summary>
         [JsonProperty(PropertyName = "siteNames")]
         public IList<string> SiteNames { get; set; }
 
         /// <summary>
         /// Gets or sets name of the Azure resource the hostname is assigned
-        /// to. If it is assigned to a Traffic Manager then it will be the
-        /// Traffic Manager name otherwise it will be the app name.
+        /// to. If it is assigned to a traffic manager then it will be the
+        /// traffic manager name otherwise it will be the website name
         /// </summary>
         [JsonProperty(PropertyName = "azureResourceName")]
         public string AzureResourceName { get; set; }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public AzureResourceType? AzureResourceType { get; set; }
 
         /// <summary>
-        /// Gets or sets type of the DNS record. Possible values include:
+        /// Gets or sets type of the Dns record. Possible values include:
         /// 'CName', 'A'
         /// </summary>
         [JsonProperty(PropertyName = "customHostNameDnsRecordType")]

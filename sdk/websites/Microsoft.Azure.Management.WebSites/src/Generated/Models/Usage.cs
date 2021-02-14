@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Usage of the quota resource.
+    /// Class that represents usage of the quota resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Usage : ProxyOnlyResource
+    public partial class Usage : Resource
     {
         /// <summary>
         /// Initializes a new instance of the Usage class.
@@ -32,26 +34,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Usage class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="displayName">Friendly name shown in the UI.</param>
-        /// <param name="resourceName">Name of the quota resource.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="displayName">Friendly name shown in the UI</param>
+        /// <param name="usageName">Name of the quota</param>
+        /// <param name="resourceName">Name of the quota resource</param>
         /// <param name="unit">Units of measurement for the quota
-        /// resource.</param>
+        /// resource</param>
         /// <param name="currentValue">The current value of the resource
-        /// counter.</param>
-        /// <param name="limit">The resource limit.</param>
+        /// counter</param>
+        /// <param name="limit">The resource limit</param>
         /// <param name="nextResetTime">Next reset time for the resource
-        /// counter.</param>
-        /// <param name="computeMode">Compute mode used for this usage.
-        /// Possible values include: 'Shared', 'Dedicated', 'Dynamic'</param>
-        /// <param name="siteMode">Site mode used for this usage.</param>
-        public Usage(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string displayName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
-            : base(id, name, kind, type)
+        /// counter</param>
+        /// <param name="computeMode">ComputeMode used for this usage. Possible
+        /// values include: 'Shared', 'Dedicated', 'Dynamic'</param>
+        /// <param name="siteMode">SiteMode used for this usage</param>
+        public Usage(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string usageName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
+            : base(location, id, name, kind, type, tags)
         {
             DisplayName = displayName;
+            UsageName = usageName;
             ResourceName = resourceName;
             Unit = unit;
             CurrentValue = currentValue;
@@ -68,53 +74,69 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets friendly name shown in the UI.
+        /// Gets or sets friendly name shown in the UI
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
-        public string DisplayName { get; private set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets name of the quota resource.
+        /// Gets or sets name of the quota
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string UsageName { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the quota resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceName")]
-        public string ResourceName { get; private set; }
+        public string ResourceName { get; set; }
 
         /// <summary>
-        /// Gets units of measurement for the quota resource.
+        /// Gets or sets units of measurement for the quota resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.unit")]
-        public string Unit { get; private set; }
+        public string Unit { get; set; }
 
         /// <summary>
-        /// Gets the current value of the resource counter.
+        /// Gets or sets the current value of the resource counter
         /// </summary>
         [JsonProperty(PropertyName = "properties.currentValue")]
-        public long? CurrentValue { get; private set; }
+        public long? CurrentValue { get; set; }
 
         /// <summary>
-        /// Gets the resource limit.
+        /// Gets or sets the resource limit
         /// </summary>
         [JsonProperty(PropertyName = "properties.limit")]
-        public long? Limit { get; private set; }
+        public long? Limit { get; set; }
 
         /// <summary>
-        /// Gets next reset time for the resource counter.
+        /// Gets or sets next reset time for the resource counter
         /// </summary>
         [JsonProperty(PropertyName = "properties.nextResetTime")]
-        public System.DateTime? NextResetTime { get; private set; }
+        public System.DateTime? NextResetTime { get; set; }
 
         /// <summary>
-        /// Gets compute mode used for this usage. Possible values include:
-        /// 'Shared', 'Dedicated', 'Dynamic'
+        /// Gets or sets computeMode used for this usage. Possible values
+        /// include: 'Shared', 'Dedicated', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "properties.computeMode")]
-        public ComputeModeOptions? ComputeMode { get; private set; }
+        public ComputeModeOptions? ComputeMode { get; set; }
 
         /// <summary>
-        /// Gets site mode used for this usage.
+        /// Gets or sets siteMode used for this usage
         /// </summary>
         [JsonProperty(PropertyName = "properties.siteMode")]
-        public string SiteMode { get; private set; }
+        public string SiteMode { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

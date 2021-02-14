@@ -10,12 +10,11 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Application logs to Azure table storage configuration.
+    /// Application logs to azure table storage configuration
     /// </summary>
     public partial class AzureTableStorageApplicationLogsConfig
     {
@@ -32,11 +31,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the
         /// AzureTableStorageApplicationLogsConfig class.
         /// </summary>
-        /// <param name="sasUrl">SAS URL to an Azure table with
-        /// add/query/delete permissions.</param>
         /// <param name="level">Log level. Possible values include: 'Off',
         /// 'Verbose', 'Information', 'Warning', 'Error'</param>
-        public AzureTableStorageApplicationLogsConfig(string sasUrl, LogLevel? level = default(LogLevel?))
+        /// <param name="sasUrl">SAS url to an azure table with
+        /// add/query/delete permissions</param>
+        public AzureTableStorageApplicationLogsConfig(LogLevel? level = default(LogLevel?), string sasUrl = default(string))
         {
             Level = level;
             SasUrl = sasUrl;
@@ -56,24 +55,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public LogLevel? Level { get; set; }
 
         /// <summary>
-        /// Gets or sets SAS URL to an Azure table with add/query/delete
-        /// permissions.
+        /// Gets or sets SAS url to an azure table with add/query/delete
+        /// permissions
         /// </summary>
         [JsonProperty(PropertyName = "sasUrl")]
         public string SasUrl { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (SasUrl == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SasUrl");
-            }
-        }
     }
 }

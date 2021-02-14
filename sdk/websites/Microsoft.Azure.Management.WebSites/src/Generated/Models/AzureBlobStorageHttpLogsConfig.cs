@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Http logs to azure blob storage configuration.
+    /// Http logs to azure blob storage configuration
     /// </summary>
     public partial class AzureBlobStorageHttpLogsConfig
     {
@@ -32,12 +32,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// class.
         /// </summary>
         /// <param name="sasUrl">SAS url to a azure blob container with
-        /// read/write/list/delete permissions.</param>
+        /// read/write/list/delete permissions</param>
         /// <param name="retentionInDays">Retention in days.
         /// Remove blobs older than X days.
         /// 0 or lower means no retention.</param>
-        /// <param name="enabled">True if configuration is enabled, false if it
-        /// is disabled and null if configuration is not set.</param>
+        /// <param name="enabled">Enabled</param>
         public AzureBlobStorageHttpLogsConfig(string sasUrl = default(string), int? retentionInDays = default(int?), bool? enabled = default(bool?))
         {
             SasUrl = sasUrl;
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets SAS url to a azure blob container with
-        /// read/write/list/delete permissions.
+        /// read/write/list/delete permissions
         /// </summary>
         [JsonProperty(PropertyName = "sasUrl")]
         public string SasUrl { get; set; }
@@ -67,8 +66,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public int? RetentionInDays { get; set; }
 
         /// <summary>
-        /// Gets or sets true if configuration is enabled, false if it is
-        /// disabled and null if configuration is not set.
+        /// Gets or sets enabled
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }

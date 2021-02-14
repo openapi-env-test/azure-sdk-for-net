@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Slot Config names azure resource.
+    /// Slot Config names azure resource
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SlotConfigNamesResource : ProxyOnlyResource
+    public partial class SlotConfigNamesResource : Resource
     {
         /// <summary>
         /// Initializes a new instance of the SlotConfigNamesResource class.
@@ -34,22 +34,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the SlotConfigNamesResource class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
         /// <param name="connectionStringNames">List of connection string
-        /// names.</param>
+        /// names</param>
         /// <param name="appSettingNames">List of application settings
-        /// names.</param>
-        /// <param name="azureStorageConfigNames">List of external Azure
-        /// storage account identifiers.</param>
-        public SlotConfigNamesResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>), IList<string> azureStorageConfigNames = default(IList<string>))
-            : base(id, name, kind, type)
+        /// names</param>
+        public SlotConfigNamesResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> connectionStringNames = default(IList<string>), IList<string> appSettingNames = default(IList<string>))
+            : base(location, id, name, kind, type, tags)
         {
             ConnectionStringNames = connectionStringNames;
             AppSettingNames = appSettingNames;
-            AzureStorageConfigNames = azureStorageConfigNames;
             CustomInit();
         }
 
@@ -59,22 +58,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of connection string names.
+        /// Gets or sets list of connection string names
         /// </summary>
         [JsonProperty(PropertyName = "properties.connectionStringNames")]
         public IList<string> ConnectionStringNames { get; set; }
 
         /// <summary>
-        /// Gets or sets list of application settings names.
+        /// Gets or sets list of application settings names
         /// </summary>
         [JsonProperty(PropertyName = "properties.appSettingNames")]
         public IList<string> AppSettingNames { get; set; }
 
         /// <summary>
-        /// Gets or sets list of external Azure storage account identifiers.
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.azureStorageConfigNames")]
-        public IList<string> AzureStorageConfigNames { get; set; }
-
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

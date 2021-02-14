@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// SSL certificate email.
+    /// Certificate Email
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateEmail : ProxyOnlyResource
+    public partial class CertificateEmail : Resource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateEmail class.
@@ -32,14 +34,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the CertificateEmail class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="emailId">Email id.</param>
-        /// <param name="timeStamp">Time stamp.</param>
-        public CertificateEmail(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="emailId">Email id</param>
+        /// <param name="timeStamp">Time stamp</param>
+        public CertificateEmail(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
+            : base(location, id, name, kind, type, tags)
         {
             EmailId = emailId;
             TimeStamp = timeStamp;
@@ -52,16 +56,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets email id.
+        /// Gets or sets email id
         /// </summary>
         [JsonProperty(PropertyName = "properties.emailId")]
         public string EmailId { get; set; }
 
         /// <summary>
-        /// Gets or sets time stamp.
+        /// Gets or sets time stamp
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeStamp")]
         public System.DateTime? TimeStamp { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

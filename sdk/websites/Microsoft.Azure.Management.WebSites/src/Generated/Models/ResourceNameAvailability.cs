@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Information regarding availability of a resource name.
+    /// Describes if a resource name is available
     /// </summary>
     public partial class ResourceNameAvailability
     {
@@ -29,19 +29,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the ResourceNameAvailability class.
         /// </summary>
-        /// <param name="nameAvailable">&lt;code&gt;true&lt;/code&gt; indicates
-        /// name is valid and available. &lt;code&gt;false&lt;/code&gt;
-        /// indicates the name is invalid, unavailable, or both.</param>
-        /// <param name="reason">&lt;code&gt;Invalid&lt;/code&gt; indicates the
-        /// name provided does not match Azure App Service naming requirements.
-        /// &lt;code&gt;AlreadyExists&lt;/code&gt; indicates that the name is
-        /// already in use and is therefore unavailable. Possible values
-        /// include: 'Invalid', 'AlreadyExists'</param>
-        /// <param name="message">If reason == invalid, provide the user with
-        /// the reason why the given name is invalid, and provide the resource
-        /// naming requirements so that the user can select a valid name. If
-        /// reason == AlreadyExists, explain that resource name is already in
-        /// use, and direct them to select a different name.</param>
+        /// <param name="nameAvailable">True indicates name is valid and
+        /// available.  False indicates the name is invalid, unavailable, or
+        /// both.</param>
+        /// <param name="reason">Required if nameAvailable is false. 'Invalid'
+        /// indicates the name provided does not match Azure WebApp service’s
+        /// naming requirements. 'AlreadyExists' indicates that the name is
+        /// already in use and is therefore unavailable.</param>
         public ResourceNameAvailability(bool? nameAvailable = default(bool?), string reason = default(string), string message = default(string))
         {
             NameAvailable = nameAvailable;
@@ -56,31 +50,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;
-        /// indicates name is valid and available.
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt; indicates the name
-        /// is invalid, unavailable, or both.
+        /// Gets or sets true indicates name is valid and available.  False
+        /// indicates the name is invalid, unavailable, or both.
         /// </summary>
         [JsonProperty(PropertyName = "nameAvailable")]
         public bool? NameAvailable { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;Invalid&amp;lt;/code&amp;gt;
-        /// indicates the name provided does not match Azure App Service naming
-        /// requirements.
-        /// &amp;lt;code&amp;gt;AlreadyExists&amp;lt;/code&amp;gt; indicates
-        /// that the name is already in use and is therefore unavailable.
-        /// Possible values include: 'Invalid', 'AlreadyExists'
+        /// Gets or sets required if nameAvailable is false. 'Invalid'
+        /// indicates the name provided does not match Azure WebApp service’s
+        /// naming requirements. 'AlreadyExists' indicates that the name is
+        /// already in use and is therefore unavailable.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
 
         /// <summary>
-        /// Gets or sets if reason == invalid, provide the user with the reason
-        /// why the given name is invalid, and provide the resource naming
-        /// requirements so that the user can select a valid name. If reason ==
-        /// AlreadyExists, explain that resource name is already in use, and
-        /// direct them to select a different name.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

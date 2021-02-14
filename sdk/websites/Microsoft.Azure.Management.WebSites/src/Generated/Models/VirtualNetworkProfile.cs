@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Specification for using a Virtual Network.
+    /// Specification for using a virtual network
     /// </summary>
     public partial class VirtualNetworkProfile
     {
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkProfile class.
         /// </summary>
-        /// <param name="id">Resource id of the Virtual Network.</param>
-        /// <param name="name">Name of the Virtual Network (read-only).</param>
-        /// <param name="type">Resource type of the Virtual Network
-        /// (read-only).</param>
-        /// <param name="subnet">Subnet within the Virtual Network.</param>
+        /// <param name="id">Resource id of the virtual network</param>
+        /// <param name="name">Name of the virtual network (read-only)</param>
+        /// <param name="type">Resource type of the virtual network
+        /// (read-only)</param>
+        /// <param name="subnet">Subnet within the virtual network</param>
         public VirtualNetworkProfile(string id = default(string), string name = default(string), string type = default(string), string subnet = default(string))
         {
             Id = id;
@@ -49,25 +49,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource id of the Virtual Network.
+        /// Gets or sets resource id of the virtual network
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets name of the Virtual Network (read-only).
+        /// Gets or sets name of the virtual network (read-only)
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets resource type of the Virtual Network (read-only).
+        /// Gets or sets resource type of the virtual network (read-only)
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets subnet within the Virtual Network.
+        /// Gets or sets subnet within the virtual network
         /// </summary>
         [JsonProperty(PropertyName = "subnet")]
         public string Subnet { get; set; }

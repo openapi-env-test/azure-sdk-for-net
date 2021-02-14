@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Trigger based on total requests.
+    /// RequestsBasedTrigger
     /// </summary>
     public partial class RequestsBasedTrigger
     {
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the RequestsBasedTrigger class.
         /// </summary>
-        /// <param name="count">Request Count.</param>
-        /// <param name="timeInterval">Time interval.</param>
+        /// <param name="count">Count</param>
+        /// <param name="timeInterval">TimeInterval</param>
         public RequestsBasedTrigger(int? count = default(int?), string timeInterval = default(string))
         {
             Count = count;
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets request Count.
+        /// Gets or sets count
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int? Count { get; set; }
 
         /// <summary>
-        /// Gets or sets time interval.
+        /// Gets or sets timeInterval
         /// </summary>
         [JsonProperty(PropertyName = "timeInterval")]
         public string TimeInterval { get; set; }

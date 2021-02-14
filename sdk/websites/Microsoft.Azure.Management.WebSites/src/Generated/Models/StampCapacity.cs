@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Stamp capacity information.
+    /// Class containing stamp capacity information
     /// </summary>
     public partial class StampCapacity
     {
@@ -29,31 +29,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the StampCapacity class.
         /// </summary>
-        /// <param name="name">Name of the stamp.</param>
+        /// <param name="name">Name of the stamp</param>
         /// <param name="availableCapacity">Available capacity (# of machines,
-        /// bytes of storage etc...).</param>
+        /// bytes of storage etc...)</param>
         /// <param name="totalCapacity">Total capacity (# of machines, bytes of
-        /// storage etc...).</param>
-        /// <param name="unit">Name of the unit.</param>
-        /// <param name="computeMode">Shared/dedicated workers. Possible values
+        /// storage etc...)</param>
+        /// <param name="unit">Name of the unit</param>
+        /// <param name="computeMode">Shared/Dedicated workers. Possible values
         /// include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="workerSize">Size of the machines. Possible values
-        /// include: 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3',
-        /// 'NestedSmall', 'Default'</param>
-        /// <param name="workerSizeId">Size ID of machines:
+        /// include: 'Default', 'Small', 'Medium', 'Large'</param>
+        /// <param name="workerSizeId">Size Id of machines:
         /// 0 - Small
         /// 1 - Medium
         /// 2 - Large</param>
-        /// <param name="excludeFromCapacityAllocation">If
-        /// &lt;code&gt;true&lt;/code&gt;, it includes basic apps.
-        /// Basic apps are not used for capacity allocation.</param>
-        /// <param
-        /// name="isApplicableForAllComputeModes">&lt;code&gt;true&lt;/code&gt;
-        /// if capacity is applicable for all apps; otherwise,
-        /// &lt;code&gt;false&lt;/code&gt;.</param>
-        /// <param name="siteMode">Shared or Dedicated.</param>
-        /// <param name="isLinux">Is this a linux stamp capacity</param>
-        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string), bool? isLinux = default(bool?))
+        /// <param name="excludeFromCapacityAllocation">If true it includes
+        /// basic sites
+        /// Basic sites are not used for capacity allocation.</param>
+        /// <param name="isApplicableForAllComputeModes">Is capacity applicable
+        /// for all sites?</param>
+        /// <param name="siteMode">Shared or Dedicated</param>
+        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string))
         {
             Name = name;
             AvailableCapacity = availableCapacity;
@@ -65,7 +61,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             ExcludeFromCapacityAllocation = excludeFromCapacityAllocation;
             IsApplicableForAllComputeModes = isApplicableForAllComputeModes;
             SiteMode = siteMode;
-            IsLinux = isLinux;
             CustomInit();
         }
 
@@ -75,33 +70,33 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of the stamp.
+        /// Gets or sets name of the stamp
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets available capacity (# of machines, bytes of storage
-        /// etc...).
+        /// etc...)
         /// </summary>
         [JsonProperty(PropertyName = "availableCapacity")]
         public long? AvailableCapacity { get; set; }
 
         /// <summary>
         /// Gets or sets total capacity (# of machines, bytes of storage
-        /// etc...).
+        /// etc...)
         /// </summary>
         [JsonProperty(PropertyName = "totalCapacity")]
         public long? TotalCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the unit.
+        /// Gets or sets name of the unit
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public string Unit { get; set; }
 
         /// <summary>
-        /// Gets or sets shared/dedicated workers. Possible values include:
+        /// Gets or sets shared/Dedicated workers. Possible values include:
         /// 'Shared', 'Dedicated', 'Dynamic'
         /// </summary>
         [JsonProperty(PropertyName = "computeMode")]
@@ -109,14 +104,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <summary>
         /// Gets or sets size of the machines. Possible values include:
-        /// 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'NestedSmall',
-        /// 'Default'
+        /// 'Default', 'Small', 'Medium', 'Large'
         /// </summary>
         [JsonProperty(PropertyName = "workerSize")]
         public WorkerSizeOptions? WorkerSize { get; set; }
 
         /// <summary>
-        /// Gets or sets size ID of machines:
+        /// Gets or sets size Id of machines:
         /// 0 - Small
         /// 1 - Medium
         /// 2 - Large
@@ -125,32 +119,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public int? WorkerSizeId { get; set; }
 
         /// <summary>
-        /// Gets or sets if &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt;, it
-        /// includes basic apps.
-        /// Basic apps are not used for capacity allocation.
+        /// Gets or sets if true it includes basic sites
+        /// Basic sites are not used for capacity allocation.
         /// </summary>
         [JsonProperty(PropertyName = "excludeFromCapacityAllocation")]
         public bool? ExcludeFromCapacityAllocation { get; set; }
 
         /// <summary>
-        /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if
-        /// capacity is applicable for all apps; otherwise,
-        /// &amp;lt;code&amp;gt;false&amp;lt;/code&amp;gt;.
+        /// Gets or sets is capacity applicable for all sites?
         /// </summary>
         [JsonProperty(PropertyName = "isApplicableForAllComputeModes")]
         public bool? IsApplicableForAllComputeModes { get; set; }
 
         /// <summary>
-        /// Gets or sets shared or Dedicated.
+        /// Gets or sets shared or Dedicated
         /// </summary>
         [JsonProperty(PropertyName = "siteMode")]
         public string SiteMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets is this a linux stamp capacity
-        /// </summary>
-        [JsonProperty(PropertyName = "isLinux")]
-        public bool? IsLinux { get; set; }
 
     }
 }

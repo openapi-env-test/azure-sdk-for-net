@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// User credentials used for publishing activity.
+    /// Represents user credentials used for publishing activity
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Deployment : ProxyOnlyResource
+    public partial class Deployment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the Deployment class.
@@ -32,23 +34,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Deployment class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="status">Deployment status.</param>
-        /// <param name="message">Details about deployment status.</param>
-        /// <param name="author">Who authored the deployment.</param>
-        /// <param name="deployer">Who performed the deployment.</param>
-        /// <param name="authorEmail">Author email.</param>
-        /// <param name="startTime">Start time.</param>
-        /// <param name="endTime">End time.</param>
-        /// <param name="active">True if deployment is currently active, false
-        /// if completed and null if not started.</param>
-        /// <param name="details">Details on deployment.</param>
-        public Deployment(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="deploymentId">Id</param>
+        /// <param name="status">Status</param>
+        /// <param name="message">Message</param>
+        /// <param name="author">Author</param>
+        /// <param name="deployer">Deployer</param>
+        /// <param name="authorEmail">AuthorEmail</param>
+        /// <param name="startTime">StartTime</param>
+        /// <param name="endTime">EndTime</param>
+        /// <param name="active">Active</param>
+        /// <param name="details">Detail</param>
+        public Deployment(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string deploymentId = default(string), int? status = default(int?), string message = default(string), string author = default(string), string deployer = default(string), string authorEmail = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? active = default(bool?), string details = default(string))
+            : base(location, id, name, kind, type, tags)
         {
+            DeploymentId = deploymentId;
             Status = status;
             Message = message;
             Author = author;
@@ -67,59 +72,74 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets deployment status.
+        /// Gets or sets id
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.id")]
+        public string DeploymentId { get; set; }
+
+        /// <summary>
+        /// Gets or sets status
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public int? Status { get; set; }
 
         /// <summary>
-        /// Gets or sets details about deployment status.
+        /// Gets or sets message
         /// </summary>
         [JsonProperty(PropertyName = "properties.message")]
         public string Message { get; set; }
 
         /// <summary>
-        /// Gets or sets who authored the deployment.
+        /// Gets or sets author
         /// </summary>
         [JsonProperty(PropertyName = "properties.author")]
         public string Author { get; set; }
 
         /// <summary>
-        /// Gets or sets who performed the deployment.
+        /// Gets or sets deployer
         /// </summary>
         [JsonProperty(PropertyName = "properties.deployer")]
         public string Deployer { get; set; }
 
         /// <summary>
-        /// Gets or sets author email.
+        /// Gets or sets authorEmail
         /// </summary>
         [JsonProperty(PropertyName = "properties.author_email")]
         public string AuthorEmail { get; set; }
 
         /// <summary>
-        /// Gets or sets start time.
+        /// Gets or sets startTime
         /// </summary>
         [JsonProperty(PropertyName = "properties.start_time")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets end time.
+        /// Gets or sets endTime
         /// </summary>
         [JsonProperty(PropertyName = "properties.end_time")]
         public System.DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets true if deployment is currently active, false if
-        /// completed and null if not started.
+        /// Gets or sets active
         /// </summary>
         [JsonProperty(PropertyName = "properties.active")]
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Gets or sets details on deployment.
+        /// Gets or sets detail
         /// </summary>
         [JsonProperty(PropertyName = "properties.details")]
         public string Details { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

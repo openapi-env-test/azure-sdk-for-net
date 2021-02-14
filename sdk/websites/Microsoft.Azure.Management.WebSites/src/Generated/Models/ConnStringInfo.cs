@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Database connection string information.
+    /// Represents database connection string information
     /// </summary>
     public partial class ConnStringInfo
     {
@@ -29,13 +29,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the ConnStringInfo class.
         /// </summary>
-        /// <param name="name">Name of connection string.</param>
-        /// <param name="connectionString">Connection string value.</param>
         /// <param name="type">Type of database. Possible values include:
-        /// 'MySql', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub',
-        /// 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache',
-        /// 'PostgreSQL'</param>
-        public ConnStringInfo(string name = default(string), string connectionString = default(string), ConnectionStringType? type = default(ConnectionStringType?))
+        /// 'MySql', 'SQLServer', 'SQLAzure', 'Custom'</param>
+        /// <param name="name">Name of connection string</param>
+        /// <param name="connectionString">Connection string value</param>
+        public ConnStringInfo(DatabaseServerType type, string name = default(string), string connectionString = default(string))
         {
             Name = name;
             ConnectionString = connectionString;
@@ -49,24 +47,32 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name of connection string.
+        /// Gets or sets name of connection string
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets connection string value.
+        /// Gets or sets connection string value
         /// </summary>
         [JsonProperty(PropertyName = "connectionString")]
         public string ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets type of database. Possible values include: 'MySql',
-        /// 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
-        /// 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
+        /// 'SQLServer', 'SQLAzure', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public ConnectionStringType? Type { get; set; }
+        public DatabaseServerType Type { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }

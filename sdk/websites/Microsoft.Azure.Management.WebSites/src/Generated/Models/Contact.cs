@@ -10,15 +10,13 @@
 
 namespace Microsoft.Azure.Management.WebSites.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Contact information for domain registration. If 'Domain Privacy' option
-    /// is not selected then the contact information is made publicly available
-    /// through the Whois
-    /// directories as per ICANN requirements.
+    /// is not selected then the contact information will be made publicly
+    /// available through the Whois directories as per ICANN requirements.
     /// </summary>
     public partial class Contact
     {
@@ -33,16 +31,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the Contact class.
         /// </summary>
-        /// <param name="email">Email address.</param>
-        /// <param name="nameFirst">First name.</param>
-        /// <param name="nameLast">Last name.</param>
-        /// <param name="phone">Phone number.</param>
-        /// <param name="addressMailing">Mailing address.</param>
-        /// <param name="fax">Fax number.</param>
-        /// <param name="jobTitle">Job title.</param>
-        /// <param name="nameMiddle">Middle name.</param>
-        /// <param name="organization">Organization contact belongs to.</param>
-        public Contact(string email, string nameFirst, string nameLast, string phone, Address addressMailing = default(Address), string fax = default(string), string jobTitle = default(string), string nameMiddle = default(string), string organization = default(string))
+        /// <param name="addressMailing">Mailing address</param>
+        /// <param name="email">Email address</param>
+        /// <param name="fax">Fax number</param>
+        /// <param name="jobTitle">Job title</param>
+        /// <param name="nameFirst">First name</param>
+        /// <param name="nameLast">Last name</param>
+        /// <param name="nameMiddle">Middle name</param>
+        /// <param name="organization">Organization</param>
+        /// <param name="phone">Phone number</param>
+        public Contact(Address addressMailing = default(Address), string email = default(string), string fax = default(string), string jobTitle = default(string), string nameFirst = default(string), string nameLast = default(string), string nameMiddle = default(string), string organization = default(string), string phone = default(string))
         {
             AddressMailing = addressMailing;
             Email = email;
@@ -62,87 +60,58 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets mailing address.
+        /// Gets or sets mailing address
         /// </summary>
         [JsonProperty(PropertyName = "addressMailing")]
         public Address AddressMailing { get; set; }
 
         /// <summary>
-        /// Gets or sets email address.
+        /// Gets or sets email address
         /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or sets fax number.
+        /// Gets or sets fax number
         /// </summary>
         [JsonProperty(PropertyName = "fax")]
         public string Fax { get; set; }
 
         /// <summary>
-        /// Gets or sets job title.
+        /// Gets or sets job title
         /// </summary>
         [JsonProperty(PropertyName = "jobTitle")]
         public string JobTitle { get; set; }
 
         /// <summary>
-        /// Gets or sets first name.
+        /// Gets or sets first name
         /// </summary>
         [JsonProperty(PropertyName = "nameFirst")]
         public string NameFirst { get; set; }
 
         /// <summary>
-        /// Gets or sets last name.
+        /// Gets or sets last name
         /// </summary>
         [JsonProperty(PropertyName = "nameLast")]
         public string NameLast { get; set; }
 
         /// <summary>
-        /// Gets or sets middle name.
+        /// Gets or sets middle name
         /// </summary>
         [JsonProperty(PropertyName = "nameMiddle")]
         public string NameMiddle { get; set; }
 
         /// <summary>
-        /// Gets or sets organization contact belongs to.
+        /// Gets or sets organization
         /// </summary>
         [JsonProperty(PropertyName = "organization")]
         public string Organization { get; set; }
 
         /// <summary>
-        /// Gets or sets phone number.
+        /// Gets or sets phone number
         /// </summary>
         [JsonProperty(PropertyName = "phone")]
         public string Phone { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Email == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Email");
-            }
-            if (NameFirst == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NameFirst");
-            }
-            if (NameLast == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NameLast");
-            }
-            if (Phone == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Phone");
-            }
-            if (AddressMailing != null)
-            {
-                AddressMailing.Validate();
-            }
-        }
     }
 }

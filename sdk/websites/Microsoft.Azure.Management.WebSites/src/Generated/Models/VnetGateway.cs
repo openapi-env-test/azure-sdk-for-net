@@ -13,14 +13,16 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The Virtual Network gateway contract. This is used to give the Virtual
-    /// Network gateway access to the VPN package.
+    /// The VnetGateway contract. This is used to give the vnet gateway access
+    /// to the VPN package.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetGateway : ProxyOnlyResource
+    public partial class VnetGateway : Resource
     {
         /// <summary>
         /// Initializes a new instance of the VnetGateway class.
@@ -33,15 +35,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the VnetGateway class.
         /// </summary>
-        /// <param name="vpnPackageUri">The URI where the VPN package can be
-        /// downloaded.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="vnetName">The Virtual Network name.</param>
-        public VnetGateway(string vpnPackageUri, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetName = default(string))
-            : base(id, name, kind, type)
+        /// <param name="location">Resource Location</param>
+        /// <param name="id">Resource Id</param>
+        /// <param name="name">Resource Name</param>
+        /// <param name="kind">Kind of resource</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="tags">Resource tags</param>
+        /// <param name="vnetName">The VNET name.</param>
+        /// <param name="vpnPackageUri">The URI where the Vpn package can be
+        /// downloaded</param>
+        public VnetGateway(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string vnetName = default(string), string vpnPackageUri = default(string))
+            : base(location, id, name, kind, type, tags)
         {
             VnetName = vnetName;
             VpnPackageUri = vpnPackageUri;
@@ -54,13 +58,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the Virtual Network name.
+        /// Gets or sets the VNET name.
         /// </summary>
         [JsonProperty(PropertyName = "properties.vnetName")]
         public string VnetName { get; set; }
 
         /// <summary>
-        /// Gets or sets the URI where the VPN package can be downloaded.
+        /// Gets or sets the URI where the Vpn package can be downloaded
         /// </summary>
         [JsonProperty(PropertyName = "properties.vpnPackageUri")]
         public string VpnPackageUri { get; set; }
@@ -71,12 +75,9 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (VpnPackageUri == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VpnPackageUri");
-            }
+            base.Validate();
         }
     }
 }
