@@ -18,6 +18,5 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string StandardLRS = "Standard_LRS";
         public const string StandardZRS = "Standard_ZRS";
-        public const string PremiumLRS = "Premium_LRS";
     }
 }

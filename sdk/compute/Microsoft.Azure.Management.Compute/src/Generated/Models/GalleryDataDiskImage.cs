@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryDataDiskImage class.
         /// </summary>
-        /// <param name="lun">This property specifies the logical unit number
-        /// of the data disk. This value is used to identify data disks within
-        /// the Virtual Machine and therefore must be unique for each data disk
-        /// attached to the Virtual Machine.</param>
         /// <param name="sizeInGB">This property indicates the size of the VHD
         /// to be created.</param>
         /// <param name="hostCaching">The host caching of the disk. Valid
         /// values are 'None', 'ReadOnly', and 'ReadWrite'. Possible values
         /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
-        public GalleryDataDiskImage(int lun, int? sizeInGB = default(int?), HostCaching? hostCaching = default(HostCaching?), GalleryArtifactVersionSource source = default(GalleryArtifactVersionSource))
-            : base(sizeInGB, hostCaching, source)
+        /// <param name="lun">This property specifies the logical unit number
+        /// of the data disk. This value is used to identify data disks within
+        /// the Virtual Machine and therefore must be unique for each data disk
+        /// attached to the Virtual Machine.</param>
+        public GalleryDataDiskImage(int? sizeInGB = default(int?), HostCaching? hostCaching = default(HostCaching?), int? lun = default(int?))
+            : base(sizeInGB, hostCaching)
         {
             Lun = lun;
             CustomInit();
@@ -51,23 +51,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property specifies the logical unit number of the
-        /// data disk. This value is used to identify data disks within the
-        /// Virtual Machine and therefore must be unique for each data disk
-        /// attached to the Virtual Machine.
+        /// Gets this property specifies the logical unit number of the data
+        /// disk. This value is used to identify data disks within the Virtual
+        /// Machine and therefore must be unique for each data disk attached to
+        /// the Virtual Machine.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
-        public int Lun { get; set; }
+        public int? Lun { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            //Nothing to validate
-        }
     }
 }

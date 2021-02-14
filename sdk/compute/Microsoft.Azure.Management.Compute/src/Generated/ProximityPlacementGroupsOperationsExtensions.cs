@@ -164,13 +164,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='proximityPlacementGroupName'>
             /// The name of the proximity placement group.
             /// </param>
-            /// <param name='includeColocationStatus'>
-            /// includeColocationStatus=true enables fetching the colocation status of all
-            /// the resources in the proximity placement group.
-            /// </param>
-            public static ProximityPlacementGroup Get(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string))
+            public static ProximityPlacementGroup Get(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName)
             {
-                return operations.GetAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, proximityPlacementGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -185,16 +181,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='proximityPlacementGroupName'>
             /// The name of the proximity placement group.
             /// </param>
-            /// <param name='includeColocationStatus'>
-            /// includeColocationStatus=true enables fetching the colocation status of all
-            /// the resources in the proximity placement group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ProximityPlacementGroup> GetAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ProximityPlacementGroup> GetAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

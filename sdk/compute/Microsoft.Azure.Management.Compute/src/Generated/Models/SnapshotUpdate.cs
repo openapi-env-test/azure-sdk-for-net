@@ -45,22 +45,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="encryptionSettingsCollection">Encryption settings
         /// collection used be Azure Disk Encryption, can contain multiple
         /// encryption settings per disk or snapshot.</param>
-        /// <param name="encryption">Encryption property can be used to encrypt
-        /// data at rest with customer managed keys or platform managed
-        /// keys.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
-        /// <param name="diskAccessId">ARM id of the DiskAccess resource for
-        /// using private endpoints on disks.</param>
         /// <param name="tags">Resource tags</param>
-        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
+        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
             EncryptionSettingsCollection = encryptionSettingsCollection;
-            Encryption = encryption;
-            NetworkAccessPolicy = networkAccessPolicy;
-            DiskAccessId = diskAccessId;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -95,27 +85,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.encryptionSettingsCollection")]
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
-
-        /// <summary>
-        /// Gets or sets encryption property can be used to encrypt data at
-        /// rest with customer managed keys or platform managed keys.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.encryption")]
-        public Encryption Encryption { get; set; }
-
-        /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
-        public string NetworkAccessPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets ARM id of the DiskAccess resource for using private
-        /// endpoints on disks.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.diskAccessId")]
-        public string DiskAccessId { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags

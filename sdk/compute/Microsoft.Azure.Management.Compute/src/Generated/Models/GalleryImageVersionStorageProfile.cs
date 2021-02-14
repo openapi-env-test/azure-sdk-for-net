@@ -34,9 +34,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// class.
         /// </summary>
         /// <param name="dataDiskImages">A list of data disk images.</param>
-        public GalleryImageVersionStorageProfile(GalleryArtifactVersionSource source = default(GalleryArtifactVersionSource), GalleryOSDiskImage osDiskImage = default(GalleryOSDiskImage), IList<GalleryDataDiskImage> dataDiskImages = default(IList<GalleryDataDiskImage>))
+        public GalleryImageVersionStorageProfile(GalleryOSDiskImage osDiskImage = default(GalleryOSDiskImage), IList<GalleryDataDiskImage> dataDiskImages = default(IList<GalleryDataDiskImage>))
         {
-            Source = source;
             OsDiskImage = osDiskImage;
             DataDiskImages = dataDiskImages;
             CustomInit();
@@ -49,19 +48,14 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "source")]
-        public GalleryArtifactVersionSource Source { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "osDiskImage")]
-        public GalleryOSDiskImage OsDiskImage { get; set; }
+        public GalleryOSDiskImage OsDiskImage { get; private set; }
 
         /// <summary>
-        /// Gets or sets a list of data disk images.
+        /// Gets a list of data disk images.
         /// </summary>
         [JsonProperty(PropertyName = "dataDiskImages")]
-        public IList<GalleryDataDiskImage> DataDiskImages { get; set; }
+        public IList<GalleryDataDiskImage> DataDiskImages { get; private set; }
 
     }
 }

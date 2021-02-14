@@ -37,8 +37,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// profile.</param>
         /// <param name="networkProfile">The virtual machine scale set network
         /// profile.</param>
-        /// <param name="securityProfile">The virtual machine scale set
-        /// Security profile</param>
         /// <param name="diagnosticsProfile">The virtual machine scale set
         /// diagnostics profile.</param>
         /// <param name="extensionProfile">The virtual machine scale set
@@ -46,16 +44,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="licenseType">The license type, which is for bring your
         /// own license scenario.</param>
         /// <param name="billingProfile">Specifies the billing related details
-        /// of a Azure Spot VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
+        /// of a low priority VMSS. &lt;br&gt;&lt;br&gt;Minimum api-version:
         /// 2019-03-01.</param>
         /// <param name="scheduledEventsProfile">Specifies Scheduled Event
         /// related configurations.</param>
-        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile))
+        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
             NetworkProfile = networkProfile;
-            SecurityProfile = securityProfile;
             DiagnosticsProfile = diagnosticsProfile;
             ExtensionProfile = extensionProfile;
             LicenseType = licenseType;
@@ -88,12 +85,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetUpdateNetworkProfile NetworkProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine scale set Security profile
-        /// </summary>
-        [JsonProperty(PropertyName = "securityProfile")]
-        public SecurityProfile SecurityProfile { get; set; }
-
-        /// <summary>
         /// Gets or sets the virtual machine scale set diagnostics profile.
         /// </summary>
         [JsonProperty(PropertyName = "diagnosticsProfile")]
@@ -113,9 +104,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string LicenseType { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the billing related details of a Azure Spot
-        /// VMSS. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2019-03-01.
+        /// Gets or sets specifies the billing related details of a low
+        /// priority VMSS. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum
+        /// api-version: 2019-03-01.
         /// </summary>
         [JsonProperty(PropertyName = "billingProfile")]
         public BillingProfile BillingProfile { get; set; }

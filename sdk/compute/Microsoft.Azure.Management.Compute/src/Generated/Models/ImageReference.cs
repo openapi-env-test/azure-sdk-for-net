@@ -46,18 +46,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// version of an image available at deploy time. Even if you use
         /// 'latest', the VM image will not automatically update after deploy
         /// time even if a new version becomes available.</param>
-        /// <param name="exactVersion">Specifies in decimal numbers, the
-        /// version of platform image or marketplace image used to create the
-        /// virtual machine. This readonly field differs from 'version', only
-        /// if the value specified in 'version' field is 'latest'.</param>
-        public ImageReference(string id = default(string), string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string exactVersion = default(string))
+        public ImageReference(string id = default(string), string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string))
             : base(id)
         {
             Publisher = publisher;
             Offer = offer;
             Sku = sku;
             Version = version;
-            ExactVersion = exactVersion;
             CustomInit();
         }
 
@@ -96,15 +91,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
-
-        /// <summary>
-        /// Gets specifies in decimal numbers, the version of platform image or
-        /// marketplace image used to create the virtual machine. This readonly
-        /// field differs from 'version', only if the value specified in
-        /// 'version' field is 'latest'.
-        /// </summary>
-        [JsonProperty(PropertyName = "exactVersion")]
-        public string ExactVersion { get; private set; }
 
     }
 }
