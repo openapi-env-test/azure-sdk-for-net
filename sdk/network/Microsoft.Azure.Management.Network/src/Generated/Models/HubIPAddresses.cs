@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -29,13 +31,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the HubIPAddresses class.
         /// </summary>
-        /// <param name="publicIPs">Public IP addresses associated with azure
-        /// firewall.</param>
+        /// <param name="publicIPAddresses">List of Public IP addresses
+        /// associated with azure firewall.</param>
         /// <param name="privateIPAddress">Private IP Address associated with
         /// azure firewall.</param>
-        public HubIPAddresses(HubPublicIPAddresses publicIPs = default(HubPublicIPAddresses), string privateIPAddress = default(string))
+        public HubIPAddresses(IList<AzureFirewallPublicIPAddress> publicIPAddresses = default(IList<AzureFirewallPublicIPAddress>), string privateIPAddress = default(string))
         {
-            PublicIPs = publicIPs;
+            PublicIPAddresses = publicIPAddresses;
             PrivateIPAddress = privateIPAddress;
             CustomInit();
         }
@@ -46,10 +48,11 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets public IP addresses associated with azure firewall.
+        /// Gets or sets list of Public IP addresses associated with azure
+        /// firewall.
         /// </summary>
-        [JsonProperty(PropertyName = "publicIPs")]
-        public HubPublicIPAddresses PublicIPs { get; set; }
+        [JsonProperty(PropertyName = "publicIPAddresses")]
+        public IList<AzureFirewallPublicIPAddress> PublicIPAddresses { get; set; }
 
         /// <summary>
         /// Gets or sets private IP Address associated with azure firewall.
