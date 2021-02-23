@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ipConfigurations">IP configurations for virtual
         /// network gateway.</param>
         /// <param name="gatewayType">The type of this virtual network gateway.
-        /// Possible values include: 'Vpn', 'ExpressRoute',
-        /// 'LocalGateway'</param>
+        /// Possible values include: 'Vpn', 'ExpressRoute'</param>
         /// <param name="vpnType">The type of this virtual network gateway.
         /// Possible values include: 'PolicyBased', 'RouteBased'</param>
         /// <param name="vpnGatewayGeneration">The generation for this
@@ -79,14 +78,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// or not.</param>
         /// <param name="inboundDnsForwardingEndpoint">The IP address allocated
         /// by the gateway to which dns requests can be sent.</param>
-        /// <param name="virtualNetworkExtendedLocationResourceId">MAS FIJI
-        /// customer vnet resource id. VirtualNetworkGateway of type local
-        /// gateway is associated with the customer vnet.</param>
-        /// <param name="extendedLocation">The extended location of type local
-        /// virtual network gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIpAddress = default(bool?), bool? activeActive = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string virtualNetworkExtendedLocationResourceId = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string))
+        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIpAddress = default(bool?), bool? activeActive = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             IpConfigurations = ipConfigurations;
@@ -105,8 +99,6 @@ namespace Microsoft.Azure.Management.Network.Models
             ProvisioningState = provisioningState;
             EnableDnsForwarding = enableDnsForwarding;
             InboundDnsForwardingEndpoint = inboundDnsForwardingEndpoint;
-            VirtualNetworkExtendedLocationResourceId = virtualNetworkExtendedLocationResourceId;
-            ExtendedLocation = extendedLocation;
             Etag = etag;
             CustomInit();
         }
@@ -124,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the type of this virtual network gateway. Possible
-        /// values include: 'Vpn', 'ExpressRoute', 'LocalGateway'
+        /// values include: 'Vpn', 'ExpressRoute'
         /// </summary>
         [JsonProperty(PropertyName = "properties.gatewayType")]
         public string GatewayType { get; set; }
@@ -229,43 +221,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public string InboundDnsForwardingEndpoint { get; private set; }
 
         /// <summary>
-        /// Gets or sets MAS FIJI customer vnet resource id.
-        /// VirtualNetworkGateway of type local gateway is associated with the
-        /// customer vnet.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.virtualNetworkExtendedLocationResourceId")]
-        public string VirtualNetworkExtendedLocationResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended location of type local virtual network
-        /// gateway.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.extendedLocation")]
-        public ExtendedLocation ExtendedLocation { get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (BgpSettings != null)
-            {
-                BgpSettings.Validate();
-            }
-            if (ExtendedLocation != null)
-            {
-                ExtendedLocation.Validate();
-            }
-        }
     }
 }
