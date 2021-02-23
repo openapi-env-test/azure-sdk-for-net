@@ -112,11 +112,6 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineImagesOperations VirtualMachineImages { get; }
 
         /// <summary>
-        /// Gets the IVirtualMachineImagesEdgeZoneOperations.
-        /// </summary>
-        IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; }
-
-        /// <summary>
         /// Gets the IUsageOperations.
         /// </summary>
         IUsageOperations Usage { get; }
@@ -127,11 +122,6 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachinesOperations VirtualMachines { get; }
 
         /// <summary>
-        /// Gets the IVirtualMachineScaleSetsOperations.
-        /// </summary>
-        IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; }
-
-        /// <summary>
         /// Gets the IVirtualMachineSizesOperations.
         /// </summary>
         IVirtualMachineSizesOperations VirtualMachineSizes { get; }
@@ -140,6 +130,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IImagesOperations.
         /// </summary>
         IImagesOperations Images { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetsOperations.
+        /// </summary>
+        IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetExtensionsOperations.
@@ -202,11 +197,6 @@ namespace Microsoft.Azure.Management.Compute
         IDiskAccessesOperations DiskAccesses { get; }
 
         /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        IDiskRestorePointOperations DiskRestorePoint { get; }
-
-        /// <summary>
         /// Gets the IGalleriesOperations.
         /// </summary>
         IGalleriesOperations Galleries { get; }
@@ -230,6 +220,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IGalleryApplicationVersionsOperations.
         /// </summary>
         IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; }
+
+        /// <summary>
+        /// Gets the IContainerServicesOperations.
+        /// </summary>
+        IContainerServicesOperations ContainerServices { get; }
 
     }
 }
