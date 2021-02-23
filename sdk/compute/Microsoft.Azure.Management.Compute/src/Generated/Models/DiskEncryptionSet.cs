@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
         /// <param name="encryptionType">Possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'</param>
         /// <param name="activeKey">The key vault key which is currently used
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// rotation.</param>
         /// <param name="provisioningState">The disk encryption set
         /// provisioning state.</param>
-        public DiskEncryptionSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity), string encryptionType = default(string), KeyForDiskEncryptionSet activeKey = default(KeyForDiskEncryptionSet), IList<KeyForDiskEncryptionSet> previousKeys = default(IList<KeyForDiskEncryptionSet>), string provisioningState = default(string))
+        public DiskEncryptionSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), EncryptionSetIdentity identity = default(EncryptionSetIdentity), string encryptionType = default(string), KeyVaultAndKeyReference activeKey = default(KeyVaultAndKeyReference), IList<KeyVaultAndKeyReference> previousKeys = default(IList<KeyVaultAndKeyReference>), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             Identity = identity;
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'
         /// </summary>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// encryption set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.activeKey")]
-        public KeyForDiskEncryptionSet ActiveKey { get; set; }
+        public KeyVaultAndKeyReference ActiveKey { get; set; }
 
         /// <summary>
         /// Gets a readonly collection of key vault keys previously used by
@@ -92,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// will be empty if there is no ongoing key rotation.
         /// </summary>
         [JsonProperty(PropertyName = "properties.previousKeys")]
-        public IList<KeyForDiskEncryptionSet> PreviousKeys { get; private set; }
+        public IList<KeyVaultAndKeyReference> PreviousKeys { get; private set; }
 
         /// <summary>
         /// Gets the disk encryption set provisioning state.
