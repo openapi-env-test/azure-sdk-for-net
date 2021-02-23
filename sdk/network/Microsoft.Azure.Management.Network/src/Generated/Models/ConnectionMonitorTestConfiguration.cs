@@ -139,14 +139,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Protocol");
             }
-            if (HttpConfiguration != null)
-            {
-                HttpConfiguration.Validate();
-            }
-            if (TcpConfiguration != null)
-            {
-                TcpConfiguration.Validate();
-            }
         }
     }
 }
