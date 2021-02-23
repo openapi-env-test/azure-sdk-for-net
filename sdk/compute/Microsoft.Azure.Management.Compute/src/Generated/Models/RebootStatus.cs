@@ -12,11 +12,14 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for LinuxVMGuestPatchMode.
+    /// Defines values for RebootStatus.
     /// </summary>
-    public static class LinuxVMGuestPatchMode
+    public static class RebootStatus
     {
-        public const string ImageDefault = "ImageDefault";
-        public const string AutomaticByPlatform = "AutomaticByPlatform";
+        public const string NotNeeded = "NotNeeded";
+        public const string Required = "Required";
+        public const string Started = "Started";
+        public const string Failed = "Failed";
+        public const string Completed = "Completed";
     }
 }

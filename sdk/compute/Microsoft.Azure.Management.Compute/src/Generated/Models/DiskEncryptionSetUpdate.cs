@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DiskEncryptionSetUpdate class.
         /// </summary>
         /// <param name="encryptionType">Possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'</param>
         /// <param name="tags">Resource tags</param>
-        public DiskEncryptionSetUpdate(string encryptionType = default(string), KeyForDiskEncryptionSet activeKey = default(KeyForDiskEncryptionSet), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public DiskEncryptionSetUpdate(string encryptionType = default(string), KeyVaultAndKeyReference activeKey = default(KeyVaultAndKeyReference), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             EncryptionType = encryptionType;
             ActiveKey = activeKey;
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets possible values include:
+        /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'
         /// </summary>
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties.activeKey")]
-        public KeyForDiskEncryptionSet ActiveKey { get; set; }
+        public KeyVaultAndKeyReference ActiveKey { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags
