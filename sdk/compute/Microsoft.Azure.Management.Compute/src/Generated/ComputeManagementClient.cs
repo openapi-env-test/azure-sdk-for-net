@@ -117,11 +117,6 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachineImagesOperations VirtualMachineImages { get; private set; }
 
         /// <summary>
-        /// Gets the IVirtualMachineImagesEdgeZoneOperations.
-        /// </summary>
-        public virtual IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; private set; }
-
-        /// <summary>
         /// Gets the IUsageOperations.
         /// </summary>
         public virtual IUsageOperations Usage { get; private set; }
@@ -132,11 +127,6 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
 
         /// <summary>
-        /// Gets the IVirtualMachineScaleSetsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; private set; }
-
-        /// <summary>
         /// Gets the IVirtualMachineSizesOperations.
         /// </summary>
         public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
@@ -145,6 +135,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IImagesOperations.
         /// </summary>
         public virtual IImagesOperations Images { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetsOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetExtensionsOperations.
@@ -207,11 +202,6 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
 
         /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
-
-        /// <summary>
         /// Gets the IGalleriesOperations.
         /// </summary>
         public virtual IGalleriesOperations Galleries { get; private set; }
@@ -235,6 +225,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IGalleryApplicationVersionsOperations.
         /// </summary>
         public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
+
+        /// <summary>
+        /// Gets the IContainerServicesOperations.
+        /// </summary>
+        public virtual IContainerServicesOperations ContainerServices { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -486,12 +481,11 @@ namespace Microsoft.Azure.Management.Compute
             VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             VirtualMachineImages = new VirtualMachineImagesOperations(this);
-            VirtualMachineImagesEdgeZone = new VirtualMachineImagesEdgeZoneOperations(this);
             Usage = new UsageOperations(this);
             VirtualMachines = new VirtualMachinesOperations(this);
-            VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
             VirtualMachineSizes = new VirtualMachineSizesOperations(this);
             Images = new ImagesOperations(this);
+            VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
             VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
             VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
@@ -504,12 +498,12 @@ namespace Microsoft.Azure.Management.Compute
             Snapshots = new SnapshotsOperations(this);
             DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
             DiskAccesses = new DiskAccessesOperations(this);
-            DiskRestorePoint = new DiskRestorePointOperations(this);
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
             GalleryApplications = new GalleryApplicationsOperations(this);
             GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
+            ContainerServices = new ContainerServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

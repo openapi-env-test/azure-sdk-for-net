@@ -12,15 +12,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for PatchInstallationState.
+    /// Defines values for SoftwareUpdateRebootBehavior.
     /// </summary>
-    public static class PatchInstallationState
+    public static class SoftwareUpdateRebootBehavior
     {
-        public const string Unknown = "Unknown";
-        public const string Installed = "Installed";
-        public const string Failed = "Failed";
-        public const string Excluded = "Excluded";
-        public const string NotSelected = "NotSelected";
-        public const string Pending = "Pending";
+        public const string NeverReboots = "NeverReboots";
+        public const string AlwaysRequiresReboot = "AlwaysRequiresReboot";
+        public const string CanRequestReboot = "CanRequestReboot";
     }
 }
