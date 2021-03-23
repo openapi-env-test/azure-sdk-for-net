@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.DeploymentManager.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The properties of a step resource.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("StepProperties")]
     public partial class StepProperties
     {
         /// <summary>

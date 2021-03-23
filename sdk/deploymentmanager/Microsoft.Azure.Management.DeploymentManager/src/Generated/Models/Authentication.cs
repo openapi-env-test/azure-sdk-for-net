@@ -10,12 +10,14 @@
 
 namespace Microsoft.Azure.Management.DeploymentManager.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Defines the authentication method and properties to access the
     /// artifacts.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Authentication")]
     public partial class Authentication
     {
         /// <summary>
