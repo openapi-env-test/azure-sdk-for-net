@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Management.DeploymentManager.Models
     /// <summary>
     /// The attributes for the health check step.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("HealthCheckStepAttributes")]
     public partial class HealthCheckStepAttributes
     {
         /// <summary>

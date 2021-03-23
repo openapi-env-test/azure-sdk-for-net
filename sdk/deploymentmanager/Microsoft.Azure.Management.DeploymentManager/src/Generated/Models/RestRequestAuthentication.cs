@@ -10,12 +10,14 @@
 
 namespace Microsoft.Azure.Management.DeploymentManager.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The authentication information required in the REST health check
     /// request to the health provider.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RestRequestAuthentication")]
     public partial class RestRequestAuthentication
     {
         /// <summary>
