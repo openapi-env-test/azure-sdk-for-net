@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.SecurityInsights.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The Settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Settings")]
     public partial class Settings : ResourceWithEtag
     {
         /// <summary>
