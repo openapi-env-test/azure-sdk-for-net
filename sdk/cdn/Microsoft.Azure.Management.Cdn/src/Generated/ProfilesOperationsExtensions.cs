@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Cdn
             }
 
             /// <summary>
-            /// Lists all of the CDN profiles within a resource group.
+            /// Lists all of the CDN profiles within a resource group TEST.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Cdn
             }
 
             /// <summary>
-            /// Lists all of the CDN profiles within a resource group.
+            /// Lists all of the CDN profiles within a resource group TEST.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Management.Cdn
             }
 
             /// <summary>
-            /// Lists all of the CDN profiles within a resource group.
+            /// Lists all of the CDN profiles within a resource group TEST.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Management.Cdn
             }
 
             /// <summary>
-            /// Lists all of the CDN profiles within a resource group.
+            /// Lists all of the CDN profiles within a resource group TEST.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
