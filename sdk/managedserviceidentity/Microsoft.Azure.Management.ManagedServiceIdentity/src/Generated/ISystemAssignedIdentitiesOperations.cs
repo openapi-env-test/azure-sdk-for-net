@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity
     {
         /// <summary>
         /// Gets the systemAssignedIdentity available under the specified RP
-        /// scope.
+        /// scope. Update 1
         /// </summary>
         /// <param name='scope'>
         /// The resource provider scope of the resource. Parent resource being
