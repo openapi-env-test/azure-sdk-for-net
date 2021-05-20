@@ -52,42 +52,6 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity
             }
 
             /// <summary>
-            /// Lists all the userAssignedIdentities available under the specified
-            /// ResourceGroup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the identity belongs.
-            /// </param>
-            public static IPage<Identity> ListByResourceGroup(this IUserAssignedIdentitiesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the userAssignedIdentities available under the specified
-            /// ResourceGroup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the identity belongs.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Identity>> ListByResourceGroupAsync(this IUserAssignedIdentitiesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Create or update an identity in the specified subscription and resource
             /// group.
             /// </summary>
@@ -289,42 +253,6 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity
             public static async Task<IPage<Identity>> ListBySubscriptionNextAsync(this IUserAssignedIdentitiesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all the userAssignedIdentities available under the specified
-            /// ResourceGroup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Identity> ListByResourceGroupNext(this IUserAssignedIdentitiesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the userAssignedIdentities available under the specified
-            /// ResourceGroup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Identity>> ListByResourceGroupNextAsync(this IUserAssignedIdentitiesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
