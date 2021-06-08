@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity
     {
             /// <summary>
             /// Gets the systemAssignedIdentity available under the specified RP scope.
+            /// Update 1
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Management.ManagedServiceIdentity
 
             /// <summary>
             /// Gets the systemAssignedIdentity available under the specified RP scope.
+            /// Update 1
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
