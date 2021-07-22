@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
+            /// <param name='resourceGroupNameBC'>
             /// The name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ipConfigurationName'>
             /// The IP configuration name.
             /// </param>
-            public static IPage<PublicIPAddress> ListCloudServiceRoleInstancePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName)
+            public static IPage<PublicIPAddress> ListCloudServiceRoleInstancePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupNameBC, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName)
             {
-                return operations.ListCloudServiceRoleInstancePublicIPAddressesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
+                return operations.ListCloudServiceRoleInstancePublicIPAddressesAsync(resourceGroupNameBC, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
+            /// <param name='resourceGroupNameBC'>
             /// The name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<PublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<PublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupNameBC, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(resourceGroupNameBC, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

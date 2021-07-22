@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets information about all public IP addresses in a role instance IP
         /// configuration in a cloud service.
         /// </summary>
-        /// <param name='resourceGroupName'>
+        /// <param name='resourceGroupNameBC'>
         /// The name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
@@ -284,11 +284,11 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<PublicIPAddress>>> ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<PublicIPAddress>>> ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(string resourceGroupNameBC, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (resourceGroupName == null)
+            if (resourceGroupNameBC == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupNameBC");
             }
             if (cloudServiceName == null)
             {
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceGroupNameBC", resourceGroupNameBC);
                 tracingParameters.Add("cloudServiceName", cloudServiceName);
                 tracingParameters.Add("roleInstanceName", roleInstanceName);
                 tracingParameters.Add("networkInterfaceName", networkInterfaceName);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.Network
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceGroupNameBC}", System.Uri.EscapeDataString(resourceGroupNameBC));
             _url = _url.Replace("{cloudServiceName}", System.Uri.EscapeDataString(cloudServiceName));
             _url = _url.Replace("{roleInstanceName}", System.Uri.EscapeDataString(roleInstanceName));
             _url = _url.Replace("{networkInterfaceName}", System.Uri.EscapeDataString(networkInterfaceName));

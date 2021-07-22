@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expand'>
             /// Expands resourceIds back referenced by the azureWebCategory resource.
             /// </param>
-            public static AzureWebCategory Get(this IWebCategoriesOperations operations, string name, string expand = default(string))
+            public static AzureWebCategory GetABC(this IWebCategoriesOperations operations, string name, string expand = default(string))
             {
-                return operations.GetAsync(name, expand).GetAwaiter().GetResult();
+                return operations.GetABCAsync(name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AzureWebCategory> GetAsync(this IWebCategoriesOperations operations, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AzureWebCategory> GetABCAsync(this IWebCategoriesOperations operations, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetABCWithHttpMessagesAsync(name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

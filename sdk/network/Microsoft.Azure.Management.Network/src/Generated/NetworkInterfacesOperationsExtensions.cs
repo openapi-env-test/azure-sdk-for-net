@@ -179,9 +179,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            public static void Delete(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
+            public static void DeleteABCD(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
             {
-                operations.DeleteAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
+                operations.DeleteABCDAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -199,9 +199,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteABCDAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteABCDWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -768,9 +768,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            public static void BeginDelete(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
+            public static void BeginDeleteABCD(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
+                operations.BeginDeleteABCDAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -788,9 +788,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteABCDAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteABCDWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

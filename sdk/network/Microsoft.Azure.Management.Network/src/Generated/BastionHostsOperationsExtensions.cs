@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            public static void Delete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
+            public static void DeleteABC(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
             {
-                operations.DeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+                operations.DeleteABCAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteABCAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteABCWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -218,9 +218,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            public static void BeginDelete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
+            public static void BeginDeleteABC(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+                operations.BeginDeleteABCAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteABCAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteABCWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

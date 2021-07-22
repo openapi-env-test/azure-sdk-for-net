@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets information about all public IP addresses in a role instance
         /// IP configuration in a cloud service.
         /// </summary>
-        /// <param name='resourceGroupName'>
+        /// <param name='resourceGroupNameBC'>
         /// The name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<PublicIPAddress>>> ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<PublicIPAddress>>> ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(string resourceGroupNameBC, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the specified public IP address in a cloud service.
         /// </summary>
