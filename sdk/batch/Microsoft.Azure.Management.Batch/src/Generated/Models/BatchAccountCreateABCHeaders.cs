@@ -14,27 +14,29 @@ namespace Microsoft.Azure.Management.Batch.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Create operation.
+    /// Defines headers for CreateABC operation.
     /// </summary>
-    public partial class BatchAccountCreateHeaders
+    public partial class BatchAccountCreateABCHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateHeaders class.
+        /// Initializes a new instance of the BatchAccountCreateABCHeaders
+        /// class.
         /// </summary>
-        public BatchAccountCreateHeaders()
+        public BatchAccountCreateABCHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BatchAccountCreateHeaders class.
+        /// Initializes a new instance of the BatchAccountCreateABCHeaders
+        /// class.
         /// </summary>
         /// <param name="location">The URL of the resource used to check the
         /// status of the asynchronous operation.</param>
         /// <param name="retryAfter">Suggested delay to check the status of the
         /// asynchronous operation. The value is an integer that specifies the
         /// delay in seconds.</param>
-        public BatchAccountCreateHeaders(string location = default(string), int? retryAfter = default(int?))
+        public BatchAccountCreateABCHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             Location = location;
             RetryAfter = retryAfter;
