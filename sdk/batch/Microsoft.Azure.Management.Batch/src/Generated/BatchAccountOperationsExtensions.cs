@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='parameters'>
             /// Additional parameters for account creation.
             /// </param>
-            public static BatchAccount Create(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters)
+            public static BatchAccount CreateABC(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters)
             {
-                return operations.CreateAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+                return operations.CreateABCAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BatchAccount> CreateAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BatchAccount> CreateABCAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateABCWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -504,9 +504,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='parameters'>
             /// Additional parameters for account creation.
             /// </param>
-            public static BatchAccount BeginCreate(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters)
+            public static BatchAccount BeginCreateABC(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters)
             {
-                return operations.BeginCreateAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+                return operations.BeginCreateABCAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -534,9 +534,9 @@ namespace Microsoft.Azure.Management.Batch
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BatchAccount> BeginCreateAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BatchAccount> BeginCreateABCAsync(this IBatchAccountOperations operations, string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateABCWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BatchAccount,BatchAccountCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BatchAccount,BatchAccountCreateABCHeaders>> CreateABCWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates the properties of an existing Batch account.
         /// </summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BatchAccount,BatchAccountCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BatchAccount,BatchAccountCreateABCHeaders>> BeginCreateABCWithHttpMessagesAsync(string resourceGroupName, string accountName, BatchAccountCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified Batch account.
         /// </summary>
