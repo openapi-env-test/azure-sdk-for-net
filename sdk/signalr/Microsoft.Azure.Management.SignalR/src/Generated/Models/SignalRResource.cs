@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="disableLocalAuth">DisableLocalAuth
         /// Enable or disable local auth with AccessKey
         /// When set as true, connection with AccessKey=xxx won't work.</param>
-        /// <param name="disableAadAuth">disableAadAuth
+        /// <param name="disableAadAuth">DisableLocalAuth
         /// Enable or disable aad auth
         /// When set as true, connection with AuthType=aad won't work.</param>
         /// <param name="kind">The kind of the service - e.g. "SignalR" for
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public bool? DisableLocalAuth { get; set; }
 
         /// <summary>
-        /// Gets or sets disableAadAuth
+        /// Gets or sets disableLocalAuth
         /// Enable or disable aad auth
         /// When set as true, connection with AuthType=aad won't work.
         /// </summary>
