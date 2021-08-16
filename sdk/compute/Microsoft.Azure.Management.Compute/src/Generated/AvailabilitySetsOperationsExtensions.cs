@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Create Availability Set operation.
             /// </param>
-            public static AvailabilitySet CreateOrUpdate(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySet parameters)
+            public static AvailabilitySet CreateOrUpdateA(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySet parameters)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, availabilitySetName, parameters).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAAsync(resourceGroupName, availabilitySetName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AvailabilitySet> CreateOrUpdateAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySet parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AvailabilitySet> CreateOrUpdateAAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySet parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, availabilitySetName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateAWithHttpMessagesAsync(resourceGroupName, availabilitySetName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
