@@ -14,28 +14,25 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// The kind of the security setting
+    /// Alert Simulator request body.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Setting")]
-    public partial class Setting : Resource
+    public partial class AlertSimulatorRequestBody
     {
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the AlertSimulatorRequestBody class.
         /// </summary>
-        public Setting()
+        public AlertSimulatorRequestBody()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the AlertSimulatorRequestBody class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string))
-            : base(id, name, type)
+        /// <param name="properties">Alert Simulator request body data.</param>
+        public AlertSimulatorRequestBody(AlertSimulatorRequestProperties properties = default(AlertSimulatorRequestProperties))
         {
+            Properties = properties;
             CustomInit();
         }
 
@@ -43,6 +40,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets alert Simulator request body data.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public AlertSimulatorRequestProperties Properties { get; set; }
 
     }
 }

@@ -11,36 +11,31 @@
 namespace Microsoft.Azure.Management.Security.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Represents a data export setting
+    /// Connection string for ingesting security data and logs
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataExportSettings")]
-    [Rest.Serialization.JsonTransformation]
-    public partial class DataExportSettings : Setting
+    public partial class ConnectionStrings
     {
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the ConnectionStrings class.
         /// </summary>
-        public DataExportSettings()
+        public ConnectionStrings()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the ConnectionStrings class.
         /// </summary>
-        /// <param name="enabled">Is the data export setting enabled</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        public DataExportSettings(bool enabled, string id = default(string), string name = default(string), string type = default(string))
-            : base(id, name, type)
+        /// <param name="value">Connection strings</param>
+        public ConnectionStrings(IList<IngestionConnectionString> value)
         {
-            Enabled = enabled;
+            Value = value;
             CustomInit();
         }
 
@@ -50,10 +45,10 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets is the data export setting enabled
+        /// Gets or sets connection strings
         /// </summary>
-        [JsonProperty(PropertyName = "properties.enabled")]
-        public bool Enabled { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public IList<IngestionConnectionString> Value { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -63,7 +58,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (Value == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
+            }
         }
     }
 }

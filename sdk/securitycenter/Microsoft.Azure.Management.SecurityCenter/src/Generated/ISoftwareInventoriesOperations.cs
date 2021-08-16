@@ -19,20 +19,19 @@ namespace Microsoft.Azure.Management.Security
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ServerVulnerabilityAssessmentOperations operations.
+    /// SoftwareInventoriesOperations operations.
     /// </summary>
-    public partial interface IServerVulnerabilityAssessmentOperations
+    public partial interface ISoftwareInventoriesOperations
     {
         /// <summary>
-        /// Gets a list of server vulnerability assessment onboarding statuses
-        /// on a given resource.
+        /// Gets the software inventory of the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
-        /// The Namespace of the resource.
+        /// The namespace of the resource.
         /// </param>
         /// <param name='resourceType'>
         /// The type of the resource.
@@ -55,23 +54,48 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerVulnerabilityAssessmentsList>> ListByExtendedResourceWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Software>>> ListByExtendedResourceWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a server vulnerability assessment onboarding statuses on a
-        /// given resource.
+        /// Gets the software inventory of all virtual machines in the
+        /// subscriptions.
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Software>>> ListBySubscriptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a single software data of the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The
         /// name is case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
-        /// The Namespace of the resource.
+        /// The namespace of the resource.
         /// </param>
         /// <param name='resourceType'>
         /// The type of the resource.
         /// </param>
         /// <param name='resourceName'>
         /// Name of the resource.
+        /// </param>
+        /// <param name='softwareName'>
+        /// Name of the installed software.
+        /// </param>
+        /// <param name='test'>
+        /// Test.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -88,23 +112,12 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerVulnerabilityAssessment>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Software>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, string softwareName, string test, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creating a server vulnerability assessment on a resource, which
-        /// will onboard a resource for having a vulnerability assessment on it
+        /// Gets the software inventory of the virtual machine.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='resourceNamespace'>
-        /// The Namespace of the resource.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The type of the resource.
-        /// </param>
-        /// <param name='resourceName'>
-        /// Name of the resource.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -121,22 +134,13 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerVulnerabilityAssessment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Software>>> ListByExtendedResourceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Removing server vulnerability assessment from a resource.
+        /// Gets the software inventory of all virtual machines in the
+        /// subscriptions.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='resourceNamespace'>
-        /// The Namespace of the resource.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The type of the resource.
-        /// </param>
-        /// <param name='resourceName'>
-        /// Name of the resource.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -147,38 +151,12 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Removing server vulnerability assessment from a resource.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user's subscription. The
-        /// name is case insensitive.
-        /// </param>
-        /// <param name='resourceNamespace'>
-        /// The Namespace of the resource.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The type of the resource.
-        /// </param>
-        /// <param name='resourceName'>
-        /// Name of the resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Software>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

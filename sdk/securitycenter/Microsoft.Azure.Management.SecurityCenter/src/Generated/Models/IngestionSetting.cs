@@ -14,28 +14,30 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// The kind of the security setting
+    /// Configures how to correlate scan data and logs with resources
+    /// associated with the subscription.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Setting")]
-    public partial class Setting : Resource
+    public partial class IngestionSetting : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IngestionSetting class.
         /// </summary>
-        public Setting()
+        public IngestionSetting()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Setting class.
+        /// Initializes a new instance of the IngestionSetting class.
         /// </summary>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public Setting(string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="properties">Ingestion setting data</param>
+        public IngestionSetting(string id = default(string), string name = default(string), string type = default(string), object properties = default(object))
             : base(id, name, type)
         {
+            Properties = properties;
             CustomInit();
         }
 
@@ -43,6 +45,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets ingestion setting data
+        /// </summary>
+        [JsonProperty(PropertyName = "properties")]
+        public object Properties { get; set; }
 
     }
 }

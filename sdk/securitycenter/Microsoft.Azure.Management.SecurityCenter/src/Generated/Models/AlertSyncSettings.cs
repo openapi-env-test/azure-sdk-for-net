@@ -16,28 +16,28 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents a data export setting
+    /// Represents an alert sync setting
     /// </summary>
-    [Newtonsoft.Json.JsonObject("DataExportSettings")]
+    [Newtonsoft.Json.JsonObject("AlertSyncSettings")]
     [Rest.Serialization.JsonTransformation]
-    public partial class DataExportSettings : Setting
+    public partial class AlertSyncSettings : Setting
     {
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the AlertSyncSettings class.
         /// </summary>
-        public DataExportSettings()
+        public AlertSyncSettings()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DataExportSettings class.
+        /// Initializes a new instance of the AlertSyncSettings class.
         /// </summary>
-        /// <param name="enabled">Is the data export setting enabled</param>
+        /// <param name="enabled">Is the alert sync setting enabled</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
-        public DataExportSettings(bool enabled, string id = default(string), string name = default(string), string type = default(string))
+        public AlertSyncSettings(bool enabled, string id = default(string), string name = default(string), string type = default(string))
             : base(id, name, type)
         {
             Enabled = enabled;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Security.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets is the data export setting enabled
+        /// Gets or sets is the alert sync setting enabled
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
         public bool Enabled { get; set; }
