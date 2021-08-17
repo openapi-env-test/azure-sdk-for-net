@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.Authorization.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.Authorization.Models
     /// Role Assignments
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RoleAssignment : IResource
+    public partial class RoleAssignment
     {
         /// <summary>
         /// Initializes a new instance of the RoleAssignment class.
@@ -33,17 +32,19 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// <summary>
         /// Initializes a new instance of the RoleAssignment class.
         /// </summary>
-        /// <param name="roleDefinitionId">The role definition ID.</param>
-        /// <param name="principalId">The principal ID.</param>
         /// <param name="id">The role assignment ID.</param>
         /// <param name="name">The role assignment name.</param>
         /// <param name="type">The role assignment type.</param>
         /// <param name="scope">The role assignment scope.</param>
+        /// <param name="roleDefinitionId">The role definition ID.</param>
+        /// <param name="principalId">The principal ID.</param>
         /// <param name="principalType">The principal type of the assigned
         /// principal ID. Possible values include: 'User', 'Group',
         /// 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate',
         /// 'ForeignGroup', 'Application', 'MSI', 'DirectoryObjectOrGroup',
         /// 'Everyone'</param>
+        /// <param name="canDelegate">The Delegation flag for the role
+        /// assignment</param>
         /// <param name="description">Description of role assignment</param>
         /// <param name="condition">The conditions on the role assignment. This
         /// limits the resources it can be assigned to. e.g.:
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// assignment</param>
         /// <param name="delegatedManagedIdentityResourceId">Id of the
         /// delegated managed identity resource</param>
-        public RoleAssignment(string roleDefinitionId, string principalId, string id = default(string), string name = default(string), string type = default(string), string scope = default(string), string principalType = default(string), string description = default(string), string condition = default(string), string conditionVersion = default(string), System.DateTime? createdOn = default(System.DateTime?), System.DateTime? updatedOn = default(System.DateTime?), string createdBy = default(string), string updatedBy = default(string), string delegatedManagedIdentityResourceId = default(string))
+        public RoleAssignment(string id = default(string), string name = default(string), string type = default(string), string scope = default(string), string roleDefinitionId = default(string), string principalId = default(string), string principalType = default(string), bool? canDelegate = default(bool?), string description = default(string), string condition = default(string), string conditionVersion = default(string), System.DateTime? createdOn = default(System.DateTime?), System.DateTime? updatedOn = default(System.DateTime?), string createdBy = default(string), string updatedBy = default(string), string delegatedManagedIdentityResourceId = default(string))
         {
             Id = id;
             Name = name;
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Management.Authorization.Models
             RoleDefinitionId = roleDefinitionId;
             PrincipalId = principalId;
             PrincipalType = principalType;
+            CanDelegate = canDelegate;
             Description = description;
             Condition = condition;
             ConditionVersion = conditionVersion;
@@ -103,10 +105,10 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets the role assignment scope.
+        /// Gets or sets the role assignment scope.
         /// </summary>
         [JsonProperty(PropertyName = "properties.scope")]
-        public string Scope { get; private set; }
+        public string Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the role definition ID.
@@ -128,6 +130,12 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.principalType")]
         public string PrincipalType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Delegation flag for the role assignment
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.canDelegate")]
+        public bool? CanDelegate { get; set; }
 
         /// <summary>
         /// Gets or sets description of role assignment
@@ -152,28 +160,28 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public string ConditionVersion { get; set; }
 
         /// <summary>
-        /// Gets time it was created
+        /// Gets or sets time it was created
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdOn")]
-        public System.DateTime? CreatedOn { get; private set; }
+        public System.DateTime? CreatedOn { get; set; }
 
         /// <summary>
-        /// Gets time it was updated
+        /// Gets or sets time it was updated
         /// </summary>
         [JsonProperty(PropertyName = "properties.updatedOn")]
-        public System.DateTime? UpdatedOn { get; private set; }
+        public System.DateTime? UpdatedOn { get; set; }
 
         /// <summary>
-        /// Gets id of the user who created the assignment
+        /// Gets or sets id of the user who created the assignment
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdBy")]
-        public string CreatedBy { get; private set; }
+        public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Gets id of the user who updated the assignment
+        /// Gets or sets id of the user who updated the assignment
         /// </summary>
         [JsonProperty(PropertyName = "properties.updatedBy")]
-        public string UpdatedBy { get; private set; }
+        public string UpdatedBy { get; set; }
 
         /// <summary>
         /// Gets or sets id of the delegated managed identity resource
@@ -181,22 +189,5 @@ namespace Microsoft.Azure.Management.Authorization.Models
         [JsonProperty(PropertyName = "properties.delegatedManagedIdentityResourceId")]
         public string DelegatedManagedIdentityResourceId { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (RoleDefinitionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RoleDefinitionId");
-            }
-            if (PrincipalId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PrincipalId");
-            }
-        }
     }
 }

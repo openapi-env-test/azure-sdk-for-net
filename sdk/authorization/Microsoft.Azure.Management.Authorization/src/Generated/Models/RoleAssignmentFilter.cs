@@ -31,9 +31,12 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </summary>
         /// <param name="principalId">Returns role assignment of the specific
         /// principal.</param>
-        public RoleAssignmentFilter(string principalId = default(string))
+        /// <param name="canDelegate">The Delegation flag for the role
+        /// assignment</param>
+        public RoleAssignmentFilter(string principalId = default(string), bool? canDelegate = default(bool?))
         {
             PrincipalId = principalId;
+            CanDelegate = canDelegate;
             CustomInit();
         }
 
@@ -47,6 +50,12 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Delegation flag for the role assignment
+        /// </summary>
+        [JsonProperty(PropertyName = "canDelegate")]
+        public bool? CanDelegate { get; set; }
 
     }
 }
