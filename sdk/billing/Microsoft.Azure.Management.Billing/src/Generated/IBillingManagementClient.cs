@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Management.Billing
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Billing client provides access to billing resources for Azure
-    /// subscriptions.
     /// </summary>
     public partial interface IBillingManagementClient : System.IDisposable
     {
@@ -45,11 +43,6 @@ namespace Microsoft.Azure.Management.Billing
         /// The ID that uniquely identifies an Azure subscription.
         /// </summary>
         string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Azure Subscription ID.
-        /// </summary>
-        string SubscriptionId1 { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -159,6 +152,11 @@ namespace Microsoft.Azure.Management.Billing
         /// Gets the IAgreementsOperations.
         /// </summary>
         IAgreementsOperations Agreements { get; }
+
+        /// <summary>
+        /// Gets the IReservationsOperations.
+        /// </summary>
+        IReservationsOperations Reservations { get; }
 
         /// <summary>
         /// Gets the IEnrollmentAccountsOperations.
