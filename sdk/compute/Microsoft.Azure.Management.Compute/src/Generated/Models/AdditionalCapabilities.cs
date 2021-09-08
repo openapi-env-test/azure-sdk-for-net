@@ -35,12 +35,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// storage account type on the VM or VMSS. Managed disks with storage
         /// account type UltraSSD_LRS can be added to a virtual machine or
         /// virtual machine scale set only if this property is enabled.</param>
-        /// <param name="hibernationEnabled">The flag that enables or disables
-        /// hibernation capability on the VM.</param>
-        public AdditionalCapabilities(bool? ultraSSDEnabled = default(bool?), bool? hibernationEnabled = default(bool?))
+        public AdditionalCapabilities(bool? ultraSSDEnabled = default(bool?))
         {
             UltraSSDEnabled = ultraSSDEnabled;
-            HibernationEnabled = hibernationEnabled;
             CustomInit();
         }
 
@@ -58,13 +55,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "ultraSSDEnabled")]
         public bool? UltraSSDEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the flag that enables or disables hibernation
-        /// capability on the VM.
-        /// </summary>
-        [JsonProperty(PropertyName = "hibernationEnabled")]
-        public bool? HibernationEnabled { get; set; }
 
     }
 }

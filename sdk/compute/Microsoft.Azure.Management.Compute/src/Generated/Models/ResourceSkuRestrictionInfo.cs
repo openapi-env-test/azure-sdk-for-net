@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an available Compute SKU Restriction Information.
-    /// </summary>
     public partial class ResourceSkuRestrictionInfo
     {
         /// <summary>
