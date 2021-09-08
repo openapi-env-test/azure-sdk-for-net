@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Datadog
         public MicrosoftDatadogClient Client { get; private set; }
 
         /// <summary>
-        /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+        /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
         /// version.
         /// </summary>
         /// <param name='customHeaders'>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Datadog
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Datadog/operations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.DatadogNew/operations").ToString();
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Datadog
         }
 
         /// <summary>
-        /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+        /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
         /// version.
         /// </summary>
         /// <param name='nextPageLink'>

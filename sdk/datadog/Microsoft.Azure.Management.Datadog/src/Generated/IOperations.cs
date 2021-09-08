@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Datadog
     public partial interface IOperations
     {
         /// <summary>
-        /// List all operations provided by Microsoft.Datadog for the
+        /// List all operations provided by Microsoft.DatadogNew for the
         /// 2021-03-01 api version.
         /// </summary>
         /// <param name='customHeaders'>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Datadog
         /// </exception>
         Task<AzureOperationResponse<IPage<OperationResult>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List all operations provided by Microsoft.Datadog for the
+        /// List all operations provided by Microsoft.DatadogNew for the
         /// 2021-03-01 api version.
         /// </summary>
         /// <param name='nextPageLink'>

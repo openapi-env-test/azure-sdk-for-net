@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Datadog
     public static partial class OperationsExtensions
     {
             /// <summary>
-            /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+            /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
             /// version.
             /// </summary>
             /// <param name='operations'>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Datadog
             }
 
             /// <summary>
-            /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+            /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
             /// version.
             /// </summary>
             /// <param name='operations'>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Datadog
             }
 
             /// <summary>
-            /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+            /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
             /// version.
             /// </summary>
             /// <param name='operations'>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Datadog
             }
 
             /// <summary>
-            /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api
+            /// List all operations provided by Microsoft.DatadogNew for the 2021-03-01 api
             /// version.
             /// </summary>
             /// <param name='operations'>
