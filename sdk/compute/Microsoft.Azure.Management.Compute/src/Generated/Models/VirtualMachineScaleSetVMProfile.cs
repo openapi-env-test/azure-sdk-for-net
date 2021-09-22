@@ -82,9 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="capacityReservation">Specifies the capacity
         /// reservation related details of a scale set.
         /// &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-04-01.</param>
-        /// <param name="applicationProfile">Specifies the gallery applications
-        /// that should be made available to the VM/VMSS</param>
-        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile))
+        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
@@ -99,7 +97,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             ScheduledEventsProfile = scheduledEventsProfile;
             UserData = userData;
             CapacityReservation = capacityReservation;
-            ApplicationProfile = applicationProfile;
             CustomInit();
         }
 
@@ -225,13 +222,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "capacityReservation")]
         public CapacityReservationProfile CapacityReservation { get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies the gallery applications that should be made
-        /// available to the VM/VMSS
-        /// </summary>
-        [JsonProperty(PropertyName = "applicationProfile")]
-        public ApplicationProfile ApplicationProfile { get; set; }
 
         /// <summary>
         /// Validate the object.

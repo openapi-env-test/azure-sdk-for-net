@@ -92,12 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// list of supported Linux distributions, see [Linux on Azure-Endorsed
         /// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</param>
         /// <param name="secrets">Specifies set of certificates that should be
-        /// installed onto the virtual machine. To install certificates on a
-        /// virtual machine it is recommended to use the [Azure Key Vault
-        /// virtual machine extension for
-        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
-        /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).</param>
+        /// installed onto the virtual machine.</param>
         /// <param name="allowExtensionOperations">Specifies whether extension
         /// operations should be allowed on the virtual machine.
         /// &lt;br&gt;&lt;br&gt;This may only be set to False when no
@@ -223,12 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies set of certificates that should be installed
-        /// onto the virtual machine. To install certificates on a virtual
-        /// machine it is recommended to use the [Azure Key Vault virtual
-        /// machine extension for
-        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
-        /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+        /// onto the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "secrets")]
         public IList<VaultSecretGroup> Secrets { get; set; }

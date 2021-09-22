@@ -50,10 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// version of platform image or marketplace image used to create the
         /// virtual machine. This readonly field differs from 'version', only
         /// if the value specified in 'version' field is 'latest'.</param>
-        /// <param name="sharedGalleryImageId">Specified the shared gallery
-        /// image unique id for vm deployment. This can be fetched from shared
-        /// gallery image GET call.</param>
-        public ImageReference(string id = default(string), string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string exactVersion = default(string), string sharedGalleryImageId = default(string))
+        public ImageReference(string id = default(string), string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string exactVersion = default(string))
             : base(id)
         {
             Publisher = publisher;
@@ -61,7 +58,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             Sku = sku;
             Version = version;
             ExactVersion = exactVersion;
-            SharedGalleryImageId = sharedGalleryImageId;
             CustomInit();
         }
 
@@ -109,13 +105,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "exactVersion")]
         public string ExactVersion { get; private set; }
-
-        /// <summary>
-        /// Gets or sets specified the shared gallery image unique id for vm
-        /// deployment. This can be fetched from shared gallery image GET call.
-        /// </summary>
-        [JsonProperty(PropertyName = "sharedGalleryImageId")]
-        public string SharedGalleryImageId { get; set; }
 
     }
 }
