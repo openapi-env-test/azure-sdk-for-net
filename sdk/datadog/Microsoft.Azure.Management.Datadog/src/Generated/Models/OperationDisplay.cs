@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Datadog.Models
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
         /// <param name="provider">Service provider, i.e.,
-        /// Microsoft.Datadog.</param>
+        /// Microsoft.DatadogNew.</param>
         /// <param name="resource">Type on which the operation is performed,
         /// e.g., 'monitors'.</param>
         /// <param name="operation">Operation type, e.g., read, write, delete,
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Datadog.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets service provider, i.e., Microsoft.Datadog.
+        /// Gets or sets service provider, i.e., Microsoft.DatadogNew.
         /// </summary>
         [JsonProperty(PropertyName = "provider")]
         public string Provider { get; set; }

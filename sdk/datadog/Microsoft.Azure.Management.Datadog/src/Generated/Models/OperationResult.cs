@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Datadog.Models
     using System.Linq;
 
     /// <summary>
-    /// A Microsoft.Datadog REST API operation.
+    /// A Microsoft.DatadogNew REST API operation.
     /// </summary>
     public partial class OperationResult
     {
