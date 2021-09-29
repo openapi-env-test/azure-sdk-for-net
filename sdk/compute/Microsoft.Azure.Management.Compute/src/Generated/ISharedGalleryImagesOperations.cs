@@ -53,35 +53,6 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<IPage<SharedGalleryImage>>> ListWithHttpMessagesAsync(string location, string galleryUniqueName, string sharedTo = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get a shared gallery image by subscription id or tenant id.
-        /// </summary>
-        /// <param name='location'>
-        /// Resource location.
-        /// </param>
-        /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
-        /// </param>
-        /// <param name='galleryImageName'>
-        /// The name of the Shared Gallery Image Definition from which the
-        /// Image Versions are to be listed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<SharedGalleryImage>> GetWithHttpMessagesAsync(string location, string galleryUniqueName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// List shared gallery images by subscription id or tenant id.
         /// </summary>
         /// <param name='nextPageLink'>

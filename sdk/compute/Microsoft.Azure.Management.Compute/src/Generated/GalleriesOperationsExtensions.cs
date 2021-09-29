@@ -170,43 +170,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            public static void Delete(this IGalleriesOperations operations, string resourceGroupName, string galleryName)
-            {
-                operations.DeleteAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// List galleries under a resource group.
             /// </summary>
             /// <param name='operations'>
@@ -366,43 +329,6 @@ namespace Microsoft.Azure.Management.Compute
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            public static void BeginDelete(this IGalleriesOperations operations, string resourceGroupName, string galleryName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a Shared Image Gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery to be deleted.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteAsync(this IGalleriesOperations operations, string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

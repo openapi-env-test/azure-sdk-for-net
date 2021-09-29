@@ -70,54 +70,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Get a shared gallery image by subscription id or tenant id.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
-            /// </param>
-            public static SharedGalleryImage Get(this ISharedGalleryImagesOperations operations, string location, string galleryUniqueName, string galleryImageName)
-            {
-                return operations.GetAsync(location, galleryUniqueName, galleryImageName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get a shared gallery image by subscription id or tenant id.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SharedGalleryImage> GetAsync(this ISharedGalleryImagesOperations operations, string location, string galleryUniqueName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, galleryUniqueName, galleryImageName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// List shared gallery images by subscription id or tenant id.
             /// </summary>
             /// <param name='operations'>
