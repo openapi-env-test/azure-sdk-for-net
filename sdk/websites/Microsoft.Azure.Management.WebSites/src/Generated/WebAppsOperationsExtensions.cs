@@ -19767,7 +19767,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will get
             /// virtual network connections for the production slot.
             /// </param>
-            public static IList<VnetInfo> ListVnetConnectionsSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
+            public static IList<VnetInfoResource> ListVnetConnectionsSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string slot)
             {
                 return operations.ListVnetConnectionsSlotAsync(resourceGroupName, name, slot).GetAwaiter().GetResult();
             }
@@ -19795,7 +19795,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VnetInfo>> ListVnetConnectionsSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VnetInfoResource>> ListVnetConnectionsSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVnetConnectionsSlotWithHttpMessagesAsync(resourceGroupName, name, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19827,7 +19827,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will get
             /// the named virtual network for the production slot.
             /// </param>
-            public static VnetInfo GetVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot)
+            public static VnetInfoResource GetVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot)
             {
                 return operations.GetVnetConnectionSlotAsync(resourceGroupName, name, vnetName, slot).GetAwaiter().GetResult();
             }
@@ -19859,7 +19859,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> GetVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> GetVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19894,7 +19894,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will add
             /// or update connections for the production slot.
             /// </param>
-            public static VnetInfo CreateOrUpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot)
+            public static VnetInfoResource CreateOrUpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot)
             {
                 return operations.CreateOrUpdateVnetConnectionSlotAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot).GetAwaiter().GetResult();
             }
@@ -19929,7 +19929,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> CreateOrUpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> CreateOrUpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -20025,7 +20025,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// Name of the deployment slot. If a slot is not specified, the API will add
             /// or update connections for the production slot.
             /// </param>
-            public static VnetInfo UpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot)
+            public static VnetInfoResource UpdateVnetConnectionSlot(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot)
             {
                 return operations.UpdateVnetConnectionSlotAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot).GetAwaiter().GetResult();
             }
@@ -20060,7 +20060,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> UpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> UpdateVnetConnectionSlotAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, string slot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateVnetConnectionSlotWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, slot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21463,7 +21463,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='name'>
             /// Name of the app.
             /// </param>
-            public static IList<VnetInfo> ListVnetConnections(this IWebAppsOperations operations, string resourceGroupName, string name)
+            public static IList<VnetInfoResource> ListVnetConnections(this IWebAppsOperations operations, string resourceGroupName, string name)
             {
                 return operations.ListVnetConnectionsAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
@@ -21487,7 +21487,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VnetInfo>> ListVnetConnectionsAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VnetInfoResource>> ListVnetConnectionsAsync(this IWebAppsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVnetConnectionsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21515,7 +21515,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='vnetName'>
             /// Name of the virtual network.
             /// </param>
-            public static VnetInfo GetVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName)
+            public static VnetInfoResource GetVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName)
             {
                 return operations.GetVnetConnectionAsync(resourceGroupName, name, vnetName).GetAwaiter().GetResult();
             }
@@ -21543,7 +21543,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> GetVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> GetVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21574,7 +21574,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='connectionEnvelope'>
             /// Properties of the Virtual Network connection. See example.
             /// </param>
-            public static VnetInfo CreateOrUpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope)
+            public static VnetInfoResource CreateOrUpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope)
             {
                 return operations.CreateOrUpdateVnetConnectionAsync(resourceGroupName, name, vnetName, connectionEnvelope).GetAwaiter().GetResult();
             }
@@ -21605,7 +21605,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> CreateOrUpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> CreateOrUpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21689,7 +21689,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='connectionEnvelope'>
             /// Properties of the Virtual Network connection. See example.
             /// </param>
-            public static VnetInfo UpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope)
+            public static VnetInfoResource UpdateVnetConnection(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope)
             {
                 return operations.UpdateVnetConnectionAsync(resourceGroupName, name, vnetName, connectionEnvelope).GetAwaiter().GetResult();
             }
@@ -21720,7 +21720,7 @@ namespace Microsoft.Azure.Management.WebSites
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VnetInfo> UpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VnetInfoResource> UpdateVnetConnectionAsync(this IWebAppsOperations operations, string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateVnetConnectionWithHttpMessagesAsync(resourceGroupName, name, vnetName, connectionEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {

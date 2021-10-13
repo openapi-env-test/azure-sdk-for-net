@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Management.WebSites
             StaticSites = new StaticSitesOperations(this);
             WebApps = new WebAppsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-01-15";
+            ApiVersion = "2021-02-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
