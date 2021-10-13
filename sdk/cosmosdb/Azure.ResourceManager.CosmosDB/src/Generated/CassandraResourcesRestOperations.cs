@@ -20,6 +20,7 @@ namespace Azure.ResourceManager.CosmosDB
     {
         private string subscriptionId;
         private Uri endpoint;
+        private string apiVersion;
         private ClientDiagnostics _clientDiagnostics;
         private HttpPipeline _pipeline;
 
@@ -28,17 +29,23 @@ namespace Azure.ResourceManager.CosmosDB
         /// <param name="pipeline"> The HTTP pipeline for sending and receiving REST requests and responses. </param>
         /// <param name="subscriptionId"> The ID of the target subscription. </param>
         /// <param name="endpoint"> server parameter. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> is null. </exception>
-        public CassandraResourcesRestOperations(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, string subscriptionId, Uri endpoint = null)
+        /// <param name="apiVersion"> Api Version. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> or <paramref name="apiVersion"/> is null. </exception>
+        public CassandraResourcesRestOperations(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, string subscriptionId, Uri endpoint = null, string apiVersion = "2021-07-01-preview")
         {
             if (subscriptionId == null)
             {
                 throw new ArgumentNullException(nameof(subscriptionId));
             }
             endpoint ??= new Uri("https://management.azure.com");
+            if (apiVersion == null)
+            {
+                throw new ArgumentNullException(nameof(apiVersion));
+            }
 
             this.subscriptionId = subscriptionId;
             this.endpoint = endpoint;
+            this.apiVersion = apiVersion;
             _clientDiagnostics = clientDiagnostics;
             _pipeline = pipeline;
         }
@@ -57,7 +64,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
             uri.AppendPath(accountName, true);
             uri.AppendPath("/cassandraKeyspaces", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -142,7 +149,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(accountName, true);
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -237,7 +244,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(accountName, true);
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -338,7 +345,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(accountName, true);
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             return message;
         }
@@ -425,7 +432,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/throughputSettings/default", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -521,7 +528,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/throughputSettings/default", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -623,7 +630,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/throughputSettings/default/migrateToAutoscale", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -711,7 +718,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/throughputSettings/default/migrateToManualThroughput", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -799,7 +806,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/cassandraKeyspaces/", false);
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/tables", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -896,7 +903,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1003,7 +1010,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -1116,7 +1123,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath(keyspaceName, true);
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             return message;
         }
@@ -1215,7 +1222,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
             uri.AppendPath("/throughputSettings/default", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1323,7 +1330,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
             uri.AppendPath("/throughputSettings/default", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -1437,7 +1444,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
             uri.AppendPath("/throughputSettings/default/migrateToAutoscale", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1537,7 +1544,7 @@ namespace Azure.ResourceManager.CosmosDB
             uri.AppendPath("/tables/", false);
             uri.AppendPath(tableName, true);
             uri.AppendPath("/throughputSettings/default/migrateToManualThroughput", false);
-            uri.AppendQuery("api-version", "2020-04-01", true);
+            uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1608,6 +1615,844 @@ namespace Azure.ResourceManager.CosmosDB
             }
 
             using var message = CreateMigrateCassandraTableToManualThroughputRequest(resourceGroupName, accountName, keyspaceName, tableName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateListCassandraViewsRequest(string resourceGroupName, string accountName, string keyspaceName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Get;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views", false);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            return message;
+        }
+
+        /// <summary> Lists the Cassandra materialized views under an existing Azure Cosmos DB database account. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, or <paramref name="keyspaceName"/> is null. </exception>
+        public async Task<Response<CassandraViewListResult>> ListCassandraViewsAsync(string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+
+            using var message = CreateListCassandraViewsRequest(resourceGroupName, accountName, keyspaceName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        CassandraViewListResult value = default;
+                        using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
+                        value = CassandraViewListResult.DeserializeCassandraViewListResult(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Lists the Cassandra materialized views under an existing Azure Cosmos DB database account. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, or <paramref name="keyspaceName"/> is null. </exception>
+        public Response<CassandraViewListResult> ListCassandraViews(string resourceGroupName, string accountName, string keyspaceName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+
+            using var message = CreateListCassandraViewsRequest(resourceGroupName, accountName, keyspaceName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        CassandraViewListResult value = default;
+                        using var document = JsonDocument.Parse(message.Response.ContentStream);
+                        value = CassandraViewListResult.DeserializeCassandraViewListResult(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateGetCassandraViewRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Get;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            return message;
+        }
+
+        /// <summary> Gets the Cassandra view under an existing Azure Cosmos DB database account. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public async Task<Response<CassandraViewGetResults>> GetCassandraViewAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateGetCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        CassandraViewGetResults value = default;
+                        using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
+                        value = CassandraViewGetResults.DeserializeCassandraViewGetResults(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Gets the Cassandra view under an existing Azure Cosmos DB database account. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public Response<CassandraViewGetResults> GetCassandraView(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateGetCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        CassandraViewGetResults value = default;
+                        using var document = JsonDocument.Parse(message.Response.ContentStream);
+                        value = CassandraViewGetResults.DeserializeCassandraViewGetResults(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateCreateUpdateCassandraViewRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName, CassandraViewCreateUpdateParameters createUpdateCassandraViewParameters)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Put;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            request.Headers.Add("Content-Type", "application/json");
+            var content = new Utf8JsonRequestContent();
+            content.JsonWriter.WriteObjectValue(createUpdateCassandraViewParameters);
+            request.Content = content;
+            return message;
+        }
+
+        /// <summary> Create or update an Azure Cosmos DB Cassandra View. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="createUpdateCassandraViewParameters"> The parameters to provide for the current Cassandra View. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, <paramref name="viewName"/>, or <paramref name="createUpdateCassandraViewParameters"/> is null. </exception>
+        public async Task<Response> CreateUpdateCassandraViewAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CassandraViewCreateUpdateParameters createUpdateCassandraViewParameters, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+            if (createUpdateCassandraViewParameters == null)
+            {
+                throw new ArgumentNullException(nameof(createUpdateCassandraViewParameters));
+            }
+
+            using var message = CreateCreateUpdateCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName, createUpdateCassandraViewParameters);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Create or update an Azure Cosmos DB Cassandra View. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="createUpdateCassandraViewParameters"> The parameters to provide for the current Cassandra View. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, <paramref name="viewName"/>, or <paramref name="createUpdateCassandraViewParameters"/> is null. </exception>
+        public Response CreateUpdateCassandraView(string resourceGroupName, string accountName, string keyspaceName, string viewName, CassandraViewCreateUpdateParameters createUpdateCassandraViewParameters, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+            if (createUpdateCassandraViewParameters == null)
+            {
+                throw new ArgumentNullException(nameof(createUpdateCassandraViewParameters));
+            }
+
+            using var message = CreateCreateUpdateCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName, createUpdateCassandraViewParameters);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateDeleteCassandraViewRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Delete;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            return message;
+        }
+
+        /// <summary> Deletes an existing Azure Cosmos DB Cassandra view. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public async Task<Response> DeleteCassandraViewAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateDeleteCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                case 204:
+                    return message.Response;
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Deletes an existing Azure Cosmos DB Cassandra view. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public Response DeleteCassandraView(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateDeleteCassandraViewRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                case 204:
+                    return message.Response;
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateGetCassandraViewThroughputRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Get;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendPath("/throughputSettings/default", false);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            return message;
+        }
+
+        /// <summary> Gets the RUs per second of the Cassandra view under an existing Azure Cosmos DB database account with the provided name. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public async Task<Response<ThroughputSettingsGetResults>> GetCassandraViewThroughputAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateGetCassandraViewThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        ThroughputSettingsGetResults value = default;
+                        using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
+                        value = ThroughputSettingsGetResults.DeserializeThroughputSettingsGetResults(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Gets the RUs per second of the Cassandra view under an existing Azure Cosmos DB database account with the provided name. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public Response<ThroughputSettingsGetResults> GetCassandraViewThroughput(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateGetCassandraViewThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                    {
+                        ThroughputSettingsGetResults value = default;
+                        using var document = JsonDocument.Parse(message.Response.ContentStream);
+                        value = ThroughputSettingsGetResults.DeserializeThroughputSettingsGetResults(document.RootElement);
+                        return Response.FromValue(value, message.Response);
+                    }
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateUpdateCassandraViewThroughputRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName, ThroughputSettingsUpdateParameters updateThroughputParameters)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Put;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendPath("/throughputSettings/default", false);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            request.Headers.Add("Content-Type", "application/json");
+            var content = new Utf8JsonRequestContent();
+            content.JsonWriter.WriteObjectValue(updateThroughputParameters);
+            request.Content = content;
+            return message;
+        }
+
+        /// <summary> Update RUs per second of an Azure Cosmos DB Cassandra view. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="updateThroughputParameters"> The RUs per second of the parameters to provide for the current Cassandra view. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, <paramref name="viewName"/>, or <paramref name="updateThroughputParameters"/> is null. </exception>
+        public async Task<Response> UpdateCassandraViewThroughputAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, ThroughputSettingsUpdateParameters updateThroughputParameters, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+            if (updateThroughputParameters == null)
+            {
+                throw new ArgumentNullException(nameof(updateThroughputParameters));
+            }
+
+            using var message = CreateUpdateCassandraViewThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName, updateThroughputParameters);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Update RUs per second of an Azure Cosmos DB Cassandra view. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="updateThroughputParameters"> The RUs per second of the parameters to provide for the current Cassandra view. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, <paramref name="viewName"/>, or <paramref name="updateThroughputParameters"/> is null. </exception>
+        public Response UpdateCassandraViewThroughput(string resourceGroupName, string accountName, string keyspaceName, string viewName, ThroughputSettingsUpdateParameters updateThroughputParameters, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+            if (updateThroughputParameters == null)
+            {
+                throw new ArgumentNullException(nameof(updateThroughputParameters));
+            }
+
+            using var message = CreateUpdateCassandraViewThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName, updateThroughputParameters);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateMigrateCassandraViewToAutoscaleRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Post;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendPath("/throughputSettings/default/migrateToAutoscale", false);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            return message;
+        }
+
+        /// <summary> Migrate an Azure Cosmos DB Cassandra view from manual throughput to autoscale. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public async Task<Response> MigrateCassandraViewToAutoscaleAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateMigrateCassandraViewToAutoscaleRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Migrate an Azure Cosmos DB Cassandra view from manual throughput to autoscale. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public Response MigrateCassandraViewToAutoscale(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateMigrateCassandraViewToAutoscaleRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            _pipeline.Send(message, cancellationToken);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw _clientDiagnostics.CreateRequestFailedException(message.Response);
+            }
+        }
+
+        internal HttpMessage CreateMigrateCassandraViewToManualThroughputRequest(string resourceGroupName, string accountName, string keyspaceName, string viewName)
+        {
+            var message = _pipeline.CreateMessage();
+            var request = message.Request;
+            request.Method = RequestMethod.Post;
+            var uri = new RawRequestUriBuilder();
+            uri.Reset(endpoint);
+            uri.AppendPath("/subscriptions/", false);
+            uri.AppendPath(subscriptionId, true);
+            uri.AppendPath("/resourceGroups/", false);
+            uri.AppendPath(resourceGroupName, true);
+            uri.AppendPath("/providers/Microsoft.DocumentDB/databaseAccounts/", false);
+            uri.AppendPath(accountName, true);
+            uri.AppendPath("/cassandraKeyspaces/", false);
+            uri.AppendPath(keyspaceName, true);
+            uri.AppendPath("/views/", false);
+            uri.AppendPath(viewName, true);
+            uri.AppendPath("/throughputSettings/default/migrateToManualThroughput", false);
+            uri.AppendQuery("api-version", apiVersion, true);
+            request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
+            return message;
+        }
+
+        /// <summary> Migrate an Azure Cosmos DB Cassandra view from autoscale to manual throughput. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public async Task<Response> MigrateCassandraViewToManualThroughputAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateMigrateCassandraViewToManualThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName);
+            await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
+            switch (message.Response.Status)
+            {
+                case 200:
+                case 202:
+                    return message.Response;
+                default:
+                    throw await _clientDiagnostics.CreateRequestFailedExceptionAsync(message.Response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Migrate an Azure Cosmos DB Cassandra view from autoscale to manual throughput. </summary>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="accountName"> Cosmos DB database account name. </param>
+        /// <param name="keyspaceName"> Cosmos DB keyspace name. </param>
+        /// <param name="viewName"> Cosmos DB view name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="accountName"/>, <paramref name="keyspaceName"/>, or <paramref name="viewName"/> is null. </exception>
+        public Response MigrateCassandraViewToManualThroughput(string resourceGroupName, string accountName, string keyspaceName, string viewName, CancellationToken cancellationToken = default)
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ArgumentNullException(nameof(resourceGroupName));
+            }
+            if (accountName == null)
+            {
+                throw new ArgumentNullException(nameof(accountName));
+            }
+            if (keyspaceName == null)
+            {
+                throw new ArgumentNullException(nameof(keyspaceName));
+            }
+            if (viewName == null)
+            {
+                throw new ArgumentNullException(nameof(viewName));
+            }
+
+            using var message = CreateMigrateCassandraViewToManualThroughputRequest(resourceGroupName, accountName, keyspaceName, viewName);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
