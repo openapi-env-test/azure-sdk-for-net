@@ -32,6 +32,11 @@ namespace Azure.ResourceManager.CosmosDB.Models
                 }
                 writer.WriteEndObject();
             }
+            if (Optional.IsDefined(Identity))
+            {
+                writer.WritePropertyName("identity");
+                writer.WriteObjectValue(Identity);
+            }
             writer.WritePropertyName("properties");
             writer.WriteStartObject();
             if (Optional.IsDefined(Resource))
@@ -55,6 +60,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
             Optional<string> type = default;
             Optional<string> location = default;
             Optional<IDictionary<string, string>> tags = default;
+            Optional<ManagedServiceIdentity> identity = default;
             Optional<MongoDBDatabaseGetPropertiesResource> resource = default;
             Optional<MongoDBDatabaseGetPropertiesOptions> options = default;
             foreach (var property in element.EnumerateObject())
@@ -94,6 +100,16 @@ namespace Azure.ResourceManager.CosmosDB.Models
                     tags = dictionary;
                     continue;
                 }
+                if (property.NameEquals("identity"))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        property.ThrowNonNullablePropertyIsNull();
+                        continue;
+                    }
+                    identity = ManagedServiceIdentity.DeserializeManagedServiceIdentity(property.Value);
+                    continue;
+                }
                 if (property.NameEquals("properties"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
@@ -127,7 +143,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
                     continue;
                 }
             }
-            return new MongoDBDatabaseGetResults(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags), resource.Value, options.Value);
+            return new MongoDBDatabaseGetResults(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags), identity.Value, resource.Value, options.Value);
         }
     }
 }

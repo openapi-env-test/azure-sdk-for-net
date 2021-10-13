@@ -32,12 +32,20 @@ namespace Azure.ResourceManager.CosmosDB.Models
                 }
                 writer.WriteEndObject();
             }
+            if (Optional.IsDefined(Identity))
+            {
+                writer.WritePropertyName("identity");
+                writer.WriteObjectValue(Identity);
+            }
             writer.WritePropertyName("properties");
             writer.WriteStartObject();
             writer.WritePropertyName("resource");
             writer.WriteObjectValue(Resource);
-            writer.WritePropertyName("options");
-            writer.WriteObjectValue(Options);
+            if (Optional.IsDefined(Options))
+            {
+                writer.WritePropertyName("options");
+                writer.WriteObjectValue(Options);
+            }
             writer.WriteEndObject();
             writer.WriteEndObject();
         }
@@ -49,8 +57,9 @@ namespace Azure.ResourceManager.CosmosDB.Models
             Optional<string> type = default;
             Optional<string> location = default;
             Optional<IDictionary<string, string>> tags = default;
+            Optional<ManagedServiceIdentity> identity = default;
             MongoDBDatabaseResource resource = default;
-            CreateUpdateOptions options = default;
+            Optional<CreateUpdateOptions> options = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("id"))
@@ -88,6 +97,16 @@ namespace Azure.ResourceManager.CosmosDB.Models
                     tags = dictionary;
                     continue;
                 }
+                if (property.NameEquals("identity"))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        property.ThrowNonNullablePropertyIsNull();
+                        continue;
+                    }
+                    identity = ManagedServiceIdentity.DeserializeManagedServiceIdentity(property.Value);
+                    continue;
+                }
                 if (property.NameEquals("properties"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
@@ -104,6 +123,11 @@ namespace Azure.ResourceManager.CosmosDB.Models
                         }
                         if (property0.NameEquals("options"))
                         {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                property0.ThrowNonNullablePropertyIsNull();
+                                continue;
+                            }
                             options = CreateUpdateOptions.DeserializeCreateUpdateOptions(property0.Value);
                             continue;
                         }
@@ -111,7 +135,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
                     continue;
                 }
             }
-            return new MongoDBDatabaseCreateUpdateParameters(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags), resource, options);
+            return new MongoDBDatabaseCreateUpdateParameters(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags), identity.Value, resource, options.Value);
         }
     }
 }

@@ -32,6 +32,11 @@ namespace Azure.ResourceManager.CosmosDB.Models
                 }
                 writer.WriteEndObject();
             }
+            if (Optional.IsDefined(Identity))
+            {
+                writer.WritePropertyName("identity");
+                writer.WriteObjectValue(Identity);
+            }
             writer.WriteEndObject();
         }
 
@@ -42,6 +47,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
             Optional<string> type = default;
             Optional<string> location = default;
             Optional<IDictionary<string, string>> tags = default;
+            Optional<ManagedServiceIdentity> identity = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("id"))
@@ -79,8 +85,18 @@ namespace Azure.ResourceManager.CosmosDB.Models
                     tags = dictionary;
                     continue;
                 }
+                if (property.NameEquals("identity"))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        property.ThrowNonNullablePropertyIsNull();
+                        continue;
+                    }
+                    identity = ManagedServiceIdentity.DeserializeManagedServiceIdentity(property.Value);
+                    continue;
+                }
             }
-            return new ARMResourceProperties(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags));
+            return new ARMResourceProperties(id.Value, name.Value, type.Value, location.Value, Optional.ToDictionary(tags), identity.Value);
         }
     }
 }
