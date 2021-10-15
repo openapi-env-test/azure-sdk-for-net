@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure Databricks Delta Lake export command settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzureDatabricksDeltaLakeExportCommand")]
     public partial class AzureDatabricksDeltaLakeExportCommand : ExportSettings
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity translator.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("CopyTranslator")]
     public partial class CopyTranslator
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The Tar compression read settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("TarReadSettings")]
     public partial class TarReadSettings : CompressionReadSettings
     {
         /// <summary>

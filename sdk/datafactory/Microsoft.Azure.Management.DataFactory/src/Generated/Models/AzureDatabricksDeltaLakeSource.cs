@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Azure Databricks Delta Lake source.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzureDatabricksDeltaLakeSource")]
     public partial class AzureDatabricksDeltaLakeSource : CopySource
     {
         /// <summary>

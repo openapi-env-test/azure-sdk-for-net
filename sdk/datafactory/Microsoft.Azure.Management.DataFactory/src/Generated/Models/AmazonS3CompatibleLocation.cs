@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of Amazon S3 Compatible dataset.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AmazonS3CompatibleLocation")]
     public partial class AmazonS3CompatibleLocation : DatasetLocation
     {
         /// <summary>

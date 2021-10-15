@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// credential which can be used to connect with related store or compute
     /// resource.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Credential")]
     public partial class Credential
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Orc write settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("OrcWriteSettings")]
     public partial class OrcWriteSettings : FormatWriteSettings
     {
         /// <summary>

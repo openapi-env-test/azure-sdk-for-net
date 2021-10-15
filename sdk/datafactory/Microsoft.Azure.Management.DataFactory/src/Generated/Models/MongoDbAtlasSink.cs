@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity MongoDB Atlas sink.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("MongoDbAtlasSink")]
     public partial class MongoDbAtlasSink : CopySink
     {
         /// <summary>

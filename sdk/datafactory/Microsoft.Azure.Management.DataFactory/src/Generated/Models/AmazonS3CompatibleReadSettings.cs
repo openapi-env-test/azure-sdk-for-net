@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Amazon S3 Compatible read settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AmazonS3CompatibleReadSettings")]
     public partial class AmazonS3CompatibleReadSettings : StoreReadSettings
     {
         /// <summary>

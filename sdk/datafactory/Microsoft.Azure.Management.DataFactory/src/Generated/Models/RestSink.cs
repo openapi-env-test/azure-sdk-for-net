@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Rest service Sink.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RestSink")]
     public partial class RestSink : CopySink
     {
         /// <summary>

@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
+    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -17,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure File Storage write settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzureFileStorageWriteSettings")]
     public partial class AzureFileStorageWriteSettings : StoreWriteSettings
     {
         /// <summary>

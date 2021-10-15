@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity tabular translator.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("TabularTranslator")]
     public partial class TabularTranslator : CopyTranslator
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Parquet write settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ParquetWriteSettings")]
     public partial class ParquetWriteSettings : FormatWriteSettings
     {
         /// <summary>

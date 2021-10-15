@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity MongoDB sink.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("MongoDbV2Sink")]
     public partial class MongoDbV2Sink : CopySink
     {
         /// <summary>

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure Databricks Delta Lake import command settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzureDatabricksDeltaLakeImportCommand")]
     public partial class AzureDatabricksDeltaLakeImportCommand : ImportSettings
     {
         /// <summary>

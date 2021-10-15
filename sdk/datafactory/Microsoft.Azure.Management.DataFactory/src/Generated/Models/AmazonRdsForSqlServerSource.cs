@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity Amazon RDS for SQL Server source.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AmazonRdsForSqlServerSource")]
     public partial class AmazonRdsForSqlServerSource : TabularSource
     {
         /// <summary>

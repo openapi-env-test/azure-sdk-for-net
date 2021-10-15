@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Oracle Cloud Storage read settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("OracleCloudStorageReadSettings")]
     public partial class OracleCloudStorageReadSettings : StoreReadSettings
     {
         /// <summary>

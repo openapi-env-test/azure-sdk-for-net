@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The TarGZip compression read settings.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("TarGZipReadSettings")]
     public partial class TarGZipReadSettings : CompressionReadSettings
     {
         /// <summary>

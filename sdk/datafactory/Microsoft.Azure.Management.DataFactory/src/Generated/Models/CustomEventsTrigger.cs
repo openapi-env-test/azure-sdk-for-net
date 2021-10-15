@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Trigger that runs every time a custom event is received.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("CustomEventsTrigger")]
     [Rest.Serialization.JsonTransformation]
     public partial class CustomEventsTrigger : MultiplePipelineTrigger
     {

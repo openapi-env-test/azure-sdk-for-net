@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The express custom setup of installing Azure PowerShell.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzPowerShellSetup")]
     [Rest.Serialization.JsonTransformation]
     public partial class AzPowerShellSetup : CustomSetupBase
     {

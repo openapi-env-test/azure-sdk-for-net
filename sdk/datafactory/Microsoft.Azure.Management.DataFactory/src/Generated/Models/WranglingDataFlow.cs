@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Power Query data flow.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("WranglingDataFlow")]
     [Rest.Serialization.JsonTransformation]
     public partial class WranglingDataFlow : DataFlow
     {

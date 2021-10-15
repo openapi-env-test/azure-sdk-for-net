@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Azure Databricks Delta Lake dataset.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AzureDatabricksDeltaLakeDataset")]
     [Rest.Serialization.JsonTransformation]
     public partial class AzureDatabricksDeltaLakeDataset : Dataset
     {

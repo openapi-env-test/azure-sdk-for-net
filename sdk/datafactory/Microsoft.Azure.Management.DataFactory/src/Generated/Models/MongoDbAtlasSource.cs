@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity source for a MongoDB Atlas database.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("MongoDbAtlasSource")]
     public partial class MongoDbAtlasSource : CopySource
     {
         /// <summary>

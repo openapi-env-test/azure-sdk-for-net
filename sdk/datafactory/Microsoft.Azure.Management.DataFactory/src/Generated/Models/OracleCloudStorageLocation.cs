@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// The location of Oracle Cloud Storage dataset.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("OracleCloudStorageLocation")]
     public partial class OracleCloudStorageLocation : DatasetLocation
     {
         /// <summary>

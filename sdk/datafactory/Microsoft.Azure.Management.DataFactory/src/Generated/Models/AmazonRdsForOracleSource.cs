@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// A copy activity AmazonRdsForOracle source.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AmazonRdsForOracleSource")]
     public partial class AmazonRdsForOracleSource : CopySource
     {
         /// <summary>
