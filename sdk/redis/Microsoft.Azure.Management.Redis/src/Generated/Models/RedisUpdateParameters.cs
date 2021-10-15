@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Redis.Models
         /// 'Enabled'. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="sku">The SKU of the Redis cache to deploy.</param>
         /// <param name="tags">Resource tags.</param>
-        public RedisUpdateParameters(IDictionary<string, string> redisConfiguration = default(IDictionary<string, string>), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), IDictionary<string, string> tenantSettings = default(IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public RedisUpdateParameters(RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), IDictionary<string, string> tenantSettings = default(IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             RedisConfiguration = redisConfiguration;
             RedisVersion = redisVersion;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Redis.Models
         /// etc.
         /// </summary>
         [JsonProperty(PropertyName = "properties.redisConfiguration")]
-        public IDictionary<string, string> RedisConfiguration { get; set; }
+        public RedisCommonPropertiesRedisConfiguration RedisConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets redis version. Only major version will be used in
