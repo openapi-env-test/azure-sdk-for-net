@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
     /// <summary>
     /// Class representing a Kusto database.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("Database")]
     public partial class Database : ProxyResource
     {
         /// <summary>

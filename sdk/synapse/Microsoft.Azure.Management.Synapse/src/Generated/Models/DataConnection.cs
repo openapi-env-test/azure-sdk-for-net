@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
     /// <summary>
     /// Class representing a data connection.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("DataConnection")]
     public partial class DataConnection : ProxyResource
     {
         /// <summary>
