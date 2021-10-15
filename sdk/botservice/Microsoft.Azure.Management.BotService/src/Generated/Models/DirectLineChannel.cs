@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Direct Line channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("DirectLineChannel")]
     public partial class DirectLineChannel : Channel
     {
         /// <summary>

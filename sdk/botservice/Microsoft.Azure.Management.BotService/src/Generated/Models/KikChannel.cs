@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Kik channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("KikChannel")]
     public partial class KikChannel : Channel
     {
         /// <summary>

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Email channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("EmailChannel")]
     public partial class EmailChannel : Channel
     {
         /// <summary>

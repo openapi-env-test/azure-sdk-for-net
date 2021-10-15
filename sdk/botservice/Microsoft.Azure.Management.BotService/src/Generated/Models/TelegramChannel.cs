@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Telegram channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("TelegramChannel")]
     public partial class TelegramChannel : Channel
     {
         /// <summary>

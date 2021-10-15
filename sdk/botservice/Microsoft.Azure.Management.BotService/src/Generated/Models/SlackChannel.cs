@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Slack channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("SlackChannel")]
     public partial class SlackChannel : Channel
     {
         /// <summary>

@@ -38,6 +38,13 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// <param name="description">The description of the bot</param>
         /// <param name="iconUrl">The Icon Url of the bot</param>
         /// <param name="endpointVersion">The bot's endpoint version</param>
+        /// <param name="msaAppType">Microsoft App Type for the bot. Possible
+        /// values include: 'UserAssignedMSI', 'SingleTenant',
+        /// 'MultiTenant'</param>
+        /// <param name="msaAppTenantId">Microsoft App Tenant Id for the
+        /// bot</param>
+        /// <param name="msaAppMSIResourceId">Microsoft App Managed Identity
+        /// Resource Id for the bot</param>
         /// <param name="configuredChannels">Collection of channels for which
         /// the bot is configured</param>
         /// <param name="enabledChannels">Collection of channels for which the
@@ -50,14 +57,32 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// Insights App Id</param>
         /// <param name="luisAppIds">Collection of LUIS App Ids</param>
         /// <param name="luisKey">The LUIS Key</param>
-        public BotProperties(string displayName, string endpoint, string msaAppId, string description = default(string), string iconUrl = default(string), string endpointVersion = default(string), IList<string> configuredChannels = default(IList<string>), IList<string> enabledChannels = default(IList<string>), string developerAppInsightKey = default(string), string developerAppInsightsApiKey = default(string), string developerAppInsightsApplicationId = default(string), IList<string> luisAppIds = default(IList<string>), string luisKey = default(string))
+        /// <param name="isCmekEnabled">Whether Cmek is enabled</param>
+        /// <param name="cmekKeyVaultUrl">The CMK Url</param>
+        /// <param name="isIsolated">Whether the bot is in an isolated
+        /// network</param>
+        /// <param name="disableLocalAuth">Opt-out of local authentication and
+        /// ensure only MSI and AAD can be used exclusively for
+        /// authentication.</param>
+        /// <param name="schemaTransformationVersion">The channel schema
+        /// transformation version for the bot</param>
+        /// <param name="privateEndpointConnections">List of Private Endpoint
+        /// Connections configured for the bot</param>
+        /// <param name="openWithHint">The hint to browser (e.g. protocol
+        /// handler) on how to open the bot for authoring</param>
+        /// <param name="appPasswordHint">The hint (e.g. keyVault secret
+        /// resourceId) on how to fetch the app secret</param>
+        public BotProperties(string displayName, string endpoint, string msaAppId, string description = default(string), string iconUrl = default(string), string endpointVersion = default(string), string msaAppType = default(string), string msaAppTenantId = default(string), string msaAppMSIResourceId = default(string), IList<string> configuredChannels = default(IList<string>), IList<string> enabledChannels = default(IList<string>), string developerAppInsightKey = default(string), string developerAppInsightsApiKey = default(string), string developerAppInsightsApplicationId = default(string), IList<string> luisAppIds = default(IList<string>), string luisKey = default(string), bool? isCmekEnabled = default(bool?), string cmekKeyVaultUrl = default(string), bool? isIsolated = default(bool?), bool? disableLocalAuth = default(bool?), string schemaTransformationVersion = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string openWithHint = default(string), string appPasswordHint = default(string))
         {
             DisplayName = displayName;
             Description = description;
             IconUrl = iconUrl;
             Endpoint = endpoint;
             EndpointVersion = endpointVersion;
+            MsaAppType = msaAppType;
             MsaAppId = msaAppId;
+            MsaAppTenantId = msaAppTenantId;
+            MsaAppMSIResourceId = msaAppMSIResourceId;
             ConfiguredChannels = configuredChannels;
             EnabledChannels = enabledChannels;
             DeveloperAppInsightKey = developerAppInsightKey;
@@ -65,6 +90,14 @@ namespace Microsoft.Azure.Management.BotService.Models
             DeveloperAppInsightsApplicationId = developerAppInsightsApplicationId;
             LuisAppIds = luisAppIds;
             LuisKey = luisKey;
+            IsCmekEnabled = isCmekEnabled;
+            CmekKeyVaultUrl = cmekKeyVaultUrl;
+            IsIsolated = isIsolated;
+            DisableLocalAuth = disableLocalAuth;
+            SchemaTransformationVersion = schemaTransformationVersion;
+            PrivateEndpointConnections = privateEndpointConnections;
+            OpenWithHint = openWithHint;
+            AppPasswordHint = appPasswordHint;
             CustomInit();
         }
 
@@ -104,10 +137,29 @@ namespace Microsoft.Azure.Management.BotService.Models
         public string EndpointVersion { get; private set; }
 
         /// <summary>
+        /// Gets or sets microsoft App Type for the bot. Possible values
+        /// include: 'UserAssignedMSI', 'SingleTenant', 'MultiTenant'
+        /// </summary>
+        [JsonProperty(PropertyName = "msaAppType")]
+        public string MsaAppType { get; set; }
+
+        /// <summary>
         /// Gets or sets microsoft App Id for the bot
         /// </summary>
         [JsonProperty(PropertyName = "msaAppId")]
         public string MsaAppId { get; set; }
+
+        /// <summary>
+        /// Gets or sets microsoft App Tenant Id for the bot
+        /// </summary>
+        [JsonProperty(PropertyName = "msaAppTenantId")]
+        public string MsaAppTenantId { get; set; }
+
+        /// <summary>
+        /// Gets or sets microsoft App Managed Identity Resource Id for the bot
+        /// </summary>
+        [JsonProperty(PropertyName = "msaAppMSIResourceId")]
+        public string MsaAppMSIResourceId { get; set; }
 
         /// <summary>
         /// Gets collection of channels for which the bot is configured
@@ -152,6 +204,57 @@ namespace Microsoft.Azure.Management.BotService.Models
         public string LuisKey { get; set; }
 
         /// <summary>
+        /// Gets or sets whether Cmek is enabled
+        /// </summary>
+        [JsonProperty(PropertyName = "isCmekEnabled")]
+        public bool? IsCmekEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CMK Url
+        /// </summary>
+        [JsonProperty(PropertyName = "cmekKeyVaultUrl")]
+        public string CmekKeyVaultUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the bot is in an isolated network
+        /// </summary>
+        [JsonProperty(PropertyName = "isIsolated")]
+        public bool? IsIsolated { get; set; }
+
+        /// <summary>
+        /// Gets or sets opt-out of local authentication and ensure only MSI
+        /// and AAD can be used exclusively for authentication.
+        /// </summary>
+        [JsonProperty(PropertyName = "disableLocalAuth")]
+        public bool? DisableLocalAuth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel schema transformation version for the bot
+        /// </summary>
+        [JsonProperty(PropertyName = "schemaTransformationVersion")]
+        public string SchemaTransformationVersion { get; set; }
+
+        /// <summary>
+        /// Gets list of Private Endpoint Connections configured for the bot
+        /// </summary>
+        [JsonProperty(PropertyName = "privateEndpointConnections")]
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the hint to browser (e.g. protocol handler) on how to
+        /// open the bot for authoring
+        /// </summary>
+        [JsonProperty(PropertyName = "openWithHint")]
+        public string OpenWithHint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hint (e.g. keyVault secret resourceId) on how to
+        /// fetch the app secret
+        /// </summary>
+        [JsonProperty(PropertyName = "appPasswordHint")]
+        public string AppPasswordHint { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -170,6 +273,16 @@ namespace Microsoft.Azure.Management.BotService.Models
             if (MsaAppId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "MsaAppId");
+            }
+            if (PrivateEndpointConnections != null)
+            {
+                foreach (var element in PrivateEndpointConnections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }

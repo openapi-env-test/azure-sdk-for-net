@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Skype channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("SkypeChannel")]
     public partial class SkypeChannel : Channel
     {
         /// <summary>

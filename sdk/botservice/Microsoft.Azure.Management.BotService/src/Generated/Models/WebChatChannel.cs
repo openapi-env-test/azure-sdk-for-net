@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.BotService.Models
     /// <summary>
     /// Web Chat channel definition
     /// </summary>
+    [Newtonsoft.Json.JsonObject("WebChatChannel")]
     public partial class WebChatChannel : Channel
     {
         /// <summary>

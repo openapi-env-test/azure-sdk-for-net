@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.BotService.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -30,6 +29,8 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// <summary>
         /// Initializes a new instance of the SlackChannelProperties class.
         /// </summary>
+        /// <param name="isEnabled">Whether this channel is enabled for the
+        /// bot</param>
         /// <param name="clientId">The Slack client id</param>
         /// <param name="clientSecret">The Slack client secret. Value only
         /// returned through POST to the action Channel List API, otherwise
@@ -37,8 +38,7 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// <param name="verificationToken">The Slack verification token. Value
         /// only returned through POST to the action Channel List API,
         /// otherwise empty.</param>
-        /// <param name="isEnabled">Whether this channel is enabled for the
-        /// bot</param>
+        /// <param name="scopes">The Slack permission scopes.</param>
         /// <param name="landingPageUrl">The Slack landing page Url</param>
         /// <param name="redirectAction">The Slack redirect action</param>
         /// <param name="lastSubmissionId">The Sms auth token</param>
@@ -47,16 +47,19 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// True.</param>
         /// <param name="isValidated">Whether this channel is validated for the
         /// bot</param>
-        public SlackChannelProperties(string clientId, string clientSecret, string verificationToken, bool isEnabled, string landingPageUrl = default(string), string redirectAction = default(string), string lastSubmissionId = default(string), bool? registerBeforeOAuthFlow = default(bool?), bool? isValidated = default(bool?))
+        /// <param name="signingSecret">The Slack signing secret.</param>
+        public SlackChannelProperties(bool isEnabled, string clientId = default(string), string clientSecret = default(string), string verificationToken = default(string), string scopes = default(string), string landingPageUrl = default(string), string redirectAction = default(string), string lastSubmissionId = default(string), bool? registerBeforeOAuthFlow = default(bool?), bool? isValidated = default(bool?), string signingSecret = default(string))
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
             VerificationToken = verificationToken;
+            Scopes = scopes;
             LandingPageUrl = landingPageUrl;
             RedirectAction = redirectAction;
             LastSubmissionId = lastSubmissionId;
             RegisterBeforeOAuthFlow = registerBeforeOAuthFlow;
             IsValidated = isValidated;
+            SigningSecret = signingSecret;
             IsEnabled = isEnabled;
             CustomInit();
         }
@@ -85,6 +88,12 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// </summary>
         [JsonProperty(PropertyName = "verificationToken")]
         public string VerificationToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Slack permission scopes.
+        /// </summary>
+        [JsonProperty(PropertyName = "scopes")]
+        public string Scopes { get; set; }
 
         /// <summary>
         /// Gets or sets the Slack landing page Url
@@ -118,6 +127,12 @@ namespace Microsoft.Azure.Management.BotService.Models
         public bool? IsValidated { get; private set; }
 
         /// <summary>
+        /// Gets or sets the Slack signing secret.
+        /// </summary>
+        [JsonProperty(PropertyName = "signingSecret")]
+        public string SigningSecret { get; set; }
+
+        /// <summary>
         /// Gets or sets whether this channel is enabled for the bot
         /// </summary>
         [JsonProperty(PropertyName = "isEnabled")]
@@ -126,23 +141,12 @@ namespace Microsoft.Azure.Management.BotService.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (ClientId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClientId");
-            }
-            if (ClientSecret == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClientSecret");
-            }
-            if (VerificationToken == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VerificationToken");
-            }
+            //Nothing to validate
         }
     }
 }
