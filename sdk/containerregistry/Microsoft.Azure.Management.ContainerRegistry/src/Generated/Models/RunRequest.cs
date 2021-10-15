@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
     /// <summary>
     /// The request parameters for scheduling a run.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RunRequest")]
     public partial class RunRequest
     {
         /// <summary>
@@ -33,10 +34,13 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// archiving is enabled for the run or not.</param>
         /// <param name="agentPoolName">The dedicated agent pool for the
         /// run.</param>
-        public RunRequest(bool? isArchiveEnabled = default(bool?), string agentPoolName = default(string))
+        /// <param name="logTemplate">The template that describes the
+        /// repository and tag information for run log artifact.</param>
+        public RunRequest(bool? isArchiveEnabled = default(bool?), string agentPoolName = default(string), string logTemplate = default(string))
         {
             IsArchiveEnabled = isArchiveEnabled;
             AgentPoolName = agentPoolName;
+            LogTemplate = logTemplate;
             CustomInit();
         }
 
@@ -57,6 +61,13 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// </summary>
         [JsonProperty(PropertyName = "agentPoolName")]
         public string AgentPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template that describes the repository and tag
+        /// information for run log artifact.
+        /// </summary>
+        [JsonProperty(PropertyName = "logTemplate")]
+        public string LogTemplate { get; set; }
 
     }
 }
