@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Management.SignalR
             SignalRPrivateLinkResources = new SignalRPrivateLinkResourcesOperations(this);
             SignalRSharedPrivateLinkResources = new SignalRSharedPrivateLinkResourcesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-06-01-preview";
+            ApiVersion = "2021-10-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

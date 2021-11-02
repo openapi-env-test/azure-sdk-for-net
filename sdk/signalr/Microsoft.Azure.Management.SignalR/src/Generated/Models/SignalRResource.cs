@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="sharedPrivateLinkResources">The list of shared private
         /// link resources.</param>
         /// <param name="tls">TLS settings.</param>
+        /// <param name="hostNamePrefix">Deprecated.</param>
         /// <param name="features">List of the featureFlags.
         ///
         /// FeatureFlags that are not included in the parameters for the update
@@ -73,6 +74,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// value will be used
         /// But keep in mind, the default value doesn't mean "false". It varies
         /// in terms of different FeatureFlags.</param>
+        /// <param name="resourceLogConfiguration">Resource log configuration
+        /// of a Microsoft.SignalRService resource.
+        /// If resourceLogConfiguration isn't null or empty, it will override
+        /// options "EnableConnectivityLog" and "EnableMessagingLogs" in
+        /// features.
+        /// Otherwise, use options "EnableConnectivityLog" and
+        /// "EnableMessagingLogs" in features.</param>
         /// <param name="cors">Cross-Origin Resource Sharing (CORS)
         /// settings.</param>
         /// <param name="upstream">Upstream settings when the service is in
@@ -86,7 +94,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="disableLocalAuth">DisableLocalAuth
         /// Enable or disable local auth with AccessKey
         /// When set as true, connection with AccessKey=xxx won't work.</param>
-        /// <param name="disableAadAuth">disableAadAuth
+        /// <param name="disableAadAuth">DisableLocalAuth
         /// Enable or disable aad auth
         /// When set as true, connection with AuthType=aad won't work.</param>
         /// <param name="kind">The kind of the service - e.g. "SignalR" for
@@ -95,7 +103,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="identity">The managed identity response</param>
         /// <param name="systemData">Metadata pertaining to creation and last
         /// modification of the resource.</param>
-        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), IList<SignalRFeature> features = default(IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkACLs = default(SignalRNetworkACLs), string publicNetworkAccess = default(string), bool? disableLocalAuth = default(bool?), bool? disableAadAuth = default(bool?), string kind = default(string), ManagedIdentity identity = default(ManagedIdentity), SystemData systemData = default(SystemData))
+        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), string hostNamePrefix = default(string), IList<SignalRFeature> features = default(IList<SignalRFeature>), ResourceLogConfiguration resourceLogConfiguration = default(ResourceLogConfiguration), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkACLs = default(SignalRNetworkACLs), string publicNetworkAccess = default(string), bool? disableLocalAuth = default(bool?), bool? disableAadAuth = default(bool?), string kind = default(string), ManagedIdentity identity = default(ManagedIdentity), SystemData systemData = default(SystemData))
             : base(id, name, type, location, tags)
         {
             Sku = sku;
@@ -108,7 +116,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
             PrivateEndpointConnections = privateEndpointConnections;
             SharedPrivateLinkResources = sharedPrivateLinkResources;
             Tls = tls;
+            HostNamePrefix = hostNamePrefix;
             Features = features;
+            ResourceLogConfiguration = resourceLogConfiguration;
             Cors = cors;
             Upstream = upstream;
             NetworkACLs = networkACLs;
@@ -193,6 +203,12 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public SignalRTlsSettings Tls { get; set; }
 
         /// <summary>
+        /// Gets deprecated.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostNamePrefix")]
+        public string HostNamePrefix { get; private set; }
+
+        /// <summary>
         /// Gets or sets list of the featureFlags.
         ///
         /// FeatureFlags that are not included in the parameters for the update
@@ -206,6 +222,18 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.features")]
         public IList<SignalRFeature> Features { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource log configuration of a
+        /// Microsoft.SignalRService resource.
+        /// If resourceLogConfiguration isn't null or empty, it will override
+        /// options "EnableConnectivityLog" and "EnableMessagingLogs" in
+        /// features.
+        /// Otherwise, use options "EnableConnectivityLog" and
+        /// "EnableMessagingLogs" in features.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceLogConfiguration")]
+        public ResourceLogConfiguration ResourceLogConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets cross-Origin Resource Sharing (CORS) settings.
@@ -245,7 +273,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public bool? DisableLocalAuth { get; set; }
 
         /// <summary>
-        /// Gets or sets disableAadAuth
+        /// Gets or sets disableLocalAuth
         /// Enable or disable aad auth
         /// When set as true, connection with AuthType=aad won't work.
         /// </summary>

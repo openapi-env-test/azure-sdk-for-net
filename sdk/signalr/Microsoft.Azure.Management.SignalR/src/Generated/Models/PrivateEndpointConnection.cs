@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -45,14 +47,16 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// 'Updating', 'Deleting', 'Moving'</param>
         /// <param name="privateEndpoint">Private endpoint associated with the
         /// private endpoint connection</param>
+        /// <param name="groupIds">Group IDs</param>
         /// <param name="privateLinkServiceConnectionState">Connection
         /// state</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), IList<string> groupIds = default(IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
             : base(id, name, type)
         {
             SystemData = systemData;
             ProvisioningState = provisioningState;
             PrivateEndpoint = privateEndpoint;
+            GroupIds = groupIds;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             CustomInit();
         }
@@ -83,6 +87,12 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets group IDs
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.groupIds")]
+        public IList<string> GroupIds { get; private set; }
 
         /// <summary>
         /// Gets or sets connection state

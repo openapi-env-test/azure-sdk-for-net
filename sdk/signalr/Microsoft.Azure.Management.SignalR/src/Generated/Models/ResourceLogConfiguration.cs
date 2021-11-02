@@ -11,30 +11,31 @@
 namespace Microsoft.Azure.Management.SignalR.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Parameters describes the request to regenerate access keys
+    /// Resource log configuration of a Microsoft.SignalRService resource.
     /// </summary>
-    public partial class RegenerateKeyParameters
+    public partial class ResourceLogConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the RegenerateKeyParameters class.
+        /// Initializes a new instance of the ResourceLogConfiguration class.
         /// </summary>
-        public RegenerateKeyParameters()
+        public ResourceLogConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RegenerateKeyParameters class.
+        /// Initializes a new instance of the ResourceLogConfiguration class.
         /// </summary>
-        /// <param name="keyType">The keyType to regenerate. Must be either
-        /// 'primary' or 'secondary'(case-insensitive). Possible values
-        /// include: 'Primary', 'Secondary', 'Salt'</param>
-        public RegenerateKeyParameters(string keyType = default(string))
+        /// <param name="categories">Gets or sets the list of category
+        /// configurations.</param>
+        public ResourceLogConfiguration(IList<ResourceLogCategory> categories = default(IList<ResourceLogCategory>))
         {
-            KeyType = keyType;
+            Categories = categories;
             CustomInit();
         }
 
@@ -44,12 +45,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the keyType to regenerate. Must be either 'primary' or
-        /// 'secondary'(case-insensitive). Possible values include: 'Primary',
-        /// 'Secondary', 'Salt'
+        /// Gets or sets the list of category configurations.
         /// </summary>
-        [JsonProperty(PropertyName = "keyType")]
-        public string KeyType { get; set; }
+        [JsonProperty(PropertyName = "categories")]
+        public IList<ResourceLogCategory> Categories { get; set; }
 
     }
 }
