@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Management.AppPlatform
         public virtual IBindingsOperations Bindings { get; private set; }
 
         /// <summary>
+        /// Gets the IStoragesOperations.
+        /// </summary>
+        public virtual IStoragesOperations Storages { get; private set; }
+
+        /// <summary>
         /// Gets the ICertificatesOperations.
         /// </summary>
         public virtual ICertificatesOperations Certificates { get; private set; }
@@ -377,6 +382,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             MonitoringSettings = new MonitoringSettingsOperations(this);
             Apps = new AppsOperations(this);
             Bindings = new BindingsOperations(this);
+            Storages = new StoragesOperations(this);
             Certificates = new CertificatesOperations(this);
             CustomDomains = new CustomDomainsOperations(this);
             Deployments = new DeploymentsOperations(this);
@@ -384,7 +390,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             RuntimeVersions = new RuntimeVersionsOperations(this);
             Skus = new SkusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-11-01-preview";
+            ApiVersion = "2021-09-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -413,6 +419,12 @@ namespace Microsoft.Azure.Management.AppPlatform
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CustomPersistentDiskProperties>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CustomPersistentDiskProperties>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<CertificateProperties>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<CertificateProperties>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<StorageProperties>("storageType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<StorageProperties>("storageType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }

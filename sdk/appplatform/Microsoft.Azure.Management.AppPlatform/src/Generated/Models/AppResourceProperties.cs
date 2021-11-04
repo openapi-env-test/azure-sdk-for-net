@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.AppPlatform.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -43,9 +45,13 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// created</param>
         /// <param name="temporaryDisk">Temporary disk settings</param>
         /// <param name="persistentDisk">Persistent disk settings</param>
+        /// <param name="customPersistentDisks">List of custom persistent
+        /// disks</param>
         /// <param name="enableEndToEndTLS">Indicate if end to end TLS is
         /// enabled.</param>
-        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), string provisioningState = default(string), string activeDeploymentName = default(string), string fqdn = default(string), bool? httpsOnly = default(bool?), System.DateTime? createdTime = default(System.DateTime?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk), bool? enableEndToEndTLS = default(bool?))
+        /// <param name="loadedCertificates">Collection of loaded
+        /// certificates</param>
+        public AppResourceProperties(bool? publicProperty = default(bool?), string url = default(string), string provisioningState = default(string), string activeDeploymentName = default(string), string fqdn = default(string), bool? httpsOnly = default(bool?), System.DateTime? createdTime = default(System.DateTime?), TemporaryDisk temporaryDisk = default(TemporaryDisk), PersistentDisk persistentDisk = default(PersistentDisk), IList<CustomPersistentDiskResource> customPersistentDisks = default(IList<CustomPersistentDiskResource>), bool? enableEndToEndTLS = default(bool?), IList<LoadedCertificate> loadedCertificates = default(IList<LoadedCertificate>))
         {
             PublicProperty = publicProperty;
             Url = url;
@@ -56,7 +62,9 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
             CreatedTime = createdTime;
             TemporaryDisk = temporaryDisk;
             PersistentDisk = persistentDisk;
+            CustomPersistentDisks = customPersistentDisks;
             EnableEndToEndTLS = enableEndToEndTLS;
+            LoadedCertificates = loadedCertificates;
             CustomInit();
         }
 
@@ -121,10 +129,22 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         public PersistentDisk PersistentDisk { get; set; }
 
         /// <summary>
+        /// Gets or sets list of custom persistent disks
+        /// </summary>
+        [JsonProperty(PropertyName = "customPersistentDisks")]
+        public IList<CustomPersistentDiskResource> CustomPersistentDisks { get; set; }
+
+        /// <summary>
         /// Gets or sets indicate if end to end TLS is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "enableEndToEndTLS")]
         public bool? EnableEndToEndTLS { get; set; }
+
+        /// <summary>
+        /// Gets or sets collection of loaded certificates
+        /// </summary>
+        [JsonProperty(PropertyName = "loadedCertificates")]
+        public IList<LoadedCertificate> LoadedCertificates { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -141,6 +161,26 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
             if (PersistentDisk != null)
             {
                 PersistentDisk.Validate();
+            }
+            if (CustomPersistentDisks != null)
+            {
+                foreach (var element in CustomPersistentDisks)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (LoadedCertificates != null)
+            {
+                foreach (var element1 in LoadedCertificates)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
             }
         }
     }

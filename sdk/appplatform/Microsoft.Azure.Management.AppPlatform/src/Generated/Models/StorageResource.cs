@@ -14,31 +14,32 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
     using System.Linq;
 
     /// <summary>
-    /// Certificate resource payload.
+    /// Storage resource payload.
     /// </summary>
-    public partial class CertificateResource : ProxyResource
+    public partial class StorageResource : ProxyResource
     {
         /// <summary>
-        /// Initializes a new instance of the CertificateResource class.
+        /// Initializes a new instance of the StorageResource class.
         /// </summary>
-        public CertificateResource()
+        public StorageResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CertificateResource class.
+        /// Initializes a new instance of the StorageResource class.
         /// </summary>
         /// <param name="id">Fully qualified resource Id for the
         /// resource.</param>
         /// <param name="name">The name of the resource.</param>
         /// <param name="type">The type of the resource.</param>
-        /// <param name="properties">Properties of the certificate resource
+        /// <param name="properties">Properties of the storage resource
         /// payload.</param>
-        public CertificateResource(string id = default(string), string name = default(string), string type = default(string), CertificateProperties properties = default(CertificateProperties))
+        public StorageResource(string id = default(string), string name = default(string), string type = default(string), StorageProperties properties = default(StorageProperties), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             Properties = properties;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -48,10 +49,15 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets properties of the certificate resource payload.
+        /// Gets or sets properties of the storage resource payload.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public CertificateProperties Properties { get; set; }
+        public StorageProperties Properties { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

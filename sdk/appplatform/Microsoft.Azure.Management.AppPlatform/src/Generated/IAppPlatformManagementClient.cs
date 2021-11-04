@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Management.AppPlatform
         IBindingsOperations Bindings { get; }
 
         /// <summary>
+        /// Gets the IStoragesOperations.
+        /// </summary>
+        IStoragesOperations Storages { get; }
+
+        /// <summary>
         /// Gets the ICertificatesOperations.
         /// </summary>
         ICertificatesOperations Certificates { get; }

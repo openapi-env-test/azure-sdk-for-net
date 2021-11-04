@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.AppPlatform
     using System.Threading.Tasks;
 
     /// <summary>
-    /// CertificatesOperations operations.
+    /// StoragesOperations operations.
     /// </summary>
-    internal partial class CertificatesOperations : IServiceOperations<AppPlatformManagementClient>, ICertificatesOperations
+    internal partial class StoragesOperations : IServiceOperations<AppPlatformManagementClient>, IStoragesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the CertificatesOperations class.
+        /// Initializes a new instance of the StoragesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal CertificatesOperations(AppPlatformManagementClient client)
+        internal StoragesOperations(AppPlatformManagementClient client)
         {
             if (client == null)
             {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         public AppPlatformManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get the certificate resource.
+        /// Get the storage resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of the certificate resource.
+        /// <param name='storageName'>
+        /// The name of the storage resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<StorageResource>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceName, string storageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serviceName");
             }
-            if (certificateName == null)
+            if (storageName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "certificateName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "storageName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Management.AppPlatform
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
-                tracingParameters.Add("certificateName", certificateName);
+                tracingParameters.Add("storageName", storageName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
-            _url = _url.Replace("{certificateName}", System.Uri.EscapeDataString(certificateName));
+            _url = _url.Replace("{storageName}", System.Uri.EscapeDataString(storageName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateResource>();
+            var _result = new AzureOperationResponse<StorageResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CertificateResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<StorageResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Create or update certificate resource.
+        /// Create or update storage resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -273,10 +273,10 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of the certificate resource.
+        /// <param name='storageName'>
+        /// The name of the storage resource.
         /// </param>
-        /// <param name='certificateResource'>
+        /// <param name='storageResource'>
         /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
@@ -285,15 +285,15 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<CertificateResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, CertificateResource certificateResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<StorageResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string storageName, StorageResource storageResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<CertificateResource> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, certificateName, certificateResource, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<StorageResource> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceName, storageName, storageResource, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Delete the certificate resource.
+        /// Delete the storage resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -302,8 +302,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of the certificate resource.
+        /// <param name='storageName'>
+        /// The name of the storage resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -311,15 +311,15 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string storageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceName, certificateName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceName, storageName, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// List all the certificates of one user.
+        /// List all the storages of one Azure Spring Cloud instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<CertificateResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<StorageResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string serviceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Management.AppPlatform
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<CertificateResource>>();
+            var _result = new AzureOperationResponse<IPage<StorageResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CertificateResource>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<StorageResource>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Create or update certificate resource.
+        /// Create or update storage resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -532,10 +532,10 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of the certificate resource.
+        /// <param name='storageName'>
+        /// The name of the storage resource.
         /// </param>
-        /// <param name='certificateResource'>
+        /// <param name='storageResource'>
         /// Parameters for the create or update operation
         /// </param>
         /// <param name='customHeaders'>
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CertificateResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, CertificateResource certificateResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<StorageResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string storageName, StorageResource storageResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -584,13 +584,13 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serviceName");
             }
-            if (certificateName == null)
+            if (storageName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "certificateName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "storageName");
             }
-            if (certificateResource == null)
+            if (storageResource == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "certificateResource");
+                throw new ValidationException(ValidationRules.CannotBeNull, "storageResource");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -601,18 +601,18 @@ namespace Microsoft.Azure.Management.AppPlatform
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
-                tracingParameters.Add("certificateName", certificateName);
-                tracingParameters.Add("certificateResource", certificateResource);
+                tracingParameters.Add("storageName", storageName);
+                tracingParameters.Add("storageResource", storageResource);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
-            _url = _url.Replace("{certificateName}", System.Uri.EscapeDataString(certificateName));
+            _url = _url.Replace("{storageName}", System.Uri.EscapeDataString(storageName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -656,9 +656,9 @@ namespace Microsoft.Azure.Management.AppPlatform
 
             // Serialize Request
             string _requestContent = null;
-            if(certificateResource != null)
+            if(storageResource != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(certificateResource, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(storageResource, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<CertificateResource>();
+            var _result = new AzureOperationResponse<StorageResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CertificateResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<StorageResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CertificateResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<StorageResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<CertificateResource>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<StorageResource>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// Delete the certificate resource.
+        /// Delete the storage resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -795,8 +795,8 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <param name='serviceName'>
         /// The name of the Service resource.
         /// </param>
-        /// <param name='certificateName'>
-        /// The name of the certificate resource.
+        /// <param name='storageName'>
+        /// The name of the storage resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string certificateName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string storageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -841,9 +841,9 @@ namespace Microsoft.Azure.Management.AppPlatform
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serviceName");
             }
-            if (certificateName == null)
+            if (storageName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "certificateName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "storageName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -854,17 +854,17 @@ namespace Microsoft.Azure.Management.AppPlatform
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("serviceName", serviceName);
-                tracingParameters.Add("certificateName", certificateName);
+                tracingParameters.Add("storageName", storageName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
-            _url = _url.Replace("{certificateName}", System.Uri.EscapeDataString(certificateName));
+            _url = _url.Replace("{storageName}", System.Uri.EscapeDataString(storageName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         }
 
         /// <summary>
-        /// List all the certificates of one user.
+        /// List all the storages of one Azure Spring Cloud instance.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Management.AppPlatform
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<CertificateResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<StorageResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<CertificateResource>>();
+            var _result = new AzureOperationResponse<IPage<StorageResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Management.AppPlatform
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CertificateResource>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<StorageResource>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

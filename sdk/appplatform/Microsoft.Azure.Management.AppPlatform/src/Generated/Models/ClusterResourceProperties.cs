@@ -37,12 +37,15 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// <param name="version">Version of the Service</param>
         /// <param name="serviceId">ServiceInstanceEntity GUID which uniquely
         /// identifies a created resource</param>
-        public ClusterResourceProperties(string provisioningState = default(string), NetworkProfile networkProfile = default(NetworkProfile), int? version = default(int?), string serviceId = default(string))
+        /// <param name="powerState">Power state of the Service. Possible
+        /// values include: 'Running', 'Stopped'</param>
+        public ClusterResourceProperties(string provisioningState = default(string), NetworkProfile networkProfile = default(NetworkProfile), int? version = default(int?), string serviceId = default(string), string powerState = default(string))
         {
             ProvisioningState = provisioningState;
             NetworkProfile = networkProfile;
             Version = version;
             ServiceId = serviceId;
+            PowerState = powerState;
             CustomInit();
         }
 
@@ -77,6 +80,13 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceId")]
         public string ServiceId { get; private set; }
+
+        /// <summary>
+        /// Gets power state of the Service. Possible values include:
+        /// 'Running', 'Stopped'
+        /// </summary>
+        [JsonProperty(PropertyName = "powerState")]
+        public string PowerState { get; private set; }
 
     }
 }

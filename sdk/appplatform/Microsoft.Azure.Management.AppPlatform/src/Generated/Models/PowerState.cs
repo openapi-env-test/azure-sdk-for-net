@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 {
 
     /// <summary>
-    /// Defines values for UserSourceType.
+    /// Defines values for PowerState.
     /// </summary>
-    public static class UserSourceType
+    public static class PowerState
     {
-        public const string Jar = "Jar";
-        public const string NetCoreZip = "NetCoreZip";
-        public const string Source = "Source";
-        public const string Container = "Container";
+        public const string Running = "Running";
+        public const string Stopped = "Stopped";
     }
 }

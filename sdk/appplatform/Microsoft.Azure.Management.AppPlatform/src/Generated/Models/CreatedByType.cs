@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Management.AppPlatform.Models
 {
 
     /// <summary>
-    /// Defines values for UserSourceType.
+    /// Defines values for CreatedByType.
     /// </summary>
-    public static class UserSourceType
+    public static class CreatedByType
     {
-        public const string Jar = "Jar";
-        public const string NetCoreZip = "NetCoreZip";
-        public const string Source = "Source";
-        public const string Container = "Container";
+        public const string User = "User";
+        public const string Application = "Application";
+        public const string ManagedIdentity = "ManagedIdentity";
+        public const string Key = "Key";
     }
 }
