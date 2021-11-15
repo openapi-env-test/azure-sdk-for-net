@@ -19,21 +19,26 @@ namespace Microsoft.Azure.Management.Authorization
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ClassicAdministratorsOperations operations.
+    /// AccessReviewInstanceDecisionsOperations operations.
     /// </summary>
-    public partial interface IClassicAdministratorsOperations
+    public partial interface IAccessReviewInstanceDecisionsOperations
     {
         /// <summary>
-        /// Gets service administrator, account administrator, and
-        /// co-administrators for the subscription.
+        /// Get access review instance decisions
         /// </summary>
+        /// <param name='scheduleDefinitionId'>
+        /// The id of the access review schedule definition.
+        /// </param>
+        /// <param name='id'>
+        /// The id of the access review instance.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="ErrorDefinitionException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -42,10 +47,9 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ClassicAdministrator>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AccessReviewDecision>>> ListWithHttpMessagesAsync(string scheduleDefinitionId, string id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets service administrator, account administrator, and
-        /// co-administrators for the subscription.
+        /// Get access review instance decisions
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -56,7 +60,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="ErrorDefinitionException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -65,6 +69,6 @@ namespace Microsoft.Azure.Management.Authorization
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ClassicAdministrator>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<AccessReviewDecision>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

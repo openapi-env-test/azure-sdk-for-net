@@ -17,43 +17,52 @@ namespace Microsoft.Azure.Management.Authorization
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for ClassicAdministratorsOperations.
+    /// Extension methods for AccessReviewInstanceDecisionsOperations.
     /// </summary>
-    public static partial class ClassicAdministratorsOperationsExtensions
+    public static partial class AccessReviewInstanceDecisionsOperationsExtensions
     {
             /// <summary>
-            /// Gets service administrator, account administrator, and co-administrators
-            /// for the subscription.
+            /// Get access review instance decisions
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<ClassicAdministrator> List(this IClassicAdministratorsOperations operations)
+            /// <param name='scheduleDefinitionId'>
+            /// The id of the access review schedule definition.
+            /// </param>
+            /// <param name='id'>
+            /// The id of the access review instance.
+            /// </param>
+            public static IPage<AccessReviewDecision> List(this IAccessReviewInstanceDecisionsOperations operations, string scheduleDefinitionId, string id)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListAsync(scheduleDefinitionId, id).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets service administrator, account administrator, and co-administrators
-            /// for the subscription.
+            /// Get access review instance decisions
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scheduleDefinitionId'>
+            /// The id of the access review schedule definition.
+            /// </param>
+            /// <param name='id'>
+            /// The id of the access review instance.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ClassicAdministrator>> ListAsync(this IClassicAdministratorsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AccessReviewDecision>> ListAsync(this IAccessReviewInstanceDecisionsOperations operations, string scheduleDefinitionId, string id, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(scheduleDefinitionId, id, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets service administrator, account administrator, and co-administrators
-            /// for the subscription.
+            /// Get access review instance decisions
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -61,14 +70,13 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ClassicAdministrator> ListNext(this IClassicAdministratorsOperations operations, string nextPageLink)
+            public static IPage<AccessReviewDecision> ListNext(this IAccessReviewInstanceDecisionsOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets service administrator, account administrator, and co-administrators
-            /// for the subscription.
+            /// Get access review instance decisions
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -79,7 +87,7 @@ namespace Microsoft.Azure.Management.Authorization
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ClassicAdministrator>> ListNextAsync(this IClassicAdministratorsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AccessReviewDecision>> ListNextAsync(this IAccessReviewInstanceDecisionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
