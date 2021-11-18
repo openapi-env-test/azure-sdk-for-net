@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.EventGrid
         /// Get a domain.
         /// </summary>
         /// <remarks>
-        /// Get properties of a domain.
+        /// Get properties of a domain touch.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription.

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.EventGrid
             /// Get a domain.
             /// </summary>
             /// <remarks>
-            /// Get properties of a domain.
+            /// Get properties of a domain touch.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.EventGrid
             /// Get a domain.
             /// </summary>
             /// <remarks>
-            /// Get properties of a domain.
+            /// Get properties of a domain touch.
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
