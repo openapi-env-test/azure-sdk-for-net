@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// <param name="tags">Resource tags</param>
         /// <param name="emailReceivers">The list of email receivers that are
         /// part of this action group.</param>
-        /// <param name="smsReceivers">The list of SMS receivers that are part
-        /// of this action group.</param>
         /// <param name="webhookReceivers">The list of webhook receivers that
         /// are part of this action group.</param>
         /// <param name="itsmReceivers">The list of ITSM receivers that are
@@ -70,13 +68,12 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// built-in roles are supported.</param>
         /// <param name="eventHubReceivers">The list of event hub receivers
         /// that are part of this action group.</param>
-        public ActionGroupResource(string location, string groupShortName, bool enabled, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string identity = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<SmsReceiver> smsReceivers = default(IList<SmsReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>), IList<VoiceReceiver> voiceReceivers = default(IList<VoiceReceiver>), IList<LogicAppReceiver> logicAppReceivers = default(IList<LogicAppReceiver>), IList<AzureFunctionReceiver> azureFunctionReceivers = default(IList<AzureFunctionReceiver>), IList<ArmRoleReceiver> armRoleReceivers = default(IList<ArmRoleReceiver>), IList<EventHubReceiver> eventHubReceivers = default(IList<EventHubReceiver>))
+        public ActionGroupResource(string location, string groupShortName, bool enabled, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string identity = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>), IList<VoiceReceiver> voiceReceivers = default(IList<VoiceReceiver>), IList<LogicAppReceiver> logicAppReceivers = default(IList<LogicAppReceiver>), IList<AzureFunctionReceiver> azureFunctionReceivers = default(IList<AzureFunctionReceiver>), IList<ArmRoleReceiver> armRoleReceivers = default(IList<ArmRoleReceiver>), IList<EventHubReceiver> eventHubReceivers = default(IList<EventHubReceiver>))
             : base(location, id, name, type, kind, identity, tags)
         {
             GroupShortName = groupShortName;
             Enabled = enabled;
             EmailReceivers = emailReceivers;
-            SmsReceivers = smsReceivers;
             WebhookReceivers = webhookReceivers;
             ItsmReceivers = itsmReceivers;
             AzureAppPushReceivers = azureAppPushReceivers;
@@ -115,13 +112,6 @@ namespace Microsoft.Azure.Management.Monitor.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.emailReceivers")]
         public IList<EmailReceiver> EmailReceivers { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of SMS receivers that are part of this action
-        /// group.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.smsReceivers")]
-        public IList<SmsReceiver> SmsReceivers { get; set; }
 
         /// <summary>
         /// Gets or sets the list of webhook receivers that are part of this
@@ -217,9 +207,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (SmsReceivers != null)
+            if (WebhookReceivers != null)
             {
-                foreach (var element1 in SmsReceivers)
+                foreach (var element1 in WebhookReceivers)
                 {
                     if (element1 != null)
                     {
@@ -227,9 +217,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (WebhookReceivers != null)
+            if (ItsmReceivers != null)
             {
-                foreach (var element2 in WebhookReceivers)
+                foreach (var element2 in ItsmReceivers)
                 {
                     if (element2 != null)
                     {
@@ -237,9 +227,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (ItsmReceivers != null)
+            if (AzureAppPushReceivers != null)
             {
-                foreach (var element3 in ItsmReceivers)
+                foreach (var element3 in AzureAppPushReceivers)
                 {
                     if (element3 != null)
                     {
@@ -247,9 +237,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (AzureAppPushReceivers != null)
+            if (AutomationRunbookReceivers != null)
             {
-                foreach (var element4 in AzureAppPushReceivers)
+                foreach (var element4 in AutomationRunbookReceivers)
                 {
                     if (element4 != null)
                     {
@@ -257,9 +247,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (AutomationRunbookReceivers != null)
+            if (VoiceReceivers != null)
             {
-                foreach (var element5 in AutomationRunbookReceivers)
+                foreach (var element5 in VoiceReceivers)
                 {
                     if (element5 != null)
                     {
@@ -267,9 +257,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (VoiceReceivers != null)
+            if (LogicAppReceivers != null)
             {
-                foreach (var element6 in VoiceReceivers)
+                foreach (var element6 in LogicAppReceivers)
                 {
                     if (element6 != null)
                     {
@@ -277,9 +267,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (LogicAppReceivers != null)
+            if (AzureFunctionReceivers != null)
             {
-                foreach (var element7 in LogicAppReceivers)
+                foreach (var element7 in AzureFunctionReceivers)
                 {
                     if (element7 != null)
                     {
@@ -287,9 +277,9 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (AzureFunctionReceivers != null)
+            if (ArmRoleReceivers != null)
             {
-                foreach (var element8 in AzureFunctionReceivers)
+                foreach (var element8 in ArmRoleReceivers)
                 {
                     if (element8 != null)
                     {
@@ -297,23 +287,13 @@ namespace Microsoft.Azure.Management.Monitor.Models
                     }
                 }
             }
-            if (ArmRoleReceivers != null)
+            if (EventHubReceivers != null)
             {
-                foreach (var element9 in ArmRoleReceivers)
+                foreach (var element9 in EventHubReceivers)
                 {
                     if (element9 != null)
                     {
                         element9.Validate();
-                    }
-                }
-            }
-            if (EventHubReceivers != null)
-            {
-                foreach (var element10 in EventHubReceivers)
-                {
-                    if (element10 != null)
-                    {
-                        element10.Validate();
                     }
                 }
             }
