@@ -56,7 +56,10 @@ Write-Host "Updated autorest.md files for all the changed swaggers. `n"
 
 $packages = @()
 $dotnet = Join-Path $RepoRoot ".dotnet"
+ls $dotnet | Write-Host
 $env:PATH = "$dotnet`:" + $env:PATH
+Write-Host $env:PATH
+dotnet --version | Write-Host
 foreach ($sdkPath in $sdksInfo.Keys) {
   $packageName = Split-Path $sdkPath -Leaf
   Write-Host "Generating code for " $packageName
