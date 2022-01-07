@@ -38,7 +38,7 @@ $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
     
-$dotnet = Join-Path $RepoRoot "../.dotnet"
+$dotnet = Join-Path $RepoRoot "dotnetsdk"
 & bash $installScript --install-dir $dotnet --version $dotnetSdkVersion
 
 Write-Host "List dotnet directory"
