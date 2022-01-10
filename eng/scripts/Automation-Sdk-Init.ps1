@@ -44,11 +44,10 @@ $dotnet = Join-Path $RepoRoot "dotnetsdk"
 $env:PATH = "$dotnet`:" + $env:PATH
 dotnet --version | Write-Host
 
-Write-Host "List dotnet directory"
-ls $dotnet | Write-Host
-Write-Host "List RepoRoot directory"
-ls $RepoRoot | Write-Host
-
 if (Test-Path $installScript) {
     Remove-Item $installScript
 }
+
+Write-Host "List dotnet directory"
+ls $dotnet | Write-Host
+dotnet --version | Write-Host
