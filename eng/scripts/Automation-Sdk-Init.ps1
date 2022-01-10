@@ -41,6 +41,7 @@ $installScript = GetDotNetInstallScript
 $dotnet = Join-Path $RepoRoot "dotnetsdk"
 & bash $installScript --install-dir $dotnet --version $dotnetSdkVersion
 
+$env:PATH = "$dotnet`:" + $env:PATH
 dotnet --version | Write-Host
 
 Write-Host "List dotnet directory"
