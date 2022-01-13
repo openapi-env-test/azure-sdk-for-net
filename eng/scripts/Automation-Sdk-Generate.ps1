@@ -50,7 +50,12 @@ foreach ($path in $autorestFilesPath) {
 Write-Host "Updated autorest.md files for all the changed swaggers. `n"
 
 $packages = @()
-$dotnet = Join-Path $RepoRoot "../dotnetsdk"
+if (-not (Test-Path Env:AGENT_TOOLSDIRECTORY))
+{
+  $Env:AGENT_TOOLSDIRECTORY = Join-Path $RepoRoot ".."
+}
+Write-Host $Env:AGENT_TOOLSDIRECTORY
+$dotnet = Join-Path $Env:AGENT_TOOLSDIRECTORY "dotnetsdk"
 Write-Host "List dotnet directory"
 ls $dotnet | Write-Host
 $env:PATH = "$dotnet`:" + $env:PATH
