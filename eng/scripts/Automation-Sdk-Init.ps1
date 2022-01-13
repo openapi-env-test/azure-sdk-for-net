@@ -37,11 +37,16 @@ $GlobalJson = Get-Content -Raw -Path (Join-Path $RepoRoot 'global.json') | Conve
 $dotnetSdkVersion = $GlobalJson.sdk.version
 
 $installScript = GetDotNetInstallScript
-    
-$dotnet = Join-Path $RepoRoot "../dotnetsdk"
+
+if (-not (Test-Path Env:AGENT_TOOLSDIRECTORY))
+{
+  $Env:AGENT_TOOLSDIRECTORY = Join-Path $RepoRoot ".."
+}
+Write-Host $Env:AGENT_TOOLSDIRECTORY
+$dotnet = Join-Path $Env:AGENT_TOOLSDIRECTORY "dotnetsdk"
 & bash $installScript --install-dir $dotnet --version $dotnetSdkVersion
 
-$env:PATH = "$dotnet`:" + $env:PATH
+$Env:PATH = "$dotnet`:" + $Env:PATH
 dotnet --version | Write-Host
 
 if (Test-Path $installScript) {
