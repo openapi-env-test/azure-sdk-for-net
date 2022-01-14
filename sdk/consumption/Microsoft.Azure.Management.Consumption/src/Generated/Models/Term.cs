@@ -12,11 +12,17 @@ namespace Microsoft.Azure.Management.Consumption.Models
 {
 
     /// <summary>
-    /// Defines values for ChargeType.
+    /// Defines values for Term.
     /// </summary>
-    public static class ChargeType
+    public static class Term
     {
-        public const string Actual = "Actual";
-        public const string Forecast = "Forecast";
+        /// <summary>
+        /// 1 year reservation term
+        /// </summary>
+        public const string P1Y = "P1Y";
+        /// <summary>
+        /// 3 year reservation term
+        /// </summary>
+        public const string P3Y = "P3Y";
     }
 }

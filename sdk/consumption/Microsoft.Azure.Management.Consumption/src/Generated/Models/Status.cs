@@ -12,11 +12,15 @@ namespace Microsoft.Azure.Management.Consumption.Models
 {
 
     /// <summary>
-    /// Defines values for CategoryType.
+    /// Defines values for Status.
     /// </summary>
-    public static class CategoryType
+    public static class Status
     {
-        public const string Cost = "Cost";
-        public const string Usage = "Usage";
+        public const string None = "None";
+        public const string Active = "Active";
+        public const string Inactive = "Inactive";
+        public const string Expired = "Expired";
+        public const string Complete = "Complete";
+        public const string Canceled = "Canceled";
     }
 }
