@@ -74,8 +74,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         IOperations Operations { get; }
 
         /// <summary>
-        /// Queries the resources managed by Azure Resource Manager for scopes
-        /// specified in the request.
+        /// Change Test.
         /// </summary>
         /// <param name='query'>
         /// Request specifying query and its options.
@@ -87,6 +86,20 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// The cancellation token.
         /// </param>
         Task<AzureOperationResponse<QueryResponse>> ResourcesWithHttpMessagesAsync(QueryRequest query, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// List all snapshots of a resource for a given time interval.
+        /// </summary>
+        /// <param name='request'>
+        /// Request specifying the query and its options.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<object>> ResourcesHistoryWithHttpMessagesAsync(ResourcesHistoryRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
