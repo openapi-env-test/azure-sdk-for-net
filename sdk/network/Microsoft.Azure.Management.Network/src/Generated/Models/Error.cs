@@ -35,14 +35,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="message">Error message.</param>
         /// <param name="target">Error target.</param>
         /// <param name="details">Error details.</param>
-        /// <param name="innerError">Inner error message.</param>
-        public Error(string code = default(string), string message = default(string), string target = default(string), IList<ErrorDetails> details = default(IList<ErrorDetails>), string innerError = default(string))
+        public Error(string code = default(string), string message = default(string), string target = default(string), IList<ErrorDetails> details = default(IList<ErrorDetails>))
         {
             Code = code;
             Message = message;
             Target = target;
             Details = details;
-            InnerError = innerError;
             CustomInit();
         }
 
@@ -74,12 +72,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "details")]
         public IList<ErrorDetails> Details { get; set; }
-
-        /// <summary>
-        /// Gets or sets inner error message.
-        /// </summary>
-        [JsonProperty(PropertyName = "innerError")]
-        public string InnerError { get; set; }
 
     }
 }
