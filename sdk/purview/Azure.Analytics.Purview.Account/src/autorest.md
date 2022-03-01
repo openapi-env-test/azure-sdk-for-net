@@ -4,7 +4,7 @@ Run `dotnet build /t:GenerateCode` to generate code.
 
 ```yaml
 title: PurviewAccount
-input-file: https://github.com/Azure/azure-rest-api-specs/blob/b2bddfe2e59b5b14e559e0433b6e6d057bcff95d/specification/purview/data-plane/Azure.Analytics.Purview.Account/preview/2019-11-01-preview/account.json
+input-file: https://github.com/openapi-env-test/azure-rest-api-specs/blob/e5ac395ac5df5df7aa5c2a3503c1ef9dc9f81205/specification/purview/data-plane/Azure.Analytics.Purview.Account/preview/2019-11-01-preview/account.json
 namespace: Azure.Analytics.Purview.Account
 data-plane: true
 security: AADToken
