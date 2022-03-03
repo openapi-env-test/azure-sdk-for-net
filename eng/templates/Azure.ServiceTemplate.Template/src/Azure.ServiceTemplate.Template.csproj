@@ -8,6 +8,8 @@
     <NoWarn>$(NoWarn);419;AZC0012</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>$(DefineConstants);EXPERIMENTAL</DefineConstants>
+    <AutoRestInput>ConfigReadmePath</AutoRestInput>
+    <AutoRestAdditionalParameters>AutoRestParamters</AutoRestAdditionalParameters>
   </PropertyGroup>
 
   <!-- Shared source from Azure.Core -->

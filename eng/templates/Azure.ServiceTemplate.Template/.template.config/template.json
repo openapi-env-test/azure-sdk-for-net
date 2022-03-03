@@ -35,6 +35,16 @@
       "source": "./content",
       "target": "../",
       "condition": "(includeCI)"
+    },
+    {
+      "source": "samples",
+      "target": "./",
+      "condition": "(includeTestSample)"
+    },
+    {
+      "source": "tests",
+      "target": "./",
+      "condition": "(includeTestSample)"
     }
   ],
   "symbols": {
@@ -89,6 +99,13 @@
       "isRequired": false,
       "description": "The optional parameter specifies whether generate related pipline ci.yml and test-resources.json in parent folder.",
       "defaultValue": "false"
+    },
+    "includeTestSample": {
+      "type": "parameter",
+      "datatype": "bool",
+      "isRequired": false,
+      "description": "The optional parameter specifies whether generate related tests and samples in parent folder.",
+      "defaultValue": "true"
     },
     "ServiceName": {
       "type": "derived",
@@ -211,6 +228,22 @@
           }
         ]
       }
+    },
+    "autorestInput": {
+      "type": "parameter",
+      "datatype":"text",
+      "isRequired": false,
+      "description": "The autorest input config file",
+      "defaultValue": "",
+      "replaces": "ConfigReadmePath"
+    },
+    "autorestParamters": {
+      "type": "parameter",
+      "datatype":"text",
+      "isRequired": false,
+      "description": "The autorest input parameters",
+      "defaultValue": "",
+      "replaces": "AutoRestParamters"
     }
   },
   "forms": {
