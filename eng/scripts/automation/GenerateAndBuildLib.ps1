@@ -80,7 +80,7 @@ function New-DataPlanePackageFolder() {
     }
   } else {
     Write-Host "Path doesn't exist. create template."
-    if ($inputfile -eq "") {
+    if ($inputfile -eq "" && $readme -eq "") {
         Write-Error "Error: input file should not be empty."
         exit 1
     }
