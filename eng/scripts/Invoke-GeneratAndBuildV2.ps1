@@ -1,6 +1,6 @@
 #Requires -Version 7.0
 param (
-  [string]$inputJsonFile="generateInput.json",
+  [string]$inputJsonFile="eng\scripts\generateInput.json",
   [string]$outputJsonFile="output.json"
 )
 
@@ -17,10 +17,12 @@ $generatedSDKPackages = @()
 
 foreach ( $readmeFile in $readmeFiles ) {
     $readmeFile = $readmeFile -replace "\\", "/"
+    $service = Get-ResourceProviderFromReadme $readmeFile
+    $readmeFile = Join-Path $swaggerDir $readmeFile
     Write-Host "swaggerDir:$swaggerDir, readmeFile:$readmeFile"
 
-    $packageName = Get-ResourceProviderFromReadme $readmeFile
-    $sdkPath =  (Join-Path $PSScriptRoot .. .. ..)
+    
+    $sdkPath =  (Join-Path $PSScriptRoot .. ..)
     $sdkPath = Resolve-Path $sdkPath
     $sdkPath = $sdkPath -replace "\\", "/"
 
@@ -29,14 +31,15 @@ foreach ( $readmeFile in $readmeFiles ) {
     $newpackageoutput = "newPackageOutput.json"
     if ( $serviceType -eq "resource-manager" ) {
         Write-Host "Generate resource-manager SDK client library."
-        New-MgmtPackageFolder -service $service -packageName $packageName -sdkPath $sdkPath -commitid $commitid -readme $swaggerDir/$readmeFile -outputJsonFile $newpackageoutput
+        New-MgmtPackageFolder -service $service -packageName $service -sdkPath $sdkPath -commitid $commitid -readme $swaggerDir/$readmeFile -outputJsonFile $newpackageoutput
         $newpackageoutputJson = Get-Content $newpackageoutput | Out-String | ConvertFrom-Json
         $packagesToGen = $packagesToGen + @($newpackageoutputJson)
         Remove-Item $newpackageoutput
     } else {
         Write-Host "Generate data-plane SDK client library."
-        npx autorest --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj
-        $folders = Get-ChildItem ./ -Directory -exclude *.*Management*,Azure.ResourceManager*
+        npx autorest --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj --clear-output-folder=true
+        $serviceSDKDirectory = (Join-Path $sdkPath sdk $service)
+        $folders = Get-ChildItem $serviceSDKDirectory -Directory -exclude *.*Management*,Azure.ResourceManager*
         $folders |ForEach-Object {
             $folder=$_.Name
             New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkPath -readme $readmeFile -outputJsonFile $newpackageoutput
@@ -44,7 +47,6 @@ foreach ( $readmeFile in $readmeFiles ) {
             $packagesToGen = $packagesToGen + @($newpackageoutputJson)
             Remove-Item $newpackageoutput
         }
-        exit 1
     }
     if ( $? -ne $True) {
         Write-Error "Failed to create sdk project folder. exit code: $?"
@@ -55,6 +57,7 @@ foreach ( $readmeFile in $readmeFiles ) {
     {
         $projectFolder = $newpackageoutputJson.projectFolder
         $path = $newpackageoutputJson.path
+        $service = $newpackageoutputJson.service
         Write-Host "projectFolder:$projectFolder"
 
         Invoke-Generate -sdkfolder $projectFolder
@@ -63,11 +66,12 @@ foreach ( $readmeFile in $readmeFiles ) {
             exit 1
         }
         # Generate APIs
-        $repoRoot = (Join-Path $PSScriptRoot .. .. ..)
+        $repoRoot = (Join-Path $PSScriptRoot .. ..)
+        $repoRoot = Resolve-Path $repoRoot
         Set-Location $repoRoot
         pwsh eng/scripts/Export-API.ps1 $service
 
-        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$packageName"; result='succeeded'; path=@("$path");packageFolder="$path"})
+        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder"})
     }
 }
 
