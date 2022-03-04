@@ -4,7 +4,7 @@ param (
   [string]$outputJsonFile="output.json"
 )
 
-. (Join-Path $PSScriptRoot GenerateAndBuildLib.ps1)
+. (Join-Path $PSScriptRoot automation GenerateAndBuildLib.ps1)
 
 $inputJson = Get-Content $inputJsonFile | Out-String | ConvertFrom-Json
 $swaggerDir = $inputJson.specFolder
@@ -36,10 +36,10 @@ foreach ( $readmeFile in $readmeFiles ) {
     } else {
         Write-Host "Generate data-plane SDK client library."
         npx autorest --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj
-        $folders = Get-ChildItem ./ -Directory -exclude *.*Management*,Azure.*Shared
+        $folders = Get-ChildItem ./ -Directory -exclude *.*Management*,Azure.ResourceManager*
         $folders |ForEach-Object {
             $folder=$_.Name
-            New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkPath -outputJsonFile $newpackageoutput
+            New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkPath -readme $readmeFile -outputJsonFile $newpackageoutput
             $newpackageoutputJson = Get-Content $newpackageoutput | Out-String | ConvertFrom-Json
             $packagesToGen = $packagesToGen + @($newpackageoutputJson)
             Remove-Item $newpackageoutput

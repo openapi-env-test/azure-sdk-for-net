@@ -43,6 +43,7 @@ function New-DataPlanePackageFolder() {
       [string]$inputfiles = "", # input files, separated by semicolon if more than one
       [string]$securityScope = "",
       [string]$securityHeaderName = "",
+      [string]$readme = "",
       [string]$AUTOREST_CONFIG_FILE = "autorest.md",
       [string]$outputJsonFile = "output.json"
   )
@@ -102,6 +103,10 @@ function New-DataPlanePackageFolder() {
 
     if ($securityHeaderName -ne "") {
         $dotnetNewCmd = $dotnetNewCmd + " --securityHeaderName $securityHeaderName";
+    }
+
+    if ($readme -ne "") {
+        $dotnetNewCmd = $dotnetNewCmd + " --autorestInput $readme --includeTestSample false --autorestParamters `"--package-administration`"";
     }
     # dotnet new dataplane --libraryName $libraryName --swagger $inputfile --securityScopes $securityScope --securityHeaderName $securityHeaderName --includeCI true --force
     Write-Host "Invote dotnet new command: $dotnetNewCmd"
