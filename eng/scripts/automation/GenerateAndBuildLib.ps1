@@ -118,7 +118,7 @@ function New-DataPlanePackageFolder() {
     }
 
     if ($readme -ne "") {
-        $dotnetNewCmd = $dotnetNewCmd + " --autorestInput $readme --includeTestSample false --autorestParamters `"--data-plane=true`"";
+        $dotnetNewCmd = $dotnetNewCmd + " --autorestInput $readme --includeTestSample false --autorestParamters `"--data-plane=true --csharp`"";
     }
     # dotnet new dataplane --libraryName $libraryName --swagger $inputfile --securityScopes $securityScope --securityHeaderName $securityHeaderName --includeCI true --force
     Write-Host "Invote dotnet new command: $dotnetNewCmd"
