@@ -12,12 +12,16 @@ $swaggerDir = $swaggerDir -replace "\\", "/"
 $readmeFiles = $inputJson.relatedReadmeMdFiles
 $commitid = $inputJson.headSha
 $serviceType = $inputJson.serviceType
+$repoHttpsUrl = $inputJson.repoHttpsUrl
 
 $generatedSDKPackages = @()
 
-foreach ( $readmeFile in $readmeFiles ) {
-    $readmeFile = $readmeFile -replace "\\", "/"
-    $service = Get-ResourceProviderFromReadme $readmeFile
+foreach ( $relateReadmeFile in $readmeFiles ) {
+    $readmeFile = $relateReadmeFile -replace "\\", "/"
+    # $service = Get-ResourceProviderFromReadme $readmeFile
+    $swaggerInfo = Get-ResourceProviderFromReadme $readmeFile
+    $service = $swaggerInfo[0]
+    $serviceType = $swaggerInfo[1]
     $readmeFile = Join-Path $swaggerDir $readmeFile
     $readmeFile = Resolve-Path $readmeFile
     Write-Host "swaggerDir:$swaggerDir, readmeFile:$readmeFile"
@@ -44,12 +48,13 @@ foreach ( $readmeFile in $readmeFiles ) {
         Remove-Item $newpackageoutput
     } else {
         Write-Host "Generate data-plane SDK client library."
-        npx autorest --version=3.7.3 --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj --clear-output-folder=true
+        $readmeFileurl = "$repoHttpsUrl/blob/$commitid/$relateReadmeFile"
+        npx autorest --version=3.7.3 --csharp $readmeFileurl --csharp-sdks-folder=$sdkPath --skip-csproj --clear-output-folder=true
         $serviceSDKDirectory = (Join-Path $sdkPath sdk $service)
         $folders = Get-ChildItem $serviceSDKDirectory -Directory -exclude *.*Management*,Azure.ResourceManager*
         $folders |ForEach-Object {
             $folder=$_.Name
-            New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkPath -readme $readmeFile -outputJsonFile $newpackageoutput
+            New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkPath -readme $readmeFileurl -outputJsonFile $newpackageoutput
             $newpackageoutputJson = Get-Content $newpackageoutput | Out-String | ConvertFrom-Json
             $packagesToGen = $packagesToGen + @($newpackageoutputJson)
             Remove-Item $newpackageoutput

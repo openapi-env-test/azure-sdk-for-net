@@ -241,17 +241,17 @@ function Invoke-Generate() {
 }
 
 function Get-ResourceProviderFromReadme($readmeFile) {
-    $readmeFileRegex = "(?<specName>.*)/.*/readme.md"
-    $readmeFileRegexWithSpec = "specification/(?<specName>.*)/.*/readme.md"
+    $readmeFileRegex = "(?<specName>.*)/(?<serviceType>.*)/readme.md"
+    $readmeFileRegexWithSpec = "specification/(?<specName>.*)/(?<serviceType>.*)/readme.md"
     try
     {
         if ($readmeFile -match $readmeFileRegexWithSpec)
         {
-            return $matches["specName"]
+            return $matches["specName"], $matches["serviceType"]
         }
         if ($readmeFile -match $readmeFileRegex)
         {
-            return $matches["specName"]
+            return $matches["specName"], $matches["serviceType"]
         }
         
     }
