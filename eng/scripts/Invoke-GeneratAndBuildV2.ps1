@@ -23,6 +23,7 @@ foreach ( $readmeFile in $readmeFiles ) {
 
     if (Test-Path -Path $readmeFile) {
         Write-Host "readme file exists."
+        Get-Content -Path $readmeFile
     } else {
         Write-Host "readme file does not exist."
     }
