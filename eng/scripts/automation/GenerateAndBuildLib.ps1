@@ -79,13 +79,26 @@ function New-DataPlanePackageFolder() {
             (Get-Content $file) -notmatch "- .*.json" |Out-File $file
             (Get-Content $file) -replace $inputfileRex, ("input-file:" + [Environment]::NewLine + "- " + "$inputfile") | Set-Content $file
             if ( $? -ne $True) {
-            Write-Error "Failed to update autorest.md. exit code: $?"
-            exit 1
+                Write-Error "Failed to update autorest.md. exit code: $?"
+                exit 1
             }
         } else {
             Write-Error "autorest.md doesn't exist."
             exit 1
         }
+    }
+    if ($readme -ne "") {
+        if (Test-Path -Path $file) {
+            Write-Host "Updating autorest.md file."
+            $inputfileRex = "input-file *:"
+            (Get-Content $file) -notmatch "- .*.json" |Out-File $file
+            $requirefile = $readme + [Environment]::NewLine + "- " + $readme.Replace("readme.md", "readme.csharp.md")
+            (Get-Content $file) -replace $inputfileRex, ("require:" + [Environment]::NewLine + "- " + "$requirefile") | Set-Content $file
+            if ( $? -ne $True) {
+                Write-Error "Failed to update autorest.md. exit code: $?"
+                exit 1
+            }
+        } 
     }
   } else {
     Write-Host "Path doesn't exist. create template."
@@ -124,6 +137,20 @@ function New-DataPlanePackageFolder() {
     Write-Host "Invote dotnet new command: $dotnetNewCmd"
     Invoke-Expression $dotnetNewCmd
 
+    if ($readme -ne "") {
+        $file = (Join-Path $projectFolder "src" $AUTOREST_CONFIG_FILE)
+        if (Test-Path -Path $file) {
+            Write-Host "Updating autorest.md file."
+            $inputfileRex = "input-file *:"
+            (Get-Content $file) -notmatch "- .*.json" |Out-File $file
+            $requirefile = $readme + [Environment]::NewLine + "- " + $readme.Replace("readme.md", "readme.csharp.md")
+            (Get-Content $file) -replace $inputfileRex, ("require:" + [Environment]::NewLine + "- " + "$requirefile") | Set-Content $file
+            if ( $? -ne $True) {
+                Write-Error "Failed to update autorest.md. exit code: $?"
+                exit 1
+            }
+        } 
+    }
     # dotnet sln
     dotnet sln remove src\$namespace.csproj
     dotnet sln add src\$namespace.csproj

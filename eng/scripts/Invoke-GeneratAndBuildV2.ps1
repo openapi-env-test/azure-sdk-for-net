@@ -19,6 +19,7 @@ foreach ( $readmeFile in $readmeFiles ) {
     $readmeFile = $readmeFile -replace "\\", "/"
     $service = Get-ResourceProviderFromReadme $readmeFile
     $readmeFile = Join-Path $swaggerDir $readmeFile
+    $readmeFile = Resolve-Path $readmeFile
     Write-Host "swaggerDir:$swaggerDir, readmeFile:$readmeFile"
 
     if (Test-Path -Path $readmeFile) {
@@ -43,7 +44,7 @@ foreach ( $readmeFile in $readmeFiles ) {
         Remove-Item $newpackageoutput
     } else {
         Write-Host "Generate data-plane SDK client library."
-        npx autorest --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj --clear-output-folder=true
+        npx autorest --version=3.7.3 --csharp $readmeFile --csharp-sdks-folder=$sdkPath --skip-csproj --clear-output-folder=true
         $serviceSDKDirectory = (Join-Path $sdkPath sdk $service)
         $folders = Get-ChildItem $serviceSDKDirectory -Directory -exclude *.*Management*,Azure.ResourceManager*
         $folders |ForEach-Object {
