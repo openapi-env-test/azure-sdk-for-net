@@ -53,7 +53,7 @@ function New-DataPlanePackageFolder() {
   $inputfile = ""
   $fileArray = $inputfiles.Split(";")
   if ($inputfiles -ne "" && $fileArray.Length -gt 0) {
-    $inputfile = $fileArray[0];
+    $inputfile = "- " + $fileArray[0];
     for ($i = 1; $i -lt $fileArray.Count ; $i++) {
         $inputfile = $inputfile + [Environment]::NewLine + "- " + $fileArray[$i]
     }
@@ -93,6 +93,7 @@ function New-DataPlanePackageFolder() {
             $inputfileRex = "input-file *:"
             (Get-Content $file) -notmatch "- .*.json" |Out-File $file
             $requirefile = $readme + [Environment]::NewLine + "- " + $readme.Replace("readme.md", "readme.csharp.md")
+            $requirefile = $requirefile + [Environment]::NewLine + "csharp: true";
             (Get-Content $file) -replace $inputfileRex, ("require:" + [Environment]::NewLine + "- " + "$requirefile") | Set-Content $file
             if ( $? -ne $True) {
                 Write-Error "Failed to update autorest.md. exit code: $?"
