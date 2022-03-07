@@ -21,6 +21,11 @@ foreach ( $readmeFile in $readmeFiles ) {
     $readmeFile = Join-Path $swaggerDir $readmeFile
     Write-Host "swaggerDir:$swaggerDir, readmeFile:$readmeFile"
 
+    if (Test-Path -Path $readmeFile) {
+        Write-Host "readme file exists."
+    } else {
+        Write-Host "readme file does not exist."
+    }
     
     $sdkPath =  (Join-Path $PSScriptRoot .. ..)
     $sdkPath = Resolve-Path $sdkPath
@@ -31,7 +36,7 @@ foreach ( $readmeFile in $readmeFiles ) {
     $newpackageoutput = "newPackageOutput.json"
     if ( $serviceType -eq "resource-manager" ) {
         Write-Host "Generate resource-manager SDK client library."
-        New-MgmtPackageFolder -service $service -packageName $service -sdkPath $sdkPath -commitid $commitid -readme $swaggerDir/$readmeFile -outputJsonFile $newpackageoutput
+        New-MgmtPackageFolder -service $service -packageName $service -sdkPath $sdkPath -commitid $commitid -readme $readmeFile -outputJsonFile $newpackageoutput
         $newpackageoutputJson = Get-Content $newpackageoutput | Out-String | ConvertFrom-Json
         $packagesToGen = $packagesToGen + @($newpackageoutputJson)
         Remove-Item $newpackageoutput

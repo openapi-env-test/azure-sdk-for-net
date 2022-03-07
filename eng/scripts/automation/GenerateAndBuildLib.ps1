@@ -62,6 +62,11 @@ function New-DataPlanePackageFolder() {
   $projectFolder=(Join-Path $sdkPath "sdk" $service $namespace)
   $apifolder = (Join-Path $projectFolder "api")
   Write-Host "projectFolder:$projectFolder, apifolder:$apifolder"
+  if ($readme -ne "") {
+    if (Test-Path -Path $projectFolder) {
+        Get-ChildItem -Path $projectFolder -Include * | remove-Item -recurse
+    }
+  }
   if ((Test-Path -Path $projectFolder) -And (Test-Path -Path $apifolder)) {
     Write-Host "Path exists!"
       # update the input-file url if needed.
