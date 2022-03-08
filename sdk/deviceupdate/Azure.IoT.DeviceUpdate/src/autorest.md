@@ -8,7 +8,10 @@ Run `generate.ps1` or `dotnet msbuild /t:GenerateCode` to generate code.
 ``` yaml
 public-clients: true
 title: DeviceUpdate
-input-file: https://github.com/dpokluda/azure-rest-api-specs/blob/0161086e0d0a91dd1ef313dfce138be2fec0ab11/specification/deviceupdate/data-plane/Microsoft.DeviceUpdate/preview/2021-06-01-preview/deviceupdate.json
+require:
+- https://github.com/openapi-env-test/azure-rest-api-specs/blob/85e99c7305c5319f1a65603e6dbb707d75910bd0/specification/deviceupdate/data-plane/readme.md
+- https://github.com/openapi-env-test/azure-rest-api-specs/blob/85e99c7305c5319f1a65603e6dbb707d75910bd0/specification/deviceupdate/data-plane/readme.csharp.md
+csharp: true
 namespace: Azure.IoT.DeviceUpdate
 data-plane: true
 security: AADToken
