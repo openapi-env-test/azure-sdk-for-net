@@ -70,6 +70,7 @@ foreach ( $relateReadmeFile in $readmeFiles ) {
         $projectFolder = $newpackageoutputJson.projectFolder
         $path = $newpackageoutputJson.path
         $service = $newpackageoutputJson.service
+        $packageName = $newpackageoutputJson.packageName
         Write-Host "projectFolder:$projectFolder"
 
         Invoke-Generate -sdkfolder $projectFolder
@@ -77,13 +78,17 @@ foreach ( $relateReadmeFile in $readmeFiles ) {
             Write-Error "Failed to generate sdk. exit code: $?"
             exit 1
         }
+        # pack
+        Invoke-Pack -sdkfolder $projectFolder
         # Generate APIs
         $repoRoot = (Join-Path $PSScriptRoot .. ..)
         $repoRoot = Resolve-Path $repoRoot
         Set-Location $repoRoot
         pwsh eng/scripts/Export-API.ps1 $service
 
-        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder"})
+        $artifactsPath = "$RepoRoot/artifacts/packages/Debug/$packageName"
+        $artifacts += Get-ChildItem $artifactsPath -Filter *.nupkg -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
+        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder";artifacts=$artifacts})
     }
 }
 
