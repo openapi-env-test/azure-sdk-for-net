@@ -100,7 +100,7 @@ function New-DataPlanePackageFolder() {
                 Write-Error "Failed to update autorest.md. exit code: $?"
                 exit 1
             }
-        } 
+        }
     }
   } else {
     Write-Host "Path doesn't exist. create template."
@@ -151,7 +151,7 @@ function New-DataPlanePackageFolder() {
                 Write-Error "Failed to update autorest.md. exit code: $?"
                 exit 1
             }
-        } 
+        }
     }
     # dotnet sln
     dotnet sln remove src\$namespace.csproj
@@ -186,7 +186,7 @@ function New-MgmtPackageFolder() {
         [string]$AUTOREST_CONFIG_FILE = "autorest.md",
         [string]$outputJsonFile = "newPacakgeOutput.json"
     )
-  
+
     $projectFolder="$sdkPath/sdk/$packageName/Azure.ResourceManager.*"
     if (Test-Path -Path $projectFolder) {
       Write-Host "Path exists!"
@@ -203,7 +203,7 @@ function New-MgmtPackageFolder() {
       dotnet new azuremgmt --provider $packageName --includeCI true --force
       Pop-Location
     }
-  
+
     # update the readme url if needed.
     if ($commitid -ne "") {
       Write-Host "Updating autorest.md file."
@@ -221,20 +221,20 @@ function New-MgmtPackageFolder() {
       $rquirefileRex = "require *:.*.md"
       $file="$projectFolder/src/$AUTOREST_CONFIG_FILE"
       (Get-Content $file) -replace $rquirefileRex, "$requirefile" | Set-Content $file
-  
+
       $readmefilestr = Get-Content $file
       Write-Output "autorest.md:$readmefilestr"
     }
-  
+
     $path=$projectFolder
     $path=$path.Replace($sdkPath + "/", "")
     $outputJson = [PSCustomObject]@{
       projectFolder = $projectFolder
       path = $path
     }
-  
+
     $outputJson | ConvertTo-Json -depth 100 | Out-File $outputJsonFile
-  
+
     return $projectFolder
 }
 function Invoke-Generate() {
@@ -269,7 +269,7 @@ function Get-ResourceProviderFromReadme($readmeFile) {
         {
             return $matches["specName"], $matches["serviceType"]
         }
-        
+
     }
     catch
     {
@@ -278,4 +278,20 @@ function Get-ResourceProviderFromReadme($readmeFile) {
     }
     Write-Host "Cannot find resouce provider info"
     # exit 1
+}
+function Get-ResourceProviderFromReadme($readmeFile) {
+    $readmeFileRegex = "(?<specName>.*)/resource-manager/readme.md"
+    try
+    {
+        if ($readmeFile -match $readmeFileRegex)
+        {
+            return $matches["specName"]
+        }
+    }
+    catch
+    {
+        Write-Error "Error parsing readme info"
+        Write-Error $_
+    }
+    Write-Host "Cannot find resource provider info"
 }
