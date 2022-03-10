@@ -75,29 +75,14 @@ namespace Microsoft.Azure.Management.Advisor
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IRecommendationMetadataOperations.
-        /// </summary>
-        public virtual IRecommendationMetadataOperations RecommendationMetadata { get; private set; }
-
-        /// <summary>
-        /// Gets the IConfigurationsOperations.
-        /// </summary>
-        public virtual IConfigurationsOperations Configurations { get; private set; }
-
-        /// <summary>
-        /// Gets the IRecommendationsOperations.
-        /// </summary>
-        public virtual IRecommendationsOperations Recommendations { get; private set; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the ISuppressionsOperations.
+        /// Gets the IAdvisorScoresOperations.
         /// </summary>
-        public virtual ISuppressionsOperations Suppressions { get; private set; }
+        public virtual IAdvisorScoresOperations AdvisorScores { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AdvisorManagementClient class.
@@ -340,13 +325,10 @@ namespace Microsoft.Azure.Management.Advisor
         /// </summary>
         private void Initialize()
         {
-            RecommendationMetadata = new RecommendationMetadataOperations(this);
-            Configurations = new ConfigurationsOperations(this);
-            Recommendations = new RecommendationsOperations(this);
             Operations = new Operations(this);
-            Suppressions = new SuppressionsOperations(this);
+            AdvisorScores = new AdvisorScoresOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2017-04-19";
+            ApiVersion = "2022-07-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -363,7 +345,6 @@ namespace Microsoft.Azure.Management.Advisor
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -377,7 +358,6 @@ namespace Microsoft.Azure.Management.Advisor
                     }
             };
             CustomInitialize();
-            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }

@@ -19,11 +19,8 @@ namespace Microsoft.Azure.Management.Advisor
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Advisor", "Configurations", "2017-04-19"),
-                new Tuple<string, string, string>("Advisor", "Operations", "2017-04-19"),
-                new Tuple<string, string, string>("Advisor", "RecommendationMetadata", "2017-04-19"),
-                new Tuple<string, string, string>("Advisor", "Recommendations", "2017-04-19"),
-                new Tuple<string, string, string>("Advisor", "Suppressions", "2017-04-19"),
+                new Tuple<string, string, string>("Advisor", "AdvisorScores", "2022-07-01"),
+                new Tuple<string, string, string>("Advisor", "Operations", "2022-07-01"),
               }.AsEnumerable();
           }
       }

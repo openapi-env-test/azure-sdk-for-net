@@ -70,29 +70,14 @@ namespace Microsoft.Azure.Management.Advisor
 
 
         /// <summary>
-        /// Gets the IRecommendationMetadataOperations.
-        /// </summary>
-        IRecommendationMetadataOperations RecommendationMetadata { get; }
-
-        /// <summary>
-        /// Gets the IConfigurationsOperations.
-        /// </summary>
-        IConfigurationsOperations Configurations { get; }
-
-        /// <summary>
-        /// Gets the IRecommendationsOperations.
-        /// </summary>
-        IRecommendationsOperations Recommendations { get; }
-
-        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the ISuppressionsOperations.
+        /// Gets the IAdvisorScoresOperations.
         /// </summary>
-        ISuppressionsOperations Suppressions { get; }
+        IAdvisorScoresOperations AdvisorScores { get; }
 
     }
 }
