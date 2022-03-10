@@ -15,8 +15,6 @@ namespace Azure.IoT.DeviceUpdate
         public virtual System.Threading.Tasks.Task<Azure.Response> DeleteDeploymentAsync(string groupId, string deploymentId, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Response DeleteGroup(string groupId, Azure.RequestContext context = null) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Response> DeleteGroupAsync(string groupId, Azure.RequestContext context = null) { throw null; }
-        public virtual Azure.Pageable<System.BinaryData> GetBestUpdatesForGroups(string groupId, string filter = null, Azure.RequestContext context = null) { throw null; }
-        public virtual Azure.AsyncPageable<System.BinaryData> GetBestUpdatesForGroupsAsync(string groupId, string filter = null, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Response GetDeployment(string groupId, string deploymentId, Azure.RequestContext context = null) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Response> GetDeploymentAsync(string groupId, string deploymentId, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Pageable<System.BinaryData> GetDeploymentDevices(string groupId, string deploymentId, string filter = null, Azure.RequestContext context = null) { throw null; }
