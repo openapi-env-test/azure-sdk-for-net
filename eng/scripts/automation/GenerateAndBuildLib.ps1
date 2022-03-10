@@ -279,19 +279,3 @@ function Get-ResourceProviderFromReadme($readmeFile) {
     Write-Host "Cannot find resouce provider info"
     # exit 1
 }
-function Get-ResourceProviderFromReadme($readmeFile) {
-    $readmeFileRegex = "(?<specName>.*)/resource-manager/readme.md"
-    try
-    {
-        if ($readmeFile -match $readmeFileRegex)
-        {
-            return $matches["specName"]
-        }
-    }
-    catch
-    {
-        Write-Error "Error parsing readme info"
-        Write-Error $_
-    }
-    Write-Host "Cannot find resource provider info"
-}
