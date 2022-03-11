@@ -68,7 +68,9 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// 'TYO01', 'BN1', 'SN5', 'CYS04', 'TYO22', 'YTO21', 'YQB20', 'FRA22',
         /// 'MAA01', 'CPQ02', 'CPQ20', 'SIN20', 'HKG20', 'SG2', 'MEL23',
         /// 'SEL21', 'OSA20', 'SHA03', 'BJB', 'JNB22', 'JNB21', 'MNZ21', 'SN8',
-        /// 'AUH20', 'ZRH20', 'PUS20', 'AdHoc', 'CH1', 'DSM05'</param>
+        /// 'AUH20', 'ZRH20', 'PUS20', 'AdHoc', 'CH1', 'DSM05', 'DUB07',
+        /// 'PNQ01', 'SVG20', 'OSA02', 'OSA22', 'PAR22', 'BN7', 'SN6',
+        /// 'BJS20'</param>
         /// <param name="copyProgress">Copy progress per account.</param>
         /// <param name="devicePassword">Set Device password for unlocking
         /// Databox Heavy. Should not be passed for

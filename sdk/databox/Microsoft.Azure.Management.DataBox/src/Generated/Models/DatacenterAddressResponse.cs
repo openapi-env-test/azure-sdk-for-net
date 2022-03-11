@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Datacenter address for given storage location.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("DatacenterAddressResponse")]
     public partial class DatacenterAddressResponse
     {
         /// <summary>
