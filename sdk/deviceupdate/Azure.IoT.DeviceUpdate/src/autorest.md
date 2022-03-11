@@ -9,8 +9,8 @@ Run `generate.ps1` or `dotnet msbuild /t:GenerateCode` to generate code.
 public-clients: true
 title: DeviceUpdate
 require:
-- /mnt/vss/_work/1/s/azure-rest-api-specs/specification/deviceupdate/data-plane/readme.md
-- /mnt/vss/_work/1/s/azure-rest-api-specs/specification/deviceupdate/data-plane/readme.csharp.md
+- https://github.com/openapi-env-test/azure-rest-api-specs/blob/af875050be56ffc312d536f0b7507e7ecc16e818/specification/deviceupdate/data-plane/readme.md
+- https://github.com/openapi-env-test/azure-rest-api-specs/blob/af875050be56ffc312d536f0b7507e7ecc16e818/specification/deviceupdate/data-plane/readme.csharp.md
 csharp: true
 namespace: Azure.IoT.DeviceUpdate
 data-plane: true

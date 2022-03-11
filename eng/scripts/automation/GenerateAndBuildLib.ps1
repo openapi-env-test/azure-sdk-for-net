@@ -6,7 +6,7 @@ function Get-SwaggerInfo()
         [string]$dir,
         [string]$AUTOREST_CONFIG_FILE = "autorest.md"
     )
-    Set-Location $dir
+    Push-Location $dir
     $swaggerInfoRegex = ".*github.*.com\/(?<org>.*)\/azure-rest-api-specs\/blob\/(?<commitID>[0-9a-f]{40})\/specification\/(?<specName>.*)\/resource-manager\/readme.md"
     $rawSwaggerInfoRegex = ".*github.*.com\/(?<org>.*)\/azure-rest-api-specs\/(?<commitID>[0-9a-f]{40})\/specification\/(?<specName>.*)\/resource-manager\/readme.md"
     $swaggerNoCommitRegex = ".*github.*.com\/(?<org>.*)\/azure-rest-api-specs\/(blob\/)?(?<branch>.*)\/specification\/(?<specName>.*)\/resource-manager\/readme.md"
@@ -32,6 +32,7 @@ function Get-SwaggerInfo()
         Write-Error $_
     }
     Write-Host "Cannot find swagger info"
+    Pop-Location
     exit 1
 }
 
@@ -99,7 +100,7 @@ function New-DataPlanePackageFolder() {
                 Write-Error "Failed to update autorest.md. exit code: $?"
                 exit 1
             }
-        } 
+        }
     }
   } else {
     Write-Host "Path doesn't exist. create template."
@@ -110,7 +111,7 @@ function New-DataPlanePackageFolder() {
     dotnet new -i $sdkPath/eng/templates/Azure.ServiceTemplate.Template
     Write-Host "Create project folder $projectFolder"
     New-Item -Path $projectFolder -ItemType Directory
-    Set-Location $projectFolder
+    Push-Location $projectFolder
     $namespaceArray = $namespace.Split(".")
     if ( $namespaceArray.Count -lt 3) {
         Write-Error "Error: invalid namespace name."
@@ -150,19 +151,25 @@ function New-DataPlanePackageFolder() {
                 Write-Error "Failed to update autorest.md. exit code: $?"
                 exit 1
             }
-        } 
+        }
     }
     # dotnet sln
     dotnet sln remove src\$namespace.csproj
     dotnet sln add src\$namespace.csproj
     dotnet sln remove tests\$namespace.Tests.csproj
     dotnet sln add tests\$namespace.Tests.csproj
+    Pop-Location
   }
+
+  Push-Location $sdkPath
+  $relativeFolderPath = Resolve-Path $projectFolder -Relative
+  Pop-Location
 
   $outputJson = [PSCustomObject]@{
     service = $service
+    packageName = $namespace
     projectFolder = $projectFolder
-    path = @()
+    path = @($relativeFolderPath)
   }
 
   $outputJson | ConvertTo-Json -depth 100 | Out-File $outputJsonFile
@@ -179,7 +186,7 @@ function New-MgmtPackageFolder() {
         [string]$AUTOREST_CONFIG_FILE = "autorest.md",
         [string]$outputJsonFile = "newPacakgeOutput.json"
     )
-  
+
     $projectFolder="$sdkPath/sdk/$packageName/Azure.ResourceManager.*"
     if (Test-Path -Path $projectFolder) {
       Write-Host "Path exists!"
@@ -192,12 +199,11 @@ function New-MgmtPackageFolder() {
       $projectFolder="$sdkPath/sdk/$packageName/Azure.ResourceManager.$packageName"
       Write-Host "Create project folder $projectFolder"
       New-Item -Path $projectFolder -ItemType Directory
-      # Set-Location $projectFolder
       Push-Location $projectFolder
       dotnet new azuremgmt --provider $packageName --includeCI true --force
       Pop-Location
     }
-  
+
     # update the readme url if needed.
     if ($commitid -ne "") {
       Write-Host "Updating autorest.md file."
@@ -215,20 +221,20 @@ function New-MgmtPackageFolder() {
       $rquirefileRex = "require *:.*.md"
       $file="$projectFolder/src/$AUTOREST_CONFIG_FILE"
       (Get-Content $file) -replace $rquirefileRex, "$requirefile" | Set-Content $file
-  
+
       $readmefilestr = Get-Content $file
       Write-Output "autorest.md:$readmefilestr"
     }
-  
+
     $path=$projectFolder
     $path=$path.Replace($sdkPath + "/", "")
     $outputJson = [PSCustomObject]@{
       projectFolder = $projectFolder
       path = $path
     }
-  
+
     $outputJson | ConvertTo-Json -depth 100 | Out-File $outputJsonFile
-  
+
     return $projectFolder
 }
 function Invoke-Generate() {
@@ -236,24 +242,34 @@ function Invoke-Generate() {
         [string]$sdkfolder= ""
     )
     $sdkfolder = $sdkfolder -replace "\\", "/"
-    Set-Location $sdkfolder/src
+    Push-Location $sdkfolder/src
     dotnet build /t:GenerateCode
+    Pop-Location
 }
 
+function Invoke-Pack() {
+    param(
+        [string]$sdkfolder= ""
+    )
+    $sdkfolder = $sdkfolder -replace "\\", "/"
+    Push-Location $sdkfolder
+    dotnet pack
+    Pop-Location
+}
 function Get-ResourceProviderFromReadme($readmeFile) {
-    $readmeFileRegex = "(?<specName>.*)/.*/readme.md"
-    $readmeFileRegexWithSpec = "specification/(?<specName>.*)/.*/readme.md"
+    $readmeFileRegex = "(?<specName>.*)/(?<serviceType>.*)/readme.md"
+    $readmeFileRegexWithSpec = "specification/(?<specName>.*)/(?<serviceType>.*)/readme.md"
     try
     {
         if ($readmeFile -match $readmeFileRegexWithSpec)
         {
-            return $matches["specName"]
+            return $matches["specName"], $matches["serviceType"]
         }
         if ($readmeFile -match $readmeFileRegex)
         {
-            return $matches["specName"]
+            return $matches["specName"], $matches["serviceType"]
         }
-        
+
     }
     catch
     {

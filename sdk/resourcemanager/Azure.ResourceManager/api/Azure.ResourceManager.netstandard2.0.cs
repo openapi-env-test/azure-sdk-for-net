@@ -130,8 +130,8 @@ namespace Azure.ResourceManager.Management
         public virtual Azure.AsyncPageable<Azure.ResourceManager.Management.Models.DescendantInfo> GetDescendantsAsync(string skiptoken = null, int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.ResourceManager.Resources.ManagementGroupPolicyDefinitionCollection GetManagementGroupPolicyDefinitions() { throw null; }
         public virtual Azure.ResourceManager.Resources.ManagementGroupPolicySetDefinitionCollection GetManagementGroupPolicySetDefinitions() { throw null; }
-        public virtual Azure.Response<Azure.ResourceManager.Management.ManagementGroup> Update(Azure.ResourceManager.Management.Models.ManagementGroupUpdateOptions options, string cacheControl = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Management.ManagementGroup>> UpdateAsync(Azure.ResourceManager.Management.Models.ManagementGroupUpdateOptions options, string cacheControl = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.Response<Azure.ResourceManager.Management.ManagementGroup> Update(Azure.ResourceManager.Management.Models.PatchableManagementGroupData data, string cacheControl = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Management.ManagementGroup>> UpdateAsync(Azure.ResourceManager.Management.Models.PatchableManagementGroupData data, string cacheControl = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
     }
     public partial class ManagementGroupCollection : Azure.ResourceManager.Core.ArmCollection, System.Collections.Generic.IAsyncEnumerable<Azure.ResourceManager.Management.ManagementGroup>, System.Collections.Generic.IEnumerable<Azure.ResourceManager.Management.ManagementGroup>, System.Collections.IEnumerable
     {
@@ -199,7 +199,7 @@ namespace Azure.ResourceManager.Management.Models
     {
         internal DescendantInfo() { }
         public string DisplayName { get { throw null; } }
-        public Azure.ResourceManager.Management.Models.DescendantParentGroupInfo Parent { get { throw null; } }
+        public string ParentId { get { throw null; } }
     }
     public partial class DescendantParentGroupInfo
     {
@@ -285,12 +285,6 @@ namespace Azure.ResourceManager.Management.Models
         public string DisplayName { get { throw null; } }
         public string Name { get { throw null; } }
     }
-    public partial class ManagementGroupUpdateOptions
-    {
-        public ManagementGroupUpdateOptions() { }
-        public string DisplayName { get { throw null; } set { } }
-        public string ParentGroupId { get { throw null; } set { } }
-    }
     public enum NameUnavailableReason
     {
         Invalid = 0,
@@ -302,6 +296,12 @@ namespace Azure.ResourceManager.Management.Models
         public string DisplayName { get { throw null; } }
         public string Id { get { throw null; } }
         public string Name { get { throw null; } }
+    }
+    public partial class PatchableManagementGroupData
+    {
+        public PatchableManagementGroupData() { }
+        public string DisplayName { get { throw null; } set { } }
+        public string ParentGroupId { get { throw null; } set { } }
     }
 }
 namespace Azure.ResourceManager.Models
@@ -572,7 +572,7 @@ namespace Azure.ResourceManager.Resources
     public partial class FeatureData : Azure.ResourceManager.Models.ResourceData
     {
         internal FeatureData() { }
-        public Azure.ResourceManager.Resources.Models.FeatureProperties Properties { get { throw null; } }
+        public string FeatureState { get { throw null; } }
     }
     public partial class GenericResource : Azure.ResourceManager.Core.ArmResource
     {
@@ -884,8 +884,8 @@ namespace Azure.ResourceManager.Resources
         public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.ResourceGroup>> RemoveTagAsync(string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.Response<Azure.ResourceManager.Resources.ResourceGroup> SetTags(System.Collections.Generic.IDictionary<string, string> tags, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.ResourceGroup>> SetTagsAsync(System.Collections.Generic.IDictionary<string, string> tags, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.Response<Azure.ResourceManager.Resources.ResourceGroup> Update(Azure.ResourceManager.Resources.Models.ResourceGroupUpdateOptions options, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.ResourceGroup>> UpdateAsync(Azure.ResourceManager.Resources.Models.ResourceGroupUpdateOptions options, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.Response<Azure.ResourceManager.Resources.ResourceGroup> Update(Azure.ResourceManager.Resources.Models.PatchableResourceGroupData data, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.ResourceGroup>> UpdateAsync(Azure.ResourceManager.Resources.Models.PatchableResourceGroupData data, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.ResourceManager.ArmOperation ValidateMoveResources(bool waitForCompletion, Azure.ResourceManager.Resources.Models.ResourcesMoveInfo parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.ResourceManager.ArmOperation> ValidateMoveResourcesAsync(bool waitForCompletion, Azure.ResourceManager.Resources.Models.ResourcesMoveInfo parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
     }
@@ -910,7 +910,7 @@ namespace Azure.ResourceManager.Resources
     {
         public ResourceGroupData(Azure.Core.AzureLocation location) : base (default(Azure.Core.AzureLocation)) { }
         public string ManagedBy { get { throw null; } set { } }
-        public Azure.ResourceManager.Resources.Models.ResourceGroupProperties Properties { get { throw null; } set { } }
+        public string ResourceGroupProvisioningState { get { throw null; } }
     }
     public partial class ResourceLink : Azure.ResourceManager.Core.ArmResource
     {
@@ -1093,13 +1093,13 @@ namespace Azure.ResourceManager.Resources
         public virtual System.Threading.Tasks.Task<Azure.ResourceManager.ArmOperation> DeleteAsync(bool waitForCompletion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.Response<Azure.ResourceManager.Resources.TagResource> Get(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.TagResource>> GetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.Response<Azure.ResourceManager.Resources.TagResource> Update(Azure.ResourceManager.Resources.Models.TagResourceUpdateOptions options, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.TagResource>> UpdateAsync(Azure.ResourceManager.Resources.Models.TagResourceUpdateOptions options, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.Response<Azure.ResourceManager.Resources.TagResource> Update(Azure.ResourceManager.Resources.Models.PatchableTagResourceData data, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response<Azure.ResourceManager.Resources.TagResource>> UpdateAsync(Azure.ResourceManager.Resources.Models.PatchableTagResourceData data, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
     }
     public partial class TagResourceData : Azure.ResourceManager.Models.ResourceData
     {
         public TagResourceData(Azure.ResourceManager.Resources.Models.Tag properties) { }
-        public Azure.ResourceManager.Resources.Models.Tag Properties { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, string> TagValues { get { throw null; } }
     }
     public partial class Tenant : Azure.ResourceManager.Core.ArmResource
     {
@@ -1485,6 +1485,20 @@ namespace Azure.ResourceManager.Resources.Models
         public ParameterValuesValue() { }
         public object Value { get { throw null; } set { } }
     }
+    public partial class PatchableResourceGroupData
+    {
+        public PatchableResourceGroupData() { }
+        public string ManagedBy { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public string ResourceGroupProvisioningState { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> Tags { get { throw null; } }
+    }
+    public partial class PatchableTagResourceData
+    {
+        public PatchableTagResourceData() { }
+        public Azure.ResourceManager.Resources.Models.TagsPatchOperation? Operation { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, string> TagValues { get { throw null; } }
+    }
     public partial class Permission
     {
         internal Permission() { }
@@ -1606,7 +1620,7 @@ namespace Azure.ResourceManager.Resources.Models
     public partial class ProviderRegistrationOptions
     {
         public ProviderRegistrationOptions() { }
-        public Azure.ResourceManager.Resources.Models.ProviderConsentDefinition ThirdPartyProviderConsent { get { throw null; } set { } }
+        public bool? ConsentToAuthorization { get { throw null; } set { } }
     }
     public partial class ProviderResourceType
     {
@@ -1674,14 +1688,6 @@ namespace Azure.ResourceManager.Resources.Models
     {
         public ResourceGroupProperties() { }
         public string ProvisioningState { get { throw null; } }
-    }
-    public partial class ResourceGroupUpdateOptions
-    {
-        public ResourceGroupUpdateOptions() { }
-        public string ManagedBy { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public Azure.ResourceManager.Resources.Models.ResourceGroupProperties Properties { get { throw null; } set { } }
-        public System.Collections.Generic.IDictionary<string, string> Tags { get { throw null; } }
     }
     public partial class ResourceLinkProperties
     {
@@ -1761,13 +1767,7 @@ namespace Azure.ResourceManager.Resources.Models
     public partial class Tag
     {
         public Tag() { }
-        public System.Collections.Generic.IDictionary<string, string> TagsValue { get { throw null; } }
-    }
-    public partial class TagResourceUpdateOptions
-    {
-        public TagResourceUpdateOptions() { }
-        public Azure.ResourceManager.Resources.Models.TagsPatchOperation? Operation { get { throw null; } set { } }
-        public Azure.ResourceManager.Resources.Models.Tag Properties { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, string> TagValues { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct TagsPatchOperation : System.IEquatable<Azure.ResourceManager.Resources.Models.TagsPatchOperation>
