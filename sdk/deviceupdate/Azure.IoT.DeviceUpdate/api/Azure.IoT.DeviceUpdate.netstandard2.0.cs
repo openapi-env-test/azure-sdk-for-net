@@ -63,8 +63,8 @@ namespace Azure.IoT.DeviceUpdate
         public virtual System.Threading.Tasks.Task<Azure.Operation<System.BinaryData>> ImportDevicesAsync(bool waitForCompletion, string action, Azure.Core.RequestContent content, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Response RetryDeployment(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Response> RetryDeploymentAsync(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
-        public virtual Azure.Response StopDeployment(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
-        public virtual System.Threading.Tasks.Task<Azure.Response> StopDeploymentAsync(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.Response StopDeploymentAAA(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response> StopDeploymentAAAAsync(string groupId, string deploymentId, string action, Azure.RequestContext context = null) { throw null; }
     }
     public partial class DeviceUpdateClient
     {
