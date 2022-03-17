@@ -73,8 +73,8 @@ namespace Azure.IoT.DeviceUpdate
         public virtual Azure.Core.Pipeline.HttpPipeline Pipeline { get { throw null; } }
         public virtual Azure.Operation<System.BinaryData> DeleteUpdate(bool waitForCompletion, string provider, string name, string version, Azure.RequestContext context = null) { throw null; }
         public virtual System.Threading.Tasks.Task<Azure.Operation<System.BinaryData>> DeleteUpdateAsync(bool waitForCompletion, string provider, string name, string version, Azure.RequestContext context = null) { throw null; }
-        public virtual Azure.Response GetFile(string provider, string name, string version, string fileId, Azure.ETag? ifNoneMatch = default(Azure.ETag?), Azure.RequestContext context = null) { throw null; }
-        public virtual System.Threading.Tasks.Task<Azure.Response> GetFileAsync(string provider, string name, string version, string fileId, Azure.ETag? ifNoneMatch = default(Azure.ETag?), Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.Response GetFile(string provider, string name, string version, string fileIdAAA, Azure.ETag? ifNoneMatch = default(Azure.ETag?), Azure.RequestContext context = null) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response> GetFileAsync(string provider, string name, string version, string fileIdAAA, Azure.ETag? ifNoneMatch = default(Azure.ETag?), Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Pageable<System.BinaryData> GetFiles(string provider, string name, string version, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.AsyncPageable<System.BinaryData> GetFilesAsync(string provider, string name, string version, Azure.RequestContext context = null) { throw null; }
         public virtual Azure.Pageable<System.BinaryData> GetNames(string provider, Azure.RequestContext context = null) { throw null; }

@@ -224,11 +224,11 @@ namespace Azure.IoT.DeviceUpdate
         /// <param name="provider"> Update provider. </param>
         /// <param name="name"> Update name. </param>
         /// <param name="version"> Update version. </param>
-        /// <param name="fileId"> File identifier. </param>
+        /// <param name="fileIdAAA"> File identifier. </param>
         /// <param name="ifNoneMatch"> Defines the If-None-Match condition. The operation will be performed only if the ETag on the server does not match this value. </param>
         /// <param name="context"> The request context, which can override default behaviors on the request on a per-call basis. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileIdAAA"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileIdAAA"/> is an empty string, and was expected to be non-empty. </exception>
         /// <remarks>
         /// Schema for <c>Response Body</c>:
         /// <code>{
@@ -261,18 +261,18 @@ namespace Azure.IoT.DeviceUpdate
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> GetFileAsync(string provider, string name, string version, string fileId, ETag? ifNoneMatch = null, RequestContext context = null)
+        public virtual async Task<Response> GetFileAsync(string provider, string name, string version, string fileIdAAA, ETag? ifNoneMatch = null, RequestContext context = null)
         {
             Argument.AssertNotNullOrEmpty(provider, nameof(provider));
             Argument.AssertNotNullOrEmpty(name, nameof(name));
             Argument.AssertNotNullOrEmpty(version, nameof(version));
-            Argument.AssertNotNullOrEmpty(fileId, nameof(fileId));
+            Argument.AssertNotNullOrEmpty(fileIdAAA, nameof(fileIdAAA));
 
             using var scope = ClientDiagnostics.CreateScope("DeviceUpdateClient.GetFile");
             scope.Start();
             try
             {
-                using HttpMessage message = CreateGetFileRequest(provider, name, version, fileId, ifNoneMatch, context);
+                using HttpMessage message = CreateGetFileRequest(provider, name, version, fileIdAAA, ifNoneMatch, context);
                 return await _pipeline.ProcessMessageAsync(message, context).ConfigureAwait(false);
             }
             catch (Exception e)
@@ -286,11 +286,11 @@ namespace Azure.IoT.DeviceUpdate
         /// <param name="provider"> Update provider. </param>
         /// <param name="name"> Update name. </param>
         /// <param name="version"> Update version. </param>
-        /// <param name="fileId"> File identifier. </param>
+        /// <param name="fileIdAAA"> File identifier. </param>
         /// <param name="ifNoneMatch"> Defines the If-None-Match condition. The operation will be performed only if the ETag on the server does not match this value. </param>
         /// <param name="context"> The request context, which can override default behaviors on the request on a per-call basis. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileIdAAA"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="provider"/>, <paramref name="name"/>, <paramref name="version"/> or <paramref name="fileIdAAA"/> is an empty string, and was expected to be non-empty. </exception>
         /// <remarks>
         /// Schema for <c>Response Body</c>:
         /// <code>{
@@ -323,18 +323,18 @@ namespace Azure.IoT.DeviceUpdate
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response GetFile(string provider, string name, string version, string fileId, ETag? ifNoneMatch = null, RequestContext context = null)
+        public virtual Response GetFile(string provider, string name, string version, string fileIdAAA, ETag? ifNoneMatch = null, RequestContext context = null)
         {
             Argument.AssertNotNullOrEmpty(provider, nameof(provider));
             Argument.AssertNotNullOrEmpty(name, nameof(name));
             Argument.AssertNotNullOrEmpty(version, nameof(version));
-            Argument.AssertNotNullOrEmpty(fileId, nameof(fileId));
+            Argument.AssertNotNullOrEmpty(fileIdAAA, nameof(fileIdAAA));
 
             using var scope = ClientDiagnostics.CreateScope("DeviceUpdateClient.GetFile");
             scope.Start();
             try
             {
-                using HttpMessage message = CreateGetFileRequest(provider, name, version, fileId, ifNoneMatch, context);
+                using HttpMessage message = CreateGetFileRequest(provider, name, version, fileIdAAA, ifNoneMatch, context);
                 return _pipeline.ProcessMessage(message, context);
             }
             catch (Exception e)
@@ -1663,7 +1663,7 @@ namespace Azure.IoT.DeviceUpdate
             return message;
         }
 
-        internal HttpMessage CreateGetFileRequest(string provider, string name, string version, string fileId, ETag? ifNoneMatch, RequestContext context)
+        internal HttpMessage CreateGetFileRequest(string provider, string name, string version, string fileIdAAA, ETag? ifNoneMatch, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200304);
             var request = message.Request;
@@ -1680,7 +1680,7 @@ namespace Azure.IoT.DeviceUpdate
             uri.AppendPath("/versions/", false);
             uri.AppendPath(version, true);
             uri.AppendPath("/files/", false);
-            uri.AppendPath(fileId, true);
+            uri.AppendPath(fileIdAAA, true);
             uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
