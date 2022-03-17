@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.DataBox.Models
     /// <summary>
     /// Job details.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("JobDetails")]
     public partial class JobDetails
     {
         /// <summary>
@@ -68,7 +69,9 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// 'TYO01', 'BN1', 'SN5', 'CYS04', 'TYO22', 'YTO21', 'YQB20', 'FRA22',
         /// 'MAA01', 'CPQ02', 'CPQ20', 'SIN20', 'HKG20', 'SG2', 'MEL23',
         /// 'SEL21', 'OSA20', 'SHA03', 'BJB', 'JNB22', 'JNB21', 'MNZ21', 'SN8',
-        /// 'AUH20', 'ZRH20', 'PUS20', 'AdHoc', 'CH1', 'DSM05'</param>
+        /// 'AUH20', 'ZRH20', 'PUS20', 'AdHoc', 'CH1', 'DSM05', 'DUB07',
+        /// 'PNQ01', 'SVG20', 'OSA02', 'OSA22', 'PAR22', 'BN7', 'SN6',
+        /// 'BJS20'</param>
         public JobDetails(ContactDetails contactDetails, IList<JobStages> jobStages = default(IList<JobStages>), ShippingAddress shippingAddress = default(ShippingAddress), PackageShippingDetails deliveryPackage = default(PackageShippingDetails), PackageShippingDetails returnPackage = default(PackageShippingDetails), IList<DataImportDetails> dataImportDetails = default(IList<DataImportDetails>), IList<DataExportDetails> dataExportDetails = default(IList<DataExportDetails>), Preferences preferences = default(Preferences), IList<CopyLogDetails> copyLogDetails = default(IList<CopyLogDetails>), string reverseShipmentLabelSasKey = default(string), string chainOfCustodySasKey = default(string), KeyEncryptionKey keyEncryptionKey = default(KeyEncryptionKey), int? expectedDataSizeInTeraBytes = default(int?), IList<CustomerResolutionCode?> actions = default(IList<CustomerResolutionCode?>), LastMitigationActionOnJob lastMitigationActionOnJob = default(LastMitigationActionOnJob), DatacenterAddressResponse datacenterAddress = default(DatacenterAddressResponse), string dataCenterCode = default(string))
         {
             JobStages = jobStages;
@@ -202,7 +205,8 @@ namespace Microsoft.Azure.Management.DataBox.Models
         /// 'TYO22', 'YTO21', 'YQB20', 'FRA22', 'MAA01', 'CPQ02', 'CPQ20',
         /// 'SIN20', 'HKG20', 'SG2', 'MEL23', 'SEL21', 'OSA20', 'SHA03', 'BJB',
         /// 'JNB22', 'JNB21', 'MNZ21', 'SN8', 'AUH20', 'ZRH20', 'PUS20',
-        /// 'AdHoc', 'CH1', 'DSM05'
+        /// 'AdHoc', 'CH1', 'DSM05', 'DUB07', 'PNQ01', 'SVG20', 'OSA02',
+        /// 'OSA22', 'PAR22', 'BN7', 'SN6', 'BJS20'
         /// </summary>
         [JsonProperty(PropertyName = "dataCenterCode")]
         public string DataCenterCode { get; private set; }
