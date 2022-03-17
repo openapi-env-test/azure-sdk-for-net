@@ -2127,17 +2127,17 @@ namespace Azure.IoT.DeviceUpdate
         /// </code>
         /// 
         /// </remarks>
-        public virtual async Task<Response> StopDeploymentAsync(string groupId, string deploymentId, string action, RequestContext context = null)
+        public virtual async Task<Response> StopDeploymentAAAAsync(string groupId, string deploymentId, string action, RequestContext context = null)
         {
             Argument.AssertNotNullOrEmpty(groupId, nameof(groupId));
             Argument.AssertNotNullOrEmpty(deploymentId, nameof(deploymentId));
             Argument.AssertNotNull(action, nameof(action));
 
-            using var scope = ClientDiagnostics.CreateScope("DeviceManagementClient.StopDeployment");
+            using var scope = ClientDiagnostics.CreateScope("DeviceManagementClient.StopDeploymentAAA");
             scope.Start();
             try
             {
-                using HttpMessage message = CreateStopDeploymentRequest(groupId, deploymentId, action, context);
+                using HttpMessage message = CreateStopDeploymentAAARequest(groupId, deploymentId, action, context);
                 return await _pipeline.ProcessMessageAsync(message, context).ConfigureAwait(false);
             }
             catch (Exception e)
@@ -2188,17 +2188,17 @@ namespace Azure.IoT.DeviceUpdate
         /// </code>
         /// 
         /// </remarks>
-        public virtual Response StopDeployment(string groupId, string deploymentId, string action, RequestContext context = null)
+        public virtual Response StopDeploymentAAA(string groupId, string deploymentId, string action, RequestContext context = null)
         {
             Argument.AssertNotNullOrEmpty(groupId, nameof(groupId));
             Argument.AssertNotNullOrEmpty(deploymentId, nameof(deploymentId));
             Argument.AssertNotNull(action, nameof(action));
 
-            using var scope = ClientDiagnostics.CreateScope("DeviceManagementClient.StopDeployment");
+            using var scope = ClientDiagnostics.CreateScope("DeviceManagementClient.StopDeploymentAAA");
             scope.Start();
             try
             {
-                using HttpMessage message = CreateStopDeploymentRequest(groupId, deploymentId, action, context);
+                using HttpMessage message = CreateStopDeploymentAAARequest(groupId, deploymentId, action, context);
                 return _pipeline.ProcessMessage(message, context);
             }
             catch (Exception e)
@@ -4186,7 +4186,7 @@ namespace Azure.IoT.DeviceUpdate
             return message;
         }
 
-        internal HttpMessage CreateStopDeploymentRequest(string groupId, string deploymentId, string action, RequestContext context)
+        internal HttpMessage CreateStopDeploymentAAARequest(string groupId, string deploymentId, string action, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
