@@ -41,15 +41,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// based on the service requirements. For example, to place a service
         /// on nodes where NodeType is blue specify the following: "NodeColor
         /// == blue)".</param>
-        /// <param name="correlationScheme">A list that describes the
-        /// correlation of the service with other services.</param>
-        /// <param name="serviceLoadMetrics">The service load metrics is given
-        /// as an array of ServiceLoadMetricDescription objects.</param>
-        /// <param name="servicePlacementPolicies">A list that describes the
-        /// correlation of the service with other services.</param>
-        /// <param name="defaultMoveCost">Specifies the move cost for the
-        /// service. Possible values include: 'Zero', 'Low', 'Medium',
-        /// 'High'</param>
+        /// <param name="defaultMoveCost">Possible values include: 'Zero',
+        /// 'Low', 'Medium', 'High'</param>
         /// <param name="instanceCount">The instance count.</param>
         /// <param name="instanceCloseDelayDuration">Delay duration for
         /// RequestDrain feature to ensures that the endpoint advertised by the
@@ -58,8 +51,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// gracefully before the instance actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
         /// It is first interpreted as a string representing an ISO 8601
-        /// duration. If that fails, then it is interpreted as a number
-        /// representing the total number of milliseconds.</param>
+        /// duration. It is represented in ISO 8601 format
+        /// (hh:mm:ss.s).</param>
         public StatelessServiceUpdateProperties(string placementConstraints = default(string), IList<ServiceCorrelationDescription> correlationScheme = default(IList<ServiceCorrelationDescription>), IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(IList<ServiceLoadMetricDescription>), IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), int? instanceCount = default(int?), string instanceCloseDelayDuration = default(string))
             : base(placementConstraints, correlationScheme, serviceLoadMetrics, servicePlacementPolicies, defaultMoveCost)
         {
@@ -87,8 +80,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
         /// It is first interpreted as a string representing an ISO 8601
-        /// duration. If that fails, then it is interpreted as a number
-        /// representing the total number of milliseconds.
+        /// duration. It is represented in ISO 8601 format (hh:mm:ss.s).
         /// </summary>
         [JsonProperty(PropertyName = "instanceCloseDelayDuration")]
         public string InstanceCloseDelayDuration { get; set; }

@@ -222,50 +222,6 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
             /// <summary>
             /// Gets the list of Service Fabric cluster resources created in the specified
-            /// resource group.
-            /// </summary>
-            /// <remarks>
-            /// Gets all Service Fabric cluster resources created or in the process of
-            /// being created in the resource group.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static ClusterListResult ListByResourceGroup(this IClustersOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the list of Service Fabric cluster resources created in the specified
-            /// resource group.
-            /// </summary>
-            /// <remarks>
-            /// Gets all Service Fabric cluster resources created or in the process of
-            /// being created in the resource group.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ClusterListResult> ListByResourceGroupAsync(this IClustersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets the list of Service Fabric cluster resources created in the specified
             /// subscription.
             /// </summary>
             /// <remarks>
@@ -297,6 +253,68 @@ namespace Microsoft.Azure.Management.ServiceFabric
             public static async Task<ClusterListResult> ListAsync(this IClustersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Operation to get the minimum and maximum upgradable version from the
+            /// current cluster version, or the required path to get to the an specific
+            /// target version.
+            /// </summary>
+            /// <remarks>
+            /// If a target is not provided, it will get the minimum and maximum versions
+            /// available from the current cluster version. If a target is given, it will
+            /// provide the required path to get from the current cluster version to the
+            /// target version.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='clusterName'>
+            /// The name of the cluster resource.
+            /// </param>
+            /// <param name='targetVersion'>
+            /// The target code version.
+            /// </param>
+            public static UpgradableVersionPathResult ListUpgradableVersions(this IClustersOperations operations, string resourceGroupName, string clusterName, string targetVersion)
+            {
+                return operations.ListUpgradableVersionsAsync(resourceGroupName, clusterName, targetVersion).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Operation to get the minimum and maximum upgradable version from the
+            /// current cluster version, or the required path to get to the an specific
+            /// target version.
+            /// </summary>
+            /// <remarks>
+            /// If a target is not provided, it will get the minimum and maximum versions
+            /// available from the current cluster version. If a target is given, it will
+            /// provide the required path to get from the current cluster version to the
+            /// target version.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='clusterName'>
+            /// The name of the cluster resource.
+            /// </param>
+            /// <param name='targetVersion'>
+            /// The target code version.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<UpgradableVersionPathResult> ListUpgradableVersionsAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, string targetVersion, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListUpgradableVersionsWithHttpMessagesAsync(resourceGroupName, clusterName, targetVersion, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

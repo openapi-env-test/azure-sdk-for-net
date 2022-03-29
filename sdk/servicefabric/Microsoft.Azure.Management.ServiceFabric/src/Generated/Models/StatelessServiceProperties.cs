@@ -39,20 +39,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// based on the service requirements. For example, to place a service
         /// on nodes where NodeType is blue specify the following: "NodeColor
         /// == blue)".</param>
-        /// <param name="correlationScheme">A list that describes the
-        /// correlation of the service with other services.</param>
-        /// <param name="serviceLoadMetrics">The service load metrics is given
-        /// as an array of ServiceLoadMetricDescription objects.</param>
-        /// <param name="servicePlacementPolicies">A list that describes the
-        /// correlation of the service with other services.</param>
-        /// <param name="defaultMoveCost">Specifies the move cost for the
-        /// service. Possible values include: 'Zero', 'Low', 'Medium',
-        /// 'High'</param>
+        /// <param name="defaultMoveCost">Possible values include: 'Zero',
+        /// 'Low', 'Medium', 'High'</param>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response</param>
         /// <param name="serviceTypeName">The name of the service type</param>
-        /// <param name="partitionDescription">Describes how the service is
-        /// partitioned.</param>
         /// <param name="servicePackageActivationMode">The activation Mode of
         /// the service package. Possible values include: 'SharedProcess',
         /// 'ExclusiveProcess'</param>
@@ -66,9 +57,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// closing the instance. This delay enables existing requests to drain
         /// gracefully before the instance actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
-        /// It is first interpreted as a string representing an ISO 8601
-        /// duration. If that fails, then it is interpreted as a number
-        /// representing the total number of milliseconds.</param>
+        /// It is represented in ISO 8601 format (hh:mm:ss.s).</param>
         public StatelessServiceProperties(string placementConstraints = default(string), IList<ServiceCorrelationDescription> correlationScheme = default(IList<ServiceCorrelationDescription>), IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(IList<ServiceLoadMetricDescription>), IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), string provisioningState = default(string), string serviceTypeName = default(string), PartitionSchemeDescription partitionDescription = default(PartitionSchemeDescription), string servicePackageActivationMode = default(string), string serviceDnsName = default(string), int? instanceCount = default(int?), string instanceCloseDelayDuration = default(string))
             : base(placementConstraints, correlationScheme, serviceLoadMetrics, servicePlacementPolicies, defaultMoveCost, provisioningState, serviceTypeName, partitionDescription, servicePackageActivationMode, serviceDnsName)
         {
@@ -95,9 +84,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// enables existing requests to drain gracefully before the instance
         /// actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
-        /// It is first interpreted as a string representing an ISO 8601
-        /// duration. If that fails, then it is interpreted as a number
-        /// representing the total number of milliseconds.
+        /// It is represented in ISO 8601 format (hh:mm:ss.s).
         /// </summary>
         [JsonProperty(PropertyName = "instanceCloseDelayDuration")]
         public string InstanceCloseDelayDuration { get; set; }

@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 {
 
     /// <summary>
-    /// Defines values for ProbeProtocol.
+    /// Defines values for ClusterVersionsEnvironment.
     /// </summary>
-    public static class ProbeProtocol
+    public static class ClusterVersionsEnvironment
     {
-        public const string Tcp = "tcp";
-        public const string Http = "http";
-        public const string Https = "https";
+        public const string Windows = "Windows";
+        public const string Linux = "Linux";
     }
 }
