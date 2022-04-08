@@ -70,52 +70,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Update an availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Availability Set operation.
-            /// </param>
-            public static AvailabilitySet Update(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySetUpdate parameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, availabilitySetName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update an availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Availability Set operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<AvailabilitySet> UpdateAsync(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySetUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, availabilitySetName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Delete an availability set.
             /// </summary>
             /// <param name='operations'>
