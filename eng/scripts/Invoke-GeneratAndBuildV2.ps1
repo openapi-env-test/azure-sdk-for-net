@@ -88,7 +88,7 @@ foreach ( $relateReadmeFile in $readmeFiles ) {
 
         $artifactsPath = "$RepoRoot/artifacts/packages/Debug/$packageName"
         $artifacts += Get-ChildItem $artifactsPath -Filter *.nupkg -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
-        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder";artifacts=$artifacts})
+        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder";artifacts=$artifacts;apiViewArtifact=$artifacts;language=".Net"})
     }
 }
 
