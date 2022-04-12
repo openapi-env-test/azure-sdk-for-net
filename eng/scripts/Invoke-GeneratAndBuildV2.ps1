@@ -87,8 +87,14 @@ foreach ( $relateReadmeFile in $readmeFiles ) {
         pwsh eng/scripts/Export-API.ps1 $service
 
         $artifactsPath = "$RepoRoot/artifacts/packages/Debug/$packageName"
-        $artifacts += Get-ChildItem $artifactsPath -Filter *.nupkg -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
-        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder";artifacts=$artifacts;apiViewArtifact=$artifacts;language=".Net"})
+        [string[]]$artifacts += Get-ChildItem $artifactsPath -Filter *.nupkg -exclude *.symbols.nupkg -Recurse | Select-Object -ExpandProperty FullName | Resolve-Path -Relative
+        $apiViewArtifact = ""
+        if ( $artifacts.count -le 0) {
+            Write-Error "Failed to generate sdk artifact"
+        } else {
+            $apiViewArtifact = $artifacts[0]
+        }
+        $generatedSDKPackages = $generatedSDKPackages + @([pscustomobject]@{packageName="$service"; result='succeeded'; path=@("$path");packageFolder="$projectFolder";artifacts=$artifacts;apiViewArtifact=$apiViewArtifact;language=".Net"})
     }
 }
 
