@@ -45,15 +45,28 @@ $sdkPath =  (Join-Path $PSScriptRoot .. .. ..)
 $sdkPath = Resolve-Path $sdkPath
 $sdkPath = $sdkPath -replace "\\", "/"
 
-$readme = ""
-if ($commitid -ne "") {
-  if ($repoHttpsUrl -ne "") {
-    $readme = "$repoHttpsUrl/blob/$commitid/$readmeFile"
+# $readme = ""
+# if ($commitid -ne "") {
+#   if ($repoHttpsUrl -ne "") {
+#     $readme = "$repoHttpsUrl/blob/$commitid/$readmeFile"
+#   } else {
+#     $readme = "https://github.com/$org/azure-rest-api-specs/blob/$commitid/$readmeFile"
+#   }
+# } else {
+#   $readme = (Join-Path $swaggerDir $readmeFile)
+# }
+
+if ( $swaggerDir) {
+  $readme = (Join-Path $swaggerDir $readmeFile)
+} elseif ( $commitid) {
+  if ($repoHttpsUrl) {
+      $readme = "$repoHttpsUrl/blob/$commitid/$readmeFile"
   } else {
-    $readme = "https://github.com/$org/azure-rest-api-specs/blob/$commitid/$readmeFile"
+      $readme = "https://github.com/$org/azure-rest-api-specs/blob/$commitid/$readmeFile"
   }
 } else {
-  $readme = (Join-Path $swaggerDir $readmeFile)
+  Write-Error "No readme File path provided."
+  exit 1
 }
 
 $generatedSDKPackages = New-Object 'Collections.Generic.List[System.Object]'
