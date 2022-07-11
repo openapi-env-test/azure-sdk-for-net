@@ -390,10 +390,10 @@ function Invoke-GenerateAndBuildSDK () {
     $service, $serviceType = Get-ResourceProviderFromReadme $readmeFile
     Write-Host "service:$service, serviceType:$serviceType"
     
-    if (!(Test-Path -Path $readmeFile)) {
-        Write-Error "readme file does not exist."
-        exit 1
-    }
+    # if (!(Test-Path -Path $readmeFile)) {
+    #     Write-Error "readme file does not exist."
+    #     exit 1
+    # }
     
     $packagesToGen = @()
     $newpackageoutput = "newPackageOutput.json"
