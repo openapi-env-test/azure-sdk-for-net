@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4E83E5F6-2937-480C-BD54-133EECAE6B3E}") = "Azure.ResourceManager.Iothub", "src\Azure.ResourceManager.Iothub.csproj", "{5752D3D9-8E0D-4021-A214-247AFF25D684}"
+EndProject
+Project("{4E83E5F6-2937-480C-BD54-133EECAE6B3E}") = "Azure.ResourceManager.Iothub.Tests", "tests\Azure.ResourceManager.Iothub.Tests.csproj", "{83381EF1-75F6-4CE6-9758-B3F6ABC91002}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA1414CD-AA9C-48CE-85D9-72505C3AF367}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|x64.Build.0 = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Debug|x86.Build.0 = Debug|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|x64.ActiveCfg = Release|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|x64.Build.0 = Release|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|x86.ActiveCfg = Release|Any CPU
+		{5752D3D9-8E0D-4021-A214-247AFF25D684}.Release|x86.Build.0 = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|x64.Build.0 = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Debug|x86.Build.0 = Debug|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|x64.ActiveCfg = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|x64.Build.0 = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|x86.ActiveCfg = Release|Any CPU
+		{83381EF1-75F6-4CE6-9758-B3F6ABC91002}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
