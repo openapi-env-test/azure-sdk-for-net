@@ -5,6 +5,7 @@
 
 #nullable disable
 
+using System;
 using System.Collections.Generic;
 using Azure;
 using Azure.Core;
@@ -34,6 +35,7 @@ namespace Azure.ResourceManager.Network
         /// <param name="extendedLocation"> The extended location of the load balancer. </param>
         /// <param name="etag"> A unique read-only string that changes whenever the resource is updated. </param>
         /// <param name="loadBalancerFrontendIPConfigurations"> An array of references to the load balancer IP configurations. </param>
+        /// <param name="resourceGuid"> The resource id of private link service. </param>
         /// <param name="ipConfigurations"> An array of private link service IP configurations. </param>
         /// <param name="networkInterfaces"> An array of references to the network interfaces created for this private link service. </param>
         /// <param name="provisioningState"> The provisioning state of the private link service resource. </param>
@@ -43,11 +45,12 @@ namespace Azure.ResourceManager.Network
         /// <param name="fqdns"> The list of Fqdn. </param>
         /// <param name="alias"> The alias of the private link service. </param>
         /// <param name="enableProxyProtocol"> Whether the private link service is enabled for proxy protocol or not. </param>
-        internal PrivateLinkServiceData(ResourceIdentifier id, string name, ResourceType? resourceType, AzureLocation? location, IDictionary<string, string> tags, ExtendedLocation extendedLocation, ETag? etag, IList<FrontendIPConfigurationData> loadBalancerFrontendIPConfigurations, IList<PrivateLinkServiceIPConfiguration> ipConfigurations, IReadOnlyList<NetworkInterfaceData> networkInterfaces, NetworkProvisioningState? provisioningState, IReadOnlyList<NetworkPrivateEndpointConnectionData> privateEndpointConnections, PrivateLinkServicePropertiesVisibility visibility, PrivateLinkServicePropertiesAutoApproval autoApproval, IList<string> fqdns, string @alias, bool? enableProxyProtocol) : base(id, name, resourceType, location, tags)
+        internal PrivateLinkServiceData(ResourceIdentifier id, string name, ResourceType? resourceType, AzureLocation? location, IDictionary<string, string> tags, ExtendedLocation extendedLocation, ETag? etag, IList<FrontendIPConfigurationData> loadBalancerFrontendIPConfigurations, Guid? resourceGuid, IList<PrivateLinkServiceIPConfiguration> ipConfigurations, IReadOnlyList<NetworkInterfaceData> networkInterfaces, NetworkProvisioningState? provisioningState, IReadOnlyList<NetworkPrivateEndpointConnectionData> privateEndpointConnections, PrivateLinkServicePropertiesVisibility visibility, PrivateLinkServicePropertiesAutoApproval autoApproval, IList<string> fqdns, string @alias, bool? enableProxyProtocol) : base(id, name, resourceType, location, tags)
         {
             ExtendedLocation = extendedLocation;
             Etag = etag;
             LoadBalancerFrontendIPConfigurations = loadBalancerFrontendIPConfigurations;
+            ResourceGuid = resourceGuid;
             IPConfigurations = ipConfigurations;
             NetworkInterfaces = networkInterfaces;
             ProvisioningState = provisioningState;
@@ -65,6 +68,8 @@ namespace Azure.ResourceManager.Network
         public ETag? Etag { get; }
         /// <summary> An array of references to the load balancer IP configurations. </summary>
         public IList<FrontendIPConfigurationData> LoadBalancerFrontendIPConfigurations { get; }
+        /// <summary> The resource id of private link service. </summary>
+        public Guid? ResourceGuid { get; set; }
         /// <summary> An array of private link service IP configurations. </summary>
         public IList<PrivateLinkServiceIPConfiguration> IPConfigurations { get; }
         /// <summary> An array of references to the network interfaces created for this private link service. </summary>

@@ -7,6 +7,7 @@
 
 using System.Collections.Generic;
 using System.Text.Json;
+using Azure;
 using Azure.Core;
 
 namespace Azure.ResourceManager.Network.Models
@@ -35,13 +36,37 @@ namespace Azure.ResourceManager.Network.Models
         internal static PrivateDnsZoneConfig DeserializePrivateDnsZoneConfig(JsonElement element)
         {
             Optional<string> name = default;
+            Optional<string> id = default;
+            Optional<string> type = default;
+            Optional<ETag> etag = default;
             Optional<string> privateDnsZoneId = default;
+            Optional<NetworkProvisioningState> provisioningState = default;
             Optional<IReadOnlyList<RecordSet>> recordSets = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("name"))
                 {
                     name = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("id"))
+                {
+                    id = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("type"))
+                {
+                    type = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("etag"))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        property.ThrowNonNullablePropertyIsNull();
+                        continue;
+                    }
+                    etag = new ETag(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("properties"))
@@ -56,6 +81,16 @@ namespace Azure.ResourceManager.Network.Models
                         if (property0.NameEquals("privateDnsZoneId"))
                         {
                             privateDnsZoneId = property0.Value.GetString();
+                            continue;
+                        }
+                        if (property0.NameEquals("provisioningState"))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                property0.ThrowNonNullablePropertyIsNull();
+                                continue;
+                            }
+                            provisioningState = new NetworkProvisioningState(property0.Value.GetString());
                             continue;
                         }
                         if (property0.NameEquals("recordSets"))
@@ -77,7 +112,7 @@ namespace Azure.ResourceManager.Network.Models
                     continue;
                 }
             }
-            return new PrivateDnsZoneConfig(name.Value, privateDnsZoneId.Value, Optional.ToList(recordSets));
+            return new PrivateDnsZoneConfig(name.Value, id.Value, type.Value, Optional.ToNullable(etag), privateDnsZoneId.Value, Optional.ToNullable(provisioningState), Optional.ToList(recordSets));
         }
     }
 }

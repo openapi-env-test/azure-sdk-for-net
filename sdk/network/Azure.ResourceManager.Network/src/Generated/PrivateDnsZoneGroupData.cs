@@ -13,7 +13,7 @@ using Azure.ResourceManager.Network.Models;
 namespace Azure.ResourceManager.Network
 {
     /// <summary> A class representing the PrivateDnsZoneGroup data model. </summary>
-    public partial class PrivateDnsZoneGroupData : NetworkResourceData
+    public partial class PrivateDnsZoneGroupData : NetworkWritableResourceData
     {
         /// <summary> Initializes a new instance of PrivateDnsZoneGroupData. </summary>
         public PrivateDnsZoneGroupData()

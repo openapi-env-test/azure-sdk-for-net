@@ -34,6 +34,11 @@ namespace Azure.ResourceManager.Network.Models
                 writer.WritePropertyName("privateLinkServiceId");
                 writer.WriteStringValue(PrivateLinkServiceId);
             }
+            if (Optional.IsDefined(ResolvedPrivateLinkServiceLocation))
+            {
+                writer.WritePropertyName("resolvedPrivateLinkServiceLocation");
+                writer.WriteStringValue(ResolvedPrivateLinkServiceLocation);
+            }
             if (Optional.IsCollectionDefined(GroupIds))
             {
                 writer.WritePropertyName("groupIds");
@@ -66,6 +71,7 @@ namespace Azure.ResourceManager.Network.Models
             Optional<ResourceType> type = default;
             Optional<NetworkProvisioningState> provisioningState = default;
             Optional<string> privateLinkServiceId = default;
+            Optional<string> resolvedPrivateLinkServiceLocation = default;
             Optional<IList<string>> groupIds = default;
             Optional<string> requestMessage = default;
             Optional<NetworkPrivateLinkServiceConnectionState> privateLinkServiceConnectionState = default;
@@ -130,6 +136,11 @@ namespace Azure.ResourceManager.Network.Models
                             privateLinkServiceId = property0.Value.GetString();
                             continue;
                         }
+                        if (property0.NameEquals("resolvedPrivateLinkServiceLocation"))
+                        {
+                            resolvedPrivateLinkServiceLocation = property0.Value.GetString();
+                            continue;
+                        }
                         if (property0.NameEquals("groupIds"))
                         {
                             if (property0.Value.ValueKind == JsonValueKind.Null)
@@ -164,7 +175,7 @@ namespace Azure.ResourceManager.Network.Models
                     continue;
                 }
             }
-            return new PrivateLinkServiceConnection(id.Value, name.Value, Optional.ToNullable(type), Optional.ToNullable(etag), Optional.ToNullable(provisioningState), privateLinkServiceId.Value, Optional.ToList(groupIds), requestMessage.Value, privateLinkServiceConnectionState.Value);
+            return new PrivateLinkServiceConnection(id.Value, name.Value, Optional.ToNullable(type), Optional.ToNullable(etag), Optional.ToNullable(provisioningState), privateLinkServiceId.Value, resolvedPrivateLinkServiceLocation.Value, Optional.ToList(groupIds), requestMessage.Value, privateLinkServiceConnectionState.Value);
         }
     }
 }

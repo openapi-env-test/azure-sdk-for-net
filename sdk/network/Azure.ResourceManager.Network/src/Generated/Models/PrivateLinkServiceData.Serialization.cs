@@ -5,6 +5,7 @@
 
 #nullable disable
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Azure;
@@ -56,6 +57,11 @@ namespace Azure.ResourceManager.Network
                 }
                 writer.WriteEndArray();
             }
+            if (Optional.IsDefined(ResourceGuid))
+            {
+                writer.WritePropertyName("resourceGuid");
+                writer.WriteStringValue(ResourceGuid.Value);
+            }
             if (Optional.IsCollectionDefined(IPConfigurations))
             {
                 writer.WritePropertyName("ipConfigurations");
@@ -105,6 +111,7 @@ namespace Azure.ResourceManager.Network
             Optional<AzureLocation> location = default;
             Optional<IDictionary<string, string>> tags = default;
             Optional<IList<FrontendIPConfigurationData>> loadBalancerFrontendIpConfigurations = default;
+            Optional<Guid> resourceGuid = default;
             Optional<IList<PrivateLinkServiceIPConfiguration>> ipConfigurations = default;
             Optional<IReadOnlyList<NetworkInterfaceData>> networkInterfaces = default;
             Optional<NetworkProvisioningState> provisioningState = default;
@@ -208,6 +215,16 @@ namespace Azure.ResourceManager.Network
                                 array.Add(FrontendIPConfigurationData.DeserializeFrontendIPConfigurationData(item));
                             }
                             loadBalancerFrontendIpConfigurations = array;
+                            continue;
+                        }
+                        if (property0.NameEquals("resourceGuid"))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                property0.ThrowNonNullablePropertyIsNull();
+                                continue;
+                            }
+                            resourceGuid = property0.Value.GetGuid();
                             continue;
                         }
                         if (property0.NameEquals("ipConfigurations"))
@@ -319,7 +336,7 @@ namespace Azure.ResourceManager.Network
                     continue;
                 }
             }
-            return new PrivateLinkServiceData(id.Value, name.Value, Optional.ToNullable(type), Optional.ToNullable(location), Optional.ToDictionary(tags), extendedLocation.Value, Optional.ToNullable(etag), Optional.ToList(loadBalancerFrontendIpConfigurations), Optional.ToList(ipConfigurations), Optional.ToList(networkInterfaces), Optional.ToNullable(provisioningState), Optional.ToList(privateEndpointConnections), visibility.Value, autoApproval.Value, Optional.ToList(fqdns), @alias.Value, Optional.ToNullable(enableProxyProtocol));
+            return new PrivateLinkServiceData(id.Value, name.Value, Optional.ToNullable(type), Optional.ToNullable(location), Optional.ToDictionary(tags), extendedLocation.Value, Optional.ToNullable(etag), Optional.ToList(loadBalancerFrontendIpConfigurations), Optional.ToNullable(resourceGuid), Optional.ToList(ipConfigurations), Optional.ToList(networkInterfaces), Optional.ToNullable(provisioningState), Optional.ToList(privateEndpointConnections), visibility.Value, autoApproval.Value, Optional.ToList(fqdns), @alias.Value, Optional.ToNullable(enableProxyProtocol));
         }
     }
 }
