@@ -927,14 +927,14 @@ namespace Azure.ResourceManager.CosmosDB
         public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableMongodbCollection> GetRestorableMongodbCollectionsAsync(string restorableMongodbDatabaseRid = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.RestorableMongodbDatabase> GetRestorableMongodbDatabases(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableMongodbDatabase> GetRestorableMongodbDatabasesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.DatabaseRestoreResource> GetRestorableMongodbResources(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.DatabaseRestoreResource> GetRestorableMongodbResourcesAsync(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.RestorableMongodbResourcesGetResult> GetRestorableMongodbResources(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableMongodbResourcesGetResult> GetRestorableMongodbResourcesAsync(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlContainer> GetRestorableSqlContainers(string restorableSqlDatabaseRid = null, string startTime = null, string endTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlContainer> GetRestorableSqlContainersAsync(string restorableSqlDatabaseRid = null, string startTime = null, string endTime = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlDatabase> GetRestorableSqlDatabases(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
         public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlDatabase> GetRestorableSqlDatabasesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.DatabaseRestoreResource> GetRestorableSqlResources(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.DatabaseRestoreResource> GetRestorableSqlResourcesAsync(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.Pageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlResourcesGetResult> GetRestorableSqlResources(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
+        public virtual Azure.AsyncPageable<Azure.ResourceManager.CosmosDB.Models.RestorableSqlResourcesGetResult> GetRestorableSqlResourcesAsync(string restoreLocation = null, string restoreTimestampInUtc = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
     }
     public partial class SqlContainerCollection : Azure.ResourceManager.ArmCollection, System.Collections.Generic.IAsyncEnumerable<Azure.ResourceManager.CosmosDB.SqlContainerResource>, System.Collections.Generic.IEnumerable<Azure.ResourceManager.CosmosDB.SqlContainerResource>, System.Collections.IEnumerable
     {
@@ -2371,6 +2371,12 @@ namespace Azure.ResourceManager.CosmosDB.Models
         public string OwnerResourceId { get { throw null; } }
         public string Rid { get { throw null; } }
     }
+    public partial class RestorableMongodbResourcesGetResult : Azure.ResourceManager.Models.ResourceData
+    {
+        internal RestorableMongodbResourcesGetResult() { }
+        public System.Collections.Generic.IReadOnlyList<string> CollectionNames { get { throw null; } }
+        public string DatabaseName { get { throw null; } }
+    }
     public partial class RestorableSqlContainer : Azure.ResourceManager.Models.ResourceData
     {
         internal RestorableSqlContainer() { }
@@ -2419,6 +2425,12 @@ namespace Azure.ResourceManager.CosmosDB.Models
         public float? Ts { get { throw null; } }
         public string Users { get { throw null; } }
     }
+    public partial class RestorableSqlResourcesGetResult : Azure.ResourceManager.Models.ResourceData
+    {
+        internal RestorableSqlResourcesGetResult() { }
+        public System.Collections.Generic.IReadOnlyList<string> CollectionNames { get { throw null; } }
+        public string DatabaseName { get { throw null; } }
+    }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct RestoreMode : System.IEquatable<Azure.ResourceManager.CosmosDB.Models.RestoreMode>
     {
@@ -2461,6 +2473,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
         private readonly int _dummyPrimitive;
         public ServerVersion(string value) { throw null; }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Four0 { get { throw null; } }
+        public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Four2 { get { throw null; } }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Three2 { get { throw null; } }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Three6 { get { throw null; } }
         public bool Equals(Azure.ResourceManager.CosmosDB.Models.ServerVersion other) { throw null; }
