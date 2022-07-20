@@ -2461,6 +2461,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
         private readonly int _dummyPrimitive;
         public ServerVersion(string value) { throw null; }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Four0 { get { throw null; } }
+        public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Four2 { get { throw null; } }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Three2 { get { throw null; } }
         public static Azure.ResourceManager.CosmosDB.Models.ServerVersion Three6 { get { throw null; } }
         public bool Equals(Azure.ResourceManager.CosmosDB.Models.ServerVersion other) { throw null; }

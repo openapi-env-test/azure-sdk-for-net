@@ -25,6 +25,7 @@ namespace Azure.ResourceManager.CosmosDB.Models
         private const string Three2Value = "3.2";
         private const string Three6Value = "3.6";
         private const string Four0Value = "4.0";
+        private const string Four2Value = "4.2";
 
         /// <summary> 3.2. </summary>
         public static ServerVersion Three2 { get; } = new ServerVersion(Three2Value);
@@ -32,6 +33,8 @@ namespace Azure.ResourceManager.CosmosDB.Models
         public static ServerVersion Three6 { get; } = new ServerVersion(Three6Value);
         /// <summary> 4.0. </summary>
         public static ServerVersion Four0 { get; } = new ServerVersion(Four0Value);
+        /// <summary> 4.2. </summary>
+        public static ServerVersion Four2 { get; } = new ServerVersion(Four2Value);
         /// <summary> Determines if two <see cref="ServerVersion"/> values are the same. </summary>
         public static bool operator ==(ServerVersion left, ServerVersion right) => left.Equals(right);
         /// <summary> Determines if two <see cref="ServerVersion"/> values are not the same. </summary>
