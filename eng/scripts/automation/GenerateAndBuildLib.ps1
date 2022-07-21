@@ -491,21 +491,21 @@ function GeneratePackage()
         # Build
         Write-Host "Start to build sdk: $projectFolder"
         Invoke-Build -sdkfolder $projectFolder
-        if ( !$? ) {
+        if ( !$LASTEXITCODE ) {
             Write-Error "Failed to build sdk. exit code: $?"
             $result = "failed"
         }
         # pack
         Write-Host "Start to pack sdk"
         Invoke-Pack -sdkfolder $projectFolder
-        if ( !$? ) {
+        if ( !$LASTEXITCODE ) {
             Write-Error "Failed to packe sdk. exit code: $?"
             $result = "failed"
         }
         # Generate APIs
         Write-Host "Start to export api for $service"
         pwsh $sdkRootPath/eng/scripts/Export-API.ps1 $service
-        if ( !$? ) {
+        if ( !$LASTEXITCODE ) {
             Write-Error "Failed to export api for sdk. exit code: $?"
             $result = "failed"
         }
