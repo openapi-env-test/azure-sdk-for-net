@@ -332,10 +332,6 @@ function Invoke-Generate() {
     )
     $sdkfolder = $sdkfolder -replace "\\", "/"
     dotnet build /t:GenerateCode  $sdkfolder/src
-    if ( !$? ) {
-        Write-Error "Failed to generate sdk."
-        exit 1
-    }
 }
 
 function Invoke-Build() {
@@ -344,10 +340,6 @@ function Invoke-Build() {
     )
     $sdkfolder = $sdkfolder -replace "\\", "/"
     dotnet build $sdkfolder
-    if ( !$? ) {
-        Write-Error "Failed to build sdk. exit code: $?"
-        exit 1
-    }
 }
 
 function Invoke-Pack() {
@@ -356,10 +348,6 @@ function Invoke-Pack() {
     )
     $sdkfolder = $sdkfolder -replace "\\", "/"
     dotnet pack $sdkfolder /p:RunApiCompat=$false
-    if ( !$? ) {
-        Write-Error "Failed to build sdk package. exit code: $?"
-        exit 1
-    }
 }
 function Get-ResourceProviderFromReadme($readmeFile) {
     $readmeFile = $readmeFile -replace "\\", "/"
@@ -494,6 +482,7 @@ function GeneratePackage()
 
     # Generate Code
     Write-Host "Start to generate sdk $projectFolder"
+    $srcPath = Join-Path $projectFolder 'src'
     Invoke-Generate -sdkfolder $projectFolder
     if ( !$?) {
         Write-Error "Failed to generate sdk. exit code: $?"
@@ -505,41 +494,43 @@ function GeneratePackage()
         if ( !$? ) {
             Write-Error "Failed to build sdk. exit code: $?"
             $result = "failed"
-        } else {
-            # pack
-            Write-Host "Start to pack sdk"
-            Invoke-Pack -sdkfolder $projectFolder
-            if ( !$? ) {
-                Write-Error "Failed to packe sdk. exit code: $?"
-            }
-            # Generate APIs
-            Write-Host "Start to export api for $service"
-            pwsh $sdkRootPath/eng/scripts/Export-API.ps1 $service
-            if ( !$? ) {
-                Write-Error "Failed to export api for sdk. exit code: $?"
-            }
-            # breaking change validation
-            $srcPath = Join-Path $projectFolder 'src'
-            Write-Host "Start to validate breaking change. srcPath:$srcPath"
-            $logFilePath = Join-Path "$srcPath" 'log.txt'
-            if (!(Test-Path $logFilePath)) {
-                New-Item $logFilePath
-            }
-            dotnet build "$srcPath" /t:RunApiCompat /p:TargetFramework=netstandard2.0 /flp:v=m`;LogFile=$logFilePath
-            if (!$LASTEXITCODE) {
-                $hasBreakingChange = $false
-            }
-            else {
-                $logFile = Get-Content -Path $logFilePath | select-object -skip 2
-                $breakingChanges = $logFile -join ",`n"
-                $content = "Breaking Changes: $breakingChanges"
-                $hasBreakingChange = $true
-            }
-
-            if (Test-Path $logFilePath) {
-                Remove-Item $logFilePath
-            }
         }
+        # pack
+        Write-Host "Start to pack sdk"
+        Invoke-Pack -sdkfolder $projectFolder
+        if ( !$? ) {
+            Write-Error "Failed to packe sdk. exit code: $?"
+            $result = "failed"
+        }
+        # Generate APIs
+        Write-Host "Start to export api for $service"
+        pwsh $sdkRootPath/eng/scripts/Export-API.ps1 $service
+        if ( !$? ) {
+            Write-Error "Failed to export api for sdk. exit code: $?"
+            $result = "failed"
+        }
+        # breaking change validation
+        
+        Write-Host "Start to validate breaking change. srcPath:$srcPath"
+        $logFilePath = Join-Path "$srcPath" 'log.txt'
+        if (!(Test-Path $logFilePath)) {
+            New-Item $logFilePath
+        }
+        dotnet build "$srcPath" /t:RunApiCompat /p:TargetFramework=netstandard2.0 /flp:v=m`;LogFile=$logFilePath
+        if (!$LASTEXITCODE) {
+            $hasBreakingChange = $false
+        }
+        else {
+            $logFile = Get-Content -Path $logFilePath | select-object -skip 2
+            $breakingChanges = $logFile -join ",`n"
+            $content = "Breaking Changes: $breakingChanges"
+            $hasBreakingChange = $true
+        }
+
+        if (Test-Path $logFilePath) {
+            Remove-Item $logFilePath
+        }
+        
 
     }
     
