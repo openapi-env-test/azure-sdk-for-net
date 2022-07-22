@@ -498,7 +498,7 @@ function GeneratePackage()
         # pack
         Write-Host "Start to pack sdk"
         # Invoke-Pack -sdkfolder $projectFolder
-        dotnet pack $sdkfolder /p:RunApiCompat=$false
+        dotnet pack $projectFolder /p:RunApiCompat=$false
         if ( !$? ) {
             Write-Error "Failed to packe sdk. exit code: $?"
             $result = "failed"
@@ -506,7 +506,7 @@ function GeneratePackage()
         # Generate APIs
         Write-Host "Start to export api for $service"
         pwsh $sdkRootPath/eng/scripts/Export-API.ps1 $service
-        if ( !$LASTEXITCODE ) {
+        if ( !$? ) {
             Write-Error "Failed to export api for sdk. exit code: $?"
             $result = "failed"
         }
