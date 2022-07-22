@@ -483,22 +483,23 @@ function GeneratePackage()
     # Generate Code
     Write-Host "Start to generate sdk $projectFolder"
     $srcPath = Join-Path $projectFolder 'src'
-    Invoke-Generate -sdkfolder $projectFolder
+    dotnet build /t:GenerateCode  $srcPath
     if ( !$?) {
         Write-Error "Failed to generate sdk. exit code: $?"
         $result = "failed"
     } else {
         # Build
         Write-Host "Start to build sdk: $projectFolder"
-        Invoke-Build -sdkfolder $projectFolder
-        if ( !$LASTEXITCODE ) {
+        dotnet build $projectFolder
+        if ( !$? ) {
             Write-Error "Failed to build sdk. exit code: $?"
             $result = "failed"
         }
         # pack
         Write-Host "Start to pack sdk"
-        Invoke-Pack -sdkfolder $projectFolder
-        if ( !$LASTEXITCODE ) {
+        # Invoke-Pack -sdkfolder $projectFolder
+        dotnet pack $sdkfolder /p:RunApiCompat=$false
+        if ( !$? ) {
             Write-Error "Failed to packe sdk. exit code: $?"
             $result = "failed"
         }
