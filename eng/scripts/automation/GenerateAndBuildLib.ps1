@@ -449,10 +449,10 @@ function Invoke-GenerateAndBuildSDK () {
 
     foreach ( $package in $packagesToGen )
     {
-        $projectFolder = $newpackageoutputJson.projectFolder
-        $path = $newpackageoutputJson.path
-        $service = $newpackageoutputJson.service
-        # $packageName = $newpackageoutputJson.packageName
+        $projectFolder = $package.projectFolder
+        $path = $package.path
+        $service = $package.service
+        # $packageName = $package.packageName
         Write-Host "projectFolder:$projectFolder"
 
         GeneratePackage -projectFolder $projectFolder -sdkRootPath $sdkRootPath -path $path -downloadUrlPrefix $downloadUrlPrefix -generatedSDKPackages $generatedSDKPackages
