@@ -10,16 +10,18 @@ using Azure.Core;
 
 namespace Azure.Analytics.Purview.Catalog
 {
-    /// <summary> Client options for PurviewCatalogClient. </summary>
+    /// <summary> Client options for PurviewCatalog library clients. </summary>
     public partial class PurviewCatalogClientOptions : ClientOptions
     {
-        private const ServiceVersion LatestVersion = ServiceVersion.V2022_03_01_preview;
+        private const ServiceVersion LatestVersion = ServiceVersion.V2021_07_01_preview;
 
         /// <summary> The version of the service to use. </summary>
         public enum ServiceVersion
         {
-            /// <summary> Service version "2022-03-01-preview". </summary>
-            V2022_03_01_preview = 1,
+            /// <summary> Service version "2019-11-01-preview". </summary>
+            V2019_11_01_preview = 1,
+            /// <summary> Service version "2021-07-01-preview". </summary>
+            V2021_07_01_preview = 2,
         }
 
         internal string Version { get; }
@@ -29,7 +31,8 @@ namespace Azure.Analytics.Purview.Catalog
         {
             Version = version switch
             {
-                ServiceVersion.V2022_03_01_preview => "2022-03-01-preview",
+                ServiceVersion.V2019_11_01_preview => "2019-11-01-preview",
+                ServiceVersion.V2021_07_01_preview => "2021-07-01-preview",
                 _ => throw new NotSupportedException()
             };
         }
