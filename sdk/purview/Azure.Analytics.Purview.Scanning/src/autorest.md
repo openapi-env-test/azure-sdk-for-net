@@ -3,8 +3,10 @@
 Run `dotnet build /t:GenerateCode` to generate code.
 
 ```yaml
+require:
+- /mnt/vss/_work/1/s/azure-rest-api-specs/specification/purview/data-plane/readme.md
+csharp: true
 title: PurviewScanningService
-input-file: https://github.com/Azure/azure-rest-api-specs/blob/1c7df99f6a84335cfd7bf5be8c800d72c1dddbc2/specification/purview/data-plane/Azure.Analytics.Purview.Scanning/preview/2018-12-01-preview/scanningService.json
 namespace: Azure.Analytics.Purview.Scanning
 security: AADToken
 security-scopes:  https://purview.azure.net/.default
