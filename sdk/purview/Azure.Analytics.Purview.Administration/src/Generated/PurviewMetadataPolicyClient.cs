@@ -346,6 +346,43 @@ namespace Azure.Analytics.Purview.Administration
 
         /// <summary> List or Get metadata policies. </summary>
         /// <param name="context"> The request context, which can override default behaviors on the request on a per-call basis. </param>
+        /// <remarks>
+        /// Below is the JSON schema for one item in the pageable response.
+        /// 
+        /// Response Body:
+        /// 
+        /// Schema for <c>MetadataPolicyListValues</c>:
+        /// <code>{
+        ///   name: string, # Optional. The name of policy
+        ///   id: string, # Optional. The id of policy
+        ///   version: number, # Optional. The version of policy
+        ///   properties: {
+        ///     description: string, # Optional. The description of policy
+        ///     decisionRules: [
+        ///       {
+        ///         kind: &quot;decisionrule&quot; | &quot;attributerule&quot;, # Optional. The kind of rule
+        ///         effect: &quot;Deny&quot; | &quot;Permit&quot;, # Optional. The effect for rule
+        ///         dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///       }
+        ///     ], # Optional. The DecisionRules of policy
+        ///     attributeRules: [
+        ///       {
+        ///         kind: &quot;decisionrule&quot; | &quot;attributerule&quot;, # Optional. The kind of rule
+        ///         id: string, # Optional. The id for rule
+        ///         name: string, # Optional. The name for rule
+        ///         dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///       }
+        ///     ], # Optional. The AttributeRules of policy
+        ///     collection: {
+        ///       type: string, # Optional. The type of reference
+        ///       referenceName: string, # Optional. The name of reference
+        ///     }, # Optional. The collection reference for a policy
+        ///     parentCollectionName: string, # Optional. The parent collection of the policy
+        ///   }, # Optional.
+        /// }
+        /// </code>
+        /// 
+        /// </remarks>
         public virtual AsyncPageable<BinaryData> GetMetadataPoliciesAsync(RequestContext context = null)
         {
             return GetMetadataPoliciesImplementationAsync("PurviewMetadataPolicyClient.GetMetadataPolicies", context);
@@ -361,7 +398,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataPoliciesRequest(context)
                         : CreateGetMetadataPoliciesNextPageRequest(nextLink, context);
-                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "value", "nextLink", cancellationToken).ConfigureAwait(false);
+                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "values", "nextLink", cancellationToken).ConfigureAwait(false);
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -370,6 +407,43 @@ namespace Azure.Analytics.Purview.Administration
 
         /// <summary> List or Get metadata policies. </summary>
         /// <param name="context"> The request context, which can override default behaviors on the request on a per-call basis. </param>
+        /// <remarks>
+        /// Below is the JSON schema for one item in the pageable response.
+        /// 
+        /// Response Body:
+        /// 
+        /// Schema for <c>MetadataPolicyListValues</c>:
+        /// <code>{
+        ///   name: string, # Optional. The name of policy
+        ///   id: string, # Optional. The id of policy
+        ///   version: number, # Optional. The version of policy
+        ///   properties: {
+        ///     description: string, # Optional. The description of policy
+        ///     decisionRules: [
+        ///       {
+        ///         kind: &quot;decisionrule&quot; | &quot;attributerule&quot;, # Optional. The kind of rule
+        ///         effect: &quot;Deny&quot; | &quot;Permit&quot;, # Optional. The effect for rule
+        ///         dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///       }
+        ///     ], # Optional. The DecisionRules of policy
+        ///     attributeRules: [
+        ///       {
+        ///         kind: &quot;decisionrule&quot; | &quot;attributerule&quot;, # Optional. The kind of rule
+        ///         id: string, # Optional. The id for rule
+        ///         name: string, # Optional. The name for rule
+        ///         dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///       }
+        ///     ], # Optional. The AttributeRules of policy
+        ///     collection: {
+        ///       type: string, # Optional. The type of reference
+        ///       referenceName: string, # Optional. The name of reference
+        ///     }, # Optional. The collection reference for a policy
+        ///     parentCollectionName: string, # Optional. The parent collection of the policy
+        ///   }, # Optional.
+        /// }
+        /// </code>
+        /// 
+        /// </remarks>
         public virtual Pageable<BinaryData> GetMetadataPolicies(RequestContext context = null)
         {
             return GetMetadataPoliciesImplementation("PurviewMetadataPolicyClient.GetMetadataPolicies", context);
@@ -385,7 +459,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataPoliciesRequest(context)
                         : CreateGetMetadataPoliciesNextPageRequest(nextLink, context);
-                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "value", "nextLink");
+                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "values", "nextLink");
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -401,7 +475,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.Reset(_endpoint);
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies", false);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -417,7 +491,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies/", false);
             uri.AppendPath(policyId, true);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -435,7 +509,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies/", false);
             uri.AppendPath(policyId, true);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
