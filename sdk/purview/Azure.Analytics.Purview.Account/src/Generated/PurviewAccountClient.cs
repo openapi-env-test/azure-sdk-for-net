@@ -23,7 +23,6 @@ namespace Azure.Analytics.Purview.Account
         private readonly TokenCredential _tokenCredential;
         private readonly HttpPipeline _pipeline;
         private readonly Uri _endpoint;
-        private readonly string _apiVersion;
 
         /// <summary> The ClientDiagnostics is used to provide tracing support for the client library. </summary>
         internal ClientDiagnostics ClientDiagnostics { get; }
@@ -59,7 +58,6 @@ namespace Azure.Analytics.Purview.Account
             _tokenCredential = credential;
             _pipeline = HttpPipelineBuilder.Build(options, Array.Empty<HttpPipelinePolicy>(), new HttpPipelinePolicy[] { new BearerTokenAuthenticationPolicy(_tokenCredential, AuthorizationScopes) }, new ResponseClassifier());
             _endpoint = endpoint;
-            _apiVersion = options.Version;
         }
 
         /// <summary> Get an account. </summary>
@@ -622,7 +620,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -631,7 +629,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -674,7 +672,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -683,7 +681,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -972,13 +970,13 @@ namespace Azure.Analytics.Purview.Account
         {
             Argument.AssertNotNullOrEmpty(collectionName, nameof(collectionName));
 
-            return new PurviewCollection(ClientDiagnostics, _pipeline, _tokenCredential, _endpoint, collectionName, _apiVersion);
+            return new PurviewCollection(ClientDiagnostics, _pipeline, _tokenCredential, _endpoint, collectionName);
         }
 
         /// <summary> Initializes a new instance of PurviewResourceSetRule. </summary>
         public virtual PurviewResourceSetRule GetPurviewResourceSetRuleClient()
         {
-            return Volatile.Read(ref _cachedPurviewResourceSetRule) ?? Interlocked.CompareExchange(ref _cachedPurviewResourceSetRule, new PurviewResourceSetRule(ClientDiagnostics, _pipeline, _tokenCredential, _endpoint, _apiVersion), null) ?? _cachedPurviewResourceSetRule;
+            return Volatile.Read(ref _cachedPurviewResourceSetRule) ?? Interlocked.CompareExchange(ref _cachedPurviewResourceSetRule, new PurviewResourceSetRule(ClientDiagnostics, _pipeline, _tokenCredential, _endpoint), null) ?? _cachedPurviewResourceSetRule;
         }
 
         internal HttpMessage CreateGetAccountPropertiesRequest(RequestContext context)
@@ -989,7 +987,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1003,7 +1001,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -1019,7 +1017,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/listkeys", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -1033,7 +1031,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/regeneratekeys", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -1049,7 +1047,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/collections", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             if (skipToken != null)
             {
                 uri.AppendQuery("$skipToken", skipToken, true);
@@ -1067,7 +1065,7 @@ namespace Azure.Analytics.Purview.Account
             var uri = new RawRequestUriBuilder();
             uri.Reset(_endpoint);
             uri.AppendPath("/resourceSetRuleConfigs", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             if (skipToken != null)
             {
                 uri.AppendQuery("$skipToken", skipToken, true);

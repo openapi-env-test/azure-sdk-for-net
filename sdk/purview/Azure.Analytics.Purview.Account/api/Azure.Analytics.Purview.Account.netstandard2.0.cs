@@ -1,5 +1,27 @@
 namespace Azure.Analytics.Purview.Account
 {
+    public partial class MetadataPolicyClient
+    {
+        protected MetadataPolicyClient() { }
+        public MetadataPolicyClient(string endpoint, string collectionName, Azure.Core.TokenCredential credential) { }
+        public MetadataPolicyClient(string endpoint, string collectionName, Azure.Core.TokenCredential credential, Azure.Analytics.Purview.Account.PurviewAccountClientOptions options) { }
+        public virtual Azure.Core.Pipeline.HttpPipeline Pipeline { get { throw null; } }
+        public virtual Azure.Pageable<System.BinaryData> GetMetadataPolicies(Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.AsyncPageable<System.BinaryData> GetMetadataPoliciesAsync(Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.Response GetMetadataPolicy(string policyId, Azure.RequestContext context = null) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response> GetMetadataPolicyAsync(string policyId, Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.Response Update(string policyId, Azure.Core.RequestContent content, Azure.RequestContext context = null) { throw null; }
+        public virtual System.Threading.Tasks.Task<Azure.Response> UpdateAsync(string policyId, Azure.Core.RequestContent content, Azure.RequestContext context = null) { throw null; }
+    }
+    public partial class MetadataRolesClient
+    {
+        protected MetadataRolesClient() { }
+        public MetadataRolesClient(string endpoint, Azure.Core.TokenCredential credential) { }
+        public MetadataRolesClient(string endpoint, Azure.Core.TokenCredential credential, Azure.Analytics.Purview.Account.PurviewAccountClientOptions options) { }
+        public virtual Azure.Core.Pipeline.HttpPipeline Pipeline { get { throw null; } }
+        public virtual Azure.Pageable<System.BinaryData> GetMetadataRoles(Azure.RequestContext context = null) { throw null; }
+        public virtual Azure.AsyncPageable<System.BinaryData> GetMetadataRolesAsync(Azure.RequestContext context = null) { throw null; }
+    }
     public partial class PurviewAccountClient
     {
         protected PurviewAccountClient() { }
@@ -23,10 +45,11 @@ namespace Azure.Analytics.Purview.Account
     }
     public partial class PurviewAccountClientOptions : Azure.Core.ClientOptions
     {
-        public PurviewAccountClientOptions(Azure.Analytics.Purview.Account.PurviewAccountClientOptions.ServiceVersion version = Azure.Analytics.Purview.Account.PurviewAccountClientOptions.ServiceVersion.V2019_11_01_preview) { }
+        public PurviewAccountClientOptions(Azure.Analytics.Purview.Account.PurviewAccountClientOptions.ServiceVersion version = Azure.Analytics.Purview.Account.PurviewAccountClientOptions.ServiceVersion.V2021_07_01_preview) { }
         public enum ServiceVersion
         {
             V2019_11_01_preview = 1,
+            V2021_07_01_preview = 2,
         }
     }
     public partial class PurviewCollection

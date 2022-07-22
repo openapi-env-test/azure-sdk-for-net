@@ -24,7 +24,6 @@ namespace Azure.Analytics.Purview.Account
         private readonly HttpPipeline _pipeline;
         private readonly Uri _endpoint;
         private readonly string _collectionName;
-        private readonly string _apiVersion;
 
         /// <summary> The ClientDiagnostics is used to provide tracing support for the client library. </summary>
         internal ClientDiagnostics ClientDiagnostics { get; }
@@ -43,15 +42,13 @@ namespace Azure.Analytics.Purview.Account
         /// <param name="tokenCredential"> The token credential to copy. </param>
         /// <param name="endpoint"> The account endpoint of your Purview account. Example: https://{accountName}.purview.azure.com/account/. </param>
         /// <param name="collectionName"> The String to use. </param>
-        /// <param name="apiVersion"> Api Version. </param>
-        internal PurviewCollection(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, TokenCredential tokenCredential, Uri endpoint, string collectionName, string apiVersion)
+        internal PurviewCollection(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, TokenCredential tokenCredential, Uri endpoint, string collectionName)
         {
             ClientDiagnostics = clientDiagnostics;
             _pipeline = pipeline;
             _tokenCredential = tokenCredential;
             _endpoint = endpoint;
             _collectionName = collectionName;
-            _apiVersion = apiVersion;
         }
 
         /// <summary> Get a collection. </summary>
@@ -69,7 +66,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -78,7 +75,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -114,7 +111,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -123,7 +120,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -161,7 +158,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -170,7 +167,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -184,7 +181,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -193,7 +190,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -233,7 +230,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -242,7 +239,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -256,7 +253,7 @@ namespace Azure.Analytics.Purview.Account
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -265,7 +262,7 @@ namespace Azure.Analytics.Purview.Account
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -471,7 +468,7 @@ namespace Azure.Analytics.Purview.Account
             uri.Reset(_endpoint);
             uri.AppendPath("/collections/", false);
             uri.AppendPath(_collectionName, true);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -486,7 +483,7 @@ namespace Azure.Analytics.Purview.Account
             uri.Reset(_endpoint);
             uri.AppendPath("/collections/", false);
             uri.AppendPath(_collectionName, true);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -503,7 +500,7 @@ namespace Azure.Analytics.Purview.Account
             uri.Reset(_endpoint);
             uri.AppendPath("/collections/", false);
             uri.AppendPath(_collectionName, true);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -519,7 +516,7 @@ namespace Azure.Analytics.Purview.Account
             uri.AppendPath("/collections/", false);
             uri.AppendPath(_collectionName, true);
             uri.AppendPath("/getChildCollectionNames", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             if (skipToken != null)
             {
                 uri.AppendQuery("$skipToken", skipToken, true);
@@ -539,7 +536,7 @@ namespace Azure.Analytics.Purview.Account
             uri.AppendPath("/collections/", false);
             uri.AppendPath(_collectionName, true);
             uri.AppendPath("/getCollectionPath", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
+            uri.AppendQuery("api-version", "2019-11-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
