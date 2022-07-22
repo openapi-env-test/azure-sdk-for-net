@@ -498,7 +498,7 @@ function GeneratePackage()
         # pack
         Write-Host "Start to pack sdk"
         # Invoke-Pack -sdkfolder $projectFolder
-        dotnet pack $sdkfolder /p:RunApiCompat=$false
+        dotnet pack $projectFolder /p:RunApiCompat=$false
         if ( !$? ) {
             Write-Error "Failed to packe sdk. exit code: $?"
             $result = "failed"
