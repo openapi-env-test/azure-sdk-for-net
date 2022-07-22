@@ -55,8 +55,8 @@ function CreateOrUpdateAutorestConfigFile() {
 
     if ((Test-Path -Path $autorestFilePath) -and (![String]::IsNullOrWhiteSpace((Get-Content -Path $autorestFilePath)))) {
         if (($readme -ne "") -or ($inputfile -ne "")) {
-            $requirRex = "require*:*";
-            $inputfileRex = "input-file*:*"
+            $requirRex = "require *:.*";
+            $inputfileRex = "input-file *:.*"
             $fileContent = Get-Content -Path $autorestFilePath
             # clear
             $fileContent = $fileContent -notmatch $requirRex
