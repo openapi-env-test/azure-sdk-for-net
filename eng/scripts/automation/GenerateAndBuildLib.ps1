@@ -375,15 +375,22 @@ function Get-ResourceProviderFromReadme($readmeFile) {
     $pathArray = $readmeFile.Split("/");
 
     if ( $pathArray.Count -lt 3) {
-        Write-Error "Error: invalid readme file path. A valid readme file path should contain specName and serviceType and be of the form <specName>/<serviceType>/readme.md, e.g. specification/deviceupdate/data-plane/readme.md"
-        exit 1
+        Throw "Error: invalid readme file path. A valid readme file path should contain specName and serviceType and be of the form <specName>/<serviceType>/readme.md, e.g. specification/deviceupdate/data-plane/readme.md"
     }
 
-    $specName = $pathArray[-3]
-    $serviceType = $pathArray[-2]
-    Write-Host "specName: $specName, serviceType: $serviceType"
+    $index = [array]::indexof($pathArray, "data-plane")
+    if ($index -eq -1) {
+        $index = [array]::indexof($pathArray, "resource-manager")
+    }
+    if ($index -ne -1) {
+        $specName = $pathArray[$index-1]
+        $serviceType = $pathArray[$index]
+        Write-Host "specName: $specName, serviceType: $serviceType"
 
-    return $specName, $serviceType
+        return $specName, $serviceType
+    }
+
+    Throw "Fail to retrive the service name and type."
 }
 
 <#
@@ -480,20 +487,32 @@ function Invoke-GenerateAndBuildSDK () {
             Remove-Item $newPackageOutput
         } else {
             # handle scenaro: multiple SDK packages one md file.
-            npx autorest --version=3.8.4 --csharp $readmeFile --csharp-sdks-folder=$sdkRootPath --skip-csproj --clear-output-folder=true
+            # npx autorest --version=3.8.4 --csharp $readmeFile --csharp-sdks-folder=$sdkRootPath --skip-csproj --clear-output-folder=true
             # handle the sdk package already exists. The service may be onboarded before.
             $serviceSDKDirectory = (Join-Path $sdkRootPath "sdk" $service)
             $folders = Get-ChildItem $serviceSDKDirectory -Directory -exclude *.*Management*,Azure.ResourceManager*
+            $regexForMatch="$service"
+            if ($readmeAbsolutePath -match ".*$service(?<spec>.*)[/|\\]readme.md" ) {
+                $regexForMatch = $matches["spec"] -replace "/|\\", "[/|\\]"
+                $regexForMatch = "$service$regexForMatch"
+            }
             foreach ($item in $folders) {
                 $folder=$item.Name
-                New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkRootPath -readme $readmeFile -outputJsonFile $newpackageoutput
-                if ( !$? ) {
-                    Write-Error "Failed to create sdk project folder. exit code: $?"
-                    exit 1
+                # filter out the valid sdk package by the readme path to process.
+                $autorestFilePath = (Join-Path $serviceSDKDirectory $folder "src" "autorest.md")
+                if (Test-Path -Path $autorestFilePath) {
+                    $fileContent = Get-Content $autorestFilePath -Raw
+                    if ($fileContent -match $regexForMatch) {
+                        New-DataPlanePackageFolder -service $service -namespace $folder -sdkPath $sdkRootPath -readme $readmeFile -outputJsonFile $newpackageoutput
+                        if ( !$? ) {
+                            Write-Error "Failed to create sdk project folder. exit code: $?"
+                            exit 1
+                        }
+                        $newPackageOutputJson = Get-Content $newPackageOutput | Out-String | ConvertFrom-Json
+                        $packagesToGen = $packagesToGen + @($newPackageOutputJson)
+                        Remove-Item $newPackageOutput
+                    }
                 }
-                $newPackageOutputJson = Get-Content $newPackageOutput | Out-String | ConvertFrom-Json
-                $packagesToGen = $packagesToGen + @($newPackageOutputJson)
-                Remove-Item $newPackageOutput
             }
         }
     }
