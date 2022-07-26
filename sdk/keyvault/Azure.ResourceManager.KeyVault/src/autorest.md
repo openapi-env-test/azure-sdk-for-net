@@ -149,8 +149,8 @@ These settings apply only when `--tag=package-2021-10` is specified on the comma
 
 ```yaml $(tag) == 'package-2021-10'
 input-file:
-    - https://github.com/Azure/azure-rest-api-specs/blob/8b871ca35a08c43293fcbb2926e6062db4f6d85c/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/common.json
-    - https://github.com/Azure/azure-rest-api-specs/blob/8b871ca35a08c43293fcbb2926e6062db4f6d85c/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/keyvault.json
-    - https://github.com/Azure/azure-rest-api-specs/blob/8b871ca35a08c43293fcbb2926e6062db4f6d85c/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/managedHsm.json
-    - https://github.com/Azure/azure-rest-api-specs/blob/8b871ca35a08c43293fcbb2926e6062db4f6d85c/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/providers.json
+    - https://github.com/test-repo-billy/azure-rest-api-specs/blob/6bf6aa36b21f5a56425c2ea5a17d53ad422fca80/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/common.json
+    - https://github.com/test-repo-billy/azure-rest-api-specs/blob/6bf6aa36b21f5a56425c2ea5a17d53ad422fca80/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/keyvault.json
+    - https://github.com/test-repo-billy/azure-rest-api-specs/blob/6bf6aa36b21f5a56425c2ea5a17d53ad422fca80/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/managedHsm.json
+    - https://github.com/test-repo-billy/azure-rest-api-specs/blob/6bf6aa36b21f5a56425c2ea5a17d53ad422fca80/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/providers.json
 ```
