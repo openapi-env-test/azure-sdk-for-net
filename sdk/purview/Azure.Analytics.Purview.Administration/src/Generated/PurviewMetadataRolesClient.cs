@@ -38,6 +38,29 @@ namespace Azure.Analytics.Purview.Administration
         /// <param name="context"> The request context, which can override default behaviors of the client pipeline on a per-call basis. </param>
         /// <exception cref="RequestFailedException"> Service returned a non-success status code. </exception>
         /// <returns> The <see cref="AsyncPageable{T}"/> from the service containing a list of <see cref="BinaryData"/> objects. Details of the body schema for each item in the collection are in the Remarks section below. </returns>
+        /// <remarks>
+        /// Below is the JSON schema for one item in the pageable response.
+        /// 
+        /// Response Body:
+        /// 
+        /// Schema for <c>MetadataRoleListValues</c>:
+        /// <code>{
+        ///   id: string, # Optional. The Id of role
+        ///   name: string, # Optional. The name of role
+        ///   type: string, # Optional. The type of role
+        ///   properties: {
+        ///     provisioningState: string, # Optional. The provisioningState of role
+        ///     roleType: string, # Optional. The type of role
+        ///     friendlyName: string, # Optional. The friendly name of role
+        ///     description: string, # Optional. The description of role
+        ///     cnfCondition: [AttributeMatcher[]], # Optional. The cnf Condition for a rule
+        ///     dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///     version: number, # Optional. The version of role
+        ///   }, # Optional.
+        /// }
+        /// </code>
+        /// 
+        /// </remarks>
         public virtual AsyncPageable<BinaryData> GetMetadataRolesAsync(RequestContext context = null)
         {
             return GetMetadataRolesImplementationAsync("PurviewMetadataRolesClient.GetMetadataRoles", context);
@@ -53,7 +76,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataRolesRequest(context)
                         : CreateGetMetadataRolesNextPageRequest(nextLink, context);
-                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "value", "nextLink", cancellationToken).ConfigureAwait(false);
+                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "values", "nextLink", cancellationToken).ConfigureAwait(false);
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -64,6 +87,29 @@ namespace Azure.Analytics.Purview.Administration
         /// <param name="context"> The request context, which can override default behaviors of the client pipeline on a per-call basis. </param>
         /// <exception cref="RequestFailedException"> Service returned a non-success status code. </exception>
         /// <returns> The <see cref="Pageable{T}"/> from the service containing a list of <see cref="BinaryData"/> objects. Details of the body schema for each item in the collection are in the Remarks section below. </returns>
+        /// <remarks>
+        /// Below is the JSON schema for one item in the pageable response.
+        /// 
+        /// Response Body:
+        /// 
+        /// Schema for <c>MetadataRoleListValues</c>:
+        /// <code>{
+        ///   id: string, # Optional. The Id of role
+        ///   name: string, # Optional. The name of role
+        ///   type: string, # Optional. The type of role
+        ///   properties: {
+        ///     provisioningState: string, # Optional. The provisioningState of role
+        ///     roleType: string, # Optional. The type of role
+        ///     friendlyName: string, # Optional. The friendly name of role
+        ///     description: string, # Optional. The description of role
+        ///     cnfCondition: [AttributeMatcher[]], # Optional. The cnf Condition for a rule
+        ///     dnfCondition: [AttributeMatcher[]], # Optional. The dnf Condition for a rule
+        ///     version: number, # Optional. The version of role
+        ///   }, # Optional.
+        /// }
+        /// </code>
+        /// 
+        /// </remarks>
         public virtual Pageable<BinaryData> GetMetadataRoles(RequestContext context = null)
         {
             return GetMetadataRolesImplementation("PurviewMetadataRolesClient.GetMetadataRoles", context);
@@ -79,7 +125,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataRolesRequest(context)
                         : CreateGetMetadataRolesNextPageRequest(nextLink, context);
-                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "value", "nextLink");
+                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "values", "nextLink");
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -95,7 +141,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.Reset(_endpoint);
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataRoles", false);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;

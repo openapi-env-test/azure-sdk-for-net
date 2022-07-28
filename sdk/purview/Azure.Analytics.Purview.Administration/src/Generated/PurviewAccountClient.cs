@@ -638,7 +638,7 @@ namespace Azure.Analytics.Purview.Administration
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -647,7 +647,7 @@ namespace Azure.Analytics.Purview.Administration
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
@@ -692,7 +692,7 @@ namespace Azure.Analytics.Purview.Administration
         ///   name: string, # Optional. Gets the name.
         ///   parentCollection: {
         ///     referenceName: string, # Optional. Gets or sets the reference name.
-        ///     type: string, # Optional. Gets the reference type property.
+        ///     type: string, # Optional. Gets or sets the reference type property.
         ///   }, # Optional. Gets or sets the parent collection reference.
         ///   systemData: {
         ///     createdAt: string (ISO 8601 Format), # Optional. The timestamp of resource creation (UTC).
@@ -701,7 +701,7 @@ namespace Azure.Analytics.Purview.Administration
         ///     lastModifiedAt: string (ISO 8601 Format), # Optional. The timestamp of the last modification the resource (UTC).
         ///     lastModifiedBy: string, # Optional. The identity that last modified the resource.
         ///     lastModifiedByType: &quot;User&quot; | &quot;Application&quot; | &quot;ManagedIdentity&quot; | &quot;Key&quot;, # Optional. The type of identity that last modified the resource.
-        ///   }, # Optional. Gets the system data that contains information about who and when created and updated the resource.
+        ///   }, # Optional. Metadata pertaining to creation and last modification of the resource.
         /// }
         /// </code>
         /// 
