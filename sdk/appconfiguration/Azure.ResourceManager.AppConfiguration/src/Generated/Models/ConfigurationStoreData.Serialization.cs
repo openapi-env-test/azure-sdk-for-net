@@ -19,13 +19,6 @@ namespace Azure.ResourceManager.AppConfiguration
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            if (Optional.IsDefined(Identity))
-            {
-                writer.WritePropertyName("identity");
-                JsonSerializer.Serialize(writer, Identity);
-            }
-            writer.WritePropertyName("sku");
-            writer.WriteObjectValue(Sku);
             if (Optional.IsCollectionDefined(Tags))
             {
                 writer.WritePropertyName("tags");
@@ -41,44 +34,12 @@ namespace Azure.ResourceManager.AppConfiguration
             writer.WriteStringValue(Location);
             writer.WritePropertyName("properties");
             writer.WriteStartObject();
-            if (Optional.IsDefined(Encryption))
-            {
-                writer.WritePropertyName("encryption");
-                writer.WriteObjectValue(Encryption);
-            }
-            if (Optional.IsDefined(PublicNetworkAccess))
-            {
-                writer.WritePropertyName("publicNetworkAccess");
-                writer.WriteStringValue(PublicNetworkAccess.Value.ToString());
-            }
-            if (Optional.IsDefined(DisableLocalAuth))
-            {
-                writer.WritePropertyName("disableLocalAuth");
-                writer.WriteBooleanValue(DisableLocalAuth.Value);
-            }
-            if (Optional.IsDefined(SoftDeleteRetentionInDays))
-            {
-                writer.WritePropertyName("softDeleteRetentionInDays");
-                writer.WriteNumberValue(SoftDeleteRetentionInDays.Value);
-            }
-            if (Optional.IsDefined(EnablePurgeProtection))
-            {
-                writer.WritePropertyName("enablePurgeProtection");
-                writer.WriteBooleanValue(EnablePurgeProtection.Value);
-            }
-            if (Optional.IsDefined(CreateMode))
-            {
-                writer.WritePropertyName("createMode");
-                writer.WriteStringValue(CreateMode.Value.ToSerialString());
-            }
             writer.WriteEndObject();
             writer.WriteEndObject();
         }
 
         internal static ConfigurationStoreData DeserializeConfigurationStoreData(JsonElement element)
         {
-            Optional<ManagedServiceIdentity> identity = default;
-            AppConfigurationSku sku = default;
             Optional<IDictionary<string, string>> tags = default;
             AzureLocation location = default;
             ResourceIdentifier id = default;
@@ -88,30 +49,8 @@ namespace Azure.ResourceManager.AppConfiguration
             Optional<ProvisioningState> provisioningState = default;
             Optional<DateTimeOffset> creationDate = default;
             Optional<string> endpoint = default;
-            Optional<Models.EncryptionProperties> encryption = default;
-            Optional<IReadOnlyList<PrivateEndpointConnectionReference>> privateEndpointConnections = default;
-            Optional<PublicNetworkAccess> publicNetworkAccess = default;
-            Optional<bool> disableLocalAuth = default;
-            Optional<int> softDeleteRetentionInDays = default;
-            Optional<bool> enablePurgeProtection = default;
-            Optional<CreateMode> createMode = default;
             foreach (var property in element.EnumerateObject())
             {
-                if (property.NameEquals("identity"))
-                {
-                    if (property.Value.ValueKind == JsonValueKind.Null)
-                    {
-                        property.ThrowNonNullablePropertyIsNull();
-                        continue;
-                    }
-                    identity = JsonSerializer.Deserialize<ManagedServiceIdentity>(property.Value.ToString());
-                    continue;
-                }
-                if (property.NameEquals("sku"))
-                {
-                    sku = AppConfigurationSku.DeserializeAppConfigurationSku(property.Value);
-                    continue;
-                }
                 if (property.NameEquals("tags"))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
@@ -191,86 +130,11 @@ namespace Azure.ResourceManager.AppConfiguration
                             endpoint = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("encryption"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            encryption = Models.EncryptionProperties.DeserializeEncryptionProperties(property0.Value);
-                            continue;
-                        }
-                        if (property0.NameEquals("privateEndpointConnections"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                privateEndpointConnections = null;
-                                continue;
-                            }
-                            List<PrivateEndpointConnectionReference> array = new List<PrivateEndpointConnectionReference>();
-                            foreach (var item in property0.Value.EnumerateArray())
-                            {
-                                array.Add(PrivateEndpointConnectionReference.DeserializePrivateEndpointConnectionReference(item));
-                            }
-                            privateEndpointConnections = array;
-                            continue;
-                        }
-                        if (property0.NameEquals("publicNetworkAccess"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            publicNetworkAccess = new PublicNetworkAccess(property0.Value.GetString());
-                            continue;
-                        }
-                        if (property0.NameEquals("disableLocalAuth"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            disableLocalAuth = property0.Value.GetBoolean();
-                            continue;
-                        }
-                        if (property0.NameEquals("softDeleteRetentionInDays"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            softDeleteRetentionInDays = property0.Value.GetInt32();
-                            continue;
-                        }
-                        if (property0.NameEquals("enablePurgeProtection"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            enablePurgeProtection = property0.Value.GetBoolean();
-                            continue;
-                        }
-                        if (property0.NameEquals("createMode"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            createMode = property0.Value.GetString().ToCreateMode();
-                            continue;
-                        }
                     }
                     continue;
                 }
             }
-            return new ConfigurationStoreData(id, name, type, systemData.Value, Optional.ToDictionary(tags), location, identity, sku, Optional.ToNullable(provisioningState), Optional.ToNullable(creationDate), endpoint.Value, encryption.Value, Optional.ToList(privateEndpointConnections), Optional.ToNullable(publicNetworkAccess), Optional.ToNullable(disableLocalAuth), Optional.ToNullable(softDeleteRetentionInDays), Optional.ToNullable(enablePurgeProtection), Optional.ToNullable(createMode));
+            return new ConfigurationStoreData(id, name, type, systemData.Value, Optional.ToDictionary(tags), location, Optional.ToNullable(provisioningState), Optional.ToNullable(creationDate), endpoint.Value);
         }
     }
 }
