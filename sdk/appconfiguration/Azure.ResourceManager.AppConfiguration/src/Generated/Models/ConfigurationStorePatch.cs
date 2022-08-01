@@ -5,9 +5,9 @@
 
 #nullable disable
 
+using System;
 using System.Collections.Generic;
 using Azure.Core;
-using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.AppConfiguration.Models
 {
@@ -20,38 +20,9 @@ namespace Azure.ResourceManager.AppConfiguration.Models
             Tags = new ChangeTrackingDictionary<string, string>();
         }
 
-        /// <summary> The managed identity information for the configuration store. </summary>
-        public ManagedServiceIdentity Identity { get; set; }
-        /// <summary> The SKU of the configuration store. </summary>
-        internal AppConfigurationSku Sku { get; set; }
-        /// <summary> The SKU name of the configuration store. </summary>
-        public string SkuName
-        {
-            get => Sku is null ? default : Sku.Name;
-            set => Sku = new AppConfigurationSku(value);
-        }
-
+        /// <summary> The properties for updating a configuration store. </summary>
+        public BinaryData Properties { get; set; }
         /// <summary> The ARM resource tags. </summary>
         public IDictionary<string, string> Tags { get; }
-        /// <summary> The encryption settings of the configuration store. </summary>
-        internal EncryptionProperties Encryption { get; set; }
-        /// <summary> Key vault properties. </summary>
-        public KeyVaultProperties EncryptionKeyVaultProperties
-        {
-            get => Encryption is null ? default : Encryption.KeyVaultProperties;
-            set
-            {
-                if (Encryption is null)
-                    Encryption = new EncryptionProperties();
-                Encryption.KeyVaultProperties = value;
-            }
-        }
-
-        /// <summary> Disables all authentication methods other than AAD authentication. </summary>
-        public bool? DisableLocalAuth { get; set; }
-        /// <summary> Control permission for data plane traffic coming from public networks while private endpoint is enabled. </summary>
-        public PublicNetworkAccess? PublicNetworkAccess { get; set; }
-        /// <summary> Property specifying whether protection against purge is enabled for this configuration store. </summary>
-        public bool? EnablePurgeProtection { get; set; }
     }
 }
