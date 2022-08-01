@@ -15,15 +15,14 @@ namespace Azure.ResourceManager.AppConfiguration.Models
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            if (Optional.IsDefined(Identity))
+            if (Optional.IsDefined(Properties))
             {
-                writer.WritePropertyName("identity");
-                JsonSerializer.Serialize(writer, Identity);
-            }
-            if (Optional.IsDefined(Sku))
-            {
-                writer.WritePropertyName("sku");
-                writer.WriteObjectValue(Sku);
+                writer.WritePropertyName("properties");
+#if NET6_0_OR_GREATER
+				writer.WriteRawValue(Properties);
+#else
+                JsonSerializer.Serialize(writer, JsonDocument.Parse(Properties.ToString()).RootElement);
+#endif
             }
             if (Optional.IsCollectionDefined(Tags))
             {
@@ -36,29 +35,6 @@ namespace Azure.ResourceManager.AppConfiguration.Models
                 }
                 writer.WriteEndObject();
             }
-            writer.WritePropertyName("properties");
-            writer.WriteStartObject();
-            if (Optional.IsDefined(Encryption))
-            {
-                writer.WritePropertyName("encryption");
-                writer.WriteObjectValue(Encryption);
-            }
-            if (Optional.IsDefined(DisableLocalAuth))
-            {
-                writer.WritePropertyName("disableLocalAuth");
-                writer.WriteBooleanValue(DisableLocalAuth.Value);
-            }
-            if (Optional.IsDefined(PublicNetworkAccess))
-            {
-                writer.WritePropertyName("publicNetworkAccess");
-                writer.WriteStringValue(PublicNetworkAccess.Value.ToString());
-            }
-            if (Optional.IsDefined(EnablePurgeProtection))
-            {
-                writer.WritePropertyName("enablePurgeProtection");
-                writer.WriteBooleanValue(EnablePurgeProtection.Value);
-            }
-            writer.WriteEndObject();
             writer.WriteEndObject();
         }
     }
