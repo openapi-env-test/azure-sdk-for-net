@@ -33,7 +33,7 @@ namespace Azure.ResourceManager.AppConfiguration
         {
             _pipeline = pipeline ?? throw new ArgumentNullException(nameof(pipeline));
             _endpoint = endpoint ?? new Uri("https://management.azure.com");
-            _apiVersion = apiVersion ?? "2021-10-01-preview";
+            _apiVersion = apiVersion ?? "2022-05-01";
             _userAgent = new TelemetryDetails(GetType().Assembly, applicationId);
         }
 
@@ -46,7 +46,7 @@ namespace Azure.ResourceManager.AppConfiguration
             uri.Reset(_endpoint);
             uri.AppendPath("/subscriptions/", false);
             uri.AppendPath(subscriptionId, true);
-            uri.AppendPath("/providers/Microsoft.AppConfiguration/configurationStores", false);
+            uri.AppendPath("/providersss/Microsoft.AppConfiguration/configurationStores", false);
             uri.AppendQuery("api-version", _apiVersion, true);
             if (skipToken != null)
             {

@@ -72,30 +72,30 @@ namespace Azure.ResourceManager.AppConfiguration
 
         /// <summary>
         /// Lists the configuration stores for a given subscription.
-        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores
+        /// Request Path: /subscriptions/{subscriptionId}/providersss/Microsoft.AppConfiguration/configurationStores
         /// Operation Id: ConfigurationStores_List
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="skipToken"> A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <returns> An async collection of <see cref="ConfigurationStoreResource" /> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<ConfigurationStoreResource> GetConfigurationStoresAsync(this SubscriptionResource subscriptionResource, string skipToken = null, CancellationToken cancellationToken = default)
+        public static AsyncPageable<ConfigurationStoreResource> GetConfigurationStoresByMicrosoftResourceSubscriptionAsync(this SubscriptionResource subscriptionResource, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            return GetExtensionClient(subscriptionResource).GetConfigurationStoresAsync(skipToken, cancellationToken);
+            return GetExtensionClient(subscriptionResource).GetConfigurationStoresByMicrosoftResourceSubscriptionAsync(skipToken, cancellationToken);
         }
 
         /// <summary>
         /// Lists the configuration stores for a given subscription.
-        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores
+        /// Request Path: /subscriptions/{subscriptionId}/providersss/Microsoft.AppConfiguration/configurationStores
         /// Operation Id: ConfigurationStores_List
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="skipToken"> A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <returns> A collection of <see cref="ConfigurationStoreResource" /> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<ConfigurationStoreResource> GetConfigurationStores(this SubscriptionResource subscriptionResource, string skipToken = null, CancellationToken cancellationToken = default)
+        public static Pageable<ConfigurationStoreResource> GetConfigurationStoresByMicrosoftResourceSubscription(this SubscriptionResource subscriptionResource, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            return GetExtensionClient(subscriptionResource).GetConfigurationStores(skipToken, cancellationToken);
+            return GetExtensionClient(subscriptionResource).GetConfigurationStoresByMicrosoftResourceSubscription(skipToken, cancellationToken);
         }
 
         /// <summary>
