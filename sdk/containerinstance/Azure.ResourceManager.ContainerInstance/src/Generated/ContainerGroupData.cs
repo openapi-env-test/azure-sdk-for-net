@@ -29,13 +29,13 @@ namespace Azure.ResourceManager.ContainerInstance
                 throw new ArgumentNullException(nameof(containers));
             }
 
+            Zones = new ChangeTrackingList<string>();
             Containers = containers.ToList();
             ImageRegistryCredentials = new ChangeTrackingList<ImageRegistryCredential>();
             OSType = osType;
             Volumes = new ChangeTrackingList<ContainerInstanceVolume>();
             SubnetIds = new ChangeTrackingList<ContainerGroupSubnetId>();
             InitContainers = new ChangeTrackingList<InitContainerDefinitionContent>();
-            Zones = new ChangeTrackingList<string>();
         }
 
         /// <summary> Initializes a new instance of ContainerGroupData. </summary>
@@ -45,6 +45,7 @@ namespace Azure.ResourceManager.ContainerInstance
         /// <param name="systemData"> The systemData. </param>
         /// <param name="tags"> The tags. </param>
         /// <param name="location"> The location. </param>
+        /// <param name="zones"> The zones for the container group. </param>
         /// <param name="identity"> The identity of the container group, if configured. </param>
         /// <param name="provisioningState"> The provisioning state of the container group. This only appears in the response. </param>
         /// <param name="containers"> The containers within the container group. </param>
@@ -66,9 +67,9 @@ namespace Azure.ResourceManager.ContainerInstance
         /// <param name="sku"> The SKU for a container group. </param>
         /// <param name="encryptionProperties"> The encryption properties for a container group. </param>
         /// <param name="initContainers"> The init containers for a container group. </param>
-        /// <param name="zones"> The zones for the container group. </param>
-        internal ContainerGroupData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, IDictionary<string, string> tags, AzureLocation location, ManagedServiceIdentity identity, string provisioningState, IList<ContainerInstanceContainer> containers, IList<ImageRegistryCredential> imageRegistryCredentials, ContainerGroupRestartPolicy? restartPolicy, IPAddress ipAddress, OperatingSystemType osType, IList<ContainerInstanceVolume> volumes, ContainerGroupPropertiesInstanceView instanceView, ContainerGroupDiagnostics diagnostics, IList<ContainerGroupSubnetId> subnetIds, DnsConfiguration dnsConfig, ContainerGroupSku? sku, Models.EncryptionProperties encryptionProperties, IList<InitContainerDefinitionContent> initContainers, IList<string> zones) : base(id, name, resourceType, systemData, tags, location)
+        internal ContainerGroupData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, IDictionary<string, string> tags, AzureLocation location, IList<string> zones, ManagedServiceIdentity identity, string provisioningState, IList<ContainerInstanceContainer> containers, IList<ImageRegistryCredential> imageRegistryCredentials, ContainerGroupRestartPolicy? restartPolicy, IPAddress ipAddress, OperatingSystemType osType, IList<ContainerInstanceVolume> volumes, ContainerGroupPropertiesInstanceView instanceView, ContainerGroupDiagnostics diagnostics, IList<ContainerGroupSubnetId> subnetIds, DnsConfiguration dnsConfig, ContainerGroupSku? sku, Models.EncryptionProperties encryptionProperties, IList<InitContainerDefinitionContent> initContainers) : base(id, name, resourceType, systemData, tags, location)
         {
+            Zones = zones;
             Identity = identity;
             ProvisioningState = provisioningState;
             Containers = containers;
@@ -84,9 +85,10 @@ namespace Azure.ResourceManager.ContainerInstance
             Sku = sku;
             EncryptionProperties = encryptionProperties;
             InitContainers = initContainers;
-            Zones = zones;
         }
 
+        /// <summary> The zones for the container group. </summary>
+        public IList<string> Zones { get; }
         /// <summary> The identity of the container group, if configured. </summary>
         public ManagedServiceIdentity Identity { get; set; }
         /// <summary> The provisioning state of the container group. This only appears in the response. </summary>
@@ -135,7 +137,5 @@ namespace Azure.ResourceManager.ContainerInstance
         public Models.EncryptionProperties EncryptionProperties { get; set; }
         /// <summary> The init containers for a container group. </summary>
         public IList<InitContainerDefinitionContent> InitContainers { get; }
-        /// <summary> The zones for the container group. </summary>
-        public IList<string> Zones { get; }
     }
 }
