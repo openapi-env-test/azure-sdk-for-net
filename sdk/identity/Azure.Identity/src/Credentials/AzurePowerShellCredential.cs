@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -24,12 +23,11 @@ namespace Azure.Identity
     {
         private readonly CredentialPipeline _pipeline;
         private readonly IProcessService _processService;
-        private const int PowerShellProcessTimeoutMs = 10000;
+        internal TimeSpan PowerShellProcessTimeout { get; private set; }
         internal bool UseLegacyPowerShell { get; set; }
 
         private const string Troubleshooting = "See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/powershellcredential/troubleshoot";
         private const string AzurePowerShellFailedError = "Azure PowerShell authentication failed due to an unknown error. " + Troubleshooting;
-        private const string AzurePowerShellTimeoutError = "Azure PowerShell authentication timed out.";
         private const string RunConnectAzAccountToLogin = "Run Connect-AzAccount to login";
         private const string NoAccountsWereFoundInTheCache = "No accounts were found in the cache";
         private const string CannotRetrieveAccessToken = "cannot retrieve access token";
@@ -38,12 +36,12 @@ namespace Azure.Identity
         private const string DefaultWorkingDirNonWindows = "/bin/";
         private static readonly string DefaultWorkingDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? DefaultWorkingDirWindows : DefaultWorkingDirNonWindows;
         private readonly string _tenantId;
-        private const int ERROR_FILE_NOT_FOUND = 2;
         private readonly bool _logPII;
         private readonly bool _logAccountDetails;
         internal const string AzurePowerShellNotLogInError = "Please run 'Connect-AzAccount' to set up account.";
         internal const string AzurePowerShellModuleNotInstalledError = "Az.Account module >= 2.2.0 is not installed.";
         internal const string PowerShellNotInstalledError = "PowerShell is not installed.";
+        internal const string AzurePowerShellTimeoutError = "Azure PowerShell authentication timed out.";
 
         /// <summary>
         /// Creates a new instance of the <see cref="AzurePowerShellCredential"/>.
@@ -67,6 +65,7 @@ namespace Azure.Identity
             _tenantId = options?.TenantId;
             _pipeline = pipeline ?? CredentialPipeline.GetInstance(options);
             _processService = processService ?? ProcessService.Default;
+            PowerShellProcessTimeout = options?.PowerShellProcessTimeout ?? TimeSpan.FromSeconds(10);
         }
 
         /// <summary>
@@ -105,7 +104,10 @@ namespace Azure.Identity
                 }
                 return scope.Succeeded(token);
             }
-            catch (Win32Exception ex) when (ex.NativeErrorCode == ERROR_FILE_NOT_FOUND && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            // External execution is wrapped in a "cmd /c" command which will never throw a native Win32Exception ERROR_FILE_NOT_FOUND
+            // Check against the message for constant PowerShellNotInstalledError
+            // Do not retry if already using legacy PowerShell to prevent delays, also used in tests to ensure a single process result
+            catch (CredentialUnavailableException ex) when (UseLegacyPowerShell == false && ex.Message == PowerShellNotInstalledError && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 UseLegacyPowerShell = true;
                 try
@@ -141,7 +143,7 @@ namespace Azure.Identity
             ProcessStartInfo processStartInfo = GetAzurePowerShellProcessStartInfo(fileName, argument);
             using var processRunner = new ProcessRunner(
                 _processService.Create(processStartInfo),
-                TimeSpan.FromMilliseconds(PowerShellProcessTimeoutMs),
+                PowerShellProcessTimeout,
                 _logPII,
                 cancellationToken);
 
@@ -175,10 +177,6 @@ namespace Azure.Identity
             if (output.IndexOf(AzurePowerShellNoAzAccountModule, StringComparison.OrdinalIgnoreCase) != -1)
             {
                 throw new CredentialUnavailableException(AzurePowerShellModuleNotInstalledError);
-            }
-            if (output.IndexOf("is not recognized as an internal or external command", StringComparison.OrdinalIgnoreCase) != -1)
-            {
-                throw new Win32Exception(ERROR_FILE_NOT_FOUND);
             }
 
             var needsLogin = output.IndexOf(RunConnectAzAccountToLogin, StringComparison.OrdinalIgnoreCase) != -1 ||

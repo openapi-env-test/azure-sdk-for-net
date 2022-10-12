@@ -84,6 +84,11 @@ try {
         Invoke-Block {
             & dotnet msbuild $PSScriptRoot\..\service.proj /restore /t:GenerateCode /p:SDKType=$SDKType /p:ServiceDirectory=$ServiceDirectory
         }
+
+        Write-Host "Re-generating tests"
+        Invoke-Block {
+            & dotnet msbuild $PSScriptRoot/../service.proj /restore /t:GenerateTests /p:SDKType=$SDKType /p:ServiceDirectory=$ServiceDirectory
+        }
     }
 
     Write-Host "Re-generating snippets"
@@ -103,17 +108,17 @@ try {
         | % {
             $readmePath = $_
             $readmeContent = Get-Content $readmePath
-            
+
             if ($readmeContent -Match "Install-Package")
             {
                 LogError "README files should use dotnet CLI for installation instructions. '$readmePath'"
             }
-            
+
             if ($readmeContent -Match "dotnet add .*--version")
             {
                 LogError "Specific versions should not be specified in the installation instructions in '$readmePath'. For beta versions, include the --prerelease flag."
             }
-            
+
             if ($readmeContent -Match "dotnet add")
             {
                 $changelogPath = Join-Path $(Split-Path -Parent $readmePath) "CHANGELOG.md"
