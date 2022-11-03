@@ -1,0 +1,9 @@
+{
+  "OutputFolder": ".",
+  "Namespace": "Azure.Security.ConfidentialLedger",
+  "LibraryName": null,
+  "SharedSourceFolders": [
+    "../../../../../../spec-repo/specification/confidentialledger/ConfientialLedger/node_modules/@autorest/csharp/Generator.Shared",
+    "../../../../../../spec-repo/specification/confidentialledger/ConfientialLedger/node_modules/@autorest/csharp/Azure.Core.Shared"
+  ]
+}
