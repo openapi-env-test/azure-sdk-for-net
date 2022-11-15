@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public partial interface IAlertProcessingRulesOperations
     {
         /// <summary>
-        /// List all alert processing rules in a subscription.
+        /// List all alert processing rules in a subcription.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// </exception>
         Task<AzureOperationResponse<AlertProcessingRule,AlertProcessingRulesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string alertProcessingRuleName, PatchObject alertProcessingRulePatch, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// List all alert processing rules in a subscription.
+        /// List all alert processing rules in a subcription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

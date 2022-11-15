@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         public AlertsManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List all alert processing rules in a subscription.
+        /// List all alert processing rules in a subcription.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1307,7 +1307,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// List all alert processing rules in a subscription.
+        /// List all alert processing rules in a subcription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

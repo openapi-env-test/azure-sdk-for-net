@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public static partial class AlertProcessingRulesOperationsExtensions
     {
             /// <summary>
-            /// List all alert processing rules in a subscription.
+            /// List all alert processing rules in a subcription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
 
             /// <summary>
-            /// List all alert processing rules in a subscription.
+            /// List all alert processing rules in a subcription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
 
             /// <summary>
-            /// List all alert processing rules in a subscription.
+            /// List all alert processing rules in a subcription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
 
             /// <summary>
-            /// List all alert processing rules in a subscription.
+            /// List all alert processing rules in a subcription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
