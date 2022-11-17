@@ -17,10 +17,12 @@ namespace Azure.ResourceManager.Hci.Models
             Optional<string> name = default;
             Optional<float> id = default;
             Optional<WindowsServerSubscription> windowsServerSubscription = default;
+            Optional<ClusterNodeType> nodeType = default;
             Optional<string> manufacturer = default;
             Optional<string> model = default;
             Optional<string> osName = default;
             Optional<string> osVersion = default;
+            Optional<string> osDisplayVersion = default;
             Optional<string> serialNumber = default;
             Optional<float> coreCount = default;
             Optional<float> memoryInGiB = default;
@@ -51,6 +53,16 @@ namespace Azure.ResourceManager.Hci.Models
                     windowsServerSubscription = new WindowsServerSubscription(property.Value.GetString());
                     continue;
                 }
+                if (property.NameEquals("nodeType"))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        property.ThrowNonNullablePropertyIsNull();
+                        continue;
+                    }
+                    nodeType = new ClusterNodeType(property.Value.GetString());
+                    continue;
+                }
                 if (property.NameEquals("manufacturer"))
                 {
                     manufacturer = property.Value.GetString();
@@ -69,6 +81,11 @@ namespace Azure.ResourceManager.Hci.Models
                 if (property.NameEquals("osVersion"))
                 {
                     osVersion = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("osDisplayVersion"))
+                {
+                    osDisplayVersion = property.Value.GetString();
                     continue;
                 }
                 if (property.NameEquals("serialNumber"))
@@ -97,7 +114,7 @@ namespace Azure.ResourceManager.Hci.Models
                     continue;
                 }
             }
-            return new HciClusterNode(name.Value, Optional.ToNullable(id), Optional.ToNullable(windowsServerSubscription), manufacturer.Value, model.Value, osName.Value, osVersion.Value, serialNumber.Value, Optional.ToNullable(coreCount), Optional.ToNullable(memoryInGiB));
+            return new HciClusterNode(name.Value, Optional.ToNullable(id), Optional.ToNullable(windowsServerSubscription), Optional.ToNullable(nodeType), manufacturer.Value, model.Value, osName.Value, osVersion.Value, osDisplayVersion.Value, serialNumber.Value, Optional.ToNullable(coreCount), Optional.ToNullable(memoryInGiB));
         }
     }
 }
