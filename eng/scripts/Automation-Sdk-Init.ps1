@@ -47,7 +47,7 @@ if (Test-Path $installScript) {
 
 $outputJson = [PSCustomObject]@{
     env = [PSCustomObject]@{
-        PATH = "$dotnet;$env:PATH"
+        PATH = "$dotnet\:$env:PATH"
         DOTNET_ROOT = "$dotnet"
     }
 }
