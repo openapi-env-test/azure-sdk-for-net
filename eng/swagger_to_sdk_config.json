@@ -7,7 +7,7 @@
   },
   "initOptions": {
     "initScript": {
-      "path": "pwsh ./eng/scripts/Automation-Sdk-Init.ps1"
+      "path": "sh eng/scripts/automation/init.sh"
     }
   },
   "packageOptions": {
