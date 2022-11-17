@@ -8,7 +8,7 @@ azure-arm: true
 csharp: true
 library-name: SecurityCenter
 namespace: Azure.ResourceManager.SecurityCenter
-require: https://github.com/Azure/azure-rest-api-specs/blob/e686ed79e9b0bbc10355fd8d7ba36d1a07e4ba28/specification/security/resource-manager/readme.md
+require: https://github.com/test-repo-billy/azure-rest-api-specs/blob/fa9f08b0c0d99fe601d9f1d2b3fac0affcbd051f/specification/security/resource-manager/readme.md
 output-folder: $(this-folder)/Generated
 clear-output-folder: true
 skip-csproj: true

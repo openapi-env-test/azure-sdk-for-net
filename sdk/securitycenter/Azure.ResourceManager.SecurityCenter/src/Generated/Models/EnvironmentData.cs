@@ -10,7 +10,7 @@ namespace Azure.ResourceManager.SecurityCenter.Models
     /// <summary>
     /// The security connector environment data.
     /// Please note <see cref="EnvironmentData"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
-    /// The available derived classes include <see cref="AWSEnvironmentData"/>, <see cref="AzureDevOpsScopeEnvironmentData"/>, <see cref="GcpProjectEnvironmentData"/> and <see cref="GithubScopeEnvironmentData"/>.
+    /// The available derived classes include <see cref="AwsEnvironmentData"/>, <see cref="AzureDevOpsScopeEnvironmentData"/>, <see cref="GcpProjectEnvironmentData"/> and <see cref="GithubScopeEnvironmentData"/>.
     /// </summary>
     public abstract partial class EnvironmentData
     {

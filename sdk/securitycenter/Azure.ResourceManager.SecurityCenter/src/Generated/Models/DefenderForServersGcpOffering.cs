@@ -37,7 +37,19 @@ namespace Azure.ResourceManager.SecurityCenter.Models
         /// <summary> The Defender for servers connection configuration. </summary>
         public DefenderForServersGcpOfferingDefenderForServers DefenderForServers { get; set; }
         /// <summary> The ARC autoprovisioning configuration. </summary>
-        public DefenderForServersGcpOfferingArcAutoProvisioning ArcAutoProvisioning { get; set; }
+        internal DefenderForServersGcpOfferingArcAutoProvisioning ArcAutoProvisioning { get; set; }
+        /// <summary> Is arc auto provisioning enabled. </summary>
+        public bool? ArcAutoProvisioningEnabled
+        {
+            get => ArcAutoProvisioning is null ? default : ArcAutoProvisioning.Enabled;
+            set
+            {
+                if (ArcAutoProvisioning is null)
+                    ArcAutoProvisioning = new DefenderForServersGcpOfferingArcAutoProvisioning();
+                ArcAutoProvisioning.Enabled = value;
+            }
+        }
+
         /// <summary> The Vulnerability Assessment autoprovisioning configuration. </summary>
         public DefenderForServersGcpOfferingVaAutoProvisioning VaAutoProvisioning { get; set; }
         /// <summary> The Microsoft Defender for Endpoint autoprovisioning configuration. </summary>

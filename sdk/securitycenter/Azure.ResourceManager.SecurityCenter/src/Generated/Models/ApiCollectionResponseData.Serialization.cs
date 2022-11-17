@@ -5,54 +5,48 @@
 
 #nullable disable
 
+using System.Collections.Generic;
 using System.Text.Json;
 using Azure.Core;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.SecurityCenter.Models;
 
 namespace Azure.ResourceManager.SecurityCenter
 {
-    public partial class SecurityContactData : IUtf8JsonSerializable
+    public partial class ApiCollectionResponseData : IUtf8JsonSerializable
     {
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
             writer.WritePropertyName("properties");
             writer.WriteStartObject();
-            if (Optional.IsDefined(Emails))
+            if (Optional.IsDefined(DisplayName))
             {
-                writer.WritePropertyName("emails");
-                writer.WriteStringValue(Emails);
+                writer.WritePropertyName("displayName");
+                writer.WriteStringValue(DisplayName);
             }
-            if (Optional.IsDefined(Phone))
+            if (Optional.IsCollectionDefined(AdditionalData))
             {
-                writer.WritePropertyName("phone");
-                writer.WriteStringValue(Phone);
-            }
-            if (Optional.IsDefined(AlertNotifications))
-            {
-                writer.WritePropertyName("alertNotifications");
-                writer.WriteObjectValue(AlertNotifications);
-            }
-            if (Optional.IsDefined(NotificationsByRole))
-            {
-                writer.WritePropertyName("notificationsByRole");
-                writer.WriteObjectValue(NotificationsByRole);
+                writer.WritePropertyName("additionalData");
+                writer.WriteStartObject();
+                foreach (var item in AdditionalData)
+                {
+                    writer.WritePropertyName(item.Key);
+                    writer.WriteStringValue(item.Value);
+                }
+                writer.WriteEndObject();
             }
             writer.WriteEndObject();
             writer.WriteEndObject();
         }
 
-        internal static SecurityContactData DeserializeSecurityContactData(JsonElement element)
+        internal static ApiCollectionResponseData DeserializeApiCollectionResponseData(JsonElement element)
         {
             ResourceIdentifier id = default;
             string name = default;
             ResourceType type = default;
             Optional<SystemData> systemData = default;
-            Optional<string> emails = default;
-            Optional<string> phone = default;
-            Optional<SecurityContactPropertiesAlertNotifications> alertNotifications = default;
-            Optional<SecurityContactPropertiesNotificationsByRole> notificationsByRole = default;
+            Optional<string> displayName = default;
+            Optional<IDictionary<string, string>> additionalData = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("id"))
@@ -89,41 +83,31 @@ namespace Azure.ResourceManager.SecurityCenter
                     }
                     foreach (var property0 in property.Value.EnumerateObject())
                     {
-                        if (property0.NameEquals("emails"))
+                        if (property0.NameEquals("displayName"))
                         {
-                            emails = property0.Value.GetString();
+                            displayName = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("phone"))
-                        {
-                            phone = property0.Value.GetString();
-                            continue;
-                        }
-                        if (property0.NameEquals("alertNotifications"))
+                        if (property0.NameEquals("additionalData"))
                         {
                             if (property0.Value.ValueKind == JsonValueKind.Null)
                             {
                                 property0.ThrowNonNullablePropertyIsNull();
                                 continue;
                             }
-                            alertNotifications = SecurityContactPropertiesAlertNotifications.DeserializeSecurityContactPropertiesAlertNotifications(property0.Value);
-                            continue;
-                        }
-                        if (property0.NameEquals("notificationsByRole"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                            foreach (var property1 in property0.Value.EnumerateObject())
                             {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
+                                dictionary.Add(property1.Name, property1.Value.GetString());
                             }
-                            notificationsByRole = SecurityContactPropertiesNotificationsByRole.DeserializeSecurityContactPropertiesNotificationsByRole(property0.Value);
+                            additionalData = dictionary;
                             continue;
                         }
                     }
                     continue;
                 }
             }
-            return new SecurityContactData(id, name, type, systemData.Value, emails.Value, phone.Value, alertNotifications.Value, notificationsByRole.Value);
+            return new ApiCollectionResponseData(id, name, type, systemData.Value, displayName.Value, Optional.ToDictionary(additionalData));
         }
     }
 }

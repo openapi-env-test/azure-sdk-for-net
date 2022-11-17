@@ -171,6 +171,14 @@ namespace Azure.ResourceManager.SecurityCenter
             return GetCachedClient(Client => new SecurityConnectorCollection(Client, Id));
         }
 
+        /// <summary> Gets a collection of ApiCollectionResponseResources in the ResourceGroupResource. </summary>
+        /// <param name="serviceName"> The name of the API Management service. </param>
+        /// <returns> An object representing collection of ApiCollectionResponseResources and their operations over a ApiCollectionResponseResource. </returns>
+        public virtual ApiCollectionResponseCollection GetApiCollectionResponses(string serviceName)
+        {
+            return new ApiCollectionResponseCollection(Client, Id, serviceName);
+        }
+
         /// <summary>
         /// Policies for protecting resources using Just-in-Time access control for the subscription, location
         /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/jitNetworkAccessPolicies
