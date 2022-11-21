@@ -1684,6 +1684,53 @@ namespace Azure.ResourceManager.SecurityCenter
             return resourceGroupResource.GetSecurityConnectors().Get(securityConnectorName, cancellationToken);
         }
 
+        /// <summary> Gets a collection of ApiCollectionResponseResources in the ResourceGroupResource. </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="serviceName"> The name of the API Management service. </param>
+        /// <exception cref="ArgumentException"> <paramref name="serviceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="serviceName"/> is null. </exception>
+        /// <returns> An object representing collection of ApiCollectionResponseResources and their operations over a ApiCollectionResponseResource. </returns>
+        public static ApiCollectionResponseCollection GetApiCollectionResponses(this ResourceGroupResource resourceGroupResource, string serviceName)
+        {
+            Argument.AssertNotNullOrEmpty(serviceName, nameof(serviceName));
+
+            return GetExtensionClient(resourceGroupResource).GetApiCollectionResponses(serviceName);
+        }
+
+        /// <summary>
+        /// Gets an Azure API Management API if it has been onboarded to Defender for APIs. If an Azure API Management API is onboarded to Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/providers/Microsoft.Security/apiCollections/{apiCollectionId}
+        /// Operation Id: APICollection_Get
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="serviceName"> The name of the API Management service. </param>
+        /// <param name="apiCollectionId"> A string representing the apiCollections resource within the Microsoft.Security provider namespace. This string matches the Azure API Management API name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="serviceName"/> or <paramref name="apiCollectionId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="serviceName"/> or <paramref name="apiCollectionId"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static async Task<Response<ApiCollectionResponseResource>> GetApiCollectionResponseAsync(this ResourceGroupResource resourceGroupResource, string serviceName, string apiCollectionId, CancellationToken cancellationToken = default)
+        {
+            return await resourceGroupResource.GetApiCollectionResponses(serviceName).GetAsync(apiCollectionId, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets an Azure API Management API if it has been onboarded to Defender for APIs. If an Azure API Management API is onboarded to Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/providers/Microsoft.Security/apiCollections/{apiCollectionId}
+        /// Operation Id: APICollection_Get
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="serviceName"> The name of the API Management service. </param>
+        /// <param name="apiCollectionId"> A string representing the apiCollections resource within the Microsoft.Security provider namespace. This string matches the Azure API Management API name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="serviceName"/> or <paramref name="apiCollectionId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="serviceName"/> or <paramref name="apiCollectionId"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static Response<ApiCollectionResponseResource> GetApiCollectionResponse(this ResourceGroupResource resourceGroupResource, string serviceName, string apiCollectionId, CancellationToken cancellationToken = default)
+        {
+            return resourceGroupResource.GetApiCollectionResponses(serviceName).Get(apiCollectionId, cancellationToken);
+        }
+
         /// <summary>
         /// Gets the list of all possible traffic between resources for the subscription and location, based on connection type.
         /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/allowedConnections/{connectionType}
@@ -3049,6 +3096,25 @@ namespace Azure.ResourceManager.SecurityCenter
             {
                 SecurityConnectorApplicationResource.ValidateResourceId(id);
                 return new SecurityConnectorApplicationResource(client, id);
+            }
+            );
+        }
+        #endregion
+
+        #region ApiCollectionResponseResource
+        /// <summary>
+        /// Gets an object representing an <see cref="ApiCollectionResponseResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="ApiCollectionResponseResource.CreateResourceIdentifier" /> to create an <see cref="ApiCollectionResponseResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// </summary>
+        /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
+        /// <param name="id"> The resource ID of the resource to get. </param>
+        /// <returns> Returns a <see cref="ApiCollectionResponseResource" /> object. </returns>
+        public static ApiCollectionResponseResource GetApiCollectionResponseResource(this ArmClient client, ResourceIdentifier id)
+        {
+            return client.GetResourceClient(() =>
+            {
+                ApiCollectionResponseResource.ValidateResourceId(id);
+                return new ApiCollectionResponseResource(client, id);
             }
             );
         }
