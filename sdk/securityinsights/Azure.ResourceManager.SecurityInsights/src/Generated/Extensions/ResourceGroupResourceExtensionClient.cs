@@ -6,6 +6,7 @@
 #nullable disable
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure;
@@ -25,6 +26,12 @@ namespace Azure.ResourceManager.SecurityInsights
         private DomainWhoisRestOperations _domainWhoisRestClient;
         private ClientDiagnostics _sourceControlClientDiagnostics;
         private SourceControlRestOperations _sourceControlRestClient;
+        private ClientDiagnostics _getRecommendationsClientDiagnostics;
+        private GetRecommendationsRestOperations _getRecommendationsRestClient;
+        private ClientDiagnostics _getClientDiagnostics;
+        private GetRestOperations _getRestClient;
+        private ClientDiagnostics _updateClientDiagnostics;
+        private UpdateRestOperations _updateRestClient;
         private ClientDiagnostics _threatIntelligenceIndicatorClientDiagnostics;
         private ThreatIntelligenceIndicatorsRestOperations _threatIntelligenceIndicatorRestClient;
         private ClientDiagnostics _dataConnectorsCheckRequirementsClientDiagnostics;
@@ -48,6 +55,12 @@ namespace Azure.ResourceManager.SecurityInsights
         private DomainWhoisRestOperations DomainWhoisRestClient => _domainWhoisRestClient ??= new DomainWhoisRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
         private ClientDiagnostics SourceControlClientDiagnostics => _sourceControlClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ProviderConstants.DefaultProviderNamespace, Diagnostics);
         private SourceControlRestOperations SourceControlRestClient => _sourceControlRestClient ??= new SourceControlRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+        private ClientDiagnostics GetRecommendationsClientDiagnostics => _getRecommendationsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private GetRecommendationsRestOperations GetRecommendationsRestClient => _getRecommendationsRestClient ??= new GetRecommendationsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+        private ClientDiagnostics GetClientDiagnostics => _getClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private GetRestOperations GetRestClient => _getRestClient ??= new GetRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+        private ClientDiagnostics UpdateClientDiagnostics => _updateClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private UpdateRestOperations UpdateRestClient => _updateRestClient ??= new UpdateRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
         private ClientDiagnostics ThreatIntelligenceIndicatorClientDiagnostics => _threatIntelligenceIndicatorClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ThreatIntelligenceIndicatorResource.ResourceType.Namespace, Diagnostics);
         private ThreatIntelligenceIndicatorsRestOperations ThreatIntelligenceIndicatorRestClient => _threatIntelligenceIndicatorRestClient ??= new ThreatIntelligenceIndicatorsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, GetApiVersionOrNull(ThreatIntelligenceIndicatorResource.ResourceType));
         private ClientDiagnostics DataConnectorsCheckRequirementsClientDiagnostics => _dataConnectorsCheckRequirementsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.SecurityInsights", ProviderConstants.DefaultProviderNamespace, Diagnostics);
@@ -380,6 +393,168 @@ namespace Azure.ResourceManager.SecurityInsights
                 }
             }
             return PageableHelpers.CreateEnumerable(FirstPageFunc, NextPageFunc);
+        }
+
+        /// <summary>
+        /// Gets a list of all recommendations.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations
+        /// Operation Id: GetRecommendations_List
+        /// </summary>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <returns> An async collection of <see cref="Recommendation" /> that may take multiple service requests to iterate over. </returns>
+        public virtual AsyncPageable<Recommendation> GetGetRecommendationsAsync(string workspaceName, CancellationToken cancellationToken = default)
+        {
+            async Task<Page<Recommendation>> FirstPageFunc(int? pageSizeHint)
+            {
+                using var scope = GetRecommendationsClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.GetGetRecommendations");
+                scope.Start();
+                try
+                {
+                    var response = await GetRecommendationsRestClient.ListAsync(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    return Page.FromValues(response.Value.Value, null, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            return PageableHelpers.CreateAsyncEnumerable(FirstPageFunc, null);
+        }
+
+        /// <summary>
+        /// Gets a list of all recommendations.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations
+        /// Operation Id: GetRecommendations_List
+        /// </summary>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <returns> A collection of <see cref="Recommendation" /> that may take multiple service requests to iterate over. </returns>
+        public virtual Pageable<Recommendation> GetGetRecommendations(string workspaceName, CancellationToken cancellationToken = default)
+        {
+            Page<Recommendation> FirstPageFunc(int? pageSizeHint)
+            {
+                using var scope = GetRecommendationsClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.GetGetRecommendations");
+                scope.Start();
+                try
+                {
+                    var response = GetRecommendationsRestClient.List(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, cancellationToken: cancellationToken);
+                    return Page.FromValues(response.Value.Value, null, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            return PageableHelpers.CreateEnumerable(FirstPageFunc, null);
+        }
+
+        /// <summary>
+        /// Gets a recommendation by its id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Get_SingleRecommendation
+        /// </summary>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual async Task<Response<Recommendation>> SingleRecommendationGetAsync(string workspaceName, Guid recommendationId, CancellationToken cancellationToken = default)
+        {
+            using var scope = GetClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.SingleRecommendationGet");
+            scope.Start();
+            try
+            {
+                var response = await GetRestClient.SingleRecommendationAsync(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, cancellationToken).ConfigureAwait(false);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a recommendation by its id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Get_SingleRecommendation
+        /// </summary>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual Response<Recommendation> SingleRecommendationGet(string workspaceName, Guid recommendationId, CancellationToken cancellationToken = default)
+        {
+            using var scope = GetClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.SingleRecommendationGet");
+            scope.Start();
+            try
+            {
+                var response = GetRestClient.SingleRecommendation(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, cancellationToken);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Patch a recommendation.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Update_Recommendation
+        /// </summary>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="patch"> Recommendation Fields to Update. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual async Task<ArmOperation<Recommendation>> RecommendationUpdateAsync(WaitUntil waitUntil, string workspaceName, Guid recommendationId, IEnumerable<RecommendationPatch> patch, CancellationToken cancellationToken = default)
+        {
+            using var scope = UpdateClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.RecommendationUpdate");
+            scope.Start();
+            try
+            {
+                var response = await UpdateRestClient.RecommendationAsync(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, patch, cancellationToken).ConfigureAwait(false);
+                var operation = new SecurityInsightsArmOperation<Recommendation>(new RecommendationOperationSource(), UpdateClientDiagnostics, Pipeline, UpdateRestClient.CreateRecommendationRequest(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, patch).Request, response, OperationFinalStateVia.Location);
+                if (waitUntil == WaitUntil.Completed)
+                    await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
+                return operation;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Patch a recommendation.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Update_Recommendation
+        /// </summary>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="patch"> Recommendation Fields to Update. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual ArmOperation<Recommendation> RecommendationUpdate(WaitUntil waitUntil, string workspaceName, Guid recommendationId, IEnumerable<RecommendationPatch> patch, CancellationToken cancellationToken = default)
+        {
+            using var scope = UpdateClientDiagnostics.CreateScope("ResourceGroupResourceExtensionClient.RecommendationUpdate");
+            scope.Start();
+            try
+            {
+                var response = UpdateRestClient.Recommendation(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, patch, cancellationToken);
+                var operation = new SecurityInsightsArmOperation<Recommendation>(new RecommendationOperationSource(), UpdateClientDiagnostics, Pipeline, UpdateRestClient.CreateRecommendationRequest(Id.SubscriptionId, Id.ResourceGroupName, workspaceName, recommendationId, patch).Request, response, OperationFinalStateVia.Location);
+                if (waitUntil == WaitUntil.Completed)
+                    operation.WaitForCompletion(cancellationToken);
+                return operation;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
         }
 
         /// <summary>

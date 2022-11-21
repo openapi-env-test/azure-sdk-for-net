@@ -6,6 +6,7 @@
 #nullable disable
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure;
@@ -969,6 +970,120 @@ namespace Azure.ResourceManager.SecurityInsights
             Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
 
             return GetExtensionClient(resourceGroupResource).GetRepositoriesSourceControls(workspaceName, repoType, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets a list of all recommendations.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations
+        /// Operation Id: GetRecommendations_List
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> is null. </exception>
+        /// <returns> An async collection of <see cref="Recommendation" /> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<Recommendation> GetGetRecommendationsAsync(this ResourceGroupResource resourceGroupResource, string workspaceName, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+
+            return GetExtensionClient(resourceGroupResource).GetGetRecommendationsAsync(workspaceName, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets a list of all recommendations.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations
+        /// Operation Id: GetRecommendations_List
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> is null. </exception>
+        /// <returns> A collection of <see cref="Recommendation" /> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<Recommendation> GetGetRecommendations(this ResourceGroupResource resourceGroupResource, string workspaceName, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+
+            return GetExtensionClient(resourceGroupResource).GetGetRecommendations(workspaceName, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets a recommendation by its id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Get_SingleRecommendation
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> is null. </exception>
+        public static async Task<Response<Recommendation>> SingleRecommendationGetAsync(this ResourceGroupResource resourceGroupResource, string workspaceName, Guid recommendationId, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+
+            return await GetExtensionClient(resourceGroupResource).SingleRecommendationGetAsync(workspaceName, recommendationId, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets a recommendation by its id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Get_SingleRecommendation
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> is null. </exception>
+        public static Response<Recommendation> SingleRecommendationGet(this ResourceGroupResource resourceGroupResource, string workspaceName, Guid recommendationId, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+
+            return GetExtensionClient(resourceGroupResource).SingleRecommendationGet(workspaceName, recommendationId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Patch a recommendation.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Update_Recommendation
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="patch"> Recommendation Fields to Update. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> or <paramref name="patch"/> is null. </exception>
+        public static async Task<ArmOperation<Recommendation>> RecommendationUpdateAsync(this ResourceGroupResource resourceGroupResource, WaitUntil waitUntil, string workspaceName, Guid recommendationId, IEnumerable<RecommendationPatch> patch, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+            Argument.AssertNotNull(patch, nameof(patch));
+
+            return await GetExtensionClient(resourceGroupResource).RecommendationUpdateAsync(waitUntil, workspaceName, recommendationId, patch, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Patch a recommendation.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/recommendations/{recommendationId}
+        /// Operation Id: Update_Recommendation
+        /// </summary>
+        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="workspaceName"> The name of the workspace. </param>
+        /// <param name="recommendationId"> Recommendation Id. </param>
+        /// <param name="patch"> Recommendation Fields to Update. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="workspaceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="workspaceName"/> or <paramref name="patch"/> is null. </exception>
+        public static ArmOperation<Recommendation> RecommendationUpdate(this ResourceGroupResource resourceGroupResource, WaitUntil waitUntil, string workspaceName, Guid recommendationId, IEnumerable<RecommendationPatch> patch, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNullOrEmpty(workspaceName, nameof(workspaceName));
+            Argument.AssertNotNull(patch, nameof(patch));
+
+            return GetExtensionClient(resourceGroupResource).RecommendationUpdate(waitUntil, workspaceName, recommendationId, patch, cancellationToken);
         }
 
         /// <summary>
