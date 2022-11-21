@@ -10,25 +10,33 @@ using Azure.Core;
 
 namespace Azure.ResourceManager.DataBox.Models
 {
-    public partial class TransportPreferences : IUtf8JsonSerializable
+    public partial class ReverseShippingDetails : IUtf8JsonSerializable
     {
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            writer.WritePropertyName("preferredShipmentType");
-            writer.WriteStringValue(PreferredShipmentType.ToSerialString());
+            writer.WritePropertyName("contactDetails");
+            writer.WriteObjectValue(ContactDetails);
+            writer.WritePropertyName("shippingAddress");
+            writer.WriteObjectValue(ShippingAddress);
             writer.WriteEndObject();
         }
 
-        internal static TransportPreferences DeserializeTransportPreferences(JsonElement element)
+        internal static ReverseShippingDetails DeserializeReverseShippingDetails(JsonElement element)
         {
-            TransportShipmentType preferredShipmentType = default;
+            ContactInfo contactDetails = default;
+            DataBoxShippingAddress shippingAddress = default;
             Optional<bool> isUpdated = default;
             foreach (var property in element.EnumerateObject())
             {
-                if (property.NameEquals("preferredShipmentType"))
+                if (property.NameEquals("contactDetails"))
                 {
-                    preferredShipmentType = property.Value.GetString().ToTransportShipmentType();
+                    contactDetails = ContactInfo.DeserializeContactInfo(property.Value);
+                    continue;
+                }
+                if (property.NameEquals("shippingAddress"))
+                {
+                    shippingAddress = DataBoxShippingAddress.DeserializeDataBoxShippingAddress(property.Value);
                     continue;
                 }
                 if (property.NameEquals("isUpdated"))
@@ -42,7 +50,7 @@ namespace Azure.ResourceManager.DataBox.Models
                     continue;
                 }
             }
-            return new TransportPreferences(preferredShipmentType, Optional.ToNullable(isUpdated));
+            return new ReverseShippingDetails(contactDetails, shippingAddress, Optional.ToNullable(isUpdated));
         }
     }
 }
