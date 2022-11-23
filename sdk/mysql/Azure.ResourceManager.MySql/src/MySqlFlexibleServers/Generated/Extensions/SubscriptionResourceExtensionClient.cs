@@ -28,6 +28,8 @@ namespace Azure.ResourceManager.MySql.FlexibleServers
         private CheckVirtualNetworkSubnetUsageRestOperations _checkVirtualNetworkSubnetUsageRestClient;
         private ClientDiagnostics _checkNameAvailabilityClientDiagnostics;
         private CheckNameAvailabilityRestOperations _checkNameAvailabilityRestClient;
+        private ClientDiagnostics _checkNameAvailabilityWithoutLocationClientDiagnostics;
+        private CheckNameAvailabilityWithoutLocationRestOperations _checkNameAvailabilityWithoutLocationRestClient;
 
         /// <summary> Initializes a new instance of the <see cref="SubscriptionResourceExtensionClient"/> class for mocking. </summary>
         protected SubscriptionResourceExtensionClient()
@@ -49,6 +51,8 @@ namespace Azure.ResourceManager.MySql.FlexibleServers
         private CheckVirtualNetworkSubnetUsageRestOperations CheckVirtualNetworkSubnetUsageRestClient => _checkVirtualNetworkSubnetUsageRestClient ??= new CheckVirtualNetworkSubnetUsageRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
         private ClientDiagnostics CheckNameAvailabilityClientDiagnostics => _checkNameAvailabilityClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.MySql.FlexibleServers", ProviderConstants.DefaultProviderNamespace, Diagnostics);
         private CheckNameAvailabilityRestOperations CheckNameAvailabilityRestClient => _checkNameAvailabilityRestClient ??= new CheckNameAvailabilityRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+        private ClientDiagnostics CheckNameAvailabilityWithoutLocationClientDiagnostics => _checkNameAvailabilityWithoutLocationClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.MySql.FlexibleServers", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private CheckNameAvailabilityWithoutLocationRestOperations CheckNameAvailabilityWithoutLocationRestClient => _checkNameAvailabilityWithoutLocationRestClient ??= new CheckNameAvailabilityWithoutLocationRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
 
         private string GetApiVersionOrNull(ResourceType resourceType)
         {
@@ -313,6 +317,52 @@ namespace Azure.ResourceManager.MySql.FlexibleServers
             try
             {
                 var response = CheckNameAvailabilityRestClient.Execute(Id.SubscriptionId, locationName, content, cancellationToken);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Check the availability of name for server
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability
+        /// Operation Id: CheckNameAvailabilityWithoutLocation_Execute
+        /// </summary>
+        /// <param name="content"> The required parameters for checking if server name is available. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual async Task<Response<MySqlFlexibleServerNameAvailabilityResult>> ExecuteCheckNameAvailabilityWithoutLocationAsync(MySqlFlexibleServerNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        {
+            using var scope = CheckNameAvailabilityWithoutLocationClientDiagnostics.CreateScope("SubscriptionResourceExtensionClient.ExecuteCheckNameAvailabilityWithoutLocation");
+            scope.Start();
+            try
+            {
+                var response = await CheckNameAvailabilityWithoutLocationRestClient.ExecuteAsync(Id.SubscriptionId, content, cancellationToken).ConfigureAwait(false);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Check the availability of name for server
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability
+        /// Operation Id: CheckNameAvailabilityWithoutLocation_Execute
+        /// </summary>
+        /// <param name="content"> The required parameters for checking if server name is available. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual Response<MySqlFlexibleServerNameAvailabilityResult> ExecuteCheckNameAvailabilityWithoutLocation(MySqlFlexibleServerNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        {
+            using var scope = CheckNameAvailabilityWithoutLocationClientDiagnostics.CreateScope("SubscriptionResourceExtensionClient.ExecuteCheckNameAvailabilityWithoutLocation");
+            scope.Start();
+            try
+            {
+                var response = CheckNameAvailabilityWithoutLocationRestClient.Execute(Id.SubscriptionId, content, cancellationToken);
                 return response;
             }
             catch (Exception e)
