@@ -170,6 +170,7 @@ function Update-CIYmlFile() {
             $fileContent = Get-Content -Path $ciFilePath
             $fileContent[$startNum - 1] += ([Environment]::NewLine + "    - " + "name: $artifact" + [Environment]::NewLine + "      safeName: $safeName")
             $fileContent | Set-Content $ciFilePath
+            Write-Host "CI updated."
         }
     } else {
         Throw "ci.yml doesn't exist."
@@ -409,7 +410,7 @@ function New-CADLPackageFolder() {
         $dotnetNewCmd = "dotnet new azsdkdpg --name $namespace --clientName $clientName --groupName $groupName --serviceDirectory $service --force"
         
         if (Test-Path -Path $ciymlFilePath) {
-            Write-Host "ci.yml already exists. update it to include the new serviceDirectory."
+            Write-Host "ci.yml already exists. update it to include the new serviceDirectory.ci:$ciymlFilePath, namespace:$namespace"
             Update-CIYmlFile -ciFilePath $ciymlFilePath -artifact $namespace
 
             $dotnetNewCmd = $dotnetNewCmd + " --includeCI false"
