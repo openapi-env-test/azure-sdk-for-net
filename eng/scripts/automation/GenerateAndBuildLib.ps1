@@ -716,7 +716,7 @@ function GeneratePackage()
     }
     $generatedSDKPackages.Add(@{packageName="$packageName"; 
                                 result=$result;
-                                path=@("$path", "sdk/$service");
+                                path=@("$path", "sdk/$service/ci.yml");
                                 packageFolder="$projectFolder";
                                 artifacts=$artifacts;
                                 apiViewArtifact=$apiViewArtifact;
