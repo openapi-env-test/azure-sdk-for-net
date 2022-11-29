@@ -1,63 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doc>
   <members>
-    <member name="GetConstitutionAsync(RequestContext)">
+    <member name="ListCollectionsAsync(RequestContext)">
 <example>
-This sample shows how to call GetConstitutionAsync and parse the result.
+This sample shows how to call ListCollectionsAsync and parse the result.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
-Response response = await client.GetConstitutionAsync();
+Response response = await client.ListCollectionsAsync();
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("digest").ToString());
-Console.WriteLine(result.GetProperty("script").ToString());
+Console.WriteLine(result[0].GetProperty("collectionId").ToString());
 ]]></code>
 </example>
 <remarks>
-The constitution is a script that assesses and applies proposals from consortium members.
+Collection ids are user-created collections of ledger entries
 
 Below is the JSON schema for the response payload.
 
 Response Body:
 
-Schema for <c>Constitution</c>:
+Schema for <c>CollectionModel</c>:
 <code>{
-  digest: string, # Required. SHA256 digest of the constitution script.
-  script: string, # Required. Contents of the constitution.
+  collectionId: string, # Required.
 }
 </code>
 
 </remarks>
     </member>
-    <member name="GetConstitution(RequestContext)">
+    <member name="ListCollections(RequestContext)">
 <example>
-This sample shows how to call GetConstitution and parse the result.
+This sample shows how to call ListCollections and parse the result.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
-Response response = client.GetConstitution();
+Response response = client.ListCollections();
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("digest").ToString());
-Console.WriteLine(result.GetProperty("script").ToString());
+Console.WriteLine(result[0].GetProperty("collectionId").ToString());
 ]]></code>
 </example>
 <remarks>
-The constitution is a script that assesses and applies proposals from consortium members.
+Collection ids are user-created collections of ledger entries
 
 Below is the JSON schema for the response payload.
 
 Response Body:
 
-Schema for <c>Constitution</c>:
+Schema for <c>CollectionModel</c>:
 <code>{
-  digest: string, # Required. SHA256 digest of the constitution script.
-  script: string, # Required. Contents of the constitution.
+  collectionId: string, # Required.
 }
 </code>
 
@@ -65,75 +61,103 @@ Schema for <c>Constitution</c>:
     </member>
     <member name="GetEnclaveQuotesAsync(RequestContext)">
 <example>
-This sample shows how to call GetEnclaveQuotesAsync and parse the result.
+This sample shows how to call GetEnclaveQuotesAsync.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
 Response response = await client.GetEnclaveQuotesAsync();
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("currentNodeId").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("nodeId").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("mrenclave").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("quoteVersion").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("raw").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
 </example>
 <remarks>
 A quote is an SGX enclave measurement that can be used to verify the validity of a node and its enclave.
-
-Below is the JSON schema for the response payload.
-
-Response Body:
-
-Schema for <c>ConfidentialLedgerEnclaves</c>:
-<code>{
-  currentNodeId: string, # Required. Id of the Confidential Ledger node responding to the request.
-  enclaveQuotes: Dictionary&lt;string, EnclaveQuote&gt;, # Required. Dictionary of enclave quotes, indexed by node id.
-}
-</code>
-
 </remarks>
     </member>
     <member name="GetEnclaveQuotes(RequestContext)">
 <example>
-This sample shows how to call GetEnclaveQuotes and parse the result.
+This sample shows how to call GetEnclaveQuotes.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
 Response response = client.GetEnclaveQuotes();
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("currentNodeId").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("nodeId").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("mrenclave").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("quoteVersion").ToString());
-Console.WriteLine(result.GetProperty("enclaveQuotes").GetProperty("<test>").GetProperty("raw").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
 </example>
 <remarks>
 A quote is an SGX enclave measurement that can be used to verify the validity of a node and its enclave.
+</remarks>
+    </member>
+    <member name="GetConstitutionAsync(RequestContext)">
+<example>
+This sample shows how to call GetConstitutionAsync.
+<code><![CDATA[
+var credential = new DefaultAzureCredential();
+var endpoint = new Uri("<https://my-service.azure.com>");
+var client = new ConfidentialLedgerClient(endpoint, credential);
 
-Below is the JSON schema for the response payload.
+Response response = await client.GetConstitutionAsync();
+Console.WriteLine(response.Status);
+]]></code>
+</example>
+<remarks>
+The constitution is a script that assesses and applies proposals from consortium members.
+</remarks>
+    </member>
+    <member name="GetConstitution(RequestContext)">
+<example>
+This sample shows how to call GetConstitution.
+<code><![CDATA[
+var credential = new DefaultAzureCredential();
+var endpoint = new Uri("<https://my-service.azure.com>");
+var client = new ConfidentialLedgerClient(endpoint, credential);
 
-Response Body:
+Response response = client.GetConstitution();
+Console.WriteLine(response.Status);
+]]></code>
+</example>
+<remarks>
+The constitution is a script that assesses and applies proposals from consortium members.
+</remarks>
+    </member>
+    <member name="GetConsortiumMembersAsync(RequestContext)">
+<example>
+This sample shows how to call GetConsortiumMembersAsync.
+<code><![CDATA[
+var credential = new DefaultAzureCredential();
+var endpoint = new Uri("<https://my-service.azure.com>");
+var client = new ConfidentialLedgerClient(endpoint, credential);
 
-Schema for <c>ConfidentialLedgerEnclaves</c>:
-<code>{
-  currentNodeId: string, # Required. Id of the Confidential Ledger node responding to the request.
-  enclaveQuotes: Dictionary&lt;string, EnclaveQuote&gt;, # Required. Dictionary of enclave quotes, indexed by node id.
-}
-</code>
+Response response = await client.GetConsortiumMembersAsync();
+Console.WriteLine(response.Status);
+]]></code>
+</example>
+<remarks>
+Consortium members can manage the Confidential Ledger.
+</remarks>
+    </member>
+    <member name="GetConsortiumMembers(RequestContext)">
+<example>
+This sample shows how to call GetConsortiumMembers.
+<code><![CDATA[
+var credential = new DefaultAzureCredential();
+var endpoint = new Uri("<https://my-service.azure.com>");
+var client = new ConfidentialLedgerClient(endpoint, credential);
 
+Response response = client.GetConsortiumMembers();
+Console.WriteLine(response.Status);
+]]></code>
+</example>
+<remarks>
+Consortium members can manage the Confidential Ledger.
 </remarks>
     </member>
     <member name="CreateLedgerEntryAsync(RequestContent,String,RequestContext)">
 <example>
-This sample shows how to call CreateLedgerEntryAsync with required parameters and request content, and how to parse the result.
+This sample shows how to call CreateLedgerEntryAsync with required parameters and request content.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
@@ -144,11 +168,9 @@ var data = new {
 };
 
 Response response = await client.CreateLedgerEntryAsync(RequestContent.Create(data));
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
-This sample shows how to call CreateLedgerEntryAsync with all parameters and request content, and how to parse the result.
+This sample shows how to call CreateLedgerEntryAsync with all parameters and request content.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
@@ -159,31 +181,21 @@ var data = new {
 };
 
 Response response = await client.CreateLedgerEntryAsync(RequestContent.Create(data), "<collectionId>");
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
 </example>
 <remarks>
 A collection id may optionally be specified.
 
-Below is the JSON schema for the request and response payloads.
+Below is the JSON schema for the request payload.
 
 Request Body:
 
 Schema for <c>LedgerEntry</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
-}
-</code>
-
-Response Body:
-
-Schema for <c>LedgerWriteResult</c>:
-<code>{
+  contents: string, # Required.
   collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -191,7 +203,7 @@ Schema for <c>LedgerWriteResult</c>:
     </member>
     <member name="CreateLedgerEntry(RequestContent,String,RequestContext)">
 <example>
-This sample shows how to call CreateLedgerEntry with required parameters and request content, and how to parse the result.
+This sample shows how to call CreateLedgerEntry with required parameters and request content.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
@@ -202,11 +214,9 @@ var data = new {
 };
 
 Response response = client.CreateLedgerEntry(RequestContent.Create(data));
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
-This sample shows how to call CreateLedgerEntry with all parameters and request content, and how to parse the result.
+This sample shows how to call CreateLedgerEntry with all parameters and request content.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
@@ -217,31 +227,21 @@ var data = new {
 };
 
 Response response = client.CreateLedgerEntry(RequestContent.Create(data), "<collectionId>");
-
-JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(response.Status);
 ]]></code>
 </example>
 <remarks>
 A collection id may optionally be specified.
 
-Below is the JSON schema for the request and response payloads.
+Below is the JSON schema for the request payload.
 
 Request Body:
 
 Schema for <c>LedgerEntry</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
-}
-</code>
-
-Response Body:
-
-Schema for <c>LedgerWriteResult</c>:
-<code>{
+  contents: string, # Required.
   collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -258,7 +258,9 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = await client.GetLedgerEntryAsync("<transactionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("state").ToString());
+Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 This sample shows how to call GetLedgerEntryAsync with all parameters, and how to parse the result.
 <code><![CDATA[
@@ -269,27 +271,21 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = await client.GetLedgerEntryAsync("<transactionId>", "<collectionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("state").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("contents").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("collectionId").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("transactionId").ToString());
+Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 </example>
 <remarks>
-To return older ledger entries, the relevant sections of the ledger must be read from disk and validated. To prevent blocking within the enclave, the response will indicate whether the entry is ready and part of the response, or if the loading is still ongoing.
-
 Below is the JSON schema for the response payload.
 
 Response Body:
 
-Schema for <c>LedgerQueryResult</c>:
+Schema for <c>LedgerEntry</c>:
 <code>{
-  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required. State of a ledger query.
-  entry: {
-    contents: string, # Required. Contents of the ledger entry.
-    collectionId: string, # Optional.
-    transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
-  }, # Optional. The ledger entry found as a result of the query. This is only available if the query is in Ready state.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -306,7 +302,9 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = client.GetLedgerEntry("<transactionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("state").ToString());
+Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 This sample shows how to call GetLedgerEntry with all parameters, and how to parse the result.
 <code><![CDATA[
@@ -317,27 +315,21 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = client.GetLedgerEntry("<transactionId>", "<collectionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("state").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("contents").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("collectionId").ToString());
-Console.WriteLine(result.GetProperty("entry").GetProperty("transactionId").ToString());
+Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 </example>
 <remarks>
-To return older ledger entries, the relevant sections of the ledger must be read from disk and validated. To prevent blocking within the enclave, the response will indicate whether the entry is ready and part of the response, or if the loading is still ongoing.
-
 Below is the JSON schema for the response payload.
 
 Response Body:
 
-Schema for <c>LedgerQueryResult</c>:
+Schema for <c>LedgerEntry</c>:
 <code>{
-  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required. State of a ledger query.
-  entry: {
-    contents: string, # Required. Contents of the ledger entry.
-    collectionId: string, # Optional.
-    transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
-  }, # Optional. The ledger entry found as a result of the query. This is only available if the query is in Ready state.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -354,17 +346,6 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = await client.GetReceiptAsync("<transactionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("receipt").GetProperty("cert").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leaf").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("claimsDigest").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("commitEvidence").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("writeSetDigest").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("nodeId").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("proof")[0].GetProperty("left").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("proof")[0].GetProperty("right").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("root").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("serviceEndorsements")[0].ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("signature").ToString());
 Console.WriteLine(result.GetProperty("state").ToString());
 Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
@@ -377,26 +358,9 @@ Response Body:
 Schema for <c>TransactionReceipt</c>:
 <code>{
   receipt: {
-    cert: string, # Optional.
-    leaf: string, # Optional.
-    leafComponents: {
-      claimsDigest: string, # Optional.
-      commitEvidence: string, # Optional.
-      writeSetDigest: string, # Optional.
-    }, # Optional.
-    nodeId: string, # Required.
-    proof: [
-      {
-        left: string, # Optional.
-        right: string, # Optional.
-      }
-    ], # Required.
-    root: string, # Optional.
-    serviceEndorsements: [string], # Optional.
-    signature: string, # Required.
-  }, # Optional.
-  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required. State of a ledger query.
-  transactionId: string, # Required. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  }, # Required.
+  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -413,17 +377,6 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = client.GetReceipt("<transactionId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("receipt").GetProperty("cert").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leaf").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("claimsDigest").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("commitEvidence").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("leafComponents").GetProperty("writeSetDigest").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("nodeId").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("proof")[0].GetProperty("left").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("proof")[0].GetProperty("right").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("root").ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("serviceEndorsements")[0].ToString());
-Console.WriteLine(result.GetProperty("receipt").GetProperty("signature").ToString());
 Console.WriteLine(result.GetProperty("state").ToString());
 Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
@@ -436,26 +389,9 @@ Response Body:
 Schema for <c>TransactionReceipt</c>:
 <code>{
   receipt: {
-    cert: string, # Optional.
-    leaf: string, # Optional.
-    leafComponents: {
-      claimsDigest: string, # Optional.
-      commitEvidence: string, # Optional.
-      writeSetDigest: string, # Optional.
-    }, # Optional.
-    nodeId: string, # Required.
-    proof: [
-      {
-        left: string, # Optional.
-        right: string, # Optional.
-      }
-    ], # Required.
-    root: string, # Optional.
-    serviceEndorsements: [string], # Optional.
-    signature: string, # Required.
-  }, # Optional.
-  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required. State of a ledger query.
-  transactionId: string, # Required. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  }, # Required.
+  state: &quot;Loading&quot; | &quot;Ready&quot;, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -483,8 +419,8 @@ Response Body:
 
 Schema for <c>TransactionStatus</c>:
 <code>{
-  state: &quot;Committed&quot; | &quot;Pending&quot;, # Required. Represents the state of the transaction.
-  transactionId: string, # Required. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  state: &quot;Committed&quot; | &quot;Pending&quot;, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -512,8 +448,8 @@ Response Body:
 
 Schema for <c>TransactionStatus</c>:
 <code>{
-  state: &quot;Committed&quot; | &quot;Pending&quot;, # Required. Represents the state of the transaction.
-  transactionId: string, # Required. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  state: &quot;Committed&quot; | &quot;Pending&quot;, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -531,6 +467,8 @@ Response response = await client.GetCurrentLedgerEntryAsync();
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
 Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 This sample shows how to call GetCurrentLedgerEntryAsync with all parameters, and how to parse the result.
 <code><![CDATA[
@@ -547,17 +485,15 @@ Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 </example>
 <remarks>
-A collection id may optionally be specified.
-
 Below is the JSON schema for the response payload.
 
 Response Body:
 
 Schema for <c>LedgerEntry</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -575,6 +511,8 @@ Response response = client.GetCurrentLedgerEntry();
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
 Console.WriteLine(result.GetProperty("contents").ToString());
+Console.WriteLine(result.GetProperty("collectionId").ToString());
+Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 This sample shows how to call GetCurrentLedgerEntry with all parameters, and how to parse the result.
 <code><![CDATA[
@@ -591,17 +529,15 @@ Console.WriteLine(result.GetProperty("transactionId").ToString());
 ]]></code>
 </example>
 <remarks>
-A collection id may optionally be specified.
-
 Below is the JSON schema for the response payload.
 
 Response Body:
 
 Schema for <c>LedgerEntry</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
@@ -644,8 +580,8 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = await client.GetUserAsync("<userId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("assignedRole").ToString());
 Console.WriteLine(result.GetProperty("userId").ToString());
+Console.WriteLine(result.GetProperty("assignedRole").ToString());
 ]]></code>
 </example>
 <remarks>
@@ -655,8 +591,8 @@ Response Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
@@ -673,8 +609,8 @@ var client = new ConfidentialLedgerClient(endpoint, credential);
 Response response = client.GetUser("<userId>");
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("assignedRole").ToString());
 Console.WriteLine(result.GetProperty("userId").ToString());
+Console.WriteLine(result.GetProperty("assignedRole").ToString());
 ]]></code>
 </example>
 <remarks>
@@ -684,8 +620,8 @@ Response Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
@@ -700,27 +636,26 @@ var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
 var data = new {
+    userId = "<userId>",
     assignedRole = "Administrator",
 };
 
 Response response = await client.CreateOrUpdateUserAsync("<userId>", RequestContent.Create(data));
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("assignedRole").ToString());
 Console.WriteLine(result.GetProperty("userId").ToString());
+Console.WriteLine(result.GetProperty("assignedRole").ToString());
 ]]></code>
 </example>
 <remarks>
-A JSON merge patch is applied for existing users
-
 Below is the JSON schema for the request and response payloads.
 
 Request Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
@@ -728,8 +663,8 @@ Response Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
@@ -744,27 +679,26 @@ var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
 var data = new {
+    userId = "<userId>",
     assignedRole = "Administrator",
 };
 
 Response response = client.CreateOrUpdateUser("<userId>", RequestContent.Create(data));
 
 JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
-Console.WriteLine(result.GetProperty("assignedRole").ToString());
 Console.WriteLine(result.GetProperty("userId").ToString());
+Console.WriteLine(result.GetProperty("assignedRole").ToString());
 ]]></code>
 </example>
 <remarks>
-A JSON merge patch is applied for existing users
-
 Below is the JSON schema for the request and response payloads.
 
 Request Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
@@ -772,158 +706,22 @@ Response Body:
 
 Schema for <c>LedgerUser</c>:
 <code>{
-  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required. Represents an assignable role.
-  userId: string, # Optional. Identifier for the user. This must either be an AAD object id or a certificate fingerprint.
+  userId: string, # Required.
+  assignedRole: &quot;Administrator&quot; | &quot;Contributor&quot; | &quot;Reader&quot;, # Required.
 }
 </code>
 
 </remarks>
     </member>
-    <member name="GetConsortiumMembersAsync(RequestContext)">
+    <member name="ListLedgerEntriesAsync(RequestContext)">
 <example>
-This sample shows how to call GetConsortiumMembersAsync and parse the result.
+This sample shows how to call ListLedgerEntriesAsync and parse the result.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
-await foreach (var data in client.GetConsortiumMembersAsync())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("certificate").ToString());
-    Console.WriteLine(result.GetProperty("id").ToString());
-}
-]]></code>
-</example>
-<remarks>
-Consortium members can manage the Confidential Ledger.
-
-Below is the JSON schema for one item in the pageable response.
-
-Response Body:
-
-Schema for <c>ConsortiumMembers</c>:
-<code>{
-  certificate: string, # Required. PEM-encoded certificate associated with the member.
-  id: string, # Required. Identifier assigned to the member.
-}
-</code>
-
-</remarks>
-    </member>
-    <member name="GetConsortiumMembers(RequestContext)">
-<example>
-This sample shows how to call GetConsortiumMembers and parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-foreach (var data in client.GetConsortiumMembers())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("certificate").ToString());
-    Console.WriteLine(result.GetProperty("id").ToString());
-}
-]]></code>
-</example>
-<remarks>
-Consortium members can manage the Confidential Ledger.
-
-Below is the JSON schema for one item in the pageable response.
-
-Response Body:
-
-Schema for <c>ConsortiumMembers</c>:
-<code>{
-  certificate: string, # Required. PEM-encoded certificate associated with the member.
-  id: string, # Required. Identifier assigned to the member.
-}
-</code>
-
-</remarks>
-    </member>
-    <member name="GetCollectionsAsync(RequestContext)">
-<example>
-This sample shows how to call GetCollectionsAsync and parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-await foreach (var data in client.GetCollectionsAsync())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("collectionId").ToString());
-}
-]]></code>
-</example>
-<remarks>
-Collection ids are user-created collections of ledger entries
-
-Below is the JSON schema for one item in the pageable response.
-
-Response Body:
-
-Schema for <c>PagedCollections</c>:
-<code>{
-  collectionId: string, # Required.
-}
-</code>
-
-</remarks>
-    </member>
-    <member name="GetCollections(RequestContext)">
-<example>
-This sample shows how to call GetCollections and parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-foreach (var data in client.GetCollections())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("collectionId").ToString());
-}
-]]></code>
-</example>
-<remarks>
-Collection ids are user-created collections of ledger entries
-
-Below is the JSON schema for one item in the pageable response.
-
-Response Body:
-
-Schema for <c>PagedCollections</c>:
-<code>{
-  collectionId: string, # Required.
-}
-</code>
-
-</remarks>
-    </member>
-    <member name="GetLedgerEntriesAsync(String,String,String,RequestContext)">
-<example>
-This sample shows how to call GetLedgerEntriesAsync and parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-await foreach (var data in client.GetLedgerEntriesAsync())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("contents").ToString());
-}
-]]></code>
-This sample shows how to call GetLedgerEntriesAsync with all parameters, and how to parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-await foreach (var data in client.GetLedgerEntriesAsync("<collectionId>", "<fromTransactionId>", "<toTransactionId>"))
+await foreach (var data in client.ListLedgerEntriesAsync())
 {
     JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
     Console.WriteLine(result.GetProperty("contents").ToString());
@@ -939,37 +737,25 @@ Below is the JSON schema for one item in the pageable response.
 
 Response Body:
 
-Schema for <c>LedgerEntries</c>:
+Schema for <c>Array</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 
 </remarks>
     </member>
-    <member name="GetLedgerEntries(String,String,String,RequestContext)">
+    <member name="ListLedgerEntries(RequestContext)">
 <example>
-This sample shows how to call GetLedgerEntries and parse the result.
+This sample shows how to call ListLedgerEntries and parse the result.
 <code><![CDATA[
 var credential = new DefaultAzureCredential();
 var endpoint = new Uri("<https://my-service.azure.com>");
 var client = new ConfidentialLedgerClient(endpoint, credential);
 
-foreach (var data in client.GetLedgerEntries())
-{
-    JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
-    Console.WriteLine(result.GetProperty("contents").ToString());
-}
-]]></code>
-This sample shows how to call GetLedgerEntries with all parameters, and how to parse the result.
-<code><![CDATA[
-var credential = new DefaultAzureCredential();
-var endpoint = new Uri("<https://my-service.azure.com>");
-var client = new ConfidentialLedgerClient(endpoint, credential);
-
-foreach (var data in client.GetLedgerEntries("<collectionId>", "<fromTransactionId>", "<toTransactionId>"))
+foreach (var data in client.ListLedgerEntries())
 {
     JsonElement result = JsonDocument.Parse(data.ToStream()).RootElement;
     Console.WriteLine(result.GetProperty("contents").ToString());
@@ -985,11 +771,11 @@ Below is the JSON schema for one item in the pageable response.
 
 Response Body:
 
-Schema for <c>LedgerEntries</c>:
+Schema for <c>Array</c>:
 <code>{
-  contents: string, # Required. Contents of the ledger entry.
-  collectionId: string, # Optional.
-  transactionId: string, # Optional. A unique identifier for the state of the ledger. If returned as part of a LedgerEntry, it indicates the state from which the entry was read.
+  contents: string, # Required.
+  collectionId: string, # Required.
+  transactionId: string, # Required.
 }
 </code>
 

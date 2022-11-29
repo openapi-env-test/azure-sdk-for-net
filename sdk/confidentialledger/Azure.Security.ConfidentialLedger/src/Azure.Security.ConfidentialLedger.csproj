@@ -9,6 +9,7 @@
     <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
     <DefineConstants>$(DefineConstants)</DefineConstants>
     <IncludeOperationsSharedSource>true</IncludeOperationsSharedSource>
+<AutoRestInput>/spec-repo/specification/confidentialledger/ConfientialLedger/main.cadl</AutoRestInput>
   </PropertyGroup>
 
   <PropertyGroup>
