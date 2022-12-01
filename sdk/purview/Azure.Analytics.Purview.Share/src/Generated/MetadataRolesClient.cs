@@ -15,9 +15,9 @@ using Azure.Core.Pipeline;
 
 namespace Azure.Analytics.Purview.Share
 {
-    // Data plane generated client. The ReceivedAssets service client.
-    /// <summary> The ReceivedAssets service client. </summary>
-    public partial class ReceivedAssetsClient
+    // Data plane generated client. The MetadataRoles service client.
+    /// <summary> The MetadataRoles service client. </summary>
+    public partial class MetadataRolesClient
     {
         private static readonly string[] AuthorizationScopes = new string[] { "https://purview.azure.net/.default" };
         private readonly TokenCredential _tokenCredential;
@@ -30,25 +30,25 @@ namespace Azure.Analytics.Purview.Share
         /// <summary> The HTTP pipeline for sending and receiving REST requests and responses. </summary>
         public virtual HttpPipeline Pipeline => _pipeline;
 
-        /// <summary> Initializes a new instance of ReceivedAssetsClient for mocking. </summary>
-        protected ReceivedAssetsClient()
+        /// <summary> Initializes a new instance of MetadataRolesClient for mocking. </summary>
+        protected MetadataRolesClient()
         {
         }
 
-        /// <summary> Initializes a new instance of ReceivedAssetsClient. </summary>
-        /// <param name="endpoint"> The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com/share. </param>
+        /// <summary> Initializes a new instance of MetadataRolesClient. </summary>
+        /// <param name="endpoint"> The catalog endpoint of your Purview account. Example: https://{accountName}.purview.azure.com. </param>
         /// <param name="credential"> A credential used to authenticate to an Azure Service. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="endpoint"/> or <paramref name="credential"/> is null. </exception>
-        public ReceivedAssetsClient(string endpoint, TokenCredential credential) : this(endpoint, credential, new PurviewShareClientOptions())
+        public MetadataRolesClient(string endpoint, TokenCredential credential) : this(endpoint, credential, new PurviewShareClientOptions())
         {
         }
 
-        /// <summary> Initializes a new instance of ReceivedAssetsClient. </summary>
-        /// <param name="endpoint"> The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com/share. </param>
+        /// <summary> Initializes a new instance of MetadataRolesClient. </summary>
+        /// <param name="endpoint"> The catalog endpoint of your Purview account. Example: https://{accountName}.purview.azure.com. </param>
         /// <param name="credential"> A credential used to authenticate to an Azure Service. </param>
         /// <param name="options"> The options for configuring the client. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="endpoint"/> or <paramref name="credential"/> is null. </exception>
-        public ReceivedAssetsClient(string endpoint, TokenCredential credential, PurviewShareClientOptions options)
+        public MetadataRolesClient(string endpoint, TokenCredential credential, PurviewShareClientOptions options)
         {
             Argument.AssertNotNull(endpoint, nameof(endpoint));
             Argument.AssertNotNull(credential, nameof(credential));
@@ -60,23 +60,17 @@ namespace Azure.Analytics.Purview.Share
             _endpoint = endpoint;
         }
 
-        /// <summary> List source asset of a received share. </summary>
-        /// <param name="receivedShareName"> The name of the received share. </param>
-        /// <param name="skipToken"> The continuation token to list the next page. </param>
+        /// <summary> Lists roles for Purview Account. </summary>
         /// <param name="context"> The request context, which can override default behaviors of the client pipeline on a per-call basis. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="receivedShareName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="receivedShareName"/> is an empty string, and was expected to be non-empty. </exception>
         /// <exception cref="RequestFailedException"> Service returned a non-success status code. </exception>
         /// <returns> The <see cref="AsyncPageable{T}"/> from the service containing a list of <see cref="BinaryData"/> objects. Details of the body schema for each item in the collection are in the Remarks section below. </returns>
-        /// <include file="Docs/ReceivedAssetsClient.xml" path="doc/members/member[@name='GetReceivedAssetsAsync(String,String,RequestContext)']/*" />
-        public virtual AsyncPageable<BinaryData> GetReceivedAssetsAsync(string receivedShareName, string skipToken = null, RequestContext context = null)
+        /// <include file="Docs/MetadataRolesClient.xml" path="doc/members/member[@name='GetMetadataRolesAsync(RequestContext)']/*" />
+        public virtual AsyncPageable<BinaryData> GetMetadataRolesAsync(RequestContext context = null)
         {
-            Argument.AssertNotNullOrEmpty(receivedShareName, nameof(receivedShareName));
-
-            return GetReceivedAssetsImplementationAsync("ReceivedAssetsClient.GetReceivedAssets", receivedShareName, skipToken, context);
+            return GetMetadataRolesImplementationAsync("MetadataRolesClient.GetMetadataRoles", context);
         }
 
-        private AsyncPageable<BinaryData> GetReceivedAssetsImplementationAsync(string diagnosticsScopeName, string receivedShareName, string skipToken, RequestContext context)
+        private AsyncPageable<BinaryData> GetMetadataRolesImplementationAsync(string diagnosticsScopeName, RequestContext context)
         {
             return PageableHelpers.CreateAsyncPageable(CreateEnumerableAsync, ClientDiagnostics, diagnosticsScopeName);
             async IAsyncEnumerable<Page<BinaryData>> CreateEnumerableAsync(string nextLink, int? pageSizeHint, [EnumeratorCancellation] CancellationToken cancellationToken = default)
@@ -84,32 +78,26 @@ namespace Azure.Analytics.Purview.Share
                 do
                 {
                     var message = string.IsNullOrEmpty(nextLink)
-                        ? CreateGetReceivedAssetsRequest(receivedShareName, skipToken, context)
-                        : CreateGetReceivedAssetsNextPageRequest(nextLink, receivedShareName, skipToken, context);
-                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "value", "nextLink", cancellationToken).ConfigureAwait(false);
+                        ? CreateGetMetadataRolesRequest(context)
+                        : CreateGetMetadataRolesNextPageRequest(nextLink, context);
+                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "values", "nextLink", cancellationToken).ConfigureAwait(false);
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
             }
         }
 
-        /// <summary> List source asset of a received share. </summary>
-        /// <param name="receivedShareName"> The name of the received share. </param>
-        /// <param name="skipToken"> The continuation token to list the next page. </param>
+        /// <summary> Lists roles for Purview Account. </summary>
         /// <param name="context"> The request context, which can override default behaviors of the client pipeline on a per-call basis. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="receivedShareName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="receivedShareName"/> is an empty string, and was expected to be non-empty. </exception>
         /// <exception cref="RequestFailedException"> Service returned a non-success status code. </exception>
         /// <returns> The <see cref="Pageable{T}"/> from the service containing a list of <see cref="BinaryData"/> objects. Details of the body schema for each item in the collection are in the Remarks section below. </returns>
-        /// <include file="Docs/ReceivedAssetsClient.xml" path="doc/members/member[@name='GetReceivedAssets(String,String,RequestContext)']/*" />
-        public virtual Pageable<BinaryData> GetReceivedAssets(string receivedShareName, string skipToken = null, RequestContext context = null)
+        /// <include file="Docs/MetadataRolesClient.xml" path="doc/members/member[@name='GetMetadataRoles(RequestContext)']/*" />
+        public virtual Pageable<BinaryData> GetMetadataRoles(RequestContext context = null)
         {
-            Argument.AssertNotNullOrEmpty(receivedShareName, nameof(receivedShareName));
-
-            return GetReceivedAssetsImplementation("ReceivedAssetsClient.GetReceivedAssets", receivedShareName, skipToken, context);
+            return GetMetadataRolesImplementation("MetadataRolesClient.GetMetadataRoles", context);
         }
 
-        private Pageable<BinaryData> GetReceivedAssetsImplementation(string diagnosticsScopeName, string receivedShareName, string skipToken, RequestContext context)
+        private Pageable<BinaryData> GetMetadataRolesImplementation(string diagnosticsScopeName, RequestContext context)
         {
             return PageableHelpers.CreatePageable(CreateEnumerable, ClientDiagnostics, diagnosticsScopeName);
             IEnumerable<Page<BinaryData>> CreateEnumerable(string nextLink, int? pageSizeHint)
@@ -117,42 +105,38 @@ namespace Azure.Analytics.Purview.Share
                 do
                 {
                     var message = string.IsNullOrEmpty(nextLink)
-                        ? CreateGetReceivedAssetsRequest(receivedShareName, skipToken, context)
-                        : CreateGetReceivedAssetsNextPageRequest(nextLink, receivedShareName, skipToken, context);
-                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "value", "nextLink");
+                        ? CreateGetMetadataRolesRequest(context)
+                        : CreateGetMetadataRolesNextPageRequest(nextLink, context);
+                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "values", "nextLink");
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
             }
         }
 
-        internal HttpMessage CreateGetReceivedAssetsRequest(string receivedShareName, string skipToken, RequestContext context)
+        internal HttpMessage CreateGetMetadataRolesRequest(RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
             request.Method = RequestMethod.Get;
             var uri = new RawRequestUriBuilder();
             uri.AppendRaw(_endpoint, false);
-            uri.AppendPath("/receivedShares/", false);
-            uri.AppendPath(receivedShareName, true);
-            uri.AppendPath("/receivedAssets", false);
-            uri.AppendQuery("api-version", "2021-09-01-preview", true);
-            if (skipToken != null)
-            {
-                uri.AppendQuery("skipToken", skipToken, true);
-            }
+            uri.AppendRaw("/policyStore", false);
+            uri.AppendPath("/metadataRoles", false);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
         }
 
-        internal HttpMessage CreateGetReceivedAssetsNextPageRequest(string nextLink, string receivedShareName, string skipToken, RequestContext context)
+        internal HttpMessage CreateGetMetadataRolesNextPageRequest(string nextLink, RequestContext context)
         {
             var message = _pipeline.CreateMessage(context, ResponseClassifier200);
             var request = message.Request;
             request.Method = RequestMethod.Get;
             var uri = new RawRequestUriBuilder();
             uri.AppendRaw(_endpoint, false);
+            uri.AppendRaw("/policyStore", false);
             uri.AppendRawNextLink(nextLink, false);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
