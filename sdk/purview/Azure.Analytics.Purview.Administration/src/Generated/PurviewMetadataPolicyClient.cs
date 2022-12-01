@@ -163,7 +163,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataPoliciesRequest(context)
                         : CreateGetMetadataPoliciesNextPageRequest(nextLink, context);
-                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "value", "nextLink", cancellationToken).ConfigureAwait(false);
+                    var page = await LowLevelPageableHelpers.ProcessMessageAsync(_pipeline, message, context, "values", "nextLink", cancellationToken).ConfigureAwait(false);
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -190,7 +190,7 @@ namespace Azure.Analytics.Purview.Administration
                     var message = string.IsNullOrEmpty(nextLink)
                         ? CreateGetMetadataPoliciesRequest(context)
                         : CreateGetMetadataPoliciesNextPageRequest(nextLink, context);
-                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "value", "nextLink");
+                    var page = LowLevelPageableHelpers.ProcessMessage(_pipeline, message, context, "values", "nextLink");
                     nextLink = page.ContinuationToken;
                     yield return page;
                 } while (!string.IsNullOrEmpty(nextLink));
@@ -206,7 +206,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.Reset(_endpoint);
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies", false);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
@@ -222,7 +222,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies/", false);
             uri.AppendPath(policyId, true);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Content-Type", "application/json");
@@ -240,7 +240,7 @@ namespace Azure.Analytics.Purview.Administration
             uri.AppendRaw("/policyStore", false);
             uri.AppendPath("/metadataPolicies/", false);
             uri.AppendPath(policyId, true);
-            uri.AppendQuery("api-version", "2021-07-01", true);
+            uri.AppendQuery("api-version", "2021-07-01-preview", true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
