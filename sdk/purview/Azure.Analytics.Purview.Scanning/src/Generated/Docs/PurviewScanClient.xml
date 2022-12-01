@@ -745,6 +745,7 @@ var data = new {
         scanRulesetType = "Custom",
         collection = new {
             referenceName = "<referenceName>",
+            type = "<type>",
         },
         workers = 1234,
         connectedVia = new {
@@ -8028,6 +8029,7 @@ var data = new {
         scanRulesetType = "Custom",
         collection = new {
             referenceName = "<referenceName>",
+            type = "<type>",
         },
         workers = 1234,
         connectedVia = new {

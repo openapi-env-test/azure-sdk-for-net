@@ -30,6 +30,7 @@ var data = new {
         subscriptionId = "<subscriptionId>",
         collection = new {
             referenceName = "<referenceName>",
+            type = "<type>",
         },
     },
     kind = "AzureSubscription",
@@ -3601,6 +3602,7 @@ var data = new {
         subscriptionId = "<subscriptionId>",
         collection = new {
             referenceName = "<referenceName>",
+            type = "<type>",
         },
     },
     kind = "AzureSubscription",
