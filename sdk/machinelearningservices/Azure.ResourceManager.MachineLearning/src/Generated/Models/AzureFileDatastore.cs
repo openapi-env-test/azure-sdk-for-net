@@ -21,7 +21,7 @@ namespace Azure.ResourceManager.MachineLearning.Models
         /// The available derived classes include <see cref="AccountKeyDatastoreCredentials"/>, <see cref="CertificateDatastoreCredentials"/>, <see cref="KerberosKeytabCredentials"/>, <see cref="KerberosPasswordCredentials"/>, <see cref="NoneDatastoreCredentials"/>, <see cref="SasDatastoreCredentials"/> and <see cref="ServicePrincipalDatastoreCredentials"/>.
         /// </param>
         /// <param name="accountName"> [Required] Storage account name. </param>
-        /// <param name="fileShareName"> [Required] TODO - File share name. </param>
+        /// <param name="fileShareName"> [Required] The name of the Azure file share that the datastore points to. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="credentials"/>, <paramref name="accountName"/> or <paramref name="fileShareName"/> is null. </exception>
         public AzureFileDatastore(DatastoreCredentials credentials, string accountName, string fileShareName) : base(credentials)
         {
@@ -47,7 +47,7 @@ namespace Azure.ResourceManager.MachineLearning.Models
         /// <param name="isDefault"> Readonly property to indicate if datastore is the workspace default datastore. </param>
         /// <param name="accountName"> [Required] Storage account name. </param>
         /// <param name="endpoint"> Azure cloud endpoint for the storage account. </param>
-        /// <param name="fileShareName"> [Required] TODO - File share name. </param>
+        /// <param name="fileShareName"> [Required] The name of the Azure file share that the datastore points to. </param>
         /// <param name="protocol"> Protocol used to communicate with the storage account. </param>
         /// <param name="serviceDataAccessAuthIdentity"> Indicates which identity to use to authenticate service data access to customer&apos;s storage. </param>
         internal AzureFileDatastore(string description, IDictionary<string, string> properties, IDictionary<string, string> tags, DatastoreCredentials credentials, DatastoreType datastoreType, bool? isDefault, string accountName, string endpoint, string fileShareName, string protocol, ServiceDataAccessAuthIdentity? serviceDataAccessAuthIdentity) : base(description, properties, tags, credentials, datastoreType, isDefault)
@@ -64,7 +64,7 @@ namespace Azure.ResourceManager.MachineLearning.Models
         public string AccountName { get; set; }
         /// <summary> Azure cloud endpoint for the storage account. </summary>
         public string Endpoint { get; set; }
-        /// <summary> [Required] TODO - File share name. </summary>
+        /// <summary> [Required] The name of the Azure file share that the datastore points to. </summary>
         public string FileShareName { get; set; }
         /// <summary> Protocol used to communicate with the storage account. </summary>
         public string Protocol { get; set; }
