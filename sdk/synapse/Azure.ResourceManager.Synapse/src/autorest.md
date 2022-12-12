@@ -9,7 +9,7 @@ csharp: true
 library-name: Synapse
 namespace: Azure.ResourceManager.Synapse
 # The readme.md in swagger repo contains invalid setting for C# sdk
-# require: https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/readme.md
+# require: /mnt/vss/_work/1/s/azure-rest-api-specs/specification/synapse/resource-manager/readme.md
 tag: package-composite-v2
 output-folder: $(this-folder)/Generated
 clear-output-folder: true
@@ -98,20 +98,20 @@ These settings apply only when --tag=package-composite-v2 is specified on the co
 
 ```yaml $(tag) == 'package-composite-v2'
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/azureADOnlyAuthentication.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/checkNameAvailability.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/firewallRule.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/keys.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateEndpointConnections.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privatelinkhub.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlServer.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/bigDataPool.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/library.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/sparkConfiguration.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/34ba022add0034e30462b76e1548ce5a7e053e33/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/azureADOnlyAuthentication.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/checkNameAvailability.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/firewallRule.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/keys.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/operations.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateEndpointConnections.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privateLinkResources.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/privatelinkhub.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlPool.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/sqlServer.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/bigDataPool.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/library.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/sparkConfiguration.json
+  - https://github.com/test-repo-billy/azure-rest-api-specs/blob/43f5332141b8604873d5235dae193ba8262f7097/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 ```
