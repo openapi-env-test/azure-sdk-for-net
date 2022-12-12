@@ -6,14 +6,13 @@
 #nullable disable
 
 using System;
-using System.Collections.Generic;
 using System.Text.Json;
 using Azure.Core;
 using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.Kusto.Models
 {
-    public partial class KustoIotHubDataConnection : IUtf8JsonSerializable
+    public partial class CosmosDbDataConnection : IUtf8JsonSerializable
     {
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
@@ -27,16 +26,6 @@ namespace Azure.ResourceManager.Kusto.Models
             writer.WriteStringValue(Kind.ToString());
             writer.WritePropertyName("properties");
             writer.WriteStartObject();
-            if (Optional.IsDefined(IotHubResourceId))
-            {
-                writer.WritePropertyName("iotHubResourceId");
-                writer.WriteStringValue(IotHubResourceId);
-            }
-            if (Optional.IsDefined(ConsumerGroup))
-            {
-                writer.WritePropertyName("consumerGroup");
-                writer.WriteStringValue(ConsumerGroup);
-            }
             if (Optional.IsDefined(TableName))
             {
                 writer.WritePropertyName("tableName");
@@ -47,30 +36,25 @@ namespace Azure.ResourceManager.Kusto.Models
                 writer.WritePropertyName("mappingRuleName");
                 writer.WriteStringValue(MappingRuleName);
             }
-            if (Optional.IsDefined(DataFormat))
+            if (Optional.IsDefined(ManagedIdentityResourceId))
             {
-                writer.WritePropertyName("dataFormat");
-                writer.WriteStringValue(DataFormat.Value.ToString());
+                writer.WritePropertyName("managedIdentityResourceId");
+                writer.WriteStringValue(ManagedIdentityResourceId);
             }
-            if (Optional.IsCollectionDefined(EventSystemProperties))
+            if (Optional.IsDefined(CosmosDbAccountResourceId))
             {
-                writer.WritePropertyName("eventSystemProperties");
-                writer.WriteStartArray();
-                foreach (var item in EventSystemProperties)
-                {
-                    writer.WriteStringValue(item);
-                }
-                writer.WriteEndArray();
+                writer.WritePropertyName("cosmosDbAccountResourceId");
+                writer.WriteStringValue(CosmosDbAccountResourceId);
             }
-            if (Optional.IsDefined(SharedAccessPolicyName))
+            if (Optional.IsDefined(CosmosDbDatabase))
             {
-                writer.WritePropertyName("sharedAccessPolicyName");
-                writer.WriteStringValue(SharedAccessPolicyName);
+                writer.WritePropertyName("cosmosDbDatabase");
+                writer.WriteStringValue(CosmosDbDatabase);
             }
-            if (Optional.IsDefined(DatabaseRouting))
+            if (Optional.IsDefined(CosmosDbContainer))
             {
-                writer.WritePropertyName("databaseRouting");
-                writer.WriteStringValue(DatabaseRouting.Value.ToString());
+                writer.WritePropertyName("cosmosDbContainer");
+                writer.WriteStringValue(CosmosDbContainer);
             }
             if (Optional.IsDefined(RetrievalStartOn))
             {
@@ -81,7 +65,7 @@ namespace Azure.ResourceManager.Kusto.Models
             writer.WriteEndObject();
         }
 
-        internal static KustoIotHubDataConnection DeserializeKustoIotHubDataConnection(JsonElement element)
+        internal static CosmosDbDataConnection DeserializeCosmosDbDataConnection(JsonElement element)
         {
             Optional<AzureLocation> location = default;
             DataConnectionKind kind = default;
@@ -89,14 +73,13 @@ namespace Azure.ResourceManager.Kusto.Models
             string name = default;
             ResourceType type = default;
             Optional<SystemData> systemData = default;
-            Optional<ResourceIdentifier> iotHubResourceId = default;
-            Optional<string> consumerGroup = default;
             Optional<string> tableName = default;
             Optional<string> mappingRuleName = default;
-            Optional<KustoIotHubDataFormat> dataFormat = default;
-            Optional<IList<string>> eventSystemProperties = default;
-            Optional<string> sharedAccessPolicyName = default;
-            Optional<KustoDatabaseRouting> databaseRouting = default;
+            Optional<string> managedIdentityResourceId = default;
+            Optional<string> managedIdentityObjectId = default;
+            Optional<string> cosmosDbAccountResourceId = default;
+            Optional<string> cosmosDbDatabase = default;
+            Optional<string> cosmosDbContainer = default;
             Optional<DateTimeOffset> retrievalStartDate = default;
             Optional<KustoProvisioningState> provisioningState = default;
             foreach (var property in element.EnumerateObject())
@@ -150,21 +133,6 @@ namespace Azure.ResourceManager.Kusto.Models
                     }
                     foreach (var property0 in property.Value.EnumerateObject())
                     {
-                        if (property0.NameEquals("iotHubResourceId"))
-                        {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            iotHubResourceId = new ResourceIdentifier(property0.Value.GetString());
-                            continue;
-                        }
-                        if (property0.NameEquals("consumerGroup"))
-                        {
-                            consumerGroup = property0.Value.GetString();
-                            continue;
-                        }
                         if (property0.NameEquals("tableName"))
                         {
                             tableName = property0.Value.GetString();
@@ -175,44 +143,29 @@ namespace Azure.ResourceManager.Kusto.Models
                             mappingRuleName = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("dataFormat"))
+                        if (property0.NameEquals("managedIdentityResourceId"))
                         {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            dataFormat = new KustoIotHubDataFormat(property0.Value.GetString());
+                            managedIdentityResourceId = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("eventSystemProperties"))
+                        if (property0.NameEquals("managedIdentityObjectId"))
                         {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            List<string> array = new List<string>();
-                            foreach (var item in property0.Value.EnumerateArray())
-                            {
-                                array.Add(item.GetString());
-                            }
-                            eventSystemProperties = array;
+                            managedIdentityObjectId = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("sharedAccessPolicyName"))
+                        if (property0.NameEquals("cosmosDbAccountResourceId"))
                         {
-                            sharedAccessPolicyName = property0.Value.GetString();
+                            cosmosDbAccountResourceId = property0.Value.GetString();
                             continue;
                         }
-                        if (property0.NameEquals("databaseRouting"))
+                        if (property0.NameEquals("cosmosDbDatabase"))
                         {
-                            if (property0.Value.ValueKind == JsonValueKind.Null)
-                            {
-                                property0.ThrowNonNullablePropertyIsNull();
-                                continue;
-                            }
-                            databaseRouting = new KustoDatabaseRouting(property0.Value.GetString());
+                            cosmosDbDatabase = property0.Value.GetString();
+                            continue;
+                        }
+                        if (property0.NameEquals("cosmosDbContainer"))
+                        {
+                            cosmosDbContainer = property0.Value.GetString();
                             continue;
                         }
                         if (property0.NameEquals("retrievalStartDate"))
@@ -239,7 +192,7 @@ namespace Azure.ResourceManager.Kusto.Models
                     continue;
                 }
             }
-            return new KustoIotHubDataConnection(id, name, type, systemData.Value, Optional.ToNullable(location), kind, iotHubResourceId.Value, consumerGroup.Value, tableName.Value, mappingRuleName.Value, Optional.ToNullable(dataFormat), Optional.ToList(eventSystemProperties), sharedAccessPolicyName.Value, Optional.ToNullable(databaseRouting), Optional.ToNullable(retrievalStartDate), Optional.ToNullable(provisioningState));
+            return new CosmosDbDataConnection(id, name, type, systemData.Value, Optional.ToNullable(location), kind, tableName.Value, mappingRuleName.Value, managedIdentityResourceId.Value, managedIdentityObjectId.Value, cosmosDbAccountResourceId.Value, cosmosDbDatabase.Value, cosmosDbContainer.Value, Optional.ToNullable(retrievalStartDate), Optional.ToNullable(provisioningState));
         }
     }
 }
