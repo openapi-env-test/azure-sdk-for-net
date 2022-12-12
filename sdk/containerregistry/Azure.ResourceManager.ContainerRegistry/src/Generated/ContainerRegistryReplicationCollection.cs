@@ -73,8 +73,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryReplicationReplicationsRestClient.CreateAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, data, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryReplicationResource>(new ContainerRegistryReplicationOperationSource(Client), _containerRegistryReplicationReplicationsClientDiagnostics, Pipeline, _containerRegistryReplicationReplicationsRestClient.CreateCreateRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, data).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryReplicationReplicationsRestClient.CreateAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, data, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryReplicationResource>(new ContainerRegistryReplicationOperationSource(Client), _containerRegistryReplicationReplicationsClientDiagnostics, Pipeline, _containerRegistryReplicationReplicationsRestClient.CreateCreateRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, data).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -106,8 +106,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryReplicationReplicationsRestClient.Create(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, data, cancellationToken);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryReplicationResource>(new ContainerRegistryReplicationOperationSource(Client), _containerRegistryReplicationReplicationsClientDiagnostics, Pipeline, _containerRegistryReplicationReplicationsRestClient.CreateCreateRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, data).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryReplicationReplicationsRestClient.Create(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, data, cancellationToken);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryReplicationResource>(new ContainerRegistryReplicationOperationSource(Client), _containerRegistryReplicationReplicationsClientDiagnostics, Pipeline, _containerRegistryReplicationReplicationsRestClient.CreateCreateRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, data).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;
@@ -136,7 +136,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryReplicationReplicationsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryReplicationReplicationsRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryReplicationResource(Client, response.Value), response.GetRawResponse());
@@ -165,7 +165,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryReplicationReplicationsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, cancellationToken);
+                var response = _containerRegistryReplicationReplicationsRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryReplicationResource(Client, response.Value), response.GetRawResponse());
@@ -192,7 +192,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryReplicationReplicationsRestClient.ListAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryReplicationReplicationsRestClient.ListAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryReplicationResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -207,7 +207,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryReplicationReplicationsRestClient.ListNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryReplicationReplicationsRestClient.ListNextPageAsync(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryReplicationResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -234,7 +234,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryReplicationReplicationsRestClient.List(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken);
+                    var response = _containerRegistryReplicationReplicationsRestClient.List(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryReplicationResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -249,7 +249,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryReplicationReplicationsRestClient.ListNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken);
+                    var response = _containerRegistryReplicationReplicationsRestClient.ListNextPage(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryReplicationResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -278,7 +278,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryReplicationReplicationsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryReplicationReplicationsRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -305,7 +305,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryReplicationReplicationsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, replicationName, cancellationToken: cancellationToken);
+                var response = _containerRegistryReplicationReplicationsRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, replicationName, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)

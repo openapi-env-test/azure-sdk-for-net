@@ -23,12 +23,12 @@ namespace Azure.ResourceManager.ContainerRegistry
     /// A Class representing a ContainerRegistry along with the instance operations that can be performed on it.
     /// If you have a <see cref="ResourceIdentifier" /> you can construct a <see cref="ContainerRegistryResource" />
     /// from an instance of <see cref="ArmClient" /> using the GetContainerRegistryResource method.
-    /// Otherwise you can get one from its parent resource <see cref="ResourceGroupResource" /> using the GetContainerRegistry method.
+    /// Otherwise you can get one from its parent resource <see cref="TenantResource" /> using the GetContainerRegistry method.
     /// </summary>
     public partial class ContainerRegistryResource : ArmResource
     {
         /// <summary> Generate the resource identifier of a <see cref="ContainerRegistryResource"/> instance. </summary>
-        public static ResourceIdentifier CreateResourceIdentifier(string subscriptionId, string resourceGroupName, string registryName)
+        public static ResourceIdentifier CreateResourceIdentifier(Guid subscriptionId, string resourceGroupName, string registryName)
         {
             var resourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}";
             return new ResourceIdentifier(resourceId);
@@ -97,80 +97,6 @@ namespace Azure.ResourceManager.ContainerRegistry
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, ResourceType), nameof(id));
         }
 
-        /// <summary> Gets a collection of ConnectedRegistryResources in the ContainerRegistry. </summary>
-        /// <returns> An object representing collection of ConnectedRegistryResources and their operations over a ConnectedRegistryResource. </returns>
-        public virtual ConnectedRegistryCollection GetConnectedRegistries()
-        {
-            return GetCachedClient(Client => new ConnectedRegistryCollection(Client, Id));
-        }
-
-        /// <summary>
-        /// Gets the properties of the connected registry.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}
-        /// Operation Id: ConnectedRegistries_Get
-        /// </summary>
-        /// <param name="connectedRegistryName"> The name of the connected registry. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="connectedRegistryName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="connectedRegistryName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<ConnectedRegistryResource>> GetConnectedRegistryAsync(string connectedRegistryName, CancellationToken cancellationToken = default)
-        {
-            return await GetConnectedRegistries().GetAsync(connectedRegistryName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets the properties of the connected registry.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}
-        /// Operation Id: ConnectedRegistries_Get
-        /// </summary>
-        /// <param name="connectedRegistryName"> The name of the connected registry. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="connectedRegistryName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="connectedRegistryName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<ConnectedRegistryResource> GetConnectedRegistry(string connectedRegistryName, CancellationToken cancellationToken = default)
-        {
-            return GetConnectedRegistries().Get(connectedRegistryName, cancellationToken);
-        }
-
-        /// <summary> Gets a collection of ExportPipelineResources in the ContainerRegistry. </summary>
-        /// <returns> An object representing collection of ExportPipelineResources and their operations over a ExportPipelineResource. </returns>
-        public virtual ExportPipelineCollection GetExportPipelines()
-        {
-            return GetCachedClient(Client => new ExportPipelineCollection(Client, Id));
-        }
-
-        /// <summary>
-        /// Gets the properties of the export pipeline.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/exportPipelines/{exportPipelineName}
-        /// Operation Id: ExportPipelines_Get
-        /// </summary>
-        /// <param name="exportPipelineName"> The name of the export pipeline. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="exportPipelineName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="exportPipelineName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<ExportPipelineResource>> GetExportPipelineAsync(string exportPipelineName, CancellationToken cancellationToken = default)
-        {
-            return await GetExportPipelines().GetAsync(exportPipelineName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets the properties of the export pipeline.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/exportPipelines/{exportPipelineName}
-        /// Operation Id: ExportPipelines_Get
-        /// </summary>
-        /// <param name="exportPipelineName"> The name of the export pipeline. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="exportPipelineName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="exportPipelineName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<ExportPipelineResource> GetExportPipeline(string exportPipelineName, CancellationToken cancellationToken = default)
-        {
-            return GetExportPipelines().Get(exportPipelineName, cancellationToken);
-        }
-
         /// <summary> Gets a collection of ContainerRegistryPrivateLinkResources in the ContainerRegistry. </summary>
         /// <returns> An object representing collection of ContainerRegistryPrivateLinkResources and their operations over a ContainerRegistryPrivateLinkResource. </returns>
         public virtual ContainerRegistryPrivateLinkResourceCollection GetContainerRegistryPrivateLinkResources()
@@ -206,80 +132,6 @@ namespace Azure.ResourceManager.ContainerRegistry
         public virtual Response<ContainerRegistryPrivateLinkResource> GetContainerRegistryPrivateLinkResource(string groupName, CancellationToken cancellationToken = default)
         {
             return GetContainerRegistryPrivateLinkResources().Get(groupName, cancellationToken);
-        }
-
-        /// <summary> Gets a collection of ImportPipelineResources in the ContainerRegistry. </summary>
-        /// <returns> An object representing collection of ImportPipelineResources and their operations over a ImportPipelineResource. </returns>
-        public virtual ImportPipelineCollection GetImportPipelines()
-        {
-            return GetCachedClient(Client => new ImportPipelineCollection(Client, Id));
-        }
-
-        /// <summary>
-        /// Gets the properties of the import pipeline.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importPipelines/{importPipelineName}
-        /// Operation Id: ImportPipelines_Get
-        /// </summary>
-        /// <param name="importPipelineName"> The name of the import pipeline. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="importPipelineName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="importPipelineName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<ImportPipelineResource>> GetImportPipelineAsync(string importPipelineName, CancellationToken cancellationToken = default)
-        {
-            return await GetImportPipelines().GetAsync(importPipelineName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets the properties of the import pipeline.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importPipelines/{importPipelineName}
-        /// Operation Id: ImportPipelines_Get
-        /// </summary>
-        /// <param name="importPipelineName"> The name of the import pipeline. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="importPipelineName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="importPipelineName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<ImportPipelineResource> GetImportPipeline(string importPipelineName, CancellationToken cancellationToken = default)
-        {
-            return GetImportPipelines().Get(importPipelineName, cancellationToken);
-        }
-
-        /// <summary> Gets a collection of ContainerRegistryPipelineRunResources in the ContainerRegistry. </summary>
-        /// <returns> An object representing collection of ContainerRegistryPipelineRunResources and their operations over a ContainerRegistryPipelineRunResource. </returns>
-        public virtual ContainerRegistryPipelineRunCollection GetContainerRegistryPipelineRuns()
-        {
-            return GetCachedClient(Client => new ContainerRegistryPipelineRunCollection(Client, Id));
-        }
-
-        /// <summary>
-        /// Gets the detailed information for a given pipeline run.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/pipelineRuns/{pipelineRunName}
-        /// Operation Id: PipelineRuns_Get
-        /// </summary>
-        /// <param name="pipelineRunName"> The name of the pipeline run. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="pipelineRunName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="pipelineRunName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<ContainerRegistryPipelineRunResource>> GetContainerRegistryPipelineRunAsync(string pipelineRunName, CancellationToken cancellationToken = default)
-        {
-            return await GetContainerRegistryPipelineRuns().GetAsync(pipelineRunName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets the detailed information for a given pipeline run.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/pipelineRuns/{pipelineRunName}
-        /// Operation Id: PipelineRuns_Get
-        /// </summary>
-        /// <param name="pipelineRunName"> The name of the pipeline run. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="pipelineRunName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="pipelineRunName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<ContainerRegistryPipelineRunResource> GetContainerRegistryPipelineRun(string pipelineRunName, CancellationToken cancellationToken = default)
-        {
-            return GetContainerRegistryPipelineRuns().Get(pipelineRunName, cancellationToken);
         }
 
         /// <summary> Gets a collection of ContainerRegistryPrivateEndpointConnectionResources in the ContainerRegistry. </summary>
@@ -627,7 +479,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryResource(Client, response.Value), response.GetRawResponse());
@@ -651,7 +503,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                var response = _containerRegistryRegistriesRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryResource(Client, response.Value), response.GetRawResponse());
@@ -676,8 +528,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.DeleteAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateDeleteRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryRegistriesRestClient.DeleteAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateDeleteRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionResponseAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -702,8 +554,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Delete(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
-                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateDeleteRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryRegistriesRestClient.Delete(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
+                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateDeleteRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletionResponse(cancellationToken);
                 return operation;
@@ -732,8 +584,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.UpdateAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, patch, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateUpdateRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, patch).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryRegistriesRestClient.UpdateAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, patch, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateUpdateRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, patch).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -762,8 +614,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Update(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, patch, cancellationToken);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateUpdateRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, patch).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryRegistriesRestClient.Update(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, patch, cancellationToken);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateUpdateRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, patch).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;
@@ -792,8 +644,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.ImportImageAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateImportImageRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryRegistriesRestClient.ImportImageAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateImportImageRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionResponseAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -822,8 +674,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.ImportImage(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken);
-                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateImportImageRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryRegistriesRestClient.ImportImage(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken);
+                var operation = new ContainerRegistryArmOperation(_containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateImportImageRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletionResponse(cancellationToken);
                 return operation;
@@ -850,7 +702,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryRegistriesRestClient.ListUsagesAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryRegistriesRestClient.ListUsagesAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value, null, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -877,7 +729,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryRegistriesRestClient.ListUsages(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken);
+                    var response = _containerRegistryRegistriesRestClient.ListUsages(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value, null, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -901,7 +753,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.ListCredentialsAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRegistriesRestClient.ListCredentialsAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 return response;
             }
             catch (Exception e)
@@ -923,7 +775,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.ListCredentials(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                var response = _containerRegistryRegistriesRestClient.ListCredentials(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                 return response;
             }
             catch (Exception e)
@@ -949,7 +801,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.RegenerateCredentialAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRegistriesRestClient.RegenerateCredentialAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken).ConfigureAwait(false);
                 return response;
             }
             catch (Exception e)
@@ -975,7 +827,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.RegenerateCredential(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken);
+                var response = _containerRegistryRegistriesRestClient.RegenerateCredential(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken);
                 return response;
             }
             catch (Exception e)
@@ -1002,8 +854,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.GenerateCredentialsAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryGenerateCredentialsResult>(new ContainerRegistryGenerateCredentialsResultOperationSource(), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateGenerateCredentialsRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryRegistriesRestClient.GenerateCredentialsAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryGenerateCredentialsResult>(new ContainerRegistryGenerateCredentialsResultOperationSource(), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateGenerateCredentialsRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -1032,8 +884,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.GenerateCredentials(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryGenerateCredentialsResult>(new ContainerRegistryGenerateCredentialsResultOperationSource(), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateGenerateCredentialsRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryRegistriesRestClient.GenerateCredentials(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryGenerateCredentialsResult>(new ContainerRegistryGenerateCredentialsResultOperationSource(), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateGenerateCredentialsRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;
@@ -1062,8 +914,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _schedulesRestClient.ScheduleRunAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryRunResource>(new ContainerRegistryRunOperationSource(Client), _schedulesClientDiagnostics, Pipeline, _schedulesRestClient.CreateScheduleRunRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = await _schedulesRestClient.ScheduleRunAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryRunResource>(new ContainerRegistryRunOperationSource(Client), _schedulesClientDiagnostics, Pipeline, _schedulesRestClient.CreateScheduleRunRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -1092,8 +944,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _schedulesRestClient.ScheduleRun(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content, cancellationToken);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryRunResource>(new ContainerRegistryRunOperationSource(Client), _schedulesClientDiagnostics, Pipeline, _schedulesRestClient.CreateScheduleRunRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, content).Request, response, OperationFinalStateVia.Location);
+                var response = _schedulesRestClient.ScheduleRun(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content, cancellationToken);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryRunResource>(new ContainerRegistryRunOperationSource(Client), _schedulesClientDiagnostics, Pipeline, _schedulesRestClient.CreateScheduleRunRequest(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, content).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;
@@ -1117,7 +969,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _buildsRestClient.GetBuildSourceUploadUrlAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _buildsRestClient.GetBuildSourceUploadUrlAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 return response;
             }
             catch (Exception e)
@@ -1139,7 +991,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _buildsRestClient.GetBuildSourceUploadUrl(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                var response = _buildsRestClient.GetBuildSourceUploadUrl(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                 return response;
             }
             catch (Exception e)
@@ -1172,7 +1024,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = await GetTagResource().GetAsync(cancellationToken).ConfigureAwait(false);
                     originalTags.Value.Data.TagValues[key] = value;
                     await GetTagResource().CreateOrUpdateAsync(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken).ConfigureAwait(false);
-                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else
@@ -1218,7 +1070,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = GetTagResource().Get(cancellationToken);
                     originalTags.Value.Data.TagValues[key] = value;
                     GetTagResource().CreateOrUpdate(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken);
-                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else
@@ -1263,7 +1115,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = await GetTagResource().GetAsync(cancellationToken).ConfigureAwait(false);
                     originalTags.Value.Data.TagValues.ReplaceWith(tags);
                     await GetTagResource().CreateOrUpdateAsync(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken).ConfigureAwait(false);
-                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else
@@ -1304,7 +1156,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = GetTagResource().Get(cancellationToken);
                     originalTags.Value.Data.TagValues.ReplaceWith(tags);
                     GetTagResource().CreateOrUpdate(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken);
-                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else
@@ -1344,7 +1196,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = await GetTagResource().GetAsync(cancellationToken).ConfigureAwait(false);
                     originalTags.Value.Data.TagValues.Remove(key);
                     await GetTagResource().CreateOrUpdateAsync(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken).ConfigureAwait(false);
-                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken).ConfigureAwait(false);
+                    var originalResponse = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else
@@ -1388,7 +1240,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                     var originalTags = GetTagResource().Get(cancellationToken);
                     originalTags.Value.Data.TagValues.Remove(key);
                     GetTagResource().CreateOrUpdate(WaitUntil.Completed, originalTags.Value.Data, cancellationToken: cancellationToken);
-                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken);
+                    var originalResponse = _containerRegistryRegistriesRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken);
                     return Response.FromValue(new ContainerRegistryResource(Client, originalResponse.Value), originalResponse.GetRawResponse());
                 }
                 else

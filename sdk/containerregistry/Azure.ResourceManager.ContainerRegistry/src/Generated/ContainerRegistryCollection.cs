@@ -22,13 +22,15 @@ namespace Azure.ResourceManager.ContainerRegistry
 {
     /// <summary>
     /// A class representing a collection of <see cref="ContainerRegistryResource" /> and their operations.
-    /// Each <see cref="ContainerRegistryResource" /> in the collection will belong to the same instance of <see cref="ResourceGroupResource" />.
-    /// To get a <see cref="ContainerRegistryCollection" /> instance call the GetContainerRegistries method from an instance of <see cref="ResourceGroupResource" />.
+    /// Each <see cref="ContainerRegistryResource" /> in the collection will belong to the same instance of <see cref="TenantResource" />.
+    /// To get a <see cref="ContainerRegistryCollection" /> instance call the GetContainerRegistries method from an instance of <see cref="TenantResource" />.
     /// </summary>
     public partial class ContainerRegistryCollection : ArmCollection, IEnumerable<ContainerRegistryResource>, IAsyncEnumerable<ContainerRegistryResource>
     {
         private readonly ClientDiagnostics _containerRegistryRegistriesClientDiagnostics;
         private readonly RegistriesRestOperations _containerRegistryRegistriesRestClient;
+        private readonly Guid _subscriptionId;
+        private readonly string _resourceGroupName;
 
         /// <summary> Initializes a new instance of the <see cref="ContainerRegistryCollection"/> class for mocking. </summary>
         protected ContainerRegistryCollection()
@@ -38,8 +40,14 @@ namespace Azure.ResourceManager.ContainerRegistry
         /// <summary> Initializes a new instance of the <see cref="ContainerRegistryCollection"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="id"> The identifier of the parent resource that is the target of operations. </param>
-        internal ContainerRegistryCollection(ArmClient client, ResourceIdentifier id) : base(client, id)
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        internal ContainerRegistryCollection(ArmClient client, ResourceIdentifier id, Guid subscriptionId, string resourceGroupName) : base(client, id)
         {
+            _subscriptionId = subscriptionId;
+            _resourceGroupName = resourceGroupName;
             _containerRegistryRegistriesClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.ContainerRegistry", ContainerRegistryResource.ResourceType.Namespace, Diagnostics);
             TryGetApiVersion(ContainerRegistryResource.ResourceType, out string containerRegistryRegistriesApiVersion);
             _containerRegistryRegistriesRestClient = new RegistriesRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, containerRegistryRegistriesApiVersion);
@@ -50,8 +58,8 @@ namespace Azure.ResourceManager.ContainerRegistry
 
         internal static void ValidateResourceId(ResourceIdentifier id)
         {
-            if (id.ResourceType != ResourceGroupResource.ResourceType)
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, ResourceGroupResource.ResourceType), nameof(id));
+            if (id.ResourceType != TenantResource.ResourceType)
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, TenantResource.ResourceType), nameof(id));
         }
 
         /// <summary>
@@ -74,8 +82,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.CreateAsync(Id.SubscriptionId, Id.ResourceGroupName, registryName, data, cancellationToken).ConfigureAwait(false);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateCreateRequest(Id.SubscriptionId, Id.ResourceGroupName, registryName, data).Request, response, OperationFinalStateVia.Location);
+                var response = await _containerRegistryRegistriesRestClient.CreateAsync(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, data, cancellationToken).ConfigureAwait(false);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateCreateRequest(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, data).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -107,8 +115,8 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Create(Id.SubscriptionId, Id.ResourceGroupName, registryName, data, cancellationToken);
-                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateCreateRequest(Id.SubscriptionId, Id.ResourceGroupName, registryName, data).Request, response, OperationFinalStateVia.Location);
+                var response = _containerRegistryRegistriesRestClient.Create(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, data, cancellationToken);
+                var operation = new ContainerRegistryArmOperation<ContainerRegistryResource>(new ContainerRegistryOperationSource(Client), _containerRegistryRegistriesClientDiagnostics, Pipeline, _containerRegistryRegistriesRestClient.CreateCreateRequest(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, data).Request, response, OperationFinalStateVia.AzureAsyncOperation);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;
@@ -137,7 +145,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, registryName, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryResource(Client, response.Value), response.GetRawResponse());
@@ -166,7 +174,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, registryName, cancellationToken);
+                var response = _containerRegistryRegistriesRestClient.Get(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryResource(Client, response.Value), response.GetRawResponse());
@@ -193,7 +201,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryRegistriesRestClient.ListByResourceGroupAsync(Id.SubscriptionId, Id.ResourceGroupName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryRegistriesRestClient.ListByResourceGroupAsync(Guid.Parse(_subscriptionId), _resourceGroupName, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -208,7 +216,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryRegistriesRestClient.ListByResourceGroupNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryRegistriesRestClient.ListByResourceGroupNextPageAsync(nextLink, Guid.Parse(_subscriptionId), _resourceGroupName, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -235,7 +243,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryRegistriesRestClient.ListByResourceGroup(Id.SubscriptionId, Id.ResourceGroupName, cancellationToken: cancellationToken);
+                    var response = _containerRegistryRegistriesRestClient.ListByResourceGroup(Guid.Parse(_subscriptionId), _resourceGroupName, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -250,7 +258,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryRegistriesRestClient.ListByResourceGroupNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, cancellationToken: cancellationToken);
+                    var response = _containerRegistryRegistriesRestClient.ListByResourceGroupNextPage(nextLink, Guid.Parse(_subscriptionId), _resourceGroupName, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -279,7 +287,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRegistriesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, registryName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRegistriesRestClient.GetAsync(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -306,7 +314,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRegistriesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, registryName, cancellationToken: cancellationToken);
+                var response = _containerRegistryRegistriesRestClient.Get(Guid.Parse(_subscriptionId), _resourceGroupName, registryName, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)

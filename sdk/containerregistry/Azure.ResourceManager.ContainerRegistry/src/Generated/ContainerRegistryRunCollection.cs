@@ -70,7 +70,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRunRunsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, runId, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRunRunsRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, runId, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryRunResource(Client, response.Value), response.GetRawResponse());
@@ -99,7 +99,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRunRunsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, runId, cancellationToken);
+                var response = _containerRegistryRunRunsRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, runId, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryRunResource(Client, response.Value), response.GetRawResponse());
@@ -128,7 +128,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryRunRunsRestClient.ListAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, filter, top, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryRunRunsRestClient.ListAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, filter, top, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryRunResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -143,7 +143,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryRunRunsRestClient.ListNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, filter, top, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryRunRunsRestClient.ListNextPageAsync(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, filter, top, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryRunResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -172,7 +172,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryRunRunsRestClient.List(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, filter, top, cancellationToken: cancellationToken);
+                    var response = _containerRegistryRunRunsRestClient.List(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, filter, top, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryRunResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -187,7 +187,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryRunRunsRestClient.ListNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, filter, top, cancellationToken: cancellationToken);
+                    var response = _containerRegistryRunRunsRestClient.ListNextPage(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, filter, top, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryRunResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -216,7 +216,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryRunRunsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, runId, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryRunRunsRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, runId, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -243,7 +243,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryRunRunsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, runId, cancellationToken: cancellationToken);
+                var response = _containerRegistryRunRunsRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, runId, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)

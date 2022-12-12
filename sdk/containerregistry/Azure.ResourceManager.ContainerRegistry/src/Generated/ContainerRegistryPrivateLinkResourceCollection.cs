@@ -70,7 +70,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResourceAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, groupName, cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResourceAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, groupName, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryPrivateLinkResource(Client, response.Value), response.GetRawResponse());
@@ -99,7 +99,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResource(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, groupName, cancellationToken);
+                var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResource(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, groupName, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ContainerRegistryPrivateLinkResource(Client, response.Value), response.GetRawResponse());
@@ -126,7 +126,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryPrivateLinkResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -141,7 +141,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesNextPageAsync(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryPrivateLinkResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -168,7 +168,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResources(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken);
+                    var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResources(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryPrivateLinkResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -183,7 +183,7 @@ namespace Azure.ResourceManager.ContainerRegistry
                 scope.Start();
                 try
                 {
-                    var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, cancellationToken: cancellationToken);
+                    var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.ListPrivateLinkResourcesNextPage(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ContainerRegistryPrivateLinkResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -212,7 +212,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResourceAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, groupName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResourceAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, groupName, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -239,7 +239,7 @@ namespace Azure.ResourceManager.ContainerRegistry
             scope.Start();
             try
             {
-                var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResource(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, groupName, cancellationToken: cancellationToken);
+                var response = _containerRegistryPrivateLinkResourceRegistriesRestClient.GetPrivateLinkResource(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, groupName, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
