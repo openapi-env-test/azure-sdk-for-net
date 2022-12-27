@@ -18,7 +18,7 @@ namespace Azure.ResourceManager.DeviceUpdate
     public partial class DeviceUpdateAccountData : Azure.ResourceManager.Models.TrackedResourceData
     {
         public DeviceUpdateAccountData(Azure.Core.AzureLocation location) : base (default(Azure.Core.AzureLocation)) { }
-        public string HostName { get { throw null; } }
+        public string HostNameSZ { get { throw null; } }
         public Azure.ResourceManager.Models.ManagedServiceIdentity Identity { get { throw null; } set { } }
         public System.Collections.Generic.IReadOnlyList<Azure.ResourceManager.DeviceUpdate.Models.DeviceUpdateAccountLocationDetail> Locations { get { throw null; } }
         public System.Collections.Generic.IList<Azure.ResourceManager.DeviceUpdate.DeviceUpdatePrivateEndpointConnectionData> PrivateEndpointConnections { get { throw null; } }
