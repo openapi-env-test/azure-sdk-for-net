@@ -73,7 +73,7 @@ namespace Azure.ResourceManager.DeviceUpdate
             ResourceType type = default;
             Optional<SystemData> systemData = default;
             Optional<ProvisioningState> provisioningState = default;
-            Optional<string> hostName = default;
+            Optional<string> hostNameSZ = default;
             Optional<PublicNetworkAccess> publicNetworkAccess = default;
             Optional<IList<DeviceUpdatePrivateEndpointConnectionData>> privateEndpointConnections = default;
             Optional<DeviceUpdateSku> sku = default;
@@ -155,9 +155,9 @@ namespace Azure.ResourceManager.DeviceUpdate
                             provisioningState = new ProvisioningState(property0.Value.GetString());
                             continue;
                         }
-                        if (property0.NameEquals("hostName"))
+                        if (property0.NameEquals("hostNameSZ"))
                         {
-                            hostName = property0.Value.GetString();
+                            hostNameSZ = property0.Value.GetString();
                             continue;
                         }
                         if (property0.NameEquals("publicNetworkAccess"))
@@ -214,7 +214,7 @@ namespace Azure.ResourceManager.DeviceUpdate
                     continue;
                 }
             }
-            return new DeviceUpdateAccountData(id, name, type, systemData.Value, Optional.ToDictionary(tags), location, identity, Optional.ToNullable(provisioningState), hostName.Value, Optional.ToNullable(publicNetworkAccess), Optional.ToList(privateEndpointConnections), Optional.ToNullable(sku), Optional.ToList(locations));
+            return new DeviceUpdateAccountData(id, name, type, systemData.Value, Optional.ToDictionary(tags), location, identity, Optional.ToNullable(provisioningState), hostNameSZ.Value, Optional.ToNullable(publicNetworkAccess), Optional.ToList(privateEndpointConnections), Optional.ToNullable(sku), Optional.ToList(locations));
         }
     }
 }
