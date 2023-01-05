@@ -18,60 +18,60 @@ using Azure.ResourceManager.AgFoodPlatform.Models;
 namespace Azure.ResourceManager.AgFoodPlatform
 {
     /// <summary>
-    /// A Class representing an Extension along with the instance operations that can be performed on it.
-    /// If you have a <see cref="ResourceIdentifier" /> you can construct an <see cref="ExtensionResource" />
-    /// from an instance of <see cref="ArmClient" /> using the GetExtensionResource method.
-    /// Otherwise you can get one from its parent resource <see cref="FarmBeatResource" /> using the GetExtension method.
+    /// A Class representing a Solution along with the instance operations that can be performed on it.
+    /// If you have a <see cref="ResourceIdentifier" /> you can construct a <see cref="SolutionResource" />
+    /// from an instance of <see cref="ArmClient" /> using the GetSolutionResource method.
+    /// Otherwise you can get one from its parent resource <see cref="FarmBeatResource" /> using the GetSolution method.
     /// </summary>
-    public partial class ExtensionResource : ArmResource
+    public partial class SolutionResource : ArmResource
     {
-        /// <summary> Generate the resource identifier of a <see cref="ExtensionResource"/> instance. </summary>
-        public static ResourceIdentifier CreateResourceIdentifier(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId)
+        /// <summary> Generate the resource identifier of a <see cref="SolutionResource"/> instance. </summary>
+        public static ResourceIdentifier CreateResourceIdentifier(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string solutionId)
         {
-            var resourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}";
+            var resourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}";
             return new ResourceIdentifier(resourceId);
         }
 
-        private readonly ClientDiagnostics _extensionClientDiagnostics;
-        private readonly ExtensionsRestOperations _extensionRestClient;
-        private readonly ExtensionData _data;
+        private readonly ClientDiagnostics _solutionClientDiagnostics;
+        private readonly SolutionsRestOperations _solutionRestClient;
+        private readonly SolutionData _data;
 
-        /// <summary> Initializes a new instance of the <see cref="ExtensionResource"/> class for mocking. </summary>
-        protected ExtensionResource()
+        /// <summary> Initializes a new instance of the <see cref="SolutionResource"/> class for mocking. </summary>
+        protected SolutionResource()
         {
         }
 
-        /// <summary> Initializes a new instance of the <see cref = "ExtensionResource"/> class. </summary>
+        /// <summary> Initializes a new instance of the <see cref = "SolutionResource"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="data"> The resource that is the target of operations. </param>
-        internal ExtensionResource(ArmClient client, ExtensionData data) : this(client, data.Id)
+        internal SolutionResource(ArmClient client, SolutionData data) : this(client, data.Id)
         {
             HasData = true;
             _data = data;
         }
 
-        /// <summary> Initializes a new instance of the <see cref="ExtensionResource"/> class. </summary>
+        /// <summary> Initializes a new instance of the <see cref="SolutionResource"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="id"> The identifier of the resource that is the target of operations. </param>
-        internal ExtensionResource(ArmClient client, ResourceIdentifier id) : base(client, id)
+        internal SolutionResource(ArmClient client, ResourceIdentifier id) : base(client, id)
         {
-            _extensionClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.AgFoodPlatform", ResourceType.Namespace, Diagnostics);
-            TryGetApiVersion(ResourceType, out string extensionApiVersion);
-            _extensionRestClient = new ExtensionsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, extensionApiVersion);
+            _solutionClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.AgFoodPlatform", ResourceType.Namespace, Diagnostics);
+            TryGetApiVersion(ResourceType, out string solutionApiVersion);
+            _solutionRestClient = new SolutionsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, solutionApiVersion);
 #if DEBUG
 			ValidateResourceId(Id);
 #endif
         }
 
         /// <summary> Gets the resource type for the operations. </summary>
-        public static readonly ResourceType ResourceType = "Microsoft.AgFoodPlatform/farmBeats/extensions";
+        public static readonly ResourceType ResourceType = "Microsoft.AgFoodPlatform/farmBeats/solutions";
 
         /// <summary> Gets whether or not the current instance has data. </summary>
         public virtual bool HasData { get; }
 
         /// <summary> Gets the data representing this Feature. </summary>
         /// <exception cref="InvalidOperationException"> Throws if there is no data loaded in the current instance. </exception>
-        public virtual ExtensionData Data
+        public virtual SolutionData Data
         {
             get
             {
@@ -88,21 +88,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Get installed extension details by extension id.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Get
+        /// Get installed Solution details by Solution id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_Get
         /// </summary>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<ExtensionResource>> GetAsync(CancellationToken cancellationToken = default)
+        public virtual async Task<Response<SolutionResource>> GetAsync(CancellationToken cancellationToken = default)
         {
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Get");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Get");
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _solutionRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
-                return Response.FromValue(new ExtensionResource(Client, response.Value), response.GetRawResponse());
+                return Response.FromValue(new SolutionResource(Client, response.Value), response.GetRawResponse());
             }
             catch (Exception e)
             {
@@ -112,21 +112,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Get installed extension details by extension id.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Get
+        /// Get installed Solution details by Solution id.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_Get
         /// </summary>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<ExtensionResource> Get(CancellationToken cancellationToken = default)
+        public virtual Response<SolutionResource> Get(CancellationToken cancellationToken = default)
         {
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Get");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Get");
             scope.Start();
             try
             {
-                var response = _extensionRestClient.Get(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken);
+                var response = _solutionRestClient.Get(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
-                return Response.FromValue(new ExtensionResource(Client, response.Value), response.GetRawResponse());
+                return Response.FromValue(new SolutionResource(Client, response.Value), response.GetRawResponse());
             }
             catch (Exception e)
             {
@@ -136,19 +136,19 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Uninstall extension.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Delete
+        /// Uninstall Solution.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_Delete
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         public virtual async Task<ArmOperation> DeleteAsync(WaitUntil waitUntil, CancellationToken cancellationToken = default)
         {
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Delete");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Delete");
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.DeleteAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _solutionRestClient.DeleteAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, cancellationToken).ConfigureAwait(false);
                 var operation = new AgFoodPlatformArmOperation(response);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionResponseAsync(cancellationToken).ConfigureAwait(false);
@@ -162,19 +162,19 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Uninstall extension.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Delete
+        /// Uninstall Solution.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_Delete
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         public virtual ArmOperation Delete(WaitUntil waitUntil, CancellationToken cancellationToken = default)
         {
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Delete");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Delete");
             scope.Start();
             try
             {
-                var response = _extensionRestClient.Delete(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken);
+                var response = _solutionRestClient.Delete(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, cancellationToken);
                 var operation = new AgFoodPlatformArmOperation(response);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletionResponse(cancellationToken);
@@ -188,24 +188,24 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_CreateOrUpdate
+        /// Install Or Update Solution.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_CreateOrUpdate
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
-        /// <param name="content"> Extension resource request body. </param>
+        /// <param name="content"> Solution resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public virtual async Task<ArmOperation<ExtensionResource>> UpdateAsync(WaitUntil waitUntil, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
+        public virtual async Task<ArmOperation<SolutionResource>> UpdateAsync(WaitUntil waitUntil, SolutionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Update");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Update");
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.CreateOrUpdateAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, content, cancellationToken).ConfigureAwait(false);
-                var operation = new AgFoodPlatformArmOperation<ExtensionResource>(Response.FromValue(new ExtensionResource(Client, response), response.GetRawResponse()));
+                var response = await _solutionRestClient.CreateOrUpdateAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, content, cancellationToken).ConfigureAwait(false);
+                var operation = new AgFoodPlatformArmOperation<SolutionResource>(Response.FromValue(new SolutionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -218,24 +218,24 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_CreateOrUpdate
+        /// Install Or Update Solution.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/solutions/{solutionId}
+        /// Operation Id: Solutions_CreateOrUpdate
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
-        /// <param name="content"> Extension resource request body. </param>
+        /// <param name="content"> Solution resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public virtual ArmOperation<ExtensionResource> Update(WaitUntil waitUntil, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
+        public virtual ArmOperation<SolutionResource> Update(WaitUntil waitUntil, SolutionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 
-            using var scope = _extensionClientDiagnostics.CreateScope("ExtensionResource.Update");
+            using var scope = _solutionClientDiagnostics.CreateScope("SolutionResource.Update");
             scope.Start();
             try
             {
-                var response = _extensionRestClient.CreateOrUpdate(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, content, cancellationToken);
-                var operation = new AgFoodPlatformArmOperation<ExtensionResource>(Response.FromValue(new ExtensionResource(Client, response), response.GetRawResponse()));
+                var response = _solutionRestClient.CreateOrUpdate(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, content, cancellationToken);
+                var operation = new AgFoodPlatformArmOperation<SolutionResource>(Response.FromValue(new SolutionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
                 return operation;

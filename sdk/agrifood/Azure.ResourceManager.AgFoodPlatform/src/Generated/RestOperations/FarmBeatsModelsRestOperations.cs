@@ -37,7 +37,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             _userAgent = new TelemetryDetails(GetType().Assembly, applicationId);
         }
 
-        internal HttpMessage CreateGetRequest(string subscriptionId, string resourceGroupName, string farmBeatsResourceName)
+        internal HttpMessage CreateGetRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -58,15 +58,14 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Get FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatData>> GetAsync(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<FarmBeatData>> GetAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
@@ -89,15 +88,14 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Get FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatData> Get(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<FarmBeatData> Get(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
@@ -119,7 +117,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateCreateOrUpdateRequest(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data)
+        internal HttpMessage CreateCreateOrUpdateRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -144,16 +142,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Create or update FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="data"> FarmBeats resource create or update request object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="data"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatData>> CreateOrUpdateAsync(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="data"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<FarmBeatData>> CreateOrUpdateAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNull(data, nameof(data));
@@ -176,16 +173,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Create or update FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="data"> FarmBeats resource create or update request object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="data"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatData> CreateOrUpdate(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="data"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<FarmBeatData> CreateOrUpdate(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatData data, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNull(data, nameof(data));
@@ -207,7 +203,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateUpdateRequest(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch)
+        internal HttpMessage CreateUpdateRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -232,16 +228,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Update a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="patch"> Request object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="patch"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response> UpdateAsync(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="patch"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response> UpdateAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNull(patch, nameof(patch));
@@ -259,16 +254,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Update a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="patch"> Request object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="patch"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response Update(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="patch"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response Update(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, FarmBeatPatch patch, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNull(patch, nameof(patch));
@@ -285,7 +279,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateDeleteRequest(string subscriptionId, string resourceGroupName, string farmBeatsResourceName)
+        internal HttpMessage CreateDeleteRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -306,15 +300,14 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Delete a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response> DeleteAsync(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response> DeleteAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
@@ -331,15 +324,14 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Delete a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response Delete(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response Delete(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
@@ -355,7 +347,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListBySubscriptionRequest(string subscriptionId, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListBySubscriptionRequest(Guid subscriptionId, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -381,19 +373,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Lists the FarmBeats instances for a subscription. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
         /// </param>
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatsListResponse>> ListBySubscriptionAsync(string subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public async Task<Response<FarmBeatsListResponse>> ListBySubscriptionAsync(Guid subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
-
             using var message = CreateListBySubscriptionRequest(subscriptionId, maxPageSize, skipToken);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
@@ -411,19 +399,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Lists the FarmBeats instances for a subscription. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
         /// </param>
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatsListResponse> ListBySubscription(string subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public Response<FarmBeatsListResponse> ListBySubscription(Guid subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
-
             using var message = CreateListBySubscriptionRequest(subscriptionId, maxPageSize, skipToken);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
@@ -440,7 +424,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListByResourceGroupRequest(string subscriptionId, string resourceGroupName, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListByResourceGroupRequest(Guid subscriptionId, string resourceGroupName, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -468,7 +452,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Lists the FarmBeats instances for a resource group. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
@@ -476,11 +460,10 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// </param>
         /// <param name="skipToken"> Continuation token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatsListResponse>> ListByResourceGroupAsync(string subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<FarmBeatsListResponse>> ListByResourceGroupAsync(Guid subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
 
             using var message = CreateListByResourceGroupRequest(subscriptionId, resourceGroupName, maxPageSize, skipToken);
@@ -500,7 +483,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Lists the FarmBeats instances for a resource group. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
@@ -508,11 +491,10 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// </param>
         /// <param name="skipToken"> Continuation token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatsListResponse> ListByResourceGroup(string subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<FarmBeatsListResponse> ListByResourceGroup(Guid subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
 
             using var message = CreateListByResourceGroupRequest(subscriptionId, resourceGroupName, maxPageSize, skipToken);
@@ -531,7 +513,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateGetOperationResultRequest(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId)
+        internal HttpMessage CreateGetOperationResultRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -554,16 +536,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Get operationResults for a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="operationResultsId"> The operation results id. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<ArmAsyncOperation>> GetOperationResultAsync(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<ArmAsyncOperation>> GetOperationResultAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNullOrEmpty(operationResultsId, nameof(operationResultsId));
@@ -585,16 +566,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary> Get operationResults for a FarmBeats resource. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
         /// <param name="operationResultsId"> The operation results id. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/>, <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<ArmAsyncOperation> GetOperationResult(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="operationResultsId"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<ArmAsyncOperation> GetOperationResult(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string operationResultsId, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
             Argument.AssertNotNullOrEmpty(operationResultsId, nameof(operationResultsId));
@@ -615,7 +595,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListBySubscriptionNextPageRequest(string nextLink, string subscriptionId, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListBySubscriptionNextPageRequest(string nextLink, Guid subscriptionId, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -631,19 +611,17 @@ namespace Azure.ResourceManager.AgFoodPlatform
 
         /// <summary> Lists the FarmBeats instances for a subscription. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
         /// </param>
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="subscriptionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatsListResponse>> ListBySubscriptionNextPageAsync(string nextLink, string subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> is null. </exception>
+        public async Task<Response<FarmBeatsListResponse>> ListBySubscriptionNextPageAsync(string nextLink, Guid subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             using var message = CreateListBySubscriptionNextPageRequest(nextLink, subscriptionId, maxPageSize, skipToken);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
@@ -663,19 +641,17 @@ namespace Azure.ResourceManager.AgFoodPlatform
 
         /// <summary> Lists the FarmBeats instances for a subscription. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
         /// </param>
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="subscriptionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatsListResponse> ListBySubscriptionNextPage(string nextLink, string subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> is null. </exception>
+        public Response<FarmBeatsListResponse> ListBySubscriptionNextPage(string nextLink, Guid subscriptionId, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             using var message = CreateListBySubscriptionNextPageRequest(nextLink, subscriptionId, maxPageSize, skipToken);
             _pipeline.Send(message, cancellationToken);
@@ -693,7 +669,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListByResourceGroupNextPageRequest(string nextLink, string subscriptionId, string resourceGroupName, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListByResourceGroupNextPageRequest(string nextLink, Guid subscriptionId, string resourceGroupName, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -709,7 +685,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
 
         /// <summary> Lists the FarmBeats instances for a resource group. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
@@ -717,12 +693,11 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// </param>
         /// <param name="skipToken"> Continuation token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<FarmBeatsListResponse>> ListByResourceGroupNextPageAsync(string nextLink, string subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<FarmBeatsListResponse>> ListByResourceGroupNextPageAsync(string nextLink, Guid subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
 
             using var message = CreateListByResourceGroupNextPageRequest(nextLink, subscriptionId, resourceGroupName, maxPageSize, skipToken);
@@ -743,7 +718,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
 
         /// <summary> Lists the FarmBeats instances for a resource group. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
@@ -751,12 +726,11 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// </param>
         /// <param name="skipToken"> Continuation token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="subscriptionId"/> or <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<FarmBeatsListResponse> ListByResourceGroupNextPage(string nextLink, string subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<FarmBeatsListResponse> ListByResourceGroupNextPage(string nextLink, Guid subscriptionId, string resourceGroupName, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
-            Argument.AssertNotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
 
             using var message = CreateListByResourceGroupNextPageRequest(nextLink, subscriptionId, resourceGroupName, maxPageSize, skipToken);

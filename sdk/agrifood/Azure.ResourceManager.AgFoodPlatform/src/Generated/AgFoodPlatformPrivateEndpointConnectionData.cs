@@ -5,6 +5,7 @@
 
 #nullable disable
 
+using System.Collections.Generic;
 using Azure.Core;
 using Azure.ResourceManager.AgFoodPlatform.Models;
 using Azure.ResourceManager.Models;
@@ -18,6 +19,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <summary> Initializes a new instance of AgFoodPlatformPrivateEndpointConnectionData. </summary>
         public AgFoodPlatformPrivateEndpointConnectionData()
         {
+            GroupIds = new ChangeTrackingList<string>();
         }
 
         /// <summary> Initializes a new instance of AgFoodPlatformPrivateEndpointConnectionData. </summary>
@@ -25,17 +27,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
         /// <param name="systemData"> The systemData. </param>
-        /// <param name="privateEndpoint"> The resource of private end point. </param>
+        /// <param name="groupIds"> The group ids for the private endpoint resource. </param>
+        /// <param name="privateEndpoint"> The private endpoint resource. </param>
         /// <param name="connectionState"> A collection of information about the state of the connection between service consumer and provider. </param>
         /// <param name="provisioningState"> The provisioning state of the private endpoint connection resource. </param>
-        internal AgFoodPlatformPrivateEndpointConnectionData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, SubResource privateEndpoint, AgFoodPlatformPrivateLinkServiceConnectionState connectionState, AgFoodPlatformPrivateEndpointConnectionProvisioningState? provisioningState) : base(id, name, resourceType, systemData)
+        internal AgFoodPlatformPrivateEndpointConnectionData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, IReadOnlyList<string> groupIds, SubResource privateEndpoint, AgFoodPlatformPrivateLinkServiceConnectionState connectionState, AgFoodPlatformPrivateEndpointConnectionProvisioningState? provisioningState) : base(id, name, resourceType, systemData)
         {
+            GroupIds = groupIds;
             PrivateEndpoint = privateEndpoint;
             ConnectionState = connectionState;
             ProvisioningState = provisioningState;
         }
 
-        /// <summary> The resource of private end point. </summary>
+        /// <summary> The group ids for the private endpoint resource. </summary>
+        public IReadOnlyList<string> GroupIds { get; }
+        /// <summary> The private endpoint resource. </summary>
         internal SubResource PrivateEndpoint { get; set; }
         /// <summary> Gets Id. </summary>
         public ResourceIdentifier PrivateEndpointId

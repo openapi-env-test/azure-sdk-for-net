@@ -68,13 +68,94 @@ namespace Azure.ResourceManager.AgFoodPlatform
             return tenantResource.GetFarmBeatsExtensions().Get(farmBeatsExtensionId, cancellationToken);
         }
 
-        private static SubscriptionResourceExtensionClient GetExtensionClient(SubscriptionResource subscriptionResource)
+        /// <summary> Gets a collection of FarmBeatResources in the TenantResource. </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> is null. </exception>
+        /// <returns> An object representing collection of FarmBeatResources and their operations over a FarmBeatResource. </returns>
+        public static FarmBeatCollection GetFarmBeats(this TenantResource tenantResource, Guid subscriptionId, string resourceGroupName)
         {
-            return subscriptionResource.GetCachedClient((client) =>
-            {
-                return new SubscriptionResourceExtensionClient(client, subscriptionResource.Id);
-            }
-            );
+            Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
+
+            return GetExtensionClient(tenantResource).GetFarmBeats(subscriptionId, resourceGroupName);
+        }
+
+        /// <summary>
+        /// Get FarmBeats resource.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}
+        /// Operation Id: FarmBeatsModels_Get
+        /// </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static async Task<Response<FarmBeatResource>> GetFarmBeatAsync(this TenantResource tenantResource, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        {
+            return await tenantResource.GetFarmBeats(subscriptionId, resourceGroupName).GetAsync(farmBeatsResourceName, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get FarmBeats resource.
+        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}
+        /// Operation Id: FarmBeatsModels_Get
+        /// </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static Response<FarmBeatResource> GetFarmBeat(this TenantResource tenantResource, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
+        {
+            return tenantResource.GetFarmBeats(subscriptionId, resourceGroupName).Get(farmBeatsResourceName, cancellationToken);
+        }
+
+        /// <summary> Gets a collection of FarmBeatsSolutionResources in the TenantResource. </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <returns> An object representing collection of FarmBeatsSolutionResources and their operations over a FarmBeatsSolutionResource. </returns>
+        public static FarmBeatsSolutionCollection GetFarmBeatsSolutions(this TenantResource tenantResource)
+        {
+            return GetExtensionClient(tenantResource).GetFarmBeatsSolutions();
+        }
+
+        /// <summary>
+        /// Get farmBeats solution by id.
+        /// Request Path: /providers/Microsoft.AgFoodPlatform/farmBeatsSolutionDefinitions/{farmBeatsSolutionId}
+        /// Operation Id: SolutionsDiscoverability_Get
+        /// </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="farmBeatsSolutionId"> farmBeatsSolutionId to be queried. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="farmBeatsSolutionId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="farmBeatsSolutionId"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static async Task<Response<FarmBeatsSolutionResource>> GetFarmBeatsSolutionAsync(this TenantResource tenantResource, string farmBeatsSolutionId, CancellationToken cancellationToken = default)
+        {
+            return await tenantResource.GetFarmBeatsSolutions().GetAsync(farmBeatsSolutionId, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get farmBeats solution by id.
+        /// Request Path: /providers/Microsoft.AgFoodPlatform/farmBeatsSolutionDefinitions/{farmBeatsSolutionId}
+        /// Operation Id: SolutionsDiscoverability_Get
+        /// </summary>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="farmBeatsSolutionId"> farmBeatsSolutionId to be queried. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="farmBeatsSolutionId"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="farmBeatsSolutionId"/> is null. </exception>
+        [ForwardsClientCalls]
+        public static Response<FarmBeatsSolutionResource> GetFarmBeatsSolution(this TenantResource tenantResource, string farmBeatsSolutionId, CancellationToken cancellationToken = default)
+        {
+            return tenantResource.GetFarmBeatsSolutions().Get(farmBeatsSolutionId, cancellationToken);
         }
 
         /// <summary>
@@ -82,7 +163,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/farmBeats
         /// Operation Id: FarmBeatsModels_ListBySubscription
         /// </summary>
-        /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -90,9 +171,9 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <returns> An async collection of <see cref="FarmBeatResource" /> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<FarmBeatResource> GetFarmBeatsAsync(this SubscriptionResource subscriptionResource, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public static AsyncPageable<FarmBeatResource> GetFarmBeatsAsync(this TenantResource tenantResource, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            return GetExtensionClient(subscriptionResource).GetFarmBeatsAsync(maxPageSize, skipToken, cancellationToken);
+            return GetExtensionClient(tenantResource).GetFarmBeatsAsync(maxPageSize, skipToken, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +181,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/farmBeats
         /// Operation Id: FarmBeatsModels_ListBySubscription
         /// </summary>
-        /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -108,9 +189,9 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="skipToken"> Skip token for getting next set of results. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <returns> A collection of <see cref="FarmBeatResource" /> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<FarmBeatResource> GetFarmBeats(this SubscriptionResource subscriptionResource, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public static Pageable<FarmBeatResource> GetFarmBeats(this TenantResource tenantResource, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
-            return GetExtensionClient(subscriptionResource).GetFarmBeats(maxPageSize, skipToken, cancellationToken);
+            return GetExtensionClient(tenantResource).GetFarmBeats(maxPageSize, skipToken, cancellationToken);
         }
 
         /// <summary>
@@ -118,15 +199,16 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/checkNameAvailability
         /// Operation Id: Locations_CheckNameAvailability
         /// </summary>
-        /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="content"> NameAvailabilityRequest object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public static async Task<Response<CheckNameAvailabilityResponse>> CheckNameAvailabilityLocationAsync(this SubscriptionResource subscriptionResource, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        public static async Task<Response<CheckNameAvailabilityResponse>> CheckNameAvailabilityLocationAsync(this TenantResource tenantResource, Guid subscriptionId, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 
-            return await GetExtensionClient(subscriptionResource).CheckNameAvailabilityLocationAsync(content, cancellationToken).ConfigureAwait(false);
+            return await GetExtensionClient(tenantResource).CheckNameAvailabilityLocationAsync(subscriptionId, content, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -134,64 +216,16 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/checkNameAvailability
         /// Operation Id: Locations_CheckNameAvailability
         /// </summary>
-        /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
+        /// <param name="tenantResource"> The <see cref="TenantResource" /> instance the method will execute against. </param>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="content"> NameAvailabilityRequest object. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="content"/> is null. </exception>
-        public static Response<CheckNameAvailabilityResponse> CheckNameAvailabilityLocation(this SubscriptionResource subscriptionResource, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        public static Response<CheckNameAvailabilityResponse> CheckNameAvailabilityLocation(this TenantResource tenantResource, Guid subscriptionId, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(content, nameof(content));
 
-            return GetExtensionClient(subscriptionResource).CheckNameAvailabilityLocation(content, cancellationToken);
-        }
-
-        private static ResourceGroupResourceExtensionClient GetExtensionClient(ResourceGroupResource resourceGroupResource)
-        {
-            return resourceGroupResource.GetCachedClient((client) =>
-            {
-                return new ResourceGroupResourceExtensionClient(client, resourceGroupResource.Id);
-            }
-            );
-        }
-
-        /// <summary> Gets a collection of FarmBeatResources in the ResourceGroupResource. </summary>
-        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
-        /// <returns> An object representing collection of FarmBeatResources and their operations over a FarmBeatResource. </returns>
-        public static FarmBeatCollection GetFarmBeats(this ResourceGroupResource resourceGroupResource)
-        {
-            return GetExtensionClient(resourceGroupResource).GetFarmBeats();
-        }
-
-        /// <summary>
-        /// Get FarmBeats resource.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}
-        /// Operation Id: FarmBeatsModels_Get
-        /// </summary>
-        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
-        /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="farmBeatsResourceName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public static async Task<Response<FarmBeatResource>> GetFarmBeatAsync(this ResourceGroupResource resourceGroupResource, string farmBeatsResourceName, CancellationToken cancellationToken = default)
-        {
-            return await resourceGroupResource.GetFarmBeats().GetAsync(farmBeatsResourceName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Get FarmBeats resource.
-        /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}
-        /// Operation Id: FarmBeatsModels_Get
-        /// </summary>
-        /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
-        /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentException"> <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="farmBeatsResourceName"/> is null. </exception>
-        [ForwardsClientCalls]
-        public static Response<FarmBeatResource> GetFarmBeat(this ResourceGroupResource resourceGroupResource, string farmBeatsResourceName, CancellationToken cancellationToken = default)
-        {
-            return resourceGroupResource.GetFarmBeats().Get(farmBeatsResourceName, cancellationToken);
+            return GetExtensionClient(tenantResource).CheckNameAvailabilityLocation(subscriptionId, content, cancellationToken);
         }
 
         #region ExtensionResource
@@ -284,6 +318,44 @@ namespace Azure.ResourceManager.AgFoodPlatform
             {
                 AgFoodPlatformPrivateLinkResource.ValidateResourceId(id);
                 return new AgFoodPlatformPrivateLinkResource(client, id);
+            }
+            );
+        }
+        #endregion
+
+        #region SolutionResource
+        /// <summary>
+        /// Gets an object representing a <see cref="SolutionResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="SolutionResource.CreateResourceIdentifier" /> to create a <see cref="SolutionResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// </summary>
+        /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
+        /// <param name="id"> The resource ID of the resource to get. </param>
+        /// <returns> Returns a <see cref="SolutionResource" /> object. </returns>
+        public static SolutionResource GetSolutionResource(this ArmClient client, ResourceIdentifier id)
+        {
+            return client.GetResourceClient(() =>
+            {
+                SolutionResource.ValidateResourceId(id);
+                return new SolutionResource(client, id);
+            }
+            );
+        }
+        #endregion
+
+        #region FarmBeatsSolutionResource
+        /// <summary>
+        /// Gets an object representing a <see cref="FarmBeatsSolutionResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="FarmBeatsSolutionResource.CreateResourceIdentifier" /> to create a <see cref="FarmBeatsSolutionResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// </summary>
+        /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
+        /// <param name="id"> The resource ID of the resource to get. </param>
+        /// <returns> Returns a <see cref="FarmBeatsSolutionResource" /> object. </returns>
+        public static FarmBeatsSolutionResource GetFarmBeatsSolutionResource(this ArmClient client, ResourceIdentifier id)
+        {
+            return client.GetResourceClient(() =>
+            {
+                FarmBeatsSolutionResource.ValidateResourceId(id);
+                return new FarmBeatsSolutionResource(client, id);
             }
             );
         }

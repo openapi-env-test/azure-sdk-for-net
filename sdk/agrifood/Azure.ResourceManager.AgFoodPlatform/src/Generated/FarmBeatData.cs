@@ -34,7 +34,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="provisioningState"> FarmBeats instance provisioning state. </param>
         /// <param name="sensorIntegration"> Sensor integration request model. </param>
         /// <param name="publicNetworkAccess"> Property to allow or block public traffic for an Azure FarmBeats resource. </param>
-        /// <param name="privateEndpointConnections"> The Private Endpoint Connection resource. </param>
+        /// <param name="privateEndpointConnections"> The private endpoint connection resource. </param>
         internal FarmBeatData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, IDictionary<string, string> tags, AzureLocation location, ManagedServiceIdentity identity, Uri instanceUri, ProvisioningState? provisioningState, SensorIntegration sensorIntegration, PublicNetworkAccess? publicNetworkAccess, AgFoodPlatformPrivateEndpointConnectionData privateEndpointConnections) : base(id, name, resourceType, systemData, tags, location)
         {
             Identity = identity;
@@ -55,7 +55,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         public SensorIntegration SensorIntegration { get; set; }
         /// <summary> Property to allow or block public traffic for an Azure FarmBeats resource. </summary>
         public PublicNetworkAccess? PublicNetworkAccess { get; set; }
-        /// <summary> The Private Endpoint Connection resource. </summary>
+        /// <summary> The private endpoint connection resource. </summary>
         public AgFoodPlatformPrivateEndpointConnectionData PrivateEndpointConnections { get; }
     }
 }

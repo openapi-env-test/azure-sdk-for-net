@@ -16,6 +16,7 @@ using Azure;
 using Azure.Core;
 using Azure.Core.Pipeline;
 using Azure.ResourceManager;
+using Azure.ResourceManager.AgFoodPlatform.Models;
 
 namespace Azure.ResourceManager.AgFoodPlatform
 {
@@ -54,24 +55,26 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Install extension.
+        /// Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties.
         /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Create
+        /// Operation Id: Extensions_CreateOrUpdate
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
         /// <param name="extensionId"> Id of extension resource. </param>
+        /// <param name="content"> Extension resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentException"> <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="extensionId"/> is null. </exception>
-        public virtual async Task<ArmOperation<ExtensionResource>> CreateOrUpdateAsync(WaitUntil waitUntil, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="extensionId"/> or <paramref name="content"/> is null. </exception>
+        public virtual async Task<ArmOperation<ExtensionResource>> CreateOrUpdateAsync(WaitUntil waitUntil, string extensionId, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
+            Argument.AssertNotNull(content, nameof(content));
 
             using var scope = _extensionClientDiagnostics.CreateScope("ExtensionCollection.CreateOrUpdate");
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.CreateAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken).ConfigureAwait(false);
+                var response = await _extensionRestClient.CreateOrUpdateAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, content, cancellationToken).ConfigureAwait(false);
                 var operation = new AgFoodPlatformArmOperation<ExtensionResource>(Response.FromValue(new ExtensionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
@@ -85,24 +88,26 @@ namespace Azure.ResourceManager.AgFoodPlatform
         }
 
         /// <summary>
-        /// Install extension.
+        /// Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties.
         /// Request Path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/extensions/{extensionId}
-        /// Operation Id: Extensions_Create
+        /// Operation Id: Extensions_CreateOrUpdate
         /// </summary>
         /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
         /// <param name="extensionId"> Id of extension resource. </param>
+        /// <param name="content"> Extension resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentException"> <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="extensionId"/> is null. </exception>
-        public virtual ArmOperation<ExtensionResource> CreateOrUpdate(WaitUntil waitUntil, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="extensionId"/> or <paramref name="content"/> is null. </exception>
+        public virtual ArmOperation<ExtensionResource> CreateOrUpdate(WaitUntil waitUntil, string extensionId, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
+            Argument.AssertNotNull(content, nameof(content));
 
             using var scope = _extensionClientDiagnostics.CreateScope("ExtensionCollection.CreateOrUpdate");
             scope.Start();
             try
             {
-                var response = _extensionRestClient.Create(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken);
+                var response = _extensionRestClient.CreateOrUpdate(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, content, cancellationToken);
                 var operation = new AgFoodPlatformArmOperation<ExtensionResource>(Response.FromValue(new ExtensionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
@@ -132,7 +137,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken).ConfigureAwait(false);
+                var response = await _extensionRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ExtensionResource(Client, response.Value), response.GetRawResponse());
@@ -161,7 +166,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _extensionRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken);
+                var response = _extensionRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new ExtensionResource(Client, response.Value), response.GetRawResponse());
@@ -195,7 +200,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = await _extensionRestClient.ListByFarmBeatsAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _extensionRestClient.ListByFarmBeatsAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ExtensionResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -210,7 +215,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = await _extensionRestClient.ListByFarmBeatsNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _extensionRestClient.ListByFarmBeatsNextPageAsync(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new ExtensionResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -244,7 +249,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = _extensionRestClient.ListByFarmBeats(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    var response = _extensionRestClient.ListByFarmBeats(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ExtensionResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -259,7 +264,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = _extensionRestClient.ListByFarmBeatsNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    var response = _extensionRestClient.ListByFarmBeatsNextPage(nextLink, Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionIds, extensionCategories, pageSizeHint, skipToken, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new ExtensionResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -288,7 +293,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _extensionRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _extensionRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -315,7 +320,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _extensionRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Name, extensionId, cancellationToken: cancellationToken);
+                var response = _extensionRestClient.Get(Guid.Parse(Id.Parent.Parent.Name), Id.Parent.Name, Id.Name, extensionId, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)

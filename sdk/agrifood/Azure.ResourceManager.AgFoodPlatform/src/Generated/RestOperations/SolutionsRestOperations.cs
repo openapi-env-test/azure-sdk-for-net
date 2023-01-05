@@ -17,28 +17,32 @@ using Azure.ResourceManager.AgFoodPlatform.Models;
 
 namespace Azure.ResourceManager.AgFoodPlatform
 {
-    internal partial class ExtensionsRestOperations
+    internal partial class SolutionsRestOperations
     {
         private readonly TelemetryDetails _userAgent;
         private readonly HttpPipeline _pipeline;
+        private readonly string _solutionId;
         private readonly Uri _endpoint;
         private readonly string _apiVersion;
 
-        /// <summary> Initializes a new instance of ExtensionsRestOperations. </summary>
+        /// <summary> Initializes a new instance of SolutionsRestOperations. </summary>
         /// <param name="pipeline"> The HTTP pipeline for sending and receiving REST requests and responses. </param>
         /// <param name="applicationId"> The application id to use for user agent. </param>
+        /// <param name="solutionId"> Solution Id of the solution. </param>
         /// <param name="endpoint"> server parameter. </param>
         /// <param name="apiVersion"> Api Version. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="pipeline"/> or <paramref name="apiVersion"/> is null. </exception>
-        public ExtensionsRestOperations(HttpPipeline pipeline, string applicationId, Uri endpoint = null, string apiVersion = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="pipeline"/>, <paramref name="solutionId"/> or <paramref name="apiVersion"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="solutionId"/> is an empty string, and was expected to be non-empty. </exception>
+        public SolutionsRestOperations(HttpPipeline pipeline, string applicationId, string solutionId, Uri endpoint = null, string apiVersion = default)
         {
             _pipeline = pipeline ?? throw new ArgumentNullException(nameof(pipeline));
+            _solutionId = solutionId ?? throw new ArgumentNullException(nameof(solutionId));
             _endpoint = endpoint ?? new Uri("https://management.azure.com");
             _apiVersion = apiVersion ?? "2021-09-01-preview";
             _userAgent = new TelemetryDetails(GetType().Assembly, applicationId);
         }
 
-        internal HttpMessage CreateCreateOrUpdateRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, ExtensionCreateOrUpdateContent content)
+        internal HttpMessage CreateCreateOrUpdateRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, SolutionCreateOrUpdateContent content)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -51,8 +55,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
             uri.AppendPath(resourceGroupName, true);
             uri.AppendPath("/providers/Microsoft.AgFoodPlatform/farmBeats/", false);
             uri.AppendPath(farmBeatsResourceName, true);
-            uri.AppendPath("/extensions/", false);
-            uri.AppendPath(extensionId, true);
+            uri.AppendPath("/solutions/", false);
+            uri.AppendPath(_solutionId, true);
             uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
@@ -64,32 +68,30 @@ namespace Azure.ResourceManager.AgFoodPlatform
             return message;
         }
 
-        /// <summary> Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties. </summary>
+        /// <summary> Install Or Update Solution. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
-        /// <param name="content"> Extension resource request body. </param>
+        /// <param name="content"> Solution resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/>, <paramref name="extensionId"/> or <paramref name="content"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<ExtensionData>> CreateOrUpdateAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="content"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<SolutionData>> CreateOrUpdateAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, SolutionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
             Argument.AssertNotNull(content, nameof(content));
 
-            using var message = CreateCreateOrUpdateRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId, content);
+            using var message = CreateCreateOrUpdateRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, content);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
                 case 200:
                 case 201:
                     {
-                        ExtensionData value = default;
+                        SolutionData value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ExtensionData.DeserializeExtensionData(document.RootElement);
+                        value = SolutionData.DeserializeSolutionData(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -97,32 +99,30 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        /// <summary> Install or Update extension. AdditionalApiProperties are merged patch and if the extension is updated to a new version then the obsolete entries will be auto deleted from AdditionalApiProperties. </summary>
+        /// <summary> Install Or Update Solution. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
-        /// <param name="content"> Extension resource request body. </param>
+        /// <param name="content"> Solution resource request body. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/>, <paramref name="extensionId"/> or <paramref name="content"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<ExtensionData> CreateOrUpdate(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, ExtensionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="content"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<SolutionData> CreateOrUpdate(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, SolutionCreateOrUpdateContent content, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
             Argument.AssertNotNull(content, nameof(content));
 
-            using var message = CreateCreateOrUpdateRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId, content);
+            using var message = CreateCreateOrUpdateRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, content);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
                 case 200:
                 case 201:
                     {
-                        ExtensionData value = default;
+                        SolutionData value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ExtensionData.DeserializeExtensionData(document.RootElement);
+                        value = SolutionData.DeserializeSolutionData(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -130,7 +130,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateGetRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId)
+        internal HttpMessage CreateGetRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -143,8 +143,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
             uri.AppendPath(resourceGroupName, true);
             uri.AppendPath("/providers/Microsoft.AgFoodPlatform/farmBeats/", false);
             uri.AppendPath(farmBeatsResourceName, true);
-            uri.AppendPath("/extensions/", false);
-            uri.AppendPath(extensionId, true);
+            uri.AppendPath("/solutions/", false);
+            uri.AppendPath(_solutionId, true);
             uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
@@ -152,71 +152,67 @@ namespace Azure.ResourceManager.AgFoodPlatform
             return message;
         }
 
-        /// <summary> Get installed extension details by extension id. </summary>
+        /// <summary> Get installed Solution details by Solution id. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<ExtensionData>> GetAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response<SolutionData>> GetAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
 
-            using var message = CreateGetRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId);
+            using var message = CreateGetRequest(subscriptionId, resourceGroupName, farmBeatsResourceName);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionData value = default;
+                        SolutionData value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ExtensionData.DeserializeExtensionData(document.RootElement);
+                        value = SolutionData.DeserializeSolutionData(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 case 404:
-                    return Response.FromValue((ExtensionData)null, message.Response);
+                    return Response.FromValue((SolutionData)null, message.Response);
                 default:
                     throw new RequestFailedException(message.Response);
             }
         }
 
-        /// <summary> Get installed extension details by extension id. </summary>
+        /// <summary> Get installed Solution details by Solution id. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<ExtensionData> Get(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response<SolutionData> Get(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
 
-            using var message = CreateGetRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId);
+            using var message = CreateGetRequest(subscriptionId, resourceGroupName, farmBeatsResourceName);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionData value = default;
+                        SolutionData value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ExtensionData.DeserializeExtensionData(document.RootElement);
+                        value = SolutionData.DeserializeSolutionData(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 case 404:
-                    return Response.FromValue((ExtensionData)null, message.Response);
+                    return Response.FromValue((SolutionData)null, message.Response);
                 default:
                     throw new RequestFailedException(message.Response);
             }
         }
 
-        internal HttpMessage CreateDeleteRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId)
+        internal HttpMessage CreateDeleteRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -229,8 +225,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
             uri.AppendPath(resourceGroupName, true);
             uri.AppendPath("/providers/Microsoft.AgFoodPlatform/farmBeats/", false);
             uri.AppendPath(farmBeatsResourceName, true);
-            uri.AppendPath("/extensions/", false);
-            uri.AppendPath(extensionId, true);
+            uri.AppendPath("/solutions/", false);
+            uri.AppendPath(_solutionId, true);
             uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
@@ -238,21 +234,19 @@ namespace Azure.ResourceManager.AgFoodPlatform
             return message;
         }
 
-        /// <summary> Uninstall extension. </summary>
+        /// <summary> Uninstall Solution. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response> DeleteAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public async Task<Response> DeleteAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
 
-            using var message = CreateDeleteRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId);
+            using var message = CreateDeleteRequest(subscriptionId, resourceGroupName, farmBeatsResourceName);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
@@ -264,21 +258,19 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        /// <summary> Uninstall extension. </summary>
+        /// <summary> Uninstall Solution. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionId"> Id of extension resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/>, <paramref name="farmBeatsResourceName"/> or <paramref name="extensionId"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response Delete(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string extensionId, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
+        public Response Delete(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
-            Argument.AssertNotNullOrEmpty(extensionId, nameof(extensionId));
 
-            using var message = CreateDeleteRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionId);
+            using var message = CreateDeleteRequest(subscriptionId, resourceGroupName, farmBeatsResourceName);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
@@ -290,7 +282,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListByFarmBeatsRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds, IEnumerable<string> extensionCategories, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListRequest(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds, IEnumerable<string> ids, IEnumerable<string> names, IEnumerable<string> propertyFilters, IEnumerable<string> statuses, DateTimeOffset? minCreatedDateTime, DateTimeOffset? maxCreatedDateTime, DateTimeOffset? minLastModifiedDateTime, DateTimeOffset? maxLastModifiedDateTime, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -303,21 +295,57 @@ namespace Azure.ResourceManager.AgFoodPlatform
             uri.AppendPath(resourceGroupName, true);
             uri.AppendPath("/providers/Microsoft.AgFoodPlatform/farmBeats/", false);
             uri.AppendPath(farmBeatsResourceName, true);
-            uri.AppendPath("/extensions", false);
-            uri.AppendQuery("api-version", _apiVersion, true);
-            if (extensionIds != null)
+            uri.AppendPath("/solutions", false);
+            if (solutionIds != null)
             {
-                foreach (var param in extensionIds)
+                foreach (var param in solutionIds)
                 {
-                    uri.AppendQuery("extensionIds", param, true);
+                    uri.AppendQuery("solutionIds", param, true);
                 }
             }
-            if (extensionCategories != null)
+            if (ids != null)
             {
-                foreach (var param in extensionCategories)
+                foreach (var param in ids)
                 {
-                    uri.AppendQuery("extensionCategories", param, true);
+                    uri.AppendQuery("ids", param, true);
                 }
+            }
+            if (names != null)
+            {
+                foreach (var param in names)
+                {
+                    uri.AppendQuery("names", param, true);
+                }
+            }
+            if (propertyFilters != null)
+            {
+                foreach (var param in propertyFilters)
+                {
+                    uri.AppendQuery("propertyFilters", param, true);
+                }
+            }
+            if (statuses != null)
+            {
+                foreach (var param in statuses)
+                {
+                    uri.AppendQuery("statuses", param, true);
+                }
+            }
+            if (minCreatedDateTime != null)
+            {
+                uri.AppendQuery("minCreatedDateTime", minCreatedDateTime.Value, "O", true);
+            }
+            if (maxCreatedDateTime != null)
+            {
+                uri.AppendQuery("maxCreatedDateTime", maxCreatedDateTime.Value, "O", true);
+            }
+            if (minLastModifiedDateTime != null)
+            {
+                uri.AppendQuery("minLastModifiedDateTime", minLastModifiedDateTime.Value, "O", true);
+            }
+            if (maxLastModifiedDateTime != null)
+            {
+                uri.AppendQuery("maxLastModifiedDateTime", maxLastModifiedDateTime.Value, "O", true);
             }
             if (maxPageSize != null)
             {
@@ -327,18 +355,29 @@ namespace Azure.ResourceManager.AgFoodPlatform
             {
                 uri.AppendQuery("$skipToken", skipToken, true);
             }
+            uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             _userAgent.Apply(message);
             return message;
         }
 
-        /// <summary> Get installed extensions details. </summary>
+        /// <summary> Get installed Solutions details. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionIds"> Installed extension ids. </param>
-        /// <param name="extensionCategories"> Installed extension categories. </param>
+        /// <param name="solutionIds"> Installed Solution ids. </param>
+        /// <param name="ids"> Ids of the resource. </param>
+        /// <param name="names"> Names of the resource. </param>
+        /// <param name="propertyFilters">
+        /// Filters on key-value pairs within the Properties object.
+        /// eg. &quot;{testKey} eq {testValue}&quot;.
+        /// </param>
+        /// <param name="statuses"> Statuses of the resource. </param>
+        /// <param name="minCreatedDateTime"> Minimum creation date of resource (inclusive). </param>
+        /// <param name="maxCreatedDateTime"> Maximum creation date of resource (inclusive). </param>
+        /// <param name="minLastModifiedDateTime"> Minimum last modified date of resource (inclusive). </param>
+        /// <param name="maxLastModifiedDateTime"> Maximum last modified date of resource (inclusive). </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -347,20 +386,20 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<ExtensionListResponse>> ListByFarmBeatsAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds = null, IEnumerable<string> extensionCategories = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public async Task<Response<SolutionListResponse>> ListAsync(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds = null, IEnumerable<string> ids = null, IEnumerable<string> names = null, IEnumerable<string> propertyFilters = null, IEnumerable<string> statuses = null, DateTimeOffset? minCreatedDateTime = null, DateTimeOffset? maxCreatedDateTime = null, DateTimeOffset? minLastModifiedDateTime = null, DateTimeOffset? maxLastModifiedDateTime = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
-            using var message = CreateListByFarmBeatsRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionIds, extensionCategories, maxPageSize, skipToken);
+            using var message = CreateListRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, solutionIds, ids, names, propertyFilters, statuses, minCreatedDateTime, maxCreatedDateTime, minLastModifiedDateTime, maxLastModifiedDateTime, maxPageSize, skipToken);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionListResponse value = default;
+                        SolutionListResponse value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ExtensionListResponse.DeserializeExtensionListResponse(document.RootElement);
+                        value = SolutionListResponse.DeserializeSolutionListResponse(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -368,12 +407,22 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        /// <summary> Get installed extensions details. </summary>
+        /// <summary> Get installed Solutions details. </summary>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionIds"> Installed extension ids. </param>
-        /// <param name="extensionCategories"> Installed extension categories. </param>
+        /// <param name="solutionIds"> Installed Solution ids. </param>
+        /// <param name="ids"> Ids of the resource. </param>
+        /// <param name="names"> Names of the resource. </param>
+        /// <param name="propertyFilters">
+        /// Filters on key-value pairs within the Properties object.
+        /// eg. &quot;{testKey} eq {testValue}&quot;.
+        /// </param>
+        /// <param name="statuses"> Statuses of the resource. </param>
+        /// <param name="minCreatedDateTime"> Minimum creation date of resource (inclusive). </param>
+        /// <param name="maxCreatedDateTime"> Maximum creation date of resource (inclusive). </param>
+        /// <param name="minLastModifiedDateTime"> Minimum last modified date of resource (inclusive). </param>
+        /// <param name="maxLastModifiedDateTime"> Maximum last modified date of resource (inclusive). </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -382,20 +431,20 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<ExtensionListResponse> ListByFarmBeats(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds = null, IEnumerable<string> extensionCategories = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public Response<SolutionListResponse> List(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds = null, IEnumerable<string> ids = null, IEnumerable<string> names = null, IEnumerable<string> propertyFilters = null, IEnumerable<string> statuses = null, DateTimeOffset? minCreatedDateTime = null, DateTimeOffset? maxCreatedDateTime = null, DateTimeOffset? minLastModifiedDateTime = null, DateTimeOffset? maxLastModifiedDateTime = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
-            using var message = CreateListByFarmBeatsRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, extensionIds, extensionCategories, maxPageSize, skipToken);
+            using var message = CreateListRequest(subscriptionId, resourceGroupName, farmBeatsResourceName, solutionIds, ids, names, propertyFilters, statuses, minCreatedDateTime, maxCreatedDateTime, minLastModifiedDateTime, maxLastModifiedDateTime, maxPageSize, skipToken);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionListResponse value = default;
+                        SolutionListResponse value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ExtensionListResponse.DeserializeExtensionListResponse(document.RootElement);
+                        value = SolutionListResponse.DeserializeSolutionListResponse(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -403,7 +452,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        internal HttpMessage CreateListByFarmBeatsNextPageRequest(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds, IEnumerable<string> extensionCategories, int? maxPageSize, string skipToken)
+        internal HttpMessage CreateListNextPageRequest(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds, IEnumerable<string> ids, IEnumerable<string> names, IEnumerable<string> propertyFilters, IEnumerable<string> statuses, DateTimeOffset? minCreatedDateTime, DateTimeOffset? maxCreatedDateTime, DateTimeOffset? minLastModifiedDateTime, DateTimeOffset? maxLastModifiedDateTime, int? maxPageSize, string skipToken)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -417,13 +466,23 @@ namespace Azure.ResourceManager.AgFoodPlatform
             return message;
         }
 
-        /// <summary> Get installed extensions details. </summary>
+        /// <summary> Get installed Solutions details. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionIds"> Installed extension ids. </param>
-        /// <param name="extensionCategories"> Installed extension categories. </param>
+        /// <param name="solutionIds"> Installed Solution ids. </param>
+        /// <param name="ids"> Ids of the resource. </param>
+        /// <param name="names"> Names of the resource. </param>
+        /// <param name="propertyFilters">
+        /// Filters on key-value pairs within the Properties object.
+        /// eg. &quot;{testKey} eq {testValue}&quot;.
+        /// </param>
+        /// <param name="statuses"> Statuses of the resource. </param>
+        /// <param name="minCreatedDateTime"> Minimum creation date of resource (inclusive). </param>
+        /// <param name="maxCreatedDateTime"> Maximum creation date of resource (inclusive). </param>
+        /// <param name="minLastModifiedDateTime"> Minimum last modified date of resource (inclusive). </param>
+        /// <param name="maxLastModifiedDateTime"> Maximum last modified date of resource (inclusive). </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -432,21 +491,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response<ExtensionListResponse>> ListByFarmBeatsNextPageAsync(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds = null, IEnumerable<string> extensionCategories = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public async Task<Response<SolutionListResponse>> ListNextPageAsync(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds = null, IEnumerable<string> ids = null, IEnumerable<string> names = null, IEnumerable<string> propertyFilters = null, IEnumerable<string> statuses = null, DateTimeOffset? minCreatedDateTime = null, DateTimeOffset? maxCreatedDateTime = null, DateTimeOffset? minLastModifiedDateTime = null, DateTimeOffset? maxLastModifiedDateTime = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
-            using var message = CreateListByFarmBeatsNextPageRequest(nextLink, subscriptionId, resourceGroupName, farmBeatsResourceName, extensionIds, extensionCategories, maxPageSize, skipToken);
+            using var message = CreateListNextPageRequest(nextLink, subscriptionId, resourceGroupName, farmBeatsResourceName, solutionIds, ids, names, propertyFilters, statuses, minCreatedDateTime, maxCreatedDateTime, minLastModifiedDateTime, maxLastModifiedDateTime, maxPageSize, skipToken);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionListResponse value = default;
+                        SolutionListResponse value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ExtensionListResponse.DeserializeExtensionListResponse(document.RootElement);
+                        value = SolutionListResponse.DeserializeSolutionListResponse(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -454,13 +513,23 @@ namespace Azure.ResourceManager.AgFoodPlatform
             }
         }
 
-        /// <summary> Get installed extensions details. </summary>
+        /// <summary> Get installed Solutions details. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
         /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
         /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
         /// <param name="farmBeatsResourceName"> FarmBeats resource name. </param>
-        /// <param name="extensionIds"> Installed extension ids. </param>
-        /// <param name="extensionCategories"> Installed extension categories. </param>
+        /// <param name="solutionIds"> Installed Solution ids. </param>
+        /// <param name="ids"> Ids of the resource. </param>
+        /// <param name="names"> Names of the resource. </param>
+        /// <param name="propertyFilters">
+        /// Filters on key-value pairs within the Properties object.
+        /// eg. &quot;{testKey} eq {testValue}&quot;.
+        /// </param>
+        /// <param name="statuses"> Statuses of the resource. </param>
+        /// <param name="minCreatedDateTime"> Minimum creation date of resource (inclusive). </param>
+        /// <param name="maxCreatedDateTime"> Maximum creation date of resource (inclusive). </param>
+        /// <param name="minLastModifiedDateTime"> Minimum last modified date of resource (inclusive). </param>
+        /// <param name="maxLastModifiedDateTime"> Maximum last modified date of resource (inclusive). </param>
         /// <param name="maxPageSize">
         /// Maximum number of items needed (inclusive).
         /// Minimum = 10, Maximum = 1000, Default value = 50.
@@ -469,21 +538,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/>, <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> or <paramref name="farmBeatsResourceName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response<ExtensionListResponse> ListByFarmBeatsNextPage(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> extensionIds = null, IEnumerable<string> extensionCategories = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        public Response<SolutionListResponse> ListNextPage(string nextLink, Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, IEnumerable<string> solutionIds = null, IEnumerable<string> ids = null, IEnumerable<string> names = null, IEnumerable<string> propertyFilters = null, IEnumerable<string> statuses = null, DateTimeOffset? minCreatedDateTime = null, DateTimeOffset? maxCreatedDateTime = null, DateTimeOffset? minLastModifiedDateTime = null, DateTimeOffset? maxLastModifiedDateTime = null, int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(nextLink, nameof(nextLink));
             Argument.AssertNotNullOrEmpty(resourceGroupName, nameof(resourceGroupName));
             Argument.AssertNotNullOrEmpty(farmBeatsResourceName, nameof(farmBeatsResourceName));
 
-            using var message = CreateListByFarmBeatsNextPageRequest(nextLink, subscriptionId, resourceGroupName, farmBeatsResourceName, extensionIds, extensionCategories, maxPageSize, skipToken);
+            using var message = CreateListNextPageRequest(nextLink, subscriptionId, resourceGroupName, farmBeatsResourceName, solutionIds, ids, names, propertyFilters, statuses, minCreatedDateTime, maxCreatedDateTime, minLastModifiedDateTime, maxLastModifiedDateTime, maxPageSize, skipToken);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        ExtensionListResponse value = default;
+                        SolutionListResponse value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ExtensionListResponse.DeserializeExtensionListResponse(document.RootElement);
+                        value = SolutionListResponse.DeserializeSolutionListResponse(document.RootElement);
                         return Response.FromValue(value, message.Response);
                     }
                 default:

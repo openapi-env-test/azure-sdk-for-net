@@ -5,14 +5,26 @@
 
 #nullable disable
 
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
+using Azure.Core.Pipeline;
 using Azure.ResourceManager;
+using Azure.ResourceManager.AgFoodPlatform.Models;
 
 namespace Azure.ResourceManager.AgFoodPlatform
 {
     /// <summary> A class to add extension methods to TenantResource. </summary>
     internal partial class TenantResourceExtensionClient : ArmResource
     {
+        private ClientDiagnostics _farmBeatFarmBeatsModelsClientDiagnostics;
+        private FarmBeatsModelsRestOperations _farmBeatFarmBeatsModelsRestClient;
+        private ClientDiagnostics _locationsClientDiagnostics;
+        private LocationsRestOperations _locationsRestClient;
+
         /// <summary> Initializes a new instance of the <see cref="TenantResourceExtensionClient"/> class for mocking. </summary>
         protected TenantResourceExtensionClient()
         {
@@ -25,6 +37,11 @@ namespace Azure.ResourceManager.AgFoodPlatform
         {
         }
 
+        private ClientDiagnostics FarmBeatFarmBeatsModelsClientDiagnostics => _farmBeatFarmBeatsModelsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.AgFoodPlatform", FarmBeatResource.ResourceType.Namespace, Diagnostics);
+        private FarmBeatsModelsRestOperations FarmBeatFarmBeatsModelsRestClient => _farmBeatFarmBeatsModelsRestClient ??= new FarmBeatsModelsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, GetApiVersionOrNull(FarmBeatResource.ResourceType));
+        private ClientDiagnostics LocationsClientDiagnostics => _locationsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.AgFoodPlatform", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private LocationsRestOperations LocationsRestClient => _locationsRestClient ??= new LocationsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+
         private string GetApiVersionOrNull(ResourceType resourceType)
         {
             TryGetApiVersion(resourceType, out string apiVersion);
@@ -36,6 +53,164 @@ namespace Azure.ResourceManager.AgFoodPlatform
         public virtual FarmBeatsExtensionCollection GetFarmBeatsExtensions()
         {
             return GetCachedClient(Client => new FarmBeatsExtensionCollection(Client, Id));
+        }
+
+        /// <summary> Gets a collection of FarmBeatResources in the TenantResource. </summary>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <returns> An object representing collection of FarmBeatResources and their operations over a FarmBeatResource. </returns>
+        public virtual FarmBeatCollection GetFarmBeats(Guid subscriptionId, string resourceGroupName)
+        {
+            return new FarmBeatCollection(Client, Id, subscriptionId, resourceGroupName);
+        }
+
+        /// <summary> Gets a collection of FarmBeatsSolutionResources in the TenantResource. </summary>
+        /// <returns> An object representing collection of FarmBeatsSolutionResources and their operations over a FarmBeatsSolutionResource. </returns>
+        public virtual FarmBeatsSolutionCollection GetFarmBeatsSolutions()
+        {
+            return GetCachedClient(Client => new FarmBeatsSolutionCollection(Client, Id));
+        }
+
+        /// <summary>
+        /// Lists the FarmBeats instances for a subscription.
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/farmBeats
+        /// Operation Id: FarmBeatsModels_ListBySubscription
+        /// </summary>
+        /// <param name="maxPageSize">
+        /// Maximum number of items needed (inclusive).
+        /// Minimum = 10, Maximum = 1000, Default value = 50.
+        /// </param>
+        /// <param name="skipToken"> Skip token for getting next set of results. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <returns> An async collection of <see cref="FarmBeatResource" /> that may take multiple service requests to iterate over. </returns>
+        public virtual AsyncPageable<FarmBeatResource> GetFarmBeatsAsync(int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        {
+            async Task<Page<FarmBeatResource>> FirstPageFunc(int? pageSizeHint)
+            {
+                using var scope = FarmBeatFarmBeatsModelsClientDiagnostics.CreateScope("TenantResourceExtensionClient.GetFarmBeats");
+                scope.Start();
+                try
+                {
+                    var response = await FarmBeatFarmBeatsModelsRestClient.ListBySubscriptionAsync(Guid.Parse(_subscriptionId), pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            async Task<Page<FarmBeatResource>> NextPageFunc(string nextLink, int? pageSizeHint)
+            {
+                using var scope = FarmBeatFarmBeatsModelsClientDiagnostics.CreateScope("TenantResourceExtensionClient.GetFarmBeats");
+                scope.Start();
+                try
+                {
+                    var response = await FarmBeatFarmBeatsModelsRestClient.ListBySubscriptionNextPageAsync(nextLink, Guid.Parse(_subscriptionId), pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            return PageableHelpers.CreateAsyncEnumerable(FirstPageFunc, NextPageFunc);
+        }
+
+        /// <summary>
+        /// Lists the FarmBeats instances for a subscription.
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/farmBeats
+        /// Operation Id: FarmBeatsModels_ListBySubscription
+        /// </summary>
+        /// <param name="maxPageSize">
+        /// Maximum number of items needed (inclusive).
+        /// Minimum = 10, Maximum = 1000, Default value = 50.
+        /// </param>
+        /// <param name="skipToken"> Skip token for getting next set of results. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <returns> A collection of <see cref="FarmBeatResource" /> that may take multiple service requests to iterate over. </returns>
+        public virtual Pageable<FarmBeatResource> GetFarmBeats(int? maxPageSize = null, string skipToken = null, CancellationToken cancellationToken = default)
+        {
+            Page<FarmBeatResource> FirstPageFunc(int? pageSizeHint)
+            {
+                using var scope = FarmBeatFarmBeatsModelsClientDiagnostics.CreateScope("TenantResourceExtensionClient.GetFarmBeats");
+                scope.Start();
+                try
+                {
+                    var response = FarmBeatFarmBeatsModelsRestClient.ListBySubscription(Guid.Parse(_subscriptionId), pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            Page<FarmBeatResource> NextPageFunc(string nextLink, int? pageSizeHint)
+            {
+                using var scope = FarmBeatFarmBeatsModelsClientDiagnostics.CreateScope("TenantResourceExtensionClient.GetFarmBeats");
+                scope.Start();
+                try
+                {
+                    var response = FarmBeatFarmBeatsModelsRestClient.ListBySubscriptionNextPage(nextLink, Guid.Parse(_subscriptionId), pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
+                }
+                catch (Exception e)
+                {
+                    scope.Failed(e);
+                    throw;
+                }
+            }
+            return PageableHelpers.CreateEnumerable(FirstPageFunc, NextPageFunc);
+        }
+
+        /// <summary>
+        /// Checks the name availability of the resource with requested resource name.
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/checkNameAvailability
+        /// Operation Id: Locations_CheckNameAvailability
+        /// </summary>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="content"> NameAvailabilityRequest object. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual async Task<Response<CheckNameAvailabilityResponse>> CheckNameAvailabilityLocationAsync(Guid subscriptionId, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        {
+            using var scope = LocationsClientDiagnostics.CreateScope("TenantResourceExtensionClient.CheckNameAvailabilityLocation");
+            scope.Start();
+            try
+            {
+                var response = await LocationsRestClient.CheckNameAvailabilityAsync(subscriptionId, content, cancellationToken).ConfigureAwait(false);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Checks the name availability of the resource with requested resource name.
+        /// Request Path: /subscriptions/{subscriptionId}/providers/Microsoft.AgFoodPlatform/checkNameAvailability
+        /// Operation Id: Locations_CheckNameAvailability
+        /// </summary>
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="content"> NameAvailabilityRequest object. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual Response<CheckNameAvailabilityResponse> CheckNameAvailabilityLocation(Guid subscriptionId, CheckNameAvailabilityContent content, CancellationToken cancellationToken = default)
+        {
+            using var scope = LocationsClientDiagnostics.CreateScope("TenantResourceExtensionClient.CheckNameAvailabilityLocation");
+            scope.Start();
+            try
+            {
+                var response = LocationsRestClient.CheckNameAvailability(subscriptionId, content, cancellationToken);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
         }
     }
 }

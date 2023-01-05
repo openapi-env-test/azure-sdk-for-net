@@ -25,7 +25,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
     public partial class AgFoodPlatformPrivateLinkResource : ArmResource
     {
         /// <summary> Generate the resource identifier of a <see cref="AgFoodPlatformPrivateLinkResource"/> instance. </summary>
-        public static ResourceIdentifier CreateResourceIdentifier(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, string subResourceName)
+        public static ResourceIdentifier CreateResourceIdentifier(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string subResourceName)
         {
             var resourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/privateLinkResources/{subResourceName}";
             return new ResourceIdentifier(resourceId);
@@ -98,7 +98,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _agFoodPlatformPrivateLinkResourcePrivateLinkResourcesRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _agFoodPlatformPrivateLinkResourcePrivateLinkResourcesRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new AgFoodPlatformPrivateLinkResource(Client, response.Value), response.GetRawResponse());
@@ -122,7 +122,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _agFoodPlatformPrivateLinkResourcePrivateLinkResourcesRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken);
+                var response = _agFoodPlatformPrivateLinkResourcePrivateLinkResourcesRestClient.Get(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new AgFoodPlatformPrivateLinkResource(Client, response.Value), response.GetRawResponse());

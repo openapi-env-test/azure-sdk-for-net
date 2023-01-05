@@ -5,9 +5,11 @@
 
 #nullable disable
 
+using System.Collections.Generic;
 using System.Text.Json;
 using Azure;
 using Azure.Core;
+using Azure.ResourceManager.AgFoodPlatform.Models;
 using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.AgFoodPlatform
@@ -35,6 +37,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             Optional<string> installedExtensionVersion = default;
             Optional<string> extensionAuthLink = default;
             Optional<string> extensionApiDocsLink = default;
+            Optional<IReadOnlyDictionary<string, ApiProperties>> additionalApiProperties = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("eTag"))
@@ -106,11 +109,26 @@ namespace Azure.ResourceManager.AgFoodPlatform
                             extensionApiDocsLink = property0.Value.GetString();
                             continue;
                         }
+                        if (property0.NameEquals("additionalApiProperties"))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                property0.ThrowNonNullablePropertyIsNull();
+                                continue;
+                            }
+                            Dictionary<string, ApiProperties> dictionary = new Dictionary<string, ApiProperties>();
+                            foreach (var property1 in property0.Value.EnumerateObject())
+                            {
+                                dictionary.Add(property1.Name, ApiProperties.DeserializeApiProperties(property1.Value));
+                            }
+                            additionalApiProperties = dictionary;
+                            continue;
+                        }
                     }
                     continue;
                 }
             }
-            return new ExtensionData(id, name, type, systemData.Value, Optional.ToNullable(eTag), extensionId.Value, extensionCategory.Value, installedExtensionVersion.Value, extensionAuthLink.Value, extensionApiDocsLink.Value);
+            return new ExtensionData(id, name, type, systemData.Value, Optional.ToNullable(eTag), extensionId.Value, extensionCategory.Value, installedExtensionVersion.Value, extensionAuthLink.Value, extensionApiDocsLink.Value, Optional.ToDictionary(additionalApiProperties));
         }
     }
 }

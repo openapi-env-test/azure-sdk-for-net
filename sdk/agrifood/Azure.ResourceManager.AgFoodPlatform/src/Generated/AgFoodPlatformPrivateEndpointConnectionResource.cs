@@ -25,7 +25,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
     public partial class AgFoodPlatformPrivateEndpointConnectionResource : ArmResource
     {
         /// <summary> Generate the resource identifier of a <see cref="AgFoodPlatformPrivateEndpointConnectionResource"/> instance. </summary>
-        public static ResourceIdentifier CreateResourceIdentifier(string subscriptionId, string resourceGroupName, string farmBeatsResourceName, string privateEndpointConnectionName)
+        public static ResourceIdentifier CreateResourceIdentifier(Guid subscriptionId, string resourceGroupName, string farmBeatsResourceName, string privateEndpointConnectionName)
         {
             var resourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AgFoodPlatform/farmBeats/{farmBeatsResourceName}/privateEndpointConnections/{privateEndpointConnectionName}";
             return new ResourceIdentifier(resourceId);
@@ -98,7 +98,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.GetAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new AgFoodPlatformPrivateEndpointConnectionResource(Client, response.Value), response.GetRawResponse());
@@ -122,7 +122,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken);
+                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.Get(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new AgFoodPlatformPrivateEndpointConnectionResource(Client, response.Value), response.GetRawResponse());
@@ -147,8 +147,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.DeleteAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
-                var operation = new AgFoodPlatformArmOperation(_agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsClientDiagnostics, Pipeline, _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateDeleteRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
+                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.DeleteAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken).ConfigureAwait(false);
+                var operation = new AgFoodPlatformArmOperation(_agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsClientDiagnostics, Pipeline, _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateDeleteRequest(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionResponseAsync(cancellationToken).ConfigureAwait(false);
                 return operation;
@@ -173,8 +173,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.Delete(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, cancellationToken);
-                var operation = new AgFoodPlatformArmOperation(_agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsClientDiagnostics, Pipeline, _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateDeleteRequest(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
+                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.Delete(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, cancellationToken);
+                var operation = new AgFoodPlatformArmOperation(_agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsClientDiagnostics, Pipeline, _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateDeleteRequest(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name).Request, response, OperationFinalStateVia.Location);
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletionResponse(cancellationToken);
                 return operation;
@@ -203,7 +203,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateOrUpdateAsync(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, data, cancellationToken).ConfigureAwait(false);
+                var response = await _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateOrUpdateAsync(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, data, cancellationToken).ConfigureAwait(false);
                 var operation = new AgFoodPlatformArmOperation<AgFoodPlatformPrivateEndpointConnectionResource>(Response.FromValue(new AgFoodPlatformPrivateEndpointConnectionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
@@ -233,7 +233,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateOrUpdate(Id.SubscriptionId, Id.ResourceGroupName, Id.Parent.Name, Id.Name, data, cancellationToken);
+                var response = _agFoodPlatformPrivateEndpointConnectionPrivateEndpointConnectionsRestClient.CreateOrUpdate(Guid.Parse(Id.Parent.Parent.Parent.Name), Id.Parent.Parent.Name, Id.Parent.Name, Id.Name, data, cancellationToken);
                 var operation = new AgFoodPlatformArmOperation<AgFoodPlatformPrivateEndpointConnectionResource>(Response.FromValue(new AgFoodPlatformPrivateEndpointConnectionResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
