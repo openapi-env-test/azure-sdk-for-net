@@ -11,7 +11,7 @@ using Azure.ResourceManager.AgFoodPlatform;
 
 namespace Azure.ResourceManager.AgFoodPlatform.Models
 {
-    /// <summary> List of private endpoint connection associated with the specified storage account. </summary>
+    /// <summary> List of private endpoint connections associated with the specified resource. </summary>
     internal partial class AgFoodPlatformPrivateEndpointConnectionListResult
     {
         /// <summary> Initializes a new instance of AgFoodPlatformPrivateEndpointConnectionListResult. </summary>

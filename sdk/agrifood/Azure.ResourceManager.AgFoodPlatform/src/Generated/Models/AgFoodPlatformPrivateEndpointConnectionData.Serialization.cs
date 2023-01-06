@@ -5,6 +5,7 @@
 
 #nullable disable
 
+using System.Collections.Generic;
 using System.Text.Json;
 using Azure.Core;
 using Azure.ResourceManager.AgFoodPlatform.Models;
@@ -40,6 +41,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             string name = default;
             ResourceType type = default;
             Optional<SystemData> systemData = default;
+            Optional<IReadOnlyList<string>> groupIds = default;
             Optional<SubResource> privateEndpoint = default;
             Optional<AgFoodPlatformPrivateLinkServiceConnectionState> privateLinkServiceConnectionState = default;
             Optional<AgFoodPlatformPrivateEndpointConnectionProvisioningState> provisioningState = default;
@@ -79,6 +81,21 @@ namespace Azure.ResourceManager.AgFoodPlatform
                     }
                     foreach (var property0 in property.Value.EnumerateObject())
                     {
+                        if (property0.NameEquals("groupIds"))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                property0.ThrowNonNullablePropertyIsNull();
+                                continue;
+                            }
+                            List<string> array = new List<string>();
+                            foreach (var item in property0.Value.EnumerateArray())
+                            {
+                                array.Add(item.GetString());
+                            }
+                            groupIds = array;
+                            continue;
+                        }
                         if (property0.NameEquals("privateEndpoint"))
                         {
                             if (property0.Value.ValueKind == JsonValueKind.Null)
@@ -113,7 +130,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                     continue;
                 }
             }
-            return new AgFoodPlatformPrivateEndpointConnectionData(id, name, type, systemData.Value, privateEndpoint, privateLinkServiceConnectionState.Value, Optional.ToNullable(provisioningState));
+            return new AgFoodPlatformPrivateEndpointConnectionData(id, name, type, systemData.Value, Optional.ToList(groupIds), privateEndpoint, privateLinkServiceConnectionState.Value, Optional.ToNullable(provisioningState));
         }
     }
 }

@@ -22,13 +22,15 @@ namespace Azure.ResourceManager.AgFoodPlatform
 {
     /// <summary>
     /// A class representing a collection of <see cref="FarmBeatResource" /> and their operations.
-    /// Each <see cref="FarmBeatResource" /> in the collection will belong to the same instance of <see cref="ResourceGroupResource" />.
-    /// To get a <see cref="FarmBeatCollection" /> instance call the GetFarmBeats method from an instance of <see cref="ResourceGroupResource" />.
+    /// Each <see cref="FarmBeatResource" /> in the collection will belong to the same instance of <see cref="TenantResource" />.
+    /// To get a <see cref="FarmBeatCollection" /> instance call the GetFarmBeats method from an instance of <see cref="TenantResource" />.
     /// </summary>
     public partial class FarmBeatCollection : ArmCollection, IEnumerable<FarmBeatResource>, IAsyncEnumerable<FarmBeatResource>
     {
         private readonly ClientDiagnostics _farmBeatFarmBeatsModelsClientDiagnostics;
         private readonly FarmBeatsModelsRestOperations _farmBeatFarmBeatsModelsRestClient;
+        private readonly Guid _subscriptionId;
+        private readonly string _resourceGroupName;
 
         /// <summary> Initializes a new instance of the <see cref="FarmBeatCollection"/> class for mocking. </summary>
         protected FarmBeatCollection()
@@ -38,8 +40,14 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <summary> Initializes a new instance of the <see cref="FarmBeatCollection"/> class. </summary>
         /// <param name="client"> The client parameters to use in these operations. </param>
         /// <param name="id"> The identifier of the parent resource that is the target of operations. </param>
-        internal FarmBeatCollection(ArmClient client, ResourceIdentifier id) : base(client, id)
+        /// <param name="subscriptionId"> The ID of the target subscription. The value must be an UUID. </param>
+        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="resourceGroupName"/> is an empty string, and was expected to be non-empty. </exception>
+        internal FarmBeatCollection(ArmClient client, ResourceIdentifier id, Guid subscriptionId, string resourceGroupName) : base(client, id)
         {
+            _subscriptionId = subscriptionId;
+            _resourceGroupName = resourceGroupName;
             _farmBeatFarmBeatsModelsClientDiagnostics = new ClientDiagnostics("Azure.ResourceManager.AgFoodPlatform", FarmBeatResource.ResourceType.Namespace, Diagnostics);
             TryGetApiVersion(FarmBeatResource.ResourceType, out string farmBeatFarmBeatsModelsApiVersion);
             _farmBeatFarmBeatsModelsRestClient = new FarmBeatsModelsRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint, farmBeatFarmBeatsModelsApiVersion);
@@ -50,8 +58,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
 
         internal static void ValidateResourceId(ResourceIdentifier id)
         {
-            if (id.ResourceType != ResourceGroupResource.ResourceType)
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, ResourceGroupResource.ResourceType), nameof(id));
+            if (id.ResourceType != TenantResource.ResourceType)
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, TenantResource.ResourceType), nameof(id));
         }
 
         /// <summary>
@@ -74,7 +82,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _farmBeatFarmBeatsModelsRestClient.CreateOrUpdateAsync(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, data, cancellationToken).ConfigureAwait(false);
+                var response = await _farmBeatFarmBeatsModelsRestClient.CreateOrUpdateAsync(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, data, cancellationToken).ConfigureAwait(false);
                 var operation = new AgFoodPlatformArmOperation<FarmBeatResource>(Response.FromValue(new FarmBeatResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
@@ -107,7 +115,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _farmBeatFarmBeatsModelsRestClient.CreateOrUpdate(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, data, cancellationToken);
+                var response = _farmBeatFarmBeatsModelsRestClient.CreateOrUpdate(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, data, cancellationToken);
                 var operation = new AgFoodPlatformArmOperation<FarmBeatResource>(Response.FromValue(new FarmBeatResource(Client, response), response.GetRawResponse()));
                 if (waitUntil == WaitUntil.Completed)
                     operation.WaitForCompletion(cancellationToken);
@@ -137,7 +145,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _farmBeatFarmBeatsModelsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, cancellationToken).ConfigureAwait(false);
+                var response = await _farmBeatFarmBeatsModelsRestClient.GetAsync(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, cancellationToken).ConfigureAwait(false);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new FarmBeatResource(Client, response.Value), response.GetRawResponse());
@@ -166,7 +174,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _farmBeatFarmBeatsModelsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, cancellationToken);
+                var response = _farmBeatFarmBeatsModelsRestClient.Get(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, cancellationToken);
                 if (response.Value == null)
                     throw new RequestFailedException(response.GetRawResponse());
                 return Response.FromValue(new FarmBeatResource(Client, response.Value), response.GetRawResponse());
@@ -198,7 +206,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = await _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupAsync(Id.SubscriptionId, Id.ResourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupAsync(Guid.Parse(_subscriptionId), _resourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -213,7 +221,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = await _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupNextPageAsync(nextLink, Id.SubscriptionId, Id.ResourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
+                    var response = await _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupNextPageAsync(nextLink, Guid.Parse(_subscriptionId), _resourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken).ConfigureAwait(false);
                     return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -245,7 +253,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = _farmBeatFarmBeatsModelsRestClient.ListByResourceGroup(Id.SubscriptionId, Id.ResourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    var response = _farmBeatFarmBeatsModelsRestClient.ListByResourceGroup(Guid.Parse(_subscriptionId), _resourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -260,7 +268,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
                 scope.Start();
                 try
                 {
-                    var response = _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupNextPage(nextLink, Id.SubscriptionId, Id.ResourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken);
+                    var response = _farmBeatFarmBeatsModelsRestClient.ListByResourceGroupNextPage(nextLink, Guid.Parse(_subscriptionId), _resourceGroupName, pageSizeHint, skipToken, cancellationToken: cancellationToken);
                     return Page.FromValues(response.Value.Value.Select(value => new FarmBeatResource(Client, value)), response.Value.NextLink, response.GetRawResponse());
                 }
                 catch (Exception e)
@@ -289,7 +297,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = await _farmBeatFarmBeatsModelsRestClient.GetAsync(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, cancellationToken: cancellationToken).ConfigureAwait(false);
+                var response = await _farmBeatFarmBeatsModelsRestClient.GetAsync(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, cancellationToken: cancellationToken).ConfigureAwait(false);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)
@@ -316,7 +324,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             scope.Start();
             try
             {
-                var response = _farmBeatFarmBeatsModelsRestClient.Get(Id.SubscriptionId, Id.ResourceGroupName, farmBeatsResourceName, cancellationToken: cancellationToken);
+                var response = _farmBeatFarmBeatsModelsRestClient.Get(Guid.Parse(_subscriptionId), _resourceGroupName, farmBeatsResourceName, cancellationToken: cancellationToken);
                 return Response.FromValue(response.Value != null, response.GetRawResponse());
             }
             catch (Exception e)

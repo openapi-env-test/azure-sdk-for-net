@@ -5,8 +5,10 @@
 
 #nullable disable
 
+using System.Collections.Generic;
 using Azure;
 using Azure.Core;
+using Azure.ResourceManager.AgFoodPlatform.Models;
 using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.AgFoodPlatform
@@ -17,6 +19,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <summary> Initializes a new instance of ExtensionData. </summary>
         public ExtensionData()
         {
+            AdditionalApiProperties = new ChangeTrackingDictionary<string, ApiProperties>();
         }
 
         /// <summary> Initializes a new instance of ExtensionData. </summary>
@@ -30,7 +33,8 @@ namespace Azure.ResourceManager.AgFoodPlatform
         /// <param name="installedExtensionVersion"> Installed extension version. </param>
         /// <param name="extensionAuthLink"> Extension auth link. </param>
         /// <param name="extensionApiDocsLink"> Extension api docs link. </param>
-        internal ExtensionData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, ETag? eTag, string extensionId, string extensionCategory, string installedExtensionVersion, string extensionAuthLink, string extensionApiDocsLink) : base(id, name, resourceType, systemData)
+        /// <param name="additionalApiProperties"> Additional api properties. </param>
+        internal ExtensionData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, ETag? eTag, string extensionId, string extensionCategory, string installedExtensionVersion, string extensionAuthLink, string extensionApiDocsLink, IReadOnlyDictionary<string, ApiProperties> additionalApiProperties) : base(id, name, resourceType, systemData)
         {
             ETag = eTag;
             ExtensionId = extensionId;
@@ -38,6 +42,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
             InstalledExtensionVersion = installedExtensionVersion;
             ExtensionAuthLink = extensionAuthLink;
             ExtensionApiDocsLink = extensionApiDocsLink;
+            AdditionalApiProperties = additionalApiProperties;
         }
 
         /// <summary> The ETag value to implement optimistic concurrency. </summary>
@@ -52,5 +57,7 @@ namespace Azure.ResourceManager.AgFoodPlatform
         public string ExtensionAuthLink { get; }
         /// <summary> Extension api docs link. </summary>
         public string ExtensionApiDocsLink { get; }
+        /// <summary> Additional api properties. </summary>
+        public IReadOnlyDictionary<string, ApiProperties> AdditionalApiProperties { get; }
     }
 }
