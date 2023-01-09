@@ -27,6 +27,7 @@ namespace Azure.AI.AnomalyDetector
         private const string LinearValue = "Linear";
         private const string ZeroValue = "Zero";
         private const string FixedValue = "Fixed";
+        private const string NoneValue = "None";
 
         /// <summary> Previous. </summary>
         public static FillNAMethod Previous { get; } = new FillNAMethod(PreviousValue);
@@ -38,6 +39,8 @@ namespace Azure.AI.AnomalyDetector
         public static FillNAMethod Zero { get; } = new FillNAMethod(ZeroValue);
         /// <summary> Fixed. </summary>
         public static FillNAMethod Fixed { get; } = new FillNAMethod(FixedValue);
+        /// <summary> None. </summary>
+        public static FillNAMethod None { get; } = new FillNAMethod(NoneValue);
         /// <summary> Determines if two <see cref="FillNAMethod"/> values are the same. </summary>
         public static bool operator ==(FillNAMethod left, FillNAMethod right) => left.Equals(right);
         /// <summary> Determines if two <see cref="FillNAMethod"/> values are not the same. </summary>

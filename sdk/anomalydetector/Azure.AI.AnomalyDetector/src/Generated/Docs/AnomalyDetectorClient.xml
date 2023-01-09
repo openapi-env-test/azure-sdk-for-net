@@ -868,7 +868,7 @@ Schema for <c>ModelInfo</c>:
   slidingWindow: number, # Optional.
   alignPolicy: {
     alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-    fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+    fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
     paddingValue: number, # Optional.
   }, # Optional.
   status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -906,7 +906,7 @@ Schema for <c>AnomalyDetectionModel</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1050,7 +1050,7 @@ Schema for <c>ModelInfo</c>:
   slidingWindow: number, # Optional.
   alignPolicy: {
     alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-    fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+    fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
     paddingValue: number, # Optional.
   }, # Optional.
   status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1088,7 +1088,7 @@ Schema for <c>AnomalyDetectionModel</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1204,7 +1204,7 @@ Schema for <c>AnomalyDetectionModel</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1288,7 +1288,7 @@ Schema for <c>AnomalyDetectionModel</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1746,7 +1746,7 @@ Schema for <c>Array</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
@@ -1839,7 +1839,7 @@ Schema for <c>Array</c>:
     slidingWindow: number, # Optional.
     alignPolicy: {
       alignMode: &quot;Inner&quot; | &quot;Outer&quot;, # Optional.
-      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot;, # Optional.
+      fillNAMethod: &quot;Previous&quot; | &quot;Subsequent&quot; | &quot;Linear&quot; | &quot;Zero&quot; | &quot;Fixed&quot; | &quot;None&quot;, # Optional.
       paddingValue: number, # Optional.
     }, # Optional.
     status: &quot;CREATED&quot; | &quot;RUNNING&quot; | &quot;READY&quot; | &quot;FAILED&quot;, # Optional.
