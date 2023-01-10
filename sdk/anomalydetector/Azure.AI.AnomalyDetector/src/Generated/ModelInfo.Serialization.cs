@@ -63,7 +63,7 @@ namespace Azure.AI.AnomalyDetector
                 if (Status != null)
                 {
                     writer.WritePropertyName("status");
-                    writer.WriteStringValue(Status.Value.ToSerialString());
+                    writer.WriteStringValue(Status.Value.ToString());
                 }
                 else
                 {
@@ -149,7 +149,7 @@ namespace Azure.AI.AnomalyDetector
                         status = null;
                         continue;
                     }
-                    status = property.Value.GetString().ToModelStatus();
+                    status = new ModelStatus(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("errors"))

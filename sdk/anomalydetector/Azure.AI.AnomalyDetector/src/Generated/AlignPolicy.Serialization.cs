@@ -21,7 +21,7 @@ namespace Azure.AI.AnomalyDetector
                 if (AlignMode != null)
                 {
                     writer.WritePropertyName("alignMode");
-                    writer.WriteStringValue(AlignMode.Value.ToSerialString());
+                    writer.WriteStringValue(AlignMode.Value.ToString());
                 }
                 else
                 {
@@ -69,7 +69,7 @@ namespace Azure.AI.AnomalyDetector
                         alignMode = null;
                         continue;
                     }
-                    alignMode = property.Value.GetString().ToAlignMode();
+                    alignMode = new AlignMode(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("fillNAMethod"))
