@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Bandwidth object related to ASE
-        /// resource</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of BandwidthSchedule</param>
         public BandwidthSchedule(string start, string stop, int rateInMbps, IList<string> days, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             Start = start;
             Stop = stop;
             RateInMbps = rateInMbps;
             Days = days;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -60,12 +60,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets bandwidth object related to ASE resource
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets or sets the start time of the schedule in UTC.
@@ -90,6 +84,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.days")]
         public IList<string> Days { get; set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// BandwidthSchedule
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

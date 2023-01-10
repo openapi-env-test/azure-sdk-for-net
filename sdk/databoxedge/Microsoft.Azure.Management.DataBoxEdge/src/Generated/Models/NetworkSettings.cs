@@ -38,14 +38,15 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">NetworkSettings on ASE device</param>
         /// <param name="networkAdapters">The network adapter list on the
         /// device.</param>
-        public NetworkSettings(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<NetworkAdapter> networkAdapters = default(IList<NetworkAdapter>))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of NetworkSettings</param>
+        public NetworkSettings(string id = default(string), string name = default(string), string type = default(string), IList<NetworkAdapter> networkAdapters = default(IList<NetworkAdapter>), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             NetworkAdapters = networkAdapters;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -55,16 +56,17 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets networkSettings on ASE device
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
-
-        /// <summary>
         /// Gets the network adapter list on the device.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAdapters")]
         public IList<NetworkAdapter> NetworkAdapters { get; private set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// NetworkSettings
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

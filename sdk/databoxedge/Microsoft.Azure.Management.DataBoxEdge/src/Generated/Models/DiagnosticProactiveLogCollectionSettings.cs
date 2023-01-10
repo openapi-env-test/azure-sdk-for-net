@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param
-        /// name="systemData">DiagnosticProactiveLogCollectionSettings</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of DiagnosticProactiveLogCollectionSettings</param>
         public DiagnosticProactiveLogCollectionSettings(string userConsent, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             UserConsent = userConsent;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -56,17 +56,18 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets diagnosticProactiveLogCollectionSettings
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
-
-        /// <summary>
         /// Gets or sets proactive diagnostic collection consent flag. Possible
         /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.userConsent")]
         public string UserConsent { get; set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// DiagnosticProactiveLogCollectionSettings
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

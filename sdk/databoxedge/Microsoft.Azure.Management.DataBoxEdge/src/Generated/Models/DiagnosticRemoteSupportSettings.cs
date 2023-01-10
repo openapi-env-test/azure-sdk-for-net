@@ -40,14 +40,15 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">DiagnosticRemoteSupportSettings</param>
         /// <param name="remoteSupportSettingsList">Remote support settings
         /// list according to the RemoteApplicationType</param>
-        public DiagnosticRemoteSupportSettings(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<RemoteSupportSettings> remoteSupportSettingsList = default(IList<RemoteSupportSettings>))
+        /// <param name="systemData">Represents resource creation and updation
+        /// time</param>
+        public DiagnosticRemoteSupportSettings(string id = default(string), string name = default(string), string type = default(string), IList<RemoteSupportSettings> remoteSupportSettingsList = default(IList<RemoteSupportSettings>), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             RemoteSupportSettingsList = remoteSupportSettingsList;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -57,17 +58,17 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets diagnosticRemoteSupportSettings
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
-
-        /// <summary>
         /// Gets or sets remote support settings list according to the
         /// RemoteApplicationType
         /// </summary>
         [JsonProperty(PropertyName = "properties.remoteSupportSettingsList")]
         public IList<RemoteSupportSettings> RemoteSupportSettingsList { get; set; }
+
+        /// <summary>
+        /// Gets represents resource creation and updation time
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

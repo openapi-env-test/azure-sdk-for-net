@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="type">The hierarchical type of the object.</param>
         /// <param name="minimumTimeStamp">MinimumTimeStamp from where logs
         /// need to be collected</param>
-        /// <param name="maximumTimeStamp">MaximumTimeStamp until where logs
-        /// need to be collected</param>
+        /// <param name="maximumTimeStamp">Start of the timespan of the log
+        /// collection</param>
         /// <param name="include">Type of files, which need to be included in
         /// the logs
         /// This will contain the type of logs
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public System.DateTime? MinimumTimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets maximumTimeStamp until where logs need to be collected
+        /// Gets or sets start of the timespan of the log collection
         /// </summary>
         [JsonProperty(PropertyName = "properties.maximumTimeStamp")]
         public System.DateTime? MaximumTimeStamp { get; set; }

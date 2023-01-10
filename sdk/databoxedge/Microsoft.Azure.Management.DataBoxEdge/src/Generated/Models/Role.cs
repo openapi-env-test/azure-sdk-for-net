@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Role configured on ASE resource</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of Role</param>
         public Role(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
@@ -47,10 +48,10 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets role configured on ASE resource
+        /// Gets metadata pertaining to creation and last modification of Role
         /// </summary>
         [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
+        public SystemData SystemData { get; private set; }
 
     }
 }

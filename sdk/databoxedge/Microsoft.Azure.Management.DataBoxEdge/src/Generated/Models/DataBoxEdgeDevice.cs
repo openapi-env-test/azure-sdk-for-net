@@ -162,33 +162,33 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         public ResourceIdentity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets the kind of the device. Possible values include:
+        /// Gets the kind of the device. Possible values include:
         /// 'AzureDataBoxGateway', 'AzureStackEdge', 'AzureStackHub',
         /// 'AzureModularDataCentre'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        public string Kind { get; private set; }
 
         /// <summary>
-        /// Gets or sets dataBoxEdge Resource
+        /// Gets dataBoxEdge Resource
         /// </summary>
         [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
-        /// Gets or sets dataBoxEdge Device Properties
+        /// Gets dataBoxEdge Device Properties
         /// </summary>
         [JsonProperty(PropertyName = "properties.systemData")]
-        public SystemData SystemData1 { get; set; }
+        public SystemData SystemData1 { get; private set; }
 
         /// <summary>
-        /// Gets or sets the status of the Data Box Edge/Gateway device.
-        /// Possible values include: 'ReadyToSetup', 'Online', 'Offline',
+        /// Gets the status of the Data Box Edge/Gateway device. Possible
+        /// values include: 'ReadyToSetup', 'Online', 'Offline',
         /// 'NeedsAttention', 'Disconnected', 'PartiallyDisconnected',
         /// 'Maintenance'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataBoxEdgeDeviceStatus")]
-        public string DataBoxEdgeDeviceStatus { get; set; }
+        public string DataBoxEdgeDeviceStatus { get; private set; }
 
         /// <summary>
         /// Gets the Serial Number of Data Box Edge/Gateway device.

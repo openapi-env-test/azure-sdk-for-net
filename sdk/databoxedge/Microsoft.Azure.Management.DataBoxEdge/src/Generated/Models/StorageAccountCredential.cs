@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">StorageAccountCredential object</param>
         /// <param name="userName">Username for the storage account.</param>
         /// <param name="accountKey">Encrypted storage key.</param>
         /// <param name="connectionString">Connection string for the storage
@@ -51,10 +50,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="blobDomainName">Blob end point for private
         /// clouds.</param>
         /// <param name="storageAccountId">Id of the storage account.</param>
-        public StorageAccountCredential(string alias, string sslStatus, string accountType, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string userName = default(string), AsymmetricEncryptedSecret accountKey = default(AsymmetricEncryptedSecret), string connectionString = default(string), string blobDomainName = default(string), string storageAccountId = default(string))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of StorageAccountCredential</param>
+        public StorageAccountCredential(string alias, string sslStatus, string accountType, string id = default(string), string name = default(string), string type = default(string), string userName = default(string), AsymmetricEncryptedSecret accountKey = default(AsymmetricEncryptedSecret), string connectionString = default(string), string blobDomainName = default(string), string storageAccountId = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             Alias = alias;
             UserName = userName;
             AccountKey = accountKey;
@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             BlobDomainName = blobDomainName;
             AccountType = accountType;
             StorageAccountId = storageAccountId;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -70,12 +71,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets storageAccountCredential object
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets or sets alias for the storage account.
@@ -127,6 +122,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageAccountId")]
         public string StorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// StorageAccountCredential
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

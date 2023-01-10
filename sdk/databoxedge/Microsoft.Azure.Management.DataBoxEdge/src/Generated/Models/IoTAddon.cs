@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Addon type</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of Addon</param>
         /// <param name="version">Version of IoT running on the
         /// appliance.</param>
         /// <param name="hostPlatform">Host OS supported by the IoT addon.

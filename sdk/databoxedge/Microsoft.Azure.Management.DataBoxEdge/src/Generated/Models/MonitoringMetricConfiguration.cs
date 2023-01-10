@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">MonitoringConfiguration on ASE
-        /// device</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of MonitoringConfiguration</param>
         public MonitoringMetricConfiguration(IList<MetricConfiguration> metricConfigurations, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             MetricConfigurations = metricConfigurations;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -58,16 +58,17 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets monitoringConfiguration on ASE device
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
-
-        /// <summary>
         /// Gets or sets the metrics configuration details
         /// </summary>
         [JsonProperty(PropertyName = "properties.metricConfigurations")]
         public IList<MetricConfiguration> MetricConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// MonitoringConfiguration
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

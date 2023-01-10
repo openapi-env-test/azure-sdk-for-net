@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Alert generated in the resource</param>
         /// <param name="title">Alert title.</param>
         /// <param name="alertType">Alert type.</param>
         /// <param name="appearedAtDateTime">UTC time when the alert
@@ -48,10 +47,11 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// include: 'Informational', 'Warning', 'Critical'</param>
         /// <param name="errorDetails">Error details of the alert.</param>
         /// <param name="detailedInformation">Alert details.</param>
-        public Alert(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string title = default(string), string alertType = default(string), System.DateTime? appearedAtDateTime = default(System.DateTime?), string recommendation = default(string), string severity = default(string), AlertErrorDetails errorDetails = default(AlertErrorDetails), IDictionary<string, string> detailedInformation = default(IDictionary<string, string>))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of Alert</param>
+        public Alert(string id = default(string), string name = default(string), string type = default(string), string title = default(string), string alertType = default(string), System.DateTime? appearedAtDateTime = default(System.DateTime?), string recommendation = default(string), string severity = default(string), AlertErrorDetails errorDetails = default(AlertErrorDetails), IDictionary<string, string> detailedInformation = default(IDictionary<string, string>), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             Title = title;
             AlertType = alertType;
             AppearedAtDateTime = appearedAtDateTime;
@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
             Severity = severity;
             ErrorDetails = errorDetails;
             DetailedInformation = detailedInformation;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -66,12 +67,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets alert generated in the resource
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets alert title.
@@ -115,6 +110,12 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.detailedInformation")]
         public IDictionary<string, string> DetailedInformation { get; private set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of Alert
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
     }
 }

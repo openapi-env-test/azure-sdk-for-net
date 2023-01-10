@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">StorageAccount object on ASE
-        /// device</param>
         /// <param name="description">Description for the storage
         /// Account.</param>
         /// <param name="storageAccountStatus">Current status of the storage
@@ -50,16 +48,18 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// <param name="blobEndpoint">BlobEndpoint of Storage Account</param>
         /// <param name="containerCount">The Container Count. Present only for
         /// Storage Accounts with DataPolicy set to Cloud.</param>
-        public StorageAccount(string dataPolicy, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string description = default(string), string storageAccountStatus = default(string), string storageAccountCredentialId = default(string), string blobEndpoint = default(string), int? containerCount = default(int?))
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of StorageAccount</param>
+        public StorageAccount(string dataPolicy, string id = default(string), string name = default(string), string type = default(string), string description = default(string), string storageAccountStatus = default(string), string storageAccountCredentialId = default(string), string blobEndpoint = default(string), int? containerCount = default(int?), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
-            SystemData = systemData;
             Description = description;
             StorageAccountStatus = storageAccountStatus;
             DataPolicy = dataPolicy;
             StorageAccountCredentialId = storageAccountCredentialId;
             BlobEndpoint = blobEndpoint;
             ContainerCount = containerCount;
+            SystemData = systemData;
             CustomInit();
         }
 
@@ -67,12 +67,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets storageAccount object on ASE device
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
 
         /// <summary>
         /// Gets or sets description for the storage Account.
@@ -112,6 +106,13 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.containerCount")]
         public int? ContainerCount { get; private set; }
+
+        /// <summary>
+        /// Gets metadata pertaining to creation and last modification of
+        /// StorageAccount
+        /// </summary>
+        [JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData { get; private set; }
 
         /// <summary>
         /// Validate the object.

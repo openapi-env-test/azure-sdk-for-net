@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Trigger in DataBoxEdge Resource</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of Trigger</param>
         /// <param name="customContextTag">A custom context tag typically used
         /// to correlate the trigger against its usage. For example, if a
         /// periodic timer trigger is intended for certain specific IoT modules

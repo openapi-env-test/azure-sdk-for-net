@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge.Models
         /// object.</param>
         /// <param name="name">The object name.</param>
         /// <param name="type">The hierarchical type of the object.</param>
-        /// <param name="systemData">Role configured on ASE resource</param>
+        /// <param name="systemData">Metadata pertaining to creation and last
+        /// modification of Role</param>
         /// <param name="localManagementStatus">Local Edge Management Status.
         /// Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="edgeProfile">Edge Profile of the resource</param>
