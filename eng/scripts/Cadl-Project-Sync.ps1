@@ -16,9 +16,28 @@ function AddSparseCheckoutPath([string]$subDirectory) {
     }
 }
 
-function CopySpecToProjectIfNeeded([string]$source, [string]$dest) {
+function CopySpecToProjectIfNeeded([string]$specCloneRoot, [string]$mainSpecDir, [string]$dest, [string[]]$specAdditionalSubDirectories) {
+    $source = "$specCloneRoot/$mainSpecDir"
     Write-Host "Copying spec from $source"
-    Copy-Item -Path $source -Destination $dest -Recurse -Force
+    # $mainSpecDir is the PR folder, we just need to copy its subfolders which include the cadl project folder
+    Get-ChildItem –Path "$source" -Exclude @("data-plane", "resource-manager")|
+        Foreach-Object {
+            Copy-Item -Path $_.FullName -Destination $dest -Recurse -Force
+        }
+    foreach($additionalDir in $specAdditionalSubDirectories)
+    {
+        $source = "$specCloneRoot/$additionalDir"
+        Write-Host "Copying spec from $source"
+        Copy-Item -Path $source -Destination $dest -Recurse -Force
+    }
+}
+
+function UpdateSparseCheckoutFile([string]$mainSpecDir, [string[]]$specAdditionalSubDirectories) {
+    AddSparseCheckoutPath $mainSpecDir
+    foreach($subDir in $specAdditionalSubDirectories)
+    {
+        AddSparseCheckoutPath $subDir
+    }
 }
 
 function GetGitRemoteValue([string]$repo) {
@@ -78,6 +97,7 @@ $configuration = Get-Content -Path $cadlConfigurationFile -Raw | ConvertFrom-Yam
 $pieces = $cadlConfigurationFile.Path.Replace("\","/").Split("/")
 $projectName = $pieces[$pieces.Count - 3]
 
+# clone the whole RP directory which is the parent of $configuration["directory"]
 if ($configuration["directory"] -match "^[^/\\]+[\\/]+[^/\\]+")
 {
     $specSubDirectory = $Matches[0]
@@ -86,18 +106,17 @@ else
 {
     throw "The directory in $cadlConfigurationFile is not expected"
 }
-
 if ( $configuration["repo"] -and $configuration["commit"]) {
     $specCloneDir = GetSpecCloneDir $projectName
     $gitRemoteValue = GetGitRemoteValue $configuration["repo"]
 
     Write-Host "Setting up sparse clone for $projectName at $specCloneDir"
-
+    
     Push-Location $specCloneDir.Path
     try {
         if (!(Test-Path ".git")) {
             InitializeSparseGitClone $gitRemoteValue
-            AddSparseCheckoutPath $specSubDirectory
+            UpdateSparseCheckoutFile $specSubDirectory $configuration["additionalDirectories"]
         }
         git checkout $configuration["commit"]
     }
@@ -108,13 +127,11 @@ if ( $configuration["repo"] -and $configuration["commit"]) {
     $specCloneDir = $configuration["spec-root-dir"]
 }
 
+
 $tempCadlDir = "$ProjectDirectory/TempCadlFiles"
 New-Item $tempCadlDir -Type Directory -Force | Out-Null
-
-Get-ChildItem –Path "$specCloneDir/$specSubDirectory" |
-        Foreach-Object {
-            if ($_.Name -ne "resource-manager" -and $_.Name -ne "data-plane" )
-            {
-                CopySpecToProjectIfNeeded -source $_.FullName -dest $tempCadlDir `
-            }
-        }
+CopySpecToProjectIfNeeded `
+    -specCloneRoot $specCloneDir `
+    -mainSpecDir $specSubDirectory `
+    -dest $tempCadlDir `
+    -specAdditionalSubDirectories $configuration["additionalDirectories"]
