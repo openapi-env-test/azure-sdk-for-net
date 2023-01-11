@@ -27,7 +27,7 @@ namespace Azure.AI.AnomalyDetector
                 if (Granularity != null)
                 {
                     writer.WritePropertyName("granularity");
-                    writer.WriteStringValue(Granularity.Value.ToSerialString());
+                    writer.WriteStringValue(Granularity.Value.ToString());
                 }
                 else
                 {
