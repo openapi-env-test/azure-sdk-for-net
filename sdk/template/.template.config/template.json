@@ -254,7 +254,8 @@
             "value": "ClientNameCapitalCase"
           }
         ],
-        "separator": "."
+        "separator": ".",
+        "removeEmptyValues": true
       },
       "replaces": "Azure.Template"
     },
@@ -364,7 +365,8 @@
                   "value": "ServiceNameCapitalCase"
               }
           ],
-          "separator": "."
+          "separator": ".",
+          "removeEmptyValues": true
       },
       "replaces": "Microsoft.Template"
     },
