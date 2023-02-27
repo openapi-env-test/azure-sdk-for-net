@@ -12,7 +12,7 @@ using Azure.Core;
 
 namespace Azure.AI.AnomalyDetector
 {
-    /// <summary> Detection results for the given resultId. </summary>
+    /// <summary> Detections results for the given resultId. </summary>
     public partial class MultivariateDetectionResult
     {
         /// <summary> Initializes a new instance of MultivariateDetectionResult. </summary>
