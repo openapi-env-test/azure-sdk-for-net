@@ -51,9 +51,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="provisioningState">The provisioned state of the
         /// resource. Possible values include: 'Running', 'Creating',
         /// 'Deleting', 'Succeeded', 'Failed', 'Moving', 'Canceled'</param>
+        /// <param name="aadObjectId">The service principal object id in AAD
+        /// (Azure active directory)</param>
         /// <param name="systemData">Azure Resource Manager metadata containing
         /// createdBy and modifiedBy information.</param>
-        public ClusterPrincipalAssignment(string principalId, string role, string principalType, string id = default(string), string name = default(string), string type = default(string), string tenantId = default(string), string tenantName = default(string), string principalName = default(string), string provisioningState = default(string), SystemData systemData = default(SystemData))
+        public ClusterPrincipalAssignment(string principalId, string role, string principalType, string id = default(string), string name = default(string), string type = default(string), string tenantId = default(string), string tenantName = default(string), string principalName = default(string), string provisioningState = default(string), string aadObjectId = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type)
         {
             PrincipalId = principalId;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             TenantName = tenantName;
             PrincipalName = principalName;
             ProvisioningState = provisioningState;
+            AadObjectId = aadObjectId;
             SystemData = systemData;
             CustomInit();
         }
@@ -118,6 +121,13 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets the service principal object id in AAD (Azure active
+        /// directory)
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.aadObjectId")]
+        public string AadObjectId { get; private set; }
 
         /// <summary>
         /// Gets azure Resource Manager metadata containing createdBy and

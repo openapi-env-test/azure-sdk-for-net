@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// List Kusto pools
         /// </summary>
         /// <remarks>
-        /// List all Kusto pools
+        /// List all Kusto pool
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
