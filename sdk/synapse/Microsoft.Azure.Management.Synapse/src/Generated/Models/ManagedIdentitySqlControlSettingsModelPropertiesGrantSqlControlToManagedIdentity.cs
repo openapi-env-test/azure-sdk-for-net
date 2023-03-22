@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// 'Enabled', 'Disabled'</param>
         /// <param name="actualState">Actual state. Possible values include:
         /// 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Unknown'</param>
-        public ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity(string desiredState = default(string), string actualState = default(string))
+        public ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity(DesiredState? desiredState = default(DesiredState?), ActualState? actualState = default(ActualState?))
         {
             DesiredState = desiredState;
             ActualState = actualState;
@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "desiredState")]
-        public string DesiredState { get; set; }
+        public DesiredState? DesiredState { get; set; }
 
         /// <summary>
         /// Gets actual state. Possible values include: 'Enabling', 'Enabled',
         /// 'Disabling', 'Disabled', 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "actualState")]
-        public string ActualState { get; private set; }
+        public ActualState? ActualState { get; private set; }
 
     }
 }

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// List Kusto pools
             /// </summary>
             /// <remarks>
-            /// List all Kusto pools
+            /// List all Kusto pools 2
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// List Kusto pools
             /// </summary>
             /// <remarks>
-            /// List all Kusto pools
+            /// List all Kusto pools 2
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
