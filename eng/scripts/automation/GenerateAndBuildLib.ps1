@@ -374,7 +374,8 @@ function New-MgmtPackageFolder() {
       dotnet new azuremgmt --provider $packageName --includeCI true --force
       Pop-Location
 
-      RegisterMgmtSDKToMgmtCoreClient -sdkRepoRootPath $sdkPath
+    #   RegisterMgmtSDKToMgmtCoreClient -sdkRepoRootPath $sdkPath
+        & $sdkPath/eng/scripts/Update-Mgmt-CI.ps1
     }
   
     # update the readme path.
