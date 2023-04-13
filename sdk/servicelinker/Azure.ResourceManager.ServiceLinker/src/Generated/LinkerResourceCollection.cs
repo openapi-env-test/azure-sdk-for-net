@@ -199,7 +199,7 @@ namespace Azure.ResourceManager.ServiceLinker
         }
 
         /// <summary>
-        /// Returns list of Linkers which connects to the resource.
+        /// Returns list of Linkers which connect to the resource.
         /// <list type="bullet">
         /// <item>
         /// <term>Request Path</term>
@@ -221,7 +221,7 @@ namespace Azure.ResourceManager.ServiceLinker
         }
 
         /// <summary>
-        /// Returns list of Linkers which connects to the resource.
+        /// Returns list of Linkers which connect to the resource.
         /// <list type="bullet">
         /// <item>
         /// <term>Request Path</term>

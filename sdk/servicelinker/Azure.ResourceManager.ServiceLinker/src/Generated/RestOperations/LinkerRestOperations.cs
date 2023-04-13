@@ -54,7 +54,7 @@ namespace Azure.ResourceManager.ServiceLinker
             return message;
         }
 
-        /// <summary> Returns list of Linkers which connects to the resource. </summary>
+        /// <summary> Returns list of Linkers which connect to the resource. </summary>
         /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
@@ -78,7 +78,7 @@ namespace Azure.ResourceManager.ServiceLinker
             }
         }
 
-        /// <summary> Returns list of Linkers which connects to the resource. </summary>
+        /// <summary> Returns list of Linkers which connect to the resource. </summary>
         /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
@@ -540,7 +540,7 @@ namespace Azure.ResourceManager.ServiceLinker
             return message;
         }
 
-        /// <summary> Returns list of Linkers which connects to the resource. </summary>
+        /// <summary> Returns list of Linkers which connect to the resource. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
         /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
@@ -566,7 +566,7 @@ namespace Azure.ResourceManager.ServiceLinker
             }
         }
 
-        /// <summary> Returns list of Linkers which connects to the resource. </summary>
+        /// <summary> Returns list of Linkers which connect to the resource. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
         /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
