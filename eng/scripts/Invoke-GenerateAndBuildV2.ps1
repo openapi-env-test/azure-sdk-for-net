@@ -113,10 +113,6 @@ if ($inputFileToGen) {
 if ($relatedTypeSpecProjectFolder) {
     foreach ($typespecRelativeFolder in $relatedTypeSpecProjectFolder) {
         $typespecFolder = Resolve-Path (Join-Path $swaggerDir $typespecRelativeFolder)
-        $curpath = Get-Location | Select-Object -ExpandProperty Path | Out-String -Stream
-        Write-Host "Current path is $curpath"
-        Push-Location (Join-Path $curpath "eng/common/scripts")
-        Get-ChildItem -File -Path . | ForEach-Object { Write-Host $_.FullName }
         $processScript = Resolve-Path (Join-Path "./eng/common/scripts" "TypeSpec-Project-Process.ps1")
         if (!Test-Path $processScript) {
             throw "TypeSpec-Project-Process.ps1 not found"
