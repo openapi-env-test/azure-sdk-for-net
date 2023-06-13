@@ -5,7 +5,6 @@ Run `dotnet build /t:GenerateCode` to generate code.
 ``` yaml
 
 azure-arm: true
-generate-model-factory: false
 csharp: true
 library-name: CognitiveServices
 namespace: Azure.ResourceManager.CognitiveServices
@@ -77,6 +76,7 @@ rename-mapping:
   MultiRegionSettings: CognitiveServicesMultiRegionSettings
   CommitmentPlanProperties.commitmentPlanGuid: -|uuid
   CommitmentPlanAssociation.commitmentPlanId: -|arm-id
+  KeyVaultProperties: CognitiveServicesKeyVaultProperties
 
 prepend-rp-prefix:
   - Account
@@ -136,7 +136,6 @@ directive:
     transform: >
       $.CheckDomainAvailabilityParameter.properties.type['x-ms-format'] = 'resource-type';
       $.CheckSkuAvailabilityParameter.properties.type['x-ms-format'] =  'resource-type';
-      $.Encryption.properties.keyVaultProperties['x-ms-client-flatten'] = true;
       $.PrivateEndpointConnection.properties.properties['x-ms-client-flatten'] = true;
       delete $.AccountProperties.properties.internalId;
   # TODO, these configs will be replaced by the new rename-mapping
