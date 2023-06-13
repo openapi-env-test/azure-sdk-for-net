@@ -114,9 +114,6 @@ if ($relatedTypeSpecProjectFolder) {
     foreach ($typespecRelativeFolder in $relatedTypeSpecProjectFolder) {
         $typespecFolder = Resolve-Path (Join-Path $swaggerDir $typespecRelativeFolder)
         $processScript = Resolve-Path (Join-Path "./eng/common/scripts" "TypeSpec-Project-Process.ps1")
-        if (!Test-Path $processScript) {
-            throw "TypeSpec-Project-Process.ps1 not found"
-        }
         $sdkProjectFolder = & $processScript $typespecFolder $commitid $repoHttpsUrl -SkipSyncAndGenerate
         if ($LASTEXITCODE) {
           # If Process script call fails, then return with failure to CI and don't need to call GeneratePackage
