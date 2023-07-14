@@ -70,5 +70,3 @@ namespace Microsoft.Azure.Management.Automation
       }
   }
 }
-
-
