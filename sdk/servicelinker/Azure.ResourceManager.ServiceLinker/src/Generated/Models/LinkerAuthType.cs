@@ -11,7 +11,7 @@ using System.ComponentModel;
 namespace Azure.ResourceManager.ServiceLinker.Models
 {
     /// <summary> The authentication type. </summary>
-    public readonly partial struct LinkerAuthType : IEquatable<LinkerAuthType>
+    internal readonly partial struct LinkerAuthType : IEquatable<LinkerAuthType>
     {
         private readonly string _value;
 

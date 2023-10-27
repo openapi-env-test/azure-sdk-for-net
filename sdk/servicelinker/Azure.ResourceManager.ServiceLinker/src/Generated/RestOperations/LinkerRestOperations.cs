@@ -388,7 +388,7 @@ namespace Azure.ResourceManager.ServiceLinker
             }
         }
 
-        internal HttpMessage CreateValidateRequest(string resourceUri, string linkerName)
+        internal HttpMessage CreateValidateRequest(string linkerName, string resourceUri)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -397,9 +397,7 @@ namespace Azure.ResourceManager.ServiceLinker
             uri.Reset(_endpoint);
             uri.AppendPath("/", false);
             uri.AppendPath(resourceUri, false);
-            uri.AppendPath("/providers/Microsoft.ServiceLinker/linkers/", false);
-            uri.AppendPath(linkerName, true);
-            uri.AppendPath("/validateLinker", false);
+            uri.AppendPath("/providers/Microsoft.ServiceLinker/linkers/validateLinker", false);
             uri.AppendQuery("api-version", _apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
@@ -408,17 +406,17 @@ namespace Azure.ResourceManager.ServiceLinker
         }
 
         /// <summary> Validate a link. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="linkerName"> The name Linker resource. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> or <paramref name="linkerName"/> is null. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="linkerName"/> or <paramref name="resourceUri"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
-        public async Task<Response> ValidateAsync(string resourceUri, string linkerName, CancellationToken cancellationToken = default)
+        public async Task<Response> ValidateAsync(string linkerName, string resourceUri, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNull(resourceUri, nameof(resourceUri));
             Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
+            Argument.AssertNotNull(resourceUri, nameof(resourceUri));
 
-            using var message = CreateValidateRequest(resourceUri, linkerName);
+            using var message = CreateValidateRequest(linkerName, resourceUri);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
@@ -431,17 +429,17 @@ namespace Azure.ResourceManager.ServiceLinker
         }
 
         /// <summary> Validate a link. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="linkerName"> The name Linker resource. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource to be connected. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> or <paramref name="linkerName"/> is null. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="linkerName"/> or <paramref name="resourceUri"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
-        public Response Validate(string resourceUri, string linkerName, CancellationToken cancellationToken = default)
+        public Response Validate(string linkerName, string resourceUri, CancellationToken cancellationToken = default)
         {
-            Argument.AssertNotNull(resourceUri, nameof(resourceUri));
             Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
+            Argument.AssertNotNull(resourceUri, nameof(resourceUri));
 
-            using var message = CreateValidateRequest(resourceUri, linkerName);
+            using var message = CreateValidateRequest(linkerName, resourceUri);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
