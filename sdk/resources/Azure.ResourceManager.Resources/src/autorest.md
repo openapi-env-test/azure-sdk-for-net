@@ -331,8 +331,8 @@ These settings apply only when `--tag=package-resources-2022-04` is specified on
 
 ```yaml $(tag) == 'package-resources-2022-04'
 input-file:
-    - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/639376b2bf9f0f36debfd7fce7debdf7b72578af/specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/resources.json
-    - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/639376b2bf9f0f36debfd7fce7debdf7b72578af/specification/resources/resource-manager/Microsoft.Solutions/stable/2019-07-01/managedapplications.json
-    - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/639376b2bf9f0f36debfd7fce7debdf7b72578af/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
-    - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/639376b2bf9f0f36debfd7fce7debdf7b72578af/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
+    - https://github.com/openapi-env-test/azure-rest-api-specs/blob/5c6dd74a84214a512f2eba2339e688d93c0b5b3d/specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/resources.json
+    - https://github.com/openapi-env-test/azure-rest-api-specs/blob/5c6dd74a84214a512f2eba2339e688d93c0b5b3d/specification/resources/resource-manager/Microsoft.Solutions/stable/2019-07-01/managedapplications.json
+    - https://github.com/openapi-env-test/azure-rest-api-specs/blob/5c6dd74a84214a512f2eba2339e688d93c0b5b3d/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
+    - https://github.com/openapi-env-test/azure-rest-api-specs/blob/5c6dd74a84214a512f2eba2339e688d93c0b5b3d/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
 ```
