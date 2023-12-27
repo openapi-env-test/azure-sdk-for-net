@@ -687,59 +687,6 @@ namespace Azure.ResourceManager.Compute.Mocking
             return GetDiskEncryptionSets().Get(diskEncryptionSetName, cancellationToken);
         }
 
-        /// <summary> Gets a collection of SnapshotResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of SnapshotResources and their operations over a SnapshotResource. </returns>
-        public virtual SnapshotCollection GetSnapshots()
-        {
-            return GetCachedClient(client => new SnapshotCollection(client, Id));
-        }
-
-        /// <summary>
-        /// Gets information about a snapshot.
-        /// <list type="bullet">
-        /// <item>
-        /// <term>Request Path</term>
-        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}</description>
-        /// </item>
-        /// <item>
-        /// <term>Operation Id</term>
-        /// <description>Snapshots_Get</description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        /// <param name="snapshotName"> The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="snapshotName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="snapshotName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<SnapshotResource>> GetSnapshotAsync(string snapshotName, CancellationToken cancellationToken = default)
-        {
-            return await GetSnapshots().GetAsync(snapshotName, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets information about a snapshot.
-        /// <list type="bullet">
-        /// <item>
-        /// <term>Request Path</term>
-        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}</description>
-        /// </item>
-        /// <item>
-        /// <term>Operation Id</term>
-        /// <description>Snapshots_Get</description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        /// <param name="snapshotName"> The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="snapshotName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="snapshotName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<SnapshotResource> GetSnapshot(string snapshotName, CancellationToken cancellationToken = default)
-        {
-            return GetSnapshots().Get(snapshotName, cancellationToken);
-        }
-
         /// <summary> Gets a collection of GalleryResources in the ResourceGroupResource. </summary>
         /// <returns> An object representing collection of GalleryResources and their operations over a GalleryResource. </returns>
         public virtual GalleryCollection GetGalleries()
