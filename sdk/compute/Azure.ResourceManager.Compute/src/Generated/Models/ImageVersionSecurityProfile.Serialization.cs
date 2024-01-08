@@ -10,45 +10,39 @@ using Azure.Core;
 
 namespace Azure.ResourceManager.Compute.Models
 {
-    public partial class SnapshotSku : IUtf8JsonSerializable
+    internal partial class ImageVersionSecurityProfile : IUtf8JsonSerializable
     {
         void IUtf8JsonSerializable.Write(Utf8JsonWriter writer)
         {
             writer.WriteStartObject();
-            if (Optional.IsDefined(Name))
+            if (Optional.IsDefined(UefiSettings))
             {
-                writer.WritePropertyName("name"u8);
-                writer.WriteStringValue(Name.Value.ToString());
+                writer.WritePropertyName("uefiSettings"u8);
+                writer.WriteObjectValue(UefiSettings);
             }
             writer.WriteEndObject();
         }
 
-        internal static SnapshotSku DeserializeSnapshotSku(JsonElement element)
+        internal static ImageVersionSecurityProfile DeserializeImageVersionSecurityProfile(JsonElement element)
         {
             if (element.ValueKind == JsonValueKind.Null)
             {
                 return null;
             }
-            Optional<SnapshotStorageAccountType> name = default;
-            Optional<string> tier = default;
+            Optional<GalleryImageVersionUefiSettings> uefiSettings = default;
             foreach (var property in element.EnumerateObject())
             {
-                if (property.NameEquals("name"u8))
+                if (property.NameEquals("uefiSettings"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
                         continue;
                     }
-                    name = new SnapshotStorageAccountType(property.Value.GetString());
-                    continue;
-                }
-                if (property.NameEquals("tier"u8))
-                {
-                    tier = property.Value.GetString();
+                    uefiSettings = GalleryImageVersionUefiSettings.DeserializeGalleryImageVersionUefiSettings(property.Value);
                     continue;
                 }
             }
-            return new SnapshotSku(Optional.ToNullable(name), tier.Value);
+            return new ImageVersionSecurityProfile(uefiSettings.Value);
         }
     }
 }
