@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <members>
+    <member name="GetJobAsync(string,RequestContext)">
+      <example>
+This sample shows how to call GetJobAsync.
+<code><![CDATA[
+Uri endpoint = new Uri("<https://my-service.azure.com>");
+AzureKeyCredential credential = new AzureKeyCredential("<key>");
+RadiologyInsights client = new AzureHealthInsightsClient(endpoint, credential).GetRadiologyInsightsClient(apiVersion: "2023-03-01-preview");
+
+Response response = await client.GetJobAsync("<id>");
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call GetJobAsync with all parameters.
+<code><![CDATA[
+Uri endpoint = new Uri("<https://my-service.azure.com>");
+AzureKeyCredential credential = new AzureKeyCredential("<key>");
+RadiologyInsights client = new AzureHealthInsightsClient(endpoint, credential).GetRadiologyInsightsClient(apiVersion: "2023-03-01-preview");
+
+Response response = await client.GetJobAsync("<id>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="GetJob(string,RequestContext)">
+      <example>
+This sample shows how to call GetJob.
+<code><![CDATA[
+Uri endpoint = new Uri("<https://my-service.azure.com>");
+AzureKeyCredential credential = new AzureKeyCredential("<key>");
+RadiologyInsights client = new AzureHealthInsightsClient(endpoint, credential).GetRadiologyInsightsClient(apiVersion: "2023-03-01-preview");
+
+Response response = client.GetJob("<id>");
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call GetJob with all parameters.
+<code><![CDATA[
+Uri endpoint = new Uri("<https://my-service.azure.com>");
+AzureKeyCredential credential = new AzureKeyCredential("<key>");
+RadiologyInsights client = new AzureHealthInsightsClient(endpoint, credential).GetRadiologyInsightsClient(apiVersion: "2023-03-01-preview");
+
+Response response = client.GetJob("<id>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+  </members>
+</doc>
