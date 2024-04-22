@@ -17,6 +17,11 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             writer.WriteStartObject();
             writer.WritePropertyName("authType"u8);
             writer.WriteStringValue(AuthType.ToString());
+            if (Optional.IsDefined(AuthMode))
+            {
+                writer.WritePropertyName("authMode"u8);
+                writer.WriteStringValue(AuthMode.Value.ToString());
+            }
             writer.WriteEndObject();
         }
 
@@ -27,6 +32,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                 return null;
             }
             LinkerAuthType authType = "Unknown";
+            Optional<AuthMode> authMode = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("authType"u8))
@@ -34,8 +40,17 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                     authType = new LinkerAuthType(property.Value.GetString());
                     continue;
                 }
+                if (property.NameEquals("authMode"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    authMode = new AuthMode(property.Value.GetString());
+                    continue;
+                }
             }
-            return new UnknownAuthInfoBase(authType);
+            return new UnknownAuthInfoBase(authType, Optional.ToNullable(authMode));
         }
     }
 }

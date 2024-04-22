@@ -41,6 +41,11 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             }
             writer.WritePropertyName("authType"u8);
             writer.WriteStringValue(AuthType.ToString());
+            if (Optional.IsDefined(AuthMode))
+            {
+                writer.WritePropertyName("authMode"u8);
+                writer.WriteStringValue(AuthMode.Value.ToString());
+            }
             writer.WriteEndObject();
         }
 
@@ -53,6 +58,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             Optional<string> name = default;
             Optional<SecretBaseInfo> secretInfo = default;
             LinkerAuthType authType = default;
+            Optional<AuthMode> authMode = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("name"u8))
@@ -80,8 +86,17 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                     authType = new LinkerAuthType(property.Value.GetString());
                     continue;
                 }
+                if (property.NameEquals("authMode"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    authMode = new AuthMode(property.Value.GetString());
+                    continue;
+                }
             }
-            return new SecretAuthInfo(authType, name.Value, secretInfo.Value);
+            return new SecretAuthInfo(authType, Optional.ToNullable(authMode), name.Value, secretInfo.Value);
         }
     }
 }

@@ -20,6 +20,9 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             }
             Optional<string> name = default;
             Optional<string> value = default;
+            Optional<LinkerConfigurationType> configType = default;
+            Optional<string> keyVaultReferenceIdentity = default;
+            Optional<string> description = default;
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("name"u8))
@@ -37,8 +40,37 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                     value = property.Value.GetString();
                     continue;
                 }
+                if (property.NameEquals("configType"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    configType = new LinkerConfigurationType(property.Value.GetString());
+                    continue;
+                }
+                if (property.NameEquals("keyVaultReferenceIdentity"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        keyVaultReferenceIdentity = null;
+                        continue;
+                    }
+                    keyVaultReferenceIdentity = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("description"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        description = null;
+                        continue;
+                    }
+                    description = property.Value.GetString();
+                    continue;
+                }
             }
-            return new SourceConfiguration(name.Value, value.Value);
+            return new SourceConfiguration(name.Value, value.Value, Optional.ToNullable(configType), keyVaultReferenceIdentity.Value, description.Value);
         }
     }
 }

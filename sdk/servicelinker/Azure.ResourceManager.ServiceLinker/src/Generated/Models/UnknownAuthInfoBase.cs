@@ -12,7 +12,8 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     {
         /// <summary> Initializes a new instance of <see cref="UnknownAuthInfoBase"/>. </summary>
         /// <param name="authType"> The authentication type. </param>
-        internal UnknownAuthInfoBase(LinkerAuthType authType) : base(authType)
+        /// <param name="authMode"> Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth. </param>
+        internal UnknownAuthInfoBase(LinkerAuthType authType, AuthMode? authMode) : base(authType, authMode)
         {
             AuthType = authType;
         }

@@ -17,6 +17,11 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             writer.WriteStartObject();
             writer.WritePropertyName("authType"u8);
             writer.WriteStringValue(AuthType.ToString());
+            if (Optional.IsDefined(AuthMode))
+            {
+                writer.WritePropertyName("authMode"u8);
+                writer.WriteStringValue(AuthMode.Value.ToString());
+            }
             writer.WriteEndObject();
         }
 
@@ -30,10 +35,13 @@ namespace Azure.ResourceManager.ServiceLinker.Models
             {
                 switch (discriminator.GetString())
                 {
+                    case "accessKey": return AccessKeyInfoBase.DeserializeAccessKeyInfoBase(element);
+                    case "easyAuthMicrosoftEntraID": return EasyAuthMicrosoftEntraIdAuthInfo.DeserializeEasyAuthMicrosoftEntraIdAuthInfo(element);
                     case "secret": return SecretAuthInfo.DeserializeSecretAuthInfo(element);
                     case "servicePrincipalCertificate": return ServicePrincipalCertificateAuthInfo.DeserializeServicePrincipalCertificateAuthInfo(element);
                     case "servicePrincipalSecret": return ServicePrincipalSecretAuthInfo.DeserializeServicePrincipalSecretAuthInfo(element);
                     case "systemAssignedIdentity": return SystemAssignedIdentityAuthInfo.DeserializeSystemAssignedIdentityAuthInfo(element);
+                    case "userAccount": return UserAccountAuthInfo.DeserializeUserAccountAuthInfo(element);
                     case "userAssignedIdentity": return UserAssignedIdentityAuthInfo.DeserializeUserAssignedIdentityAuthInfo(element);
                 }
             }
