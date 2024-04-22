@@ -5,6 +5,9 @@
 
 #nullable disable
 
+using System.Collections.Generic;
+using Azure.Core;
+
 namespace Azure.ResourceManager.ServiceLinker.Models
 {
     /// <summary> The authentication info when authType is systemAssignedIdentity. </summary>
@@ -13,14 +16,29 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <summary> Initializes a new instance of <see cref="SystemAssignedIdentityAuthInfo"/>. </summary>
         public SystemAssignedIdentityAuthInfo()
         {
+            Roles = new ChangeTrackingList<string>();
             AuthType = LinkerAuthType.SystemAssignedIdentity;
         }
 
         /// <summary> Initializes a new instance of <see cref="SystemAssignedIdentityAuthInfo"/>. </summary>
         /// <param name="authType"> The authentication type. </param>
-        internal SystemAssignedIdentityAuthInfo(LinkerAuthType authType) : base(authType)
+        /// <param name="authMode"> Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth. </param>
+        /// <param name="deleteOrUpdateBehavior"> Indicates whether to clean up previous operation when Linker is updating or deleting. </param>
+        /// <param name="roles"> Optional, this value specifies the Azure role to be assigned. </param>
+        /// <param name="userName"> Username created in the database which is mapped to a user in AAD. </param>
+        internal SystemAssignedIdentityAuthInfo(LinkerAuthType authType, AuthMode? authMode, DeleteOrUpdateBehavior? deleteOrUpdateBehavior, IList<string> roles, string userName) : base(authType, authMode)
         {
+            DeleteOrUpdateBehavior = deleteOrUpdateBehavior;
+            Roles = roles;
+            UserName = userName;
             AuthType = authType;
         }
+
+        /// <summary> Indicates whether to clean up previous operation when Linker is updating or deleting. </summary>
+        public DeleteOrUpdateBehavior? DeleteOrUpdateBehavior { get; set; }
+        /// <summary> Optional, this value specifies the Azure role to be assigned. </summary>
+        public IList<string> Roles { get; }
+        /// <summary> Username created in the database which is mapped to a user in AAD. </summary>
+        public string UserName { get; set; }
     }
 }

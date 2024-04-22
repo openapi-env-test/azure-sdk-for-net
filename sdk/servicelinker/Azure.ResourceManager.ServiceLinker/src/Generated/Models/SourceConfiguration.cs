@@ -18,15 +18,27 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <summary> Initializes a new instance of <see cref="SourceConfiguration"/>. </summary>
         /// <param name="name"> The name of setting. </param>
         /// <param name="value"> The value of setting. </param>
-        internal SourceConfiguration(string name, string value)
+        /// <param name="configType"> The type of setting. </param>
+        /// <param name="keyVaultReferenceIdentity"> The identity for key vault reference, system or user-assigned managed identity ID. </param>
+        /// <param name="description"> Descriptive information for the configuration. </param>
+        internal SourceConfiguration(string name, string value, LinkerConfigurationType? configType, string keyVaultReferenceIdentity, string description)
         {
             Name = name;
             Value = value;
+            ConfigType = configType;
+            KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
+            Description = description;
         }
 
         /// <summary> The name of setting. </summary>
         public string Name { get; }
         /// <summary> The value of setting. </summary>
         public string Value { get; }
+        /// <summary> The type of setting. </summary>
+        public LinkerConfigurationType? ConfigType { get; }
+        /// <summary> The identity for key vault reference, system or user-assigned managed identity ID. </summary>
+        public string KeyVaultReferenceIdentity { get; }
+        /// <summary> Descriptive information for the configuration. </summary>
+        public string Description { get; }
     }
 }
