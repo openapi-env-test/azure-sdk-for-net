@@ -2,18 +2,18 @@
   "$schema": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/documentation/sdkautomation/SwaggerToSdkConfigSchema.json",
   "generateOptions": {
     "generateScript": {
-      "path": "pwsh ./eng/scripts/Invoke-GenerateAndBuildV2.ps1"
-    }
-  },
-  "initOptions": {
-    "initScript": {
-      "path": "pwsh ./eng/scripts/Automation-Sdk-Init.ps1",
+      "path": "pwsh ./eng/scripts/Invoke-GenerateAndBuildV2.ps1",
       "stderr": {
         "showInComment": "Build succeeded"
       },
       "stdout": {
         "showInComment": "Autorest"
       }
+    }
+  },
+  "initOptions": {
+    "initScript": {
+      "path": "pwsh ./eng/scripts/Automation-Sdk-Init.ps1"
     }
   },
   "packageOptions": {
