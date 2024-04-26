@@ -8,13 +8,19 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Autorest.CSharp.Core;
 using Azure.Core;
+using Azure.Core.Pipeline;
+using Azure.ResourceManager.ServiceLinker.Models;
 
 namespace Azure.ResourceManager.ServiceLinker.Mocking
 {
     /// <summary> A class to add extension methods to ArmClient. </summary>
     public partial class MockableServiceLinkerArmClient : ArmResource
     {
+        private ClientDiagnostics _linkerClientDiagnostics;
+        private LinkerRestOperations _linkerRestClient;
+
         /// <summary> Initializes a new instance of the <see cref="MockableServiceLinkerArmClient"/> class for mocking. </summary>
         protected MockableServiceLinkerArmClient()
         {
@@ -31,94 +37,245 @@ namespace Azure.ResourceManager.ServiceLinker.Mocking
         {
         }
 
+        private ClientDiagnostics LinkerClientDiagnostics => _linkerClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.ServiceLinker", ProviderConstants.DefaultProviderNamespace, Diagnostics);
+        private LinkerRestOperations LinkerRestClient => _linkerRestClient ??= new LinkerRestOperations(Pipeline, Diagnostics.ApplicationId, Endpoint);
+
         private string GetApiVersionOrNull(ResourceType resourceType)
         {
             TryGetApiVersion(resourceType, out string apiVersion);
             return apiVersion;
         }
 
-        /// <summary> Gets a collection of LinkerResources in the ArmClient. </summary>
-        /// <param name="scope"> The scope that the resource will apply against. </param>
-        /// <returns> An object representing collection of LinkerResources and their operations over a LinkerResource. </returns>
-        public virtual LinkerResourceCollection GetLinkerResources(ResourceIdentifier scope)
-        {
-            return new LinkerResourceCollection(Client, scope);
-        }
-
         /// <summary>
-        /// Returns Linker resource for a given name.
+        /// Returns list of Linkers which connects to the resource.
         /// <list type="bullet">
         /// <item>
         /// <term>Request Path</term>
-        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}</description>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers</description>
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Linker_Get</description>
+        /// <description>Linker_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
         /// <description>2022-05-01</description>
         /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="scope"> The scope that the resource will apply against. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> is null. </exception>
+        /// <returns> An async collection of <see cref="LinkerResource"/> that may take multiple service requests to iterate over. </returns>
+        public virtual AsyncPageable<LinkerResource> GetLinkersAsync(ResourceIdentifier scope, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNull(scope, nameof(scope));
+
+            HttpMessage FirstPageRequest(int? pageSizeHint) => LinkerRestClient.CreateListRequest(scope);
+            HttpMessage NextPageRequest(int? pageSizeHint, string nextLink) => LinkerRestClient.CreateListNextPageRequest(nextLink, scope);
+            return GeneratorPageableHelpers.CreateAsyncPageable(FirstPageRequest, NextPageRequest, e => LinkerResource.DeserializeLinkerResource(e), LinkerClientDiagnostics, Pipeline, "MockableServiceLinkerArmClient.GetLinkers", "value", "nextLink", cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns list of Linkers which connects to the resource.
+        /// <list type="bullet">
         /// <item>
-        /// <term>Resource</term>
-        /// <description><see cref="LinkerResource"/></description>
+        /// <term>Request Path</term>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Linker_List</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2022-05-01</description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="scope"> The scope that the resource will apply against. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> is null. </exception>
+        /// <returns> A collection of <see cref="LinkerResource"/> that may take multiple service requests to iterate over. </returns>
+        public virtual Pageable<LinkerResource> GetLinkers(ResourceIdentifier scope, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNull(scope, nameof(scope));
+
+            HttpMessage FirstPageRequest(int? pageSizeHint) => LinkerRestClient.CreateListRequest(scope);
+            HttpMessage NextPageRequest(int? pageSizeHint, string nextLink) => LinkerRestClient.CreateListNextPageRequest(nextLink, scope);
+            return GeneratorPageableHelpers.CreatePageable(FirstPageRequest, NextPageRequest, e => LinkerResource.DeserializeLinkerResource(e), LinkerClientDiagnostics, Pipeline, "MockableServiceLinkerArmClient.GetLinkers", "value", "nextLink", cancellationToken);
+        }
+
+        /// <summary>
+        /// Validate a link.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Linker_Validate</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2022-05-01</description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="scope"> The scope that the resource will apply against. </param>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="linkerName"> The name Linker resource. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="linkerName"/> is null. </exception>
+        public virtual async Task<ArmOperation<LinkerValidateOperationResult>> ValidateLinkerAsync(ResourceIdentifier scope, WaitUntil waitUntil, string linkerName, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNull(scope, nameof(scope));
+            Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
+
+            using var scope0 = LinkerClientDiagnostics.CreateScope("MockableServiceLinkerArmClient.ValidateLinker");
+            scope0.Start();
+            try
+            {
+                var response = await LinkerRestClient.ValidateAsync(scope, linkerName, cancellationToken).ConfigureAwait(false);
+                var operation = new ServiceLinkerArmOperation<LinkerValidateOperationResult>(new LinkerValidateOperationResultOperationSource(), LinkerClientDiagnostics, Pipeline, LinkerRestClient.CreateValidateRequest(scope, linkerName).Request, response, OperationFinalStateVia.AzureAsyncOperation);
+                if (waitUntil == WaitUntil.Completed)
+                    await operation.WaitForCompletionAsync(cancellationToken).ConfigureAwait(false);
+                return operation;
+            }
+            catch (Exception e)
+            {
+                scope0.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Validate a link.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Linker_Validate</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2022-05-01</description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="scope"> The scope that the resource will apply against. </param>
+        /// <param name="waitUntil"> <see cref="WaitUntil.Completed"/> if the method should wait to return until the long-running operation has completed on the service; <see cref="WaitUntil.Started"/> if it should return after starting the operation. For more information on long-running operations, please see <see href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/LongRunningOperations.md"> Azure.Core Long-Running Operation samples</see>. </param>
+        /// <param name="linkerName"> The name Linker resource. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="linkerName"/> is null. </exception>
+        public virtual ArmOperation<LinkerValidateOperationResult> ValidateLinker(ResourceIdentifier scope, WaitUntil waitUntil, string linkerName, CancellationToken cancellationToken = default)
+        {
+            Argument.AssertNotNull(scope, nameof(scope));
+            Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
+
+            using var scope0 = LinkerClientDiagnostics.CreateScope("MockableServiceLinkerArmClient.ValidateLinker");
+            scope0.Start();
+            try
+            {
+                var response = LinkerRestClient.Validate(scope, linkerName, cancellationToken);
+                var operation = new ServiceLinkerArmOperation<LinkerValidateOperationResult>(new LinkerValidateOperationResultOperationSource(), LinkerClientDiagnostics, Pipeline, LinkerRestClient.CreateValidateRequest(scope, linkerName).Request, response, OperationFinalStateVia.AzureAsyncOperation);
+                if (waitUntil == WaitUntil.Completed)
+                    operation.WaitForCompletion(cancellationToken);
+                return operation;
+            }
+            catch (Exception e)
+            {
+                scope0.Failed(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// list source configurations for a linker.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/listConfigurations</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Linker_ListConfigurations</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2022-05-01</description>
         /// </item>
         /// </list>
         /// </summary>
         /// <param name="scope"> The scope that the resource will apply against. </param>
         /// <param name="linkerName"> The name Linker resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="linkerName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<LinkerResource>> GetLinkerResourceAsync(ResourceIdentifier scope, string linkerName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="linkerName"/> is null. </exception>
+        public virtual async Task<Response<SourceConfigurationResult>> GetConfigurationsLinkerAsync(ResourceIdentifier scope, string linkerName, CancellationToken cancellationToken = default)
         {
-            return await GetLinkerResources(scope).GetAsync(linkerName, cancellationToken).ConfigureAwait(false);
+            Argument.AssertNotNull(scope, nameof(scope));
+            Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
+
+            using var scope0 = LinkerClientDiagnostics.CreateScope("MockableServiceLinkerArmClient.GetConfigurationsLinker");
+            scope0.Start();
+            try
+            {
+                var response = await LinkerRestClient.ListConfigurationsAsync(scope, linkerName, cancellationToken).ConfigureAwait(false);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope0.Failed(e);
+                throw;
+            }
         }
 
         /// <summary>
-        /// Returns Linker resource for a given name.
+        /// list source configurations for a linker.
         /// <list type="bullet">
         /// <item>
         /// <term>Request Path</term>
-        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}</description>
+        /// <description>/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/listConfigurations</description>
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Linker_Get</description>
+        /// <description>Linker_ListConfigurations</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
         /// <description>2022-05-01</description>
-        /// </item>
-        /// <item>
-        /// <term>Resource</term>
-        /// <description><see cref="LinkerResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
         /// <param name="scope"> The scope that the resource will apply against. </param>
         /// <param name="linkerName"> The name Linker resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="linkerName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="linkerName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual Response<LinkerResource> GetLinkerResource(ResourceIdentifier scope, string linkerName, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"> <paramref name="scope"/> or <paramref name="linkerName"/> is null. </exception>
+        public virtual Response<SourceConfigurationResult> GetConfigurationsLinker(ResourceIdentifier scope, string linkerName, CancellationToken cancellationToken = default)
         {
-            return GetLinkerResources(scope).Get(linkerName, cancellationToken);
-        }
+            Argument.AssertNotNull(scope, nameof(scope));
+            Argument.AssertNotNullOrEmpty(linkerName, nameof(linkerName));
 
-        /// <summary>
-        /// Gets an object representing a <see cref="LinkerResource"/> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="LinkerResource.CreateResourceIdentifier" /> to create a <see cref="LinkerResource"/> <see cref="ResourceIdentifier"/> from its components.
-        /// </summary>
-        /// <param name="id"> The resource ID of the resource to get. </param>
-        /// <returns> Returns a <see cref="LinkerResource"/> object. </returns>
-        public virtual LinkerResource GetLinkerResource(ResourceIdentifier id)
-        {
-            LinkerResource.ValidateResourceId(id);
-            return new LinkerResource(Client, id);
+            using var scope0 = LinkerClientDiagnostics.CreateScope("MockableServiceLinkerArmClient.GetConfigurationsLinker");
+            scope0.Start();
+            try
+            {
+                var response = LinkerRestClient.ListConfigurations(scope, linkerName, cancellationToken);
+                return response;
+            }
+            catch (Exception e)
+            {
+                scope0.Failed(e);
+                throw;
+            }
         }
     }
 }

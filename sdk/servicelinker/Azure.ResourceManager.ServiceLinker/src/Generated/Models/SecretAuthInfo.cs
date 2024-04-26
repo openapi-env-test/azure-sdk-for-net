@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class SecretAuthInfo : AuthBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="SecretAuthInfo"/>. </summary>
-        public SecretAuthInfo()
+        internal SecretAuthInfo()
         {
             AuthType = LinkerAuthType.Secret;
         }
@@ -36,12 +36,12 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> Username or account name for secret auth. </summary>
-        public string Name { get; set; }
+        public string Name { get; }
         /// <summary>
         /// Password or key vault secret for secret auth.
         /// Please note <see cref="SecretBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
         /// The available derived classes include <see cref="KeyVaultSecretReferenceSecretInfo"/>, <see cref="KeyVaultSecretUriSecretInfo"/> and <see cref="RawValueSecretInfo"/>.
         /// </summary>
-        public SecretBaseInfo SecretInfo { get; set; }
+        public SecretBaseInfo SecretInfo { get; }
     }
 }

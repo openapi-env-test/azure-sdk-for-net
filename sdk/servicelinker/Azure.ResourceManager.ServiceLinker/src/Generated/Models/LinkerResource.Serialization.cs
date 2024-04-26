@@ -11,20 +11,19 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Azure.Core;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.ServiceLinker.Models;
 
-namespace Azure.ResourceManager.ServiceLinker
+namespace Azure.ResourceManager.ServiceLinker.Models
 {
-    public partial class LinkerResourceData : IUtf8JsonSerializable, IJsonModel<LinkerResourceData>
+    public partial class LinkerResource : IUtf8JsonSerializable, IJsonModel<LinkerResource>
     {
-        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<LinkerResourceData>)this).Write(writer, ModelSerializationExtensions.WireOptions);
+        void IUtf8JsonSerializable.Write(Utf8JsonWriter writer) => ((IJsonModel<LinkerResource>)this).Write(writer, ModelSerializationExtensions.WireOptions);
 
-        void IJsonModel<LinkerResourceData>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        void IJsonModel<LinkerResource>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<LinkerResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<LinkerResource>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(LinkerResourceData)} does not support writing '{format}' format.");
+                throw new FormatException($"The model {nameof(LinkerResource)} does not support writing '{format}' format.");
             }
 
             writer.WriteStartObject();
@@ -125,19 +124,19 @@ namespace Azure.ResourceManager.ServiceLinker
             writer.WriteEndObject();
         }
 
-        LinkerResourceData IJsonModel<LinkerResourceData>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
+        LinkerResource IJsonModel<LinkerResource>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<LinkerResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<LinkerResource>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
-                throw new FormatException($"The model {nameof(LinkerResourceData)} does not support reading '{format}' format.");
+                throw new FormatException($"The model {nameof(LinkerResource)} does not support reading '{format}' format.");
             }
 
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
-            return DeserializeLinkerResourceData(document.RootElement, options);
+            return DeserializeLinkerResource(document.RootElement, options);
         }
 
-        internal static LinkerResourceData DeserializeLinkerResourceData(JsonElement element, ModelReaderWriterOptions options = null)
+        internal static LinkerResource DeserializeLinkerResource(JsonElement element, ModelReaderWriterOptions options = null)
         {
             options ??= ModelSerializationExtensions.WireOptions;
 
@@ -264,7 +263,7 @@ namespace Azure.ResourceManager.ServiceLinker
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new LinkerResourceData(
+            return new LinkerResource(
                 id,
                 name,
                 type,
@@ -279,35 +278,35 @@ namespace Azure.ResourceManager.ServiceLinker
                 serializedAdditionalRawData);
         }
 
-        BinaryData IPersistableModel<LinkerResourceData>.Write(ModelReaderWriterOptions options)
+        BinaryData IPersistableModel<LinkerResource>.Write(ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<LinkerResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<LinkerResource>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     return ModelReaderWriter.Write(this, options);
                 default:
-                    throw new FormatException($"The model {nameof(LinkerResourceData)} does not support writing '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(LinkerResource)} does not support writing '{options.Format}' format.");
             }
         }
 
-        LinkerResourceData IPersistableModel<LinkerResourceData>.Create(BinaryData data, ModelReaderWriterOptions options)
+        LinkerResource IPersistableModel<LinkerResource>.Create(BinaryData data, ModelReaderWriterOptions options)
         {
-            var format = options.Format == "W" ? ((IPersistableModel<LinkerResourceData>)this).GetFormatFromOptions(options) : options.Format;
+            var format = options.Format == "W" ? ((IPersistableModel<LinkerResource>)this).GetFormatFromOptions(options) : options.Format;
 
             switch (format)
             {
                 case "J":
                     {
                         using JsonDocument document = JsonDocument.Parse(data);
-                        return DeserializeLinkerResourceData(document.RootElement, options);
+                        return DeserializeLinkerResource(document.RootElement, options);
                     }
                 default:
-                    throw new FormatException($"The model {nameof(LinkerResourceData)} does not support reading '{options.Format}' format.");
+                    throw new FormatException($"The model {nameof(LinkerResource)} does not support reading '{options.Format}' format.");
             }
         }
 
-        string IPersistableModel<LinkerResourceData>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
+        string IPersistableModel<LinkerResource>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
     }
 }

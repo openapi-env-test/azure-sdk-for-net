@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class AzureKeyVaultProperties : AzureResourceBaseProperties
     {
         /// <summary> Initializes a new instance of <see cref="AzureKeyVaultProperties"/>. </summary>
-        public AzureKeyVaultProperties()
+        internal AzureKeyVaultProperties()
         {
             AzureResourceType = AzureResourceType.KeyVault;
         }
@@ -30,6 +30,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> True if connect via Kubernetes CSI Driver. </summary>
-        public bool? DoesConnectAsKubernetesCsiDriver { get; set; }
+        public bool? DoesConnectAsKubernetesCsiDriver { get; }
     }
 }

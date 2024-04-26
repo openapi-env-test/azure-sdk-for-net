@@ -8,11 +8,12 @@
 using System;
 using System.Collections.Generic;
 using Azure.Core;
+using Azure.ResourceManager.Models;
 
 namespace Azure.ResourceManager.ServiceLinker.Models
 {
-    /// <summary> A linker to be updated. </summary>
-    public partial class LinkerResourcePatch
+    /// <summary> Linker of source and target resource. </summary>
+    public partial class LinkerResource : ResourceData
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -46,12 +47,16 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="LinkerResourcePatch"/>. </summary>
-        public LinkerResourcePatch()
+        /// <summary> Initializes a new instance of <see cref="LinkerResource"/>. </summary>
+        internal LinkerResource()
         {
         }
 
-        /// <summary> Initializes a new instance of <see cref="LinkerResourcePatch"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="LinkerResource"/>. </summary>
+        /// <param name="id"> The id. </param>
+        /// <param name="name"> The name. </param>
+        /// <param name="resourceType"> The resourceType. </param>
+        /// <param name="systemData"> The systemData. </param>
         /// <param name="targetService">
         /// The target service properties
         /// Please note <see cref="TargetServiceBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
@@ -68,7 +73,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <param name="secretStore"> An option to store secret value in secure place. </param>
         /// <param name="scope"> connection scope in source service. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal LinkerResourcePatch(TargetServiceBaseInfo targetService, AuthBaseInfo authInfo, LinkerClientType? clientType, string provisioningState, VnetSolution vnetSolution, LinkerSecretStore secretStore, string scope, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal LinkerResource(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, TargetServiceBaseInfo targetService, AuthBaseInfo authInfo, LinkerClientType? clientType, string provisioningState, VnetSolution vnetSolution, LinkerSecretStore secretStore, string scope, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             TargetService = targetService;
             AuthInfo = authInfo;
@@ -85,46 +90,34 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// Please note <see cref="TargetServiceBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
         /// The available derived classes include <see cref="AzureResourceInfo"/>, <see cref="ConfluentBootstrapServerInfo"/> and <see cref="ConfluentSchemaRegistryInfo"/>.
         /// </summary>
-        public TargetServiceBaseInfo TargetService { get; set; }
+        public TargetServiceBaseInfo TargetService { get; }
         /// <summary>
         /// The authentication type.
         /// Please note <see cref="AuthBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
         /// The available derived classes include <see cref="SecretAuthInfo"/>, <see cref="ServicePrincipalCertificateAuthInfo"/>, <see cref="ServicePrincipalSecretAuthInfo"/>, <see cref="SystemAssignedIdentityAuthInfo"/> and <see cref="UserAssignedIdentityAuthInfo"/>.
         /// </summary>
-        public AuthBaseInfo AuthInfo { get; set; }
+        public AuthBaseInfo AuthInfo { get; }
         /// <summary> The application client type. </summary>
-        public LinkerClientType? ClientType { get; set; }
+        public LinkerClientType? ClientType { get; }
         /// <summary> The provisioning state. </summary>
         public string ProvisioningState { get; }
         /// <summary> The VNet solution. </summary>
-        internal VnetSolution VnetSolution { get; set; }
+        internal VnetSolution VnetSolution { get; }
         /// <summary> Type of VNet solution. </summary>
         public VnetSolutionType? SolutionType
         {
-            get => VnetSolution is null ? default : VnetSolution.SolutionType;
-            set
-            {
-                if (VnetSolution is null)
-                    VnetSolution = new VnetSolution();
-                VnetSolution.SolutionType = value;
-            }
+            get => VnetSolution?.SolutionType;
         }
 
         /// <summary> An option to store secret value in secure place. </summary>
-        internal LinkerSecretStore SecretStore { get; set; }
+        internal LinkerSecretStore SecretStore { get; }
         /// <summary> The key vault id to store secret. </summary>
         public ResourceIdentifier SecretStoreKeyVaultId
         {
-            get => SecretStore is null ? default : SecretStore.KeyVaultId;
-            set
-            {
-                if (SecretStore is null)
-                    SecretStore = new LinkerSecretStore();
-                SecretStore.KeyVaultId = value;
-            }
+            get => SecretStore?.KeyVaultId;
         }
 
         /// <summary> connection scope in source service. </summary>
-        public string Scope { get; set; }
+        public string Scope { get; }
     }
 }

@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class UserAssignedIdentityAuthInfo : AuthBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="UserAssignedIdentityAuthInfo"/>. </summary>
-        public UserAssignedIdentityAuthInfo()
+        internal UserAssignedIdentityAuthInfo()
         {
             AuthType = LinkerAuthType.UserAssignedIdentity;
         }
@@ -32,8 +32,8 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> Client Id for userAssignedIdentity. </summary>
-        public string ClientId { get; set; }
+        public string ClientId { get; }
         /// <summary> Subscription id for userAssignedIdentity. </summary>
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId { get; }
     }
 }

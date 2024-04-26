@@ -18,7 +18,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <param name="principalId"> Principal Id for servicePrincipal auth. </param>
         /// <param name="certificate"> ServicePrincipal certificate for servicePrincipal auth. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="clientId"/> or <paramref name="certificate"/> is null. </exception>
-        public ServicePrincipalCertificateAuthInfo(string clientId, Guid principalId, string certificate)
+        internal ServicePrincipalCertificateAuthInfo(string clientId, Guid principalId, string certificate)
         {
             Argument.AssertNotNull(clientId, nameof(clientId));
             Argument.AssertNotNull(certificate, nameof(certificate));
@@ -49,10 +49,10 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> Application clientId for servicePrincipal auth. </summary>
-        public string ClientId { get; set; }
+        public string ClientId { get; }
         /// <summary> Principal Id for servicePrincipal auth. </summary>
-        public Guid PrincipalId { get; set; }
+        public Guid PrincipalId { get; }
         /// <summary> ServicePrincipal certificate for servicePrincipal auth. </summary>
-        public string Certificate { get; set; }
+        public string Certificate { get; }
     }
 }

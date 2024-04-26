@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class SystemAssignedIdentityAuthInfo : AuthBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="SystemAssignedIdentityAuthInfo"/>. </summary>
-        public SystemAssignedIdentityAuthInfo()
+        internal SystemAssignedIdentityAuthInfo()
         {
             AuthType = LinkerAuthType.SystemAssignedIdentity;
         }

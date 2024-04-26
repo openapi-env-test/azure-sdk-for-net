@@ -18,7 +18,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <param name="principalId"> Principal Id for servicePrincipal auth. </param>
         /// <param name="secret"> Secret for servicePrincipal auth. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="clientId"/> or <paramref name="secret"/> is null. </exception>
-        public ServicePrincipalSecretAuthInfo(string clientId, Guid principalId, string secret)
+        internal ServicePrincipalSecretAuthInfo(string clientId, Guid principalId, string secret)
         {
             Argument.AssertNotNull(clientId, nameof(clientId));
             Argument.AssertNotNull(secret, nameof(secret));
@@ -49,10 +49,10 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> ServicePrincipal application clientId for servicePrincipal auth. </summary>
-        public string ClientId { get; set; }
+        public string ClientId { get; }
         /// <summary> Principal Id for servicePrincipal auth. </summary>
-        public Guid PrincipalId { get; set; }
+        public Guid PrincipalId { get; }
         /// <summary> Secret for servicePrincipal auth. </summary>
-        public string Secret { get; set; }
+        public string Secret { get; }
     }
 }

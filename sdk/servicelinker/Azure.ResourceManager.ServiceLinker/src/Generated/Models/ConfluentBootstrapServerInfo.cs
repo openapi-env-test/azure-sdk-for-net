@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class ConfluentBootstrapServerInfo : TargetServiceBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="ConfluentBootstrapServerInfo"/>. </summary>
-        public ConfluentBootstrapServerInfo()
+        internal ConfluentBootstrapServerInfo()
         {
             TargetServiceType = TargetServiceType.ConfluentBootstrapServer;
         }
@@ -30,6 +30,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> The endpoint of service. </summary>
-        public string Endpoint { get; set; }
+        public string Endpoint { get; }
     }
 }

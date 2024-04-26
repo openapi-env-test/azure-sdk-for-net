@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class ConfluentSchemaRegistryInfo : TargetServiceBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="ConfluentSchemaRegistryInfo"/>. </summary>
-        public ConfluentSchemaRegistryInfo()
+        internal ConfluentSchemaRegistryInfo()
         {
             TargetServiceType = TargetServiceType.ConfluentSchemaRegistry;
         }
@@ -30,6 +30,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> The endpoint of service. </summary>
-        public string Endpoint { get; set; }
+        public string Endpoint { get; }
     }
 }
