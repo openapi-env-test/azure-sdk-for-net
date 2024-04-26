@@ -48,14 +48,14 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <summary> Initializes a new instance of <see cref="LinkerList"/>. </summary>
         internal LinkerList()
         {
-            Value = new ChangeTrackingList<LinkerResourceData>();
+            Value = new ChangeTrackingList<LinkerResource>();
         }
 
         /// <summary> Initializes a new instance of <see cref="LinkerList"/>. </summary>
         /// <param name="nextLink"> The link used to get the next page of Linker list. </param>
         /// <param name="value"> The list of Linkers. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal LinkerList(string nextLink, IReadOnlyList<LinkerResourceData> value, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal LinkerList(string nextLink, IReadOnlyList<LinkerResource> value, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             NextLink = nextLink;
             Value = value;
@@ -65,6 +65,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <summary> The link used to get the next page of Linker list. </summary>
         public string NextLink { get; }
         /// <summary> The list of Linkers. </summary>
-        public IReadOnlyList<LinkerResourceData> Value { get; }
+        public IReadOnlyList<LinkerResource> Value { get; }
     }
 }

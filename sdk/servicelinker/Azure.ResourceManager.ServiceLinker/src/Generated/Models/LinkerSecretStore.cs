@@ -47,7 +47,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
         /// <summary> Initializes a new instance of <see cref="LinkerSecretStore"/>. </summary>
-        public LinkerSecretStore()
+        internal LinkerSecretStore()
         {
         }
 
@@ -61,6 +61,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> The key vault id to store secret. </summary>
-        public ResourceIdentifier KeyVaultId { get; set; }
+        public ResourceIdentifier KeyVaultId { get; }
     }
 }

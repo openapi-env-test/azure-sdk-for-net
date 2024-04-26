@@ -46,7 +46,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
         /// <summary> Initializes a new instance of <see cref="VnetSolution"/>. </summary>
-        public VnetSolution()
+        internal VnetSolution()
         {
         }
 
@@ -60,6 +60,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> Type of VNet solution. </summary>
-        public VnetSolutionType? SolutionType { get; set; }
+        public VnetSolutionType? SolutionType { get; }
     }
 }

@@ -87,7 +87,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                 return null;
             }
             string nextLink = default;
-            IReadOnlyList<LinkerResourceData> value = default;
+            IReadOnlyList<LinkerResource> value = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -108,10 +108,10 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                     {
                         continue;
                     }
-                    List<LinkerResourceData> array = new List<LinkerResourceData>();
+                    List<LinkerResource> array = new List<LinkerResource>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
-                        array.Add(LinkerResourceData.DeserializeLinkerResourceData(item, options));
+                        array.Add(LinkerResource.DeserializeLinkerResource(item, options));
                     }
                     value = array;
                     continue;
@@ -122,7 +122,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new LinkerList(nextLink, value ?? new ChangeTrackingList<LinkerResourceData>(), serializedAdditionalRawData);
+            return new LinkerList(nextLink, value ?? new ChangeTrackingList<LinkerResource>(), serializedAdditionalRawData);
         }
 
         BinaryData IPersistableModel<LinkerList>.Write(ModelReaderWriterOptions options)

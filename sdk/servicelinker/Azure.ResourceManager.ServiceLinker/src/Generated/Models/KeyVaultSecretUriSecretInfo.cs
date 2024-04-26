@@ -14,7 +14,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     public partial class KeyVaultSecretUriSecretInfo : SecretBaseInfo
     {
         /// <summary> Initializes a new instance of <see cref="KeyVaultSecretUriSecretInfo"/>. </summary>
-        public KeyVaultSecretUriSecretInfo()
+        internal KeyVaultSecretUriSecretInfo()
         {
             SecretType = LinkerSecretType.KeyVaultSecretUri;
         }
@@ -30,6 +30,6 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         }
 
         /// <summary> URI to the keyvault secret. </summary>
-        public string Value { get; set; }
+        public string Value { get; }
     }
 }

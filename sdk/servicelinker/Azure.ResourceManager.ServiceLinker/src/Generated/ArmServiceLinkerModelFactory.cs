@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ServiceLinker.Models
     /// <summary> Model factory for models. </summary>
     public static partial class ArmServiceLinkerModelFactory
     {
-        /// <summary> Initializes a new instance of <see cref="ServiceLinker.LinkerResourceData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.LinkerResource"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -24,56 +24,26 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         /// <param name="targetService">
         /// The target service properties
         /// Please note <see cref="TargetServiceBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
-        /// The available derived classes include <see cref="AzureResourceInfo"/>, <see cref="ConfluentBootstrapServerInfo"/> and <see cref="ConfluentSchemaRegistryInfo"/>.
+        /// The available derived classes include <see cref="Models.AzureResourceInfo"/>, <see cref="Models.ConfluentBootstrapServerInfo"/> and <see cref="Models.ConfluentSchemaRegistryInfo"/>.
         /// </param>
         /// <param name="authInfo">
         /// The authentication type.
         /// Please note <see cref="AuthBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
-        /// The available derived classes include <see cref="SecretAuthInfo"/>, <see cref="ServicePrincipalCertificateAuthInfo"/>, <see cref="ServicePrincipalSecretAuthInfo"/>, <see cref="SystemAssignedIdentityAuthInfo"/> and <see cref="UserAssignedIdentityAuthInfo"/>.
+        /// The available derived classes include <see cref="Models.SecretAuthInfo"/>, <see cref="Models.ServicePrincipalCertificateAuthInfo"/>, <see cref="Models.ServicePrincipalSecretAuthInfo"/>, <see cref="SystemAssignedIdentityAuthInfo"/> and <see cref="Models.UserAssignedIdentityAuthInfo"/>.
         /// </param>
         /// <param name="clientType"> The application client type. </param>
         /// <param name="provisioningState"> The provisioning state. </param>
         /// <param name="solutionType"> The VNet solution. </param>
         /// <param name="secretStoreKeyVaultId"> An option to store secret value in secure place. </param>
         /// <param name="scope"> connection scope in source service. </param>
-        /// <returns> A new <see cref="ServiceLinker.LinkerResourceData"/> instance for mocking. </returns>
-        public static LinkerResourceData LinkerResourceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, TargetServiceBaseInfo targetService = null, AuthBaseInfo authInfo = null, LinkerClientType? clientType = null, string provisioningState = null, VnetSolutionType? solutionType = null, ResourceIdentifier secretStoreKeyVaultId = null, string scope = null)
+        /// <returns> A new <see cref="Models.LinkerResource"/> instance for mocking. </returns>
+        public static LinkerResource LinkerResource(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, TargetServiceBaseInfo targetService = null, AuthBaseInfo authInfo = null, LinkerClientType? clientType = null, string provisioningState = null, VnetSolutionType? solutionType = null, ResourceIdentifier secretStoreKeyVaultId = null, string scope = null)
         {
-            return new LinkerResourceData(
+            return new LinkerResource(
                 id,
                 name,
                 resourceType,
                 systemData,
-                targetService,
-                authInfo,
-                clientType,
-                provisioningState,
-                solutionType != null ? new VnetSolution(solutionType, serializedAdditionalRawData: null) : null,
-                secretStoreKeyVaultId != null ? new LinkerSecretStore(secretStoreKeyVaultId, serializedAdditionalRawData: null) : null,
-                scope,
-                serializedAdditionalRawData: null);
-        }
-
-        /// <summary> Initializes a new instance of <see cref="Models.LinkerResourcePatch"/>. </summary>
-        /// <param name="targetService">
-        /// The target service properties
-        /// Please note <see cref="TargetServiceBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
-        /// The available derived classes include <see cref="AzureResourceInfo"/>, <see cref="ConfluentBootstrapServerInfo"/> and <see cref="ConfluentSchemaRegistryInfo"/>.
-        /// </param>
-        /// <param name="authInfo">
-        /// The authentication type.
-        /// Please note <see cref="AuthBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
-        /// The available derived classes include <see cref="SecretAuthInfo"/>, <see cref="ServicePrincipalCertificateAuthInfo"/>, <see cref="ServicePrincipalSecretAuthInfo"/>, <see cref="SystemAssignedIdentityAuthInfo"/> and <see cref="UserAssignedIdentityAuthInfo"/>.
-        /// </param>
-        /// <param name="clientType"> The application client type. </param>
-        /// <param name="provisioningState"> The provisioning state. </param>
-        /// <param name="solutionType"> The VNet solution. </param>
-        /// <param name="secretStoreKeyVaultId"> An option to store secret value in secure place. </param>
-        /// <param name="scope"> connection scope in source service. </param>
-        /// <returns> A new <see cref="Models.LinkerResourcePatch"/> instance for mocking. </returns>
-        public static LinkerResourcePatch LinkerResourcePatch(TargetServiceBaseInfo targetService = null, AuthBaseInfo authInfo = null, LinkerClientType? clientType = null, string provisioningState = null, VnetSolutionType? solutionType = null, ResourceIdentifier secretStoreKeyVaultId = null, string scope = null)
-        {
-            return new LinkerResourcePatch(
                 targetService,
                 authInfo,
                 clientType,
@@ -149,6 +119,110 @@ namespace Azure.ResourceManager.ServiceLinker.Models
         public static SourceConfiguration SourceConfiguration(string name = null, string value = null)
         {
             return new SourceConfiguration(name, value, serializedAdditionalRawData: null);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.AzureResourceInfo"/>. </summary>
+        /// <param name="id"> The Id of azure resource. </param>
+        /// <param name="resourceProperties">
+        /// The azure resource connection related properties.
+        /// Please note <see cref="AzureResourceBaseProperties"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
+        /// The available derived classes include <see cref="Models.AzureKeyVaultProperties"/>.
+        /// </param>
+        /// <returns> A new <see cref="Models.AzureResourceInfo"/> instance for mocking. </returns>
+        public static AzureResourceInfo AzureResourceInfo(ResourceIdentifier id = null, AzureResourceBaseProperties resourceProperties = null)
+        {
+            return new AzureResourceInfo(TargetServiceType.AzureResource, serializedAdditionalRawData: null, id, resourceProperties);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.AzureKeyVaultProperties"/>. </summary>
+        /// <param name="doesConnectAsKubernetesCsiDriver"> True if connect via Kubernetes CSI Driver. </param>
+        /// <returns> A new <see cref="Models.AzureKeyVaultProperties"/> instance for mocking. </returns>
+        public static AzureKeyVaultProperties AzureKeyVaultProperties(bool? doesConnectAsKubernetesCsiDriver = null)
+        {
+            return new AzureKeyVaultProperties(AzureResourceType.KeyVault, serializedAdditionalRawData: null, doesConnectAsKubernetesCsiDriver);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.ConfluentBootstrapServerInfo"/>. </summary>
+        /// <param name="endpoint"> The endpoint of service. </param>
+        /// <returns> A new <see cref="Models.ConfluentBootstrapServerInfo"/> instance for mocking. </returns>
+        public static ConfluentBootstrapServerInfo ConfluentBootstrapServerInfo(string endpoint = null)
+        {
+            return new ConfluentBootstrapServerInfo(TargetServiceType.ConfluentBootstrapServer, serializedAdditionalRawData: null, endpoint);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.ConfluentSchemaRegistryInfo"/>. </summary>
+        /// <param name="endpoint"> The endpoint of service. </param>
+        /// <returns> A new <see cref="Models.ConfluentSchemaRegistryInfo"/> instance for mocking. </returns>
+        public static ConfluentSchemaRegistryInfo ConfluentSchemaRegistryInfo(string endpoint = null)
+        {
+            return new ConfluentSchemaRegistryInfo(TargetServiceType.ConfluentSchemaRegistry, serializedAdditionalRawData: null, endpoint);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.RawValueSecretInfo"/>. </summary>
+        /// <param name="value"> The actual value of the secret. </param>
+        /// <returns> A new <see cref="Models.RawValueSecretInfo"/> instance for mocking. </returns>
+        public static RawValueSecretInfo RawValueSecretInfo(string value = null)
+        {
+            return new RawValueSecretInfo(LinkerSecretType.RawValue, serializedAdditionalRawData: null, value);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.KeyVaultSecretReferenceSecretInfo"/>. </summary>
+        /// <param name="name"> Name of the Key Vault secret. </param>
+        /// <param name="version"> Version of the Key Vault secret. </param>
+        /// <returns> A new <see cref="Models.KeyVaultSecretReferenceSecretInfo"/> instance for mocking. </returns>
+        public static KeyVaultSecretReferenceSecretInfo KeyVaultSecretReferenceSecretInfo(string name = null, string version = null)
+        {
+            return new KeyVaultSecretReferenceSecretInfo(LinkerSecretType.KeyVaultSecretReference, serializedAdditionalRawData: null, name, version);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.KeyVaultSecretUriSecretInfo"/>. </summary>
+        /// <param name="value"> URI to the keyvault secret. </param>
+        /// <returns> A new <see cref="Models.KeyVaultSecretUriSecretInfo"/> instance for mocking. </returns>
+        public static KeyVaultSecretUriSecretInfo KeyVaultSecretUriSecretInfo(string value = null)
+        {
+            return new KeyVaultSecretUriSecretInfo(LinkerSecretType.KeyVaultSecretUri, serializedAdditionalRawData: null, value);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.SecretAuthInfo"/>. </summary>
+        /// <param name="name"> Username or account name for secret auth. </param>
+        /// <param name="secretInfo">
+        /// Password or key vault secret for secret auth.
+        /// Please note <see cref="SecretBaseInfo"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
+        /// The available derived classes include <see cref="Models.KeyVaultSecretReferenceSecretInfo"/>, <see cref="Models.KeyVaultSecretUriSecretInfo"/> and <see cref="Models.RawValueSecretInfo"/>.
+        /// </param>
+        /// <returns> A new <see cref="Models.SecretAuthInfo"/> instance for mocking. </returns>
+        public static SecretAuthInfo SecretAuthInfo(string name = null, SecretBaseInfo secretInfo = null)
+        {
+            return new SecretAuthInfo(LinkerAuthType.Secret, serializedAdditionalRawData: null, name, secretInfo);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.UserAssignedIdentityAuthInfo"/>. </summary>
+        /// <param name="clientId"> Client Id for userAssignedIdentity. </param>
+        /// <param name="subscriptionId"> Subscription id for userAssignedIdentity. </param>
+        /// <returns> A new <see cref="Models.UserAssignedIdentityAuthInfo"/> instance for mocking. </returns>
+        public static UserAssignedIdentityAuthInfo UserAssignedIdentityAuthInfo(string clientId = null, string subscriptionId = null)
+        {
+            return new UserAssignedIdentityAuthInfo(LinkerAuthType.UserAssignedIdentity, serializedAdditionalRawData: null, clientId, subscriptionId);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.ServicePrincipalSecretAuthInfo"/>. </summary>
+        /// <param name="clientId"> ServicePrincipal application clientId for servicePrincipal auth. </param>
+        /// <param name="principalId"> Principal Id for servicePrincipal auth. </param>
+        /// <param name="secret"> Secret for servicePrincipal auth. </param>
+        /// <returns> A new <see cref="Models.ServicePrincipalSecretAuthInfo"/> instance for mocking. </returns>
+        public static ServicePrincipalSecretAuthInfo ServicePrincipalSecretAuthInfo(string clientId = null, Guid principalId = default, string secret = null)
+        {
+            return new ServicePrincipalSecretAuthInfo(LinkerAuthType.ServicePrincipalSecret, serializedAdditionalRawData: null, clientId, principalId, secret);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="Models.ServicePrincipalCertificateAuthInfo"/>. </summary>
+        /// <param name="clientId"> Application clientId for servicePrincipal auth. </param>
+        /// <param name="principalId"> Principal Id for servicePrincipal auth. </param>
+        /// <param name="certificate"> ServicePrincipal certificate for servicePrincipal auth. </param>
+        /// <returns> A new <see cref="Models.ServicePrincipalCertificateAuthInfo"/> instance for mocking. </returns>
+        public static ServicePrincipalCertificateAuthInfo ServicePrincipalCertificateAuthInfo(string clientId = null, Guid principalId = default, string certificate = null)
+        {
+            return new ServicePrincipalCertificateAuthInfo(LinkerAuthType.ServicePrincipalCertificate, serializedAdditionalRawData: null, clientId, principalId, certificate);
         }
     }
 }
